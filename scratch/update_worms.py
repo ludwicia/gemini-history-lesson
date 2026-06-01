@@ -1,0 +1,129 @@
+# -*- coding: utf-8 -*-
+with open('沃姆斯協約.md', 'w', encoding='utf-8') as f:
+    f.write('''# 沃姆斯協約：文本與翻譯
+
+Nr. 5. (4). Wormser Konkordat. - 1122, Sept. 23.
+MG. Const. I, Nr. 107. 108, S. 159—161.
+第5號 (4). 沃姆斯協約。 - 1122年9月23日。
+《德意志歷史文獻》（Monumenta Germaniae Historica），帝王與國王憲章與公文，第一卷，第107、108號，第159—161頁。
+
+**原始文件來源**：[Wikisource: Wormser Konkordat](https://de.wikisource.org/wiki/Wormser_Konkordat)
+
+---
+
+## a. Urkunde Heinrichs V.（a. 亨利五世特許狀）
+
+---
+
+**原文**
+
+In nomine sanctae et individuae Trinitatis. Ego Heinricus Dei gratia Romanorum imperator augustus pro amore Dei et sanctae Romanae aecclesiae et domini papae Calixti et pro remedio animae meae dimitto Deo et sanctis Dei apostolis Petro et Paulo sanctaeque catholicae aecclesiae omnem investituram per anulum et baculum, et concedo in omnibus aecclesiis, quae in regno vel imperio meo sunt, canonicam fieri electionem et liberam consecrationem.
+
+**譯文**
+
+以神聖且不可分割的三位一體之名。我，亨利，蒙天主恩典的羅馬人皇帝、奧古斯都，出於對天主、神聖羅馬教會及主體教宗嘉禮的愛，並為了救贖我的靈魂，向天主、天主的神聖宗徒彼得與保羅以及神聖天主教會，放棄所有透過「指環與牧杖」進行的聖職授予權；並允許在我王國或帝國境內的所有教會中，皆可進行符合教會法的選舉與自由的祝聖。
+
+**解釋**
+
+- **Wormser Konkordat（沃姆斯協約）：** 於1122年簽訂，正式結束了神聖羅馬帝國皇帝與教宗之間長達數十年的「敘任權鬥爭」（Investiture Controversy）。這份協約區分了教會的「神職精神權力」與「世俗封建權力」。
+- **Investitura per anulum et baculum（指環與牧杖敘任權）：** 「指環」象徵神職人員與教會的屬靈婚姻，「牧杖」象徵牧養信徒的牧職權力。協約中皇帝放棄了這兩者的授予權，象徵皇帝承認神職的屬靈權力來自教會，而非世俗君主。
+
+---
+
+**原文**
+
+Possessiones et regalia beati Petri, quae a principio huius discordiae usque ad hodiernam diem sive tempore patris mei sive etiam meo ablata sunt, quae habeo, eidem sanctae Romanae aecclesiae restituo, quae autem non habeo, ut restituantur fideliter iuvabo.
+
+**譯文**
+
+自這場紛爭開始之初直到今日，無論是在我父親時期或是我自己統治時期，被奪走的聖彼得財產與世俗特權（Regalia），凡在我手中的，我皆歸還給該神聖羅馬教會；凡不在我手中的，我亦將忠實地協助其歸還。
+
+**解釋**
+
+- **Regalia（世俗特權 / 皇家權利）：** 指帝國境內屬於君主的世俗權力、領地收益、收稅權及司法管轄權。在協約中，主教雖由教會選舉，但其領地上的世俗權力仍需由皇帝授予。
+
+---
+
+**原文**
+
+Possessiones etiam aliarum omnium aecclesiarum et principum et aliorum tam clericorum quam laicorum, quae in werra ista amissae sunt consilio principum vel iusticia, quae habeo, reddam, quae non habeo, ut reddantur fideliter iuvabo. Et do veram pacem domino papae Calixto sanctaeque Romanae aecclesiae et omnibus, qui in parte ipsius sunt vel fuerunt. Et in quibus sancta Romana aecclesia auxilium postulaverit, fideliter iuvabo et, de quibus mihi fecerit querimoniam, debitam sibi faciam iusticiam.
+
+**譯文**
+
+所有其他教會、諸侯以及其他神職人員或俗人，在這場戰爭中因諸侯的建議或審判而失去的財產，凡在我手中的，我將予以歸還；凡不在我手中的，我將忠實地協助其歸還。我並向主體教宗嘉禮、神聖羅馬教會以及所有現在或過去屬於其陣營的人，賜予真正的和平。在神聖羅馬教會請求協助的事項上，我將忠實予以協助；對於其向我提出的申訴，我亦將主持公道，給予其應得的公正。
+
+---
+
+**原文**
+
+Haec omnia acta sunt consensu et consilio principum, quorum nomina subscripta sunt: Adelbertus archiepiscopus Mogontinus, F. Coloniensis archiepiscopus, H. Ratisbonensis episcopus, O. Bavenbergensis episcopus, B. Spirensis episcopus, H. Augustensis, G. Traiectensis, O. Constanciensis, E. abbas Vuldensis, Heinricus dux, Fridericus dux, S. dux, Pertolfus dux, marchio Teipoldus, marchio Engelbertus, Godefridus Palatinus, Otto Palatinus comes, Beringarius comes.
+
+**譯文**
+
+以上所有條款皆經由諸侯的同意與建議而達成，其簽名附在下方：美因茲總主教阿德爾貝特、科隆總主教 F.、雷根斯堡主教 H.、班貝格主教 O.、施派爾主教 B.、奧格斯堡主教 H.、烏特勒支主教 G.、康斯坦茨主教 O.、富爾達修道院長 E.、亨利公爵、腓特烈公爵、S. 公爵、佩爾托夫公爵、泰波爾德侯爵、恩格爾貝特侯爵、王權伯爵戈特弗里德、王權伯爵奧托、貝倫加爾伯爵。
+
+---
+
+**原文**
+
+? Ego Fridericus Coloniensis archiepiscopus et archicancellarius recognovi.
+
+**譯文**
+
+? 我，科隆總主教兼大總理腓特烈，已審閱並確認。
+
+---
+
+## b. Urkunde Papst Calixts II.（b. 教宗嘉禮二世特許狀）
+
+---
+
+**原文**
+
+(Die eingeklammerten Worte sind interpoliert.)
+Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei gratia Romanorum imperatori augusto concedo electiones episcoporum et abbatum Teutonici regni, qui ad regnum pertinent, in praesentia tua fieri absque simonia et aliqua violentia; ut, si qua inter partes discordia emerserit, metropolitani et conprovincialium consilio vel iudicio saniori parti assensum et auxilium praebeas.
+
+**譯文**
+
+（括號內的字詞為後人篡改/內插之文字。）
+我，教宗嘉禮，天主眾僕之僕，允許你——我親愛的兒子亨利，蒙天主恩典的羅馬人皇帝、奧古斯都——德意志王國境內屬於該王國管轄的主教與修道院長之選舉，得在你的見證下進行，惟不得有買賣聖職（Simony）與任何暴力行為。若各方之間出現分歧，你應在總主教及同教區主教們的建議或裁決下，向較明智的一方（Sanior pars）表示贊同並給予支持。
+
+**解釋**
+
+- **Simonia（買賣聖職 / 西門交易）：** 指用金錢或世俗利益來交易或購買教會神職及屬靈特權的行為。語源來自《聖經·使徒行傳》中企圖用錢向彼得購買聖靈能力的行法術者西門（Simon Magus）。
+- **Sanior pars（較明智的一方）：** 教會法中的一個術語。在選舉出現爭議時，不單純看人數多寡（多數決），而是由資深或更具德望的神職人員集體判定哪一方的決定更具智慧、更符合教會利益。
+
+---
+
+**原文**
+
+Electus autem regalia (absque omni exactione) per sceptrum a te recipiat et quae ex his iure tibi debet faciat.
+
+**譯文**
+
+獲選者應透過「權杖」從你手中接受世俗特權（Regalia）（免除一切強索），並依法向你履行因這些特權而對你承擔的義務。
+
+**解釋**
+
+- **Sceptrum（權杖）：** 象徵世俗的統治權利。皇帝改用「權杖」來授予主教世俗特權（Regalia），以此與教會的「指環與牧杖」做區隔。
+
+---
+
+**原文**
+
+Ex aliis vero partibus imperii consecratus infra sex menses regalia (absque omni exactione) per sceptrum a te recipiat et quae ex his iure tibi debet faciat; exceptis omnibus quae ad Romanam ecclesiam pertinere noscuntur.
+
+**譯文**
+
+至於在帝國其他領土內的獲選者，在祝聖後的六個月內，應透過「權杖」從你手中接受世俗特權（免除一切強索），並依法向你履行因這些特權而對你承擔的義務；但已知屬於羅馬教會的所有財產與權利除外。
+
+---
+
+**原文**
+
+De quibus vero mihi querimoniam feceris et auxilium postulaveris, secundum officii mei debitum auxilium tibi praestabo. Do tibi veram pacem et omnibus qui in parte tua sunt vel fuerunt tempore huius discordiae.
+
+**譯文**
+
+對於你向我提出申訴並請求協助的事項，我將根據我的職責履行本分，為你提供協助。我向你以及所有在這場紛爭期間屬於或曾屬於你陣營的人，賜予真正的和平。
+''')

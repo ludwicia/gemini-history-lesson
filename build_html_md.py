@@ -186,6 +186,15 @@ images_p7 = [
 # Page 8 (Concordat of Worms) Config
 file_p8 = r'沃姆斯協約.md'
 
+# Page 9 (Pippin's Donation) Config
+file_p9 = r'丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響.md'
+map_p9 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/pippin_donation_main.jpg" alt="Pippin Coronation Main" loading="lazy"><figcaption class="caption">法國畫家 François Dubois 於1837年所繪的名作《教宗斯德望二世在聖但尼修道院為丕平加冕》，現藏於凡爾賽宮。</figcaption></figure>\n'
+images_p9 = [
+    (r'(<h2.*?>三、.*?</h2>)', 'images/pippin_donation_map.png', '西元750年代倫巴底擴張前夕的義大利半島地緣版圖。丕平獻土徹底打破了拜占庭、倫巴底與羅馬聖座之間的三方平衡。'),
+    (r'(<h2.*?>五、.*?</h2>)', 'images/pippin_ricci_fresco.jpg', '梵蒂岡祕密檔案館壁畫：描繪法蘭克聖但尼修道院院長富拉德代表國王丕平，實地向教宗斯德望二世呈交收復的22座城市鑰匙與獻土詔書。'),
+    (r'(<h2.*?>四、.*?</h2>)', 'images/donation_of_constantine.jpg', '梵蒂岡拉斐爾畫室著名濕壁畫《君士坦丁的贈禮》（Donation of Constantine），描繪君士坦丁大帝將世俗統治權讓渡給教宗西爾維斯特一世。')
+]
+
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1)
 
@@ -211,6 +220,9 @@ html_body_p7 = process_markdown(file_p7, images_p7, "1.0", map_p7)
 
 print("Processing Page 8 (Concordat of Worms)...")
 html_body_p8 = process_3col_document(file_p8, "1.0")
+
+print("Processing Page 9 (Pippin Donation)...")
+html_body_p9 = process_markdown(file_p9, images_p9, "1.0", map_p9)
 
 # Full Portal HTML Template
 portal_template = """<!DOCTYPE html>
@@ -1086,6 +1098,7 @@ portal_template = """<!DOCTYPE html>
                     <a href="#page03" id="nav-btn-page03" class="nav-tab-btn" style="text-decoration: none;">宗教戰爭(一)：胡斯戰爭</a>
                     <a href="#page05" id="nav-btn-page05" class="nav-tab-btn" style="text-decoration: none;">希爾紹修道院</a>
                     <a href="#page07" id="nav-btn-page07" class="nav-tab-btn" style="text-decoration: none;">奧托-薩利安帝國教會體制</a>
+                    <a href="#page09" id="nav-btn-page09" class="nav-tab-btn" style="text-decoration: none;">丕平獻土與教皇國誕生</a>
                 </div>
             </div>
             
@@ -1152,6 +1165,11 @@ portal_template = """<!DOCTYPE html>
             __HTML_BODY_PAGE08__
         </div>
 
+        <!-- 課堂六：丕平獻土地緣政治研究 -->
+        <div id="course-page09" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE09__
+        </div>
+
         <!-- 歷史文件二：聖本篤會規 -->
         <div id="course-page06" class="course-page" style="display: none;">
             __HTML_BODY_PAGE06__
@@ -1188,8 +1206,8 @@ portal_template = """<!DOCTYPE html>
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.5 (新增「奧托-薩利安帝國教會體制」歷史專題)</div>
-                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-05-31</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.6 (新增「丕平獻土與教皇國誕生」歷史專題)</div>
+                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-02</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
                         <!-- Dynamic metadata loaded by JS -->
@@ -1270,6 +1288,14 @@ portal_template = """<!DOCTYPE html>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
         `,
+        page09: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>丕平獻土的地緣政治體系研究<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
+        `,
         page06: `
             <div style="font-size: 0.85rem; color: #4a5568; line-height: 1.6;">
                 <b>📚 當前文件：</b>修道院制度：聖本篤會規<br>
@@ -1289,7 +1315,8 @@ portal_template = """<!DOCTYPE html>
         'page05': { title: '希爾紹修道院研究報告 — Ludwica 的簡單歷史課', desc: '希爾紹修道院的千年歷史、威廉大院長的改革運動、希爾紹建築學派的羅馬式美學巅峰，以及九年戰爭後的廢墟重生。' },
         'page06': { title: '聖本篤會規三欄解析 — Ludwica 的簡單歷史課', desc: '公元6世紀西方隱修制度基石《聖本篤會規》德文原文、中文翻譯與專業學術註釋三欄並列解析。' },
         'page07': { title: '奧托-薩利安帝國教會體制 — Ludwica 的簡單歷史課', desc: '奧托王朝與薩利安王朝的帝國教會體制、政教合一的運作機制、巡迴朝廷制度，以及敘任權之爭的歷史根源。' },
-        'page08': { title: '沃姆斯協約 — Ludwica 的簡單歷史課', desc: '結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。' }
+        'page08': { title: '沃姆斯協約 — Ludwica 的簡單歷史課', desc: '結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。' },
+        'page09': { title: '丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課', desc: '深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。' }
     };
 
     function updatePageSEO(pageId) {
@@ -1392,7 +1419,8 @@ portal_template = """<!DOCTYPE html>
             { id: 'page05', name: '希爾紹修道院' },
             { id: 'page06', name: '修道院制度：聖本篤會規' },
             { id: 'page07', name: '奧托-薩利安帝國教會體制' },
-            { id: 'page08', name: '敘任權之爭：沃姆斯協約' }
+            { id: 'page08', name: '敘任權之爭：沃姆斯協約' },
+            { id: 'page09', name: '丕平獻土與教皇國誕生' }
         ];
         
         pages.forEach(p => {
@@ -1635,7 +1663,7 @@ portal_template = """<!DOCTYPE html>
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
@@ -1669,6 +1697,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE05__', html_body_p5)
 final_html = final_html.replace('__HTML_BODY_PAGE06__', html_body_p6)
 final_html = final_html.replace('__HTML_BODY_PAGE07__', html_body_p7)
 final_html = final_html.replace('__HTML_BODY_PAGE08__', html_body_p8)
+final_html = final_html.replace('__HTML_BODY_PAGE09__', html_body_p9)
 
 # Write to file
 print("Writing build output to index.html...")
@@ -1732,6 +1761,12 @@ sitemap_content = f"""\
   </url>
   <url>
     <loc>https://ludwicia.github.io/ludwica-history-lesson/#page08</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ludwicia.github.io/ludwica-history-lesson/#page09</loc>
     <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
