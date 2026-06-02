@@ -195,6 +195,25 @@ images_p9 = [
     (r'(<h2.*?>四、.*?</h2>)', 'images/donation_of_constantine.jpg', '梵蒂岡拉斐爾畫室著名濕壁畫《君士坦丁的贈禮》（Donation of Constantine），描繪君士坦丁大帝將世俗統治權讓渡給教宗西爾維斯特一世。')
 ]
 
+# Page 10 (Carolingian Education) Config
+file_p10 = r'聖神統治與知識復興：卡洛林王朝教育基建、制度體系及其深遠歷史遺產之研究.md'
+map_p10 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/carolingian_main.jpg" alt="Carolingian Minuscule" loading="lazy"><figcaption class="caption">八世紀末《達古爾夫詩篇》（Dagulf Psalter）之手抄頁面，以優美典雅的卡洛林小寫體金字書寫，展現了早期帝國書寫標準化的極致美學。</figcaption></figure>\n'
+images_p10 = [
+    (r'(<h2.*?>一、.*?</h2>)', 'images/carolingian_alcuin.jpg', 'Jean-Victor Schnetz 1830年名作《查理曼與阿爾琴》，描繪校長阿爾琴向查理曼大帝及其高級廷臣展示由修士手抄之聖經文獻，象徵神聖王權與知識基建之交匯。'),
+    (r'(<h2.*?>二、.*?</h2>)', 'images/carolingian_stgall.jpg', '公元九世紀初著名的《聖加侖修道院理想平面圖》（St. Galler Klosterplan）局部，圖中明確規劃了專屬的圖書館（Library）與手抄室（Scriptorium）空間，展現出高度系統化的學術基建思維。'),
+    (r'(<h2.*?>三、.*?</h2>)', 'images/carolingian_lorsch.jpg', '著名的卡洛林晚期傑作——洛爾施修道院門樓（Königshalle），是極少數完整存世的卡洛林帝國時期地標建築，展現了早期文藝復興的建築工程美學與古典柱頭裝飾。'),
+    (r'(<h2.*?>四、.*?</h2>)', 'images/carolingian_majesty.jpg', '現藏於維多利亞與阿爾伯特博物館的十一世紀早期《洛爾施福音書》（Lorsch Gospels）象牙浮雕封面，描繪「基督登基在天」（Christ in Majesty），象徵宗教神權與卡洛林神學宇宙秩序的高度統一。')
+]
+
+# Page 11 (European Papermaking) Config
+file_p11 = r'歐洲造紙術的歷史演變、技術革新與物質文明變革研究報告.md'
+map_p11 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/paper_main.jpg" alt="Jost Amman Papermaker" loading="lazy"><figcaption class="caption">德意志著名藝術家 Jost Amman 於1568年繪製的經典木刻版畫《撈紙工》（Der Papiermacher），生動再現了前工業化時期歐洲水力造紙坊抄紙與壓榨水分的勞動場景。</figcaption></figure>\n'
+images_p11 = [
+    (r'(<h2.*?>二、.*?</h2>)', 'images/paper_hollander.jpg', '保存於造紙歷史博物館中的經典「荷蘭式打漿機」（Hollander Beater），其藉由旋轉金屬刀片進行碎布纖維的原纖化處理，徹底革新了沿用數百年的槌擊製漿工藝。'),
+    (r'(<h2.*?>四、.*?</h2>)', 'images/paper_press.jpg', '近代早期典型的木製手搖印刷機與造紙槽協同車間，造紙與印刷兩大技術的物質相遇，徹底打破了中古教權對知識產權與書籍生產的絕對壟斷。'),
+    (r'(<h3.*?>2\..*?</h3>)', 'images/paper_gutenberg.jpg', '紐約公共圖書館珍藏的1455年《古騰堡聖經》（Gutenberg Bible）雙欄手繪頁面，採用了歐洲本土製造的高規格破布手抄紙，為印刷資本主義的擴張提供了最為關鍵的物質載體。')
+]
+
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1)
 
@@ -223,6 +242,12 @@ html_body_p8 = process_3col_document(file_p8, "1.0")
 
 print("Processing Page 9 (Pippin Donation)...")
 html_body_p9 = process_markdown(file_p9, images_p9, "1.0", map_p9)
+
+print("Processing Page 10 (Carolingian Education)...")
+html_body_p10 = process_markdown(file_p10, images_p10, "1.0", map_p10)
+
+print("Processing Page 11 (European Papermaking)...")
+html_body_p11 = process_markdown(file_p11, images_p11, "1.0", map_p11)
 
 # Full Portal HTML Template
 portal_template = """<!DOCTYPE html>
@@ -1099,6 +1124,8 @@ portal_template = """<!DOCTYPE html>
                     <a href="#page05" id="nav-btn-page05" class="nav-tab-btn" style="text-decoration: none;">希爾紹修道院</a>
                     <a href="#page07" id="nav-btn-page07" class="nav-tab-btn" style="text-decoration: none;">奧托-薩利安帝國教會體制</a>
                     <a href="#page09" id="nav-btn-page09" class="nav-tab-btn" style="text-decoration: none;">丕平獻土與教皇國誕生</a>
+                    <a href="#page10" id="nav-btn-page10" class="nav-tab-btn" style="text-decoration: none;">卡洛林教育基建與知識復興</a>
+                    <a href="#page11" id="nav-btn-page11" class="nav-tab-btn" style="text-decoration: none;">歐洲造紙術的歷史演變</a>
                 </div>
             </div>
             
@@ -1170,6 +1197,16 @@ portal_template = """<!DOCTYPE html>
             __HTML_BODY_PAGE09__
         </div>
 
+        <!-- 課堂七：卡洛林教育基建 -->
+        <div id="course-page10" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE10__
+        </div>
+
+        <!-- 課堂八：歐洲造紙術演變 -->
+        <div id="course-page11" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE11__
+        </div>
+
         <!-- 歷史文件二：聖本篤會規 -->
         <div id="course-page06" class="course-page" style="display: none;">
             __HTML_BODY_PAGE06__
@@ -1206,7 +1243,7 @@ portal_template = """<!DOCTYPE html>
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.6 (新增「丕平獻土與教皇國誕生」歷史專題)</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.7 (新增「卡洛林教育基建」與「歐洲造紙術演變」歷史專題)</div>
                     <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-02</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
@@ -1296,6 +1333,22 @@ portal_template = """<!DOCTYPE html>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
         `,
+        page10: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>卡洛林王朝教育基建與知識復興<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
+        `,
+        page11: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>歐洲造紙術的歷史演變與技術革新<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
+        `,
         page06: `
             <div style="font-size: 0.85rem; color: #4a5568; line-height: 1.6;">
                 <b>📚 當前文件：</b>修道院制度：聖本篤會規<br>
@@ -1316,7 +1369,9 @@ portal_template = """<!DOCTYPE html>
         'page06': { title: '聖本篤會規三欄解析 — Ludwica 的簡單歷史課', desc: '公元6世紀西方隱修制度基石《聖本篤會規》德文原文、中文翻譯與專業學術註釋三欄並列解析。' },
         'page07': { title: '奧托-薩利安帝國教會體制 — Ludwica 的簡單歷史課', desc: '奧托王朝與薩利安王朝的帝國教會體制、政教合一的運作機制、巡迴朝廷制度，以及敘任權之爭的歷史根源。' },
         'page08': { title: '沃姆斯協約 — Ludwica 的簡單歷史課', desc: '結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。' },
-        'page09': { title: '丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課', desc: '深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。' }
+        'page09': { title: '丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課', desc: '深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。' },
+        'page10': { title: '卡洛林王朝教育基建與知識復興 — Ludwica 的簡單歷史課', desc: '探討卡洛林王朝教育基建與宗教變革、手抄室與卡洛林小草體書寫革命、跨國學者網絡、基督教化七藝與課堂實踐，以及文明火種對後世中世紀大學的深遠影響。' },
+        'page11': { title: '歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課', desc: '研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。' }
     };
 
     function updatePageSEO(pageId) {
@@ -1420,7 +1475,9 @@ portal_template = """<!DOCTYPE html>
             { id: 'page06', name: '修道院制度：聖本篤會規' },
             { id: 'page07', name: '奧托-薩利安帝國教會體制' },
             { id: 'page08', name: '敘任權之爭：沃姆斯協約' },
-            { id: 'page09', name: '丕平獻土與教皇國誕生' }
+            { id: 'page09', name: '丕平獻土與教皇國誕生' },
+            { id: 'page10', name: '卡洛林教育基建與知識復興' },
+            { id: 'page11', name: '歐洲造紙術的歷史演變' }
         ];
         
         pages.forEach(p => {
@@ -1663,7 +1720,7 @@ portal_template = """<!DOCTYPE html>
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
@@ -1698,6 +1755,8 @@ final_html = final_html.replace('__HTML_BODY_PAGE06__', html_body_p6)
 final_html = final_html.replace('__HTML_BODY_PAGE07__', html_body_p7)
 final_html = final_html.replace('__HTML_BODY_PAGE08__', html_body_p8)
 final_html = final_html.replace('__HTML_BODY_PAGE09__', html_body_p9)
+final_html = final_html.replace('__HTML_BODY_PAGE10__', html_body_p10)
+final_html = final_html.replace('__HTML_BODY_PAGE11__', html_body_p11)
 
 # Write to file
 print("Writing build output to index.html...")
@@ -1771,6 +1830,18 @@ sitemap_content = f"""\
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://ludwicia.github.io/ludwica-history-lesson/#page10</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ludwicia.github.io/ludwica-history-lesson/#page11</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
 
 with open(r'sitemap.xml', 'w', encoding='utf-8', newline='\n') as f:
@@ -1788,4 +1859,4 @@ with open(r'robots.txt', 'w', encoding='utf-8') as f:
     f.write(robots_content)
 print("Generated robots.txt")
 
-print("Done! Site successfully built as dynamic 8-topic history portal with full SEO.")
+print("Done! Site successfully built as dynamic 11-topic history portal with full SEO.")
