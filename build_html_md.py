@@ -1,9 +1,36 @@
 import markdown
 import re
 import os
+import subprocess
+from datetime import datetime
+
+# Helper to get the last update date of a file from Git or filesystem
+def get_file_last_update_date(file_path):
+    try:
+        res = subprocess.run(
+            ['git', 'log', '-1', '--format=%ad', '--date=format:%Y-%m-%d', file_path],
+            capture_output=True, text=True, check=True
+        )
+        date_str = res.stdout.strip()
+        if date_str:
+            # Check if file has unstaged or staged changes
+            diff_res = subprocess.run(['git', 'diff', '--quiet', file_path])
+            if diff_res.returncode == 0:
+                diff_staged = subprocess.run(['git', 'diff', '--cached', '--quiet', file_path])
+                if diff_staged.returncode == 0:
+                    return date_str
+    except Exception:
+        pass
+
+    try:
+        mtime = os.path.getmtime(file_path)
+        return datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
+    except Exception:
+        return datetime.now().strftime('%Y-%m-%d')
 
 # Helper to process and format a markdown lesson
 def process_markdown(file_path, image_replacements, content_version, main_img_html=None):
+    update_date = get_file_last_update_date(file_path)
     with open(file_path, 'r', encoding='utf-8') as f:
         text = f.read()
 
@@ -26,8 +53,8 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
     text = '\n'.join(new_lines)
     html_body = markdown.markdown(text, extensions=['tables', 'toc'])
 
-    # Add content version badge
-    version_badge = f'<div style="text-align: center; color: #718096; margin-top: -15px; margin-bottom: 25px; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="background-color: #ebf8ff; color: #2b6cb0; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #bee3f8;">內容版本：{content_version}</span></div>\n'
+    # Add content version badge and update date badge
+    version_badge = f'<div style="text-align: center; color: #718096; margin-top: -15px; margin-bottom: 25px; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="background-color: #ebf8ff; color: #2b6cb0; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #bee3f8;">內容版本：{content_version}</span><span style="background-color: #f0fff4; color: #38a169; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #c6f6d5;">最近更新：{update_date}</span></div>\n'
 
     # Insert version badge and main image under first H1
     header_insert = version_badge
@@ -44,6 +71,7 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
     return html_body
 
 def process_3col_document(file_path, content_version):
+    update_date = get_file_last_update_date(file_path)
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             text = f.read()
@@ -70,6 +98,7 @@ def process_3col_document(file_path, content_version):
     html = f'''
     <div style="text-align: center; color: #718096; margin-top: 10px; margin-bottom: 10px; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;">
         <span style="background-color: #ebf8ff; color: #2b6cb0; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #bee3f8;">內容版本：{content_version}</span>
+        <span style="background-color: #f0fff4; color: #38a169; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #c6f6d5;">最近更新：{update_date}</span>
     </div>
     <div class="doc-title-section">
         {title_html}
@@ -214,6 +243,16 @@ images_p11 = [
     (r'(<h3.*?>2\..*?</h3>)', 'images/paper_gutenberg.jpg', '紐約公共圖書館珍藏的1455年《古騰堡聖經》（Gutenberg Bible）雙欄手繪頁面，採用了歐洲本土製造的高規格破布手抄紙，為印刷資本主義的擴張提供了最為關鍵的物質載體。')
 ]
 
+# Page 12 (Catharism) Config
+file_p12 = r'靈魂的物質禁錮與中世紀權力整肅：卡特里派的興起、神學教義、十字軍聖戰與歷史餘音.md'
+map_p12 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/catharism_main.jpg" alt="Montsegur Castle" loading="lazy"><figcaption class="caption">今日聳立於南法陡峭岩峰上的蒙塞居爾城堡（Château de Montségur）廢墟，曾是卡特里派最後的軍事與精神堡壘，見證了1244年悲壯的圍城戰與大火刑。</figcaption></figure>\n'
+images_p12 = [
+    (r'(<h2.*?>二、.*?</h2>)', 'images/catharism_creed.png', '代表朗格多克文化與卡特里派信仰空間的「奧克十字」（Occitan Cross）標誌，象徵南方反抗北法集權與教權威脅的文化精神'),
+    (r'(<h2.*?>四、.*?</h2>)', 'images/catharism_perfecti.jpg', '西班牙畫家 Pedro Berruguete 於15世紀末所繪名作《聖多明尼克與阿爾比派》（St Dominic and the Albigenses），描繪正統與異端書籍被投入火中檢驗真偽的傳奇場景'),
+    (r'(<h2.*?>五、.*?</h2>)', 'images/catharism_crusade.jpg', '15世紀手稿《Boucicaut大師工坊》插圖，描繪阿爾比十字軍東征期間卡特里派信徒被驅逐出城的悲慘場景'),
+    (r'(<h2.*?>六、.*?</h2>)', 'images/catharism_inquisition.jpg', '14世紀道明會士 Bernard Gui 所著《異端裁判所實踐指南》（Practica officii inquisitionis heretice pravitatis）手稿插圖，象徵宗教裁判所官僚化、秘密化的司法清洗')
+]
+
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1)
 
@@ -248,6 +287,9 @@ html_body_p10 = process_markdown(file_p10, images_p10, "1.0", map_p10)
 
 print("Processing Page 11 (European Papermaking)...")
 html_body_p11 = process_markdown(file_p11, images_p11, "1.0", map_p11)
+
+print("Processing Page 12 (Cathar Crusade)...")
+html_body_p12 = process_markdown(file_p12, images_p12, "1.0", map_p12)
 
 # Full Portal HTML Template
 portal_template = """<!DOCTYPE html>
@@ -1121,6 +1163,7 @@ portal_template = """<!DOCTYPE html>
                     <a href="#page01" id="nav-btn-page01" class="nav-tab-btn active" style="text-decoration: none;">荷蘭建國與地緣政經</a>
                     <a href="#page02" id="nav-btn-page02" class="nav-tab-btn" style="text-decoration: none;">美國的誕生(一)</a>
                     <a href="#page03" id="nav-btn-page03" class="nav-tab-btn" style="text-decoration: none;">宗教戰爭(一)：胡斯戰爭</a>
+                    <a href="#page12" id="nav-btn-page12" class="nav-tab-btn" style="text-decoration: none;">宗教戰爭(二)：卡特里派</a>
                     <a href="#page05" id="nav-btn-page05" class="nav-tab-btn" style="text-decoration: none;">希爾紹修道院</a>
                     <a href="#page07" id="nav-btn-page07" class="nav-tab-btn" style="text-decoration: none;">奧托-薩利安帝國教會體制</a>
                     <a href="#page09" id="nav-btn-page09" class="nav-tab-btn" style="text-decoration: none;">丕平獻土與教皇國誕生</a>
@@ -1207,6 +1250,11 @@ portal_template = """<!DOCTYPE html>
             __HTML_BODY_PAGE11__
         </div>
 
+        <!-- 課堂九：宗教戰爭(二)：卡特里派 -->
+        <div id="course-page12" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE12__
+        </div>
+
         <!-- 歷史文件二：聖本篤會規 -->
         <div id="course-page06" class="course-page" style="display: none;">
             __HTML_BODY_PAGE06__
@@ -1273,6 +1321,7 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>荷蘭建國史與地緣政經<br>
                 <b>🏷️ 內容版本：</b>1.1<br>
+                <b>📅 更新日期：</b>__PAGE01_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1281,6 +1330,7 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>美國的誕生(一)<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE02_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1289,6 +1339,7 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>宗教戰爭(一)：胡斯戰爭<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE03_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1297,6 +1348,7 @@ portal_template = """<!DOCTYPE html>
             <div style="font-size: 0.85rem; color: #4a5568; line-height: 1.6;">
                 <b>📚 當前文件：</b>神聖羅馬帝國：金璽詔書<br>
                 <b>🏷️ 內容版本：</b>1.5<br>
+                <b>📅 更新日期：</b>__PAGE04_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1305,6 +1357,7 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>希爾紹修道院<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE05_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1313,6 +1366,7 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>奧托-薩利安帝國教會體制<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE07_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1321,6 +1375,7 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>沃姆斯協約<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE08_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1329,6 +1384,7 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>丕平獻土的地緣政治體系研究<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE09_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1337,6 +1393,7 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>卡洛林王朝教育基建與知識復興<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE10_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1345,6 +1402,16 @@ portal_template = """<!DOCTYPE html>
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>歐洲造紙術的歷史演變與技術革新<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE11_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
+        `,
+        page12: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>中世紀南法卡特里派的興起與整肅<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE12_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1353,6 +1420,7 @@ portal_template = """<!DOCTYPE html>
             <div style="font-size: 0.85rem; color: #4a5568; line-height: 1.6;">
                 <b>📚 當前文件：</b>修道院制度：聖本篤會規<br>
                 <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE06_DATE__<br>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
@@ -1371,7 +1439,8 @@ portal_template = """<!DOCTYPE html>
         'page08': { title: '沃姆斯協約 — Ludwica 的簡單歷史課', desc: '結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。' },
         'page09': { title: '丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課', desc: '深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。' },
         'page10': { title: '卡洛林王朝教育基建與知識復興 — Ludwica 的簡單歷史課', desc: '探討卡洛林王朝教育基建與宗教變革、手抄室與卡洛林小草體書寫革命、跨國學者網絡、基督教化七藝與課堂實踐，以及文明火種對後世中世紀大學的深遠影響。' },
-        'page11': { title: '歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課', desc: '研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。' }
+        'page11': { title: '歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課', desc: '研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。' },
+        'page12': { title: '中世紀卡特里派的興起、教義、十字軍聖戰與歷史餘音 — Ludwica 的簡單歷史課', desc: '深入研究中世紀南法阿爾比十字軍東征、卡特里派（阿爾比派）二元論神學與禁慾實踐、宗教裁判所的官僚化清洗，以及《富尼埃登記簿》與微觀歷史學《蒙塔尤》的思想異質性。' }
     };
 
     function updatePageSEO(pageId) {
@@ -1477,7 +1546,8 @@ portal_template = """<!DOCTYPE html>
             { id: 'page08', name: '敘任權之爭：沃姆斯協約' },
             { id: 'page09', name: '丕平獻土與教皇國誕生' },
             { id: 'page10', name: '卡洛林教育基建與知識復興' },
-            { id: 'page11', name: '歐洲造紙術的歷史演變' }
+            { id: 'page11', name: '歐洲造紙術的歷史演變' },
+            { id: 'page12', name: '宗教戰爭(二)：卡特里派' }
         ];
         
         pages.forEach(p => {
@@ -1720,7 +1790,7 @@ portal_template = """<!DOCTYPE html>
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
@@ -1757,6 +1827,21 @@ final_html = final_html.replace('__HTML_BODY_PAGE08__', html_body_p8)
 final_html = final_html.replace('__HTML_BODY_PAGE09__', html_body_p9)
 final_html = final_html.replace('__HTML_BODY_PAGE10__', html_body_p10)
 final_html = final_html.replace('__HTML_BODY_PAGE11__', html_body_p11)
+final_html = final_html.replace('__HTML_BODY_PAGE12__', html_body_p12)
+
+# Insert last update dates for each page into the JS metadata
+final_html = final_html.replace('__PAGE01_DATE__', get_file_last_update_date(file_p1))
+final_html = final_html.replace('__PAGE02_DATE__', get_file_last_update_date(file_p2))
+final_html = final_html.replace('__PAGE03_DATE__', get_file_last_update_date(file_p3))
+final_html = final_html.replace('__PAGE04_DATE__', get_file_last_update_date(file_p4))
+final_html = final_html.replace('__PAGE05_DATE__', get_file_last_update_date(file_p5))
+final_html = final_html.replace('__PAGE06_DATE__', get_file_last_update_date(file_p6))
+final_html = final_html.replace('__PAGE07_DATE__', get_file_last_update_date(file_p7))
+final_html = final_html.replace('__PAGE08_DATE__', get_file_last_update_date(file_p8))
+final_html = final_html.replace('__PAGE09_DATE__', get_file_last_update_date(file_p9))
+final_html = final_html.replace('__PAGE10_DATE__', get_file_last_update_date(file_p10))
+final_html = final_html.replace('__PAGE11_DATE__', get_file_last_update_date(file_p11))
+final_html = final_html.replace('__PAGE12_DATE__', get_file_last_update_date(file_p12))
 
 # Write to file
 print("Writing build output to index.html...")
@@ -1842,6 +1927,12 @@ sitemap_content = f"""\
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://ludwicia.github.io/ludwica-history-lesson/#page12</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
 
 with open(r'sitemap.xml', 'w', encoding='utf-8', newline='\n') as f:
@@ -1859,4 +1950,4 @@ with open(r'robots.txt', 'w', encoding='utf-8') as f:
     f.write(robots_content)
 print("Generated robots.txt")
 
-print("Done! Site successfully built as dynamic 11-topic history portal with full SEO.")
+print("Done! Site successfully built as dynamic 12-topic history portal with full SEO.")
