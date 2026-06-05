@@ -137,29 +137,52 @@
 
 ## 🚀 下一堂歷史課：使用教學
 
-當你要發布新的歷史文章時，請遵循以下步驟：
+當你要發布新的歷史文章時，有兩種方式可以準備 Markdown 文件：
 
-### 第一步：準備 Markdown 文件
+### 方法一：使用自動化工具從 Google Docs 匯入（推薦 👍）
+
+本專案提供了一個 `import_gdoc.py` 腳本，可以自動將 Google Docs 內容下載並轉換為乾淨的 Markdown 格式：
+
+1. **共用設定**：確保你的 Google Doc 共用權限設定為 **「知道連結的任何人 (公開)」**。
+2. **執行匯入腳本**：
+   打開終端機，確保路徑在專案資料夾下，並使用 Python 執行（建議使用 Windows 系統上的全域 Python 3.13 執行，以確保套件完整性）：
+   ```bash
+   python import_gdoc.py "你的_Google_Doc_連結"
+   ```
+   * 例如：
+     ```bash
+     python import_gdoc.py "https://docs.google.com/document/d/1cvqczTK630P1DNbSMAIBZzWzbMQhQOLpFFuLuuN9stw/edit?usp=sharing"
+     ```
+   * 該腳本會自動提取 Google Doc ID、從網頁上下載 UTF-8 乾淨文字、移除 BOM 字符、自動將第一行轉為一級標題（`# 標題`），最後將檔案儲存為 `文章標題.md`。
+   * 如果想指定輸出檔名，可以在後面加上參數：
+     ```bash
+     python import_gdoc.py "你的_Google_Doc_連結" "自訂檔名.md"
+     ```
+
+### 方法二：手動準備 Markdown 文件
+
 1. 將你的新歷史課程內容存成 `.md` 檔案（例如：`第二堂課：法國大革命.md`），並放進這個專案資料夾。
 2. 確保文章內容有使用適當的標題層級（如 `## 1. 標題`），這會用來自動生成左側目錄。
 
-### 第二步：修改轉換腳本
+---
+
+### 第二步：修改轉換腳本與圖片配置
 打開 `build_html_md.py`，進行以下微調：
-1. **修改讀取檔名**：將腳本最上方的 `with open(...)` 檔名改為你的新 Markdown 檔名。
-2. **更新圖片字典 (Optional)**：如果新文章需要專屬的維基百科圖片，可以修改腳本裡的 `images` 字典，將章節編號對應到新的圖片 URL 與圖說。
+1. **註冊頁面**：若要新增為獨立的專題/文件頁面，請在 `build_html_md.py` 內註冊新的頁面模組（Page ID 與對應的 Markdown 檔案變數），並將其加入下拉選單與全域搜尋索引中。
+2. **更新圖片字典 (選填)**：若新文章有對應的文章插圖，可以將圖片放置於 `images/` 目錄下，並在腳本的圖片字典中設定對應章節的圖說與文繞圖排版。
 
 ### 第三步：生成網頁
 打開終端機，確保路徑在專案資料夾下，執行：
 ```bash
 python build_html_md.py
 ```
-這時資料夾內的 `index.html` 就會被覆寫為最新內容的網頁！你可以直接點開 `index.html` 檢查排版與圖片。
+這時資料夾內的 `index.html` 就會被覆寫為最新內容的網頁！你可以直接點開 `index.html` 檢查本機排版與搜尋功能。
 
 ### 第四步：推播上線
-確認本機端的網頁沒問題後，在終端機輸入以下三個指令，將新內容推送到全球網路：
+確認本機端的網頁沒問題後，在終端機輸入以下三個指令，將程式碼與新文章推送到 GitHub：
 ```bash
 git add .
-git commit -m "發布新課程：法國大革命"
+git commit -m "發布新課程與更新文件匯入教學"
 git push
 ```
-等待約 1~2 分鐘後，重新整理你的 [GitHub Pages 網址](https://ludwicia.github.io/gemini-history-lesson/)，新的歷史課就正式開課囉！
+等待約 1~2 分鐘後，重新整理你的 [GitHub Pages 網址](https://ludwicia.github.io/gemini-history-lesson/)，新的歷史課就正式上線囉！
