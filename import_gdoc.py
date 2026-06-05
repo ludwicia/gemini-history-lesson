@@ -43,8 +43,9 @@ def format_citations(text):
         
     # Pattern for citation numbers: 1-2 digits
     # Preceded by Chinese characters, letters, closing brackets, or asterisks
-    # Followed by punctuation (。，；、』」）), space, pipe (|), or end of line/cell
-    pattern = r'(?<=[\u4e00-\u9fff》）』」a-zA-Z*])(\d{1,2})(?=[\s。，；、』」）|]|$)'
+    # Followed by punctuation (。，；、』」）), space, pipe (|), tag opening (<), or end of line/cell
+    # But NOT followed by quantities/units (like 次, 年, 個, px, etc.)
+    pattern = r'(?<=[\u4e00-\u9fff》）』」a-zA-Z*])(\d{1,2})(?!\s*(?:次|個|件|年|月|日|萬|億|元|位|歲|分|秒|px|em|rem|%))(?=[\s。，；、』」）|]|$|<])'
     body_replaced = re.sub(pattern, r"<sup>[\1]</sup>", body)
     
     return body_replaced + bib
