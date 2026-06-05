@@ -72,6 +72,13 @@ def fix_table_margins(text):
         
     return '\n'.join(new_lines)
 
+def make_urls_clickable(text):
+    # Match standard HTTP/HTTPS URLs not already inside a markdown link or HTML attribute
+    # Negative lookbehind: (?<![("<=])
+    # URL pattern: https?://[a-zA-Z0-9\-._~:/?#\[\]@!$&'()*+,;=%]+
+    url_pattern = r'(?<![("<=])(https?://[a-zA-Z0-9\-._~:/?#\[\]@!$&\'()*+,;=%]+)'
+    return re.sub(url_pattern, r'[\1](\1)', text)
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python import_gdoc.py <google_doc_url> [output_filename.md]")
@@ -126,6 +133,7 @@ def main():
     # Run formatting cleanups
     text = format_citations(text)
     text = fix_table_margins(text)
+    text = make_urls_clickable(text)
         
     # Write to file
     with open(output_filename, 'w', encoding='utf-8') as f:

@@ -4,6 +4,14 @@ import os
 import subprocess
 from datetime import datetime
 
+# Helper to automatically format raw http/https links as markdown links
+def make_urls_clickable(text):
+    # Match standard HTTP/HTTPS URLs not already inside a markdown link or HTML attribute
+    # Negative lookbehind: (?<![("<=])
+    # URL pattern: https?://[a-zA-Z0-9\-._~:/?#\[\]@!$&'()*+,;=%]+
+    url_pattern = r'(?<![("<=])(https?://[a-zA-Z0-9\-._~:/?#\[\]@!$&\'()*+,;=%]+)'
+    return re.sub(url_pattern, r'[\1](\1)', text)
+
 # Helper to get the last update date of a file from Git or filesystem
 def get_file_last_update_date(file_path):
     try:
@@ -33,6 +41,7 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
     update_date = get_file_last_update_date(file_path)
     with open(file_path, 'r', encoding='utf-8') as f:
         text = f.read()
+    text = make_urls_clickable(text)
 
     # Clean Voyager/Gemini footer source info if present
     text = text.split('Source: https://gemini')[0].strip(' -\n')
@@ -75,6 +84,7 @@ def process_3col_document(file_path, content_version):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             text = f.read()
+        text = make_urls_clickable(text)
     except Exception as e:
         return f"<p>Error loading document: {e}</p>"
 
@@ -840,6 +850,7 @@ portal_template = """<!DOCTYPE html>
         ul, ol { font-size: 1.02rem; line-height: 1.8; }
         a { color: var(--primary-color); text-decoration: none; overflow-wrap: break-word; word-wrap: break-word; }
         a:hover { text-decoration: underline; }
+        .content-middle a { text-decoration: underline; }
 
         /* ===== Document Title Section Style Adjustments ===== */
         .doc-title-section {
@@ -1334,7 +1345,7 @@ portal_template = """<!DOCTYPE html>
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.9 (修復長網址溢出與字元折行問題)</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.11 (自動辨識參考文獻長網址為超連結並加底線)</div>
                     <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-06</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
