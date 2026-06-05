@@ -391,6 +391,8 @@ portal_template = """<!DOCTYPE html>
             line-height: 1.8; 
             margin: 0; 
             padding: 0; 
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
         
         /* Premium Sticky Navigation Bar */
@@ -631,6 +633,8 @@ portal_template = """<!DOCTYPE html>
             border: 1px solid var(--border-color);
             box-sizing: border-box;
             min-width: 0; /* Prevents flexbox/grid blowout */
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
         
         .course-page {
@@ -834,7 +838,7 @@ portal_template = """<!DOCTYPE html>
         th { background-color: var(--primary-color); color: white; }
         tr:nth-child(even) { background-color: #f7fafc; }
         ul, ol { font-size: 1.02rem; line-height: 1.8; }
-        a { color: var(--primary-color); text-decoration: none; }
+        a { color: var(--primary-color); text-decoration: none; overflow-wrap: break-word; word-wrap: break-word; }
         a:hover { text-decoration: underline; }
 
         /* ===== Document Title Section Style Adjustments ===== */
@@ -1330,8 +1334,8 @@ portal_template = """<!DOCTYPE html>
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.8 (新增「英國的憲法」歷史專題)</div>
-                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-02</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.9 (修復長網址溢出與字元折行問題)</div>
+                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-06</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
                         <!-- Dynamic metadata loaded by JS -->
