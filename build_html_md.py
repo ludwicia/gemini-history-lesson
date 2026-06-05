@@ -263,6 +263,14 @@ images_p13 = [
     (r'(<h3.*?>1\.\s*新英格蘭地區的.*?</h3>)', 'images/us2_king_philip.jpg', '保羅·里維爾於 1772 年創作的經典銅版畫《蒙特霍普 sachem 菲利普王》，象徵殖民地時期對萬帕諾亞格盟主麥達康（Metacom）的經典想像刻畫。'),
     (r'(<h3.*?>3\.\s*法屬路易斯安那的建立與「密西西比泡沫」.*?</h3>)', 'images/us2_john_law.jpg', '阿列克謝·西蒙·貝爾繪製的《約翰·勞肖像》，他是蘇格蘭金融家與密西西比泡沫的策劃者，其金融泡沫對法屬路易斯安那的命運產生了深遠震盪。')
 ]
+# Page 14 (British Constitution) Config
+file_p14 = r'英國憲法的歷史演進、修訂機制與憲政奇異性：非法典化體制的理論與實踐研析.md'
+map_p14 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/uk_constitution_main.png" alt="British Constitution" loading="lazy"><figcaption class="caption">英國憲政主題經典圖畫，展現大憲章羊皮紙、皇家王冠與遠景的西敏寺國會大廈，象徵君主、法律與議會的權力交織。</figcaption></figure>\n'
+images_p14 = [
+    (r'(<h2.*?>歷史起源與漸進式沿革：從封建契約到議會至上</h2>)', 'images/uk_constitution_magna_carta.png', '西元1215年約翰王在倫德米德草地上被迫於貴族面前簽署《大憲章》的歷史想像圖。'),
+    (r'(<h2.*?>英國憲法的奇特之處：政治憲政主義與雙重結構的張力</h2>)', 'images/uk_constitution_glorious_revolution.png', '西元1689年國會向威廉三世與瑪麗二世呈遞《權利法案》以確立國會主權的歷史繪畫。')
+]
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1)
@@ -304,6 +312,9 @@ html_body_p12 = process_markdown(file_p12, images_p12, "1.0", map_p12)
 
 print("Processing Page 13 (USA Phase 2)...")
 html_body_p13 = process_markdown(file_p13, images_p13, "1.0", map_p13)
+
+print("Processing Page 14 (British Constitution)...")
+html_body_p14 = process_markdown(file_p14, images_p14, "1.0", map_p14)
 
 # Full Portal HTML Template
 portal_template = """<!DOCTYPE html>
@@ -356,7 +367,8 @@ portal_template = """<!DOCTYPE html>
         {"@type": "Article", "name": "希爾紹修道院研究報告", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page05"},
         {"@type": "Article", "name": "聖本篤會規三欄解析", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page06"},
         {"@type": "Article", "name": "奧托-薩利安帝國教會體制", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page07"},
-        {"@type": "Article", "name": "沃姆斯協約", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page08"}
+        {"@type": "Article", "name": "沃姆斯協約", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page08"},
+        {"@type": "Article", "name": "英國的憲法", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page14"}
       ]
     }
     </script>
@@ -1185,6 +1197,7 @@ portal_template = """<!DOCTYPE html>
                     <a href="#page09" id="nav-btn-page09" class="nav-tab-btn" style="text-decoration: none;">丕平獻土與教皇國誕生</a>
                     <a href="#page10" id="nav-btn-page10" class="nav-tab-btn" style="text-decoration: none;">卡洛林教育基建與知識復興</a>
                     <a href="#page11" id="nav-btn-page11" class="nav-tab-btn" style="text-decoration: none;">歐洲造紙術的歷史演變</a>
+                    <a href="#page14" id="nav-btn-page14" class="nav-tab-btn" style="text-decoration: none;">英國的憲法</a>
                 </div>
             </div>
             
@@ -1280,6 +1293,11 @@ portal_template = """<!DOCTYPE html>
         <div id="course-page06" class="course-page" style="display: none;">
             __HTML_BODY_PAGE06__
         </div>
+
+        <!-- 課堂十一：英國的憲法 -->
+        <div id="course-page14" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE14__
+        </div>
     </main>
 
     <!-- Right Sidebar / Floating Footer: Search & Version -->
@@ -1312,7 +1330,7 @@ portal_template = """<!DOCTYPE html>
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.7 (新增「卡洛林教育基建」與「歐洲造紙術演變」歷史專題)</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.8 (新增「英國的憲法」歷史專題)</div>
                     <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-02</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
@@ -1454,6 +1472,15 @@ portal_template = """<!DOCTYPE html>
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page14: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>英國的憲法<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE14_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -1471,7 +1498,8 @@ portal_template = """<!DOCTYPE html>
         'page09': { title: '丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課', desc: '深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。' },
         'page10': { title: '卡洛林王朝教育基建與知識復興 — Ludwica 的簡單歷史課', desc: '探討卡洛林王朝教育基建與宗教變革、手抄室與卡洛林小草體書寫革命、跨國學者網絡、基督教化七藝與課堂實踐，以及文明火種對後世中世紀大學的深遠影響。' },
         'page11': { title: '歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課', desc: '研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。' },
-        'page12': { title: '中世紀卡特里派的興起、教義、十字軍聖戰與歷史餘音 — Ludwica 的簡單歷史課', desc: '深入研究中世紀南法阿爾比十字軍東征、卡特里派（阿爾比派）二元論神學與禁慾實踐、宗教裁判所的官僚化清洗，以及《富尼埃登記簿》與微觀歷史學《蒙塔尤》的思想異質性。' }
+        'page12': { title: '中世紀卡特里派的興起、教義、十字軍聖戰與歷史餘音 — Ludwica 的簡單歷史課', desc: '深入研究中世紀南法阿爾比十字軍東征、卡特里派（阿爾比派）二元論神學與禁慾實踐、宗教裁判所的官僚化清洗，以及《富尼埃登記簿》與微觀歷史學《蒙塔尤》的思想異質性。' },
+        'page14': { title: '英國的憲法：非法典化體制的理論與實踐 — Ludwica 的簡單歷史課', desc: '深入研究英國不成文憲法的歷史演進（大憲章、光榮革命、權利法案）、修訂機制與彈性、尊嚴與效能雙重結構，以及2022年至2026年間的現代憲政轉型。' }
     };
 
     function updatePageSEO(pageId) {
@@ -1579,7 +1607,8 @@ portal_template = """<!DOCTYPE html>
             { id: 'page09', name: '丕平獻土與教皇國誕生' },
             { id: 'page10', name: '卡洛林教育基建與知識復興' },
             { id: 'page11', name: '歐洲造紙術的歷史演變' },
-            { id: 'page12', name: '宗教戰爭(二)：卡特里派' }
+            { id: 'page12', name: '宗教戰爭(二)：卡特里派' },
+            { id: 'page14', name: '英國的憲法' }
         ];
         
         pages.forEach(p => {
@@ -1822,7 +1851,7 @@ portal_template = """<!DOCTYPE html>
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
@@ -1861,6 +1890,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE10__', html_body_p10)
 final_html = final_html.replace('__HTML_BODY_PAGE11__', html_body_p11)
 final_html = final_html.replace('__HTML_BODY_PAGE12__', html_body_p12)
 final_html = final_html.replace('__HTML_BODY_PAGE13__', html_body_p13)
+final_html = final_html.replace('__HTML_BODY_PAGE14__', html_body_p14)
 
 # Insert last update dates for each page into the JS metadata
 final_html = final_html.replace('__PAGE01_DATE__', get_file_last_update_date(file_p1))
@@ -1876,6 +1906,7 @@ final_html = final_html.replace('__PAGE10_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE11_DATE__', get_file_last_update_date(file_p11))
 final_html = final_html.replace('__PAGE12_DATE__', get_file_last_update_date(file_p12))
 final_html = final_html.replace('__PAGE13_DATE__', get_file_last_update_date(file_p13))
+final_html = final_html.replace('__PAGE14_DATE__', get_file_last_update_date(file_p14))
 
 # Write to file
 print("Writing build output to index.html...")
@@ -1973,6 +2004,12 @@ sitemap_content = f"""\
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://ludwicia.github.io/ludwica-history-lesson/#page14</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
 
 with open(r'sitemap.xml', 'w', encoding='utf-8', newline='\n') as f:
@@ -1990,4 +2027,4 @@ with open(r'robots.txt', 'w', encoding='utf-8') as f:
     f.write(robots_content)
 print("Generated robots.txt")
 
-print("Done! Site successfully built as dynamic 13-topic history portal with full SEO.")
+print("Done! Site successfully built as dynamic 14-topic history portal with full SEO.")
