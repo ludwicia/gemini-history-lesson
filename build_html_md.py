@@ -253,6 +253,17 @@ images_p12 = [
     (r'(<h2.*?>六、.*?</h2>)', 'images/catharism_inquisition.jpg', '14世紀道明會士 Bernard Gui 所著《異端裁判所實踐指南》（Practica officii inquisitionis heretice pravitatis）手稿插圖，象徵宗教裁判所官僚化、秘密化的司法清洗')
 ]
 
+# Page 13 (USA Phase 2) Config
+file_p13 = r'第二階段：殖民地的建立、定居與大西洋世界的形塑（1607年－1754年）.md'
+map_p13 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/us2_map.jpg" alt="Thirteen Colonies Map" loading="lazy"><figcaption class="caption">北美十三殖民地政區與地理分布圖，展示了新英格蘭、中部及南方三大區域殖民地結構與地緣疆界。</figcaption></figure>\n'
+images_p13 = [
+    (r'(<h2.*?>一、.*?</h2>)', 'images/us2_mayflower.jpg', '威廉·哈爾薩爾 1882 年名作《普利茅斯港的五月花號》（Mayflower in Plymouth Harbor），描繪清教徒乘坐五月花號抵達新大陸的歷史性場景。'),
+    (r'(<h3.*?>2\.\s*中部殖民地.*?</h3>)', 'images/us2_penn_treaty.jpg', '班傑明·韋斯特名作《賓與印地安人的條約》（Penn\'s Treaty with the Indians），描繪貴格會領袖威廉·賓在沙卡馬克森與德拉瓦原住民簽訂土地交易條約的和平場景。'),
+    (r'(<h3.*?>1\.\s*1676年「培根叛亂」.*?</h3>)', 'images/us2_bacons_rebellion.jpg', '插畫家霍華德·派爾（Howard Pyle）所繪《詹姆斯鎮的焚毀》，生動描繪了 1676 年培根叛亂中叛軍縱火燒毀弗吉尼亞首府詹姆斯鎮的慘烈場面。'),
+    (r'(<h3.*?>1\.\s*新英格蘭地區的.*?</h3>)', 'images/us2_king_philip.jpg', '保羅·里維爾於 1772 年創作的經典銅版畫《蒙特霍普 sachem 菲利普王》，象徵殖民地時期對萬帕諾亞格盟主麥達康（Metacom）的經典想像刻畫。'),
+    (r'(<h3.*?>3\.\s*法屬路易斯安那的建立與「密西西比泡沫」.*?</h3>)', 'images/us2_john_law.jpg', '阿列克謝·西蒙·貝爾繪製的《約翰·勞肖像》，他是蘇格蘭金融家與密西西比泡沫的策劃者，其金融泡沫對法屬路易斯安那的命運產生了深遠震盪。')
+]
+
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1)
 
@@ -290,6 +301,9 @@ html_body_p11 = process_markdown(file_p11, images_p11, "1.0", map_p11)
 
 print("Processing Page 12 (Cathar Crusade)...")
 html_body_p12 = process_markdown(file_p12, images_p12, "1.0", map_p12)
+
+print("Processing Page 13 (USA Phase 2)...")
+html_body_p13 = process_markdown(file_p13, images_p13, "1.0", map_p13)
 
 # Full Portal HTML Template
 portal_template = """<!DOCTYPE html>
@@ -336,6 +350,7 @@ portal_template = """<!DOCTYPE html>
       "hasPart": [
         {"@type": "Article", "name": "荷蘭建國史與東印度公司興衰", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page01"},
         {"@type": "Article", "name": "三個世界的交會與前哥倫布時期的美洲", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page02"},
+        {"@type": "Article", "name": "殖民地的建立、定居與大西洋世界的形塑", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page13"},
         {"@type": "Article", "name": "胡斯戰爭：信仰衝突、軍事變革與波希米亞國家認同", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page03"},
         {"@type": "Article", "name": "神聖羅馬帝國：金璽詔書德中對照翻譯", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page04"},
         {"@type": "Article", "name": "希爾紹修道院研究報告", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page05"},
@@ -1162,6 +1177,7 @@ portal_template = """<!DOCTYPE html>
                 <div class="nav-dropdown">
                     <a href="#page01" id="nav-btn-page01" class="nav-tab-btn active" style="text-decoration: none;">荷蘭建國與地緣政經</a>
                     <a href="#page02" id="nav-btn-page02" class="nav-tab-btn" style="text-decoration: none;">美國的誕生(一)</a>
+                    <a href="#page13" id="nav-btn-page13" class="nav-tab-btn" style="text-decoration: none;">美國的誕生(二)</a>
                     <a href="#page03" id="nav-btn-page03" class="nav-tab-btn" style="text-decoration: none;">宗教戰爭(一)：胡斯戰爭</a>
                     <a href="#page12" id="nav-btn-page12" class="nav-tab-btn" style="text-decoration: none;">宗教戰爭(二)：卡特里派</a>
                     <a href="#page05" id="nav-btn-page05" class="nav-tab-btn" style="text-decoration: none;">希爾紹修道院</a>
@@ -1210,6 +1226,11 @@ portal_template = """<!DOCTYPE html>
         <!-- 課堂二：美國早期史 -->
         <div id="course-page02" class="course-page" style="display: none;">
             __HTML_BODY_PAGE02__
+        </div>
+
+        <!-- 課堂十：美國的誕生(二) -->
+        <div id="course-page13" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE13__
         </div>
 
         <!-- 課堂三：宗教戰爭(一)：胡斯戰爭 -->
@@ -1335,6 +1356,15 @@ portal_template = """<!DOCTYPE html>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
         `,
+        'page13': `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>美國的誕生(二)<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE13_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
+        `,
         'page03': `
             <div style="color: #4a5568;">
                 <b>📚 當前課堂：</b>宗教戰爭(一)：胡斯戰爭<br>
@@ -1430,7 +1460,8 @@ portal_template = """<!DOCTYPE html>
     // 2. SEO Dynamic Meta Tags (per-page title & description)
     const pageSEO = {
         'page01': { title: '荷蘭建國史與東印度公司興衰 — Ludwica 的簡單歷史課', desc: '深入解析荷蘭從低地十七省到聯省共和國的建國歷程、東印度公司的全球貿易帝國、黃金時代的藝術巅峰與當代政經轉型。' },
-        'page02': { title: '前哥倫布時期美洲與三個世界的交會 — Ludwica 的簡單歷史課', desc: '探索1607年以前美洲原住民的文明成就、大航海時代的技術革命、哥倫布大交換，以及西班牙、法國、英國的早期殖民衝突。' },
+        'page02': { title: '前哥倫布時期美洲與三個世界的交會 — Ludwica 的簡單歷史課', desc: '探索1607年以前美洲原住民的文明成就、大航海時代的技術革命、哥圍布大交換，以及西班牙、法國、英國的早期殖民衝突。' },
+        'page13': { title: '殖民地的建立、定居與大西洋世界的形塑 — Ludwica 的簡單歷史課', desc: '探索1607至1754年英屬北美十三殖民地的區域性分化、勞動力體制向種族奴隸制的轉型、邊疆衝突與大西洋世界在重商主義、光榮革命、啟蒙運動和大覺醒下的文化整合。' },
         'page03': { title: '胡斯戰爭：信仰衝突與波希米亞國家認同 — Ludwica 的簡單歷史課', desc: '揚·胡斯的宗教改革先驅運動、波希米亞的宗教衝突與軍事變革、戰車壘戰術革新，以及對歐洲宗教格局的深遠影響。' },
         'page04': { title: '金璽詔書：神聖羅馬帝國德中對照翻譯 — Ludwica 的簡單歷史課', desc: '1356年《金璽詔書》全文德文原文、中文翻譯與學術註解三欄對照，解析選帝侯制度與帝國憲政體制的基石文件。' },
         'page05': { title: '希爾紹修道院研究報告 — Ludwica 的簡單歷史課', desc: '希爾紹修道院的千年歷史、威廉大院長的改革運動、希爾紹建築學派的羅馬式美學巅峰，以及九年戰爭後的廢墟重生。' },
@@ -1538,6 +1569,7 @@ portal_template = """<!DOCTYPE html>
         const pages = [
             { id: 'page01', name: '荷蘭建國與地緣政經' },
             { id: 'page02', name: '美國的誕生(一)' },
+            { id: 'page13', name: '美國的誕生(二)' },
             { id: 'page03', name: '宗教戰爭(一)：胡斯戰爭' },
             { id: 'page04', name: '神聖羅馬帝國：金璽詔書' },
             { id: 'page05', name: '希爾紹修道院' },
@@ -1790,7 +1822,7 @@ portal_template = """<!DOCTYPE html>
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
@@ -1828,6 +1860,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE09__', html_body_p9)
 final_html = final_html.replace('__HTML_BODY_PAGE10__', html_body_p10)
 final_html = final_html.replace('__HTML_BODY_PAGE11__', html_body_p11)
 final_html = final_html.replace('__HTML_BODY_PAGE12__', html_body_p12)
+final_html = final_html.replace('__HTML_BODY_PAGE13__', html_body_p13)
 
 # Insert last update dates for each page into the JS metadata
 final_html = final_html.replace('__PAGE01_DATE__', get_file_last_update_date(file_p1))
@@ -1842,6 +1875,7 @@ final_html = final_html.replace('__PAGE09_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE10_DATE__', get_file_last_update_date(file_p10))
 final_html = final_html.replace('__PAGE11_DATE__', get_file_last_update_date(file_p11))
 final_html = final_html.replace('__PAGE12_DATE__', get_file_last_update_date(file_p12))
+final_html = final_html.replace('__PAGE13_DATE__', get_file_last_update_date(file_p13))
 
 # Write to file
 print("Writing build output to index.html...")
@@ -1933,6 +1967,12 @@ sitemap_content = f"""\
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://ludwicia.github.io/ludwica-history-lesson/#page13</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
 
 with open(r'sitemap.xml', 'w', encoding='utf-8', newline='\n') as f:
@@ -1950,4 +1990,4 @@ with open(r'robots.txt', 'w', encoding='utf-8') as f:
     f.write(robots_content)
 print("Generated robots.txt")
 
-print("Done! Site successfully built as dynamic 12-topic history portal with full SEO.")
+print("Done! Site successfully built as dynamic 13-topic history portal with full SEO.")
