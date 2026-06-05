@@ -38,6 +38,9 @@
 5. **溝通與修改授權原則 (Communication & Modification Consent)**：
    * **先解釋、後詢問、再執行**：當在代碼或文章中發現疑似非功能性冗餘（例如第三方工具的自動頁尾、生成時間戳記）、元數據，或者不確定是否需要保留的歷史遺留文字時，**嚴禁直接私自刪除**。
    * **標準作業流程**：AI 必須「先向使用者解釋該內容的來源、用途與潛在影響」，接著「明確詢問使用者是否同意刪除或修改」，在獲得使用者明示的回覆同意後，方可執行代碼修改或檔案刪除。
+6. **Google Docs 連結處理規範 (Google Docs Link Handling)**：
+   * 當使用者提供 Google Docs 連結（包含 `docs.google.com/document/`）並要求讀取、分析或新增為新課程時，AI **必須使用本機的 `import_gdoc.py` 腳本（或其相同的匯出邏輯）來獲取清潔的 Markdown 內文**，嚴禁使用外部網頁讀取工具或直接爬取，以確保每次獲取之內文格式、一級標題、段落與引註表現完全一致。
+   * 範例指令：`python import_gdoc.py "https://docs.google.com/document/d/[DOC_ID]/edit"`（建議使用 Windows 系統上的全域 Python 3.13 執行，以確保套件完整性）。
 
 ## 🔍 SEO 優化守則 (SEO Checklist for New Content)
 每次新增或修改歷史專題頁面時，**必須同步完成以下 SEO 項目**：
