@@ -850,7 +850,6 @@ portal_template = """<!DOCTYPE html>
         ul, ol { font-size: 1.02rem; line-height: 1.8; }
         a { color: var(--primary-color); text-decoration: none; overflow-wrap: break-word; word-wrap: break-word; }
         a:hover { text-decoration: underline; }
-        .content-middle a { text-decoration: underline; }
 
         /* ===== Document Title Section Style Adjustments ===== */
         .doc-title-section {
@@ -1345,7 +1344,7 @@ portal_template = """<!DOCTYPE html>
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.11 (自動辨識參考文獻長網址為超連結並加底線)</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.12 (優化參考文獻為標題超連結，且僅在 hover 時顯示底線)</div>
                     <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-06</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
