@@ -11,8 +11,8 @@ def extract_doc_id(url):
         return match.group(1)
     return None
 
-def fetch_gdoc_text(doc_id):
-    export_url = f"https://docs.google.com/document/d/{doc_id}/export?format=txt"
+def fetch_gdoc_html(doc_id):
+    export_url = f"https://docs.google.com/document/d/{doc_id}/export?format=html"
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
@@ -30,7 +30,6 @@ def clean_filename(name):
 
 def format_citations(text):
     # Split body and bibliography to avoid changing bibliography index numbers.
-    # Look for H2/H3 headings that contain "引用的著作", "引用來源", "參考文獻", "參考資料", "bibliography", or "references".
     bib_pattern = r'(\r?\n##+\s+(?:引記的著作|引用的著作|引用來源|參考文獻|參考資料|Bibliography|References)\s*\r?\n)'
     parts = re.split(bib_pattern, text, maxsplit=1, flags=re.IGNORECASE)
     
@@ -41,43 +40,34 @@ def format_citations(text):
         body = text
         bib = ""
         
-    # Pattern for citation numbers: 1-2 digits
-    # Preceded by Chinese characters, letters, closing brackets, or asterisks
-    # Followed by punctuation (。，；、』」）), space, pipe (|), tag opening (<), or end of line/cell
-    # But NOT followed by quantities/units (like 次, 年, 個, px, etc.)
+    # Pattern for citation numbers
+    # We first un-escape brackets for citations if markdownify escaped them: \[1\] -> [1]
+    body = re.sub(r'\\\[(\d{1,2})\\\]', r'[\1]', body)
+    
+    # Then format [\d+] into <sup>[\1]</sup> only if not already in sup
+    body = re.sub(r'(?<!<sup>)\[(\d{1,2})\](?!</sup>)', r'<sup>[\1]</sup>', body)
+    
+    # And handle raw numbers that might be just superscripted without brackets
     pattern = r'(?<=[\u4e00-\u9fff》）』」a-zA-Z*])(\d{1,2})(?!\s*(?:次|個|件|年|月|日|萬|億|元|位|歲|分|秒|px|em|rem|%))(?=[\s。，；、』」）|]|$|<])'
-    body_replaced = re.sub(pattern, r"<sup>[\1]</sup>", body)
+    body = re.sub(pattern, r"<sup>[\1]</sup>", body)
     
-    return body_replaced + bib
-
-def fix_table_margins(text):
-    lines = text.split('\n')
-    new_lines = []
-    in_table = False
-    
-    for line in lines:
-        stripped = line.strip()
-        # A markdown table row starts and ends with '|' and contains columns
-        is_table_row = stripped.startswith('|') and stripped.endswith('|') and len(stripped) > 1
-        
-        if is_table_row:
-            in_table = True
-        elif in_table:
-            # We just exited a table. If the current line is not empty, add a blank line.
-            if stripped != "":
-                new_lines.append("")
-            in_table = False
-            
-        new_lines.append(line)
-        
-    return '\n'.join(new_lines)
+    return body + bib
 
 def make_urls_clickable(text):
     # Match standard HTTP/HTTPS URLs not already inside a markdown link or HTML attribute
-    # Negative lookbehind: (?<![("<=])
-    # URL pattern: https?://[a-zA-Z0-9\-._~:/?#\[\]@!$&'()*+,;=%]+
     url_pattern = r'(?<![("<=])(https?://[a-zA-Z0-9\-._~:/?#\[\]@!$&\'()*+,;=%]+)'
     return re.sub(url_pattern, r'[\1](\1)', text)
+
+def ensure_markdownify():
+    try:
+        import markdownify
+        return markdownify
+    except ImportError:
+        print("Installing required package 'markdownify'...")
+        import subprocess
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "markdownify", "beautifulsoup4"])
+        import markdownify
+        return markdownify
 
 def main():
     if len(sys.argv) < 2:
@@ -93,15 +83,19 @@ def main():
         sys.exit(1)
         
     print(f"Detected Google Doc ID: {doc_id}")
-    print("Fetching content...")
-    text = fetch_gdoc_text(doc_id)
+    print("Fetching HTML content...")
+    html_text = fetch_gdoc_html(doc_id)
     
-    if not text:
+    if not html_text:
         print("Error: Failed to retrieve content. Make sure the document link sharing is set to 'Anyone with the link' (public).")
         sys.exit(1)
         
-    # Clean BOM character globally
-    text = text.replace('\ufeff', '')
+    print("Converting to Markdown...")
+    markdownify = ensure_markdownify()
+    text = markdownify.markdownify(html_text, heading_style="ATX", escape_asterisks=False)
+    
+    # Clean BOM character globally and non-breaking spaces
+    text = text.replace('\ufeff', '').replace('\xa0', ' ')
     
     # Extract title from the first non-empty line to use as filename if not specified
     lines = [line.strip() for line in text.split('\n') if line.strip()]
@@ -132,7 +126,6 @@ def main():
         
     # Run formatting cleanups
     text = format_citations(text)
-    text = fix_table_margins(text)
     text = make_urls_clickable(text)
         
     # Write to file

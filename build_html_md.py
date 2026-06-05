@@ -843,13 +843,15 @@ portal_template = """<!DOCTYPE html>
             line-height: 1.4;
         }
 
-        table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.92rem; box-shadow: 0 4px 6px rgba(0,0,0,0.02); clear: both; }
+        table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.92rem; box-shadow: 0 4px 6px rgba(0,0,0,0.02); clear: both; display: block; overflow-x: auto; }
         th, td { padding: 10px 12px; text-align: left; border: 1px solid var(--border-color); }
         th { background-color: var(--primary-color); color: white; }
         tr:nth-child(even) { background-color: #f7fafc; }
         ul, ol { font-size: 1.02rem; line-height: 1.8; }
         a { color: var(--primary-color); text-decoration: none; overflow-wrap: break-word; word-wrap: break-word; }
         a:hover { text-decoration: underline; }
+        pre, code { overflow-x: auto; word-wrap: break-word; }
+        img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
 
         /* ===== Document Title Section Style Adjustments ===== */
         .doc-title-section {
