@@ -28,6 +28,49 @@ def clean_filename(name):
     # Remove characters that are invalid in Windows filenames
     return re.sub(r'[\\/*?:"<>|]', "", name).strip()
 
+def format_citations(text):
+    # Split body and bibliography to avoid changing bibliography index numbers.
+    # Look for H2/H3 headings that contain "引用的著作", "引用來源", "參考文獻", "參考資料", "bibliography", or "references".
+    bib_pattern = r'(\r?\n##+\s+(?:引記的著作|引用的著作|引用來源|參考文獻|參考資料|Bibliography|References)\s*\r?\n)'
+    parts = re.split(bib_pattern, text, maxsplit=1, flags=re.IGNORECASE)
+    
+    if len(parts) == 3:
+        body = parts[0]
+        bib = parts[1] + parts[2]
+    else:
+        body = text
+        bib = ""
+        
+    # Pattern for citation numbers: 1-2 digits
+    # Preceded by Chinese characters, letters, closing brackets, or asterisks
+    # Followed by punctuation (。，；、』」）), space, pipe (|), or end of line/cell
+    pattern = r'(?<=[\u4e00-\u9fff》）』」a-zA-Z*])(\d{1,2})(?=[\s。，；、』」）|]|$)'
+    body_replaced = re.sub(pattern, r"<sup>[\1]</sup>", body)
+    
+    return body_replaced + bib
+
+def fix_table_margins(text):
+    lines = text.split('\n')
+    new_lines = []
+    in_table = False
+    
+    for line in lines:
+        stripped = line.strip()
+        # A markdown table row starts and ends with '|' and contains columns
+        is_table_row = stripped.startswith('|') and stripped.endswith('|') and len(stripped) > 1
+        
+        if is_table_row:
+            in_table = True
+        elif in_table:
+            # We just exited a table. If the current line is not empty, add a blank line.
+            if stripped != "":
+                new_lines.append("")
+            in_table = False
+            
+        new_lines.append(line)
+        
+    return '\n'.join(new_lines)
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python import_gdoc.py <google_doc_url> [output_filename.md]")
@@ -49,8 +92,8 @@ def main():
         print("Error: Failed to retrieve content. Make sure the document link sharing is set to 'Anyone with the link' (public).")
         sys.exit(1)
         
-    # Clean BOM character
-    text = text.lstrip('\ufeff')
+    # Clean BOM character globally
+    text = text.replace('\ufeff', '')
     
     # Extract title from the first non-empty line to use as filename if not specified
     lines = [line.strip() for line in text.split('\n') if line.strip()]
@@ -78,6 +121,10 @@ def main():
                 raw_lines[i] = f"# {line.strip()}"
                 break
         text = '\n'.join(raw_lines)
+        
+    # Run formatting cleanups
+    text = format_citations(text)
+    text = fix_table_margins(text)
         
     # Write to file
     with open(output_filename, 'w', encoding='utf-8') as f:
