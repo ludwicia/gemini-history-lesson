@@ -90,6 +90,15 @@ def make_urls_clickable(text):
     text = re.sub(r'\[\[(https?://.*?)\]\(\1\)\]\(\1\)', r'[\1](\1)', text)
     return text
 
+def format_reference_links(text):
+    """
+    Format references list.
+    Converts: '1. Title, [http...](http...)'
+    To: '1. [Title](http...)'
+    """
+    pattern = r'(\d+\.\s+)(.*?),\s*\[(https?://[^\]]+)\]\(\3\)'
+    return re.sub(pattern, r'\1[\2](\3)', text)
+
 def ensure_markdownify():
     try:
         import markdownify
@@ -160,6 +169,7 @@ def main():
     text = clean_google_redirects(text)
     text = format_citations(text)
     text = make_urls_clickable(text)
+    text = format_reference_links(text)
         
     # Write to file
     with open(output_filename, 'w', encoding='utf-8') as f:
