@@ -53,10 +53,42 @@ def format_citations(text):
     
     return body + bib
 
+def clean_google_redirects(text):
+    def repl(match):
+        import urllib.parse
+        url = match.group(0)
+        parsed = urllib.parse.urlparse(url)
+        qs = urllib.parse.parse_qs(parsed.query)
+        if 'q' in qs:
+            return qs['q'][0]
+        return url
+    return re.sub(r'https?://www\.google\.com/url\?[^\s)\]">]+', repl, text)
+
 def make_urls_clickable(text):
-    # Match standard HTTP/HTTPS URLs not already inside a markdown link or HTML attribute
-    url_pattern = r'(?<![("<=])(https?://[a-zA-Z0-9\-._~:/?#\[\]@!$&\'()*+,;=%]+)'
-    return re.sub(url_pattern, r'[\1](\1)', text)
+    # Match standard HTTP/HTTPS URLs not already inside a markdown link
+    # This avoids double-wrapping [http...](http...)
+    def repl(match):
+        url = match.group(0)
+        return f"[{url}]({url})"
+    
+    # Temporarily hide valid markdown links
+    links = []
+    def hide_link(m):
+        links.append(m.group(0))
+        return f"__MD_LINK_{len(links)-1}__"
+    
+    text = re.sub(r'\[[^\]]+\]\([^)]+\)', hide_link, text)
+    
+    url_pattern = r'(?<![("<=])(https?://[a-zA-Z0-9\-._~:/?#@!$&\'*+,;=%]+)'
+    text = re.sub(url_pattern, repl, text)
+    
+    # Restore markdown links
+    for i, link in enumerate(links):
+        text = text.replace(f"__MD_LINK_{i}__", link)
+        
+    # Clean up redundant self-referencing markdown links if any
+    text = re.sub(r'\[\[(https?://.*?)\]\(\1\)\]\(\1\)', r'[\1](\1)', text)
+    return text
 
 def ensure_markdownify():
     try:
@@ -125,6 +157,7 @@ def main():
         text = '\n'.join(raw_lines)
         
     # Run formatting cleanups
+    text = clean_google_redirects(text)
     text = format_citations(text)
     text = make_urls_clickable(text)
         
