@@ -77,6 +77,12 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
         img_html = f'\n<figure class="image-left"><img src="{url}" alt="{caption}" loading="lazy"><figcaption class="caption">{caption}</figcaption></figure>\n'
         html_body = re.sub(pattern, r'\1' + img_html, html_body, count=1)
 
+    # Automatically convert standard markdown images to the custom figure layout
+    # Match: <p><img alt="caption" src="url" /></p>
+    md_img_pattern = r'<p>\s*<img\s+alt="([^"]*)"\s+src="([^"]*)"\s*/>\s*</p>'
+    figure_replacement = r'<figure class="image-left"><img src="\2" alt="\1" loading="lazy"><figcaption class="caption">\1</figcaption></figure>'
+    html_body = re.sub(md_img_pattern, figure_replacement, html_body)
+
     return html_body
 
 def process_3col_document(file_path, content_version):
