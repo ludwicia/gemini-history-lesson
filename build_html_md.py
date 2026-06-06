@@ -160,7 +160,7 @@ def process_3col_document(file_path, content_version):
     return html
 
 # Page 1 (Holland) Config
-file_p1 = r'帝國海洋、金融先驅與當代政治僵局：荷蘭建國史、東印度公司興衰與當代地緣政經轉型研究報告.md'
+file_p1 = r'course/帝國海洋、金融先驅與當代政治僵局：荷蘭建國史、東印度公司興衰與當代地緣政經轉型研究報告.md'
 map_p1 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg" alt="1658 Map" loading="lazy"><figcaption class="caption">1658年聯省共和國地圖，清晰可見當時的須德海與低地國錯綜複雜的水路地貌</figcaption></figure>\n'
 images_p1 = [
     (r'(<h2.*?>1\..*?</h2>)', 'images/img_00_Map_of_Seventeen_Provinces_of_Low_German.jpg', '十六世紀的低地十七省地圖，描繪了當時受哈布斯堡王朝統治的疆域'),
@@ -176,7 +176,7 @@ images_p1 = [
 ]
 
 # Page 2 (USA) Config
-file_p2 = r'第一階段：三個世界的交會與前哥倫布時期的美洲（1607年以前）.md'
+file_p2 = r'course/第一階段：三個世界的交會與前哥倫布時期的美洲（1607年以前）.md'
 map_p2 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/img_10_960px-Cahokia_Monks_Mound.jpg" alt="Cahokia Mounds" loading="lazy"><figcaption class="caption">卡霍基亞莫恩克斯土丘（Monks Mound）遠眺，前哥倫布時期繁榮的密西西比河流域社會核心遺跡</figcaption></figure>\n'
 images_p2 = [
     (r'(<h2.*?>一、.*?</h2>)', 'images/img_04_Cliff_Palace_-_Mesa_Verde_National_Park.jpg', '梅薩維德國家公園的懸崖宮殿，展現普韋布洛人高超的石造建築技術'),
@@ -188,7 +188,7 @@ images_p2 = [
 ]
 
 # Page 3 (Hussite Wars) Config
-file_p3 = r'信仰衝突、軍事變革與波希米亞國家認同：胡斯戰爭的歷史脈絡、演進特徵與深遠影響研究報告.md'
+file_p3 = r'course/信仰衝突、軍事變革與波希米亞國家認同：胡斯戰爭的歷史脈絡、演進特徵與深遠影響研究報告.md'
 map_p3 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/hussite_wars_main.png" alt="Hussite Wars" loading="lazy"><figcaption class="caption">捷克歷史藝術家 Luděk Marold 著名巨作《利帕尼戰役全景圖》（Maroldovo panorama bitvy u Lipan），生動重現了這場終結激進派的史詩決戰</figcaption></figure>\n'
 images_p3 = [
     (r'(<h2.*?>一、.*?</h2>)', 'images/jan_hus_preaching.png', '1563年布拉格印製的《胡斯講道集》（Postilla）中極具歷史意義的木刻版畫，記錄了揚·胡斯向波希米亞平民大眾宣教的經典場景'),
@@ -198,7 +198,7 @@ images_p3 = [
 ]
 
 # Page 5 (Hirsau Abbey) Config
-file_p5 = r'希爾紹修道院研究報告：雙軌解析.md'
+file_p5 = r'course/希爾紹修道院研究報告：雙軌解析.md'
 map_p5 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/hirsau_main_wilhelm.jpg" alt="Wilhelm von Hirsau" loading="lazy"><figcaption class="caption">威廉大院長肖像，十一世紀下半葉領導希爾紹修道院走向改革黃金時代的靈魂人物</figcaption></figure>\n'
 images_p5 = [
     (r'(<h3.*?>十一世紀前夕的教會亂象與世俗糾葛</h3>)', 'images/hirsau_st_aurelius.jpg', '聖奧雷利烏斯教堂外觀，見證了十世紀中葉由教宗良九世指示、卡爾夫伯爵阿達爾貝特主導的第二次重建歷史'),
@@ -213,7 +213,7 @@ images_p5 = [
 ]
 
 # Page 7 (Ottonian System) Config
-file_p7 = r'奧托-薩利安帝國教會體制.md'
+file_p7 = r'course/奧托-薩利安帝國教會體制.md'
 map_p7 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/ottonian_hre_map.svg" alt="Ottonian HRE Map" loading="lazy"><figcaption class="caption">西元1000年左右奧托-薩利安王朝時期的神聖羅馬帝國地圖，呈現德意志各部落公爵領與主教區錯綜複雜的疆域分佈</figcaption></figure>\n'
 images_p7 = [
     (r'(<h2.*?>關鍵歷史人物與王權的神聖化重塑</h2>)', 'images/ottonian_otto1.jpg', '德國馬格德堡著名雕塑《馬格德堡騎馬人》（Magdeburger Reiter），生動展現了神聖羅馬帝國皇帝奧托一世的威嚴之姿'),
@@ -223,10 +223,10 @@ images_p7 = [
 ]
 
 # Page 8 (Concordat of Worms) Config
-file_p8 = r'沃姆斯協約.md'
+file_p8 = r'course/沃姆斯協約.md'
 
 # Page 9 (Pippin's Donation) Config
-file_p9 = r'丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響.md'
+file_p9 = r'course/丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響.md'
 map_p9 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/pippin_donation_main.jpg" alt="Pippin Coronation Main" loading="lazy"><figcaption class="caption">法國畫家 François Dubois 於1837年所繪的名作《教宗斯德望二世在聖但尼修道院為丕平加冕》，現藏於凡爾賽宮。</figcaption></figure>\n'
 images_p9 = [
     (r'(<h2.*?>三、.*?</h2>)', 'images/pippin_donation_map.png', '西元750年代倫巴底擴張前夕的義大利半島地緣版圖。丕平獻土徹底打破了拜占庭、倫巴底與羅馬聖座之間的三方平衡。'),
@@ -235,7 +235,7 @@ images_p9 = [
 ]
 
 # Page 10 (Carolingian Education) Config
-file_p10 = r'聖神統治與知識復興：卡洛林王朝教育基建、制度體系及其深遠歷史遺產之研究.md'
+file_p10 = r'course/聖神統治與知識復興：卡洛林王朝教育基建、制度體系及其深遠歷史遺產之研究.md'
 map_p10 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/carolingian_main.jpg" alt="Carolingian Minuscule" loading="lazy"><figcaption class="caption">八世紀末《達古爾夫詩篇》（Dagulf Psalter）之手抄頁面，以優美典雅的卡洛林小寫體金字書寫，展現了早期帝國書寫標準化的極致美學。</figcaption></figure>\n'
 images_p10 = [
     (r'(<h2.*?>一、.*?</h2>)', 'images/carolingian_alcuin.jpg', 'Jean-Victor Schnetz 1830年名作《查理曼與阿爾琴》，描繪校長阿爾琴向查理曼大帝及其高級廷臣展示由修士手抄之聖經文獻，象徵神聖王權與知識基建之交匯。'),
@@ -245,7 +245,7 @@ images_p10 = [
 ]
 
 # Page 11 (European Papermaking) Config
-file_p11 = r'歐洲造紙術的歷史演變、技術革新與物質文明變革研究報告.md'
+file_p11 = r'course/歐洲造紙術的歷史演變、技術革新與物質文明變革研究報告.md'
 map_p11 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/paper_main.jpg" alt="Jost Amman Papermaker" loading="lazy"><figcaption class="caption">德意志著名藝術家 Jost Amman 於1568年繪製的經典木刻版畫《撈紙工》（Der Papiermacher），生動再現了前工業化時期歐洲水力造紙坊抄紙與壓榨水分的勞動場景。</figcaption></figure>\n'
 images_p11 = [
     (r'(<h2.*?>二、.*?</h2>)', 'images/paper_hollander.jpg', '保存於造紙歷史博物館中的經典「荷蘭式打漿機」（Hollander Beater），其藉由旋轉金屬刀片進行碎布纖維的原纖化處理，徹底革新了沿用數百年的槌擊製漿工藝。'),
@@ -254,7 +254,7 @@ images_p11 = [
 ]
 
 # Page 12 (Catharism) Config
-file_p12 = r'靈魂的物質禁錮與中世紀權力整肅：卡特里派的興起、神學教義、十字軍聖戰與歷史餘音.md'
+file_p12 = r'course/靈魂的物質禁錮與中世紀權力整肅：卡特里派的興起、神學教義、十字軍聖戰與歷史餘音.md'
 map_p12 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/catharism_main.jpg" alt="Montsegur Castle" loading="lazy"><figcaption class="caption">今日聳立於南法陡峭岩峰上的蒙塞居爾城堡（Château de Montségur）廢墟，曾是卡特里派最後的軍事與精神堡壘，見證了1244年悲壯的圍城戰與大火刑。</figcaption></figure>\n'
 images_p12 = [
     (r'(<h2.*?>二、.*?</h2>)', 'images/catharism_creed.png', '代表朗格多克文化與卡特里派信仰空間的「奧克十字」（Occitan Cross）標誌，象徵南方反抗北法集權與教權威脅的文化精神'),
@@ -264,7 +264,7 @@ images_p12 = [
 ]
 
 # Page 13 (USA Phase 2) Config
-file_p13 = r'第二階段：殖民地的建立、定居與大西洋世界的形塑（1607年－1754年）.md'
+file_p13 = r'course/第二階段：殖民地的建立、定居與大西洋世界的形塑（1607年－1754年）.md'
 map_p13 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/us2_map.jpg" alt="Thirteen Colonies Map" loading="lazy"><figcaption class="caption">北美十三殖民地政區與地理分布圖，展示了新英格蘭、中部及南方三大區域殖民地結構與地緣疆界。</figcaption></figure>\n'
 images_p13 = [
     (r'(<h2.*?>一、.*?</h2>)', 'images/us2_mayflower.jpg', '威廉·哈爾薩爾 1882 年名作《普利茅斯港的五月花號》（Mayflower in Plymouth Harbor），描繪清教徒乘坐五月花號抵達新大陸的歷史性場景。'),
@@ -274,12 +274,16 @@ images_p13 = [
     (r'(<h3.*?>3\.\s*法屬路易斯安那的建立與「密西西比泡沫」.*?</h3>)', 'images/us2_john_law.jpg', '阿列克謝·西蒙·貝爾繪製的《約翰·勞肖像》，他是蘇格蘭金融家與密西西比泡沫的策劃者，其金融泡沫對法屬路易斯安那的命運產生了深遠震盪。')
 ]
 # Page 14 (British Constitution) Config
-file_p14 = r'英國憲法的歷史演進、修訂機制與憲政奇異性：非法典化體制的理論與實踐研析.md'
+file_p14 = r'course/英國憲法的歷史演進、修訂機制與憲政奇異性：非法典化體制的理論與實踐研析.md'
 map_p14 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/uk_constitution_main.png" alt="British Constitution" loading="lazy"><figcaption class="caption">英國憲政主題經典圖畫，展現大憲章羊皮紙、皇家王冠與遠景的西敏寺國會大廈，象徵君主、法律與議會的權力交織。</figcaption></figure>\n'
 images_p14 = [
     (r'(<h2.*?>歷史起源與漸進式沿革：從封建契約到議會至上</h2>)', 'images/uk_constitution_magna_carta.png', '西元1215年約翰王在倫德米德草地上被迫於貴族面前簽署《大憲章》的歷史想像圖。'),
     (r'(<h2.*?>英國憲法的奇特之處：政治憲政主義與雙重結構的張力</h2>)', 'images/uk_constitution_glorious_revolution.png', '西元1689年國會向威廉三世與瑪麗二世呈遞《權利法案》以確立國會主權的歷史繪畫。')
 ]
+
+# Page 15 Config
+file_p15 = r'course/聖職與婚娶：基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈.md'
+images_p15 = []
 
 
 print("Processing Page 1 (Holland)...")
@@ -292,14 +296,14 @@ print("Processing Page 3 (Hussite)...")
 html_body_p3 = process_markdown(file_p3, images_p3, "1.0", map_p3)
 
 print("Processing Page 4 (Golden Bull)...")
-file_p4 = r'4.金璽詔書.md'
+file_p4 = r'course/4.金璽詔書.md'
 html_body_p4 = process_3col_document(file_p4, "1.6")
 
 print("Processing Page 5 (Hirsau Abbey)...")
 html_body_p5 = process_markdown(file_p5, images_p5, "1.0", map_p5)
 
 print("Processing Page 6 (Benedict Rule)...")
-file_p6 = r'5.聖本篤會規.md'
+file_p6 = r'course/5.聖本篤會規.md'
 html_body_p6 = process_3col_document(file_p6, "2.0")
 
 print("Processing Page 7 (Ottonian System)...")
@@ -325,6 +329,9 @@ html_body_p13 = process_markdown(file_p13, images_p13, "1.0", map_p13)
 
 print("Processing Page 14 (British Constitution)...")
 html_body_p14 = process_markdown(file_p14, images_p14, "1.0", map_p14)
+
+print("Processing Page 15 (Clergy Marriage)...")
+html_body_p15 = process_markdown(file_p15, images_p15, "1.0", None)
 
 # Full Portal HTML Template
 portal_template = """<!DOCTYPE html>
@@ -378,7 +385,8 @@ portal_template = """<!DOCTYPE html>
         {"@type": "Article", "name": "聖本篤會規三欄解析", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page06"},
         {"@type": "Article", "name": "奧托-薩利安帝國教會體制", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page07"},
         {"@type": "Article", "name": "沃姆斯協約", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page08"},
-        {"@type": "Article", "name": "英國的憲法", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page14"}
+        {"@type": "Article", "name": "英國的憲法", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page14"},
+        {"@type": "Article", "name": "聖職與婚娶", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page15"}
       ]
     }
     </script>
@@ -1214,6 +1222,7 @@ portal_template = """<!DOCTYPE html>
                     <a href="#page10" id="nav-btn-page10" class="nav-tab-btn" style="text-decoration: none;">卡洛林教育基建與知識復興</a>
                     <a href="#page11" id="nav-btn-page11" class="nav-tab-btn" style="text-decoration: none;">歐洲造紙術的歷史演變</a>
                     <a href="#page14" id="nav-btn-page14" class="nav-tab-btn" style="text-decoration: none;">英國的憲法</a>
+                    <a href="#page15" id="nav-btn-page15" class="nav-tab-btn" style="text-decoration: none;">聖職與婚娶</a>
                 </div>
             </div>
             
@@ -1313,6 +1322,9 @@ portal_template = """<!DOCTYPE html>
         <!-- 課堂十一：英國的憲法 -->
         <div id="course-page14" class="course-page" style="display: none;">
             __HTML_BODY_PAGE14__
+        </div>
+        <div id="course-page15" class="course-page" style="display: none;">
+            {html_body_p15}
         </div>
     </main>
 
@@ -1515,7 +1527,8 @@ portal_template = """<!DOCTYPE html>
         'page10': { title: '卡洛林王朝教育基建與知識復興 — Ludwica 的簡單歷史課', desc: '探討卡洛林王朝教育基建與宗教變革、手抄室與卡洛林小草體書寫革命、跨國學者網絡、基督教化七藝與課堂實踐，以及文明火種對後世中世紀大學的深遠影響。' },
         'page11': { title: '歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課', desc: '研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。' },
         'page12': { title: '中世紀卡特里派的興起、教義、十字軍聖戰與歷史餘音 — Ludwica 的簡單歷史課', desc: '深入研究中世紀南法阿爾比十字軍東征、卡特里派（阿爾比派）二元論神學與禁慾實踐、宗教裁判所的官僚化清洗，以及《富尼埃登記簿》與微觀歷史學《蒙塔尤》的思想異質性。' },
-        'page14': { title: '英國的憲法：非法典化體制的理論與實踐 — Ludwica 的簡單歷史課', desc: '深入研究英國不成文憲法的歷史演進（大憲章、光榮革命、權利法案）、修訂機制與彈性、尊嚴與效能雙重結構，以及2022年至2026年間的現代憲政轉型。' }
+        'page14', 'page15': { title: '英國的憲法：非法典化體制的理論與實踐 — Ludwica 的簡單歷史課', desc: '深入研究英國不成文憲法的歷史演進（大憲章、光榮革命、權利法案）、修訂機制與彈性、尊嚴與效能雙重結構，以及2022年至2026年間的現代憲政轉型。' },
+        'page15': { title: '聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課', desc: '深入探討基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈。' }
     };
 
     function updatePageSEO(pageId) {
@@ -1624,7 +1637,8 @@ portal_template = """<!DOCTYPE html>
             { id: 'page10', name: '卡洛林教育基建與知識復興' },
             { id: 'page11', name: '歐洲造紙術的歷史演變' },
             { id: 'page12', name: '宗教戰爭(二)：卡特里派' },
-            { id: 'page14', name: '英國的憲法' }
+            { id: 'page14', 'page15', name: '英國的憲法' },
+            { id: 'page15', name: '聖職與婚娶' }
         ];
         
         pages.forEach(p => {
@@ -1867,7 +1881,7 @@ portal_template = """<!DOCTYPE html>
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
@@ -2022,6 +2036,12 @@ sitemap_content = f"""\
   </url>
   <url>
     <loc>https://ludwicia.github.io/ludwica-history-lesson/#page14</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ludwicia.github.io/ludwica-history-lesson/#page15</loc>
     <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
