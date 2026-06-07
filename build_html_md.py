@@ -457,10 +457,10 @@ article_cards_html = f"""
         </div>
     </div>
     <div class="article-card" onclick="location.hash='#page15'">
-        <div class="card-image" style="background-color: #e2e8f0;"></div>
+        <div class="card-image" style="background-image: url('images/clergy_trent.jpg');"></div>
         <div class="card-content">
             <div class="card-title">聖職與婚娶</div>
-            <div class="card-meta">內容版本：1.0</div>
+            <div class="card-meta">內容版本：1.2</div>
         </div>
     </div>
     
