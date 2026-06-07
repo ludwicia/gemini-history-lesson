@@ -289,7 +289,11 @@ images_p14 = [
 
 # Page 15 Config
 file_p15 = r'course/聖職與婚娶：基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈.md'
-images_p15 = []
+map_p15 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/clergy_trent.jpg" alt="The Council of Trent" loading="lazy"><figcaption class="caption">1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》（The Council of Trent），現藏於羅馬聖母大公殿，象徵天主教會在宗教改革浪潮下對神職絕對獨身制與教義純潔性的確認與重申。</figcaption></figure>\n'
+images_p15 = [
+    (r'(<h2.*?>中世紀封建危機下的格列哥里改革與權力重塑</h2>)', 'images/clergy_canossa.jpg', '愛德華·施沃瑟1862年名作《亨利四世在卡諾莎》（Heinrich vor Canossa），描繪了公元1077年神聖羅馬帝國皇帝亨利四世在風雪中向教宗格列哥里七世悔罪的場景，象徵格列哥里改革中教權壓倒世俗王權的關鍵歷史時刻。'),
+    (r'(<h2.*?>宗教改革的政治經濟學反叛與天主教會的反擊</h2>)', 'images/clergy_luther_bora.jpg', '路卡斯·克拉納赫1526年創作的《馬丁·路德與卡塔琳娜·馮·博拉雙聯畫》，現藏於瑞典國立博物館，生動描繪了這對倡導並實踐牧師婚姻的新教先驅夫婦，象徵宗教改革對修道院守貞誓言與世俗家庭價值的重構。')
+]
 
 
 print("Processing Page 1 (Holland)...")
@@ -337,7 +341,7 @@ print("Processing Page 14 (British Constitution)...")
 html_body_p14 = process_markdown(file_p14, images_p14, "1.0", map_p14)
 
 print("Processing Page 15 (Clergy Marriage)...")
-html_body_p15 = process_markdown(file_p15, images_p15, "1.0", None)
+html_body_p15 = process_markdown(file_p15, images_p15, "1.0", map_p15)
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
