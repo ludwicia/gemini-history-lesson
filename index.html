@@ -58,48 +58,8 @@
 </head>
 <body>
 
-<!-- Glassmorphism 置頂導覽列 -->
-<nav class="top-nav">
-    <div class="nav-container">
-        <div class="nav-mobile-header">
-            <div class="nav-mobile-title">🏛️ 歷史課程導覽</div>
-            <button class="nav-mobile-toggle" id="navMobileToggle">展開 ▼</button>
-        </div>
-        <div class="nav-links collapsed" id="navLinks">
-            <!-- 歷史專題 -->
-            <div class="nav-group">
-                <div class="nav-group-title">歷史專題 <span class="dropdown-arrow">▼</span></div>
-                <div class="nav-dropdown">
-                    <a href="#page01" id="nav-btn-page01" class="nav-tab-btn active" style="text-decoration: none;">荷蘭建國與地緣政經</a>
-                    <a href="#page02" id="nav-btn-page02" class="nav-tab-btn" style="text-decoration: none;">美國的誕生(一)</a>
-                    <a href="#page13" id="nav-btn-page13" class="nav-tab-btn" style="text-decoration: none;">美國的誕生(二)</a>
-                    <a href="#page03" id="nav-btn-page03" class="nav-tab-btn" style="text-decoration: none;">宗教戰爭(一)：胡斯戰爭</a>
-                    <a href="#page12" id="nav-btn-page12" class="nav-tab-btn" style="text-decoration: none;">宗教戰爭(二)：卡特里派</a>
-                    <a href="#page05" id="nav-btn-page05" class="nav-tab-btn" style="text-decoration: none;">希爾紹修道院</a>
-                    <a href="#page07" id="nav-btn-page07" class="nav-tab-btn" style="text-decoration: none;">奧托-薩利安帝國教會體制</a>
-                    <a href="#page09" id="nav-btn-page09" class="nav-tab-btn" style="text-decoration: none;">丕平獻土與教皇國誕生</a>
-                    <a href="#page10" id="nav-btn-page10" class="nav-tab-btn" style="text-decoration: none;">卡洛林教育基建與知識復興</a>
-                    <a href="#page11" id="nav-btn-page11" class="nav-tab-btn" style="text-decoration: none;">歐洲造紙術的歷史演變</a>
-                    <a href="#page14" id="nav-btn-page14" class="nav-tab-btn" style="text-decoration: none;">英國的憲法</a>
-                    <a href="#page15" id="nav-btn-page15" class="nav-tab-btn" style="text-decoration: none;">聖職與婚娶</a>
-                </div>
-            </div>
-            
-            <!-- 歷史文件 -->
-            <div class="nav-group">
-                <div class="nav-group-title">歷史文件 <span class="dropdown-arrow">▼</span></div>
-                <div class="nav-dropdown">
-                    <a href="#page04" id="nav-btn-page04" class="nav-tab-btn" style="text-decoration: none;">神聖羅馬帝國：金璽詔書</a>
-                    <a href="#page06" id="nav-btn-page06" class="nav-tab-btn" style="text-decoration: none;">修道院制度：聖本篤會規</a>
-                    <a href="#page08" id="nav-btn-page08" class="nav-tab-btn" style="text-decoration: none;">敘任權之爭：沃姆斯協約</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-
-<!-- Beautiful Hero Banner -->
-<div class="site-banner">
+<!-- Beautiful Hero Banner (Clickable to go home) -->
+<div class="site-banner" style="cursor: pointer;" onclick="location.hash='#home'">
     <div class="banner-content">
         <div class="banner-subtitle">Ludwica's History Series</div>
         <div class="banner-title">Ludwica 的簡單歷史課</div>
@@ -107,16 +67,131 @@
 </div>
 
 <div class="layout">
-    <!-- Left Sidebar: TOC -->
+    <!-- Left Sidebar: TOC / Update Log -->
     <aside class="sidebar-left">
-        <div class="sidebar-title">章節目錄</div>
-        <div id="toc"></div>
+        <div class="sidebar-title" id="left-sidebar-title">最近更新日誌</div>
+        <div id="update-log-container"><div class="update-entry"><div class="update-date">2026-06-06 (聖職與婚娶 1.0)</div><ul class="update-list"><li><strong>發布「聖職與婚娶：基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈」學術專題 (內容版本 1.0)</strong>：</li><li><strong>優化 Google Docs 匯入工具與修復巢狀網址</strong>：</li><li><strong>網站架構與防呆機制升級</strong>：</li></ul></div><div class="update-entry"><div class="update-date">2026-06-06 (版面設計 3.12)</div><ul class="update-list"><li><strong>優化參考文獻超連結與懸停底線樣式</strong>：</li></ul></div><div class="update-entry"><div class="update-date">2026-06-06 (版面設計 3.9)</div><ul class="update-list"><li><strong>修復長網址與長字元溢出容器 Bug</strong>：</li></ul></div><div class="update-entry"><div class="update-date">2026-06-05 (英國的憲法 1.0 | 版面設計 3.8)</div><ul class="update-list"><li><strong>發布英國的憲法學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選真實歷史視覺資源整合 (AI 輔助繪製高質感插圖)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 3.8)</strong>：</li></ul></div><div class="update-entry"><div class="update-date">2026-06-02 (卡洛林教育基建 1.0 & 歐洲造紙術 1.0 | 版面設計 3.7)</div><ul class="update-list"><li><strong>發布卡洛林教育基建學術專題 (內容版本 1.0)</strong>：</li><li><strong>發布歐洲造紙術歷史演變學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選真實歷史視覺資源整合 (非 AI 生成)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 3.7)</strong>：</li></ul></div><div class="update-entry"><div class="update-date">2026-06-02 (金璽詔書 1.4 & 丕平獻土 1.0 | 版面設計 3.6)</div><ul class="update-list"><li><strong>金璽詔書史詩級內容擴充 (內容版本 1.4)</strong>：</li><li><strong>發布全新地緣政治歷史專題：丕平獻土</strong>：</li><li><strong>精選真實歷史視覺資源整合 (非 AI 生成)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 3.6)</strong>：</li></ul></div><div class="update-entry"><div class="update-date">2026-05-31 (內容版本 2.0 | 版面設計 3.4)</div><ul class="update-list"><li><strong>聖本篤會規全面擴充與整合（第一至四章）</strong>：</li></ul></div><div class="update-entry"><div class="update-date">2026-05-30 (內容版本 1.0 | 版面設計 3.4)</div><ul class="update-list"><li><strong>發布全新歷史文件：聖本篤會規</strong>：</li><li><strong>網頁架構與路由載入機制升級（版面設計 3.4）</strong>：</li></ul></div><div class="update-entry"><div class="update-date">2026-05-30 (內容版本 1.3 | 版面設計 3.3)</div><ul class="update-list"><li><strong>金璽詔書擴充與整合（第三部分）</strong>：</li><li><strong>排版與編譯器相容性調整</strong>：</li><li><strong>本地全自動建置驗證</strong>：</li></ul></div></div>
+        <div id="toc" style="display: none;"></div>
     </aside>
 
     <!-- Middle Column: Main Content -->
     <main class="content-middle" id="main-content">
+        <!-- 系統首頁：文章選單 -->
+        <div id="course-home" class="course-page">
+            <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: #2d3748; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史專題文章選單</div>
+            
+<div class="article-grid">
+    <div class="article-card" onclick="location.hash='#page01'">
+        <div class="card-image" style="background-image: url('images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">荷蘭建國與地緣政經</div>
+            <div class="card-meta">內容版本：1.1</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page02'">
+        <div class="card-image" style="background-image: url('images/img_10_960px-Cahokia_Monks_Mound.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">美國的誕生(一)</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page13'">
+        <div class="card-image" style="background-image: url('images/us2_map.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">美國的誕生(二)</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page03'">
+        <div class="card-image" style="background-image: url('images/hussite_wars_main.png');"></div>
+        <div class="card-content">
+            <div class="card-title">宗教戰爭(一)：胡斯戰爭</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page12'">
+        <div class="card-image" style="background-image: url('images/catharism_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">宗教戰爭(二)：卡特里派</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page05'">
+        <div class="card-image" style="background-image: url('images/hirsau_main_wilhelm.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">希爾紹修道院</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page07'">
+        <div class="card-image" style="background-image: url('images/ottonian_hre_map.svg');"></div>
+        <div class="card-content">
+            <div class="card-title">奧托-薩利安帝國教會體制</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page09'">
+        <div class="card-image" style="background-image: url('images/pippin_donation_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">丕平獻土與教皇國誕生</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page10'">
+        <div class="card-image" style="background-image: url('images/carolingian_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">卡洛林教育基建與知識復興</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page11'">
+        <div class="card-image" style="background-image: url('images/paper_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">歐洲造紙術的歷史演變</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page14'">
+        <div class="card-image" style="background-image: url('images/uk_constitution_main.png');"></div>
+        <div class="card-content">
+            <div class="card-title">英國的憲法</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    <div class="article-card" onclick="location.hash='#page15'">
+        <div class="card-image" style="background-color: #e2e8f0;"></div>
+        <div class="card-content">
+            <div class="card-title">聖職與婚娶</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+    
+    <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
+    
+    <div class="article-card doc-card" onclick="location.hash='#page04'">
+        <div class="card-content">
+            <div class="card-title">神聖羅馬帝國：金璽詔書</div>
+            <div class="card-meta">內容版本：1.6</div>
+        </div>
+    </div>
+    <div class="article-card doc-card" onclick="location.hash='#page06'">
+        <div class="card-content">
+            <div class="card-title">修道院制度：聖本篤會規</div>
+            <div class="card-meta">內容版本：2.0</div>
+        </div>
+    </div>
+    <div class="article-card doc-card" onclick="location.hash='#page08'">
+        <div class="card-content">
+            <div class="card-title">敘任權之爭：沃姆斯協約</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+</div>
+
+        </div>
+
         <!-- 課堂一：荷蘭建國史 -->
-        <div id="course-page01" class="course-page">
+        <div id="course-page01" class="course-page" style="display: none;">
             <h1 id="_1">帝國海洋、金融先驅與當代政治僵局：荷蘭建國史、東印度公司興衰與當代地緣政經轉型研究報告</h1>
 <div style="text-align: center; color: #718096; margin-top: -15px; margin-bottom: 25px; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="background-color: #ebf8ff; color: #2b6cb0; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #bee3f8;">內容版本：1.1</span><span style="background-color: #f0fff4; color: #38a169; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #c6f6d5;">最近更新：2026-06-07</span></div>
 <figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg" alt="1658 Map" loading="lazy"><figcaption class="caption">1658年聯省共和國地圖，清晰可見當時的須德海與低地國錯綜複雜的水路地貌</figcaption></figure>
@@ -3719,8 +3794,8 @@ Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei grati
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：3.12 (優化參考文獻為標題超連結，且僅在 hover 時顯示底線)</div>
-                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-06</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：4.0 (全新網格文章選單與佈局重構)</div>
+                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-08</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
                         <!-- Dynamic metadata loaded by JS -->
@@ -3741,6 +3816,11 @@ Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei grati
         </div>
     </aside>
 </div>
+
+<!-- Floating Back to Home Button -->
+<a href="#home" class="floating-home-btn" id="floatingHomeBtn" style="display: none;">
+    返回首頁
+</a>
 
 <script>
     // 1. Dynamic Course Metadata
@@ -3921,6 +4001,27 @@ Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei grati
     function switchPage(pageId) {
         activePageId = pageId;
         
+        // Handle floating home button visibility
+        const homeBtn = document.getElementById('floatingHomeBtn');
+        if (homeBtn) {
+            homeBtn.style.display = (pageId === 'home') ? 'none' : 'flex';
+        }
+
+        // Toggle Left Sidebar Content (Update Log vs TOC)
+        const updateLogContainer = document.getElementById('update-log-container');
+        const tocContainer = document.getElementById('toc');
+        const leftSidebarTitle = document.getElementById('left-sidebar-title');
+        
+        if (pageId === 'home') {
+            if (updateLogContainer) updateLogContainer.style.display = 'block';
+            if (tocContainer) tocContainer.style.display = 'none';
+            if (leftSidebarTitle) leftSidebarTitle.innerText = '最近更新日誌';
+        } else {
+            if (updateLogContainer) updateLogContainer.style.display = 'none';
+            if (tocContainer) tocContainer.style.display = 'block';
+            if (leftSidebarTitle) leftSidebarTitle.innerText = '章節目錄';
+        }
+        
         // Handle full-width doc mode
         const layout = document.querySelector('.layout');
         if (pageId === 'page04' || pageId === 'page06' || pageId === 'page08') {
@@ -3929,18 +4030,15 @@ Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei grati
             layout.classList.remove('doc-mode');
         }
         
-        // Update active tab buttons
-        document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
-        const activeBtn = document.getElementById('nav-btn-' + pageId);
-        if (activeBtn) activeBtn.classList.add('active');
-        
         // Show/hide course content blocks
         document.querySelectorAll('.course-page').forEach(page => page.style.display = 'none');
         const activePage = document.getElementById('course-' + pageId);
         if (activePage) activePage.style.display = 'block';
         
-        // Re-generate TOC for the active page
-        generateTOC(pageId);
+        // Re-generate TOC for the active page (if not home)
+        if (pageId !== 'home') {
+            generateTOC(pageId);
+        }
         
         // Clear search inputs & results when manually switching tabs
         document.getElementById('searchInput').value = '';
@@ -3948,12 +4046,18 @@ Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei grati
         
         // Update copyright / details card
         const infoDiv = document.getElementById('dynamic-course-info');
-        if (infoDiv && courseInfo[pageId]) {
-            infoDiv.innerHTML = courseInfo[pageId];
+        if (infoDiv) {
+            if (pageId === 'home') {
+                infoDiv.innerHTML = '<div style="color: #4a5568;"><b>🏠 目前位置：</b>歷史文章選單首頁<br><b>✨ 請點擊左側文章卡片開始閱讀</b></div>';
+            } else if (courseInfo[pageId]) {
+                infoDiv.innerHTML = courseInfo[pageId];
+            }
         }
         
-        // Re-init mobile collapsible headers
-        initMobileCollapseForPage(pageId);
+        // Re-init mobile collapsible headers (if not home)
+        if (pageId !== 'home') {
+            initMobileCollapseForPage(pageId);
+        }
 
         // Smooth scroll to top of page/content
         if (window.scrollY > 280) {
@@ -4182,26 +4286,6 @@ Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei grati
         footerHeader.addEventListener('click', toggleFooter);
     }
 
-    // 8.5 Mobile Top Nav Toggle
-    const navMobileToggle = document.getElementById('navMobileToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (navMobileToggle && navLinks) {
-        navMobileToggle.addEventListener('click', () => {
-            const isCollapsed = navLinks.classList.toggle('collapsed');
-            navMobileToggle.innerText = isCollapsed ? '展開 ▼' : '收合 ▲';
-        });
-        
-        // Auto-close menu when a link is clicked on mobile
-        document.querySelectorAll('.nav-tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (window.innerWidth <= 800 && !navLinks.classList.contains('collapsed')) {
-                    navLinks.classList.add('collapsed');
-                    navMobileToggle.innerText = '展開 ▼';
-                }
-            });
-        });
-    }
-
     // 9. Collapsible Explanations Accordion Transform
     function makeExplanationsCollapsible() {
         document.querySelectorAll('.doc-explanation ul').forEach(ul => {
@@ -4247,7 +4331,12 @@ Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei grati
         const hash = window.location.hash.substring(1);
         
         if (!hash) {
-            if (activePageId !== 'page01') switchPage('page01');
+            if (activePageId !== 'home') switchPage('home');
+            return;
+        }
+
+        if (hash === 'home') {
+            if (activePageId !== 'home') switchPage('home');
             return;
         }
 
@@ -4261,7 +4350,7 @@ Ego Calixtus episcopus servus servorum Dei tibi dilecto filio Heinrico Dei grati
                 }, 50);
             }
         } else {
-            if (activePageId !== 'page01') switchPage('page01');
+            if (activePageId !== 'home') switchPage('home');
         }
     }
     
