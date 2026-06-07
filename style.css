@@ -196,7 +196,7 @@
         /* Floating Home Button */
         .floating-home-btn {
             position: fixed;
-            bottom: 30px;
+            bottom: 70px;
             right: 30px;
             background: var(--primary-color);
             color: white;
