@@ -296,6 +296,16 @@ images_p15 = [
     (r'(<h2.*?>中世紀封建危機下的格列哥里改革與權力重塑</h2>)', 'images/clergy_canossa.jpg', '愛德華·施沃瑟1862年名作《亨利四世在卡諾莎》（Heinrich vor Canossa），描繪了公元1077年神聖羅馬帝國皇帝亨利四世在風雪中向教宗格列哥里七世悔罪的場景，象徵格列哥里改革中教權壓倒世俗王權的關鍵歷史時刻。'),
     (r'(<h2.*?>宗教改革的政治經濟學反叛與天主教會的反擊</h2>)', 'images/clergy_luther_bora.jpg', '路卡斯·克拉納赫1526年創作的《馬丁·路德與卡塔琳娜·馮·博拉雙聯畫》，現藏於瑞典國立博物館，生動描繪了這對倡導並實踐牧師婚姻的新教先驅夫婦，象徵宗教改革對修道院守貞誓言與世俗家庭價值的重構。')
 ]
+# Page 16 Config
+file_p16 = r'course/中世紀巡行王權的權力運作、制度體系與社會實態：以奧圖一世九五五年巡行與戰事為核心之歷史學考察.md'
+map_p16 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/reisekönig_travelling_kings.jpg" alt="Travelling Kings" loading="lazy"><figcaption class="caption">出自《法拉克薩手抄本》（Velaslav\'s Bible）的「旅行中的國王」手稿插圖，生動呈現了中世紀早中期君主與其宮廷在不同莊園行宮間物理性持續移動的「巡行王權」歷史情境。</figcaption></figure>\n'
+images_p16 = [
+    (r'(<h2.*?>巡行王權的特別之處、政治意義與統治功能</h2>)', 'images/ottonian_goslar.jpg', '宏偉的戈斯拉爾帝國皇室行宮（Kaiserpfalz Goslar），巡行朝廷在薩克森地區的權力象徵與核心行政基地。'),
+    (r'(<h3.*?>協商式統治與個人化政治紐帶</h3>)', 'images/otto_quedlinburg_hoftag.jpg', '莫里茲·馮·施溫德所繪《奧圖一世於昆德林堡慶祝五旬節，973年》，生動描繪了君主與世俗、教會貴族齊聚召開帝國大會（Hoftag）的協商共識政治場景。'),
+    (r'(<h3.*?>帝國教會體制與 monastic secularization 的張力</h3>)', 'images/ottonian_bruno.jpg', '科隆大主教布魯諾雕像，他作為奧圖一世之弟，將宮廷教堂人才培養與國家行政體系深度結合，成為帝國教會體制的奠基人。'),
+    (r'(<h2.*?>奧圖一世九五五年巡行軌跡：歷史重建與戰略轉折</h2>)', 'images/michael_echter_ungarnschlacht.jpg', '麥可·埃希特繪製的歷史名畫《雷希菲爾德戰役》（Lechfeldschlacht），描繪了955年奧圖一世率領德意志聯軍衝鋒，決定性大敗馬扎爾人騎兵的史詩決戰。'),
+    (r'(<h3.*?>農業剩餘與高度組織化的實物汲取</h3>)', 'images/mainzer_hoffest_assembly.jpg', '出自《薩克森世界編年史》手稿插圖，描繪了帝國大會期間為皇帝宮廷及各路貴族大軍提供飲食和物資的汲取網絡。')
+]
 
 
 print("Processing Page 1 (Holland)...")
@@ -344,6 +354,9 @@ html_body_p14 = process_markdown(file_p14, images_p14, "1.0", map_p14)
 
 print("Processing Page 15 (Clergy Marriage)...")
 html_body_p15 = process_markdown(file_p15, images_p15, "1.2", map_p15)
+
+print("Processing Page 16 (Ambulatory Kingship)...")
+html_body_p16 = process_markdown(file_p16, images_p16, "1.0", map_p16)
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -463,6 +476,13 @@ article_cards_html = f"""
             <div class="card-meta">內容版本：1.2</div>
         </div>
     </div>
+    <div class="article-card" onclick="location.hash='#page16'">
+        <div class="card-image" style="background-image: url('images/reisekönig_travelling_kings.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">中世紀巡行王權的權力運作</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
     
     <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
     
@@ -507,6 +527,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE12__', html_body_p12)
 final_html = final_html.replace('__HTML_BODY_PAGE13__', html_body_p13)
 final_html = final_html.replace('__HTML_BODY_PAGE14__', html_body_p14)
 final_html = final_html.replace('__HTML_BODY_PAGE15__', html_body_p15)
+final_html = final_html.replace('__HTML_BODY_PAGE16__', html_body_p16)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -526,6 +547,7 @@ final_html = final_html.replace('__PAGE12_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE13_DATE__', get_file_last_update_date(file_p13))
 final_html = final_html.replace('__PAGE14_DATE__', get_file_last_update_date(file_p14))
 final_html = final_html.replace('__PAGE15_DATE__', get_file_last_update_date(file_p15))
+final_html = final_html.replace('__PAGE16_DATE__', get_file_last_update_date(file_p16))
 
 # Write to file
 print("Writing build output to index.html...")
