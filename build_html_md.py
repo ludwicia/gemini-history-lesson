@@ -307,6 +307,15 @@ images_p16 = [
     (r'(<h3.*?>農業剩餘與高度組織化的實物汲取</h3>)', 'images/mainzer_hoffest_assembly.jpg', '出自《薩克森世界編年史》手稿插圖，描繪了帝國大會期間為皇帝宮廷及各路貴族大軍提供飲食和物資的汲取網絡。')
 ]
 
+# Page 17 Config
+file_p17 = r'course/從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變.md'
+map_p17 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/ambrose_and_theodosius.png" alt="Ambrose and Theodosius" loading="lazy"><figcaption class="caption">聖安波羅修在米蘭大教堂前阻擋皇帝迪奧多西一世的歷史想像圖，象徵世俗權力必須臣服於上帝的屬靈裁判，是政教關係史上的關鍵分水嶺。</figcaption></figure>\n'
+images_p17 = [
+    (r'(<h2.*?>戴克里先與君主制的創立：從「第一公民」到「君主與神」</h2>)', 'images/p17_tetrarchs.jpg', '威尼斯聖馬可大教堂牆角的「四帝共治」雕像（約公元300年），以四位皇帝互相擁抱象徵帝國的團結與分工，是戴克里先創立四帝共治制度的具體政治宣傳。'),
+    (r'(<h2.*?>君士坦丁大帝的雙重神聖：大祭司與「外部事務主教」</h2>)', 'images/p17_constantine_head.jpg', '羅馬卡比托利歐博物館收藏的君士坦丁大帝青銅巨像頭部（約公元4世紀），其巨大的雙眼凝視著遠方，展現出晚期羅馬帝國君主超越凡人、神聖不可侵犯的專制權威。'),
+    (r'(<h2.*?>格拉提安的信仰抉擇：拒絕「大祭司」與「榮譽祭司」的轉向</h2>)', 'images/p17_curia_julia.jpg', '位於羅馬廣場的庫里亞·朱利亞（羅馬元老院議事堂），格拉提安皇帝曾下令將其中的「勝利女神祭壇」拆除，徹底引發了傳統多神教精英與基督教主教的政論博弈。')
+]
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1)
@@ -357,6 +366,9 @@ html_body_p15 = process_markdown(file_p15, images_p15, "1.2", map_p15)
 
 print("Processing Page 16 (Ambulatory Kingship)...")
 html_body_p16 = process_markdown(file_p16, images_p16, "1.0", map_p16)
+
+print("Processing Page 17 (Ambrose & Theodosius)...")
+html_body_p17 = process_markdown(file_p17, images_p17, "1.0", map_p17)
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -483,6 +495,13 @@ article_cards_html = f"""
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+    <div class="article-card" onclick="location.hash='#page17'">
+        <div class="card-image" style="background-image: url('images/ambrose_and_theodosius.png');"></div>
+        <div class="card-content">
+            <div class="card-title">從皇帝稱號看羅馬政教關係演變</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
     
     <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
     
@@ -528,6 +547,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE13__', html_body_p13)
 final_html = final_html.replace('__HTML_BODY_PAGE14__', html_body_p14)
 final_html = final_html.replace('__HTML_BODY_PAGE15__', html_body_p15)
 final_html = final_html.replace('__HTML_BODY_PAGE16__', html_body_p16)
+final_html = final_html.replace('__HTML_BODY_PAGE17__', html_body_p17)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -548,6 +568,7 @@ final_html = final_html.replace('__PAGE13_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE14_DATE__', get_file_last_update_date(file_p14))
 final_html = final_html.replace('__PAGE15_DATE__', get_file_last_update_date(file_p15))
 final_html = final_html.replace('__PAGE16_DATE__', get_file_last_update_date(file_p16))
+final_html = final_html.replace('__PAGE17_DATE__', get_file_last_update_date(file_p17))
 
 # Write to file
 print("Writing build output to index.html...")
