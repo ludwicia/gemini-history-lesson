@@ -92,12 +92,64 @@ def make_urls_clickable(text):
 
 def format_reference_links(text):
     """
-    Format references list.
-    Converts: '1. Title, [http...](http...)'
-    To: '1. [Title](http...)'
+    Finds the bibliography section, parses and formats each reference line
+    to 'index. [Title](URL)' (e.g. '1. [Title](http...)'), cleans backslashes,
+    and returns the updated document text.
     """
-    pattern = r'(\d+\.\s+)(.*?),\s*\[(https?://[^\]]+)\]\(\3\)'
-    return re.sub(pattern, r'\1[\2](\3)', text)
+    # Find the bibliography header
+    parts = re.split(r'(\r?\n##+\s+(?:引記的著作|引用的著作|引用來源|參考文獻|參考資料|Bibliography|References)\s*\r?\n)', text, maxsplit=1, flags=re.IGNORECASE)
+    
+    if len(parts) < 3:
+        # If no explicit bibliography header, try to fallback to regex replacement on the whole text
+        pattern = r'(\d+\.\s+)(.*?),\s*\[(https?://[^\]]+)\]\(\3\)'
+        return re.sub(pattern, r'\1[\2](\3)', text)
+        
+    body = parts[0]
+    header = parts[1]
+    bib = parts[2]
+    
+    lines = bib.split('\n')
+    new_lines = []
+    
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            new_lines.append(line) # keep original indentation/newlines
+            continue
+            
+        # Match standard link: 1. [Title](URL)
+        m_standard = re.match(r'^(\d+\.\s+)\[([^\]]+)\]\(([^)]+)\)$', stripped)
+        
+        # Match unformatted link: 3. Title, [URL](URL)
+        m_unformatted = re.match(r'^(\d+\.\s+)(.*?),\s*\[(https?://[^\]]+)\]\(\3\)$', stripped)
+        
+        # Match unformatted link with backslashes or slightly mismatching URL: 3. Title, [URL1](URL2)
+        m_mismatch = re.match(r'^(\d+\.\s+)(.*?),\s*\[(https?://[^\]]+)\]\((https?://[^)]+)\)$', stripped)
+        
+        if m_standard:
+            index = m_standard.group(1)
+            title = m_standard.group(2).strip()
+            url = m_standard.group(3).strip()
+        elif m_unformatted:
+            index = m_unformatted.group(1)
+            title = m_unformatted.group(2).strip()
+            url = m_unformatted.group(3).strip()
+        elif m_mismatch:
+            index = m_mismatch.group(1)
+            title = m_mismatch.group(2).strip()
+            url = m_mismatch.group(4).strip() # use actual href
+        else:
+            new_lines.append(line)
+            continue
+            
+        # Clean backslashes in URL and title
+        url = url.replace('\\', '')
+        title = title.replace('\\', '')
+        
+        formatted_line = f"{index}[{title}]({url})"
+        new_lines.append(formatted_line)
+        
+    return body + header + '\n'.join(new_lines)
 
 def ensure_markdownify():
     try:
