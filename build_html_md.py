@@ -36,8 +36,33 @@ def get_file_last_update_date(file_path):
     except Exception:
         return datetime.now().strftime('%Y-%m-%d')
 
+def get_share_bar_html(page_id):
+    if not page_id:
+        return ""
+    return f'''
+<div class="share-bar">
+    <span class="share-bar-title">分享文章：</span>
+    <button class="share-btn share-btn-fb" onclick="shareTo('facebook', '{page_id}')">
+        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+        <span class="share-text">Facebook</span>
+    </button>
+    <button class="share-btn share-btn-line" onclick="shareTo('line', '{page_id}')">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.82 2 10.53c0 2.75 1.51 5.2 3.93 6.75-.15.54-.53 1.95-.6 2.22-.09.33.1.32.22.24.26-.16 4.04-2.67 4.6-3.05.6.11 1.22.17 1.85.17 5.52 0 10-3.82 10-8.53C22 5.82 17.52 2 12 2z"/></svg>
+        <span class="share-text">LINE</span>
+    </button>
+    <button class="share-btn share-btn-x" onclick="shareTo('twitter', '{page_id}')">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span class="share-text">X (Twitter)</span>
+    </button>
+    <button class="share-btn share-btn-copy" onclick="shareTo('copy', '{page_id}')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        <span class="share-text">複製連結</span>
+    </button>
+</div>
+'''
+
 # Helper to process and format a markdown lesson
-def process_markdown(file_path, image_replacements, content_version, main_img_html=None):
+def process_markdown(file_path, image_replacements, content_version, main_img_html=None, page_id=None):
     update_date = get_file_last_update_date(file_path)
     with open(file_path, 'r', encoding='utf-8') as f:
         text = f.read()
@@ -65,8 +90,10 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
     # Add content version badge and update date badge
     version_badge = f'<div style="text-align: center; color: #718096; margin-top: -15px; margin-bottom: 25px; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="background-color: #ebf8ff; color: #2b6cb0; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #bee3f8;">內容版本：{content_version}</span><span style="background-color: #f0fff4; color: #38a169; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #c6f6d5;">最近更新：{update_date}</span></div>\n'
 
-    # Insert version badge and main image under first H1
+    # Insert version badge, sharing buttons, and main image under first H1
     header_insert = version_badge
+    if page_id:
+        header_insert += get_share_bar_html(page_id)
     if main_img_html:
         header_insert += main_img_html
 
@@ -88,9 +115,12 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
         return f'<figure class="image-left"><img src="{src}" alt="{alt}" loading="lazy"><figcaption class="caption">{alt}</figcaption></figure>'
     html_body = re.sub(md_img_pattern, img_replace, html_body)
 
+    if page_id:
+        html_body += get_share_bar_html(page_id)
+
     return html_body
 
-def process_3col_document(file_path, content_version):
+def process_3col_document(file_path, content_version, page_id=None):
     update_date = get_file_last_update_date(file_path)
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -121,6 +151,11 @@ def process_3col_document(file_path, content_version):
         <span style="background-color: #ebf8ff; color: #2b6cb0; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #bee3f8;">內容版本：{content_version}</span>
         <span style="background-color: #f0fff4; color: #38a169; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #c6f6d5;">最近更新：{update_date}</span>
     </div>
+    '''
+    if page_id:
+        html += get_share_bar_html(page_id)
+
+    html += f'''
     <div class="doc-title-section">
         {title_html}
     </div>
@@ -168,6 +203,8 @@ def process_3col_document(file_path, content_version):
             '''
             
     html += "</div>"
+    if page_id:
+        html += get_share_bar_html(page_id)
     return html
 
 # Page 1 (Holland) Config
@@ -331,60 +368,60 @@ images_p18 = [
 
 
 print("Processing Page 1 (Holland)...")
-html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1)
+html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
 
 print("Processing Page 2 (USA)...")
-html_body_p2 = process_markdown(file_p2, images_p2, "1.0", map_p2)
+html_body_p2 = process_markdown(file_p2, images_p2, "1.0", map_p2, page_id="page02")
 
 print("Processing Page 3 (Hussite)...")
-html_body_p3 = process_markdown(file_p3, images_p3, "1.0", map_p3)
+html_body_p3 = process_markdown(file_p3, images_p3, "1.0", map_p3, page_id="page03")
 
 print("Processing Page 4 (Golden Bull)...")
 file_p4 = r'course/4.金璽詔書.md'
-html_body_p4 = process_3col_document(file_p4, "1.8")
+html_body_p4 = process_3col_document(file_p4, "1.8", page_id="page04")
 
 print("Processing Page 5 (Hirsau Abbey)...")
-html_body_p5 = process_markdown(file_p5, images_p5, "1.0", map_p5)
+html_body_p5 = process_markdown(file_p5, images_p5, "1.0", map_p5, page_id="page05")
 
 print("Processing Page 6 (Benedict Rule)...")
 file_p6 = r'course/5.聖本篤會規.md'
-html_body_p6 = process_3col_document(file_p6, "2.0")
+html_body_p6 = process_3col_document(file_p6, "2.0", page_id="page06")
 
 print("Processing Page 7 (Ottonian System)...")
-html_body_p7 = process_markdown(file_p7, images_p7, "1.0", map_p7)
+html_body_p7 = process_markdown(file_p7, images_p7, "1.0", map_p7, page_id="page07")
 
 print("Processing Page 8 (Concordat of Worms)...")
-html_body_p8 = process_3col_document(file_p8, "1.0")
+html_body_p8 = process_3col_document(file_p8, "1.0", page_id="page08")
 
 print("Processing Page 9 (Pippin Donation)...")
-html_body_p9 = process_markdown(file_p9, images_p9, "1.0", map_p9)
+html_body_p9 = process_markdown(file_p9, images_p9, "1.0", map_p9, page_id="page09")
 
 print("Processing Page 10 (Carolingian Education)...")
-html_body_p10 = process_markdown(file_p10, images_p10, "1.0", map_p10)
+html_body_p10 = process_markdown(file_p10, images_p10, "1.0", map_p10, page_id="page10")
 
 print("Processing Page 11 (European Papermaking)...")
-html_body_p11 = process_markdown(file_p11, images_p11, "1.0", map_p11)
+html_body_p11 = process_markdown(file_p11, images_p11, "1.0", map_p11, page_id="page11")
 
 print("Processing Page 12 (Cathar Crusade)...")
-html_body_p12 = process_markdown(file_p12, images_p12, "1.0", map_p12)
+html_body_p12 = process_markdown(file_p12, images_p12, "1.0", map_p12, page_id="page12")
 
 print("Processing Page 13 (USA Phase 2)...")
-html_body_p13 = process_markdown(file_p13, images_p13, "1.0", map_p13)
+html_body_p13 = process_markdown(file_p13, images_p13, "1.0", map_p13, page_id="page13")
 
 print("Processing Page 14 (British Constitution)...")
-html_body_p14 = process_markdown(file_p14, images_p14, "1.0", map_p14)
+html_body_p14 = process_markdown(file_p14, images_p14, "1.0", map_p14, page_id="page14")
 
 print("Processing Page 15 (Clergy Marriage)...")
-html_body_p15 = process_markdown(file_p15, images_p15, "1.2", map_p15)
+html_body_p15 = process_markdown(file_p15, images_p15, "1.2", map_p15, page_id="page15")
 
 print("Processing Page 16 (Ambulatory Kingship)...")
-html_body_p16 = process_markdown(file_p16, images_p16, "1.0", map_p16)
+html_body_p16 = process_markdown(file_p16, images_p16, "1.0", map_p16, page_id="page16")
 
 print("Processing Page 17 (Ambrose & Theodosius)...")
-html_body_p17 = process_markdown(file_p17, images_p17, "1.0", map_p17)
+html_body_p17 = process_markdown(file_p17, images_p17, "1.0", map_p17, page_id="page17")
 
 print("Processing Page 18 (AD Calendar)...")
-html_body_p18 = process_markdown(file_p18, images_p18, "1.0", map_p18)
+html_body_p18 = process_markdown(file_p18, images_p18, "1.0", map_p18, page_id="page18")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""

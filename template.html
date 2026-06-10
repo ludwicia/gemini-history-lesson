@@ -81,7 +81,37 @@
     <main class="content-middle" id="main-content">
         <!-- 系統首頁：文章選單 -->
         <div id="course-home" class="course-page">
+            <!-- Mobile-only Collapsible Update Log -->
+            <details class="mobile-update-log">
+                <summary class="mobile-update-log-summary">
+                    <span>📢 最近更新日誌 (點擊展開)</span>
+                </summary>
+                <div class="mobile-update-log-content">
+                    __WORKLOG_HTML__
+                </div>
+            </details>
+
             <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: #2d3748; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史專題文章選單</div>
+            <!-- Homepage Share Bar -->
+            <div class="share-bar" style="margin-top: -10px; margin-bottom: 25px;">
+                <span class="share-bar-title">分享本站：</span>
+                <button class="share-btn share-btn-fb" onclick="shareTo('facebook', 'home')">
+                    <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+                    <span class="share-text">Facebook</span>
+                </button>
+                <button class="share-btn share-btn-line" onclick="shareTo('line', 'home')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.82 2 10.53c0 2.75 1.51 5.2 3.93 6.75-.15.54-.53 1.95-.6 2.22-.09.33.1.32.22.24.26-.16 4.04-2.67 4.6-3.05.6.11 1.22.17 1.85.17 5.52 0 10-3.82 10-8.53C22 5.82 17.52 2 12 2z"/></svg>
+                    <span class="share-text">LINE</span>
+                </button>
+                <button class="share-btn share-btn-x" onclick="shareTo('twitter', 'home')">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <span class="share-text">X (Twitter)</span>
+                </button>
+                <button class="share-btn share-btn-copy" onclick="shareTo('copy', 'home')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <span class="share-text">複製連結</span>
+                </button>
+            </div>
             __ARTICLE_CARDS__
         </div>
 
@@ -424,6 +454,58 @@
             const ogDesc = document.querySelector('meta[property="og:description"]');
             if (ogDesc) ogDesc.setAttribute('content', seo.desc);
         }
+    }
+
+    // 2.5 Social Media Share Utility Functions
+    function shareTo(platform, pageId) {
+        const baseUrl = window.location.origin + window.location.pathname;
+        const shareUrl = pageId === 'home' ? baseUrl : `${baseUrl}#${pageId}`;
+        const pageTitle = pageId === 'home' ? 'Ludwica 的簡單歷史課' : (pageSEO[pageId] ? pageSEO[pageId].title : document.title);
+        
+        if (platform === 'facebook') {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank', 'width=600,height=400');
+        } else if (platform === 'line') {
+            window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}`, '_blank');
+        } else if (platform === 'twitter') {
+            window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(pageTitle)}`, '_blank', 'width=600,height=400');
+        } else if (platform === 'copy') {
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                showToast('連結已複製到剪貼簿！');
+            }).catch(err => {
+                // Fallback for older browsers
+                const input = document.createElement('input');
+                input.value = shareUrl;
+                document.body.appendChild(input);
+                input.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('連結已複製到剪貼簿！');
+                } catch (e) {
+                    showToast('複製失敗，請手動複製網址');
+                }
+                document.body.removeChild(input);
+            });
+        }
+    }
+
+    function showToast(message) {
+        let toast = document.getElementById('toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'toast';
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+        }
+        toast.innerHTML = `
+            <svg style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>${message}</span>
+        `;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2500);
     }
 
     // 3. Navigation Page Switching & Dynamic SEO
@@ -795,6 +877,8 @@
         handleHashRouting();
     });
 </script>
+
+<div id="toast" class="toast"></div>
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
