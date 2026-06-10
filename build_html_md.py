@@ -312,8 +312,16 @@ file_p17 = r'course/從戴克里先、君士坦丁到迪奧多西：從皇帝的
 map_p17 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/ambrose_and_theodosius.png" alt="Ambrose and Theodosius" loading="lazy"><figcaption class="caption">聖安波羅修在米蘭大教堂前阻擋皇帝迪奧多西一世的歷史想像圖，象徵世俗權力必須臣服於上帝的屬靈裁判，是政教關係史上的關鍵分水嶺。</figcaption></figure>\n'
 images_p17 = [
     (r'(<h2.*?>戴克里先與君主制的創立：從「第一公民」到「君主與神」</h2>)', 'images/p17_tetrarchs.jpg', '威尼斯聖馬可大教堂牆角的「四帝共治」雕像（約公元300年），以四位皇帝互相擁抱象徵帝國的團結與分工，是戴克里先創立四帝共治制度的具體政治宣傳。'),
-    (r'(<h2.*?>君士坦丁大帝的雙重神聖：大祭司與「外部事務主教」</h2>)', 'images/p17_constantine_head.jpg', '羅馬卡比托利歐博物館收藏的君士坦丁大帝青銅巨像頭部（約公元4世紀），其巨大的雙眼凝視著遠方，展現出晚期羅馬帝國君主超越凡人、神聖不可侵犯的專制權威。'),
+    (r'(<h2.*?>君士坦丁大帝的雙重神聖：大祭司與「外部事務主教」</h2>)', 'images/p17_constantine_head.jpg', '羅馬卡比托利歐博物館收藏 of 君士坦丁大帝青銅巨像頭部（約公元4世紀），其巨大的雙眼凝視著遠方，展現出晚期羅馬帝國君主超越凡人、神聖不可侵犯的專制權威。'),
     (r'(<h2.*?>格拉提安的信仰抉擇：拒絕「大祭司」與「榮譽祭司」的轉向</h2>)', 'images/p17_curia_julia.jpg', '位於羅馬廣場的庫里亞·朱利亞（羅馬元老院議事堂），格拉提安皇帝曾下令將其中的「勝利女神祭壇」拆除，徹底引發了傳統多神教精英與基督教主教的政論博弈。')
+]
+
+# Page 18 Config
+file_p18 = r'course/西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構.md'
+map_p18 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/ad_calendar_main.png" alt="AD Calendar Main" loading="lazy"><figcaption class="caption">象徵時間流逝與曆法更迭的古典沙漏與天文鐘，折射出人類在時間測量上從神聖天啟走向世俗理性的演進歷程。</figcaption></figure>\n'
+images_p18 = [
+    (r'(<h2.*?>二、 關鍵歷史人物與行政推手：從修道院計算到國家法典</h2>)', 'images/carolingian_alcuin.jpg', '查理曼大帝的宮廷學者阿爾琴，他建議查理曼在行政詔書中強制實施西元紀年。'),
+    (r'(<h2.*?>四、 東西方教會的分裂與對齊阻力：版本的「Fork」與物理時差</h2>)', 'images/clergy_trent.jpg', '1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》，象徵教會對時間體系的重構與絕對掌控。')
 ]
 
 
@@ -328,7 +336,7 @@ html_body_p3 = process_markdown(file_p3, images_p3, "1.0", map_p3)
 
 print("Processing Page 4 (Golden Bull)...")
 file_p4 = r'course/4.金璽詔書.md'
-html_body_p4 = process_3col_document(file_p4, "1.7")
+html_body_p4 = process_3col_document(file_p4, "1.8")
 
 print("Processing Page 5 (Hirsau Abbey)...")
 html_body_p5 = process_markdown(file_p5, images_p5, "1.0", map_p5)
@@ -369,6 +377,9 @@ html_body_p16 = process_markdown(file_p16, images_p16, "1.0", map_p16)
 
 print("Processing Page 17 (Ambrose & Theodosius)...")
 html_body_p17 = process_markdown(file_p17, images_p17, "1.0", map_p17)
+
+print("Processing Page 18 (AD Calendar)...")
+html_body_p18 = process_markdown(file_p18, images_p18, "1.0", map_p18)
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -502,13 +513,20 @@ article_cards_html = f"""
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+    <div class="article-card" onclick="location.hash='#page18'">
+        <div class="card-image" style="background-image: url('images/ad_calendar_main.png');"></div>
+        <div class="card-content">
+            <div class="card-title">西元紀年的確立與演進</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
     
     <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
     
     <div class="article-card doc-card" onclick="location.hash='#page04'">
         <div class="card-content">
             <div class="card-title">神聖羅馬帝國：金璽詔書</div>
-            <div class="card-meta">內容版本：1.6</div>
+            <div class="card-meta">內容版本：1.8</div>
         </div>
     </div>
     <div class="article-card doc-card" onclick="location.hash='#page06'">
@@ -548,6 +566,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE14__', html_body_p14)
 final_html = final_html.replace('__HTML_BODY_PAGE15__', html_body_p15)
 final_html = final_html.replace('__HTML_BODY_PAGE16__', html_body_p16)
 final_html = final_html.replace('__HTML_BODY_PAGE17__', html_body_p17)
+final_html = final_html.replace('__HTML_BODY_PAGE18__', html_body_p18)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -569,6 +588,7 @@ final_html = final_html.replace('__PAGE14_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE15_DATE__', get_file_last_update_date(file_p15))
 final_html = final_html.replace('__PAGE16_DATE__', get_file_last_update_date(file_p16))
 final_html = final_html.replace('__PAGE17_DATE__', get_file_last_update_date(file_p17))
+final_html = final_html.replace('__PAGE18_DATE__', get_file_last_update_date(file_p18))
 
 # Write to file
 print("Writing build output to index.html...")
@@ -605,4 +625,4 @@ with open(r'robots.txt', 'w', encoding='utf-8') as f:
     f.write(robots_content)
 print("Generated robots.txt")
 
-print("Done! Site successfully built as dynamic 14-topic history portal with full SEO.")
+print("Done! Site successfully built as dynamic 18-topic history portal with full SEO.")

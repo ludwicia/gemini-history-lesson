@@ -52,7 +52,8 @@
         {"@type": "Article", "name": "英國的憲法", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page14"},
         {"@type": "Article", "name": "聖職與婚娶", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page15"},
         {"@type": "Article", "name": "中世紀巡行王權的權力運作", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page16"},
-        {"@type": "Article", "name": "從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page17"}
+        {"@type": "Article", "name": "從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page17"},
+        {"@type": "Article", "name": "西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page18"}
       ]
     }
     </script>
@@ -160,6 +161,9 @@
         <div id="course-page17" class="course-page" style="display: none;">
             __HTML_BODY_PAGE17__
         </div>
+        <div id="course-page18" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE18__
+        </div>
     </main>
 
     <!-- Right Sidebar / Floating Footer: Search & Version -->
@@ -192,8 +196,8 @@
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：4.3 (新增政教關係演變專題並整合歷史配圖)</div>
-                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-08</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：4.4 (新增西元紀年確立與演進專題)</div>
+                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-10</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
                         <!-- Dynamic metadata loaded by JS -->
@@ -375,6 +379,15 @@
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page18: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>西元紀年的確立與演進<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE18_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -396,7 +409,8 @@
         'page14': { title: '英國的憲法：非法典化體制的理論與實踐 — Ludwica 的簡單歷史課', desc: '深入研究英國不成文憲法的歷史演進（大憲章、光榮革命、權利法案）、修訂機制與彈性、尊嚴與效能雙重結構，以及2022年至2026年間的現代憲政轉型。' },
         'page15': { title: '聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課', desc: '深入探討基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈。' },
         'page16': { title: '中世紀巡行王權的權力運作、制度體系與社會實態 — Ludwica 的簡單歷史課', desc: '深入研究十世紀神聖羅馬帝國皇帝奧圖一世在九五五年的巡行與戰事軌跡，解析巡行王權的協商式統治、動態禮儀展演、帝國教會體制與物資汲取物流機制。' },
-        'page17': { title: '從皇帝的稱號看歷史背景與政教關係的演變 — Ludwica 的簡單歷史課', desc: '從三世紀危機後的戴克里先確立君主制，到君士坦丁大帝開啟基督教的寬容時代，再到格拉提安與迪奧多西一世將尼西亞信仰確立為國教，解析皇帝稱號的演變如何折射出羅馬帝國晚期的政教關係與政治神學。' }
+        'page17': { title: '從皇帝的稱號看歷史背景與政教關係的演變 — Ludwica 的簡單歷史課', desc: '從三世紀危機後的戴克里先確立君主制，到君士坦丁大帝開啟基督教的寬容時代，再到格拉提安與迪奧多西一世將尼西亞信仰確立為國教，解析皇帝稱號的演變如何折射出羅馬帝國晚期的政教關係與政治神學。' },
+        'page18': { title: '西元紀年的確立與演進 — Ludwica 的簡單歷史課', desc: '深入解析西元紀年（AD）的提出背景、關鍵歷史人物（狄奧尼修斯、尊者比德、查理曼大帝）、曆法改革、東西方教會的分裂以及全球標準化（ISO 8601）與缺失的西元零年問題。' }
     };
 
     function updatePageSEO(pageId) {
@@ -532,7 +546,8 @@
             { id: 'page14', name: '英國的憲法' },
             { id: 'page15', name: '聖職與婚娶' },
             { id: 'page16', name: '中世紀巡行王權的權力運作' },
-            { id: 'page17', name: '從皇帝稱號看羅馬政教關係演變' }
+            { id: 'page17', name: '從皇帝稱號看羅馬政教關係演變' },
+            { id: 'page18', name: '西元紀年的確立與演進' }
         ];
         
         pages.forEach(p => {
@@ -760,7 +775,7 @@
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
