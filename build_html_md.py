@@ -80,8 +80,13 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
     # Automatically convert standard markdown images to the custom figure layout
     # Match: <p><img alt="caption" src="url" /></p>
     md_img_pattern = r'<p>\s*<img\s+alt="([^"]*)"\s+src="([^"]*)"\s*/>\s*</p>'
-    figure_replacement = r'<figure class="image-left"><img src="\2" alt="\1" loading="lazy"><figcaption class="caption">\1</figcaption></figure>'
-    html_body = re.sub(md_img_pattern, figure_replacement, html_body)
+    def img_replace(match):
+        alt = match.group(1)
+        src = match.group(2)
+        if "ad_calendar_eq_" in src:
+            return f'\n<figure class="image-center" style="width: 100%; max-width: 520px; float: none; margin: 25px auto; padding: 0; box-shadow: none; border: none; background: none;"><img src="{src}" alt="{alt}" loading="lazy" style="box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; border-radius: 8px; width: 100%; height: auto;"></figure>\n'
+        return f'<figure class="image-left"><img src="{src}" alt="{alt}" loading="lazy"><figcaption class="caption">{alt}</figcaption></figure>'
+    html_body = re.sub(md_img_pattern, img_replace, html_body)
 
     return html_body
 
