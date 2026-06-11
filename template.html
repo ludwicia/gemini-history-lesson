@@ -2,6 +2,12 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <script>
+        // 自動將舊的 GitHub Pages 網址跳轉至新的 Cloudflare Pages 網址
+        if (window.location.hostname === 'ludwicia.github.io') {
+            window.location.replace('https://ludwica-history-lesson.pages.dev/' + window.location.hash);
+        }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="lueGudczLbvVhtRPh-JU6w8b3eu_yu5XCguU6RvfMxY" />
     <meta name="google-site-verification" content="cycUA4XkuFCYyRNo-H-Mozx8JWgvgU9uJIjlz4xdHII" />
