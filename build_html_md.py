@@ -439,7 +439,7 @@ print("Processing Page 19 (Milan Edict & Licinius)...")
 html_body_p19 = process_markdown(file_p19, images_p19, "1.0", map_p19, page_id="page19")
 
 print("Processing Page 20 (Milan Edict Document)...")
-html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20", lang_orig="英文")
+html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20", lang_orig="英文/拉丁文")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
