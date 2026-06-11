@@ -61,7 +61,8 @@
         {"@type": "Article", "name": "中世紀巡行王權的權力運作", "url": "https://ludwica-history-lesson.pages.dev/#page16"},
         {"@type": "Article", "name": "從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變", "url": "https://ludwica-history-lesson.pages.dev/#page17"},
         {"@type": "Article", "name": "西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構", "url": "https://ludwica-history-lesson.pages.dev/#page18"},
-        {"@type": "Article", "name": "米蘭敕令時代的羅馬政治與李錫尼覆滅研究", "url": "https://ludwica-history-lesson.pages.dev/#page19"}
+        {"@type": "Article", "name": "米蘭敕令時代的羅馬政治與李錫尼覆滅研究", "url": "https://ludwica-history-lesson.pages.dev/#page19"},
+        {"@type": "Article", "name": "米蘭敕令三欄解析", "url": "https://ludwica-history-lesson.pages.dev/#page20"}
       ]
     }
     </script>
@@ -205,6 +206,10 @@
         <!-- 課堂十九：米蘭敕令與李錫尼覆滅 -->
         <div id="course-page19" class="course-page" style="display: none;">
             __HTML_BODY_PAGE19__
+        </div>
+        <!-- 歷史文件四：米蘭敕令 -->
+        <div id="course-page20" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE20__
         </div>
     </main>
 
@@ -439,6 +444,15 @@
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page20: `
+            <div style="font-size: 0.85rem; color: #4a5568; line-height: 1.6;">
+                <b>📚 當前文件：</b>羅馬帝國：米蘭敕令<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE20_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -461,7 +475,9 @@
         'page15': { title: '聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課', desc: '深入探討基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈。' },
         'page16': { title: '中世紀巡行王權的權力運作、制度體系與社會實態 — Ludwica 的簡單歷史課', desc: '深入研究十世紀神聖羅馬帝國皇帝奧圖一世在九五五年的巡行與戰事軌跡，解析巡行王權的協商式統治、動態禮儀展演、帝國教會體制與物資汲取物流機制。' },
         'page17': { title: '從皇帝的稱號看歷史背景與政教關係的演變 — Ludwica 的簡單歷史課', desc: '從三世紀危機後的戴克里先確立君主制，到君士坦丁大帝開啟基督教的寬容時代，再到格拉提安與迪奧多西一世將尼西亞信仰確立為國教，解析皇帝稱號的演變如何折射出羅馬帝國晚期的政教關係與政治神學。' },
-        'page18': { title: '西元紀年的確立與演進 — Ludwica 的簡單歷史課', desc: '深入解析西元紀年（AD）的提出背景、關鍵歷史人物（狄奧尼修斯、尊者比德、查理曼大帝）、曆法改革、東西方教會的分裂以及全球標準化（ISO 8601）與缺失的西元零年問題。' }
+        'page18': { title: '西元紀年的確立與演進 — Ludwica 的簡單歷史課', desc: '深入解析西元紀年（AD）的提出背景、關鍵歷史人物（狄奧尼修斯、尊者比德、查理曼大帝）、曆法改革、東西方教會的分裂以及全球標準化（ISO 8601）與缺失的西元零年問題。' },
+        'page19': { title: '米蘭敕令時代的羅馬政治與李錫尼覆滅 — Ludwica 的簡單歷史課', desc: '深入探討公元313年米蘭敕令頒布前後的羅馬帝國地緣政治，分析君士坦丁與李錫尼的權力博弈、宗教寬容政策的確立，以及李錫尼的最終覆滅。' },
+        'page20': { title: '米蘭敕令：羅馬帝國宗教寬容宣告 — Ludwica 的簡單歷史課', desc: '公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，正式結束對基督徒的迫害，三欄式對照解析。' }
     };
 
     function updatePageSEO(pageId) {
@@ -559,7 +575,7 @@
         
         // Handle full-width doc mode
         const layout = document.querySelector('.layout');
-        if (pageId === 'page04' || pageId === 'page06' || pageId === 'page08') {
+        if (pageId === 'page04' || pageId === 'page06' || pageId === 'page08' || pageId === 'page20') {
             layout.classList.add('doc-mode');
         } else {
             layout.classList.remove('doc-mode');
@@ -651,7 +667,8 @@
             { id: 'page16', name: '中世紀巡行王權的權力運作' },
             { id: 'page17', name: '從皇帝稱號看羅馬政教關係演變' },
             { id: 'page18', name: '西元紀年的確立與演進' },
-            { id: 'page19', name: '米蘭敕令時代與李錫尼覆滅' }
+            { id: 'page19', name: '米蘭敕令時代與李錫尼覆滅' },
+            { id: 'page20', name: '米蘭敕令' }
         ];
         
         pages.forEach(p => {
@@ -879,7 +896,7 @@
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);

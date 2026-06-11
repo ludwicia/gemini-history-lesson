@@ -375,6 +375,9 @@ images_p19 = [
     (r'(<h3.*?>第二次內戰與李錫尼的末路（324–325年）</h3>)', 'images/battle_adrianople.png', '公元324年決戰中，君士坦丁的軍隊高舉繪有凱樂符號（Chi-Rho）的帝國軍旗與李錫尼的軍隊激烈交戰，標誌著內戰的最高潮與帝國政教體制的轉型（本圖為 AI 模擬歷史繪畫）。')
 ]
 
+# Page 20 Config
+file_p20 = r'course/米蘭敕令.md'
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -434,6 +437,9 @@ html_body_p18 = process_markdown(file_p18, images_p18, "1.0", map_p18, page_id="
 
 print("Processing Page 19 (Milan Edict & Licinius)...")
 html_body_p19 = process_markdown(file_p19, images_p19, "1.0", map_p19, page_id="page19")
+
+print("Processing Page 20 (Milan Edict Document)...")
+html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -602,6 +608,12 @@ article_cards_html = f"""
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+    <div class="article-card doc-card" onclick="location.hash='#page20'">
+        <div class="card-content">
+            <div class="card-title">羅馬帝國：米蘭敕令</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
 </div>
 """
 
@@ -629,6 +641,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE16__', html_body_p16)
 final_html = final_html.replace('__HTML_BODY_PAGE17__', html_body_p17)
 final_html = final_html.replace('__HTML_BODY_PAGE18__', html_body_p18)
 final_html = final_html.replace('__HTML_BODY_PAGE19__', html_body_p19)
+final_html = final_html.replace('__HTML_BODY_PAGE20__', html_body_p20)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -652,6 +665,7 @@ final_html = final_html.replace('__PAGE16_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE17_DATE__', get_file_last_update_date(file_p17))
 final_html = final_html.replace('__PAGE18_DATE__', get_file_last_update_date(file_p18))
 final_html = final_html.replace('__PAGE19_DATE__', get_file_last_update_date(file_p19))
+final_html = final_html.replace('__PAGE20_DATE__', get_file_last_update_date(file_p20))
 
 # Write to file
 print("Writing build output to index.html...")
