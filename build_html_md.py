@@ -366,6 +366,15 @@ images_p18 = [
     (r'(<h2.*?>四、 東西方教會的分裂與對齊阻力：版本的「Fork」與物理時差</h2>)', 'images/clergy_trent.jpg', '1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》，象徵教會對時間體系的重構與絕對掌控。')
 ]
 
+# Page 19 Config
+file_p19 = r'course/帝國重塑、信仰博弈與權力終局：《米蘭敕令》時代的羅馬政治、君士坦丁宗教策略與李錫尼覆滅研究.md'
+map_p19 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/milan_edict_main.png" alt="Milan Edict Main" loading="lazy"><figcaption class="caption">君士坦丁與李錫尼於公元313年在米蘭會晤並達成協定，正式確立宗教寬容與信仰自由政策（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n'
+images_p19 = [
+    (r'(<h3.*?>四帝共治制的權力結構與撕裂</h3>)', 'images/p17_tetrarchs.jpg', '威尼斯聖馬可大教堂外牆著名的「四帝共治」雕像（約公元300年），象徵戴克里先時期帝國的權力分工與秩序重塑。'),
+    (r'(<h3.*?>塞巴斯蒂四十烈士：軍事整肅與信仰抗爭的微觀縮影</h3>)', 'images/forty_martyrs_sebaste.png', '公元320年冬，塞巴斯蒂四十烈士因拒絕向異教神祇獻祭而被強令站在冰封的湖面上受凍折磨，成為東部帝國著名的殉道史詩（本圖為 AI 模擬歷史繪畫）。'),
+    (r'(<h3.*?>第二次內戰與李錫尼的末路（324–325年）</h3>)', 'images/battle_adrianople.png', '公元324年決戰中，君士坦丁的軍隊高舉繪有凱樂符號（Chi-Rho）的帝國軍旗與李錫尼的軍隊激烈交戰，標誌著內戰的最高潮與帝國政教體制的轉型（本圖為 AI 模擬歷史繪畫）。')
+]
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -422,6 +431,9 @@ html_body_p17 = process_markdown(file_p17, images_p17, "1.0", map_p17, page_id="
 
 print("Processing Page 18 (AD Calendar)...")
 html_body_p18 = process_markdown(file_p18, images_p18, "1.0", map_p18, page_id="page18")
+
+print("Processing Page 19 (Milan Edict & Licinius)...")
+html_body_p19 = process_markdown(file_p19, images_p19, "1.0", map_p19, page_id="page19")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -562,6 +574,13 @@ article_cards_html = f"""
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+    <div class="article-card" onclick="location.hash='#page19'">
+        <div class="card-image" style="background-image: url('images/milan_edict_main.png');"></div>
+        <div class="card-content">
+            <div class="card-title">米蘭敕令時代與李錫尼覆滅</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
     
     <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
     
@@ -609,6 +628,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE15__', html_body_p15)
 final_html = final_html.replace('__HTML_BODY_PAGE16__', html_body_p16)
 final_html = final_html.replace('__HTML_BODY_PAGE17__', html_body_p17)
 final_html = final_html.replace('__HTML_BODY_PAGE18__', html_body_p18)
+final_html = final_html.replace('__HTML_BODY_PAGE19__', html_body_p19)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -631,6 +651,7 @@ final_html = final_html.replace('__PAGE15_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE16_DATE__', get_file_last_update_date(file_p16))
 final_html = final_html.replace('__PAGE17_DATE__', get_file_last_update_date(file_p17))
 final_html = final_html.replace('__PAGE18_DATE__', get_file_last_update_date(file_p18))
+final_html = final_html.replace('__PAGE19_DATE__', get_file_last_update_date(file_p19))
 
 # Write to file
 print("Writing build output to index.html...")

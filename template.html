@@ -53,7 +53,8 @@
         {"@type": "Article", "name": "聖職與婚娶", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page15"},
         {"@type": "Article", "name": "中世紀巡行王權的權力運作", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page16"},
         {"@type": "Article", "name": "從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page17"},
-        {"@type": "Article", "name": "西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page18"}
+        {"@type": "Article", "name": "西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page18"},
+        {"@type": "Article", "name": "米蘭敕令時代的羅馬政治與李錫尼覆滅研究", "url": "https://ludwicia.github.io/ludwica-history-lesson/#page19"}
       ]
     }
     </script>
@@ -193,6 +194,10 @@
         </div>
         <div id="course-page18" class="course-page" style="display: none;">
             __HTML_BODY_PAGE18__
+        </div>
+        <!-- 課堂十九：米蘭敕令與李錫尼覆滅 -->
+        <div id="course-page19" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE19__
         </div>
     </main>
 
@@ -418,6 +423,15 @@
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page19: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>米蘭敕令時代的羅馬政治與李錫尼覆滅研究<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE19_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -629,7 +643,8 @@
             { id: 'page15', name: '聖職與婚娶' },
             { id: 'page16', name: '中世紀巡行王權的權力運作' },
             { id: 'page17', name: '從皇帝稱號看羅馬政教關係演變' },
-            { id: 'page18', name: '西元紀年的確立與演進' }
+            { id: 'page18', name: '西元紀年的確立與演進' },
+            { id: 'page19', name: '米蘭敕令時代與李錫尼覆滅' }
         ];
         
         pages.forEach(p => {
@@ -857,7 +872,7 @@
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
