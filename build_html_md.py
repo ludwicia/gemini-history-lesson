@@ -120,7 +120,7 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
 
     return html_body
 
-def process_3col_document(file_path, content_version, page_id=None):
+def process_3col_document(file_path, content_version, page_id=None, lang_orig="德文"):
     update_date = get_file_last_update_date(file_path)
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -161,7 +161,7 @@ def process_3col_document(file_path, content_version, page_id=None):
     </div>
     <div class="doc-3col-container">
         <div class="doc-3col-header">
-            <div class="doc-col-title">原文 (德文)</div>
+            <div class="doc-col-title">原文 ({lang_orig})</div>
             <div class="doc-col-title">譯文 (中文)</div>
             <div class="doc-col-title">解釋 (筆記)</div>
         </div>
@@ -439,7 +439,7 @@ print("Processing Page 19 (Milan Edict & Licinius)...")
 html_body_p19 = process_markdown(file_p19, images_p19, "1.0", map_p19, page_id="page19")
 
 print("Processing Page 20 (Milan Edict Document)...")
-html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20")
+html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20", lang_orig="英文")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
