@@ -666,7 +666,7 @@ sitemap_content = f"""\
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ludwicia.github.io/ludwica-history-lesson/</loc>
+    <loc>https://ludwica-history-lesson.pages.dev/</loc>
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -681,7 +681,7 @@ print("Generated sitemap.xml")
 robots_content = """User-agent: *
 Allow: /
 
-Sitemap: https://ludwicia.github.io/ludwica-history-lesson/sitemap.xml
+Sitemap: https://ludwica-history-lesson.pages.dev/sitemap.xml
 """
 
 with open(r'robots.txt', 'w', encoding='utf-8') as f:

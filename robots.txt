@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ludwicia.github.io/ludwica-history-lesson/sitemap.xml
+Sitemap: https://ludwica-history-lesson.pages.dev/sitemap.xml
