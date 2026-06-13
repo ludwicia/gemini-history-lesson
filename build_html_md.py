@@ -406,7 +406,7 @@ print("Processing Page 8 (Concordat of Worms)...")
 html_body_p8 = process_3col_document(file_p8, "1.0", page_id="page08")
 
 print("Processing Page 9 (Pippin Donation)...")
-html_body_p9 = process_markdown(file_p9, images_p9, "1.0", map_p9, page_id="page09")
+html_body_p9 = process_markdown(file_p9, images_p9, "1.1", map_p9, page_id="page09")
 
 print("Processing Page 10 (Carolingian Education)...")
 html_body_p10 = process_markdown(file_p10, images_p10, "1.0", map_p10, page_id="page10")
@@ -528,7 +528,7 @@ article_cards_html = f"""
         <div class="card-image" style="background-image: url('images/pippin_donation_main.jpg');"></div>
         <div class="card-content">
             <div class="card-title">丕平獻土與教皇國誕生</div>
-            <div class="card-meta">內容版本：1.0</div>
+            <div class="card-meta">內容版本：1.1</div>
         </div>
     </div>
     <div class="article-card" onclick="location.hash='#page10'">
