@@ -120,11 +120,11 @@ def format_reference_links(text):
         # Match standard link: 1. [Title](URL)
         m_standard = re.match(r'^(\d+\.\s+)\[([^\]]+)\]\(([^)]+)\)$', stripped)
         
-        # Match unformatted link: 3. Title, [URL](URL)
-        m_unformatted = re.match(r'^(\d+\.\s+)(.*?),\s*\[(https?://[^\]]+)\]\(\3\)$', stripped)
-        
-        # Match unformatted link with backslashes or slightly mismatching URL: 3. Title, [URL1](URL2)
-        m_mismatch = re.match(r'^(\d+\.\s+)(.*?),\s*\[(https?://[^\]]+)\]\((https?://[^)]+)\)$', stripped)
+        # Match unformatted link with optional retrieval date: 1. Title, 檢索日期：... [URL](URL)
+        m_unformatted = re.match(
+            r'^(\d+\.\s+)(.*?)(?:(?:,\s*|，\s*)?檢索日期：.*?(?:，|,)?\s*)?\[(https?://[^\s\]]+)\]\((https?://[^\s)]+)\)$',
+            stripped
+        )
         
         if m_standard:
             index = m_standard.group(1)
@@ -133,18 +133,28 @@ def format_reference_links(text):
         elif m_unformatted:
             index = m_unformatted.group(1)
             title = m_unformatted.group(2).strip()
-            url = m_unformatted.group(3).strip()
-        elif m_mismatch:
-            index = m_mismatch.group(1)
-            title = m_mismatch.group(2).strip()
-            url = m_mismatch.group(4).strip() # use actual href
+            url = m_unformatted.group(4).strip() # use actual href
+            
+            # Clean up empty titles by parsing them from the URL if possible
+            if not title:
+                parsed_url = urllib.parse.urlparse(url)
+                if 'wikipedia.org' in parsed_url.netloc:
+                    path_parts = parsed_url.path.strip('/').split('/')
+                    if len(path_parts) >= 2 and path_parts[0] == 'wiki':
+                        wiki_title = urllib.parse.unquote(path_parts[1]).replace('_', ' ')
+                        title = f"{wiki_title} - Wikipedia"
+                    else:
+                        title = "Wikipedia"
+                else:
+                    domain = parsed_url.netloc.replace('www.', '')
+                    title = f"Reference link on {domain}"
         else:
             new_lines.append(line)
             continue
             
-        # Clean backslashes in URL and title
-        url = url.replace('\\', '')
-        title = title.replace('\\', '')
+        # Clean backslashes in URL and title, and trim trailing commas
+        url = url.replace('\\', '').strip()
+        title = title.replace('\\', '').strip(',， ')
         
         formatted_line = f"{index}[{title}]({url})"
         new_lines.append(formatted_line)

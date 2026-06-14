@@ -1,20 +1,19 @@
-import re
+import sys
+import os
+sys.path.append('course')
+from import_gdoc import format_reference_links
 
-file_path = r'c:\Users\USER\gemini的簡單歷史課\course\聖職與婚娶：基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈.md'
+def main():
+    filepath = 'course/使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告.md'
+    with open(filepath, 'r', encoding='utf-8') as f:
+        text = f.read()
 
-with open(file_path, 'r', encoding='utf-8') as f:
-    text = f.read()
+    fixed_text = format_reference_links(text)
 
-# Pattern: match "number. Title, [URL](URL)"
-# \d+\.\s+ -> Group 1: list number and space
-# (.*?) -> Group 2: The title
-# ,\s* -> comma and optional space
-# \[(https?://[^\]]+)\]\(\3\) -> The URL as markdown link
-pattern = r'(\d+\.\s+)(.*?),\s*\[(https?://[^\]]+)\]\(\3\)'
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(fixed_text)
 
-new_text = re.sub(pattern, r'\1[\2](\3)', text)
+    print("Fixed bibliography reference links successfully!")
 
-with open(file_path, 'w', encoding='utf-8') as f:
-    f.write(new_text)
-
-print("References formatted successfully!")
+if __name__ == '__main__':
+    main()
