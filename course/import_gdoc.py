@@ -47,9 +47,9 @@ def format_citations(text):
     # Then format [\d+] into <sup>[\1]</sup> only if not already in sup
     body = re.sub(r'(?<!<sup>)\[(\d{1,2})\](?!</sup>)', r'<sup>[\1]</sup>', body)
     
-    # And handle raw numbers that might be just superscripted without brackets
-    pattern = r'(?<=[\u4e00-\u9fff》）』」a-zA-Z*])(\d{1,2})(?!\s*(?:次|個|件|年|月|日|萬|億|元|位|歲|分|秒|px|em|rem|%))(?=[\s。，；、』」）|]|$|<])'
-    body = re.sub(pattern, r"<sup>[\1]</sup>", body)
+    # And handle raw numbers that might be just superscripted without brackets (supporting optional spaces before them)
+    pattern = r'([\u4e00-\u9fff》）』」a-zA-Z*])\s*(\d{1,2})(?!\s*(?:次|個|件|年|月|日|萬|億|元|位|歲|分|秒|px|em|rem|%))(?=[\s。，；、：：！!？\?』」）\)\]\]〕〉》|]|$|<])'
+    body = re.sub(pattern, r"\1<sup>[\2]</sup>", body)
     
     return body + bib
 
