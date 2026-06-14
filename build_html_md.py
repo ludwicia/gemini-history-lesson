@@ -378,6 +378,15 @@ images_p19 = [
 # Page 20 Config
 file_p20 = r'course/米蘭敕令.md'
 
+# Page 21 (Apostles' Creed) Config
+file_p21 = r'course/使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告.md'
+map_p21 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/creed_main.jpg" alt="Apostles Creed" loading="lazy"><figcaption class="caption">1493年出版的《牧人曆》（Compost et calendrier des bergers）插圖細節，描繪使徒們與各自創作的信經宣告條款，是中世紀傳統聖傳故事的經典圖解。</figcaption></figure>\n'
+images_p21 = [
+    (r'(<h3.*?>早期羅馬洗禮儀式與答問式信經的實踐</h3>)', 'images/creed_baptism.jpg', '義大利拉溫納著名的阿利烏派洗禮堂（Arian Baptistery）穹頂馬賽克（五世紀末），中心描繪了施洗約翰在約旦河為基督施行洗禮的場景，是早期答問式洗禮信經實踐的藝術寫照。'),
+    (r'(<h3.*?>聖皮爾米紐斯與《備忘錄選集》的文本奠基</h3>)', 'images/creed_pirminius.jpg', '作於十世紀的《霍恩巴赫聖事書》（Hornbacher Sakramentar）插圖，描繪修道院院長阿達爾貝特向修道院創立者聖皮爾米紐斯呈交抄寫的聖經文獻，象徵修道院手抄室對大公信經文本標準化的奠基性貢獻。'),
+    (r'(<h3.*?>加洛林王朝的帝國 correctio 運動與禮儀標準化</h3>)', 'images/carolingian_alcuin.jpg', '法國歷史畫家 Jean-Victor Schnetz 名作《查理曼與阿爾琴》，描繪學者阿爾琴向查理曼大帝展示修訂後的拉丁文手抄文獻，是加洛林道德修正運動與禮儀一統化歷史的生動描繪。')
+]
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -440,6 +449,9 @@ html_body_p19 = process_markdown(file_p19, images_p19, "1.0", map_p19, page_id="
 
 print("Processing Page 20 (Milan Edict Document)...")
 html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20", lang_orig="英文/拉丁文")
+
+print("Processing Page 21 (Apostles' Creed)...")
+html_body_p21 = process_markdown(file_p21, images_p21, "1.0", map_p21, page_id="page21")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -587,6 +599,13 @@ article_cards_html = f"""
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+    <div class="article-card" onclick="location.hash='#page21'">
+        <div class="card-image" style="background-image: url('images/creed_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">使徒信經的歷史演變與神學建構</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
     
     <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
     
@@ -642,6 +661,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE17__', html_body_p17)
 final_html = final_html.replace('__HTML_BODY_PAGE18__', html_body_p18)
 final_html = final_html.replace('__HTML_BODY_PAGE19__', html_body_p19)
 final_html = final_html.replace('__HTML_BODY_PAGE20__', html_body_p20)
+final_html = final_html.replace('__HTML_BODY_PAGE21__', html_body_p21)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -666,6 +686,7 @@ final_html = final_html.replace('__PAGE17_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE18_DATE__', get_file_last_update_date(file_p18))
 final_html = final_html.replace('__PAGE19_DATE__', get_file_last_update_date(file_p19))
 final_html = final_html.replace('__PAGE20_DATE__', get_file_last_update_date(file_p20))
+final_html = final_html.replace('__PAGE21_DATE__', get_file_last_update_date(file_p21))
 
 # Write to file
 print("Writing build output to index.html...")

@@ -62,7 +62,8 @@
         {"@type": "Article", "name": "從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變", "url": "https://ludwica-history-lesson.pages.dev/#page17"},
         {"@type": "Article", "name": "西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構", "url": "https://ludwica-history-lesson.pages.dev/#page18"},
         {"@type": "Article", "name": "米蘭敕令時代的羅馬政治與李錫尼覆滅研究", "url": "https://ludwica-history-lesson.pages.dev/#page19"},
-        {"@type": "Article", "name": "米蘭敕令三欄解析", "url": "https://ludwica-history-lesson.pages.dev/#page20"}
+        {"@type": "Article", "name": "米蘭敕令三欄解析", "url": "https://ludwica-history-lesson.pages.dev/#page20"},
+        {"@type": "Article", "name": "使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告", "url": "https://ludwica-history-lesson.pages.dev/#page21"}
       ]
     }
     </script>
@@ -211,6 +212,10 @@
         <div id="course-page20" class="course-page" style="display: none;">
             __HTML_BODY_PAGE20__
         </div>
+        <!-- 課堂二十一：使徒信經 -->
+        <div id="course-page21" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE21__
+        </div>
     </main>
 
     <!-- Right Sidebar / Floating Footer: Search & Version -->
@@ -243,8 +248,8 @@
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：4.5 (新增社群分享功能與行動版介面優化)</div>
-                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-11</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：4.6 (新增使徒信經專題與路由載入機制優化)</div>
+                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-14</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
                         <!-- Dynamic metadata loaded by JS -->
@@ -453,6 +458,15 @@
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page21: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>使徒信經的歷史演變與神學建構<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE21_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -477,7 +491,8 @@
         'page17': { title: '從皇帝的稱號看歷史背景與政教關係的演變 — Ludwica 的簡單歷史課', desc: '從三世紀危機後的戴克里先確立君主制，到君士坦丁大帝開啟基督教的寬容時代，再到格拉提安與迪奧多西一世將尼西亞信仰確立為國教，解析皇帝稱號的演變如何折射出羅馬帝國晚期的政教關係與政治神學。' },
         'page18': { title: '西元紀年的確立與演進 — Ludwica 的簡單歷史課', desc: '深入解析西元紀年（AD）的提出背景、關鍵歷史人物（狄奧尼修斯、尊者比德、查理曼大帝）、曆法改革、東西方教會的分裂以及全球標準化（ISO 8601）與缺失的西元零年問題。' },
         'page19': { title: '米蘭敕令時代的羅馬政治與李錫尼覆滅 — Ludwica 的簡單歷史課', desc: '深入探討公元313年米蘭敕令頒布前後的羅馬帝國地緣政治，分析君士坦丁與李錫尼的權力博弈、宗教寬容政策的確立，以及李錫尼的最終覆滅。' },
-        'page20': { title: '米蘭敕令：羅馬帝國宗教寬容宣告 — Ludwica 的簡單歷史課', desc: '公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，包含英文與拉丁文雙版本之三欄對照與學術註解。' }
+        'page20': { title: '米蘭敕令：羅馬帝國宗教寬容宣告 — Ludwica 的簡單歷史課', desc: '公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，包含英文與拉丁文雙版本之三欄對照與學術註解。' },
+        'page21': { title: '使徒信經的歷史演變與神學建構 — Ludwica 的簡單歷史課', desc: '深入研究使徒信經從新約儲形、古羅馬信經雙語見證，到皮爾米紐斯文本奠基，以及加洛林道德修正運動與禮儀標準化推廣的歷史演變。' }
     };
 
     function updatePageSEO(pageId) {
@@ -668,7 +683,8 @@
             { id: 'page17', name: '從皇帝稱號看羅馬政教關係演變' },
             { id: 'page18', name: '西元紀年的確立與演進' },
             { id: 'page19', name: '米蘭敕令時代與李錫尼覆滅' },
-            { id: 'page20', name: '米蘭敕令' }
+            { id: 'page20', name: '米蘭敕令' },
+            { id: 'page21', name: '使徒信經的歷史演變與神學建構' }
         ];
         
         pages.forEach(p => {
@@ -896,7 +912,7 @@
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
