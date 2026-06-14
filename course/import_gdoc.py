@@ -125,6 +125,12 @@ def format_reference_links(text):
             r'^(\d+\.\s+)(.*?)(?:(?:,\s*|，\s*)?檢索日期：.*?(?:，|,)?\s*)?\[(https?://[^\s\]]+)\]\((https?://[^\s)]+)\)$',
             stripped
         )
+
+        # Match link button: 1. Title, [連結](URL)
+        m_link_button = re.match(
+            r'^(\d+\.\s+)(.*?)(?:(?:,\s*|，\s*)?)\s*\[(?:連結|Link|link)\]\((https?://.+)\)$',
+            stripped
+        )
         
         if m_standard:
             index = m_standard.group(1)
@@ -148,6 +154,10 @@ def format_reference_links(text):
                 else:
                     domain = parsed_url.netloc.replace('www.', '')
                     title = f"Reference link on {domain}"
+        elif m_link_button:
+            index = m_link_button.group(1)
+            title = m_link_button.group(2).strip().replace('*', '').strip('_，, ')
+            url = m_link_button.group(3).strip()
         else:
             new_lines.append(line)
             continue
