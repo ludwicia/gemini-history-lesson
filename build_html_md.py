@@ -387,6 +387,11 @@ images_p21 = [
     (r'(<h3.*?>加洛林王朝的帝國 correctio 運動與禮儀標準化</h3>)', 'images/carolingian_alcuin.jpg', '法國歷史畫家 Jean-Victor Schnetz 名作《查理曼與阿爾琴》，描繪學者阿爾琴向查理曼大帝展示修訂後的拉丁文手抄文獻，是加洛林道德修正運動與禮儀一統化歷史的生動描繪。')
 ]
 
+# Page 22 (Odoacer) Config
+file_p22 = r'course/羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅.md'
+map_p22 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/odoacer_fall_rome.png" alt="Odoacer Fall of Rome" loading="lazy"><figcaption class="caption">歷史想像油畫：西羅馬帝國的覆滅，蠻族將領奧多亞賽迫使幼帝羅慕路斯·奧古斯都退位並接管帝國徽器與衣冠。</figcaption></figure>\n'
+images_p22 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -452,6 +457,9 @@ html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20", lang_or
 
 print("Processing Page 21 (Apostles' Creed)...")
 html_body_p21 = process_markdown(file_p21, images_p21, "1.0", map_p21, page_id="page21")
+
+print("Processing Page 22 (Odoacer)...")
+html_body_p22 = process_markdown(file_p22, images_p22, "1.0", map_p22, page_id="page22")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -606,6 +614,13 @@ article_cards_html = f"""
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+    <div class="article-card" onclick="location.hash='#page22'">
+        <div class="card-image" style="background-image: url('images/odoacer_fall_rome.png');"></div>
+        <div class="card-content">
+            <div class="card-title">羅馬秩序的終結與日耳曼王權的奠定</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
     
     <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
     
@@ -662,6 +677,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE18__', html_body_p18)
 final_html = final_html.replace('__HTML_BODY_PAGE19__', html_body_p19)
 final_html = final_html.replace('__HTML_BODY_PAGE20__', html_body_p20)
 final_html = final_html.replace('__HTML_BODY_PAGE21__', html_body_p21)
+final_html = final_html.replace('__HTML_BODY_PAGE22__', html_body_p22)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -687,6 +703,7 @@ final_html = final_html.replace('__PAGE18_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE19_DATE__', get_file_last_update_date(file_p19))
 final_html = final_html.replace('__PAGE20_DATE__', get_file_last_update_date(file_p20))
 final_html = final_html.replace('__PAGE21_DATE__', get_file_last_update_date(file_p21))
+final_html = final_html.replace('__PAGE22_DATE__', get_file_last_update_date(file_p22))
 
 # Write to file
 print("Writing build output to index.html...")
