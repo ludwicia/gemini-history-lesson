@@ -26,6 +26,7 @@
   - 將文章存放至 `course/羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅.md`。
 - **視覺與設計整合**：
   - 從 Wikimedia Commons 下載了 19 世紀 Bernhard Mörlins 創作的真實公共領域歷史插圖 (`images/odoacer_fall_rome.jpg`)，描繪西羅馬帝國最後的皇帝羅慕路斯·奧古斯都向日耳曼將領奧多亞賽讓渡皇冠的歷史經典畫面。
+  - 下載並置入了西元 480 年左右奧多亞賽治下的義大利王國疆域與達爾馬提亞地緣格局歷史地圖 (`images/odoacer_480ad.jpg`)。
 - **網站架構與 SEO 升級**：
   - 在 `template.html` 與 `build_html_md.py` 完整註冊 Page 22 (`page22`)。
   - 同步更新 JSON-LD 結構化資料、動態 SEO (pageSEO)、搜尋索引 (initGlobalSearchIndex) 與首頁的文章卡片。
