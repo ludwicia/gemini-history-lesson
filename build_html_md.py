@@ -714,6 +714,19 @@ categories_style = """
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
     margin-top: 10px;
     margin-bottom: 20px;
+    transition: opacity 0.25s ease;
+}
+.category-header-card.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: transparent;
+    box-shadow: none;
+}
+.category-container.open {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: 0;
+    border-top: none;
 }
 
 /* Layout adaptation for document cards in the grids */
@@ -721,6 +734,12 @@ categories_style = """
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
+}
+@media (max-width: 800px) {
+    .category-container .article-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+    }
 }
 .category-container .article-card {
     background: #ffffff;
@@ -837,11 +856,14 @@ function toggleCategory(catId) {
     const container = document.getElementById('cat-' + catId);
     const icon = document.getElementById('icon-' + catId);
     if (!container || !icon) return;
+    const header = container.previousElementSibling;
     
     if (container.style.display === 'none') {
         container.style.display = 'block';
         container.style.opacity = '0';
         icon.innerText = '▲';
+        if (header) header.classList.add('open');
+        container.classList.add('open');
         // force reflow
         container.offsetHeight;
         container.style.transition = 'opacity 0.25s ease';
@@ -849,6 +871,8 @@ function toggleCategory(catId) {
     } else {
         container.style.display = 'none';
         icon.innerText = '▼';
+        if (header) header.classList.remove('open');
+        container.classList.remove('open');
     }
 }
 </script>
