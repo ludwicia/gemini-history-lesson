@@ -25,7 +25,7 @@
   - 使用 `import_gdoc.py` 腳本成功將 Google Docs 文章匯入為結構化 Markdown 文件。
   - 將文章存放至 `course/羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅.md`。
 - **視覺與設計整合**：
-  - 使用 `generate_image` 生產全站一致古典油畫質感的封面主圖 (`images/odoacer_fall_rome.png`)，再現奧多亞賽接管西羅馬帝國徽器與衣冠、幼帝退位之歷史場景。
+  - 從 Wikimedia Commons 下載了 19 世紀 Bernhard Mörlins 創作的真實公共領域歷史插圖 (`images/odoacer_fall_rome.jpg`)，描繪西羅馬帝國最後的皇帝羅慕路斯·奧古斯都向日耳曼將領奧多亞賽讓渡皇冠的歷史經典畫面。
 - **網站架構與 SEO 升級**：
   - 在 `template.html` 與 `build_html_md.py` 完整註冊 Page 22 (`page22`)。
   - 同步更新 JSON-LD 結構化資料、動態 SEO (pageSEO)、搜尋索引 (initGlobalSearchIndex) 與首頁的文章卡片。

@@ -389,7 +389,7 @@ images_p21 = [
 
 # Page 22 (Odoacer) Config
 file_p22 = r'course/羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅.md'
-map_p22 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/odoacer_fall_rome.png" alt="Odoacer Fall of Rome" loading="lazy"><figcaption class="caption">歷史想像油畫：西羅馬帝國的覆滅，蠻族將領奧多亞賽迫使幼帝羅慕路斯·奧古斯都退位並接管帝國徽器與衣冠。</figcaption></figure>\n'
+map_p22 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/odoacer_fall_rome.jpg" alt="Odoacer Fall of Rome" loading="lazy"><figcaption class="caption">Bernhard Mörlins 於 19 世紀所繪的歷史插圖，描繪西羅馬帝國最後的皇帝羅慕路斯·奧古斯都向日耳曼將領奧多亞賽讓渡皇冠的經典場景。</figcaption></figure>\n'
 images_p22 = []
 
 
@@ -615,7 +615,7 @@ article_cards_html = f"""
         </div>
     </div>
     <div class="article-card" onclick="location.hash='#page22'">
-        <div class="card-image" style="background-image: url('images/odoacer_fall_rome.png');"></div>
+        <div class="card-image" style="background-image: url('images/odoacer_fall_rome.jpg');"></div>
         <div class="card-content">
             <div class="card-title">羅馬秩序的終結與日耳曼王權的奠定</div>
             <div class="card-meta">內容版本：1.0</div>
