@@ -70,6 +70,128 @@
     }
     </script>
     <link rel="stylesheet" href="style.css?v=4.5">
+
+<style>
+/* New Category Section Styles */
+.category-section {
+    margin-bottom: 12px;
+    animation: fadeIn 0.6s ease;
+}
+.category-header-card {
+    display: flex;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    height: 70px;
+    align-items: center;
+    width: 100%;
+}
+.category-header-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,85,164,0.08);
+    border-color: rgba(0,85,164,0.2);
+}
+.category-header-image {
+    width: 100px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-right: 1px solid #e2e8f0;
+}
+.category-header-content {
+    flex: 1;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.category-header-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
+}
+.category-header-icon {
+    font-size: 0.85rem;
+    color: #718096;
+    transition: color 0.2s ease;
+}
+.category-header-card:hover .category-header-icon {
+    color: var(--primary-color);
+}
+.category-container {
+    background: #edf2f7;  /* Soft gray container background as in mockup */
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Layout adaptation for document cards in the grids */
+.category-container .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+.category-container .article-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.category-container .article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border-color: #cbd5e0;
+}
+.category-container .article-card.doc-card {
+    background: #fafafa;
+    border-left: 5px solid #AE1C28; /* document accent color */
+}
+
+/* Dynamic Hover Accent Color per Category Container */
+.category-container[data-category="rome"] .article-card:hover {
+    border-color: #e53e3e;
+    box-shadow: 0 10px 20px rgba(229, 62, 62, 0.12);
+}
+.category-container[data-category="medieval"] .article-card:hover {
+    border-color: #319795;
+    box-shadow: 0 10px 20px rgba(49, 151, 149, 0.12);
+}
+.category-container[data-category="papal"] .article-card:hover {
+    border-color: #ecc94b;
+    box-shadow: 0 10px 20px rgba(236, 201, 75, 0.12);
+}
+.category-container[data-category="frank"] .article-card:hover {
+    border-color: #486581;
+    box-shadow: 0 10px 20px rgba(72, 101, 129, 0.12);
+}
+.category-container[data-category="hre"] .article-card:hover {
+    border-color: #e53e3e;
+    box-shadow: 0 10px 20px rgba(229, 62, 62, 0.12);
+}
+.category-container[data-category="church"] .article-card:hover {
+    border-color: #805ad5;
+    box-shadow: 0 10px 20px rgba(128, 90, 213, 0.12);
+}
+.category-container[data-category="trivia"] .article-card:hover {
+    border-color: #319795;
+    box-shadow: 0 10px 20px rgba(49, 151, 149, 0.12);
+}
+.category-container[data-category="us"] .article-card:hover {
+    border-color: #3182ce;
+    box-shadow: 0 10px 20px rgba(49, 130, 206, 0.12);
+}
+.category-container[data-category="holland"] .article-card:hover {
+    border-color: #dd6b20;
+    box-shadow: 0 10px 20px rgba(221, 107, 32, 0.12);
+}
+</style>
 </head>
 <body>
 
@@ -125,112 +247,17 @@
                 </button>
             </div>
             
-<div class="article-grid">
-    <div class="article-card" onclick="location.hash='#page01'">
-        <div class="card-image" style="background-image: url('images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">荷蘭建國與地緣政經</div>
-            <div class="card-meta">內容版本：1.1</div>
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('rome')">
+        <div class="category-header-image" style="background-image: url('images/milan_edict_main.png');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">三世紀危機後的羅馬帝國</span>
+            <span class="category-header-icon" id="icon-rome">▼</span>
         </div>
     </div>
-    <div class="article-card" onclick="location.hash='#page02'">
-        <div class="card-image" style="background-image: url('images/img_10_960px-Cahokia_Monks_Mound.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">美國的誕生(一)</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page13'">
-        <div class="card-image" style="background-image: url('images/us2_map.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">美國的誕生(二)</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page03'">
-        <div class="card-image" style="background-image: url('images/hussite_wars_main.png');"></div>
-        <div class="card-content">
-            <div class="card-title">宗教戰爭(一)：胡斯戰爭</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page12'">
-        <div class="card-image" style="background-image: url('images/catharism_main.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">宗教戰爭(二)：卡特里派</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page05'">
-        <div class="card-image" style="background-image: url('images/hirsau_main_wilhelm.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">希爾紹修道院</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page07'">
-        <div class="card-image" style="background-image: url('images/ottonian_hre_map.svg');"></div>
-        <div class="card-content">
-            <div class="card-title">奧托-薩利安帝國教會體制</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page09'">
-        <div class="card-image" style="background-image: url('images/pippin_donation_main.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">丕平獻土與教皇國誕生</div>
-            <div class="card-meta">內容版本：1.1</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page10'">
-        <div class="card-image" style="background-image: url('images/carolingian_main.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">卡洛林教育基建與知識復興</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page11'">
-        <div class="card-image" style="background-image: url('images/paper_main.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">歐洲造紙術的歷史演變</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page14'">
-        <div class="card-image" style="background-image: url('images/uk_constitution_main.png');"></div>
-        <div class="card-content">
-            <div class="card-title">英國的憲法</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page15'">
-        <div class="card-image" style="background-image: url('images/clergy_trent.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">聖職與婚娶</div>
-            <div class="card-meta">內容版本：1.2</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page16'">
-        <div class="card-image" style="background-image: url('images/reisekönig_travelling_kings.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">中世紀巡行王權的權力運作</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page17'">
-        <div class="card-image" style="background-image: url('images/ambrose_and_theodosius.png');"></div>
-        <div class="card-content">
-            <div class="card-title">從皇帝稱號看羅馬政教關係演變</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
-    <div class="article-card" onclick="location.hash='#page18'">
-        <div class="card-image" style="background-image: url('images/ad_calendar_main.png');"></div>
-        <div class="card-content">
-            <div class="card-title">西元紀年的確立與演進</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
+    <div class="category-container" id="cat-rome" data-category="rome" style="display: none;">
+        <div class="article-grid">
+            
     <div class="article-card" onclick="location.hash='#page19'">
         <div class="card-image" style="background-image: url('images/milan_edict_main.png');"></div>
         <div class="card-content">
@@ -238,13 +265,7 @@
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
-    <div class="article-card" onclick="location.hash='#page21'">
-        <div class="card-image" style="background-image: url('images/creed_main.jpg');"></div>
-        <div class="card-content">
-            <div class="card-title">使徒信經的歷史演變與神學建構</div>
-            <div class="card-meta">內容版本：1.0</div>
-        </div>
-    </div>
+
     <div class="article-card" onclick="location.hash='#page22'">
         <div class="card-image" style="background-image: url('images/odoacer_fall_rome.jpg');"></div>
         <div class="card-content">
@@ -252,6 +273,22 @@
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('medieval')">
+        <div class="category-header-image" style="background-image: url('images/clovis_main.jpg');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">中世紀諸民族記</span>
+            <span class="category-header-icon" id="icon-medieval">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-medieval" data-category="medieval" style="display: none;">
+        <div class="article-grid">
+            
     <div class="article-card" onclick="location.hash='#page23'">
         <div class="card-image" style="background-image: url('images/clovis_main.jpg');"></div>
         <div class="card-content">
@@ -259,8 +296,246 @@
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
-    
-    <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('papal')">
+        <div class="category-header-image" style="background-image: url('images/pippin_donation_main.jpg');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">教宗國記</span>
+            <span class="category-header-icon" id="icon-papal">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-papal" data-category="papal" style="display: none;">
+        <div class="article-grid">
+            
+    <div class="article-card" onclick="location.hash='#page09'">
+        <div class="card-image" style="background-image: url('images/pippin_donation_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">丕平獻土與教皇國誕生</div>
+            <div class="card-meta">內容版本：1.1</div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('frank')">
+        <div class="category-header-image" style="background-image: url('images/carolingian_main.jpg');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">法蘭克王國記</span>
+            <span class="category-header-icon" id="icon-frank">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-frank" data-category="frank" style="display: none;">
+        <div class="article-grid">
+            
+    <div class="article-card" onclick="location.hash='#page10'">
+        <div class="card-image" style="background-image: url('images/carolingian_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">卡洛林教育基建與知識復興</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('hre')">
+        <div class="category-header-image" style="background-image: url('images/reisekönig_travelling_kings.jpg');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">神聖羅馬帝國記</span>
+            <span class="category-header-icon" id="icon-hre">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-hre" data-category="hre" style="display: none;">
+        <div class="article-grid">
+            
+    <div class="article-card" onclick="location.hash='#page07'">
+        <div class="card-image" style="background-image: url('images/ottonian_hre_map.svg');"></div>
+        <div class="card-content">
+            <div class="card-title">奧托-薩利安帝國教會體制</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page16'">
+        <div class="card-image" style="background-image: url('images/reisekönig_travelling_kings.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">中世紀巡行王權的權力運作</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('church')">
+        <div class="category-header-image" style="background-image: url('images/creed_main.jpg');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">基督教與王權</span>
+            <span class="category-header-icon" id="icon-church">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-church" data-category="church" style="display: none;">
+        <div class="article-grid">
+            
+    <div class="article-card" onclick="location.hash='#page17'">
+        <div class="card-image" style="background-image: url('images/ambrose_and_theodosius.png');"></div>
+        <div class="card-content">
+            <div class="card-title">從皇帝稱號看羅馬政教關係演變</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page21'">
+        <div class="card-image" style="background-image: url('images/creed_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">使徒信經的歷史演變與神學建構</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page15'">
+        <div class="card-image" style="background-image: url('images/clergy_trent.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">聖職與婚娶</div>
+            <div class="card-meta">內容版本：1.2</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page03'">
+        <div class="card-image" style="background-image: url('images/hussite_wars_main.png');"></div>
+        <div class="card-content">
+            <div class="card-title">宗教戰爭(一)：胡斯戰爭</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page12'">
+        <div class="card-image" style="background-image: url('images/catharism_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">宗教戰爭(二)：卡特里派</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('trivia')">
+        <div class="category-header-image" style="background-image: url('images/paper_main.jpg');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">歐洲小知識</span>
+            <span class="category-header-icon" id="icon-trivia">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-trivia" data-category="trivia" style="display: none;">
+        <div class="article-grid">
+            
+    <div class="article-card" onclick="location.hash='#page14'">
+        <div class="card-image" style="background-image: url('images/uk_constitution_main.png');"></div>
+        <div class="card-content">
+            <div class="card-title">英國的憲法</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page11'">
+        <div class="card-image" style="background-image: url('images/paper_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">歐洲造紙術的歷史演變</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page18'">
+        <div class="card-image" style="background-image: url('images/ad_calendar_main.png');"></div>
+        <div class="card-content">
+            <div class="card-title">西元紀年的確立與演進</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page05'">
+        <div class="card-image" style="background-image: url('images/hirsau_main_wilhelm.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">希爾紹修道院</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('us')">
+        <div class="category-header-image" style="background-image: url('images/us2_map.jpg');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">美國的誕生</span>
+            <span class="category-header-icon" id="icon-us">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-us" data-category="us" style="display: none;">
+        <div class="article-grid">
+            
+    <div class="article-card" onclick="location.hash='#page02'">
+        <div class="card-image" style="background-image: url('images/img_10_960px-Cahokia_Monks_Mound.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">美國的誕生(一)</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+
+    <div class="article-card" onclick="location.hash='#page13'">
+        <div class="card-image" style="background-image: url('images/us2_map.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">美國的誕生(二)</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-header-card" onclick="toggleCategory('holland')">
+        <div class="category-header-image" style="background-image: url('images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">荷蘭的誕生與資本主義</span>
+            <span class="category-header-icon" id="icon-holland">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-holland" data-category="holland" style="display: none;">
+        <div class="article-grid">
+            
+    <div class="article-card" onclick="location.hash='#page01'">
+        <div class="card-image" style="background-image: url('images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">荷蘭建國與地緣政經</div>
+            <div class="card-meta">內容版本：1.1</div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card-section-title" style="margin-top: 40px; margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; color: var(--primary-color);">歷史文件專區</div>
+<div class="article-grid">
     
     <div class="article-card doc-card" onclick="location.hash='#page04'">
         <div class="card-content">
@@ -268,18 +543,21 @@
             <div class="card-meta">內容版本：1.8</div>
         </div>
     </div>
+
     <div class="article-card doc-card" onclick="location.hash='#page06'">
         <div class="card-content">
             <div class="card-title">修道院制度：聖本篤會規</div>
             <div class="card-meta">內容版本：2.0</div>
         </div>
     </div>
+
     <div class="article-card doc-card" onclick="location.hash='#page08'">
         <div class="card-content">
             <div class="card-title">敘任權之爭：沃姆斯協約</div>
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+
     <div class="article-card doc-card" onclick="location.hash='#page20'">
         <div class="card-content">
             <div class="card-title">羅馬帝國：米蘭敕令</div>
@@ -7936,5 +8214,26 @@ Freedom of worship granted to all Christians
 <div id="toast" class="toast"></div>
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+function toggleCategory(catId) {
+    const container = document.getElementById('cat-' + catId);
+    const icon = document.getElementById('icon-' + catId);
+    if (!container || !icon) return;
+    
+    if (container.style.display === 'none') {
+        container.style.display = 'block';
+        container.style.opacity = '0';
+        icon.innerText = '▲';
+        // force reflow
+        container.offsetHeight;
+        container.style.transition = 'opacity 0.25s ease';
+        container.style.opacity = '1';
+    } else {
+        container.style.display = 'none';
+        icon.innerText = '▼';
+    }
+}
+</script>
 </body>
 </html>
