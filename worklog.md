@@ -20,6 +20,19 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-06-15 (蠻族崛起的政治重塑 1.0)
+- **發布「蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基」學術專題 (內容版本 1.0)**：
+  - 使用 `import_gdoc.py` 腳本成功將 Google Docs 文章匯入為結構化 Markdown 文件。
+  - 將文章存放至 `course/蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基.md`。
+- **視覺與設計整合**：
+  - 從 Wikimedia Commons 下載了 3 幅具歷史學術價值的公共領域圖片，並保存至本地 `images/`：
+    1. 19 世紀畫家 François-Louis Dejuinne 創作的克洛維一世畫像 (`images/clovis_main.jpg`)，用作首頁封面及文章 Banner。
+    2. 19 世紀 Alphonse de Neuville 創作的蘇瓦松花瓶插圖 (`images/soissons_vase.png`)，對應蘇瓦松戰役與財產法理秩序維護。
+    3. 習慣法手抄本《薩利安法典》頁面 (`images/salic_law.png`)，對應習慣法編纂章節。
+- **網站架構與 SEO 升級**：
+  - 在 `template.html` 與 `build_html_md.py` 完整註冊 Page 23 (`page23`)。
+  - 同步更新 JSON-LD 結構化資料、動態 SEO (pageSEO)、搜尋索引 (initGlobalSearchIndex) 與首頁的文章卡片。
+
 #### 2026-06-15 (羅馬秩序的終結與日耳曼王權的奠定 1.0)
 - **發布「羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅」學術專題 (內容版本 1.0)**：
   - 使用 `import_gdoc.py` 腳本成功將 Google Docs 文章匯入為結構化 Markdown 文件。

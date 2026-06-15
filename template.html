@@ -64,7 +64,8 @@
         {"@type": "Article", "name": "米蘭敕令時代的羅馬政治與李錫尼覆滅研究", "url": "https://ludwica-history-lesson.pages.dev/#page19"},
         {"@type": "Article", "name": "米蘭敕令三欄解析", "url": "https://ludwica-history-lesson.pages.dev/#page20"},
         {"@type": "Article", "name": "使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告", "url": "https://ludwica-history-lesson.pages.dev/#page21"},
-        {"@type": "Article", "name": "羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅", "url": "https://ludwica-history-lesson.pages.dev/#page22"}
+        {"@type": "Article", "name": "羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅", "url": "https://ludwica-history-lesson.pages.dev/#page22"},
+        {"@type": "Article", "name": "蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基", "url": "https://ludwica-history-lesson.pages.dev/#page23"}
       ]
     }
     </script>
@@ -220,6 +221,10 @@
         <!-- 課堂二十二：羅馬秩序的終結與日耳曼王權的奠定 -->
         <div id="course-page22" class="course-page" style="display: none;">
             __HTML_BODY_PAGE22__
+        </div>
+        <!-- 課堂二十三：蠻族崛起的政治重塑與克洛維霸權 -->
+        <div id="course-page23" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE23__
         </div>
     </main>
 
@@ -481,6 +486,15 @@
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page23: `
+            <div style="color: #4a5568;">
+                <b>📚 當前課堂：</b>蠻族崛起的政治重塑<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE23_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -507,7 +521,8 @@
         'page19': { title: '米蘭敕令時代的羅馬政治與李錫尼覆滅 — Ludwica 的簡單歷史課', desc: '深入探討公元313年米蘭敕令頒布前後的羅馬帝國地緣政治，分析君士坦丁與李錫尼的權力博弈、宗教寬容政策的確立，以及李錫尼的最終覆滅。' },
         'page20': { title: '米蘭敕令：羅馬帝國宗教寬容宣告 — Ludwica 的簡單歷史課', desc: '公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，包含英文與拉丁文雙版本之三欄對照與學術註解。' },
         'page21': { title: '使徒信經的歷史演變與神學建構 — Ludwica 的簡單歷史課', desc: '深入研究使徒信經從新約儲形、古羅馬信經雙語見證，到皮爾米紐斯文本奠基，以及加洛林道德修正運動與禮儀標準化推廣的歷史演變。' },
-        'page22': { title: '羅馬秩序的終結與日耳曼王權的奠定 — Ludwica 的簡單歷史課', desc: '深入研究五世紀西羅馬帝國結構崩潰與奧多亞賽的崛起、邊疆外交重組（與東帝國、汪達爾、西哥德關係）、內政與客宿權稅收改革、阿里烏派政教關係與最終覆滅歷史。' }
+        'page22': { title: '羅馬秩序的終結與日耳曼王權的奠定 — Ludwica 的簡單歷史課', desc: '深入研究五世紀西羅馬帝國結構崩潰與奧多亞賽的崛起、邊疆外交重組（與東帝國、汪達爾、西哥德關係）、內政與客宿權稅收改革、阿里烏派政教關係與最終覆滅歷史。' },
+        'page23': { title: '蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基 — Ludwica 的簡單歷史課', desc: '深入研究法蘭克人從部落聯盟到王國奠基的歷史軌跡，探討民族生成（Ethnogenesis）理論、薩利安習慣法的編撰、墨洛溫王朝與羅馬教會的聯盟，以及克洛維一世的政治神學與蘇瓦松戰役等關鍵地緣政治事件。' }
     };
 
     function updatePageSEO(pageId) {
@@ -700,7 +715,8 @@
             { id: 'page19', name: '米蘭敕令時代與李錫尼覆滅' },
             { id: 'page20', name: '米蘭敕令' },
             { id: 'page21', name: '使徒信經的歷史演變與神學建構' },
-            { id: 'page22', name: '羅馬秩序的終結與日耳曼王權的奠定' }
+            { id: 'page22', name: '羅馬秩序的終結與日耳曼王權的奠定' },
+            { id: 'page23', name: '蠻族崛起的政治重塑' }
         ];
         
         pages.forEach(p => {
@@ -928,7 +944,7 @@
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22', 'page23'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);

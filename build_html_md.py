@@ -392,6 +392,11 @@ file_p22 = r'course/羅馬秩序的終結與日耳曼王權的奠定：奧多亞
 map_p22 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/odoacer_fall_rome.jpg" alt="Odoacer Fall of Rome" loading="lazy"><figcaption class="caption">Bernhard Mörlins 於 19 世紀所繪的歷史插圖，描繪西羅馬帝國最後的皇帝羅慕路斯·奧古斯都向日耳曼將領奧多亞賽讓渡皇冠的經典場景。</figcaption></figure>\n'
 images_p22 = []
 
+# Page 23 (Clovis) Config
+file_p23 = r'course/蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基.md'
+map_p23 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/clovis_main.jpg" alt="Clovis I" loading="lazy"><figcaption class="caption">François-Louis Dejuinne 於 19 世紀所繪的法蘭克國王克洛維一世（Clovis I）畫像，現藏於凡爾賽宮，象徵墨洛溫王權的奠基。</figcaption></figure>\n'
+images_p23 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -460,6 +465,9 @@ html_body_p21 = process_markdown(file_p21, images_p21, "1.0", map_p21, page_id="
 
 print("Processing Page 22 (Odoacer)...")
 html_body_p22 = process_markdown(file_p22, images_p22, "1.0", map_p22, page_id="page22")
+
+print("Processing Page 23 (Clovis)...")
+html_body_p23 = process_markdown(file_p23, images_p23, "1.0", map_p23, page_id="page23")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -621,6 +629,13 @@ article_cards_html = f"""
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
+    <div class="article-card" onclick="location.hash='#page23'">
+        <div class="card-image" style="background-image: url('images/clovis_main.jpg');"></div>
+        <div class="card-content">
+            <div class="card-title">蠻族崛起的政治重塑與克洛維霸權</div>
+            <div class="card-meta">內容版本：1.0</div>
+        </div>
+    </div>
     
     <div class="card-section-title" style="grid-column: 1 / -1; margin-top: 20px; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">歷史文件專區</div>
     
@@ -678,6 +693,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE19__', html_body_p19)
 final_html = final_html.replace('__HTML_BODY_PAGE20__', html_body_p20)
 final_html = final_html.replace('__HTML_BODY_PAGE21__', html_body_p21)
 final_html = final_html.replace('__HTML_BODY_PAGE22__', html_body_p22)
+final_html = final_html.replace('__HTML_BODY_PAGE23__', html_body_p23)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -704,6 +720,7 @@ final_html = final_html.replace('__PAGE19_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE20_DATE__', get_file_last_update_date(file_p20))
 final_html = final_html.replace('__PAGE21_DATE__', get_file_last_update_date(file_p21))
 final_html = final_html.replace('__PAGE22_DATE__', get_file_last_update_date(file_p22))
+final_html = final_html.replace('__PAGE23_DATE__', get_file_last_update_date(file_p23))
 
 # Write to file
 print("Writing build output to index.html...")
@@ -740,4 +757,4 @@ with open(r'robots.txt', 'w', encoding='utf-8') as f:
     f.write(robots_content)
 print("Generated robots.txt")
 
-print("Done! Site successfully built as dynamic 18-topic history portal with full SEO.")
+print("Done! Site successfully built as dynamic 23-topic history portal with full SEO.")
