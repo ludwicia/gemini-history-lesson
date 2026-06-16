@@ -108,6 +108,8 @@ def format_reference_links(text):
     header = parts[1]
     bib = parts[2]
     
+    # Pre-process bib to split inline references (e.g., "1. Ref 2. Ref") onto separate lines
+    bib = re.sub(r'(?<=\.|\)|\])\s+(\d{1,3}\.\s+)', r'\n\1', bib)
     lines = bib.split('\n')
     new_lines = []
     
@@ -207,8 +209,8 @@ def main():
     markdownify = ensure_markdownify()
     text = markdownify.markdownify(html_text, heading_style="ATX", escape_asterisks=False)
     
-    # Clean BOM character globally and non-breaking spaces
-    text = text.replace('\ufeff', '').replace('\xa0', ' ')
+    # Clean BOM character globally, non-breaking spaces, and unescape underscores
+    text = text.replace('\ufeff', '').replace('\xa0', ' ').replace(r'\_', '_')
     
     # Extract title from the first non-empty line to use as filename if not specified
     lines = [line.strip() for line in text.split('\n') if line.strip()]

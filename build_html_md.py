@@ -397,6 +397,13 @@ file_p23 = r'course/蠻族崛起的政治重塑：法蘭克人的民族生成、
 map_p23 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/clovis_main.jpg" alt="Clovis I" loading="lazy"><figcaption class="caption">François-Louis Dejuinne 於 19 世紀所繪的法蘭克國王克洛維一世（Clovis I）畫像，現藏於凡爾賽宮，象徵墨洛溫王權的奠基。</figcaption></figure>\n'
 images_p23 = []
 
+# Page 24 (Roman Reforms & Colonate) Config
+file_p24 = r'course/從戴克里先到君士坦丁：土地、稅制與兵役改革下的帝國控制與中世紀封建農奴的誕生.md'
+map_p24 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/roman_colonate_estate.png" alt="Late Roman Agricultural Estate" loading="lazy"><figcaption class="caption">4世紀羅馬帝國晚期莊園（Villa Rustica）示意圖：在剛性稅制與勞動力匱乏下，依附於土地的隸農（Coloni）正在莊園主的地盤上進行耕作，預示著中世紀封建農奴制的萌芽。</figcaption></figure>\n'
+images_p24 = [
+    (r'(<h2.*?>帝國晚期的多重危機與專制.*?</h2>)', 'images/p17_tetrarchs.jpg', '威尼斯聖馬可大教堂外牆著名的「四帝共治」雕像，以四位皇帝互相擁抱象徵帝國的團結與分工，是戴克里先創立四帝共治制度的具體政治宣傳。')
+]
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -469,6 +476,9 @@ html_body_p22 = process_markdown(file_p22, images_p22, "1.0", map_p22, page_id="
 print("Processing Page 23 (Clovis)...")
 html_body_p23 = process_markdown(file_p23, images_p23, "1.0", map_p23, page_id="page23")
 
+print("Processing Page 24 (Roman Reforms & Colonate)...")
+html_body_p24 = process_markdown(file_p24, images_p24, "1.0", map_p24, page_id="page24")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -521,6 +531,7 @@ pages_data = {
     'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.0', 'doc': False},
     'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.0', 'doc': False},
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
+    'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page04': {'title': '神聖羅馬帝國：金璽詔書', 'ver': '1.8', 'doc': True},
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
     'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
@@ -532,7 +543,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22']
+        'pages': ['page19', 'page22', 'page24']
     },
     {
         'title': '中世紀諸民族記',
@@ -821,6 +832,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE20__', html_body_p20)
 final_html = final_html.replace('__HTML_BODY_PAGE21__', html_body_p21)
 final_html = final_html.replace('__HTML_BODY_PAGE22__', html_body_p22)
 final_html = final_html.replace('__HTML_BODY_PAGE23__', html_body_p23)
+final_html = final_html.replace('__HTML_BODY_PAGE24__', html_body_p24)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -848,6 +860,7 @@ final_html = final_html.replace('__PAGE20_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE21_DATE__', get_file_last_update_date(file_p21))
 final_html = final_html.replace('__PAGE22_DATE__', get_file_last_update_date(file_p22))
 final_html = final_html.replace('__PAGE23_DATE__', get_file_last_update_date(file_p23))
+final_html = final_html.replace('__PAGE24_DATE__', get_file_last_update_date(file_p24))
 
 # Inject JavaScript for toggle function
 toggle_js = """
