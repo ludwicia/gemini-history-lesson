@@ -66,7 +66,8 @@
         {"@type": "Article", "name": "使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告", "url": "https://ludwica-history-lesson.pages.dev/#page21"},
         {"@type": "Article", "name": "羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅", "url": "https://ludwica-history-lesson.pages.dev/#page22"},
         {"@type": "Article", "name": "蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基", "url": "https://ludwica-history-lesson.pages.dev/#page23"},
-        {"@type": "Article", "name": "羅馬晚期改革與農奴制：從戴克里先到君士坦丁，土地、稅制與兵役改革下的帝國控制與中世紀封建農奴的誕生", "url": "https://ludwica-history-lesson.pages.dev/#page24"}
+        {"@type": "Article", "name": "羅馬晚期改革與農奴制：從戴克里先到君士坦丁，土地、稅制與兵役改革下的帝國控制與中世紀封建農奴的誕生", "url": "https://ludwica-history-lesson.pages.dev/#page24"},
+        {"@type": "Article", "name": "羅馬晚期軍制變遷與哥德人崛起：帝國防線的內爆、財政軍政演變與社會撕裂", "url": "https://ludwica-history-lesson.pages.dev/#page25"}
       ]
     }
     </script>
@@ -404,7 +405,8 @@
         'page21': { title: '使徒信經的歷史演變與神學建構 — Ludwica 的簡單歷史課', desc: '深入研究使徒信經從新約雛形、古羅馬信經雙語見證，到皮爾米紐斯文本奠基，以及加洛林道德修正運動與禮儀標準化推廣的歷史演變。' },
         'page22': { title: '羅馬秩序的終結與日耳曼王權的奠定 — Ludwica 的簡單歷史課', desc: '深入研究五世紀西羅馬帝國結構崩潰與奧多亞賽的崛起、邊疆外交重組（與東帝國、汪達爾、西哥德關係）、內政與客宿權稅收改革、阿里烏派政教關係與最終覆滅歷史。' },
         'page23': { title: '蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基 — Ludwica 的簡單歷史課', desc: '深入研究法蘭克人從部落聯盟到王國奠基的歷史軌跡，探討民族生成（Ethnogenesis）理論、薩利安習慣法的編撰、墨洛溫王朝與羅馬教會的聯盟，以及克洛維一世的政治神學與蘇瓦松戰役等關鍵地緣政治事件。' },
-        'page24': { title: '羅馬晚期改革與農奴制 — Ludwica 的簡單歷史課', desc: '深入研究從戴克里先到君士坦丁大帝時期的羅馬晚期改革，包含人頭-土地稅雙軌制（Capitatio-Iugatio）的財政理性化設計與法律實踐，隸農莊園向中世紀封建莊園與農奴制的演進，以及世襲職業行會與兵役體系的歷史過渡。' }
+        'page24': { title: '羅馬晚期改革與農奴制 — Ludwica 的簡單歷史課', desc: '深入研究從戴克里先到君士坦丁大帝時期的羅馬晚期改革，包含人頭-土地稅雙軌制（Capitatio-Iugatio）的財政理性化設計與法律實踐，隸農莊園向中世紀封建莊園與農奴制的演進，以及世襲職業行會與兵役體系的歷史過渡。' },
+        'page25': { title: '羅馬晚期軍制變遷與哥德人崛起 — Ludwica 的簡單歷史課', desc: '深入探討羅馬晚期軍事防線的結構性調整，包含軍隊蠻族化與外包僱傭的財政與兵源背景，哥德人的阿利烏派基督教皈依，阿德里安堡戰役，以及382年同盟條約下國中之國的建立與西羅馬帝國的最終解體。' }
     };
 
     function updatePageSEO(pageId) {
@@ -597,7 +599,7 @@
             </div>
         `;
         
-        return fetch('/api/article/' + pageId + '.json')
+        return fetch('/api/article/' + pageId + '.json?_t=' + Date.now())
             .then(res => {
                 if (!res.ok) throw new Error('Fetch failed: ' + res.status);
                 return res.json();
@@ -674,7 +676,7 @@
         // Lazy load search index once
         if (searchIndex === null) {
             searchResults.innerHTML = '<div style="text-align: center; padding: 20px 0;"><div class="loading-spinner"></div><div style="font-size:0.8rem;color:#718096;margin-top:8px;">正在載入搜尋索引...</div></div>';
-            fetch('/api/search_index.json')
+            fetch('/api/search_index.json?_t=' + Date.now())
                 .then(res => {
                     if (!res.ok) throw new Error('無法下載搜尋索引');
                     return res.json();
@@ -982,7 +984,7 @@
     
     // 12. Startup Initialization via API
     window.addEventListener('DOMContentLoaded', () => {
-        fetch('/api/articles.json')
+        fetch('/api/articles.json?_t=' + Date.now())
             .then(res => {
                 if (!res.ok) throw new Error('Failed to load articles catalog');
                 return res.json();
