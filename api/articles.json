@@ -7,7 +7,8 @@
       "pages": [
         "page19",
         "page22",
-        "page24"
+        "page24",
+        "page25"
       ]
     },
     {
@@ -266,6 +267,15 @@
       "is_doc": 0
     },
     {
+      "id": "page25",
+      "title": "羅馬晚期軍制變遷與哥德人崛起",
+      "ver": "1.0",
+      "last_updated": "2026-06-18",
+      "category": "rome",
+      "img": "images/adrianople_battle.png",
+      "is_doc": 0
+    },
+    {
       "id": "page04",
       "title": "神聖羅馬帝國：金璽詔書",
       "ver": "1.8",
@@ -302,5 +312,5 @@
       "is_doc": 1
     }
   ],
-  "worklog": "<div class=\"update-entry\"><div class=\"update-date\">2026-06-17 (羅馬晚期改革與農奴制 1.0)</div><ul class=\"update-list\"><li><strong>發布「羅馬晚期改革與農奴制：從戴克里先到君士坦丁，土地、稅制與兵役改革下的帝國控制與中世紀封建農奴的誕生」學術專題 (內容版本 1.0)</strong>：</li><li><strong>網站與視覺整合</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-15 (蠻族崛起的政治重塑 1.0)</div><ul class=\"update-list\"><li><strong>發布「蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基」學術專題 (內容版本 1.0)</strong>：</li><li><strong>視覺與設計整合</strong>：</li><li><strong>網站架構與 SEO 升級</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-15 (羅馬秩序的終結與日耳曼王權的奠定 1.0)</div><ul class=\"update-list\"><li><strong>發布「羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅」學術專題 (內容版本 1.0)</strong>：</li><li><strong>視覺與設計整合</strong>：</li><li><strong>網站架構與 SEO 升級</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-14 (使徒信經的歷史演變與神學建構 1.0 | 版面設計 4.6)</div><ul class=\"update-list\"><li><strong>發布「使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告」學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選真實歷史視覺資源整合 (非 AI 生成)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 4.6)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-13 (丕平獻土內容校對 1.1)</div><ul class=\"update-list\"><li><strong>更新「丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響」專題 (內容版本 1.1)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-12 (米蘭敕令三欄解析 1.0)</div><ul class=\"update-list\"><li><strong>發布「《米蘭敕令》賦予所有基督徒信仰自由」中世紀法條專題 (內容版本 1.0)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-12 (米蘭敕令與李錫尼覆滅 1.0)</div><ul class=\"update-list\"><li><strong>發布「帝國重塑、信仰博弈與權力終局：《米蘭敕令》時代的羅馬政治、君士坦丁宗教策略與李錫尼覆滅研究」學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選與生成歷史視覺資源整合 (AI 輔助繪製與開源圖像下載)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 4.5)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-10 (西元紀年與曆法演進 1.0)</div><ul class=\"update-list\"><li><strong>發布「西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構」學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選與生成歷史視覺資源整合 (AI 輔助繪製與開源圖像下載)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 4.4)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-09 (金璽詔書 第十一至第二十章擴充)</div><ul class=\"update-list\"><li><strong>更新《1356年金璽詔書》中世紀法條專題 (內容版本 1.8)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-08 (羅馬政教關係演變 1.0)</div><ul class=\"update-list\"><li><strong>發布「從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變」學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選與生成歷史視覺資源整合 (AI 輔助繪製與開源圖像下載)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 4.3)</strong>：</li></ul></div>"
+  "worklog": "<div class=\"update-entry\"><div class=\"update-date\">2026-06-18 (羅馬晚期軍制變遷與哥德人崛起 1.0)</div><ul class=\"update-list\"><li><strong>發布「帝國防線的內爆：從羅馬晚期改革、財政軍政演變與社會撕裂看哥德人之崛起」學術專題 (內容版本 1.0)</strong>：</li><li><strong>視覺與設計整合</strong>：</li><li><strong>網站架構與 SEO 整合</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-17 (後台編輯器雙欄預覽與桌面捷徑)</div><ul class=\"update-list\"><li><strong>後台 Markdown 編輯器雙欄與預覽功能開發</strong>：</li><li><strong>伺服器一鍵桌面開關建置</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-17 (羅馬晚期改革與農奴制 1.0)</div><ul class=\"update-list\"><li><strong>發布「羅馬晚期改革與農奴制：從戴克里先到君士坦丁，土地、稅制與兵役改革下的帝國控制與中世紀封建農奴的誕生」學術專題 (內容版本 1.0)</strong>：</li><li><strong>網站與視覺整合</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-15 (蠻族崛起的政治重塑 1.0)</div><ul class=\"update-list\"><li><strong>發布「蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基」學術專題 (內容版本 1.0)</strong>：</li><li><strong>視覺與設計整合</strong>：</li><li><strong>網站架構與 SEO 升級</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-15 (羅馬秩序的終結與日耳曼王權的奠定 1.0)</div><ul class=\"update-list\"><li><strong>發布「羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅」學術專題 (內容版本 1.0)</strong>：</li><li><strong>視覺與設計整合</strong>：</li><li><strong>網站架構與 SEO 升級</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-14 (使徒信經的歷史演變與神學建構 1.0 | 版面設計 4.6)</div><ul class=\"update-list\"><li><strong>發布「使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告」學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選真實歷史視覺資源整合 (非 AI 生成)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 4.6)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-13 (丕平獻土內容校對 1.1)</div><ul class=\"update-list\"><li><strong>更新「丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響」專題 (內容版本 1.1)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-12 (米蘭敕令三欄解析 1.0)</div><ul class=\"update-list\"><li><strong>發布「《米蘭敕令》賦予所有基督徒信仰自由」中世紀法條專題 (內容版本 1.0)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-12 (米蘭敕令與李錫尼覆滅 1.0)</div><ul class=\"update-list\"><li><strong>發布「帝國重塑、信仰博弈與權力終局：《米蘭敕令》時代的羅馬政治、君士坦丁宗教策略與李錫尼覆滅研究」學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選與生成歷史視覺資源整合 (AI 輔助繪製與開源圖像下載)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 4.5)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-10 (西元紀年與曆法演進 1.0)</div><ul class=\"update-list\"><li><strong>發布「西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構」學術專題 (內容版本 1.0)</strong>：</li><li><strong>精選與生成歷史視覺資源整合 (AI 輔助繪製與開源圖像下載)</strong>：</li><li><strong>網站架構與路由載入機制升級 (版面設計 4.4)</strong>：</li></ul></div>"
 }
