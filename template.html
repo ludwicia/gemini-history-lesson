@@ -570,8 +570,13 @@
 
     // 2.5 Social Media Share Utility Functions
     function shareTo(platform, pageId) {
-        const baseUrl = window.location.origin + window.location.pathname;
-        const shareUrl = pageId === 'home' ? baseUrl : `${baseUrl}#${pageId}`;
+        let baseUrl = window.location.origin + window.location.pathname;
+        if (baseUrl.endsWith('.html')) {
+            baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/') + 1);
+        } else if (!baseUrl.endsWith('/')) {
+            baseUrl += '/';
+        }
+        const shareUrl = pageId === 'home' ? baseUrl : `${baseUrl}${pageId}.html`;
         const pageTitle = pageId === 'home' ? 'Ludwica 的簡單歷史課' : (pageSEO[pageId] ? pageSEO[pageId].title : document.title);
         
         if (platform === 'facebook') {

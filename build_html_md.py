@@ -938,4 +938,69 @@ with open(r'robots.txt', 'w', encoding='utf-8') as f:
     f.write(robots_content)
 print("Generated robots.txt")
 
+# Generate SEO Redirect HTML files for each page
+def generate_redirect_pages():
+    print("Generating SEO redirect HTML files...")
+    base_site_url = "https://ludwica-history-lesson.pages.dev/"
+    
+    # Load descriptions from template.html using regex
+    descs = {}
+    try:
+        with open('template.html', 'r', encoding='utf-8') as f:
+            t_content = f.read()
+        matches = re.findall(r"'(page\d+)':\s*\{\s*title:\s*'(.*?)',\s*desc:\s*'(.*?)'\s*\}", t_content)
+        for pid, title, desc in matches:
+            descs[pid] = desc
+    except Exception as e:
+        print(f"Error loading descriptions for redirects: {e}")
+        
+    for pid, data in pages_data.items():
+        title = data['title'] + " — Ludwica 的簡單歷史課"
+        desc = descs.get(pid, "Ludwica 的簡單歷史課：歷史專題研究與報告。")
+        
+        # Determine image URL
+        img_path = data.get('img', 'history_banner_bg.png')
+        if not img_path:
+            img_path = 'history_banner_bg.png'
+        image_url = base_site_url + img_path
+        page_url = base_site_url + f"{pid}.html"
+        
+        redirect_html = f"""<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>{title}</title>
+    <meta name="description" content="{desc}">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{desc}">
+    <meta property="og:image" content="{image_url}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{page_url}">
+    
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{title}">
+    <meta name="twitter:description" content="{desc}">
+    <meta name="twitter:image" content="{image_url}">
+    
+    <script>
+        window.location.replace("./#" + "{pid}");
+    </script>
+</head>
+<body>
+    <h1>{title}</h1>
+    <p>{desc}</p>
+    <p>正在為您導向至網頁... 如果沒有自動跳轉，請點擊 <a href="./#{pid}">這裡</a>。</p>
+</body>
+</html>
+"""
+        with open(f"{pid}.html", 'w', encoding='utf-8', newline='\n') as f:
+            f.write(redirect_html)
+            
+    print(f"Successfully generated {len(pages_data)} redirect HTML files.")
+
+generate_redirect_pages()
+
 print("Done! Site successfully built as dynamic 23-topic history portal with full SEO.")
