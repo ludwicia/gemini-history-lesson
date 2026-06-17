@@ -1,0 +1,303 @@
+import http.server
+import socketserver
+import json
+import re
+import os
+import urllib.parse
+import subprocess
+import sys
+import atexit
+import importlib
+
+# Main database pipeline imports
+import build_html_md
+
+PORT = 8001
+main_server_process = None
+
+def stop_main_server():
+    global main_server_process
+    if main_server_process is not None and main_server_process.poll() is None:
+        print("Stopping main website server (Port 8000)...")
+        try:
+            main_server_process.terminate()
+            main_server_process.wait(timeout=3)
+            print("Main website server stopped successfully.")
+        except Exception as e:
+            print(f"Error stopping main server: {e}")
+        main_server_process = None
+
+# Automatically stop the child server when the admin server exits
+atexit.register(stop_main_server)
+
+
+class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, format, *args):
+        # Override to suppress standard HTTP logging to keep console clean
+        pass
+        
+    def do_GET(self):
+        parsed_url = urllib.parse.urlparse(self.path)
+        
+        # 1. Serve admin.html on root path
+        if parsed_url.path == '/' or parsed_url.path == '/admin.html':
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            with open('admin.html', 'r', encoding='utf-8') as f:
+                self.wfile.write(f.read().encode('utf-8'))
+            return
+            
+        # 2. API: GET /api/status (Check if main site server is running)
+        if parsed_url.path == '/api/status':
+            global main_server_process
+            running = main_server_process is not None and main_server_process.poll() is None
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({'running': running, 'port': 8000}).encode('utf-8'))
+            return
+            
+        # 3. API: GET /api/articles (Get list of article metadata & files)
+        if parsed_url.path == '/api/articles':
+            articles = []
+            for pid, data in build_html_md.pages_data.items():
+                file_var_name = f"file_p{int(pid[4:])}"
+                file_path = getattr(build_html_md, file_var_name, None)
+                articles.append({
+                    'id': pid,
+                    'title': data['title'],
+                    'filePath': file_path
+                })
+            
+            # Sort articles by page number key
+            articles.sort(key=lambda x: int(x['id'][4:]))
+            
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({'articles': articles}, ensure_ascii=False).encode('utf-8'))
+            return
+            
+        # 4. API: GET /api/article?id=pageXX (Load raw Markdown content)
+        if parsed_url.path == '/api/article':
+            params = urllib.parse.parse_qs(parsed_url.query)
+            pid = params.get('id', [''])[0].strip()
+            
+            if not pid or pid not in build_html_md.pages_data:
+                self.send_response(400)
+                self.send_header('Content-type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': 'Invalid article ID'}).encode('utf-8'))
+                return
+                
+            file_var_name = f"file_p{int(pid[4:])}"
+            file_path = getattr(build_html_md, file_var_name, None)
+            
+            if not file_path or not os.path.exists(file_path):
+                self.send_response(404)
+                self.send_header('Content-type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': f"File not found: {file_path}"}, ensure_ascii=False).encode('utf-8'))
+                return
+                
+            with open(file_path, 'r', encoding='utf-8') as f:
+                markdown_content = f.read()
+                
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            response_data = {
+                'id': pid,
+                'title': build_html_md.pages_data[pid]['title'],
+                'filePath': file_path,
+                'markdown': markdown_content
+            }
+            self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+            return
+            
+        # Fallback to standard static file handling (for stylesheet, icons, etc.)
+        super().do_GET()
+
+    def do_POST(self):
+        parsed_url = urllib.parse.urlparse(self.path)
+        
+        # 1. API: POST /api/start (Start server.py)
+        if parsed_url.path == '/api/start':
+            global main_server_process
+            success = False
+            message = ""
+            
+            if main_server_process is not None and main_server_process.poll() is None:
+                message = "伺服器已經在運行中"
+                success = True
+            else:
+                try:
+                    # Launch server.py in unbuffered mode as a background subprocess
+                    # Using sys.executable guarantees it uses the same python binary
+                    main_server_process = subprocess.Popen(
+                        [sys.executable, '-u', 'server.py'],
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0
+                    )
+                    message = "本機伺服器啟動成功"
+                    success = True
+                    print("Started main website server on http://localhost:8000")
+                except Exception as e:
+                    message = f"啟動失敗: {e}"
+                    success = False
+                    print(f"Error starting server: {e}")
+                    
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({'success': success, 'message': message}, ensure_ascii=False).encode('utf-8'))
+            return
+            
+        # 2. API: POST /api/stop (Stop server.py)
+        if parsed_url.path == '/api/stop':
+            success = False
+            message = ""
+            
+            if main_server_process is not None and main_server_process.poll() is None:
+                try:
+                    main_server_process.terminate()
+                    main_server_process.wait(timeout=3)
+                    main_server_process = None
+                    message = "本機伺服器已成功關閉"
+                    success = True
+                    print("Stopped main website server (Port 8000).")
+                except Exception as e:
+                    message = f"關閉時出錯: {e}"
+                    success = False
+                    print(f"Error stopping server: {e}")
+            else:
+                message = "伺服器目前沒有在運行"
+                success = True
+                
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({'success': success, 'message': message}, ensure_ascii=False).encode('utf-8'))
+            return
+            
+        # 3. API: POST /api/compile (Trigger compilation manual rebuild)
+        if parsed_url.path == '/api/compile':
+            success = False
+            message = ""
+            try:
+                import build_static_chunks
+                # Reload variables from source md modifications
+                importlib.reload(build_html_md)
+                importlib.reload(build_static_chunks)
+                build_static_chunks.main()
+                message = "靜態網頁與切片編譯完成！"
+                success = True
+            except Exception as e:
+                message = f"編譯失敗: {e}"
+                success = False
+                print(f"Compile error: {e}")
+                
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({'success': success, 'message': message}, ensure_ascii=False).encode('utf-8'))
+            return
+            
+        # 4. API: POST /api/article (Save markdown file & compile)
+        if parsed_url.path == '/api/article':
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length).decode('utf-8')
+            data = json.loads(post_data)
+            
+            pid = data.get('id')
+            markdown_content = data.get('markdown')
+            
+            if not pid or pid not in build_html_md.pages_data:
+                self.send_response(400)
+                self.send_header('Content-type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': 'Invalid article ID'}).encode('utf-8'))
+                return
+                
+            file_var_name = f"file_p{int(pid[4:])}"
+            file_path = getattr(build_html_md, file_var_name, None)
+            
+            if not file_path:
+                self.send_response(404)
+                self.send_header('Content-type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': 'Article file path not found'}).encode('utf-8'))
+                return
+                
+            try:
+                # 1. Write the edited raw Markdown back to disk
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(markdown_content)
+                
+                # 2. Hot-reload modules to ingest new content and run compilation
+                import build_static_chunks
+                importlib.reload(build_html_md)
+                importlib.reload(build_static_chunks)
+                build_static_chunks.main()
+                
+                success = True
+                message = "文章修改成功，且已自動編譯完成！"
+                print(f"Article {pid} saved and rebuilt successfully.")
+            except Exception as e:
+                success = False
+                message = f"儲存或編譯失敗: {e}"
+                print(f"Error saving/building article {pid}: {e}")
+                
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({'success': success, 'message': message}, ensure_ascii=False).encode('utf-8'))
+            return
+            
+        # 5. API: POST /api/preview (Render markdown to HTML)
+        if parsed_url.path == '/api/preview':
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length).decode('utf-8')
+            data = json.loads(post_data)
+            
+            markdown_content = data.get('markdown', '')
+            
+            import markdown
+            # Compile using tables and toc extensions to match build_html_md
+            html_content = markdown.markdown(markdown_content, extensions=['tables', 'toc'])
+            
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({'html': html_content}, ensure_ascii=False).encode('utf-8'))
+            return
+            
+        self.send_error(404, "Not Found")
+
+
+def main():
+    socketserver.TCPServer.allow_reuse_address = True
+    with socketserver.TCPServer(("", PORT), AdminRequestHandler) as httpd:
+        print(f"\n=======================================================")
+        print(f"  Ludwica's History Admin Console Running at:")
+        print(f"  URL: http://localhost:{PORT}")
+        print(f"=======================================================\n")
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("\nShutting down admin server...")
+            stop_main_server()
+
+if __name__ == '__main__':
+    main()

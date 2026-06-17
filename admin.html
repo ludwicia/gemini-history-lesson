@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludwica 的簡單歷史課 — 後台管理中心</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: #1e293b;
+            --border-color: #334155;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --success: #10b981;
+            --success-hover: #059669;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Header */
+        header {
+            background-color: var(--panel-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header-title h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Main Workspace Layout */
+        .workspace {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Left Sidebar: List of Articles */
+        .sidebar {
+            width: 300px;
+            background-color: #111827;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-search {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-search input {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .sidebar-search input:focus {
+            border-color: var(--primary);
+        }
+
+        .article-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
+        .article-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .article-item:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .article-item.active {
+            background-color: rgba(59, 130, 246, 0.08);
+            border-left-color: var(--primary);
+        }
+
+        .article-item-title {
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .article-item-meta {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* Right Content Area */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #0b0f19;
+        }
+
+        /* Top Panel: Server Status & Actions */
+        .control-bar {
+            background-color: var(--panel-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 20px;
+        }
+
+        .server-status-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            transition: all 0.3s;
+        }
+
+        .status-badge.running {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--danger);
+            animation: pulse 1.5s infinite;
+        }
+
+        .status-badge.running .status-dot {
+            background-color: var(--success);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+        }
+
+        .server-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid transparent;
+            outline: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+        .btn-primary:disabled {
+            background-color: #475569;
+            cursor: not-allowed;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        .btn-success:hover {
+            background-color: var(--success-hover);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: var(--danger-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* Editor Panel Layout */
+        .editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-shrink: 0;
+        }
+
+        .editor-meta-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .editor-meta-path {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Editing Toolbar */
+        .editor-toolbar {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+
+        .toolbar-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            transition: all 0.2s;
+        }
+
+        .toolbar-btn:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+
+        /* Code/Text Editor Textarea Workspace */
+        .editor-body-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .editor-workspace {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            background-color: #0d1117;
+            position: relative;
+        }
+
+        .text-editor {
+            flex: 1;
+            height: 100%;
+            background-color: #0d1117;
+            border: none;
+            color: #c9d1d9;
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            padding: 20px;
+            resize: none;
+            outline: none;
+            line-height: 1.6;
+            overflow-y: auto;
+            transition: border-color 0.2s;
+        }
+
+        .text-editor:focus {
+            box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.3);
+        }
+
+        .preview-pane {
+            flex: 1;
+            height: 100%;
+            background-color: #ffffff;
+            border: none;
+            display: none;
+        }
+
+        /* Layout mode toggles */
+        .editor-workspace.mode-split .text-editor {
+            border-right: 1px solid var(--border-color);
+            display: block;
+        }
+        .editor-workspace.mode-split .preview-pane {
+            display: block;
+        }
+
+        .editor-workspace.mode-edit .text-editor {
+            display: block;
+        }
+        .editor-workspace.mode-edit .preview-pane {
+            display: none;
+        }
+
+        .editor-workspace.mode-preview .text-editor {
+            display: none;
+        }
+        .editor-workspace.mode-preview .preview-pane {
+            display: block;
+        }
+
+        /* Mode Selector Buttons */
+        .mode-btn {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+        .mode-btn:hover {
+            color: var(--text-color);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .mode-btn.active {
+            background-color: var(--primary) !important;
+            color: white !important;
+        }
+
+        /* Toast Alert Container */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .toast {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary);
+            color: var(--text-color);
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .toast.success {
+            border-left-color: var(--success);
+        }
+
+        .toast.error {
+            border-left-color: var(--danger);
+        }
+
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            gap: 15px;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+        }
+
+        .empty-state-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Banner -->
+    <header>
+        <div class="header-title">
+            <h1>Ludwica 的簡單歷史課 — 後台管理中心</h1>
+            <p>本機 Markdown 文章內容編輯與 HTTP 伺服器狀態控管面板</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary" onclick="compileStatic()">🚀 立即編譯靜態切片</button>
+        </div>
+    </header>
+
+    <!-- Workspace -->
+    <div class="workspace">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="articleSearch" placeholder="搜尋文章標題..." oninput="filterArticles()">
+            </div>
+            <div class="article-list" id="articleList">
+                <div style="text-align: center; color: var(--text-muted); padding-top: 40px; font-size: 0.85rem;">正在讀取文章列表...</div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Server Control Bar -->
+            <div class="control-bar">
+                <div class="server-status-wrapper">
+                    <span style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">本機伺服器 (Port 8000)：</span>
+                    <div class="status-badge" id="serverBadge">
+                        <div class="status-dot"></div>
+                        <span id="serverStatusText">已停止</span>
+                    </div>
+                    <a href="http://localhost:8000" target="_blank" id="liveSiteLink" style="font-size: 0.8rem; color: var(--primary); text-decoration: none; display: none;">🌐 開啟前台首頁</a>
+                </div>
+                <div class="server-actions">
+                    <button class="btn btn-success" id="btnStart" onclick="startServer()">▶ 啟動伺服器</button>
+                    <button class="btn btn-danger" id="btnStop" onclick="stopServer()" style="display: none;">■ 關閉伺服器</button>
+                </div>
+            </div>
+
+            <!-- Main Editor Area -->
+            <div class="editor-container" id="editorContainer">
+                <div class="empty-state" id="emptyState">
+                    <span class="empty-state-icon">📝</span>
+                    <span class="empty-state-title">請選擇一篇文章開始編寫</span>
+                    <p style="font-size: 0.85rem; max-width: 320px; text-align: center;">從左側列表點擊任何課堂或歷史文件專題，即可在此編輯其原始 Markdown 文字。</p>
+                </div>
+                
+                <div class="editor-body-wrapper" id="editorWrapper" style="display: none;">
+                    <div class="editor-header">
+                        <div>
+                            <div class="editor-meta-title" id="editTitle">文章標題</div>
+                            <div class="editor-meta-path" id="editPath">course/filename.md</div>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <!-- Mode Toggles -->
+                            <div style="display: flex; background: var(--bg-color); padding: 3px; border-radius: 6px; border: 1px solid var(--border-color);">
+                                <button class="mode-btn active" id="btnModeEdit" onclick="setEditorMode('edit')">✍️ 編輯</button>
+                                <button class="mode-btn" id="btnModeSplit" onclick="setEditorMode('split')">🔀 雙欄</button>
+                                <button class="mode-btn" id="btnModePreview" onclick="setEditorMode('preview')">📖 預覽</button>
+                            </div>
+                            <button class="btn btn-primary" onclick="saveArticle()">💾 儲存修改並自動編譯</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Formatting Toolbar -->
+                    <div class="editor-toolbar">
+                        <button class="toolbar-btn" onclick="insertMarkdown('bold')"><b>B</b> 粗體</button>
+                        <button class="toolbar-btn" onclick="insertMarkdown('italic')"><i>I</i> 斜體</button>
+                        <button class="toolbar-btn" onclick="insertMarkdown('h2')">H2 標題</button>
+                        <button class="toolbar-btn" onclick="insertMarkdown('h3')">H3 標題</button>
+                        <button class="toolbar-btn" onclick="insertMarkdown('link')">🔗 連結</button>
+                        <button class="toolbar-btn" onclick="insertMarkdown('image')">🖼️ 圖片</button>
+                        <button class="toolbar-btn" onclick="insertMarkdown('code')">💻 程式碼</button>
+                        <button class="toolbar-btn" onclick="insertMarkdown('table')">📊 表格</button>
+                        <button class="toolbar-btn" onclick="insertMarkdown('alert')">📢 提示框</button>
+                    </div>
+                    
+                    <!-- Editor Workspace (Textarea + Iframe Preview) -->
+                    <div class="editor-workspace mode-edit" id="editorWorkspace">
+                        <textarea class="text-editor" id="editorTextarea" placeholder="在此處編輯文章的 Markdown 語法..." oninput="onEditorInput()"></textarea>
+                        <iframe class="preview-pane" id="editorPreview"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        let articlesList = [];
+        let activeArticleId = null;
+
+        // Fetch articles list on load
+        function fetchArticles() {
+            fetch('/api/articles')
+                .then(res => res.json())
+                .then(data => {
+                    articlesList = data.articles;
+                    renderArticleList(articlesList);
+                })
+                .catch(err => {
+                    showToast("讀取文章列表失敗: " + err.message, "error");
+                });
+        }
+
+        // Render articles to sidebar
+        function renderArticleList(list) {
+            const listContainer = document.getElementById('articleList');
+            if (list.length === 0) {
+                listContainer.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding-top: 40px; font-size: 0.85rem;">找不到相關文章</div>';
+                return;
+            }
+            
+            listContainer.innerHTML = '';
+            list.forEach(art => {
+                const item = document.createElement('div');
+                item.className = 'article-item';
+                if (art.id === activeArticleId) item.classList.add('active');
+                
+                // Truncate path for beauty
+                const simplePath = art.filePath.replace(/^course\\|^course\//, '');
+                
+                item.innerHTML = `
+                    <span class="article-item-title">${art.title}</span>
+                    <span class="article-item-meta">${simplePath}</span>
+                `;
+                item.onclick = () => selectArticle(art.id);
+                listContainer.appendChild(item);
+            });
+        }
+
+        // Filter sidebar list
+        function filterArticles() {
+            const query = document.getElementById('articleSearch').value.toLowerCase().trim();
+            const filtered = articlesList.filter(art => 
+                art.title.toLowerCase().includes(query) || 
+                art.filePath.toLowerCase().includes(query)
+            );
+            renderArticleList(filtered);
+        }
+
+        // Select article and load markdown
+        function selectArticle(id) {
+            activeArticleId = id;
+            
+            // Highlight selected in list
+            document.querySelectorAll('.article-item').forEach((item, index) => {
+                const art = articlesList[index];
+                if (art && art.id === id) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('editorWrapper').style.display = 'flex';
+            document.getElementById('editorTextarea').value = '正在從硬碟讀取檔案內容...';
+
+            fetch('/api/article?id=' + id)
+                .then(res => {
+                    if (!res.ok) throw new Error('無法讀取檔案');
+                    return res.json();
+                })
+                .then(data => {
+                    document.getElementById('editTitle').innerText = data.title;
+                    document.getElementById('editPath').innerText = data.filePath;
+                    document.getElementById('editorTextarea').value = data.markdown;
+                    updatePreview(); // Trigger preview rendering
+                })
+                .catch(err => {
+                    showToast("讀取文章內容失敗: " + err.message, "error");
+                });
+        }
+
+        // Save article to disk
+        function saveArticle() {
+            if (!activeArticleId) return;
+            
+            const markdown = document.getElementById('editorTextarea').value;
+            
+            showToast("正在儲存並重新編譯...", "info");
+            
+            fetch('/api/article', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: activeArticleId,
+                    markdown: markdown
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message, "success");
+                } else {
+                    showToast(data.message, "error");
+                }
+            })
+            .catch(err => {
+                showToast("儲存失敗: " + err.message, "error");
+            });
+        }
+
+        // Server management
+        function checkServerStatus() {
+            fetch('/api/status')
+                .then(res => res.json())
+                .then(data => {
+                    const badge = document.getElementById('serverBadge');
+                    const text = document.getElementById('serverStatusText');
+                    const btnStart = document.getElementById('btnStart');
+                    const btnStop = document.getElementById('btnStop');
+                    const liveLink = document.getElementById('liveSiteLink');
+
+                    if (data.running) {
+                        badge.className = 'status-badge running';
+                        text.innerText = '運行中';
+                        btnStart.style.display = 'none';
+                        btnStop.style.display = 'block';
+                        liveLink.style.display = 'inline-block';
+                    } else {
+                        badge.className = 'status-badge';
+                        text.innerText = '已停止';
+                        btnStart.style.display = 'block';
+                        btnStop.style.display = 'none';
+                        liveLink.style.display = 'none';
+                    }
+                })
+                .catch(err => {
+                    console.error("Failed to check server status:", err);
+                });
+        }
+
+        // Action endpoints calls
+        function startServer() {
+            fetch('/api/start', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(data.message, "success");
+                        checkServerStatus();
+                    } else {
+                        showToast(data.message, "error");
+                    }
+                })
+                .catch(err => {
+                    showToast("啟動伺服器出錯: " + err.message, "error");
+                });
+        }
+
+        // Action stop
+        function stopServer() {
+            fetch('/api/stop', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(data.message, "success");
+                        checkServerStatus();
+                    } else {
+                        showToast(data.message, "error");
+                    }
+                })
+                .catch(err => {
+                    showToast("停止伺服器出錯: " + err.message, "error");
+                });
+        }
+
+        // Compile action
+        function compileStatic() {
+            showToast("正在編譯全站靜態切片...", "info");
+            fetch('/api/compile', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(data.message, "success");
+                    } else {
+                        showToast(data.message, "error");
+                    }
+                })
+                .catch(err => {
+                    showToast("編譯失敗: " + err.message, "error");
+                });
+        }
+
+        // Insert markdown helper templates
+        function insertMarkdown(type) {
+            const textarea = document.getElementById('editorTextarea');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+            const selectedText = text.substring(start, end);
+            
+            let template = '';
+            
+            switch (type) {
+                case 'bold':
+                    template = `**${selectedText || '粗體文字'}**`;
+                    break;
+                case 'italic':
+                    template = `*${selectedText || '斜體文字'}*`;
+                    break;
+                case 'h2':
+                    template = `\n## ${selectedText || '二級標題'}\n`;
+                    break;
+                case 'h3':
+                    template = `\n### ${selectedText || '三級標題'}\n`;
+                    break;
+                case 'link':
+                    template = `[${selectedText || '連結文字'}](http://example.com)`;
+                    break;
+                case 'image':
+                    template = `![${selectedText || '圖片描述'}](images/img_name.jpg)`;
+                    break;
+                case 'code':
+                    template = `\`${selectedText || 'code'}\``;
+                    break;
+                case 'table':
+                    template = `\n| 欄位 1 | 欄位 2 | 欄位 3 |\n| :--- | :--- | :--- |\n| 內容 1 | 內容 2 | 內容 3 |\n`;
+                    break;
+                case 'alert':
+                    template = `\n> [!NOTE]\n> ${selectedText || '這是一個提示框訊息。'}\n`;
+                    break;
+            }
+            
+            textarea.value = text.substring(0, start) + template + text.substring(end);
+            textarea.focus();
+            textarea.setSelectionRange(start + template.length, start + template.length);
+            onEditorInput(); // Trigger preview update
+        }
+
+        // Preview state and functions
+        let previewTimeout = null;
+        let currentEditorMode = 'edit'; // 'edit', 'split', or 'preview'
+
+        function setEditorMode(mode) {
+            currentEditorMode = mode;
+            
+            // Toggle active classes on buttons
+            document.getElementById('btnModeEdit').classList.remove('active');
+            document.getElementById('btnModeSplit').classList.remove('active');
+            document.getElementById('btnModePreview').classList.remove('active');
+            
+            if (mode === 'edit') {
+                document.getElementById('btnModeEdit').classList.add('active');
+            } else if (mode === 'split') {
+                document.getElementById('btnModeSplit').classList.add('active');
+            } else if (mode === 'preview') {
+                document.getElementById('btnModePreview').classList.add('active');
+            }
+            
+            // Update workspace class
+            const workspace = document.getElementById('editorWorkspace');
+            workspace.className = 'editor-workspace mode-' + mode;
+            
+            // Force update preview immediately if not in pure edit mode
+            if (mode === 'split' || mode === 'preview') {
+                updatePreview();
+            }
+        }
+
+        function onEditorInput() {
+            if (currentEditorMode === 'split' || currentEditorMode === 'preview') {
+                clearTimeout(previewTimeout);
+                previewTimeout = setTimeout(updatePreview, 300);
+            }
+        }
+
+        function updatePreview() {
+            if (!activeArticleId) return;
+            
+            const markdown = document.getElementById('editorTextarea').value;
+            const iframe = document.getElementById('editorPreview');
+            
+            fetch('/api/preview', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ markdown: markdown })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const doc = iframe.contentDocument || iframe.contentWindow.document;
+                doc.open();
+                doc.write(`
+                    <!DOCTYPE html>
+                    <html lang="zh-TW">
+                    <head>
+                        <meta charset="UTF-8">
+                        <link rel="stylesheet" href="style.css">
+                        <style>
+                            body {
+                                background-color: #ffffff;
+                                padding: 30px;
+                                color: #2d3748;
+                                font-family: 'Inter', 'Noto Sans TC', sans-serif;
+                                line-height: 1.8;
+                            }
+                            /* Custom scrollbar styling */
+                            ::-webkit-scrollbar {
+                                width: 8px;
+                                height: 8px;
+                            }
+                            ::-webkit-scrollbar-track {
+                                background: #f1f1f1;
+                            }
+                            ::-webkit-scrollbar-thumb {
+                                background: #cbd5e0;
+                                border-radius: 4px;
+                            }
+                            ::-webkit-scrollbar-thumb:hover {
+                                background: #a0aec0;
+                            }
+                        </style>
+                    </head>
+                    <body class="content-middle">
+                        ${data.html}
+                    </body>
+                    </html>
+                `);
+                doc.close();
+            })
+            .catch(err => {
+                console.error("Failed to fetch preview html:", err);
+            });
+        }
+
+        // Toast feedback
+        function showToast(message, type = "info") {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            let icon = "📢";
+            if (type === "success") icon = "✓";
+            if (type === "error") icon = "⚠️";
+            
+            toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = "none";
+                toast.style.transition = "opacity 0.5s, transform 0.5s";
+                toast.style.opacity = "0";
+                toast.style.transform = "translateY(-20px)";
+                setTimeout(() => {
+                    toast.remove();
+                }, 500);
+            }, 3000);
+        }
+
+        // Initialize status pollers
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchArticles();
+            checkServerStatus();
+            // Poll server status every 2 seconds
+            setInterval(checkServerStatus, 2000);
+        });
+    </script>
+</body>
+</html>
