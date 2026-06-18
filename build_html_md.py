@@ -409,6 +409,11 @@ file_p25 = r'course/帝國防線的內爆：從羅馬晚期改革、財政軍政
 map_p25 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/adrianople_battle.png" alt="Battle of Adrianople" loading="lazy"><figcaption class="caption">西元378年阿德里安堡戰役示意圖：哥德人重騎兵發動猛烈衝鋒，徹底撕裂了羅馬帝國主力野戰軍的步兵防線，此戰被視為羅馬軍事史上最慘烈的敗仗之一。</figcaption></figure>\n'
 images_p25 = []
 
+# Page 26 (Alaric & Gothic Migrations) Config
+file_p26 = r'course/阿拉里克與哥德大遷徙：晚期羅馬帝國的地緣政治坍塌與蠻族同盟的體制化適應（第一卷：永恆之城的終局）.md'
+map_p26 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/alaric_sack_rome.png" alt="Sack of Rome by Alaric" loading="lazy"><figcaption class="caption">西元410年西哥德人洗劫羅馬示意圖：蠻族國王阿拉里克率軍攻破羅馬城，開啟了西羅馬帝國政治與軍事體系不可逆轉的瓦解進程。</figcaption></figure>\n'
+images_p26 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -487,6 +492,9 @@ html_body_p24 = process_markdown(file_p24, images_p24, "1.0", map_p24, page_id="
 print("Processing Page 25 (Goths & Adrianople Battle)...")
 html_body_p25 = process_markdown(file_p25, images_p25, "1.0", map_p25, page_id="page25")
 
+print("Processing Page 26 (Alaric & Gothic Migrations)...")
+html_body_p26 = process_markdown(file_p26, images_p26, "1.0", map_p26, page_id="page26")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -541,6 +549,7 @@ pages_data = {
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
+    'page26': {'title': '阿拉里克與哥德大遷徙', 'img': 'images/alaric_sack_rome.png', 'ver': '1.0', 'doc': False},
     'page04': {'title': '神聖羅馬帝國：金璽詔書', 'ver': '1.9', 'doc': True},
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
     'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
@@ -558,7 +567,7 @@ categories = [
         'title': '中世紀諸民族記',
         'key': 'medieval',
         'img': 'images/clovis_main.jpg',
-        'pages': ['page23']
+        'pages': ['page23', 'page26']
     },
     {
         'title': '教宗國記',
@@ -843,6 +852,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE22__', html_body_p22)
 final_html = final_html.replace('__HTML_BODY_PAGE23__', html_body_p23)
 final_html = final_html.replace('__HTML_BODY_PAGE24__', html_body_p24)
 final_html = final_html.replace('__HTML_BODY_PAGE25__', html_body_p25)
+final_html = final_html.replace('__HTML_BODY_PAGE26__', html_body_p26)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -872,6 +882,7 @@ final_html = final_html.replace('__PAGE22_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE23_DATE__', get_file_last_update_date(file_p23))
 final_html = final_html.replace('__PAGE24_DATE__', get_file_last_update_date(file_p24))
 final_html = final_html.replace('__PAGE25_DATE__', get_file_last_update_date(file_p25))
+final_html = final_html.replace('__PAGE26_DATE__', get_file_last_update_date(file_p26))
 
 # Inject JavaScript for toggle function
 toggle_js = """
