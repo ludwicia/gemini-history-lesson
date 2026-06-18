@@ -421,7 +421,7 @@ html_body_p3 = process_markdown(file_p3, images_p3, "1.0", map_p3, page_id="page
 
 print("Processing Page 4 (Golden Bull)...")
 file_p4 = r'course/4.金璽詔書.md'
-html_body_p4 = process_3col_document(file_p4, "1.8", page_id="page04")
+html_body_p4 = process_3col_document(file_p4, "1.9", page_id="page04")
 
 print("Processing Page 5 (Hirsau Abbey)...")
 html_body_p5 = process_markdown(file_p5, images_p5, "1.0", map_p5, page_id="page05")
@@ -541,7 +541,7 @@ pages_data = {
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
-    'page04': {'title': '神聖羅馬帝國：金璽詔書', 'ver': '1.8', 'doc': True},
+    'page04': {'title': '神聖羅馬帝國：金璽詔書', 'ver': '1.9', 'doc': True},
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
     'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
     'page20': {'title': '羅馬帝國：米蘭敕令', 'ver': '1.0', 'doc': True},
