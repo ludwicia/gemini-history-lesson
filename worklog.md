@@ -27,6 +27,7 @@
   - 將原始 text 導出時損毀的表格重構成美觀的 Markdown 表格並清理格式雜訊。
 - **視覺與設計整合**：
   - 使用 `generate_image` 生成油畫風格的高質感插圖 `images/alaric_sack_rome.png`，描繪西哥德領袖阿拉里克率軍大遷徙的場景，作為 `page26` 的文章 Banner。
+  - 應使用者要求，使用 `generate_image` 繪製高質感的古風地圖 `images/visigoth_migration_map.png`，描繪西哥德人大遷徙的完整歷史路線，並將其嵌入至文章首段後方。
 - **網站架構與 SEO 整合**：
   - 在 `template.html` 與 `build_html_md.py` 中註冊 Page 26 路由，將其分類至「中世紀諸民族記」類別下。
   - 更新了 layout 版本為 `4.7`，同步更新 JSON-LD 結構化資料、動態 SEO (pageSEO)、搜尋索引 (initGlobalSearchIndex) 與首頁的文章卡片。
