@@ -414,6 +414,11 @@ file_p26 = r'course/阿拉里克與哥德大遷徙：晚期羅馬帝國的地緣
 map_p26 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/alaric_sack_rome.png" alt="Sack of Rome by Alaric" loading="lazy"><figcaption class="caption">西元410年西哥德人洗劫羅馬示意圖：蠻族國王阿拉里克率軍攻破羅馬城，開啟了西羅馬帝國政治與軍事體系不可逆轉的瓦解進程。</figcaption></figure>\n'
 images_p26 = []
 
+# Page 27 (Battle of the Frigidus) Config
+file_p27 = r'course/羅馬帝國晚期的地緣政治斷裂與軍事赤字：冷河戰役及其歷史學再闡釋.md'
+map_p27 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/battle_of_frigidus.png" alt="Battle of the Frigidus" loading="lazy"><figcaption class="caption">冷河戰役（西元394年）想像圖：在極端的「波拉風」暴風肆虐下，東部皇帝狄奧多西一世的軍隊發動反攻，狂風將西軍的箭矢吹回其自身陣中，徹底扭轉了戰局。</figcaption></figure>\n'
+images_p27 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -495,6 +500,9 @@ html_body_p25 = process_markdown(file_p25, images_p25, "1.0", map_p25, page_id="
 print("Processing Page 26 (Alaric & Gothic Migrations)...")
 html_body_p26 = process_markdown(file_p26, images_p26, "1.0", map_p26, page_id="page26")
 
+print("Processing Page 27 (Battle of the Frigidus)...")
+html_body_p27 = process_markdown(file_p27, images_p27, "1.0", map_p27, page_id="page27")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -550,6 +558,7 @@ pages_data = {
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
     'page26': {'title': '阿拉里克與哥德大遷徙', 'img': 'images/alaric_sack_rome.png', 'ver': '1.0', 'doc': False},
+    'page27': {'title': '冷河戰役及其歷史學再闡釋', 'img': 'images/battle_of_frigidus.png', 'ver': '1.0', 'doc': False},
     'page04': {'title': '神聖羅馬帝國：金璽詔書', 'ver': '1.9', 'doc': True},
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
     'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
@@ -561,7 +570,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22', 'page24', 'page25']
+        'pages': ['page19', 'page22', 'page24', 'page25', 'page27']
     },
     {
         'title': '中世紀諸民族記',
@@ -853,6 +862,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE23__', html_body_p23)
 final_html = final_html.replace('__HTML_BODY_PAGE24__', html_body_p24)
 final_html = final_html.replace('__HTML_BODY_PAGE25__', html_body_p25)
 final_html = final_html.replace('__HTML_BODY_PAGE26__', html_body_p26)
+final_html = final_html.replace('__HTML_BODY_PAGE27__', html_body_p27)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -883,6 +893,7 @@ final_html = final_html.replace('__PAGE23_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE24_DATE__', get_file_last_update_date(file_p24))
 final_html = final_html.replace('__PAGE25_DATE__', get_file_last_update_date(file_p25))
 final_html = final_html.replace('__PAGE26_DATE__', get_file_last_update_date(file_p26))
+final_html = final_html.replace('__PAGE27_DATE__', get_file_last_update_date(file_p27))
 
 # Inject JavaScript for toggle function
 toggle_js = """
