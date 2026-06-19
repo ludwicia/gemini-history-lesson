@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冷河戰役人物關係圖 — 互動歷史講堂</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Mermaid JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #eff6ff;
+            --primary-dark: #1d4ed8;
+            --accent: #d97706;
+            --accent-light: #fef3c7;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --primary: #60a5fa;
+            --primary-light: #1e3a8a;
+            --primary-dark: #3b82f6;
+            --accent: #f59e0b;
+            --accent-light: #78350f;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-bg: rgba(30, 41, 59, 0.95);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Controls Panel */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+            gap: 15px;
+            transition: var(--transition);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-east { background-color: #e3f2fd; border: 2px solid #1565c0; }
+        .dot-west { background-color: #ffebee; border: 2px solid #c62828; }
+        .dot-goth { background-color: #fff8e1; border: 2px solid #ef6c00; }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Diagram Wrapper */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .diagram-outer {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.02);
+            border: 1px dashed var(--border);
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .diagram-container {
+            transform-origin: top center;
+            transition: transform 0.2s ease-out;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Card Section Title */
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Character Grid */
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .char-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .char-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+        }
+
+        .char-card.east::before { background-color: #1565c0; }
+        .char-card.west::before { background-color: #c62828; }
+        .char-card.goth::before { background-color: #ef6c00; }
+
+        .char-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-color: var(--primary);
+        }
+
+        .char-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .char-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .char-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 0 20px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            body { padding: 15px 10px; }
+            .controls { flex-direction: column; align-items: stretch; }
+            .legend { justify-content: center; }
+            .btn-group { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Elegant Header -->
+        <header>
+            <h1>⚔️ 冷河戰役人物關係圖</h1>
+            <div class="subtitle">西元 394 年羅馬帝國東西分裂前夕的政治博弈與權力網絡</div>
+        </header>
+
+        <!-- Controls Dashboard -->
+        <div class="controls">
+            <!-- Color Legends -->
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="dot dot-east"></span>
+                    <span>東部朝廷勢力</span>
+                </div>
+                <div class="legend-item">
+                    <span class="dot dot-west"></span>
+                    <span>西部朝廷與僭主勢力</span>
+                </div>
+                <div class="legend-item">
+                    <span class="dot dot-goth"></span>
+                    <span>蠻族同盟軍</span>
+                </div>
+            </div>
+
+            <!-- Custom Controls -->
+            <div class="btn-group">
+                <button onclick="zoom(0.1)" title="放大關係圖">🔍➕ 放大</button>
+                <button onclick="zoom(-0.1)" title="縮小關係圖">🔍➖ 縮小</button>
+                <button onclick="resetZoom()" title="還原比例">🔄 重設</button>
+                <button onclick="toggleTheme()" id="themeBtn" title="切換深淺色主題">🌗 主題模式</button>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Diagram Card -->
+            <div class="card">
+                <div class="card-title">
+                    <span>📊 互動人物關係網絡 (可利用上方控制按鈕縮放大小)</span>
+                </div>
+                <div class="diagram-outer">
+                    <div class="diagram-container" id="diagramContainer">
+                        <pre class="mermaid">
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#e3f2fd',
+    'primaryTextColor': '#0d47a1',
+    'primaryBorderColor': '#1565c0',
+    'lineColor': '#4a5568',
+    'fontSize': '18px',
+    'fontFamily': 'system-ui, -apple-system, sans-serif'
+  }
+}}%%
+graph TD
+    %% Custom styling groups %%
+    classDef Eastern fill:#e3f2fd,stroke:#1565c0,stroke-width:3px,color:#0d47a1,font-size:18px,font-weight:bold;
+    classDef Western fill:#ffebee,stroke:#c62828,stroke-width:3px,color:#7f1d1d,font-size:18px,font-weight:bold;
+    classDef Goths fill:#fff8e1,stroke:#ef6c00,stroke-width:3px,color:#7c2d12,font-size:18px,font-weight:bold;
+
+    %% Eastern Nodes %%
+    T1("👑 狄奧多西一世 (Theodosius I)<br>【東部皇帝 / 戰後統一羅馬】"):::Eastern
+    Galla("👩‍💼 加拉 (Galla)<br>【東部皇后 / 瓦倫提尼安二世之妹】"):::Eastern
+    Honorius("👦 霍諾留 (Honorius)<br>【次子 / 繼任西部皇帝】"):::Eastern
+    Arcadius("👦 阿卡迪烏斯 (Arcadius)<br>【長子 / 繼任東部皇帝】"):::Eastern
+    Stilicho("🗡️ 斯提里科 (Stilicho)<br>【東部名將 / 後任西部攝政】"):::Eastern
+    Eutropius("📜 尤特羅皮烏斯 (Eutropius)<br>【東部宦官顧問 / 宮廷實權者】"):::Eastern
+    Bacurius("🪦 巴庫里烏斯 (Bacurius)<br>【高加索將領 / 首日衝鋒陣亡】"):::Eastern
+
+    %% Western Nodes %%
+    V2("👑 瓦倫提尼安二世 (Valentinian II)<br>【西部合法皇帝 / 離奇吊死】"):::Western
+    Arbogast("🛡️ 阿波加斯特 (Arbogast)<br>【西部陸軍元帥 / 法蘭克權臣】"):::Western
+    Eugenius("👑 尤金尼烏斯 (Eugenius)<br>【西部僭主皇帝 / 基督徒學者】"):::Western
+    Arbition("🔄 阿爾比提翁 (Arbition)<br>【西部伏兵將領 / 關鍵倒戈】"):::Western
+    NF("🏛️ 尼科馬科斯·弗拉維亞努斯 (Nicomachus Flavianus)<br>【西部近衛長官 / 異教領袖】"):::Western
+    Gratian("🪦 格拉提安 (Gratian)<br>【前西部皇帝 / 383年遇害】"):::Western
+    Maximus("🪦 馬克西姆斯 (Magnus Maximus)<br>【前西部僭主 / 388年戰敗被斬】"):::Western
+
+    %% Goths Nodes %%
+    Alaric("🏹 阿拉里克 (Alaric)<br>【哥德首領 / 後反叛洗劫羅馬】"):::Goths
+    Gainas("🏹 蓋納斯 (Gainas)<br>【哥德同盟軍將領】"):::Goths
+
+    %% Connection details %%
+    T1 -. 夫妻 .- Galla
+    T1 -->|擁立| Honorius
+    T1 -->|擁立| Arcadius
+    T1 -->|重用為將領| Stilicho
+    T1 -->|信任並派遣| Eutropius
+    T1 -->|統率| Bacurius
+    T1 -->|徵召同盟軍 / 消耗其兵力| Alaric
+    T1 -->|統率| Gainas
+    
+    Galla -->|親兄妹 / 促使狄氏報仇| V2
+    
+    V2 -->|試圖罷免但失敗| Arbogast
+    Arbogast -->|架空權力 / 疑似弒君| V2
+    Arbogast -->|擁立為帝| Eugenius
+    Arbogast -->|派遣伏擊東軍| Arbition
+    
+    Eugenius -->|妥協重建祭壇以換支持| NF
+    Eugenius -. 盟友 .- Arbogast
+    
+    Arbition -->|深夜倒戈加入東軍| T1
+    Arbition -->|奉命切斷退路| T1
+    
+    NF -->|兵敗後自殺| NF
+    Arbogast -->|兵敗後自殺| Arbogast
+    Eugenius -->|戰敗被捕斬首| T1
+    
+    Gratian -->|提拔任命| Arbogast
+    Maximus -->|叛亂弒殺| Gratian
+    T1 -->|出兵擊殺| Maximus
+    
+    Stilicho -->|攝政輔佐| Honorius
+    Alaric -->|同盟參戰 / 戰損過半| T1
+    Alaric -->|因積怨而反叛| Honorius
+    
+    Eutropius -->|內耗敵對| Stilicho
+
+    linkStyle default stroke:#4a5568,stroke-width:2px;
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Profiles Card -->
+            <div class="card">
+                <div class="card-title">
+                    <span>👤 核心歷史人物生平與戰略角色</span>
+                </div>
+                <div class="character-grid">
+                    <!-- Theodosius I -->
+                    <div class="char-card east">
+                        <div class="char-name">👑 狄奧多西一世</div>
+                        <div class="char-title">東部羅馬皇帝 / 後期帝國統一者</div>
+                        <div class="char-desc">因小舅子瓦倫提尼安二世之死怒而向西部宣戰。他在冷河戰役中運用宗教動員凝聚士氣，並在極端氣象「波拉風」幫助下反敗為勝，實現了羅馬帝國歷史上最後一次短暫的統一。</div>
+                    </div>
+                    <!-- Arbogast -->
+                    <div class="char-card west">
+                        <div class="char-name">🛡️ 阿波加斯特</div>
+                        <div class="char-title">西部陸軍大元帥 / 法蘭克裔</div>
+                        <div class="char-desc">西部帝國真正的軍政獨裁者，架空並疑似謀殺了年幼的瓦倫提尼安二世。他擁有極高軍事才能，冷河戰役中設計了巧妙的「袋形合圍」戰術，但因部下叛逃與極端風暴而潰敗，最終自殺。</div>
+                    </div>
+                    <!-- Eugenius -->
+                    <div class="char-card west">
+                        <div class="char-name">👑 尤金尼烏斯</div>
+                        <div class="char-title">西部僭主 / 傀儡皇帝</div>
+                        <div class="char-desc">本為基督徒文官與修辭學家，被阿波加斯特扶植上台。為了尋求西部的財政支持，妥協重建勝利女神祭壇，從而給內戰抹上了宗教對決色彩。戰敗後被東部士兵捕殺斬首。</div>
+                    </div>
+                    <!-- Alaric -->
+                    <div class="char-card goth">
+                        <div class="char-name">🏹 阿拉里克</div>
+                        <div class="char-title">西哥德盟軍首領 / 後來的羅馬掘墓人</div>
+                        <div class="char-desc">率兩萬名哥德盟軍在首日血戰中作為狄奧多西的肉盾衝鋒，戰損過半（死傷萬人）。戰後未獲授羅馬正式官職，深感被出賣，於 395 年反叛並在 410 年洗劫羅馬城。</div>
+                    </div>
+                    <!-- Galla -->
+                    <div class="char-card east">
+                        <div class="char-name">👩‍💼 加拉</div>
+                        <div class="char-title">東部皇后 / 瓦倫提尼安二世之妹</div>
+                        <div class="char-desc">狄奧多西一世的第二任妻子。在哥哥瓦倫提尼安二世於高盧維埃納寓所離奇吊死後，她悲痛欲絕並堅稱是阿波加斯特弒君，極力促使丈夫狄奧多西發兵討伐西部。</div>
+                    </div>
+                    <!-- Arbition -->
+                    <div class="char-card west">
+                        <div class="char-name">🔄 阿爾比提翁</div>
+                        <div class="char-title">西部伏兵將領 / 決定戰局的倒戈者</div>
+                        <div class="char-desc">奉阿波加斯特之命率精銳埋伏在阿爾卑斯隘口，準備合圍狄奧多西。然而他在戰役第一天深夜叛逃至東部陣營，不僅使東軍擺脫死局，更極大地崩潰了西軍士氣。</div>
+                    </div>
+                    <!-- Stilicho -->
+                    <div class="char-card east">
+                        <div class="char-name">🗡️ 斯提里科</div>
+                        <div class="char-title">東部軍事將領 / 後來的西部攝政</div>
+                        <div class="char-desc">半蠻族裔（汪達爾人）羅馬名將，深得狄奧多西信任。冷河戰役後受託孤，成為西部年幼皇帝霍諾留的護國攝政，在此後十數年中苦苦支撐西羅馬帝國的防線。</div>
+                    </div>
+                    <!-- Nicomachus Flavianus -->
+                    <div class="char-card west">
+                        <div class="char-name">🏛️ 尼科馬科斯·弗拉維亞努斯</div>
+                        <div class="char-title">西部近衛軍長官 / 羅馬異教領袖</div>
+                        <div class="char-desc">西部元老院異教勢力精神領袖，將尤金尼烏斯政權視為恢復多神教傳統的最後希望。極力鼓吹異教復興，在冷河戰役第二日得知部隊倒戈與風暴降臨後，因絕望而自殺。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>歷史研究文獻整合自《羅馬最後的異教徒》與相關軍事史專著</p>
+            <p style="margin-top: 5px; font-size: 0.8rem;">© 2026 Ludwica 的簡單歷史課. Powered by Antigravity.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#e3f2fd',
+                primaryTextColor: '#0d47a1',
+                primaryBorderColor: '#1565c0',
+                lineColor: '#718096',
+                fontSize: '18px',
+                fontFamily: 'system-ui, -apple-system, sans-serif'
+            }
+        });
+
+        // Interactive Zoom Logic
+        let scale = 1.0;
+        const container = document.getElementById('diagramContainer');
+
+        function zoom(factor) {
+            scale += factor;
+            if (scale < 0.5) scale = 0.5;
+            if (scale > 2.0) scale = 2.0;
+            container.style.transform = `scale(${scale})`;
+        }
+
+        function resetZoom() {
+            scale = 1.0;
+            container.style.transform = 'scale(1.0)';
+        }
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Restore saved theme on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
