@@ -173,24 +173,25 @@
 
         .diagram-outer {
             width: 100%;
+            height: 650px; /* Fixed height for panning area */
             overflow: hidden;
             border-radius: 12px;
             background: rgba(255,255,255,0.02);
             border: 1px dashed var(--border);
             position: relative;
-            min-height: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px;
+            cursor: grab;
+            user-select: none;
+            touch-action: none; /* Crucial: disables browser default scrolling on touch gestures */
         }
 
         .diagram-container {
-            transform-origin: top center;
-            transition: transform 0.2s ease-out;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            display: flex;
-            justify-content: center;
+            transform-origin: 0 0; /* Align with zoom-to-mouse math */
+            display: inline-block;
+            transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         /* Card Section Title */
@@ -502,21 +503,168 @@ graph TD
             }
         });
 
-        // Interactive Zoom Logic
+        // Interactive Pan & Zoom Logic
         let scale = 1.0;
+        let translateX = 0;
+        let translateY = 0;
+        let isPanning = false;
+        let startX = 0;
+        let startY = 0;
+
+        // Touch Variables
+        let initialTouchDist = 0;
+        let initialScale = 1.0;
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        const viewport = document.querySelector('.diagram-outer');
         const container = document.getElementById('diagramContainer');
 
-        function zoom(factor) {
-            scale += factor;
-            if (scale < 0.5) scale = 0.5;
-            if (scale > 2.0) scale = 2.0;
-            container.style.transform = `scale(${scale})`;
+        function updateTransform() {
+            container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         }
 
-        function resetZoom() {
-            scale = 1.0;
-            container.style.transform = 'scale(1.0)';
+        // Mouse Wheel Zoom
+        viewport.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const zoomFactor = 0.08;
+            const oldScale = scale;
+            
+            if (e.deltaY < 0) {
+                scale = Math.min(scale + zoomFactor, 5.0); // Allow zooming in up to 5x for readability
+            } else {
+                scale = Math.max(scale - zoomFactor, 0.2); // Down to 0.2x
+            }
+            
+            // Zoom centered on the mouse cursor
+            const rect = viewport.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            translateX = mouseX - (mouseX - translateX) * (scale / oldScale);
+            translateY = mouseY - (mouseY - translateY) * (scale / oldScale);
+            
+            updateTransform();
+        }, { passive: false });
+
+        // Mouse Drag to Pan
+        viewport.addEventListener('mousedown', (e) => {
+            // If user clicks a button inside controls, do not pan
+            if (e.target.closest('button')) return;
+            isPanning = true;
+            viewport.style.cursor = 'grabbing';
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isPanning) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            isPanning = false;
+            viewport.style.cursor = 'grab';
+        });
+
+        // Touch Gestures (Pinch to Zoom & Touch Panning)
+        viewport.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                // Single finger drag to pan
+                isPanning = true;
+                touchStartX = e.touches[0].clientX - translateX;
+                touchStartY = e.touches[0].clientY - translateY;
+            } else if (e.touches.length === 2) {
+                // Double finger pinch to zoom
+                isPanning = false;
+                initialTouchDist = getTouchDistance(e);
+                initialScale = scale;
+                
+                const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                const rect = viewport.getBoundingClientRect();
+                
+                touchStartX = midX - rect.left;
+                touchStartY = midY - rect.top;
+            }
+        });
+
+        viewport.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Prevent default mobile scrolling
+            if (isPanning && e.touches.length === 1) {
+                translateX = e.touches[0].clientX - touchStartX;
+                translateY = e.touches[0].clientY - touchStartY;
+                updateTransform();
+            } else if (e.touches.length === 2) {
+                const dist = getTouchDistance(e);
+                const factor = dist / initialTouchDist;
+                const oldScale = scale;
+                
+                scale = Math.min(Math.max(initialScale * factor, 0.2), 5.0);
+                
+                // Zoom centered on midpoint of fingers
+                translateX = touchStartX - (touchStartX - translateX) * (scale / oldScale);
+                translateY = touchStartY - (touchStartY - translateY) * (scale / oldScale);
+                
+                updateTransform();
+            }
+        }, { passive: false });
+
+        viewport.addEventListener('touchend', () => {
+            isPanning = false;
+        });
+
+        function getTouchDistance(e) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
         }
+
+        // Button Zooming Controls (zooming centered on middle of viewport)
+        function zoom(factor) {
+            const oldScale = scale;
+            scale = Math.min(Math.max(scale + factor, 0.2), 5.0);
+            
+            const rect = viewport.getBoundingClientRect();
+            const midX = rect.width / 2;
+            const midY = rect.height / 2;
+            
+            translateX = midX - (midX - translateX) * (scale / oldScale);
+            translateY = midY - (midY - translateY) * (scale / oldScale);
+            
+            updateTransform();
+        }
+
+        // Reset and center SVG automatically on load & click
+        function resetZoom() {
+            const svg = document.querySelector('.diagram-container svg');
+            if (svg) {
+                // Ensure SVG takes full container bounds naturally
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = 'none';
+                
+                const outerRect = viewport.getBoundingClientRect();
+                const svgRect = svg.getBoundingClientRect();
+                scale = 1.0;
+                translateX = (outerRect.width - svgRect.width) / 2;
+                translateY = 40; // 40px top offset
+                updateTransform();
+            } else {
+                scale = 1.0;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+            }
+        }
+
+        // Trigger auto centering after Mermaid rendering completes
+        window.addEventListener('load', () => {
+            setTimeout(resetZoom, 850);
+        });
 
         // Theme Toggle Logic
         function toggleTheme() {
