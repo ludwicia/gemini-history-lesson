@@ -419,6 +419,9 @@ file_p27 = r'course/羅馬帝國晚期的地緣政治斷裂與軍事赤字：冷
 map_p27 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/battle_of_frigidus.png" alt="Battle of the Frigidus" loading="lazy"><figcaption class="caption">冷河戰役（西元394年）想像圖：在極端的「波拉風」暴風肆虐下，東部皇帝狄奧多西一世的軍隊發動反攻，狂風將西軍的箭矢吹回其自身陣中，徹底扭轉了戰局。</figcaption></figure>\n'
 images_p27 = []
 
+# Page 28 Config
+file_p28 = r'course/薩洛尼卡敕令.md'
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -503,6 +506,9 @@ html_body_p26 = process_markdown(file_p26, images_p26, "1.0", map_p26, page_id="
 print("Processing Page 27 (Battle of the Frigidus)...")
 html_body_p27 = process_markdown(file_p27, images_p27, "1.0", map_p27, page_id="page27")
 
+print("Processing Page 28 (Thessalonica Edict Document)...")
+html_body_p28 = process_3col_document(file_p28, "1.0", page_id="page28", lang_orig="拉丁文")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -563,6 +569,7 @@ pages_data = {
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
     'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
     'page20': {'title': '羅馬帝國：米蘭敕令', 'ver': '1.0', 'doc': True},
+    'page28': {'title': '羅馬帝國：薩洛尼卡敕令', 'ver': '1.0', 'doc': True},
 }
 
 categories = [
@@ -668,7 +675,7 @@ for cat in categories:
     cards_html_list.append(cat_section)
 
 # Append Historical Documents section at the bottom
-doc_pages = ['page04', 'page06', 'page08', 'page20']
+doc_pages = ['page04', 'page06', 'page08', 'page20', 'page28']
 doc_cards = []
 for pid in doc_pages:
     if pid in pages_data:
@@ -863,6 +870,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE24__', html_body_p24)
 final_html = final_html.replace('__HTML_BODY_PAGE25__', html_body_p25)
 final_html = final_html.replace('__HTML_BODY_PAGE26__', html_body_p26)
 final_html = final_html.replace('__HTML_BODY_PAGE27__', html_body_p27)
+final_html = final_html.replace('__HTML_BODY_PAGE28__', html_body_p28)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -894,6 +902,7 @@ final_html = final_html.replace('__PAGE24_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE25_DATE__', get_file_last_update_date(file_p25))
 final_html = final_html.replace('__PAGE26_DATE__', get_file_last_update_date(file_p26))
 final_html = final_html.replace('__PAGE27_DATE__', get_file_last_update_date(file_p27))
+final_html = final_html.replace('__PAGE28_DATE__', get_file_last_update_date(file_p28))
 
 # Inject JavaScript for toggle function
 toggle_js = """
