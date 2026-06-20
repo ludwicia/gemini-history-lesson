@@ -1190,9 +1190,10 @@
                 }
             }
             
-            svg.removeAttribute('height');
-            svg.style.width = '100%';
-            svg.style.height = 'auto';
+            svg.setAttribute('width', nativeWidth);
+            svg.setAttribute('height', nativeHeight);
+            svg.style.width = nativeWidth + 'px';
+            svg.style.height = nativeHeight + 'px';
             svg.style.maxWidth = 'none';
             
             const outerRect = viewport.getBoundingClientRect();
