@@ -10475,7 +10475,7 @@ graph TB
             let nativeWidth = 900;
             let nativeHeight = 600;
             if (viewBoxStr) {
-                const parts = viewBoxStr.split(' ');
+                const parts = viewBoxStr.split(/[\s,]+/).filter(Boolean);
                 if (parts.length === 4) {
                     nativeWidth = parseFloat(parts[2]);
                     nativeHeight = parseFloat(parts[3]);
@@ -10489,20 +10489,23 @@ graph TB
             
             const outerRect = viewport.getBoundingClientRect();
             const padding = 30;
-            const scaleX = (outerRect.width - padding) / nativeWidth;
-            const scaleY = (outerRect.height - padding) / nativeHeight;
-            scale = Math.min(scaleX, scaleY, 1.0);
-            if (scale < 0.25) scale = 0.25;
             
+            // Fit to width for maximum readability of tall diagrams
+            scale = (outerRect.width - padding) / nativeWidth;
+            if (scale > 1.0) scale = 1.0; // Fit completely, don't upscale past 1x
+            if (scale < 0.35) scale = 0.35; // Floor at 0.35x for mobile readability
+            
+            // Center horizontally
             translateX = (outerRect.width - nativeWidth * scale) / 2;
-            translateY = (outerRect.height - nativeHeight * scale) / 2;
-            if (translateY < 15) translateY = 15;
+            
+            // Align to top with small padding so user starts reading from the top
+            translateY = 20;
             
             container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         } else {
             scale = 1.0;
             translateX = 0;
-            translateY = 0;
+            translateY = 20;
             container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         }
     };
@@ -10551,7 +10554,10 @@ graph TB
         }
         
         setupPanZoom();
-        setTimeout(resetZoom, 300);
+        // Call resetZoom multiple times to handle Mermaid rendering delays and layout shifts
+        setTimeout(resetZoom, 100);
+        setTimeout(resetZoom, 400);
+        setTimeout(resetZoom, 1000);
     };
 </script>
 
