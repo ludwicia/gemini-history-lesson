@@ -173,7 +173,7 @@
 
         .diagram-outer {
             width: 100%;
-            height: 650px; /* Fixed height for panning area */
+            height: 720px; /* Fixed height for panning area */
             overflow: hidden;
             border-radius: 12px;
             background: rgba(255,255,255,0.02);
@@ -287,62 +287,100 @@
             text-decoration: underline;
         }
 
-        /* Tab Switcher Styles */
-        .tab-buttons {
-            display: flex;
-            gap: 6px;
-            background: rgba(0, 0, 0, 0.05);
-            padding: 5px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
+        /* Premium Subgraph & Mermaid styles */
+        .cluster rect {
+            fill: rgba(30, 58, 138, 0.02) !important;
+            stroke: #1e3a8a !important;
+            stroke-width: 1.5px !important;
+            stroke-dasharray: 4 4 !important;
+            rx: 12px;
+            ry: 12px;
+        }
+        
+        .cluster-label text {
+            font-size: 20px !important;
+            font-weight: 700 !important;
+            fill: #1e3a8a !important;
+            font-family: 'Inter', 'Noto Sans TC', sans-serif !important;
         }
 
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        [data-theme="dark"] .cluster rect {
+            fill: rgba(96, 165, 250, 0.04) !important;
+            stroke: #60a5fa !important;
         }
 
-        .tab-btn:hover {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.08);
+        [data-theme="dark"] .cluster-label text {
+            fill: #60a5fa !important;
         }
 
-        .tab-btn.active {
-            background: var(--card-bg);
-            color: var(--primary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        /* Connection line styling overrides */
+        .edgePath .path {
+            stroke: var(--text-muted) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .edgePath .markerPath {
+            fill: var(--text-muted) !important;
+            stroke: var(--text-muted) !important;
+        }
+        
+        .node .nodeLabel {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            line-height: 1.4 !important;
         }
 
-        .tab-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            overflow: hidden;
-            opacity: 0;
-            pointer-events: none;
-            transform-origin: 0 0;
+        /* Custom Node Classes */
+        .node.Eastern rect {
+            fill: #eff6ff !important;
+            stroke: #1e3a8a !important;
+            stroke-width: 2px !important;
+        }
+        .node.Eastern .nodeLabel {
+            color: #1e3a8a !important;
         }
 
-        .tab-content.active {
-            position: relative;
-            height: auto;
-            overflow: visible;
-            opacity: 1;
-            pointer-events: auto;
+        .node.Western rect {
+            fill: #fef2f2 !important;
+            stroke: #991b1b !important;
+            stroke-width: 2px !important;
+        }
+        .node.Western .nodeLabel {
+            color: #991b1b !important;
+        }
+
+        .node.Goths rect {
+            fill: #fffbeb !important;
+            stroke: #c2410c !important;
+            stroke-width: 2px !important;
+        }
+        .node.Goths .nodeLabel {
+            color: #c2410c !important;
+        }
+
+        [data-theme="dark"] .node.Eastern rect {
+            fill: rgba(30, 58, 138, 0.3) !important;
+            stroke: #60a5fa !important;
+        }
+        [data-theme="dark"] .node.Eastern .nodeLabel {
+            color: #eff6ff !important;
+        }
+
+        [data-theme="dark"] .node.Western rect {
+            fill: rgba(153, 27, 27, 0.3) !important;
+            stroke: #f87171 !important;
+        }
+        [data-theme="dark"] .node.Western .nodeLabel {
+            color: #fef2f2 !important;
+        }
+
+        [data-theme="dark"] .node.Goths rect {
+            fill: rgba(194, 65, 12, 0.3) !important;
+            stroke: #fbbf24 !important;
+        }
+        [data-theme="dark"] .node.Goths .nodeLabel {
+            color: #fffbeb !important;
         }
 
         /* Mobile Optimization */
@@ -395,182 +433,71 @@
             <div class="card">
                 <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-bottom: none; padding-bottom: 0;">
                     <span>📊 互動人物關係網絡 (可滾動滑鼠/雙指縮放與拖曳)</span>
-                    <div class="tab-buttons">
-                        <button class="tab-btn active" id="btn-east" onclick="switchTab('east')">🔵 東部朝廷 (東軍)</button>
-                        <button class="tab-btn" id="btn-west" onclick="switchTab('west')">🔴 西部朝廷 (西軍)</button>
-                        <button class="tab-btn" id="btn-all" onclick="switchTab('all')">🌐 全景關係圖</button>
-                    </div>
                 </div>
                 <div style="border-bottom: 2px solid var(--border); margin-bottom: 20px;"></div>
                 <div class="diagram-outer">
                     <div class="diagram-container" id="diagramContainer">
-                        <!-- Tab 1: Eastern Army -->
-                        <div class="tab-content active" id="tab-east">
-                            <pre class="mermaid">
+                        <pre class="mermaid">
 %%{init: {
   'theme': 'base',
   'themeVariables': {
     'primaryColor': '#e3f2fd',
     'primaryTextColor': '#0d47a1',
     'primaryBorderColor': '#1565c0',
-    'lineColor': '#4a5568',
-    'fontSize': '18px',
+    'lineColor': '#718096',
+    'fontSize': '16px',
     'fontFamily': 'system-ui, -apple-system, sans-serif'
   }
 }}%%
-graph TD
-    classDef Eastern fill:#e3f2fd,stroke:#1565c0,stroke-width:3px,color:#0d47a1,font-size:18px,font-weight:bold;
-    classDef Goths fill:#fff8e1,stroke:#ef6c00,stroke-width:3px,color:#7c2d12,font-size:18px,font-weight:bold;
+graph TB
+    classDef Eastern fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1;
+    classDef Western fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#7f1d1d;
+    classDef Goths fill:#fff8e1,stroke:#ef6c00,stroke-width:2px,color:#7c2d12;
 
-    T1("👑 狄奧多西一世 (Theodosius I)<br>【東部皇帝 / 戰後統一羅馬】"):::Eastern
-    Galla("👩‍💼 加拉 (Galla)<br>【東部皇后 / 瓦倫提尼安二世之妹】"):::Eastern
-    Honorius("👦 霍諾留 (Honorius)<br>【次子 / 繼任西部皇帝】"):::Eastern
-    Arcadius("👦 阿卡迪烏斯 (Arcadius)<br>【長子 / 繼任東部皇帝】"):::Eastern
-    Stilicho("🗡️ 斯提里科 (Stilicho)<br>【東部名將 / 後任西部攝政】"):::Eastern
-    Eutropius("📜 尤特羅皮烏斯 (Eutropius)<br>【東部宦官顧問 / 宮廷實權者】"):::Eastern
-    Bacurius("🪦 巴庫里烏斯 (Bacurius)<br>【高加索將領 / 首日衝鋒陣亡】"):::Eastern
+    subgraph West ["西羅馬陣營"]
+        Maximus("👑 馬克西穆斯 (Magnus Maximus)<br>【前西部僭主 / 388年戰敗被斬】"):::Western
+        Gratian("🪦 格拉提安 (Gratian)<br>【前西部皇帝 / 383年遇害】"):::Western
+        V2("👑 瓦倫提尼安二世 (Valentinian II)<br>【西部合法皇帝 / 離奇吊死】"):::Western
+        Arbogast("🛡️ 阿波加斯特 (Arbogast)<br>【西部陸軍元帥 / 法蘭克權臣】"):::Western
+        Eugenius("👑 尤金尼烏斯 (Eugenius)<br>【西部僭主皇帝 / 基督徒學者】"):::Western
+        Arbitio("🔄 阿爾比提翁 (Arbitio)<br>【西部伏兵將領 / 關鍵倒戈】"):::Western
+        NF("🏛️ 尼科馬科斯·弗拉維亞努斯 (Nicomachus Flavianus)<br>【西部近衛長官 / 異教領袖】"):::Western
 
-    Alaric("🏹 阿拉里克 (Alaric)<br>【哥德首領 / 後反叛洗劫羅馬】"):::Goths
-    Gainas("🏹 蓋納斯 (Gainas)<br>【哥德同盟軍將領】"):::Goths
+        Maximus -->|叛亂弒殺| Gratian
+        Gratian -->|提拔任命| Arbogast
+        V2 -->|試圖罷免但失敗| Arbogast
+        Arbogast -->|權力架空 / 疑似弒君| V2
+        Arbogast -->|擁立為帝| Eugenius
+        Eugenius -. 盟友 .- Arbogast
+        Arbogast -->|派遣伏擊| Arbitio
+        Eugenius -->|妥協重建祭壇以換支持| NF
+        Arbogast -->|兵敗後自殺| Arbogast
+        NF -->|兵敗後自殺| NF
+    end
 
-    T1 -. 夫妻 .- Galla
-    T1 -->|擁立| Honorius
-    T1 -->|擁立| Arcadius
-    T1 -->|重用為將領| Stilicho
-    T1 -->|信任並派遣| Eutropius
-    T1 -->|統率| Bacurius
-    T1 -->|徵召同盟軍 / 消耗其兵力| Alaric
-    T1 -->|統率| Gainas
-    
-    Stilicho -->|防禦反叛 / 攝政| Honorius
-    Alaric -->|同盟參戰 / 戰損過半| T1
-    Alaric -->|因積怨而反叛| Honorius
-    Eutropius -->|內耗敵對| Stilicho
+    subgraph East ["東羅馬陣營"]
+        T1("👑 迪奧多西一世 (Theodosius I)<br>【東部皇帝 / 戰後統一羅馬】"):::Eastern
+        Arcadius("👦 阿卡迪烏斯 (Arcadius)<br>【長子 / 繼任東部皇帝】"):::Eastern
+        Honorius("👦 霍諾留 (Honorius)<br>【次子 / 繼任西部皇帝】"):::Eastern
+        Bacurius("🪦 巴庫里烏斯 (Bacurius)<br>【高加索將領 / 首日衝鋒陣亡】"):::Eastern
+        Gainas("🏹 蓋納斯 (Gainas)<br>【哥德同盟軍將領】"):::Eastern
+        Stilicho("🗡️ 斯提里科 (Stilicho)<br>【東部名將 / 後任西部攝政】"):::Eastern
+        Alaric("🏹 阿拉里克 (Alaric)<br>【哥德首領 / 後反叛洗劫羅馬】"):::Goths
 
-    linkStyle default stroke:#4a5568,stroke-width:2px;
-                            </pre>
-                        </div>
+        T1 -->|擁立 / 繼位| Arcadius
+        T1 -->|擁立 / 繼位| Honorius
+        T1 -->|統率| Bacurius
+        T1 -->|統率| Gainas
+        T1 -->|重用為將領| Stilicho
+        T1 -->|徵召同盟 / 同盟參戰 / 戰後失望| Alaric
+        Stilicho -->|防禦反叛 / 攝政| Honorius
+        Alaric -->|因積怨而反叛| Honorius
+    end
 
-                        <!-- Tab 2: Western Army -->
-                        <div class="tab-content" id="tab-west">
-                            <pre class="mermaid">
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'primaryColor': '#ffebee',
-    'primaryTextColor': '#7f1d1d',
-    'primaryBorderColor': '#c62828',
-    'lineColor': '#4a5568',
-    'fontSize': '18px',
-    'fontFamily': 'system-ui, -apple-system, sans-serif'
-  }
-}}%%
-graph TD
-    classDef Western fill:#ffebee,stroke:#c62828,stroke-width:3px,color:#7f1d1d,font-size:18px,font-weight:bold;
+    Arbitio -->|深夜倒戈加入東軍| T1
 
-    V2("👑 瓦倫提尼安二世 (Valentinian II)<br>【西部合法皇帝 / 離奇吊死】"):::Western
-    Arbogast("🛡️ 阿波加斯特 (Arbogast)<br>【西部陸軍元帥 / 法蘭克權臣】"):::Western
-    Eugenius("👑 尤金尼烏斯 (Eugenius)<br>【西部僭主皇帝 / 基督徒學者】"):::Western
-    Arbition("🔄 阿爾比提翁 (Arbition)<br>【西部伏兵將領 / 關鍵倒戈】"):::Western
-    NF("🏛️ 尼科馬科斯·弗拉維亞努斯 (Nicomachus Flavianus)<br>【西部近衛長官 / 異教領袖】"):::Western
-    Gratian("🪦 格拉提安 (Gratian)<br>【前西部皇帝 / 383年遇害】"):::Western
-    Maximus("🪦 馬克西姆斯 (Magnus Maximus)<br>【前西部僭主 / 388年戰敗被斬】"):::Western
-
-    V2 -->|試圖罷免但失敗| Arbogast
-    Arbogast -->|權力架空 / 疑似弒君| V2
-    Arbogast -->|擁立為帝| Eugenius
-    Arbogast -->|派遣伏擊東軍| Arbition
-    
-    Eugenius -->|妥協重建祭壇以換支持| NF
-    Eugenius -. 盟友 .- Arbogast
-    
-    NF -->|兵敗後自殺| NF
-    Arbogast -->|兵敗後自殺| Arbogast
-    
-    Gratian -->|提拔任命| Arbogast
-    Maximus -->|叛亂弒殺| Gratian
-    
-    linkStyle default stroke:#4a5568,stroke-width:2px;
-                            </pre>
-                        </div>
-
-                        <!-- Tab 3: Complete Overview -->
-                        <div class="tab-content" id="tab-all">
-                            <pre class="mermaid">
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'primaryColor': '#e3f2fd',
-    'primaryTextColor': '#0d47a1',
-    'primaryBorderColor': '#1565c0',
-    'lineColor': '#4a5568',
-    'fontSize': '18px',
-    'fontFamily': 'system-ui, -apple-system, sans-serif'
-  }
-}}%%
-graph TD
-    classDef Eastern fill:#e3f2fd,stroke:#1565c0,stroke-width:3px,color:#0d47a1,font-size:18px,font-weight:bold;
-    classDef Western fill:#ffebee,stroke:#c62828,stroke-width:3px,color:#7f1d1d,font-size:18px,font-weight:bold;
-    classDef Goths fill:#fff8e1,stroke:#ef6c00,stroke-width:3px,color:#7c2d12,font-size:18px,font-weight:bold;
-
-    T1("👑 狄奧多西一世 (Theodosius I)<br>【東部皇帝 / 戰後統一羅馬】"):::Eastern
-    Galla("👩‍💼 加拉 (Galla)<br>【東部皇后 / 瓦倫提尼安二世之妹】"):::Eastern
-    Honorius("👦 霍諾留 (Honorius)<br>【次子 / 繼任西部皇帝】"):::Eastern
-    Arcadius("👦 阿卡迪烏斯 (Arcadius)<br>【長子 / 繼任東部皇帝】"):::Eastern
-    Stilicho("🗡️ 斯提里科 (Stilicho)<br>【東部名將 / 後任西部攝政】"):::Eastern
-    Eutropius("📜 尤特羅皮烏斯 (Eutropius)<br>【東部宦官顧問 / 宮廷實權者】"):::Eastern
-    Bacurius("🪦 巴庫里烏斯 (Bacurius)<br>【高加索將領 / 首日衝鋒陣亡】"):::Eastern
-
-    V2("👑 瓦倫提尼安二世 (Valentinian II)<br>【西部合法皇帝 / 離奇吊死】"):::Western
-    Arbogast("🛡️ 阿波加斯特 (Arbogast)<br>【西部陸軍元帥 / 法蘭克權臣】"):::Western
-    Eugenius("👑 尤金尼烏斯 (Eugenius)<br>【西部僭主皇帝 / 基督徒學者】"):::Western
-    Arbition("🔄 阿爾比提翁 (Arbition)<br>【西部伏兵將領 / 關鍵倒戈】"):::Western
-    NF("🏛️ 尼科馬科斯·弗拉維亞努斯 (Nicomachus Flavianus)<br>【西部近衛長官 / 異教領袖】"):::Western
-    Gratian("🪦 格拉提安 (Gratian)<br>【前西部皇帝 / 383年遇害】"):::Western
-    Maximus("🪦 馬克西姆斯 (Magnus Maximus)<br>【前西部僭主 / 388年戰敗被斬】"):::Western
-
-    Alaric("🏹 阿拉里克 (Alaric)<br>【哥德首領 / 後反叛洗劫羅馬】"):::Goths
-    Gainas("🏹 蓋納斯 (Gainas)<br>【哥德同盟軍將領】"):::Goths
-
-    T1 -. 夫妻 .- Galla
-    T1 -->|擁立| Honorius
-    T1 -->|擁立| Arcadius
-    T1 -->|重用為將領| Stilicho
-    T1 -->|信任並派遣| Eutropius
-    T1 -->|統率| Bacurius
-    T1 -->|徵召同盟軍 / 消耗其兵力| Alaric
-    T1 -->|統率| Gainas
-    
-    Galla -->|親兄妹 / 促使狄氏報仇| V2
-    
-    V2 -->|試圖罷免但失敗| Arbogast
-    Arbogast -->|架空權力 / 疑似弒君| V2
-    Arbogast -->|擁立為帝| Eugenius
-    Arbogast -->|派遣伏擊東軍| Arbition
-    
-    Eugenius -->|妥協重建祭壇以換支持| NF
-    Eugenius -. 盟友 .- Arbogast
-    
-    Arbition -->|深夜倒戈加入東軍| T1
-    Arbition -->|奉命切斷退路| T1
-    
-    NF -->|兵敗後自殺| NF
-    Arbogast -->|兵敗後自殺| Arbogast
-    Eugenius -->|戰敗被捕斬首| T1
-    
-    Gratian -->|提拔任命| Arbogast
-    Maximus -->|叛亂弒殺| Gratian
-    T1 -->|出兵擊殺| Maximus
-    
-    Stilicho -->|攝政輔佐| Honorius
-    Alaric -->|同盟參戰 / 戰損過半| T1
-    Alaric -->|因積怨而反叛| Honorius
-    
-    Eutropius -->|內耗敵對| Stilicho
-
-    linkStyle default stroke:#4a5568,stroke-width:2px;
-                            </pre>
-                        </div>
+    linkStyle default stroke:#718096,stroke-width:2px;
+                        </pre>
                     </div>
                 </div>
             </div>
@@ -676,34 +603,14 @@ graph TD
             container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         }
 
-        // Tab switching logic
-        let activeTab = 'east';
-
-        function switchTab(tabId) {
-            // Remove active states from buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            // Add active state to clicked button
-            document.getElementById('btn-' + tabId).classList.add('active');
-
-            // Remove active states from contents
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            // Add active state to matching content
-            document.getElementById('tab-' + tabId).classList.add('active');
-
-            activeTab = tabId;
-
-            // Automatically center and scale the new active SVG
-            resetZoom();
-        }
-
         // Mouse Wheel Zoom (with smooth exponential zoom rate to prevent jumps)
         viewport.addEventListener('wheel', (e) => {
             e.preventDefault();
             const oldScale = scale;
             
             // Exponential scaling for natural scroll feel
-            // Decreased speed coefficient (0.001) for finer control
-            const zoomIntensity = 0.001;
+            // Decreased speed coefficient for much finer control and slower zoom rate
+            const zoomIntensity = 0.0002;
             const factor = Math.exp(-e.deltaY * zoomIntensity);
             scale = Math.min(Math.max(scale * factor, 0.15), 6.0); // Allow zoom up to 6x
             
@@ -808,13 +715,22 @@ graph TD
             updateTransform();
         }
 
-        // Reset and center SVG automatically based on the active tab's SVG bounds
+        // Reset and center SVG automatically based on bounds and viewBox
         function resetZoom() {
-            const activeTabEl = document.querySelector('.tab-content.active');
-            if (!activeTabEl) return;
-            
-            const svg = activeTabEl.querySelector('svg');
+            const svg = container.querySelector('svg');
             if (svg) {
+                // Get native width and height from viewBox to support precise responsive math
+                const viewBoxStr = svg.getAttribute('viewBox');
+                let nativeWidth = 900;
+                let nativeHeight = 600;
+                if (viewBoxStr) {
+                    const parts = viewBoxStr.split(' ');
+                    if (parts.length === 4) {
+                        nativeWidth = parseFloat(parts[2]);
+                        nativeHeight = parseFloat(parts[3]);
+                    }
+                }
+                
                 // Ensure SVG takes full container bounds naturally
                 svg.removeAttribute('height');
                 svg.style.width = '100%';
@@ -822,10 +738,19 @@ graph TD
                 svg.style.maxWidth = 'none';
                 
                 const outerRect = viewport.getBoundingClientRect();
-                const svgRect = svg.getBoundingClientRect();
-                scale = 1.0;
-                translateX = (outerRect.width - svgRect.width) / 2;
-                translateY = 40; // 40px top offset
+                
+                // Fit SVG within outerRect with comfortable padding
+                const padding = 30;
+                const scaleX = (outerRect.width - padding) / nativeWidth;
+                const scaleY = (outerRect.height - padding) / nativeHeight;
+                scale = Math.min(scaleX, scaleY, 1.0); // Fit completely, don't upscale past 1x
+                if (scale < 0.25) scale = 0.25; // Floor at 0.25x for extreme mobile screens
+                
+                // Center alignment
+                translateX = (outerRect.width - nativeWidth * scale) / 2;
+                translateY = (outerRect.height - nativeHeight * scale) / 2;
+                if (translateY < 15) translateY = 15; // Retain small top margin
+                
                 updateTransform();
             } else {
                 scale = 1.0;
