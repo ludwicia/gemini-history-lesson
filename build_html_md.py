@@ -422,6 +422,11 @@ images_p27 = []
 # Page 28 Config
 file_p28 = r'course/薩洛尼卡敕令.md'
 
+# Page 29 Config
+file_p29 = r'course/阿德里安堡戰役.md'
+map_p29 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/battle_of_adrianople.png" alt="Battle of Adrianople" loading="lazy"><figcaption class="caption">阿德里安堡戰役（西元378年）想像圖：哥特戰士與家眷依託環形相接的篷車陣進行防守，隨後大批哥特與阿蘭重騎兵如雷霆般突襲包抄，給予精疲力竭的羅馬軍團致命的一擊。</figcaption></figure>\n'
+images_p29 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -509,6 +514,9 @@ html_body_p27 = process_markdown(file_p27, images_p27, "1.0", map_p27, page_id="
 print("Processing Page 28 (Thessalonica Edict Document)...")
 html_body_p28 = process_3col_document(file_p28, "1.0", page_id="page28", lang_orig="拉丁文")
 
+print("Processing Page 29 (Battle of Adrianople)...")
+html_body_p29 = process_markdown(file_p29, images_p29, "1.0", map_p29, page_id="page29")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -570,6 +578,7 @@ pages_data = {
     'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
     'page20': {'title': '羅馬帝國：米蘭敕令', 'ver': '1.0', 'doc': True},
     'page28': {'title': '羅馬帝國：薩洛尼卡敕令', 'ver': '1.0', 'doc': True},
+    'page29': {'title': '阿德里安堡戰役', 'img': 'images/battle_of_adrianople.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -583,7 +592,7 @@ categories = [
         'title': '中世紀諸民族記',
         'key': 'medieval',
         'img': 'images/clovis_main.jpg',
-        'pages': ['page23', 'page26']
+        'pages': ['page23', 'page26', 'page29']
     },
     {
         'title': '教宗國記',
@@ -871,6 +880,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE25__', html_body_p25)
 final_html = final_html.replace('__HTML_BODY_PAGE26__', html_body_p26)
 final_html = final_html.replace('__HTML_BODY_PAGE27__', html_body_p27)
 final_html = final_html.replace('__HTML_BODY_PAGE28__', html_body_p28)
+final_html = final_html.replace('__HTML_BODY_PAGE29__', html_body_p29)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -903,6 +913,7 @@ final_html = final_html.replace('__PAGE25_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE26_DATE__', get_file_last_update_date(file_p26))
 final_html = final_html.replace('__PAGE27_DATE__', get_file_last_update_date(file_p27))
 final_html = final_html.replace('__PAGE28_DATE__', get_file_last_update_date(file_p28))
+final_html = final_html.replace('__PAGE29_DATE__', get_file_last_update_date(file_p29))
 
 # Inject JavaScript for toggle function
 toggle_js = """
