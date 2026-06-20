@@ -438,17 +438,6 @@
                 <div class="diagram-outer" style="height: 800px;">
                     <div class="diagram-container" id="diagramContainer">
                         <pre class="mermaid">
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'primaryColor': '#e3f2fd',
-    'primaryTextColor': '#0d47a1',
-    'primaryBorderColor': '#1565c0',
-    'lineColor': '#718096',
-    'fontSize': '16px',
-    'fontFamily': 'system-ui, -apple-system, sans-serif'
-  }
-}}%%
 graph TB
     classDef Eastern fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1;
     classDef Western fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#7f1d1d;
@@ -478,9 +467,16 @@ graph TB
         Arcadius("👦 阿卡迪烏斯 (Arcadius)<br>【長子 / 繼任東部皇帝】"):::Eastern
         Honorius("👦 霍諾留 (Honorius)<br>【次子 / 繼任西部皇帝】"):::Eastern
         Bacurius("🪦 巴庫里烏斯 (Bacurius)<br>【高加索將領 / 首日衝鋒陣亡】"):::Eastern
-        Gainas("🏹 蓋納斯 (Gainas)<br>【哥德同盟軍將領】"):::Eastern
+        Gainas("🏹 蓋納斯 (Gainas)<br>【哥德同盟軍將領】"):::Goths
         Stilicho("🗡️ 斯提里科 (Stilicho)<br>【東部名將 / 後任西部攝政】"):::Eastern
         Alaric("🏹 阿拉里克 (Alaric)<br>【哥德首領 / 後反叛洗劫羅馬】"):::Goths
+
+        %% Force vertical layout inside East Camp
+        Arcadius ~~~ Honorius
+        Honorius ~~~ Bacurius
+        Bacurius ~~~ Gainas
+        Gainas ~~~ Stilicho
+        Stilicho ~~~ Alaric
 
         T1 -->|擁立 / 繼位| Arcadius
         T1 -->|擁立 / 繼位| Honorius
