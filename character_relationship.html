@@ -188,10 +188,20 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            width: auto;
             transform-origin: 0 0; /* Align with zoom-to-mouse math */
             display: inline-block;
             transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .diagram-container pre,
+        .diagram-container .mermaid {
+            overflow: visible !important;
+            width: auto !important;
+            max-width: none !important;
+            background: transparent !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         /* Card Section Title */
