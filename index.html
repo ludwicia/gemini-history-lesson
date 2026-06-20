@@ -74,6 +74,7 @@
     }
     </script>
     <link rel="stylesheet" href="style.css?v=4.5">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
 <style>
 /* New Category Section Styles */
@@ -8587,6 +8588,896 @@ Freedom of worship granted to all Christians
 <h2 id="_18">七、 結論：冷河之役的地緣歷史學啟示</h2>
 <p>冷河戰役是古典晚期羅馬帝國命運的地緣戰略分水嶺。後世史家與當時的基督教會雖然極力將其歌頌為一場正統信仰戰勝多神異教的偉大精神勝利，但從地緣政治與軍事科學的客觀視角審視，這是一場不折不扣、極具毀滅性的帝國內耗悲劇<sup>(6)</sup>。</p>
 <p>它以徹底消滅西部帝國野戰軍機動儲備為代價，打破了羅馬防禦蠻族入侵的脆弱平衡；它以極其冷酷的「蠻族炮灰」策略，親手為自己培養了最為致命的掘墓人——以阿拉里克為首的哥特武裝力量<sup>12</sup>。戰役結束後僅僅十餘年間，防線崩潰、糧道受阻、內耗不斷的西部羅馬帝國便不可逆轉地滑向了解體的深淵<sup>12</sup>。冷河戰役真正的勝出者，並非跪在戰場上祈禱天主降下颶風的狄奧多西一世，而是那些在河谷兩側冷眼旁觀、並在隨後百年中瓜分了羅馬帝國廢墟的日耳曼與哥特諸部<sup>17</sup>。</p>
+<style>
+
+/* CSS scoped to .relationship-section to prevent style pollution */
+
+.relationship-section {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --primary-dark: #1d4ed8;
+    --accent: #d97706;
+    --accent-light: #fef3c7;
+    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+
+    background: var(--bg-gradient);
+
+    color: var(--text-main);
+
+    padding: 30px 20px;
+
+    transition: var(--transition);
+
+    border-radius: 20px;
+
+    margin-top: 40px;
+
+    margin-bottom: 40px;
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+
+}
+
+.relationship-section[data-theme="dark"] {
+    --primary: #60a5fa;
+    --primary-light: #1e3a8a;
+    --primary-dark: #3b82f6;
+    --accent: #f59e0b;
+    --accent-light: #78350f;
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --card-bg: rgba(30, 41, 59, 0.95);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #334155;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.relationship-section * {
+
+    box-sizing: border-box;
+
+}
+
+.relationship-section .controls {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    padding: 15px 25px;
+
+    margin-bottom: 25px;
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(10px);
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    transition: var(--transition);
+
+}
+
+.relationship-section .btn-group {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+.relationship-section button {
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    color: var(--text-main);
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    transition: var(--transition);
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+
+}
+
+.relationship-section button:hover {
+
+    border-color: var(--primary);
+
+    color: var(--primary);
+
+    transform: translateY(-1px);
+
+}
+
+.relationship-section .legend {
+
+    display: flex;
+
+    gap: 20px;
+
+    font-size: 0.9rem;
+
+    font-weight: 700;
+
+    flex-wrap: wrap;
+
+}
+
+.relationship-section .legend-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+.relationship-section .dot {
+
+    width: 14px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+
+}
+
+.relationship-section .dot-east { background-color: #e3f2fd; border: 2px solid #1565c0; }
+
+.relationship-section .dot-west { background-color: #ffebee; border: 2px solid #c62828; }
+
+.relationship-section .dot-goth { background-color: #fff8e1; border: 2px solid #ef6c00; }
+
+.relationship-section .main-layout {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 30px;
+
+}
+
+.relationship-section .card {
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(10px);
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: var(--transition);
+
+    margin-bottom: 25px;
+
+}
+
+.relationship-section .diagram-outer {
+
+    width: 100%;
+
+    height: 800px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.02);
+
+    border: 1px dashed var(--border);
+
+    position: relative;
+
+    cursor: grab;
+
+    user-select: none;
+
+    touch-action: none;
+
+}
+
+.relationship-section .diagram-container {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    transform-origin: 0 0;
+
+    display: inline-block;
+
+    transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+}
+
+.relationship-section .card-title {
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+
+    color: var(--primary);
+
+    border-bottom: 2px solid var(--border);
+
+    padding-bottom: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.relationship-section .character-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+    gap: 20px;
+
+}
+
+.relationship-section .char-card {
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    transition: var(--transition);
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.relationship-section .char-card::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 6px;
+
+    height: 100%;
+
+}
+
+.relationship-section .char-card.east::before { background-color: #1565c0; }
+
+.relationship-section .char-card.west::before { background-color: #c62828; }
+
+.relationship-section .char-card.goth::before { background-color: #ef6c00; }
+
+.relationship-section .char-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+
+    border-color: var(--primary);
+
+}
+
+.relationship-section .char-name {
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+.relationship-section .char-title {
+
+    font-size: 0.85rem;
+
+    color: var(--text-muted);
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+
+    letter-spacing: 0.5px;
+
+}
+
+.relationship-section .char-desc {
+
+    font-size: 0.95rem;
+
+    line-height: 1.6;
+
+    color: var(--text-main);
+
+}
+
+.relationship-section .cluster rect {
+
+    fill: rgba(30, 58, 138, 0.02) !important;
+
+    stroke: #1e3a8a !important;
+
+    stroke-width: 1.5px !important;
+
+    stroke-dasharray: 4 4 !important;
+
+    rx: 12px;
+
+    ry: 12px;
+
+}
+
+.relationship-section .cluster-label text {
+
+    font-size: 20px !important;
+
+    font-weight: 700 !important;
+
+    fill: #1e3a8a !important;
+
+    font-family: 'Inter', 'Noto Sans TC', sans-serif !important;
+
+}
+
+.relationship-section[data-theme="dark"] .cluster rect {
+
+    fill: rgba(96, 165, 250, 0.04) !important;
+
+    stroke: #60a5fa !important;
+
+}
+
+.relationship-section[data-theme="dark"] .cluster-label text {
+
+    fill: #60a5fa !important;
+
+}
+
+.relationship-section .node rect {
+
+    rx: 8px;
+
+    ry: 8px;
+
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.02));
+
+}
+
+.relationship-section .node.Eastern rect {
+
+    fill: #e3f2fd !important;
+
+    stroke: #1565c0 !important;
+
+}
+
+.relationship-section .node.Western rect {
+
+    fill: #ffebee !important;
+
+    stroke: #c62828 !important;
+
+}
+
+.relationship-section .node.Goths rect {
+
+    fill: #fff8e1 !important;
+
+    stroke: #ef6c00 !important;
+
+}
+
+.relationship-section .node.Eastern .nodeLabel {
+
+    color: #0d47a1 !important;
+
+    font-weight: 700 !important;
+
+    font-size: 16px !important;
+
+}
+
+.relationship-section .node.Western .nodeLabel {
+
+    color: #7f1d1d !important;
+
+    font-weight: 700 !important;
+
+    font-size: 16px !important;
+
+}
+
+.relationship-section .node.Goths .nodeLabel {
+
+    color: #7c2d12 !important;
+
+    font-weight: 700 !important;
+
+    font-size: 16px !important;
+
+}
+
+.relationship-section[data-theme="dark"] .node.Eastern rect {
+
+    fill: #1e3a8a !important;
+
+    stroke: #3b82f6 !important;
+
+}
+
+.relationship-section[data-theme="dark"] .node.Western rect {
+
+    fill: #7f1d1d !important;
+
+    stroke: #ef4444 !important;
+
+}
+
+.relationship-section[data-theme="dark"] .node.Goths rect {
+
+    fill: #7c2d12 !important;
+
+    stroke: #f59e0b !important;
+
+}
+
+.relationship-section[data-theme="dark"] .node.Eastern .nodeLabel {
+
+    color: #e3f2fd !important;
+
+}
+
+.relationship-section[data-theme="dark"] .node.Western .nodeLabel {
+
+    color: #ffebee !important;
+
+}
+
+.relationship-section[data-theme="dark"] .node.Goths .nodeLabel {
+
+    color: #fffbeb !important;
+
+}
+
+.relationship-section .node.invisible rect {
+
+    fill: transparent !important;
+
+    stroke: transparent !important;
+
+    stroke-width: 0px !important;
+
+}
+
+.relationship-section .node.invisible .nodeLabel {
+
+    display: none !important;
+
+}
+
+@media (max-width: 768px) {
+
+    .relationship-section .controls { flex-direction: column; align-items: stretch; }
+
+    .relationship-section .legend { justify-content: center; }
+
+    .relationship-section .btn-group { justify-content: center; }
+
+}
+
+</style>
+
+<div class="relationship-section" data-theme="light">
+
+    <!-- Controls Dashboard -->
+
+    <div class="controls">
+
+        <!-- Color Legends -->
+
+        <div class="legend">
+
+            <div class="legend-item">
+
+                <span class="dot dot-east"></span>
+
+                <span>東部朝廷勢力</span>
+
+            </div>
+
+            <div class="legend-item">
+
+                <span class="dot dot-west"></span>
+
+                <span>西部朝廷與僭主勢力</span>
+
+            </div>
+
+            <div class="legend-item">
+
+                <span class="dot dot-goth"></span>
+
+                <span>蠻族同盟軍</span>
+
+            </div>
+
+        </div>
+
+        <!-- Custom Controls -->
+
+        <div class="btn-group">
+
+            <button onclick="zoom(0.1)" title="放大">🔍➕ 放大</button>
+
+            <button onclick="zoom(-0.1)" title="縮小">🔍➖ 縮小</button>
+
+            <button onclick="resetZoom()" title="重設">🔄 重設</button>
+
+            <button onclick="toggleRelationshipTheme()" id="themeBtn" title="切換主題">🌓 主題模式</button>
+
+        </div>
+
+    </div>
+
+    <div class="main-layout">
+
+        <!-- Diagram Card -->
+
+        <div class="card">
+
+            <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-bottom: none; padding-bottom: 0;">
+
+                <span>📊 互動人物關係網絡 (可滾動滑鼠/雙指縮放與拖曳)</span>
+
+            </div>
+
+            <div style="border-bottom: 2px solid var(--border); margin-bottom: 20px;"></div>
+
+            <div class="diagram-outer" style="height: 800px;">
+
+                <div class="diagram-container" id="diagramContainer">
+
+                    <pre class="mermaid">
+
+graph TB
+
+    classDef Eastern fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1;
+
+    classDef Western fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#7f1d1d;
+
+    classDef Goths fill:#fff8e1,stroke:#ef6c00,stroke-width:2px,color:#7c2d12;
+
+    classDef invisible fill:none,stroke:none,stroke-width:0px,color:none;
+
+    %% Align West (left) and East (right) camps at the top
+
+    dummyTop[" "]:::invisible ~~~ Maximus
+
+    dummyTop[" "]:::invisible ~~~ T1
+
+    subgraph West ["西羅馬陣營"]
+
+        Maximus("👑 馬克西穆斯 (Magnus Maximus)<br>【前西部僭主 / 388年戰敗被斬】"):::Western
+
+        Gratian("🪦 格拉提安 (Gratian)<br>【前西部皇帝 / 383年遇害】"):::Western
+
+        V2("👑 瓦倫提尼安二世 (Valentinian II)<br>【西部合法皇帝 / 離奇吊死】"):::Western
+
+        Arbogast("🛡️ 阿波加斯特 (Arbogast)<br>【西部陸軍元帥 / 法蘭克權臣】"):::Western
+
+        Eugenius("👑 尤金尼烏斯 (Eugenius)<br>【西部僭主皇帝 / 基督徒學者】"):::Western
+
+        Arbitio("🔄 阿爾比提翁 (Arbitio)<br>【西部伏兵將領 / 關鍵倒戈】"):::Western
+
+        NF("🏛️ 尼科馬科斯·弗拉維亞努斯 (Nicomachus Flavianus)<br>【西部近衛長官 / 異教領袖】"):::Western
+
+        Maximus -->|叛亂弒殺| Gratian
+
+        Gratian -->|提拔任命| Arbogast
+
+        V2 -->|試圖罷免但失敗| Arbogast
+
+        Arbogast -->|權力架空 / 疑似弒君| V2
+
+        Arbogast -->|擁立為帝| Eugenius
+
+        Eugenius -. 盟友 .- Arbogast
+
+        Arbogast -->|派遣伏擊| Arbitio
+
+        Eugenius -->|妥協重建祭壇以換支持| NF
+
+    end
+
+    subgraph East ["東羅馬陣營"]
+
+        T1("👑 迪奧多西一世 (Theodosius I)<br>【東部皇帝 / 戰後統一羅馬】"):::Eastern
+
+        Arcadius("👦 阿卡迪烏斯 (Arcadius)<br>【長子 / 繼任東部皇帝】"):::Eastern
+
+        Honorius("👦 霍諾留 (Honorius)<br>【次子 / 繼任西部皇帝】"):::Eastern
+
+        Bacurius("🪦 巴庫里烏斯 (Bacurius)<br>【高加索將領 / 首日衝鋒陣亡】"):::Eastern
+
+        Gainas("🏹 蓋納斯 (Gainas)<br>【哥德同盟軍將領】"):::Goths
+
+        Stilicho("🗡️ 斯提里科 (Stilicho)<br>【東部名將 / 後任西部攝政】"):::Eastern
+
+        Alaric("🏹 阿拉里克 (Alaric)<br>【哥德首領 / 後反叛洗劫羅馬】"):::Goths
+
+        %% Force vertical layout inside East Camp
+
+        Arcadius ~~~ Honorius
+
+        Honorius ~~~ Bacurius
+
+        Bacurius ~~~ Gainas
+
+        Gainas ~~~ Stilicho
+
+        Stilicho ~~~ Alaric
+
+        T1 -->|擁立 / 繼位| Arcadius
+
+        T1 -->|擁立 / 繼位| Honorius
+
+        T1 -->|統率| Bacurius
+
+        T1 -->|統率| Gainas
+
+        T1 -->|重用為將領| Stilicho
+
+        T1 -->|徵召同盟 / 同盟參戰 / 戰後失望| Alaric
+
+        Stilicho -->|防禦反叛 / 攝政| Honorius
+
+        Alaric -->|因積怨而反叛| Honorius
+
+    end
+
+    linkStyle default stroke:#718096,stroke-width:2px;
+
+                    </pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Detailed Profiles Card -->
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <span>👤 核心歷史人物生平與戰略角色</span>
+
+            </div>
+
+            <div class="character-grid">
+
+                <!-- Theodosius I -->
+
+                <div class="char-card east">
+
+                    <div class="char-name">👑 狄奧多西一世</div>
+
+                    <div class="char-title">東部羅馬皇帝 / 後期帝國統一者</div>
+
+                    <div class="char-desc">因小舅子瓦倫提尼安二世之死怒而向西部宣戰。他在冷河戰役中運用宗教動員凝聚士氣，並在極端氣象「波拉風」幫助下反敗為勝，實現了羅馬帝國歷史上最後一次逆境統一。</div>
+
+                </div>
+
+                <!-- Valentinian II -->
+
+                <div class="char-card west">
+
+                    <div class="char-name">👑 瓦倫提尼安二世</div>
+
+                    <div class="char-title">西部合法皇帝 / 離奇吊死的年輕君主</div>
+
+                    <div class="char-desc">西部的合法皇帝，格拉提安之弟。雖然地位尊貴，但軍政大權被法蘭克裔將領阿波加斯特完全架空。在試圖解職阿波加斯特失敗後，於 392 年被發現吊死在高盧維埃納寓所，其死亡直接成為冷河戰役的導火線。</div>
+
+                </div>
+
+                <!-- Gratian -->
+
+                <div class="char-card west">
+
+                    <div class="char-name">🪦 格拉提安</div>
+
+                    <div class="char-title">前西部羅馬皇帝 / 狄奧多西的提拔者</div>
+
+                    <div class="char-desc">西部合法皇帝，曾於 379 年提拔並任命狄奧多西一世為東部皇帝。383 年遭遇不列顛將領馬克西穆斯的叛亂，在撤退途中於里昂被叛軍誘殺。他的遇害打破了帝國的權力平衡。</div>
+
+                </div>
+
+                <!-- Arbogast -->
+
+                <div class="char-card west">
+
+                    <div class="char-name">🛡️ 阿波加斯特</div>
+
+                    <div class="char-title">西部陸軍大元帥 / 法蘭克裔</div>
+
+                    <div class="char-desc">西部帝國真正的軍政獨裁者，架空並疑似謀殺了年幼的瓦倫提尼安二世。他擁有極高軍事才能，冷河戰役中設計了巧妙的「袋形合圍」戰術，但因部下叛逃與極端風暴而潰敗，最終自殺。</div>
+
+                </div>
+
+                <!-- Eugenius -->
+
+                <div class="char-card west">
+
+                    <div class="char-name">👑 尤金尼烏斯</div>
+
+                    <div class="char-title">西部僭主 / 傀儡皇帝</div>
+
+                    <div class="char-desc">本為基督徒文官與修辭學家，被阿波加斯特扶植上台。為了尋求西部的財政支持，妥協重建勝利女神祭壇，從而給內戰抹上了宗教對決色彩。戰敗後被東部士兵捕殺斬首。</div>
+
+                </div>
+
+                <!-- Arcadius -->
+
+                <div class="char-card east">
+
+                    <div class="char-name">👦 阿卡迪烏斯</div>
+
+                    <div class="char-title">東部共治皇帝 / 狄奧多西一世長子</div>
+
+                    <div class="char-desc">狄奧多西一世的長子。冷河戰役期間以共治皇帝身份留守君士坦丁堡，戰後正式繼承東部帝國。因性格軟弱，其統治權先後被近衛軍長官魯菲努斯及皇后尤多西亞架空。</div>
+
+                </div>
+
+                <!-- Alaric -->
+
+                <div class="char-card goth">
+
+                    <div class="char-name">🏹 阿拉里克</div>
+
+                    <div class="char-title">西哥德盟軍首領 / 後來的羅馬掘墓人</div>
+
+                    <div class="char-desc">率兩萬名哥德盟軍在首日血戰中作為狄奧多西的肉盾衝鋒，戰損過半（死傷萬人）。戰後未獲授羅馬正式官職，深感被出賣，於 395 年反叛並在 410 年洗劫羅馬城。</div>
+
+                </div>
+
+                <!-- Galla -->
+
+                <div class="char-card east">
+
+                    <div class="char-name">👩‍💼 加拉</div>
+
+                    <div class="char-title">東部皇后 / 瓦倫提尼安二世之妹</div>
+
+                    <div class="char-desc">狄奧多西一世的第二任妻子。在哥哥瓦倫提尼安二世於維埃納離奇死後，她悲痛欲絕並指控是阿波加斯特弒君，極力促使其夫狄奧多西發兵討伐西部。</div>
+
+                </div>
+
+                <!-- Arbitio -->
+
+                <div class="char-card west">
+
+                    <div class="char-name">🔄 阿爾比提翁</div>
+
+                    <div class="char-title">西部伏兵將領 / 決戰前夜倒戈</div>
+
+                    <div class="char-desc">奉阿波加斯特之命率精兵伏擊在阿爾卑斯隘口，意圖合圍狄奧多西。然而在戰役第一天深夜叛逃至東部陣營，不僅使狄奧多西擺脫死局，更極大地崩潰了西部士氣。</div>
+
+                </div>
+
+                <!-- Stilicho -->
+
+                <div class="char-card east">
+
+                    <div class="char-name">🗡️ 斯提里科</div>
+
+                    <div class="char-title">東部軍事將領 / 後來的西部攝政</div>
+
+                    <div class="char-desc">半蠻族（汪達爾人）血統名將，深得狄奧多西信任.冷河戰役期間隨軍參戰。戰後受託孤成為西部年幼皇帝霍諾留的監護人與攝政，在隨後十多年中苦力支撐西羅馬防線。</div>
+
+                </div>
+
+                <!-- Nicomachus Flavianus -->
+
+                <div class="char-card west">
+
+                    <div class="char-name">🏛️ 尼科馬科斯·弗拉維亞努斯</div>
+
+                    <div class="char-title">西部近衛軍長官 / 羅馬異教領袖</div>
+
+                    <div class="char-desc">西部元老院異教勢力精神領袖，將尤金尼烏斯政權視為恢復多神教傳統的最後機會。極端異教復興者，冷河戰役第二日得知波拉風暴後，絕望自殺。</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 <h4 id="_19">引用的著作</h4>
 <ol>
 <li><a href="https://brewminate.com/the-battle-of-frigidus-394-ce-final-clash-between-east-and-west/">The Battle of Frigidus, 394 CE: Final Clash Between East and West - Brewminate</a></li>
@@ -9135,6 +10026,13 @@ Freedom of worship granted to all Christians
 
         // Update dynamic SEO meta tags
         updatePageSEO(pageId);
+
+        // If navigating to page27, initialize the relationship map
+        if (pageId === 'page27') {
+            if (typeof initRelationshipMap === 'function') {
+                initRelationshipMap();
+            }
+        }
     }
 
     // 4. Generate Table of Contents on the Fly
@@ -9434,6 +10332,227 @@ Freedom of worship granted to all Christians
         initGlobalSearchIndex();
         handleHashRouting();
     });
+
+    // === Character Relationship Map Interactive Logic ===
+    let scale = 1.0;
+    let translateX = 0;
+    let translateY = 0;
+    let isPanning = false;
+    let startX = 0;
+    let startY = 0;
+    let initialTouchDist = 0;
+    let initialScale = 1.0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    function setupPanZoom() {
+        const viewport = document.querySelector('.relationship-section .diagram-outer');
+        const container = document.getElementById('diagramContainer');
+        if (!viewport || !container || viewport.dataset.initialized) return;
+        
+        viewport.dataset.initialized = 'true';
+
+        function updateTransform() {
+            container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        // Mouse Wheel Zoom
+        viewport.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const oldScale = scale;
+            const zoomIntensity = 0.0005;
+            const factor = Math.exp(-e.deltaY * zoomIntensity);
+            scale = Math.min(Math.max(scale * factor, 0.15), 6.0);
+            
+            const rect = viewport.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            translateX = mouseX - (mouseX - translateX) * (scale / oldScale);
+            translateY = mouseY - (mouseY - translateY) * (scale / oldScale);
+            
+            updateTransform();
+        }, { passive: false });
+
+        // Mouse Drag to Pan
+        viewport.addEventListener('mousedown', (e) => {
+            if (e.target.closest('button')) return;
+            isPanning = true;
+            viewport.style.cursor = 'grabbing';
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isPanning) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            isPanning = false;
+            viewport.style.cursor = 'grab';
+        });
+
+        // Touch Gestures
+        viewport.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                isPanning = true;
+                touchStartX = e.touches[0].clientX - translateX;
+                touchStartY = e.touches[0].clientY - translateY;
+            } else if (e.touches.length === 2) {
+                isPanning = false;
+                initialTouchDist = getTouchDistance(e);
+                initialScale = scale;
+                
+                const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                const rect = viewport.getBoundingClientRect();
+                
+                touchStartX = midX - rect.left;
+                touchStartY = midY - rect.top;
+            }
+        });
+
+        viewport.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (isPanning && e.touches.length === 1) {
+                translateX = e.touches[0].clientX - touchStartX;
+                translateY = e.touches[0].clientY - touchStartY;
+                updateTransform();
+            } else if (e.touches.length === 2) {
+                const dist = getTouchDistance(e);
+                const factor = dist / initialTouchDist;
+                const oldScale = scale;
+                
+                scale = Math.min(Math.max(initialScale * factor, 0.15), 6.0);
+                
+                translateX = touchStartX - (touchStartX - translateX) * (scale / oldScale);
+                translateY = touchStartY - (touchStartY - translateY) * (scale / oldScale);
+                
+                updateTransform();
+            }
+        }, { passive: false });
+
+        viewport.addEventListener('touchend', () => {
+            isPanning = false;
+        });
+
+        function getTouchDistance(e) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+    }
+
+    window.zoom = function(factor) {
+        const viewport = document.querySelector('.relationship-section .diagram-outer');
+        const container = document.getElementById('diagramContainer');
+        if (!viewport || !container) return;
+
+        const oldScale = scale;
+        scale = Math.min(Math.max(scale + factor, 0.15), 6.0);
+        
+        const rect = viewport.getBoundingClientRect();
+        const midX = rect.width / 2;
+        const midY = rect.height / 2;
+        
+        translateX = midX - (midX - translateX) * (scale / oldScale);
+        translateY = midY - (midY - translateY) * (scale / oldScale);
+        
+        container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    };
+
+    window.resetZoom = function() {
+        const viewport = document.querySelector('.relationship-section .diagram-outer');
+        const container = document.getElementById('diagramContainer');
+        if (!viewport || !container) return;
+
+        const svg = container.querySelector('svg');
+        if (svg) {
+            const viewBoxStr = svg.getAttribute('viewBox');
+            let nativeWidth = 900;
+            let nativeHeight = 600;
+            if (viewBoxStr) {
+                const parts = viewBoxStr.split(' ');
+                if (parts.length === 4) {
+                    nativeWidth = parseFloat(parts[2]);
+                    nativeHeight = parseFloat(parts[3]);
+                }
+            }
+            
+            svg.removeAttribute('height');
+            svg.style.width = '100%';
+            svg.style.height = 'auto';
+            svg.style.maxWidth = 'none';
+            
+            const outerRect = viewport.getBoundingClientRect();
+            const padding = 30;
+            const scaleX = (outerRect.width - padding) / nativeWidth;
+            const scaleY = (outerRect.height - padding) / nativeHeight;
+            scale = Math.min(scaleX, scaleY, 1.0);
+            if (scale < 0.25) scale = 0.25;
+            
+            translateX = (outerRect.width - nativeWidth * scale) / 2;
+            translateY = (outerRect.height - nativeHeight * scale) / 2;
+            if (translateY < 15) translateY = 15;
+            
+            container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        } else {
+            scale = 1.0;
+            translateX = 0;
+            translateY = 0;
+            container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+    };
+
+    window.toggleRelationshipTheme = function() {
+        const el = document.querySelector('.relationship-section');
+        if (!el) return;
+        const currentTheme = el.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            el.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme-rel', 'light');
+        } else {
+            el.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme-rel', 'dark');
+        }
+    };
+
+    window.initRelationshipMap = function() {
+        // Initialize theme from localStorage
+        const el = document.querySelector('.relationship-section');
+        if (el) {
+            const savedTheme = localStorage.getItem('theme-rel') || 'light';
+            el.setAttribute('data-theme', savedTheme);
+        }
+
+        // Initialize Mermaid
+        if (window.mermaid) {
+            window.mermaid.initialize({
+                startOnLoad: false,
+                theme: 'base',
+                themeVariables: {
+                    primaryColor: '#e3f2fd',
+                    primaryTextColor: '#0d47a1',
+                    primaryBorderColor: '#1565c0',
+                    lineColor: '#718096',
+                    fontSize: '18px',
+                    fontFamily: 'system-ui, -apple-system, sans-serif'
+                }
+            });
+
+            try {
+                window.mermaid.init(undefined, document.querySelectorAll('.relationship-section .mermaid'));
+            } catch (e) {
+                console.error("Mermaid init failed:", e);
+            }
+        }
+        
+        setupPanZoom();
+        setTimeout(resetZoom, 300);
+    };
 </script>
 
 <div id="toast" class="toast"></div>

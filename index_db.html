@@ -229,6 +229,7 @@
         to { transform: rotate(360deg); }
     }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
 
@@ -580,6 +581,13 @@
                 
                 updateHash(pageId);
                 updatePageSEO(pageId);
+
+                // If navigating to page27, initialize the relationship map
+                if (pageId === 'page27') {
+                    if (typeof initRelationshipMap === 'function') {
+                        initRelationshipMap();
+                    }
+                }
             });
         }
     }
@@ -1027,6 +1035,227 @@
                 `;
             });
     });
+
+    // === Character Relationship Map Interactive Logic ===
+    let scale = 1.0;
+    let translateX = 0;
+    let translateY = 0;
+    let isPanning = false;
+    let startX = 0;
+    let startY = 0;
+    let initialTouchDist = 0;
+    let initialScale = 1.0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    function setupPanZoom() {
+        const viewport = document.querySelector('.relationship-section .diagram-outer');
+        const container = document.getElementById('diagramContainer');
+        if (!viewport || !container || viewport.dataset.initialized) return;
+        
+        viewport.dataset.initialized = 'true';
+
+        function updateTransform() {
+            container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        // Mouse Wheel Zoom
+        viewport.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const oldScale = scale;
+            const zoomIntensity = 0.0005;
+            const factor = Math.exp(-e.deltaY * zoomIntensity);
+            scale = Math.min(Math.max(scale * factor, 0.15), 6.0);
+            
+            const rect = viewport.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            translateX = mouseX - (mouseX - translateX) * (scale / oldScale);
+            translateY = mouseY - (mouseY - translateY) * (scale / oldScale);
+            
+            updateTransform();
+        }, { passive: false });
+
+        // Mouse Drag to Pan
+        viewport.addEventListener('mousedown', (e) => {
+            if (e.target.closest('button')) return;
+            isPanning = true;
+            viewport.style.cursor = 'grabbing';
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isPanning) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            isPanning = false;
+            viewport.style.cursor = 'grab';
+        });
+
+        // Touch Gestures
+        viewport.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                isPanning = true;
+                touchStartX = e.touches[0].clientX - translateX;
+                touchStartY = e.touches[0].clientY - translateY;
+            } else if (e.touches.length === 2) {
+                isPanning = false;
+                initialTouchDist = getTouchDistance(e);
+                initialScale = scale;
+                
+                const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                const rect = viewport.getBoundingClientRect();
+                
+                touchStartX = midX - rect.left;
+                touchStartY = midY - rect.top;
+            }
+        });
+
+        viewport.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (isPanning && e.touches.length === 1) {
+                translateX = e.touches[0].clientX - touchStartX;
+                translateY = e.touches[0].clientY - touchStartY;
+                updateTransform();
+            } else if (e.touches.length === 2) {
+                const dist = getTouchDistance(e);
+                const factor = dist / initialTouchDist;
+                const oldScale = scale;
+                
+                scale = Math.min(Math.max(initialScale * factor, 0.15), 6.0);
+                
+                translateX = touchStartX - (touchStartX - translateX) * (scale / oldScale);
+                translateY = touchStartY - (touchStartY - translateY) * (scale / oldScale);
+                
+                updateTransform();
+            }
+        }, { passive: false });
+
+        viewport.addEventListener('touchend', () => {
+            isPanning = false;
+        });
+
+        function getTouchDistance(e) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+    }
+
+    window.zoom = function(factor) {
+        const viewport = document.querySelector('.relationship-section .diagram-outer');
+        const container = document.getElementById('diagramContainer');
+        if (!viewport || !container) return;
+
+        const oldScale = scale;
+        scale = Math.min(Math.max(scale + factor, 0.15), 6.0);
+        
+        const rect = viewport.getBoundingClientRect();
+        const midX = rect.width / 2;
+        const midY = rect.height / 2;
+        
+        translateX = midX - (midX - translateX) * (scale / oldScale);
+        translateY = midY - (midY - translateY) * (scale / oldScale);
+        
+        container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    };
+
+    window.resetZoom = function() {
+        const viewport = document.querySelector('.relationship-section .diagram-outer');
+        const container = document.getElementById('diagramContainer');
+        if (!viewport || !container) return;
+
+        const svg = container.querySelector('svg');
+        if (svg) {
+            const viewBoxStr = svg.getAttribute('viewBox');
+            let nativeWidth = 900;
+            let nativeHeight = 600;
+            if (viewBoxStr) {
+                const parts = viewBoxStr.split(' ');
+                if (parts.length === 4) {
+                    nativeWidth = parseFloat(parts[2]);
+                    nativeHeight = parseFloat(parts[3]);
+                }
+            }
+            
+            svg.removeAttribute('height');
+            svg.style.width = '100%';
+            svg.style.height = 'auto';
+            svg.style.maxWidth = 'none';
+            
+            const outerRect = viewport.getBoundingClientRect();
+            const padding = 30;
+            const scaleX = (outerRect.width - padding) / nativeWidth;
+            const scaleY = (outerRect.height - padding) / nativeHeight;
+            scale = Math.min(scaleX, scaleY, 1.0);
+            if (scale < 0.25) scale = 0.25;
+            
+            translateX = (outerRect.width - nativeWidth * scale) / 2;
+            translateY = (outerRect.height - nativeHeight * scale) / 2;
+            if (translateY < 15) translateY = 15;
+            
+            container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        } else {
+            scale = 1.0;
+            translateX = 0;
+            translateY = 0;
+            container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+    };
+
+    window.toggleRelationshipTheme = function() {
+        const el = document.querySelector('.relationship-section');
+        if (!el) return;
+        const currentTheme = el.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            el.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme-rel', 'light');
+        } else {
+            el.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme-rel', 'dark');
+        }
+    };
+
+    window.initRelationshipMap = function() {
+        // Initialize theme from localStorage
+        const el = document.querySelector('.relationship-section');
+        if (el) {
+            const savedTheme = localStorage.getItem('theme-rel') || 'light';
+            el.setAttribute('data-theme', savedTheme);
+        }
+
+        // Initialize Mermaid
+        if (window.mermaid) {
+            window.mermaid.initialize({
+                startOnLoad: false,
+                theme: 'base',
+                themeVariables: {
+                    primaryColor: '#e3f2fd',
+                    primaryTextColor: '#0d47a1',
+                    primaryBorderColor: '#1565c0',
+                    lineColor: '#718096',
+                    fontSize: '18px',
+                    fontFamily: 'system-ui, -apple-system, sans-serif'
+                }
+            });
+
+            try {
+                window.mermaid.init(undefined, document.querySelectorAll('.relationship-section .mermaid'));
+            } catch (e) {
+                console.error("Mermaid init failed:", e);
+            }
+        }
+        
+        setupPanZoom();
+        setTimeout(resetZoom, 300);
+    };
 </script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
