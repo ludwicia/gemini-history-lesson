@@ -363,7 +363,7 @@ file_p18 = r'course/西元紀年的確立與演進：從歷史考證、政治妥
 map_p18 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/ad_calendar_main.png" alt="AD Calendar Main" loading="lazy"><figcaption class="caption">象徵時間流逝與曆法更迭的古典沙漏與天文鐘，折射出人類在時間測量上從神聖天啟走向世俗理性的演進歷程。</figcaption></figure>\n'
 images_p18 = [
     (r'(<h2.*?>二、 關鍵歷史人物與行政推手：從修道院計算到國家法典</h2>)', 'images/carolingian_alcuin.jpg', '查理曼大帝的宮廷學者阿爾琴，他建議查理曼在行政詔書中強制實施西元紀年。'),
-    (r'(<h2.*?>四、 東西方教會的分裂與對齊阻力：版本的「Fork」與物理時差</h2>)', 'images/clergy_trent.jpg', '1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》，象徵教會對時間體系的重構與絕對掌控。')
+    (r'(<h2.*?>四、 東西方教會的分裂與對齊阻力：曆法體系的分歧與物理時差</h2>)', 'images/clergy_trent.jpg', '1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》，象徵教會對時間體系的重構與絕對掌控。')
 ]
 
 # Page 19 Config
@@ -474,7 +474,7 @@ print("Processing Page 17 (Ambrose & Theodosius)...")
 html_body_p17 = process_markdown(file_p17, images_p17, "1.0", map_p17, page_id="page17")
 
 print("Processing Page 18 (AD Calendar)...")
-html_body_p18 = process_markdown(file_p18, images_p18, "1.0", map_p18, page_id="page18")
+html_body_p18 = process_markdown(file_p18, images_p18, "1.1", map_p18, page_id="page18")
 
 print("Processing Page 19 (Milan Edict & Licinius)...")
 html_body_p19 = process_markdown(file_p19, images_p19, "1.0", map_p19, page_id="page19")
@@ -550,7 +550,7 @@ pages_data = {
     'page15': {'title': '聖職與婚娶', 'img': 'images/clergy_trent.jpg', 'ver': '1.2', 'doc': False},
     'page16': {'title': '中世紀巡行王權的權力運作', 'img': 'images/reisekönig_travelling_kings.jpg', 'ver': '1.0', 'doc': False},
     'page17': {'title': '從皇帝稱號看羅馬政教關係演變', 'img': 'images/ambrose_and_theodosius.png', 'ver': '1.0', 'doc': False},
-    'page18': {'title': '西元紀年的確立與演進', 'img': 'images/ad_calendar_main.png', 'ver': '1.0', 'doc': False},
+    'page18': {'title': '西元紀年的確立與演進', 'img': 'images/ad_calendar_main.png', 'ver': '1.1', 'doc': False},
     'page19': {'title': '米蘭敕令時代與李錫尼覆滅', 'img': 'images/milan_edict_main.png', 'ver': '1.0', 'doc': False},
     'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.0', 'doc': False},
     'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.0', 'doc': False},
