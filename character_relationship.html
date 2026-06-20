@@ -383,6 +383,16 @@
             color: #fffbeb !important;
         }
 
+        /* Invisible node style overrides */
+        .node.invisible rect {
+            fill: transparent !important;
+            stroke: transparent !important;
+            stroke-width: 0px !important;
+        }
+        .node.invisible .nodeLabel {
+            display: none !important;
+        }
+
         /* Mobile Optimization */
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
@@ -442,6 +452,11 @@ graph TB
     classDef Eastern fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1;
     classDef Western fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#7f1d1d;
     classDef Goths fill:#fff8e1,stroke:#ef6c00,stroke-width:2px,color:#7c2d12;
+    classDef invisible fill:none,stroke:none,stroke-width:0px,color:none;
+
+    %% Align West (left) and East (right) camps at the top
+    dummyTop[" "]:::invisible ~~~ Maximus
+    dummyTop[" "]:::invisible ~~~ T1
 
     subgraph West ["西羅馬陣營"]
         Maximus("👑 馬克西穆斯 (Magnus Maximus)<br>【前西部僭主 / 388年戰敗被斬】"):::Western
