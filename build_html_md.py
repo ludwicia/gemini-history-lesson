@@ -506,7 +506,7 @@ print("Processing Page 25 (Goths & Adrianople Battle)...")
 html_body_p25 = process_markdown(file_p25, images_p25, "1.0", map_p25, page_id="page25")
 
 print("Processing Page 26 (Alaric & Gothic Migrations)...")
-html_body_p26 = process_markdown(file_p26, images_p26, "1.0", map_p26, page_id="page26")
+html_body_p26 = process_markdown(file_p26, images_p26, "1.1", map_p26, page_id="page26")
 
 print("Processing Page 27 (Battle of the Frigidus)...")
 html_body_p27 = process_markdown(file_p27, images_p27, "1.0", map_p27, page_id="page27")
@@ -571,7 +571,7 @@ pages_data = {
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
-    'page26': {'title': '阿拉里克與哥德大遷徙', 'img': 'images/alaric_sack_rome.png', 'ver': '1.0', 'doc': False},
+    'page26': {'title': '阿拉里克與哥德大遷徙', 'img': 'images/alaric_sack_rome.png', 'ver': '1.1', 'doc': False},
     'page27': {'title': '冷河戰役及其歷史學再闡釋', 'img': 'images/battle_of_frigidus.png', 'ver': '1.0', 'doc': False},
     'page04': {'title': '神聖羅馬帝國：金璽詔書', 'ver': '1.9', 'doc': True},
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
