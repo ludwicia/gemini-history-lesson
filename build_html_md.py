@@ -432,6 +432,11 @@ file_p30 = r'course/蓋納斯：東羅馬的哥德野心家與早期拜占庭的
 map_p30 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/gainas_byzantine.png" alt="Gainas Byzantine" loading="lazy"><figcaption class="caption">蓋納斯（Gainas）與拜占庭權力危機：早期東羅馬朝廷中，身披羅馬將領甲冑的哥特統帥蓋納斯與阿卡狄烏斯皇帝在殿前對峙，揭示出蠻族軍事干政與傳統官僚力量之間劍拔弩張的緊張張力。</figcaption></figure>\n'
 images_p30 = []
 
+# Page 31 Config
+file_p31 = r'course/塞維魯王朝的權力、財政與法制變革：卡拉卡拉與《安東尼努斯敕令》的深度歷史研究.md'
+map_p31 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/caracalla_edict.png" alt="Caracalla Edict" loading="lazy"><figcaption class="caption">卡拉卡拉與《安東尼努斯敕令》：西元212年，羅馬皇帝卡拉卡拉頒布敕令，授予帝國所有自由民羅馬公民身份，這不僅重塑了羅馬身份認同，也藉此擴大了遺產稅等公民稅收稅基。</figcaption></figure>\n'
+images_p31 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -525,6 +530,9 @@ html_body_p29 = process_markdown(file_p29, images_p29, "1.0", map_p29, page_id="
 print("Processing Page 30 (Gainas Byzantine Crisis)...")
 html_body_p30 = process_markdown(file_p30, images_p30, "1.0", map_p30, page_id="page30")
 
+print("Processing Page 31 (Caracalla Edict)...")
+html_body_p31 = process_markdown(file_p31, images_p31, "1.0", map_p31, page_id="page31")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -588,6 +596,7 @@ pages_data = {
     'page28': {'title': '羅馬帝國：薩洛尼卡敕令', 'ver': '1.0', 'doc': True},
     'page29': {'title': '阿德里安堡戰役', 'img': 'images/battle_of_adrianople.png', 'ver': '1.0', 'doc': False},
     'page30': {'title': '蓋納斯與早期拜占庭蠻族權力危機', 'img': 'images/gainas_byzantine.png', 'ver': '1.0', 'doc': False},
+    'page31': {'title': '卡拉卡拉與《安東尼努斯敕令》', 'img': 'images/caracalla_edict.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -595,7 +604,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30']
+        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31']
     },
     {
         'title': '中世紀諸民族記',
@@ -891,6 +900,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE27__', html_body_p27)
 final_html = final_html.replace('__HTML_BODY_PAGE28__', html_body_p28)
 final_html = final_html.replace('__HTML_BODY_PAGE29__', html_body_p29)
 final_html = final_html.replace('__HTML_BODY_PAGE30__', html_body_p30)
+final_html = final_html.replace('__HTML_BODY_PAGE31__', html_body_p31)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -925,6 +935,7 @@ final_html = final_html.replace('__PAGE27_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE28_DATE__', get_file_last_update_date(file_p28))
 final_html = final_html.replace('__PAGE29_DATE__', get_file_last_update_date(file_p29))
 final_html = final_html.replace('__PAGE30_DATE__', get_file_last_update_date(file_p30))
+final_html = final_html.replace('__PAGE31_DATE__', get_file_last_update_date(file_p31))
 
 # Inject JavaScript for toggle function
 toggle_js = """
