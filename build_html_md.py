@@ -1004,8 +1004,11 @@ print("Generated robots.txt")
 
 # Generate SEO Redirect HTML files for each page
 def generate_redirect_pages():
-    print("Generating SEO redirect HTML files...")
+    print("Generating SEO redirect HTML files in 'pages/' directory...")
     base_site_url = "https://ludwica-history-lesson.pages.dev/"
+    
+    # Create pages directory if it doesn't exist
+    os.makedirs('pages', exist_ok=True)
     
     # Load descriptions from template.html using regex
     descs = {}
@@ -1027,7 +1030,7 @@ def generate_redirect_pages():
         if not img_path:
             img_path = 'history_banner_bg.png'
         image_url = base_site_url + img_path
-        page_url = base_site_url + f"{pid}.html"
+        page_url = base_site_url + f"pages/{pid}.html"
         
         redirect_html = f"""<!DOCTYPE html>
 <html lang="zh-TW">
@@ -1050,20 +1053,20 @@ def generate_redirect_pages():
     <meta name="twitter:image" content="{image_url}">
     
     <script>
-        window.location.replace("./#" + "{pid}");
+        window.location.replace("../#" + "{pid}");
     </script>
 </head>
 <body>
     <h1>{title}</h1>
     <p>{desc}</p>
-    <p>正在為您導向至網頁... 如果沒有自動跳轉，請點擊 <a href="./#{pid}">這裡</a>。</p>
+    <p>正在為您導向至網頁... 如果沒有自動跳轉，請點擊 <a href="../#{pid}">這裡</a>。</p>
 </body>
 </html>
 """
-        with open(f"{pid}.html", 'w', encoding='utf-8', newline='\n') as f:
+        with open(os.path.join("pages", f"{pid}.html"), 'w', encoding='utf-8', newline='\n') as f:
             f.write(redirect_html)
             
-    print(f"Successfully generated {len(pages_data)} redirect HTML files.")
+    print(f"Successfully generated {len(pages_data)} redirect HTML files under 'pages/'.")
 
 generate_redirect_pages()
 
