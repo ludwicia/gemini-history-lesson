@@ -20,6 +20,14 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-06-24 (一世紀羅馬行省治權與社會 1.0 | 版面設計 5.6)
+- **發布歷史專題「一世紀羅馬行省治權與社會」 (內容版本 1.0)**：
+  - 導入並校對 Google Doc 的研究長文，修正了包含馬其頓行省首府（由腓立比修正為帖撒羅尼迦）、殉道者游斯丁譯名、約瑟譯名、杖頭釋奴（manumissio vindicta）術語以及移除表格空表頭等多項史實、錯別字與排版問題。
+  - 過濾「格式化」等現代資料庫/科技黑話，改為「程式化陪審團審判」，以維持歷史寫作的嚴肅性。
+  - 新增全新歷史專題分類 **「三世紀之前的羅馬社會」**，並將其排序在「三世紀危機後的羅馬帝國」之前，提升目錄結構的歷史敘事性。
+  - 使用 DALL-E (generate_image) 生成高質感歷史插畫（roman_provincial_governance.png），作為新分類封面與文章 Banner，重現一世紀羅馬總督官邸審案的莊嚴歷史場景。
+  - 於 `build_html_md.py` 與 `template.html` 完成 page33 路由、SEO Meta、全域搜尋索引與 JSON-LD 結構化資料之全面註冊。
+
 #### 2026-06-24 (安東尼努斯敕令英漢對照平行文本 1.0 | 版面設計 5.5)
 - **發布「羅馬帝國：安東尼努斯敕令」英漢對照平行文獻 (內容版本 1.0)**：
   - 轉化 [constitutio_antoniniana_bilingual.html](file:///c:/Users/USER/gemini的簡單歷史課/constitutio_antoniniana_bilingual.html) 為 Markdown 格式，並以 `process_3col_document` 做為底層進行編譯，完美整合至 SPA 主頁的「歷史文件專區」；

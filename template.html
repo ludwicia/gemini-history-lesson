@@ -71,7 +71,8 @@
         {"@type": "Article", "name": "阿拉里克與哥德大遷徙：晚期羅馬帝國的地緣政治坍塌與蠻族同盟的體制化適應（第一卷：永恆之城的終局）", "url": "https://ludwica-history-lesson.pages.dev/#page26"},
         {"@type": "Article", "name": "羅馬帝國晚期的地緣政治斷裂與軍事赤字：冷河戰役及其歷史學再闡釋", "url": "https://ludwica-history-lesson.pages.dev/#page27"},
         {"@type": "Article", "name": "蓋納斯與早期拜占庭蠻族權力危機", "url": "https://ludwica-history-lesson.pages.dev/#page30"},
-        {"@type": "Article", "name": "卡拉卡拉與《安東尼努斯敕令》的法理與財政變革", "url": "https://ludwica-history-lesson.pages.dev/#page31"}
+        {"@type": "Article", "name": "卡拉卡拉與《安東尼努斯敕令》的法理與財政變革", "url": "https://ludwica-history-lesson.pages.dev/#page31"},
+        {"@type": "Article", "name": "一世紀羅馬行省治權與社會：從聖經敘事與古典文獻印證一世紀羅馬地方統治體制", "url": "https://ludwica-history-lesson.pages.dev/#page33"}
       ]
     }
     </script>
@@ -269,6 +270,10 @@
         <div id="course-page32" class="course-page" style="display: none;">
             __HTML_BODY_PAGE32__
         </div>
+        <!-- 課堂三十三：一世紀羅馬行省治權與社會 -->
+        <div id="course-page33" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE33__
+        </div>
     </main>
 
     <!-- Right Sidebar / Floating Footer: Search & Version -->
@@ -301,7 +306,7 @@
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：5.5 (新增安東尼努斯敕令英漢對照平行文本並調整為雙欄格式)</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：5.6 (新增一世紀羅馬行省治權與社會文章並新增分類)</div>
                     <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-24</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
@@ -619,6 +624,15 @@
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page33: `
+            <div style="font-size: 0.85rem; color: #4a5568; line-height: 1.6;">
+                <b>📚 當前章節：</b>一世紀羅馬行省治權與社會<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE33_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -870,7 +884,8 @@
             { id: 'page29', name: '阿德里安堡戰役' },
             { id: 'page30', name: '蓋納斯與早期拜占庭蠻族權力危機' },
             { id: 'page31', name: '卡拉卡拉與《安東尼努斯敕令》' },
-            { id: 'page32', name: '安東尼努斯敕令' }
+            { id: 'page32', name: '安東尼努斯敕令' },
+            { id: 'page33', name: '一世紀羅馬行省治權與社會' }
         ];
         
         pages.forEach(p => {
@@ -1098,7 +1113,7 @@
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22', 'page23', 'page24', 'page25', 'page26', 'page27', 'page28', 'page29', 'page30', 'page31', 'page32'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22', 'page23', 'page24', 'page25', 'page26', 'page27', 'page28', 'page29', 'page30', 'page31', 'page32', 'page33'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);

@@ -447,6 +447,11 @@ images_p31 = []
 # Page 32 Config
 file_p32 = r'course/安東尼努斯敕令.md'
 
+# Page 33 Config
+file_p33 = r'course/帝國機器與行省治權：從聖經敘事與古典文獻印證一世紀羅馬地方統治體制.md'
+map_p33 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/roman_provincial_governance.png" alt="Roman Provincial Governance" loading="lazy"><figcaption class="caption">羅馬行省治權與社會：西元一世紀，身處東方行省的羅馬巡撫彼拉多於總督官邸（Praetorium）審理案件，身旁羅馬百夫長與士兵林立，展現出羅馬帝國在猶太地方的高壓統治與司法主權。</figcaption></figure>\n'
+images_p33 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -546,6 +551,9 @@ html_body_p31 = process_markdown(file_p31, images_p31, "1.0", map_p31, page_id="
 print("Processing Page 32 (Constitutio Antoniniana Document)...")
 html_body_p32 = process_3col_document(file_p32, "1.0", page_id="page32", lang_orig="英文/拉丁文", cols=2)
 
+print("Processing Page 33 (Roman Provincial Governance)...")
+html_body_p33 = process_markdown(file_p33, images_p33, "1.0", map_p33, page_id="page33")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -611,9 +619,16 @@ pages_data = {
     'page30': {'title': '蓋納斯與早期拜占庭蠻族權力危機', 'img': 'images/gainas_byzantine.png', 'ver': '1.0', 'doc': False},
     'page31': {'title': '卡拉卡拉與《安東尼努斯敕令》', 'img': 'images/caracalla_edict.png', 'ver': '1.0', 'doc': False},
     'page32': {'title': '羅馬帝國：安東尼努斯敕令', 'ver': '1.0', 'doc': True},
+    'page33': {'title': '一世紀羅馬行省治權與社會', 'img': 'images/roman_provincial_governance.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
+    {
+        'title': '三世紀之前的羅馬社會',
+        'key': 'pre-3rd-century-rome',
+        'img': 'images/roman_provincial_governance.png',
+        'pages': ['page33']
+    },
     {
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
@@ -916,6 +931,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE29__', html_body_p29)
 final_html = final_html.replace('__HTML_BODY_PAGE30__', html_body_p30)
 final_html = final_html.replace('__HTML_BODY_PAGE31__', html_body_p31)
 final_html = final_html.replace('__HTML_BODY_PAGE32__', html_body_p32)
+final_html = final_html.replace('__HTML_BODY_PAGE33__', html_body_p33)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -952,6 +968,7 @@ final_html = final_html.replace('__PAGE29_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE30_DATE__', get_file_last_update_date(file_p30))
 final_html = final_html.replace('__PAGE31_DATE__', get_file_last_update_date(file_p31))
 final_html = final_html.replace('__PAGE32_DATE__', get_file_last_update_date(file_p32))
+final_html = final_html.replace('__PAGE33_DATE__', get_file_last_update_date(file_p33))
 
 # Inject JavaScript for toggle function
 toggle_js = """
