@@ -120,7 +120,7 @@ def process_markdown(file_path, image_replacements, content_version, main_img_ht
 
     return html_body
 
-def process_3col_document(file_path, content_version, page_id=None, lang_orig="德文"):
+def process_3col_document(file_path, content_version, page_id=None, lang_orig="德文", cols=3):
     update_date = get_file_last_update_date(file_path)
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -155,15 +155,19 @@ def process_3col_document(file_path, content_version, page_id=None, lang_orig="�
     if page_id:
         html += get_share_bar_html(page_id)
 
+    container_class = "doc-3col-container" if cols == 3 else "doc-3col-container doc-2col-container"
     html += f'''
     <div class="doc-title-section">
         {title_html}
     </div>
-    <div class="doc-3col-container">
+    <div class="{container_class}">
         <div class="doc-3col-header">
             <div class="doc-col-title">原文 ({lang_orig})</div>
             <div class="doc-col-title">譯文 (中文)</div>
-            <div class="doc-col-title">解釋 (筆記)</div>
+    '''
+    if cols == 3:
+        html += f'''        <div class="doc-col-title">解釋 (筆記)</div>'''
+    html += f'''
         </div>
     '''
     
@@ -192,7 +196,10 @@ def process_3col_document(file_path, content_version, page_id=None, lang_orig="�
             <div class="doc-3col-row">
                 <div class="doc-col doc-original">{original_text}</div>
                 <div class="doc-col doc-translation">{translated_text}</div>
-                <div class="doc-col doc-explanation">{explanation_text}</div>
+            '''
+            if cols == 3:
+                html += f'''    <div class="doc-col doc-explanation">{explanation_text}</div>'''
+            html += f'''
             </div>
             '''
         else:
@@ -437,6 +444,9 @@ file_p31 = r'course/塞維魯王朝的權力、財政與法制變革：卡拉卡
 map_p31 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/caracalla_edict.png" alt="Caracalla Edict" loading="lazy"><figcaption class="caption">卡拉卡拉與《安東尼努斯敕令》：西元212年，羅馬皇帝卡拉卡拉頒布敕令，授予帝國所有自由民羅馬公民身份，這不僅重塑了羅馬身份認同，也藉此擴大了遺產稅等公民稅收稅基。</figcaption></figure>\n'
 images_p31 = []
 
+# Page 32 Config
+file_p32 = r'course/安東尼努斯敕令.md'
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -533,6 +543,9 @@ html_body_p30 = process_markdown(file_p30, images_p30, "1.0", map_p30, page_id="
 print("Processing Page 31 (Caracalla Edict)...")
 html_body_p31 = process_markdown(file_p31, images_p31, "1.0", map_p31, page_id="page31")
 
+print("Processing Page 32 (Constitutio Antoniniana Document)...")
+html_body_p32 = process_3col_document(file_p32, "1.0", page_id="page32", lang_orig="英文/拉丁文", cols=2)
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -597,6 +610,7 @@ pages_data = {
     'page29': {'title': '阿德里安堡戰役', 'img': 'images/battle_of_adrianople.png', 'ver': '1.0', 'doc': False},
     'page30': {'title': '蓋納斯與早期拜占庭蠻族權力危機', 'img': 'images/gainas_byzantine.png', 'ver': '1.0', 'doc': False},
     'page31': {'title': '卡拉卡拉與《安東尼努斯敕令》', 'img': 'images/caracalla_edict.png', 'ver': '1.0', 'doc': False},
+    'page32': {'title': '羅馬帝國：安東尼努斯敕令', 'ver': '1.0', 'doc': True},
 }
 
 categories = [
@@ -702,7 +716,7 @@ for cat in categories:
     cards_html_list.append(cat_section)
 
 # Append Historical Documents section at the bottom
-doc_pages = ['page04', 'page06', 'page08', 'page20', 'page28']
+doc_pages = ['page04', 'page06', 'page08', 'page20', 'page28', 'page32']
 doc_cards = []
 for pid in doc_pages:
     if pid in pages_data:
@@ -901,6 +915,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE28__', html_body_p28)
 final_html = final_html.replace('__HTML_BODY_PAGE29__', html_body_p29)
 final_html = final_html.replace('__HTML_BODY_PAGE30__', html_body_p30)
 final_html = final_html.replace('__HTML_BODY_PAGE31__', html_body_p31)
+final_html = final_html.replace('__HTML_BODY_PAGE32__', html_body_p32)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -936,6 +951,7 @@ final_html = final_html.replace('__PAGE28_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE29_DATE__', get_file_last_update_date(file_p29))
 final_html = final_html.replace('__PAGE30_DATE__', get_file_last_update_date(file_p30))
 final_html = final_html.replace('__PAGE31_DATE__', get_file_last_update_date(file_p31))
+final_html = final_html.replace('__PAGE32_DATE__', get_file_last_update_date(file_p32))
 
 # Inject JavaScript for toggle function
 toggle_js = """

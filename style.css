@@ -330,6 +330,10 @@
             border-bottom: 1px dashed #e2e8f0;
             padding-bottom: 15px;
         }
+        .doc-2col-container .doc-3col-header,
+        .doc-2col-container .doc-3col-row {
+            grid-template-columns: 1fr 1fr;
+        }
         .doc-col {
             font-size: 0.95rem;
             line-height: 1.6;

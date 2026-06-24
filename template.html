@@ -265,6 +265,10 @@
         <div id="course-page31" class="course-page" style="display: none;">
             __HTML_BODY_PAGE31__
         </div>
+        <!-- 歷史文件六：安東尼努斯敕令 -->
+        <div id="course-page32" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE32__
+        </div>
     </main>
 
     <!-- Right Sidebar / Floating Footer: Search & Version -->
@@ -297,7 +301,7 @@
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：5.4 (校對並修正奧多亞賽文章翻譯殘留與錯字)</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：5.5 (新增安東尼努斯敕令英漢對照平行文本並調整為雙欄格式)</div>
                     <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-06-24</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
@@ -606,6 +610,15 @@
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page32: `
+            <div style="font-size: 0.85rem; color: #4a5568; line-height: 1.6;">
+                <b>📚 當前文件：</b>羅馬帝國：安東尼努斯敕令<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE32_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -641,7 +654,8 @@
         'page28': { title: '薩洛尼卡敕令三欄解析 — Ludwica 的簡單歷史課', desc: '公元380年由羅馬皇帝格拉提安、瓦倫丁尼安二世與狄奧多西一世聯合頒布的法令，將尼西亞基督教確立為羅馬帝國國教，包含拉丁文原文、中文翻譯三欄對照與名詞解析。' },
         'page29': { title: '阿德里安堡戰役：晚期羅馬帝國的系統性崩潰與地緣政治重塑 — Ludwica 的簡單歷史課', desc: '深入探討公元378年阿德里安堡戰役的宏觀地緣政治背景，包含匈人入侵引發的哥特人口遷徙危機、多瑙河安置事件、羅馬官員的行政腐敗與馬爾恰諾波利斯衝突、雙方戰略目標與作戰序列、兩軍遭遇與交戰經過，以及戰後公元382年同盟條約的地緣政治影響與西羅馬帝國的最終解體路徑。' },
         'page30': { title: '蓋納斯與早期拜占庭蠻族權力危機 — Ludwica 的簡單歷史課', desc: '深入探討公元400年左右東羅馬哥德籍大將蓋納斯（Gainas）的崛起與覆滅，剖析東羅馬帝國軍隊蠻族化背景、尤特羅皮烏斯的崛起與朝政作為、崔比吉爾德叛亂、蓋納斯在君士坦丁堡的軍事專政、七月十二日反蠻族大屠殺、赫勒斯滂海戰，以及此事件對東部帝國走向官僚集權與限制蠻族干政的深遠地緣政治影響。' },
-        'page31': { title: '卡拉卡拉與《安東尼努斯敕令》的法理與財政變革 — Ludwica 的簡單歷史課', desc: '深入研究塞維魯王朝皇帝卡拉卡拉於西元212年頒布的《安東尼努斯敕令》（Constitutio Antoniniana）的歷史背景、吉森莎草紙40號文獻載體、投降者（dediticii）的法理爭議、稅制改革及遺產稅翻倍的財政實效、貨幣安東尼尼安努斯貶值與信用崩潰，以及輔助軍瓦解與羅馬人身份認同重塑的多維歷史效應。' }
+        'page31': { title: '卡拉卡拉與《安東尼努斯敕令》的法理與財政變革 — Ludwica 的簡單歷史課', desc: '深入研究塞維魯王朝皇帝卡拉卡拉於西元212年頒布的《安東尼努斯敕令》（Constitutio Antoniniana）的歷史背景、吉森莎草紙40號文獻載體、投降者（dediticii）的法理爭議、稅制改革及遺產稅翻倍的財政實效、貨幣安東尼尼安努斯貶值與信用崩潰，以及輔助軍瓦解與羅馬人身份認同重塑的多維歷史效應。' },
+        'page32': { title: '安東尼努斯敕令英漢對照平行文本 — Ludwica 的簡單歷史課', desc: '公元212年羅馬皇帝卡拉卡拉頒布之《安東尼努斯敕令》英漢雙語平行文本，包含吉森莎草紙40號文獻內容、古羅馬法律與文學記載等文獻對照。' }
     };
 
     function updatePageSEO(pageId) {
@@ -744,7 +758,7 @@
         
         // Handle full-width doc mode
         const layout = document.querySelector('.layout');
-        if (pageId === 'page04' || pageId === 'page06' || pageId === 'page08' || pageId === 'page20' || pageId === 'page28') {
+        if (pageId === 'page04' || pageId === 'page06' || pageId === 'page08' || pageId === 'page20' || pageId === 'page28' || pageId === 'page32') {
             layout.classList.add('doc-mode');
         } else {
             layout.classList.remove('doc-mode');
@@ -855,7 +869,8 @@
             { id: 'page28', name: '薩洛尼卡敕令' },
             { id: 'page29', name: '阿德里安堡戰役' },
             { id: 'page30', name: '蓋納斯與早期拜占庭蠻族權力危機' },
-            { id: 'page31', name: '卡拉卡拉與《安東尼努斯敕令》' }
+            { id: 'page31', name: '卡拉卡拉與《安東尼努斯敕令》' },
+            { id: 'page32', name: '安東尼努斯敕令' }
         ];
         
         pages.forEach(p => {
@@ -1083,7 +1098,7 @@
             return;
         }
 
-        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22', 'page23', 'page24', 'page25', 'page26', 'page27', 'page28', 'page29', 'page30', 'page31'].find(p => hash.startsWith(p));
+        const matchedPage = ['page01', 'page02', 'page03', 'page04', 'page05', 'page06', 'page07', 'page08', 'page09', 'page10', 'page11', 'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22', 'page23', 'page24', 'page25', 'page26', 'page27', 'page28', 'page29', 'page30', 'page31', 'page32'].find(p => hash.startsWith(p));
         if (matchedPage) {
             if (activePageId !== matchedPage) {
                 switchPage(matchedPage);
