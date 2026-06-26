@@ -457,7 +457,7 @@ print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
 
 print("Processing Page 2 (USA)...")
-html_body_p2 = process_markdown(file_p2, images_p2, "1.0", map_p2, page_id="page02")
+html_body_p2 = process_markdown(file_p2, images_p2, "1.1", map_p2, page_id="page02")
 
 print("Processing Page 3 (Hussite)...")
 html_body_p3 = process_markdown(file_p3, images_p3, "1.0", map_p3, page_id="page03")
@@ -492,7 +492,7 @@ print("Processing Page 12 (Cathar Crusade)...")
 html_body_p12 = process_markdown(file_p12, images_p12, "1.0", map_p12, page_id="page12")
 
 print("Processing Page 13 (USA Phase 2)...")
-html_body_p13 = process_markdown(file_p13, images_p13, "1.0", map_p13, page_id="page13")
+html_body_p13 = process_markdown(file_p13, images_p13, "1.1", map_p13, page_id="page13")
 
 print("Processing Page 14 (British Constitution)...")
 html_body_p14 = process_markdown(file_p14, images_p14, "1.0", map_p14, page_id="page14")
@@ -588,8 +588,8 @@ except Exception as e:
 
 pages_data = {
     'page01': {'title': '荷蘭建國與地緣政經', 'img': 'images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg', 'ver': '1.1', 'doc': False},
-    'page02': {'title': '美國的誕生(一)', 'img': 'images/img_10_960px-Cahokia_Monks_Mound.jpg', 'ver': '1.0', 'doc': False},
-    'page13': {'title': '美國的誕生(二)', 'img': 'images/us2_map.jpg', 'ver': '1.0', 'doc': False},
+    'page02': {'title': '美國的誕生(一)', 'img': 'images/img_10_960px-Cahokia_Monks_Mound.jpg', 'ver': '1.1', 'doc': False},
+    'page13': {'title': '美國的誕生(二)', 'img': 'images/us2_map.jpg', 'ver': '1.1', 'doc': False},
     'page03': {'title': '宗教戰爭(一)：胡斯戰爭', 'img': 'images/hussite_wars_main.png', 'ver': '1.0', 'doc': False},
     'page12': {'title': '宗教戰爭(二)：卡特里派', 'img': 'images/catharism_main.jpg', 'ver': '1.0', 'doc': False},
     'page05': {'title': '希爾紹修道院', 'img': 'images/hirsau_main_wilhelm.jpg', 'ver': '1.0', 'doc': False},
