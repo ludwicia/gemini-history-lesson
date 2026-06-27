@@ -357,7 +357,10 @@
     返回首頁
 </a>
 
-<script>
+<script type="module">
+    // === Firebase Firestore Integration ===
+    import { getArticlesCatalog, getCategories, getArticleById, getWorklog, getSearchIndex } from './js/firestore-service.js';
+
     // 1. Category folder collapse toggle function
     function toggleCategory(catId) {
         const container = document.getElementById('cat-' + catId);
@@ -462,6 +465,11 @@
             });
         }
     }
+
+    // Expose functions to window for onclick handlers
+    window.toggleCategory = toggleCategory;
+    window.shareTo = shareTo;
+    window.showToast = showToast;
 
     function showToast(message) {
         let toast = document.getElementById('toast');
@@ -612,18 +620,17 @@
         container.innerHTML = `
             <div style="padding: 100px 40px; text-align: center; color: #718096;">
                 <div class="loading-spinner" style="margin-bottom: 20px;"></div>
-                <div style="font-weight: 600; margin-top: 10px;">正在載入文章內容...</div>
+                <div style="font-weight: 600; margin-top: 10px;">正在從 Firestore 載入文章...</div>
             </div>
         `;
         
-        return fetch('/api/article/' + pageId + '.json?_t=' + Date.now())
-            .then(res => {
-                if (!res.ok) throw new Error('Fetch failed: ' + res.status);
-                return res.json();
-            })
-            .then(data => {
-                cachedArticles[pageId] = data.content_html;
-                container.innerHTML = data.content_html;
+        return getArticleById(pageId)
+            .then(article => {
+                if (!article || !article.content_html) {
+                    throw new Error('文章不存在或內容為空');
+                }
+                cachedArticles[pageId] = article.content_html;
+                container.innerHTML = article.content_html;
                 indexLoadedPageElements(pageId);
             })
             .catch(err => {
@@ -632,12 +639,13 @@
                         <span style="font-size: 3rem; display: block; margin-bottom: 15px;">⚠️</span>
                         <strong>無法載入文章</strong><br>
                         <span style="font-size: 0.9rem; color: #718096;">錯誤訊息: ${err.message}</span><br>
-                        <button onclick="switchPage('${pageId}')" style="margin-top: 20px; padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">重試</button>
+                        <button onclick="window.switchPage('${pageId}')" style="margin-top: 20px; padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">重試</button>
                     </div>
                 `;
                 console.error(err);
             });
     }
+    window.switchPage = switchPage;
 
     function indexLoadedPageElements(pageId) {
         searchableElements = [];
@@ -690,14 +698,10 @@
             return;
         }
 
-        // Lazy load search index once
+        // Lazy load search index once (from Firestore)
         if (searchIndex === null) {
-            searchResults.innerHTML = '<div style="text-align: center; padding: 20px 0;"><div class="loading-spinner"></div><div style="font-size:0.8rem;color:#718096;margin-top:8px;">正在載入搜尋索引...</div></div>';
-            fetch('/api/search_index.json?_t=' + Date.now())
-                .then(res => {
-                    if (!res.ok) throw new Error('無法下載搜尋索引');
-                    return res.json();
-                })
+            searchResults.innerHTML = '<div style="text-align: center; padding: 20px 0;"><div class="loading-spinner"></div><div style="font-size:0.8rem;color:#718096;margin-top:8px;">正在從 Firestore 載入搜尋索引...</div></div>';
+            getSearchIndex()
                 .then(data => {
                     searchIndex = data;
                     // Re-trigger search input logic
@@ -999,42 +1003,52 @@
     
     window.addEventListener('hashchange', handleHashRouting);
     
-    // 12. Startup Initialization via API
-    window.addEventListener('DOMContentLoaded', () => {
-        fetch('/api/articles.json?_t=' + Date.now())
-            .then(res => {
-                if (!res.ok) throw new Error('Failed to load articles catalog');
-                return res.json();
-            })
-            .then(data => {
-                allArticlesList = data.articles;
-                
-                // Render worklogs
-                if (data.worklog) {
-                    const uLog = document.getElementById('update-log-container');
-                    if (uLog) uLog.innerHTML = data.worklog;
-                    const mLog = document.querySelector('.mobile-update-log-content');
-                    if (mLog) mLog.innerHTML = data.worklog;
-                }
-                
-                // Render dynamic navigation menu cards
-                renderCatalog(data.categories, data.articles);
-                
-                // Process initial route hash
-                handleHashRouting();
-            })
-            .catch(err => {
-                console.error("Initialization error:", err);
-                document.getElementById('articles-menu-container').innerHTML = `
-                    <div style="padding: 60px 40px; text-align: center; color: #e53e3e;">
-                        <span style="font-size: 3rem; display: block; margin-bottom: 15px;">⚠️</span>
-                        <strong>初始化失敗</strong><br>
-                        <span style="font-size: 0.9rem; color: #718096;">無法載入目錄與文章列表。請確認本機伺服器 (server.py) 是否已啟動。</span><br>
-                        <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">重新載入</button>
-                    </div>
-                `;
-            });
-    });
+    // 12. Startup Initialization via Firebase Firestore
+    async function initFromFirestore() {
+        try {
+            // Parallel fetch: categories, articles catalog, worklog
+            const [categories, articles, worklogHtml] = await Promise.all([
+                getCategories(),
+                getArticlesCatalog(),
+                getWorklog()
+            ]);
+
+            allArticlesList = articles;
+            
+            // Render worklogs
+            if (worklogHtml) {
+                const uLog = document.getElementById('update-log-container');
+                if (uLog) uLog.innerHTML = worklogHtml;
+                const mLog = document.querySelector('.mobile-update-log-content');
+                if (mLog) mLog.innerHTML = worklogHtml;
+            }
+            
+            // Render dynamic navigation menu cards
+            renderCatalog(categories, articles);
+            
+            console.log('🔥 Firebase Firestore 初始化完成');
+            
+            // Process initial route hash
+            handleHashRouting();
+        } catch (err) {
+            console.error('Initialization error:', err);
+            document.getElementById('articles-menu-container').innerHTML = `
+                <div style="padding: 60px 40px; text-align: center; color: #e53e3e;">
+                    <span style="font-size: 3rem; display: block; margin-bottom: 15px;">⚠️</span>
+                    <strong>初始化失敗</strong><br>
+                    <span style="font-size: 0.9rem; color: #718096;">無法從 Firestore 載入資料：${err.message}</span><br>
+                    <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">重新載入</button>
+                </div>
+            `;
+        }
+    }
+
+    // Fire on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFromFirestore);
+    } else {
+        initFromFirestore();
+    }
 
     // === Character Relationship Map Interactive Logic ===
     let scale = 1.0;
