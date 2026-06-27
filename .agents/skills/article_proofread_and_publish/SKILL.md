@@ -49,24 +49,39 @@ description: Handles the step-by-step workflow for importing, auditing, proofrea
      * 在 `pages_data` 中新增該頁面的標題、封面圖、版本與 doc 標記。
      * 在 `categories` 陣列中，將頁面 ID 新增至對應的分類下。
      * 在 HTML 生成替換部分，新增 `__HTML_BODY_PAGE[XX]__` 與 `__PAGE[XX]_DATE__` 的取代邏輯。
-   * **修改 `template.html`**：
-     * 於 `<head>` 的 JSON-LD 結構化資料中，在 `hasPart` 陣列新增對應的 `Article` 項目。
-     * 在 `<main>` 區域新增對應的 `<div id="course-page[XX]">` 容器。
-     * 在 `courseInfo` 物件中註冊該頁面的版本、更新日期佔位符與工程資訊。
+   * **修改 `index_db.html`**（動態版 SPA 入口）：
      * 在 `pageSEO` 物件中新增該頁面的自訂標題與 50-160 字的精準 SEO 描述。
-     * 在 `initGlobalSearchIndex()` 函式中的 pages 陣列註冊該頁面 ID 與名稱。
-     * 在 hash 路由解析陣列 `matchedPage` 中新增該頁面 ID。
+     * 在 `<head>` 的 JSON-LD 結構化資料 `hasPart` 陣列中新增對應的 `Article` 項目。
 
 4. **更新日誌與版本宣告**：
-   * 在 `template.html` 中，將 `版面設計` 版本號手動遞增（如 4.7 升級至 4.8），並更新發布日期。
+   * 在 `index_db.html` 中，將 `版面設計` 版本號手動遞增（如 4.7 升級至 4.8），並更新發布日期。
    * 在專案根目錄的 `worklog.md` 頂部插入今日的發布日誌，詳細說明發布的文章、修正的史實、新增的插圖與路由調整。
 
-5. **本地編譯與 Git 部署**：
-   * 在本機執行 `python build_html_md.py`，驗證編譯是否成功、網頁標籤是否閉合。
-   * 編譯無誤後，執行 Git 命令部署上線：
+5. **三軌編譯、Firestore 上傳與 Git 部署**：
+   * 在本機依序執行以下三條編譯指令：
+     ```bash
+     python build_html_md.py           # 重新生成靜態備份 index_static.html 及 SEO 頁面
+     python build_static_chunks.py     # 重新切片生成 api/ JSON Chunks
+     python migrate_to_firestore.py    # 將所有資料上傳至 Firebase Firestore
+     ```
+   * 編譯及上傳無誤後，同步更新主入口：
+     ```bash
+     copy index_db.html index.html     # 將動態版同步至主入口
+     ```
+   * 最後執行 Git 命令部署上線：
      ```bash
      git add .
      git commit -m "發布：新增[專題名稱]專題 (版面 X.X, 內容 1.0)"
      git push
      ```
    * 部署完畢後向使用者報告網站已成功更新。
+
+---
+
+## 重要注意事項
+
+* **主入口為 `index.html`**（由 `index_db.html` 複製而來的動態 Firestore 版本，約 68KB），它從 Firebase Firestore 按需載入文章。
+* **靜態備份 `index_static.html`**（約 1.6MB，全部文章內嵌）僅作為 fallback 保留，不作為主要入口。
+* **Firebase 配置**位於 `js/firebase-config.js`，Firestore 讀取服務位於 `js/firestore-service.js`。
+* **Service Account 金鑰**（`ludwica-history-firebase-adminsdk-*.json`）已在 `.gitignore` 中排除，嚴禁提交至 Git。
+* **圖片**仍然存放在本地 `images/` 目錄，由 Cloudflare Pages 靜態託管，不上傳至 Firebase Storage。
