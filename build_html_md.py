@@ -507,7 +507,7 @@ print("Processing Page 17 (Ambrose & Theodosius)...")
 html_body_p17 = process_markdown(file_p17, images_p17, "1.0", map_p17, page_id="page17")
 
 print("Processing Page 18 (AD Calendar)...")
-html_body_p18 = process_markdown(file_p18, images_p18, "1.1", map_p18, page_id="page18")
+html_body_p18 = process_markdown(file_p18, images_p18, "1.2", map_p18, page_id="page18")
 
 print("Processing Page 19 (Milan Edict & Licinius)...")
 html_body_p19 = process_markdown(file_p19, images_p19, "1.0", map_p19, page_id="page19")
@@ -534,7 +534,7 @@ print("Processing Page 26 (Alaric & Gothic Migrations)...")
 html_body_p26 = process_markdown(file_p26, images_p26, "1.1", map_p26, page_id="page26")
 
 print("Processing Page 27 (Battle of the Frigidus)...")
-html_body_p27 = process_markdown(file_p27, images_p27, "1.0", map_p27, page_id="page27")
+html_body_p27 = process_markdown(file_p27, images_p27, "1.1", map_p27, page_id="page27")
 
 print("Processing Page 28 (Thessalonica Edict Document)...")
 html_body_p28 = process_3col_document(file_p28, "1.0", page_id="page28", lang_orig="拉丁文")
@@ -609,7 +609,7 @@ pages_data = {
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
     'page26': {'title': '阿拉里克與哥德大遷徙', 'img': 'images/alaric_sack_rome.png', 'ver': '1.1', 'doc': False},
-    'page27': {'title': '冷河戰役及其歷史學再闡釋', 'img': 'images/battle_of_frigidus.png', 'ver': '1.0', 'doc': False},
+    'page27': {'title': '冷河戰役及其歷史學再闡釋', 'img': 'images/battle_of_frigidus.png', 'ver': '1.1', 'doc': False},
     'page04': {'title': '神聖羅馬帝國：金璽詔書', 'ver': '1.9', 'doc': True},
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
     'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
