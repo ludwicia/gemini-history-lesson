@@ -452,6 +452,11 @@ file_p33 = r'course/帝國機器與行省治權：從聖經敘事與古典文獻
 map_p33 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/roman_provincial_governance.png" alt="Roman Provincial Governance" loading="lazy"><figcaption class="caption">羅馬行省治權與社會：西元一世紀，身處東方行省的羅馬巡撫彼拉多於總督官邸（Praetorium）審理案件，身旁羅馬百夫長與士兵林立，展現出羅馬帝國在猶太地方的高壓統治與司法主權。</figcaption></figure>\n'
 images_p33 = []
 
+# Page 34 (Huns Arrival) Config
+file_p34 = r'course/匈人的登場：從阿德里安堡戰役到冷河戰役的深層地緣政治與戰略研究.md'
+map_p34 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/huns_arrival.png" alt="Huns Arrival" loading="lazy"><figcaption class="caption">匈人的登場：西元四世紀末，由東方草原呼嘯而至的匈人輕騎兵越過頓河，以致命的突襲擊碎了東哥特王國與阿蘭人的防線，開啟了歐洲蠻族大遷徙的序幕。</figcaption></figure>\n'
+images_p34 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -554,6 +559,9 @@ html_body_p32 = process_3col_document(file_p32, "1.0", page_id="page32", lang_or
 print("Processing Page 33 (Roman Provincial Governance)...")
 html_body_p33 = process_markdown(file_p33, images_p33, "1.0", map_p33, page_id="page33")
 
+print("Processing Page 34 (Huns Arrival)...")
+html_body_p34 = process_markdown(file_p34, images_p34, "1.0", map_p34, page_id="page34")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -620,6 +628,7 @@ pages_data = {
     'page31': {'title': '卡拉卡拉與《安東尼努斯敕令》', 'img': 'images/caracalla_edict.png', 'ver': '1.0', 'doc': False},
     'page32': {'title': '羅馬帝國：安東尼努斯敕令', 'ver': '1.0', 'doc': True},
     'page33': {'title': '一世紀羅馬行省治權與社會', 'img': 'images/roman_provincial_governance.png', 'ver': '1.0', 'doc': False},
+    'page34': {'title': '匈人的登場與晚期羅馬地緣政治', 'img': 'images/huns_arrival.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -639,7 +648,7 @@ categories = [
         'title': '中世紀諸民族記',
         'key': 'medieval',
         'img': 'images/clovis_main.jpg',
-        'pages': ['page23', 'page26', 'page29']
+        'pages': ['page23', 'page26', 'page29', 'page34']
     },
     {
         'title': '教宗國記',
@@ -932,6 +941,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE30__', html_body_p30)
 final_html = final_html.replace('__HTML_BODY_PAGE31__', html_body_p31)
 final_html = final_html.replace('__HTML_BODY_PAGE32__', html_body_p32)
 final_html = final_html.replace('__HTML_BODY_PAGE33__', html_body_p33)
+final_html = final_html.replace('__HTML_BODY_PAGE34__', html_body_p34)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -969,6 +979,7 @@ final_html = final_html.replace('__PAGE30_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE31_DATE__', get_file_last_update_date(file_p31))
 final_html = final_html.replace('__PAGE32_DATE__', get_file_last_update_date(file_p32))
 final_html = final_html.replace('__PAGE33_DATE__', get_file_last_update_date(file_p33))
+final_html = final_html.replace('__PAGE34_DATE__', get_file_last_update_date(file_p34))
 
 # Inject JavaScript for toggle function
 toggle_js = """
