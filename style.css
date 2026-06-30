@@ -309,7 +309,7 @@
         }
         .doc-3col-header {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1.2fr 1.2fr 0.6fr;
             gap: 20px;
             font-weight: 700;
             color: var(--primary-color);
@@ -325,7 +325,7 @@
         }
         .doc-3col-row {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1.2fr 1.2fr 0.6fr;
             gap: 20px;
             border-bottom: 1px dashed #e2e8f0;
             padding-bottom: 15px;
