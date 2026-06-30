@@ -542,7 +542,7 @@ print("Processing Page 27 (Battle of the Frigidus)...")
 html_body_p27 = process_markdown(file_p27, images_p27, "1.1", map_p27, page_id="page27")
 
 print("Processing Page 28 (Thessalonica Edict Document)...")
-html_body_p28 = process_3col_document(file_p28, "1.1", page_id="page28", lang_orig="拉丁文")
+html_body_p28 = process_3col_document(file_p28, "1.2", page_id="page28", lang_orig="拉丁文")
 
 print("Processing Page 29 (Battle of Adrianople)...")
 html_body_p29 = process_markdown(file_p29, images_p29, "1.0", map_p29, page_id="page29")
@@ -622,7 +622,7 @@ pages_data = {
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
     'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
     'page20': {'title': '羅馬帝國：米蘭敕令', 'ver': '1.0', 'doc': True},
-    'page28': {'title': '羅馬帝國：薩洛尼卡敕令', 'ver': '1.1', 'doc': True},
+    'page28': {'title': '羅馬帝國：薩洛尼卡敕令', 'ver': '1.2', 'doc': True},
     'page29': {'title': '阿德里安堡戰役', 'img': 'images/battle_of_adrianople.png', 'ver': '1.0', 'doc': False},
     'page30': {'title': '蓋納斯與早期拜占庭蠻族權力危機', 'img': 'images/gainas_byzantine.png', 'ver': '1.0', 'doc': False},
     'page31': {'title': '卡拉卡拉與《安東尼努斯敕令》', 'img': 'images/caracalla_edict.png', 'ver': '1.0', 'doc': False},
