@@ -521,7 +521,7 @@ print("Processing Page 20 (Milan Edict Document)...")
 html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20", lang_orig="英文/拉丁文")
 
 print("Processing Page 21 (Apostles' Creed)...")
-html_body_p21 = process_markdown(file_p21, images_p21, "1.0", map_p21, page_id="page21")
+html_body_p21 = process_markdown(file_p21, images_p21, "1.1", map_p21, page_id="page21")
 
 print("Processing Page 22 (Odoacer)...")
 html_body_p22 = process_markdown(file_p22, images_p22, "1.2", map_p22, page_id="page22")
@@ -602,7 +602,7 @@ pages_data = {
     'page12': {'title': '宗教戰爭(二)：卡特里派', 'img': 'images/catharism_main.jpg', 'ver': '1.0', 'doc': False},
     'page05': {'title': '希爾紹修道院', 'img': 'images/hirsau_main_wilhelm.jpg', 'ver': '1.0', 'doc': False},
     'page07': {'title': '奧托-薩利安帝國教會體制', 'img': 'images/ottonian_hre_map.svg', 'ver': '1.0', 'doc': False},
-    'page09': {'title': '丕平獻土與教皇國誕生', 'img': 'images/pippin_donation_main.jpg', 'ver': '1.1', 'doc': False},
+    'page09': {'title': '丕平獻土與教宗國誕生', 'img': 'images/pippin_donation_main.jpg', 'ver': '1.1', 'doc': False},
     'page10': {'title': '卡洛林教育基建與知識復興', 'img': 'images/carolingian_main.jpg', 'ver': '1.0', 'doc': False},
     'page11': {'title': '歐洲造紙術的歷史演變', 'img': 'images/paper_main.jpg', 'ver': '1.0', 'doc': False},
     'page14': {'title': '英國的憲法', 'img': 'images/uk_constitution_main.png', 'ver': '1.0', 'doc': False},
@@ -611,7 +611,7 @@ pages_data = {
     'page17': {'title': '從皇帝稱號看羅馬政教關係演變', 'img': 'images/ambrose_and_theodosius.png', 'ver': '1.0', 'doc': False},
     'page18': {'title': '西元紀年的確立與演進', 'img': 'images/ad_calendar_main.png', 'ver': '1.1', 'doc': False},
     'page19': {'title': '米蘭敕令時代與李錫尼覆滅', 'img': 'images/milan_edict_main.png', 'ver': '1.0', 'doc': False},
-    'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.0', 'doc': False},
+    'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.1', 'doc': False},
     'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.2', 'doc': False},
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
