@@ -714,6 +714,9 @@ def make_card_html(page_id, data):
     </div>"""
 
 cards_html_list = []
+tab_mapping = {
+    'us': 'new-world'
+}
 for cat in categories:
     cat_cards = []
     for pid in cat['pages']:
@@ -721,8 +724,9 @@ for cat in categories:
             cat_cards.append(make_card_html(pid, pages_data[pid]))
 
     grid_content = "\n".join(cat_cards)
+    tab = tab_mapping.get(cat['key'], 'europe')
     cat_section = f"""
-<div class="category-section">
+<div class="category-section" data-tab="{tab}">
     <div class="category-header-card" onclick="toggleCategory('{cat['key']}')">
         <div class="category-header-image" style="background-image: url('{cat['img']}');"></div>
         <div class="category-header-content">
@@ -1012,8 +1016,10 @@ function toggleCategory(catId) {
 final_html = final_html.replace('</body>', toggle_js + '</body>')
 
 # Write to file
-print("Writing build output to index.html...")
+print("Writing build output to index.html and index_static.html...")
 with open(r'index.html', 'w', encoding='utf-8') as f:
+    f.write(final_html)
+with open(r'index_static.html', 'w', encoding='utf-8', newline='\n') as f:
     f.write(final_html)
 
 # Generate sitemap.xml for SEO

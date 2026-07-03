@@ -297,6 +297,13 @@
                 </button>
             </div>
 
+            <!-- Catalog Tabs -->
+            <div class="catalog-tabs">
+                <button class="tab-btn active" data-tab="europe">歐洲</button>
+                <button class="tab-btn" data-tab="new-world">新大陸</button>
+                <button class="tab-btn" data-tab="far-east">遠東</button>
+            </div>
+
             <!-- Dynamic Catalog Grid container -->
             <div id="articles-menu-container">
                 <div style="text-align: center; padding: 40px 0;"><div class="loading-spinner"></div></div>
@@ -911,6 +918,10 @@
         if (!container) return;
         container.innerHTML = '';
 
+        const tabMapping = {
+            'us': 'new-world'
+        };
+
         categories.forEach(cat => {
             const catPages = articles.filter(art => art.category === cat.key);
             if (catPages.length === 0) return;
@@ -922,6 +933,8 @@
 
             const catSection = document.createElement('div');
             catSection.className = 'category-section';
+            const tab = tabMapping[cat.key] || 'europe';
+            catSection.setAttribute('data-tab', tab);
             catSection.innerHTML = `
                 <div class="category-header-card" onclick="toggleCategory('${cat.key}')">
                     <div class="category-header-image" style="background-image: url('${cat.img}');"></div>
@@ -956,7 +969,65 @@
             `;
             container.appendChild(docsSection);
         }
+
+        // Apply tab filtering based on active tab button
+        const activeTabBtn = document.querySelector('.tab-btn.active');
+        const activeTabId = activeTabBtn ? activeTabBtn.getAttribute('data-tab') : 'europe';
+        switchTab(activeTabId);
     }
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            if (btn.getAttribute('data-tab') === tabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        let visibleCount = 0;
+        document.querySelectorAll('#articles-menu-container .category-section').forEach(sec => {
+            const secTab = sec.getAttribute('data-tab');
+            if (secTab === tabId) {
+                sec.style.display = 'block';
+                visibleCount++;
+            } else {
+                sec.style.display = 'none';
+            }
+        });
+
+        // Handle empty tab state
+        let emptyMsg = document.getElementById('empty-tab-message');
+        if (visibleCount === 0) {
+            if (!emptyMsg) {
+                emptyMsg = document.createElement('div');
+                emptyMsg.id = 'empty-tab-message';
+                emptyMsg.className = 'empty-tab-message';
+                emptyMsg.innerHTML = '📭 遠東專題規劃中，敬請期待！';
+                const menuContainer = document.getElementById('articles-menu-container');
+                const titleNode = Array.from(menuContainer.childNodes).find(n => n.nodeType === 1 && n.innerText && n.innerText.includes('歷史文件專區'));
+                if (titleNode) {
+                    menuContainer.insertBefore(emptyMsg, titleNode);
+                } else {
+                    menuContainer.appendChild(emptyMsg);
+                }
+            } else {
+                emptyMsg.style.display = 'block';
+            }
+        } else {
+            if (emptyMsg) {
+                emptyMsg.style.display = 'none';
+            }
+        }
+    }
+
+    // Bind event listeners to tab buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const tabId = e.currentTarget.getAttribute('data-tab');
+            switchTab(tabId);
+        });
+    });
 
     function makeCardHtml(art) {
         if (art.is_doc) {
