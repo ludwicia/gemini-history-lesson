@@ -1,0 +1,8 @@
+node_modules/
+fact_check_report.md
+scratch/
+.agents/
+.git/
+__pycache__/
+.obsidian/
+worklog.md

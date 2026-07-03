@@ -158,7 +158,7 @@
         margin-top: 0;
         border-top: none;
     }
-    
+
     /* Layout adaptation for document cards in the grids */
     .category-container .article-grid {
         display: grid;
@@ -185,7 +185,7 @@
         background: #fafafa;
         border-left: 5px solid #AE1C28; /* document accent color */
     }
-    
+
     /* Dynamic Hover Accent Color per Category Container */
     .category-container[data-category="rome"] .article-card:hover {
         border-color: #e53e3e;
@@ -223,7 +223,7 @@
         border-color: #dd6b20;
         box-shadow: 0 10px 20px rgba(221, 107, 32, 0.12);
     }
-    
+
     /* Loading Spinner */
     .loading-spinner {
         display: inline-block;
@@ -296,7 +296,7 @@
                     <span class="share-text">複製連結</span>
                 </button>
             </div>
-            
+
             <!-- Dynamic Catalog Grid container -->
             <div id="articles-menu-container">
                 <div style="text-align: center; padding: 40px 0;"><div class="loading-spinner"></div></div>
@@ -316,7 +316,7 @@
             <span class="footer-header-title">🔍 快捷關鍵字搜尋與版本宣告</span>
             <button class="footer-toggle-btn" id="footerToggleBtn">展開 ▲</button>
         </div>
-        
+
         <div class="footer-main-content">
             <!-- Col 1: Search Input -->
             <div class="footer-search-col">
@@ -325,7 +325,7 @@
                     <input type="text" id="searchInput" placeholder="輸入關鍵字 (例如: VOC, 印尼, 玉米)...">
                 </div>
             </div>
-            
+
             <!-- Col 2: Search Results -->
             <div class="footer-results-col">
                 <div id="searchResults">
@@ -334,13 +334,13 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Col 3: Version Info -->
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：5.6 (更新使徒信經歷史演變與神學建構文章版本至 1.1，修正多處史實、拼寫與用語錯誤)</div>
-                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-07-02</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：6.1 (更新卡特里派文章版本至 1.1，修正火刑炸藥包等史實硬傷與多處拼寫翻譯偏差)</div>
+                    <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-07-03</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
                         <!-- Dynamic metadata loaded by JS -->
@@ -377,7 +377,7 @@
         const icon = document.getElementById('icon-' + catId);
         if (!container || !icon) return;
         const header = container.previousElementSibling;
-        
+
         if (container.style.display === 'none') {
             container.style.display = 'block';
             container.style.opacity = '0';
@@ -451,7 +451,7 @@
         }
         const shareUrl = pageId === 'home' ? baseUrl : `${baseUrl}pages/${pageId}.html`;
         const pageTitle = pageId === 'home' ? 'Ludwica 的簡單歷史課' : (pageSEO[pageId] ? pageSEO[pageId].title : document.title);
-        
+
         if (platform === 'facebook') {
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank', 'width=600,height=400');
         } else if (platform === 'line') {
@@ -510,7 +510,7 @@
 
     function switchPage(pageId) {
         activePageId = pageId;
-        
+
         // Handle floating home button visibility
         const homeBtn = document.getElementById('floatingHomeBtn');
         if (homeBtn) {
@@ -521,7 +521,7 @@
         const updateLogContainer = document.getElementById('update-log-container');
         const tocContainer = document.getElementById('toc');
         const leftSidebarTitle = document.getElementById('left-sidebar-title');
-        
+
         if (pageId === 'home') {
             if (updateLogContainer) updateLogContainer.style.display = 'block';
             if (tocContainer) tocContainer.style.display = 'none';
@@ -531,7 +531,7 @@
             if (tocContainer) tocContainer.style.display = 'block';
             if (leftSidebarTitle) leftSidebarTitle.innerText = '章節目錄';
         }
-        
+
         // Handle full-width doc mode
         const layout = document.querySelector('.layout');
         const docPages = ['page04', 'page06', 'page08', 'page20'];
@@ -540,43 +540,43 @@
         } else {
             layout.classList.remove('doc-mode');
         }
-        
+
         // Show/hide course content blocks
         const courseHome = document.getElementById('course-home');
         const courseViewport = document.getElementById('course-viewport');
-        
+
         if (pageId === 'home') {
             if (courseHome) courseHome.style.display = 'block';
             if (courseViewport) courseViewport.style.display = 'none';
-            
+
             // Clear search results when going home
             document.getElementById('searchInput').value = '';
             document.getElementById('searchResults').innerHTML = '<div style="color:#a0aec0; text-align:center; margin-top:30px; font-size: 0.9rem;">輸入關鍵字以尋找內文段落</div>';
-            
+
             const infoDiv = document.getElementById('dynamic-course-info');
             if (infoDiv) {
                 infoDiv.innerHTML = '<div style="color: #4a5568;"><b>🏠 目前位置：</b>歷史文章選單首頁<br><b>✨ 請點擊左側文章卡片開始閱讀</b></div>';
             }
-            
+
             if (window.scrollY > 280) {
                 window.scrollTo({top: 260, behavior: 'smooth'});
             }
-            
+
             updateHash('home');
             updatePageSEO('home');
             return Promise.resolve();
         } else {
             if (courseHome) courseHome.style.display = 'none';
             if (courseViewport) courseViewport.style.display = 'block';
-            
+
             // Temporary set class name
             courseViewport.className = 'course-page';
-            
+
             return loadAndShowArticle(pageId).then(() => {
                 generateTOC(pageId);
                 initMobileCollapseForPage(pageId);
                 makeExplanationsCollapsible();
-                
+
                 const infoDiv = document.getElementById('dynamic-course-info');
                 if (infoDiv) {
                     const article = allArticlesList.find(a => a.id === pageId);
@@ -593,11 +593,11 @@
                         `;
                     }
                 }
-                
+
                 if (window.scrollY > 280) {
                     window.scrollTo({top: 260, behavior: 'smooth'});
                 }
-                
+
                 updateHash(pageId);
                 updatePageSEO(pageId);
 
@@ -621,20 +621,20 @@
     function loadAndShowArticle(pageId) {
         const container = document.getElementById('article-content-container');
         if (!container) return Promise.resolve();
-        
+
         if (cachedArticles[pageId]) {
             container.innerHTML = cachedArticles[pageId];
             indexLoadedPageElements(pageId);
             return Promise.resolve();
         }
-        
+
         container.innerHTML = `
             <div style="padding: 100px 40px; text-align: center; color: #718096;">
                 <div class="loading-spinner" style="margin-bottom: 20px;"></div>
                 <div style="font-weight: 600; margin-top: 10px;">正在從 Firestore 載入文章...</div>
             </div>
         `;
-        
+
         return getArticleById(pageId)
             .then(article => {
                 if (!article || !article.content_html) {
@@ -680,10 +680,10 @@
     function generateTOC(pageId) {
         const tocContainer = document.getElementById('toc');
         tocContainer.innerHTML = '';
-        
+
         const activePage = document.getElementById('article-content-container');
         if (!activePage) return;
-        
+
         const headings = activePage.querySelectorAll('h2, h3');
         headings.forEach((h, index) => {
             h.id = pageId + '-heading-' + index;
@@ -703,7 +703,7 @@
     searchInput.addEventListener('input', (e) => {
         const keyword = e.target.value.trim().toLowerCase();
         searchResults.innerHTML = '';
-        
+
         if (!keyword) {
             searchResults.innerHTML = '<div style="color:#a0aec0; text-align:center; margin-top:30px; font-size: 0.9rem;">輸入關鍵字以尋找內文段落</div>';
             return;
@@ -731,42 +731,42 @@
             if (text.toLowerCase().includes(keyword)) {
                 count++;
                 if (count > 50) return; // Cap results
-                
+
                 const res = document.createElement('div');
                 res.className = 'search-result-item';
-                
+
                 const idx = text.toLowerCase().indexOf(keyword);
                 const start = Math.max(0, idx - 25);
                 const end = Math.min(text.length, idx + keyword.length + 25);
                 let snippet = text.substring(start, end);
                 if (start > 0) snippet = '...' + snippet;
                 if (end < text.length) snippet = snippet + '...';
-                
+
                 // Highlight keyword
                 const escapedKeyword = keyword.replace(/[-\/\\^$*+?.()|[\\]{}]/g, '\\$&');
                 const regex = new RegExp('(' + escapedKeyword + ')', 'gi');
                 snippet = snippet.replace(regex, '<mark>$1</mark>');
-                
+
                 // Find page title from cached article metadata
                 const article = allArticlesList.find(a => a.id === item.pageId);
                 const pageTitle = article ? article.title : '歷史專題';
-                
+
                 res.innerHTML = `<span style="font-size: 0.72rem; display: block; font-weight: 600; color: var(--primary-color); margin-bottom: 3px;">📌 ${pageTitle}</span>` + snippet;
-                
+
                 res.onclick = () => {
                     switchPage(item.pageId).then(() => {
                         const pageEl = document.getElementById('article-content-container');
                         if (!pageEl) return;
                         const elements = pageEl.querySelectorAll('p, h2, h3, li, td');
                         let matchedEl = null;
-                        
+
                         for (let el of elements) {
                             if (el.innerText.toLowerCase().includes(keyword)) {
                                 matchedEl = el;
                                 break;
                             }
                         }
-                        
+
                         if (matchedEl) {
                             if (window.innerWidth <= 800) {
                                 const parentH2 = getParentH2(matchedEl);
@@ -774,7 +774,7 @@
                                     parentH2.click();
                                 }
                             }
-                            
+
                             const sidebarRight = document.getElementById('sidebarRight');
                             const footerToggleBtn = document.getElementById('footerToggleBtn');
                             if (window.innerWidth <= 1200) {
@@ -783,7 +783,7 @@
                                     if (footerToggleBtn) footerToggleBtn.innerText = '展開 ▲';
                                 }
                             }
-                            
+
                             setTimeout(() => {
                                 matchedEl.scrollIntoView({behavior: 'smooth', block: 'center'});
                                 const originalBg = matchedEl.style.backgroundColor;
@@ -797,7 +797,7 @@
                 searchResults.appendChild(res);
             }
         });
-        
+
         if (count === 0) {
             searchResults.innerHTML = '<div style="color:#e53e3e; text-align:center; margin-top:30px; font-size: 0.95rem;">找不到包含「' + e.target.value + '」的內容</div>';
         } else if (count > 50) {
@@ -824,7 +824,7 @@
         const isMobile = window.innerWidth <= 800;
         const activePage = document.getElementById('article-content-container');
         if (!activePage) return;
-        
+
         const h2s = activePage.querySelectorAll('h2');
         h2s.forEach(h2 => {
             if (!h2._contentElements) {
@@ -835,7 +835,7 @@
                     next = next.nextElementSibling;
                 }
                 h2._contentElements = contentElements;
-                
+
                 h2.addEventListener('click', () => {
                     if (window.innerWidth <= 800) {
                         const isCollapsed = h2.classList.toggle('collapsed');
@@ -845,7 +845,7 @@
                     }
                 });
             }
-            
+
             h2.classList.remove('collapsed');
             h2._contentElements.forEach(el => el.style.display = '');
         });
@@ -882,16 +882,16 @@
                 const strong = li.querySelector('strong');
                 if (strong && !li.querySelector('details')) { // check to avoid double transformation
                     const termHtml = strong.outerHTML;
-                    
+
                     const clone = li.cloneNode(true);
                     const cloneStrong = clone.querySelector('strong');
                     if (cloneStrong) cloneStrong.remove();
-                    
+
                     let contentHtml = clone.innerHTML.trim();
                     if (contentHtml.startsWith('：') || contentHtml.startsWith(':')) {
                         contentHtml = contentHtml.substring(1).trim();
                     }
-                    
+
                     li.innerHTML = `
                         <details class="explanation-details">
                             <summary class="explanation-summary">
@@ -910,16 +910,16 @@
         const container = document.getElementById('articles-menu-container');
         if (!container) return;
         container.innerHTML = '';
-        
+
         categories.forEach(cat => {
             const catPages = articles.filter(art => art.category === cat.key);
             if (catPages.length === 0) return;
-            
+
             let gridContent = '';
             catPages.forEach(art => {
                 gridContent += makeCardHtml(art);
             });
-            
+
             const catSection = document.createElement('div');
             catSection.className = 'category-section';
             catSection.innerHTML = `
@@ -938,7 +938,7 @@
             `;
             container.appendChild(catSection);
         });
-        
+
         // Append Historical Documents section
         const docPages = articles.filter(art => art.is_doc);
         if (docPages.length > 0) {
@@ -946,7 +946,7 @@
             docPages.forEach(art => {
                 docGridContent += makeCardHtml(art);
             });
-            
+
             const docsSection = document.createElement('div');
             docsSection.innerHTML = `
                 <div class="card-section-title" style="margin-top: 40px; margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; color: var(--primary-color);">歷史文件專區</div>
@@ -982,7 +982,7 @@
     // 11. Hash routing listener
     function handleHashRouting() {
         const hash = window.location.hash.substring(1);
-        
+
         if (!hash) {
             if (activePageId !== 'home') switchPage('home');
             return;
@@ -1011,9 +1011,9 @@
             if (activePageId !== 'home') switchPage('home');
         }
     }
-    
+
     window.addEventListener('hashchange', handleHashRouting);
-    
+
     // 12. Startup Initialization via Firebase Firestore
     async function initFromFirestore() {
         try {
@@ -1025,7 +1025,7 @@
             ]);
 
             allArticlesList = articles;
-            
+
             // Render worklogs
             if (worklogHtml) {
                 const uLog = document.getElementById('update-log-container');
@@ -1033,12 +1033,12 @@
                 const mLog = document.querySelector('.mobile-update-log-content');
                 if (mLog) mLog.innerHTML = worklogHtml;
             }
-            
+
             // Render dynamic navigation menu cards
             renderCatalog(categories, articles);
-            
+
             console.log('🔥 Firebase Firestore 初始化完成');
-            
+
             // Process initial route hash
             handleHashRouting();
         } catch (err) {
@@ -1077,7 +1077,7 @@
         const viewport = document.querySelector('.relationship-section .diagram-outer');
         const container = document.getElementById('diagramContainer');
         if (!viewport || !container || viewport.dataset.initialized) return;
-        
+
         viewport.dataset.initialized = 'true';
 
         function updateTransform() {
@@ -1091,14 +1091,14 @@
             const zoomIntensity = 0.0005;
             const factor = Math.exp(-e.deltaY * zoomIntensity);
             scale = Math.min(Math.max(scale * factor, 0.15), 6.0);
-            
+
             const rect = viewport.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
-            
+
             translateX = mouseX - (mouseX - translateX) * (scale / oldScale);
             translateY = mouseY - (mouseY - translateY) * (scale / oldScale);
-            
+
             updateTransform();
         }, { passive: false });
 
@@ -1133,11 +1133,11 @@
                 isPanning = false;
                 initialTouchDist = getTouchDistance(e);
                 initialScale = scale;
-                
+
                 const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
                 const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
                 const rect = viewport.getBoundingClientRect();
-                
+
                 touchStartX = midX - rect.left;
                 touchStartY = midY - rect.top;
             }
@@ -1153,12 +1153,12 @@
                 const dist = getTouchDistance(e);
                 const factor = dist / initialTouchDist;
                 const oldScale = scale;
-                
+
                 scale = Math.min(Math.max(initialScale * factor, 0.15), 6.0);
-                
+
                 translateX = touchStartX - (touchStartX - translateX) * (scale / oldScale);
                 translateY = touchStartY - (touchStartY - translateY) * (scale / oldScale);
-                
+
                 updateTransform();
             }
         }, { passive: false });
@@ -1181,14 +1181,14 @@
 
         const oldScale = scale;
         scale = Math.min(Math.max(scale + factor, 0.15), 6.0);
-        
+
         const rect = viewport.getBoundingClientRect();
         const midX = rect.width / 2;
         const midY = rect.height / 2;
-        
+
         translateX = midX - (midX - translateX) * (scale / oldScale);
         translateY = midY - (midY - translateY) * (scale / oldScale);
-        
+
         container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
     };
 
@@ -1209,27 +1209,27 @@
                     nativeHeight = parseFloat(parts[3]);
                 }
             }
-            
+
             svg.setAttribute('width', nativeWidth);
             svg.setAttribute('height', nativeHeight);
             svg.style.width = nativeWidth + 'px';
             svg.style.height = nativeHeight + 'px';
             svg.style.maxWidth = 'none';
-            
+
             const outerRect = viewport.getBoundingClientRect();
             const padding = 30;
-            
+
             // Fit to width for maximum readability of tall diagrams
             scale = (outerRect.width - padding) / nativeWidth;
             if (scale > 1.0) scale = 1.0; // Fit completely, don't upscale past 1x
             if (scale < 0.35) scale = 0.35; // Floor at 0.35x for mobile readability
-            
+
             // Center horizontally
             translateX = (outerRect.width - nativeWidth * scale) / 2;
-            
+
             // Align to top with small padding so user starts reading from the top
             translateY = 20;
-            
+
             container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         } else {
             scale = 1.0;
@@ -1281,7 +1281,7 @@
                 console.error("Mermaid init failed:", e);
             }
         }
-        
+
         setupPanZoom();
         // Call resetZoom multiple times to handle Mermaid rendering delays and layout shifts
         setTimeout(resetZoom, 100);

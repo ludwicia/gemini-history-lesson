@@ -1,1 +1,4 @@
 markdown
+beautifulsoup4
+pangu
+pre-commit

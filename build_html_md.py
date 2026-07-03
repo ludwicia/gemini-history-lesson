@@ -132,7 +132,7 @@ def process_3col_document(file_path, content_version, page_id=None, lang_orig="�
     blocks = [b.strip() for b in text.split('---') if b.strip()]
     if not blocks:
         return ""
-        
+
     title_block = blocks[0]
     # Clean up double title if present
     lines = title_block.split('\n')
@@ -143,9 +143,9 @@ def process_3col_document(file_path, content_version, page_id=None, lang_orig="�
             continue # skip the redundant plain first line
         cleaned_lines.append(line)
     cleaned_title_block = '\n'.join(cleaned_lines)
-    
+
     title_html = markdown.markdown(cleaned_title_block)
-    
+
     html = f'''
     <div style="text-align: center; color: #718096; margin-top: 10px; margin-bottom: 10px; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;">
         <span style="background-color: #ebf8ff; color: #2b6cb0; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; border: 1px solid #bee3f8;">內容版本：{content_version}</span>
@@ -170,15 +170,15 @@ def process_3col_document(file_path, content_version, page_id=None, lang_orig="�
     html += f'''
         </div>
     '''
-    
+
     for block in blocks[1:]:
         block = block.strip()
         if not block: continue
-        
+
         if "**原文**" in block and "**譯文**" in block:
             parts = block.split("**譯文**")
             original_part = parts[0].replace("**原文**", "").strip()
-            
+
             # Check if there is an **解釋** block
             if "**解釋**" in parts[1]:
                 sub_parts = parts[1].split("**解釋**")
@@ -187,11 +187,11 @@ def process_3col_document(file_path, content_version, page_id=None, lang_orig="�
             else:
                 translated_part = parts[1].strip()
                 explanation_part = ""
-            
+
             original_text = markdown.markdown(original_part)
             translated_text = markdown.markdown(translated_part)
             explanation_text = markdown.markdown(explanation_part) if explanation_part else ""
-            
+
             html += f'''
             <div class="doc-3col-row">
                 <div class="doc-col doc-original">{original_text}</div>
@@ -208,7 +208,7 @@ def process_3col_document(file_path, content_version, page_id=None, lang_orig="�
                 <div class="doc-col" style="grid-column: 1 / -1;">{markdown.markdown(block)}</div>
             </div>
             '''
-            
+
     html += "</div>"
     if page_id:
         html += get_share_bar_html(page_id)
@@ -494,7 +494,7 @@ print("Processing Page 11 (European Papermaking)...")
 html_body_p11 = process_markdown(file_p11, images_p11, "1.0", map_p11, page_id="page11")
 
 print("Processing Page 12 (Cathar Crusade)...")
-html_body_p12 = process_markdown(file_p12, images_p12, "1.0", map_p12, page_id="page12")
+html_body_p12 = process_markdown(file_p12, images_p12, "1.1", map_p12, page_id="page12")
 
 print("Processing Page 13 (USA Phase 2)...")
 html_body_p13 = process_markdown(file_p13, images_p13, "1.1", map_p13, page_id="page13")
@@ -567,10 +567,10 @@ worklog_html = ""
 try:
     with open('worklog.md', 'r', encoding='utf-8') as f:
         worklog_lines = f.readlines()
-    
+
     updates = []
     current_update = None
-    
+
     for line in worklog_lines:
         if line.startswith('#### '):
             if current_update:
@@ -582,10 +582,10 @@ try:
             html_item = line[2:].strip()
             html_item = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', html_item)
             current_update['items'].append(html_item)
-    
+
     if current_update and len(updates) < 10:
         updates.append(current_update)
-        
+
     for update in updates:
         worklog_html += f'<div class="update-entry"><div class="update-date">{update["title"]}</div><ul class="update-list">'
         for item in update['items']:
@@ -599,7 +599,7 @@ pages_data = {
     'page02': {'title': '美國的誕生(一)', 'img': 'images/img_10_960px-Cahokia_Monks_Mound.jpg', 'ver': '1.1', 'doc': False},
     'page13': {'title': '美國的誕生(二)', 'img': 'images/us2_map.jpg', 'ver': '1.1', 'doc': False},
     'page03': {'title': '宗教戰爭(一)：胡斯戰爭', 'img': 'images/hussite_wars_main.png', 'ver': '1.0', 'doc': False},
-    'page12': {'title': '宗教戰爭(二)：卡特里派', 'img': 'images/catharism_main.jpg', 'ver': '1.0', 'doc': False},
+    'page12': {'title': '宗教戰爭(二)：卡特里派', 'img': 'images/catharism_main.jpg', 'ver': '1.1', 'doc': False},
     'page05': {'title': '希爾紹修道院', 'img': 'images/hirsau_main_wilhelm.jpg', 'ver': '1.0', 'doc': False},
     'page07': {'title': '奧托-薩利安帝國教會體制', 'img': 'images/ottonian_hre_map.svg', 'ver': '1.0', 'doc': False},
     'page09': {'title': '丕平獻土與教宗國誕生', 'img': 'images/pippin_donation_main.jpg', 'ver': '1.1', 'doc': False},
@@ -719,7 +719,7 @@ for cat in categories:
     for pid in cat['pages']:
         if pid in pages_data:
             cat_cards.append(make_card_html(pid, pages_data[pid]))
-    
+
     grid_content = "\n".join(cat_cards)
     cat_section = f"""
 <div class="category-section">
@@ -989,7 +989,7 @@ function toggleCategory(catId) {
     const icon = document.getElementById('icon-' + catId);
     if (!container || !icon) return;
     const header = container.previousElementSibling;
-    
+
     if (container.style.display === 'none') {
         container.style.display = 'block';
         container.style.opacity = '0';
@@ -1050,10 +1050,10 @@ print("Generated robots.txt")
 def generate_redirect_pages():
     print("Generating SEO redirect HTML files in 'pages/' directory...")
     base_site_url = "https://ludwica-history-lesson.pages.dev/"
-    
+
     # Create pages directory if it doesn't exist
     os.makedirs('pages', exist_ok=True)
-    
+
     # Load descriptions from template.html using regex
     descs = {}
     try:
@@ -1064,38 +1064,38 @@ def generate_redirect_pages():
             descs[pid] = desc
     except Exception as e:
         print(f"Error loading descriptions for redirects: {e}")
-        
+
     for pid, data in pages_data.items():
         title = data['title'] + " — Ludwica 的簡單歷史課"
         desc = descs.get(pid, "Ludwica 的簡單歷史課：歷史專題研究與報告。")
-        
+
         # Determine image URL
         img_path = data.get('img', 'history_banner_bg.png')
         if not img_path:
             img_path = 'history_banner_bg.png'
         image_url = base_site_url + img_path
         page_url = base_site_url + f"pages/{pid}.html"
-        
+
         redirect_html = f"""<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <title>{title}</title>
     <meta name="description" content="{desc}">
-    
+
     <!-- Open Graph Metadata -->
     <meta property="og:title" content="{title}">
     <meta property="og:description" content="{desc}">
     <meta property="og:image" content="{image_url}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{page_url}">
-    
+
     <!-- Twitter Card Metadata -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{title}">
     <meta name="twitter:description" content="{desc}">
     <meta name="twitter:image" content="{image_url}">
-    
+
     <script>
         window.location.replace("../#" + "{pid}");
     </script>
@@ -1109,7 +1109,7 @@ def generate_redirect_pages():
 """
         with open(os.path.join("pages", f"{pid}.html"), 'w', encoding='utf-8', newline='\n') as f:
             f.write(redirect_html)
-            
+
     print(f"Successfully generated {len(pages_data)} redirect HTML files under 'pages/'.")
 
 generate_redirect_pages()
