@@ -223,6 +223,10 @@
         border-color: #dd6b20;
         box-shadow: 0 10px 20px rgba(221, 107, 32, 0.12);
     }
+    .category-container[data-category="qing"] .article-card:hover {
+        border-color: #d69e2e;
+        box-shadow: 0 10px 20px rgba(214, 158, 46, 0.12);
+    }
 
     /* Loading Spinner */
     .loading-spinner {
@@ -919,17 +923,21 @@
         container.innerHTML = '';
 
         const tabMapping = {
-            'us': 'new-world'
+            'us': 'new-world',
+            'qing': 'far-east'
         };
 
         categories.forEach(cat => {
             const catPages = articles.filter(art => art.category === cat.key);
-            if (catPages.length === 0) return;
 
             let gridContent = '';
-            catPages.forEach(art => {
-                gridContent += makeCardHtml(art);
-            });
+            if (catPages.length === 0) {
+                gridContent = `<div style="text-align: center; color: #a0aec0; padding: 20px; width: 100%; grid-column: 1 / -1;">📝 本專題文章撰寫中，敬請期待！</div>`;
+            } else {
+                catPages.forEach(art => {
+                    gridContent += makeCardHtml(art);
+                });
+            }
 
             const catSection = document.createElement('div');
             catSection.className = 'category-section';

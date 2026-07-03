@@ -227,6 +227,10 @@
     border-color: #dd6b20;
     box-shadow: 0 10px 20px rgba(221, 107, 32, 0.12);
 }
+.category-container[data-category="qing"] .article-card:hover {
+    border-color: #d69e2e;
+    box-shadow: 0 10px 20px rgba(214, 158, 46, 0.12);
+}
 </style>
 </head>
 <body>
@@ -660,6 +664,22 @@
             <div class="card-meta">內容版本：1.1</div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section" data-tab="far-east">
+    <div class="category-header-card" onclick="toggleCategory('qing')">
+        <div class="category-header-image" style="background-image: url('images/qing_empire.png');"></div>
+        <div class="category-header-content">
+            <span class="category-header-title">風雨飄搖的大清帝國</span>
+            <span class="category-header-icon" id="icon-qing">▼</span>
+        </div>
+    </div>
+    <div class="category-container" id="cat-qing" data-category="qing" style="display: none;">
+        <div class="article-grid">
+            <div style="text-align: center; color: #a0aec0; padding: 20px; width: 100%; grid-column: 1 / -1;">📝 本專題文章撰寫中，敬請期待！</div>
         </div>
     </div>
 </div>

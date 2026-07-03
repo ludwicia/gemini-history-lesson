@@ -691,6 +691,12 @@ categories = [
         'key': 'holland',
         'img': 'images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg',
         'pages': ['page01']
+    },
+    {
+        'title': '風雨飄搖的大清帝國',
+        'key': 'qing',
+        'img': 'images/qing_empire.png',
+        'pages': []
     }
 ]
 
@@ -715,7 +721,8 @@ def make_card_html(page_id, data):
 
 cards_html_list = []
 tab_mapping = {
-    'us': 'new-world'
+    'us': 'new-world',
+    'qing': 'far-east'
 }
 for cat in categories:
     cat_cards = []
@@ -723,7 +730,10 @@ for cat in categories:
         if pid in pages_data:
             cat_cards.append(make_card_html(pid, pages_data[pid]))
 
-    grid_content = "\n".join(cat_cards)
+    if len(cat_cards) == 0:
+        grid_content = '<div style="text-align: center; color: #a0aec0; padding: 20px; width: 100%; grid-column: 1 / -1;">📝 本專題文章撰寫中，敬請期待！</div>'
+    else:
+        grid_content = "\n".join(cat_cards)
     tab = tab_mapping.get(cat['key'], 'europe')
     cat_section = f"""
 <div class="category-section" data-tab="{tab}">
@@ -906,6 +916,10 @@ categories_style = """
 .category-container[data-category="holland"] .article-card:hover {
     border-color: #dd6b20;
     box-shadow: 0 10px 20px rgba(221, 107, 32, 0.12);
+}
+.category-container[data-category="qing"] .article-card:hover {
+    border-color: #d69e2e;
+    box-shadow: 0 10px 20px rgba(214, 158, 46, 0.12);
 }
 </style>
 """
