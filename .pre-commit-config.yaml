@@ -1,0 +1,19 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+  - repo: local
+    hooks:
+      - id: markdownlint
+        name: markdownlint
+        entry: npx markdownlint-cli2
+        language: system
+        files: \.(md)$
+      - id: verify-project
+        name: verify-project
+        entry: py -3.13 verify_project.py
+        language: system
+        pass_filenames: false

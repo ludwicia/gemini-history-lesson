@@ -1,0 +1,14 @@
+{
+  "name": "ludwica-history-lesson",
+  "version": "1.0.0",
+  "description": "Auto build and validation pipeline for Ludwica Simple History Lesson",
+  "scripts": {
+    "build": "py -3.13 build_html_md.py && py -3.13 build_static_chunks.py",
+    "lint": "markdownlint-cli2 \"course/**/*.md\" \"pages/**/*.md\"",
+    "lhci": "lhci collect"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.17.2",
+    "@lhci/cli": "^0.13.0"
+  }
+}

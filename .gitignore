@@ -5,3 +5,4 @@ history_lessons.db
 # Firebase service account keys (NEVER commit these)
 *-firebase-adminsdk-*.json
 serviceAccountKey.json
+node_modules/
