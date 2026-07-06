@@ -103,7 +103,9 @@
       "title": "風雨飄搖的大清帝國",
       "key": "qing",
       "img": "images/qing_empire.png",
-      "pages": []
+      "pages": [
+        "page36"
+      ]
     }
   ],
   "articles": [
@@ -421,7 +423,16 @@
       "category": "rome",
       "img": "images/east_roman_court.png",
       "is_doc": 0
+    },
+    {
+      "id": "page36",
+      "title": "晚清中樞權力變革與肅順之死",
+      "ver": "1.0",
+      "last_updated": "2026-07-07",
+      "category": "qing",
+      "img": "images/xinyou_coup.png",
+      "is_doc": 0
     }
   ],
-  "worklog": "<div class=\"update-entry\"><div class=\"update-date\">2026-07-06 (新增東羅馬宮廷政治專題 | 版面設計 6.5)</div><ul class=\"update-list\"><li><strong>新增專題文章</strong>：發布《東羅馬帝國的權力重組與宮廷政治：從迪奧多西一世駕崩至迪奧多西二世登基前的內政演變、派系鬥爭與地緣戰略深度研究（395–408年）》（內容版本 1.0，分類：三世紀危機後的羅馬帝國）。</li><li><strong>校對與修正史實及翻譯偏差</strong>：</li><li><strong>插圖與路由整合</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-06 (奧多亞賽校對 | 版面設計 6.4)</div><ul class=\"update-list\"><li><strong>校對並修正「羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅」 (內容版本 1.3)</strong>：</li><li><strong>自動化三軌編譯與同步</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-06 (米蘭敕令等校對 | 版面設計 6.3)</div><ul class=\"update-list\"><li><strong>校對並修正「米蘭敕令」、「沃姆斯協約」、「薩洛尼卡敕令」與「胡斯戰爭」等文章</strong>：</li><li><strong>自動化三軌編譯與同步</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-04 (丕平獻土 1.1 | 版面設計 6.2)</div><ul class=\"update-list\"><li><strong>校對並修正「丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響」 (內容版本 1.1)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-03 (卡特里派 1.1 | 版面設計 6.1)</div><ul class=\"update-list\"><li><strong>校對並修正「卡特里派的興起、神學教義、十字軍聖戰與歷史餘音」 (內容版本 1.1)</strong>：</li><li><strong>自動化三軌編譯與部署</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-02 (使徒信經 1.1 | 版面設計 5.6 / 6.0)</div><ul class=\"update-list\"><li><strong>校對並修正「使徒信經的歷史演變與神學建構」 (內容版本 1.1)</strong>：</li><li><strong>全站版面與元數據更新</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-01 (丕平獻土 1.1 | 版面設計 5.0)</div><ul class=\"update-list\"><li><strong>校對並修正「丕平獻土」 (內容版本 1.1)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-30 (薩洛尼卡敕令 1.2 | 版面設計 5.5)</div><ul class=\"update-list\"><li><strong>更新文章「薩洛尼卡敕令」 (內容版本 1.2)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-29 (匈人的登場 1.0 | 版面設計 5.1)</div><ul class=\"update-list\"><li><strong>發布新文章「匈人的登場：從阿德里安堡戰役到冷河戰役的深層地緣政治與戰略研究」 (內容版本 1.0)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-28 (西元紀年與演進 1.2 | 版面設計 5.9 | 動態版 5.0)</div><ul class=\"update-list\"><li><strong>校對並修正「西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構」 (內容版本 1.2)</strong>：</li><li><strong>全站版面與元數據更新</strong>：</li></ul></div>"
+  "worklog": "<div class=\"update-entry\"><div class=\"update-date\">2026-07-07 (新增晚清中樞權力變革與肅順之死專題 | 版面設計 6.6)</div><ul class=\"update-list\"><li><strong>新增專題文章</strong>：發布《晚清中樞權力變革與肅順之死：資歷、政務整肅與辛酉政變之歷史學解構》（內容版本 1.0，分類：風雨飄搖的大清帝國）。</li><li><strong>校對與修正史實及用語偏差</strong>：</li><li><strong>插圖與路由整合</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-06 (新增東羅馬宮廷政治專題 | 版面設計 6.5)</div><ul class=\"update-list\"><li><strong>新增專題文章</strong>：發布《東羅馬帝國的權力重組與宮廷政治：從迪奧多西一世駕崩至迪奧多西二世登基前的內政演變、派系鬥爭與地緣戰略深度研究（395–408年）》（內容版本 1.0，分類：三世紀危機後的羅馬帝國）。</li><li><strong>校對與修正史實及翻譯偏差</strong>：</li><li><strong>插圖與路由整合</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-06 (奧多亞賽校對 | 版面設計 6.4)</div><ul class=\"update-list\"><li><strong>校對並修正「羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅」 (內容版本 1.3)</strong>：</li><li><strong>自動化三軌編譯與同步</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-06 (米蘭敕令等校對 | 版面設計 6.3)</div><ul class=\"update-list\"><li><strong>校對並修正「米蘭敕令」、「沃姆斯協約」、「薩洛尼卡敕令」與「胡斯戰爭」等文章</strong>：</li><li><strong>自動化三軌編譯與同步</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-04 (丕平獻土 1.1 | 版面設計 6.2)</div><ul class=\"update-list\"><li><strong>校對並修正「丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響」 (內容版本 1.1)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-03 (卡特里派 1.1 | 版面設計 6.1)</div><ul class=\"update-list\"><li><strong>校對並修正「卡特里派的興起、神學教義、十字軍聖戰與歷史餘音」 (內容版本 1.1)</strong>：</li><li><strong>自動化三軌編譯與部署</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-02 (使徒信經 1.1 | 版面設計 5.6 / 6.0)</div><ul class=\"update-list\"><li><strong>校對並修正「使徒信經的歷史演變與神學建構」 (內容版本 1.1)</strong>：</li><li><strong>全站版面與元數據更新</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-01 (丕平獻土 1.1 | 版面設計 5.0)</div><ul class=\"update-list\"><li><strong>校對並修正「丕平獻土」 (內容版本 1.1)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-30 (薩洛尼卡敕令 1.2 | 版面設計 5.5)</div><ul class=\"update-list\"><li><strong>更新文章「薩洛尼卡敕令」 (內容版本 1.2)</strong>：</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-06-29 (匈人的登場 1.0 | 版面設計 5.1)</div><ul class=\"update-list\"><li><strong>發布新文章「匈人的登場：從阿德里安堡戰役到冷河戰役的深層地緣政治與戰略研究」 (內容版本 1.0)</strong>：</li></ul></div>"
 }

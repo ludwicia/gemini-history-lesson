@@ -462,6 +462,11 @@ file_p35 = r'course/東羅馬帝國的權力重組與宮廷政治：從迪奧多
 map_p35 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/east_roman_court.png" alt="East Roman Court" loading="lazy"><figcaption class="caption">東羅馬宮廷政治：公元四、五世紀之交，在君士坦丁堡的金色穹頂之下，文官技術官僚與外戚、宦官在皇帝的平庸統治下展開了派系鬥爭與權力重組，奠定了拜占庭中世紀帝國生存基石。</figcaption></figure>\n'
 images_p35 = []
 
+# Page 36 Config
+file_p36 = r'course/晚清中樞權力變革與肅順之死：資歷、政務整肅與辛酉政變之歷史學解構.md'
+map_p36 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/xinyou_coup.png" alt="Xinyou Coup" loading="lazy"><figcaption class="caption">辛酉政變與大清權力重組：1861年，咸豐皇帝駕崩於熱河，慈禧太后聯手恭親王奕訢在北京發動政變，清算了顧命八大臣集團，肅順被斬於菜市口，開啟了兩宮垂簾與同治中興的歷史新頁。</figcaption></figure>\n'
+images_p36 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -570,6 +575,9 @@ html_body_p34 = process_markdown(file_p34, images_p34, "1.0", map_p34, page_id="
 print("Processing Page 35 (East Roman Court)...")
 html_body_p35 = process_markdown(file_p35, images_p35, "1.0", map_p35, page_id="page35")
 
+print("Processing Page 36 (Xinyou Coup)...")
+html_body_p36 = process_markdown(file_p36, images_p36, "1.0", map_p36, page_id="page36")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -638,6 +646,7 @@ pages_data = {
     'page33': {'title': '一世紀羅馬行省治權與社會', 'img': 'images/roman_provincial_governance.png', 'ver': '1.0', 'doc': False},
     'page34': {'title': '匈人的登場與晚期羅馬地緣政治', 'img': 'images/huns_arrival.png', 'ver': '1.0', 'doc': False},
     'page35': {'title': '東羅馬帝國的權力重組與宮廷政治', 'img': 'images/east_roman_court.png', 'ver': '1.0', 'doc': False},
+    'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -705,7 +714,7 @@ categories = [
         'title': '風雨飄搖的大清帝國',
         'key': 'qing',
         'img': 'images/qing_empire.png',
-        'pages': []
+        'pages': ['page36']
     }
 ]
 
@@ -970,6 +979,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE32__', html_body_p32)
 final_html = final_html.replace('__HTML_BODY_PAGE33__', html_body_p33)
 final_html = final_html.replace('__HTML_BODY_PAGE34__', html_body_p34)
 final_html = final_html.replace('__HTML_BODY_PAGE35__', html_body_p35)
+final_html = final_html.replace('__HTML_BODY_PAGE36__', html_body_p36)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1009,6 +1019,7 @@ final_html = final_html.replace('__PAGE32_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE33_DATE__', get_file_last_update_date(file_p33))
 final_html = final_html.replace('__PAGE34_DATE__', get_file_last_update_date(file_p34))
 final_html = final_html.replace('__PAGE35_DATE__', get_file_last_update_date(file_p35))
+final_html = final_html.replace('__PAGE36_DATE__', get_file_last_update_date(file_p36))
 
 # Inject JavaScript for toggle function
 toggle_js = """
