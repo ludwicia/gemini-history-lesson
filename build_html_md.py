@@ -612,7 +612,7 @@ pages_data = {
     'page18': {'title': '西元紀年的確立與演進', 'img': 'images/ad_calendar_main.png', 'ver': '1.1', 'doc': False},
     'page19': {'title': '米蘭敕令時代與李錫尼覆滅', 'img': 'images/milan_edict_main.png', 'ver': '1.0', 'doc': False},
     'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.1', 'doc': False},
-    'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.2', 'doc': False},
+    'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.3', 'doc': False},
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
