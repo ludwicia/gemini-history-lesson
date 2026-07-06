@@ -457,6 +457,11 @@ file_p34 = r'course/匈人的登場：從阿德里安堡戰役到冷河戰役的
 map_p34 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/huns_arrival.png" alt="Huns Arrival" loading="lazy"><figcaption class="caption">匈人的登場：西元四世紀末，由東方草原呼嘯而至的匈人輕騎兵越過頓河，以致命的突襲擊碎了東哥特王國與阿蘭人的防線，開啟了歐洲蠻族大遷徙的序幕。</figcaption></figure>\n'
 images_p34 = []
 
+# Page 35 Config
+file_p35 = r'course/東羅馬帝國的權力重組與宮廷政治：從迪奧多西一世駕崩至迪奧多西二世登基前的內政演變、派系鬥爭與地緣戰略深度研究（395–408年）.md'
+map_p35 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/east_roman_court.png" alt="East Roman Court" loading="lazy"><figcaption class="caption">東羅馬宮廷政治：公元四、五世紀之交，在君士坦丁堡的金色穹頂之下，文官技術官僚與外戚、宦官在皇帝的平庸統治下展開了派系鬥爭與權力重組，奠定了拜占庭中世紀帝國生存基石。</figcaption></figure>\n'
+images_p35 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -562,6 +567,9 @@ html_body_p33 = process_markdown(file_p33, images_p33, "1.0", map_p33, page_id="
 print("Processing Page 34 (Huns Arrival)...")
 html_body_p34 = process_markdown(file_p34, images_p34, "1.0", map_p34, page_id="page34")
 
+print("Processing Page 35 (East Roman Court)...")
+html_body_p35 = process_markdown(file_p35, images_p35, "1.0", map_p35, page_id="page35")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -629,6 +637,7 @@ pages_data = {
     'page32': {'title': '羅馬帝國：安東尼努斯敕令', 'ver': '1.0', 'doc': True},
     'page33': {'title': '一世紀羅馬行省治權與社會', 'img': 'images/roman_provincial_governance.png', 'ver': '1.0', 'doc': False},
     'page34': {'title': '匈人的登場與晚期羅馬地緣政治', 'img': 'images/huns_arrival.png', 'ver': '1.0', 'doc': False},
+    'page35': {'title': '東羅馬帝國的權力重組與宮廷政治', 'img': 'images/east_roman_court.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -642,7 +651,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31']
+        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page35']
     },
     {
         'title': '中世紀諸民族記',
@@ -960,6 +969,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE31__', html_body_p31)
 final_html = final_html.replace('__HTML_BODY_PAGE32__', html_body_p32)
 final_html = final_html.replace('__HTML_BODY_PAGE33__', html_body_p33)
 final_html = final_html.replace('__HTML_BODY_PAGE34__', html_body_p34)
+final_html = final_html.replace('__HTML_BODY_PAGE35__', html_body_p35)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -998,6 +1008,7 @@ final_html = final_html.replace('__PAGE31_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE32_DATE__', get_file_last_update_date(file_p32))
 final_html = final_html.replace('__PAGE33_DATE__', get_file_last_update_date(file_p33))
 final_html = final_html.replace('__PAGE34_DATE__', get_file_last_update_date(file_p34))
+final_html = final_html.replace('__PAGE35_DATE__', get_file_last_update_date(file_p35))
 
 # Inject JavaScript for toggle function
 toggle_js = """
