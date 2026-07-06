@@ -176,7 +176,7 @@ def migrate_site_config(db):
     print("\n[INFO] 正在上傳網站設定...")
 
     config = {
-        'layout_version': '6.6',
+        'layout_version': '6.7',
         'publish_date': '2026-07-07',
         'site_name': 'Ludwica 的簡單歷史課',
         'site_url': 'https://ludwica-history-lesson.pages.dev/',
