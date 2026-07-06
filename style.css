@@ -1,5 +1,7 @@
         :root {
             --primary-color: #0055A4;
+:root {
+            --primary-color: #0055A4;
             --secondary-color: #AE1C28;
             --bg-color: #f4f7f6;
             --text-color: #2d3748;
@@ -192,6 +194,16 @@
         }
         .article-card.doc-card .card-image { display: none; }
         .article-card.doc-card .card-content { border-top: 4px solid var(--secondary-color); }
+
+        .card-section-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            color: var(--primary-color);
+        }
 
         /* Floating Home Button */
         .floating-home-btn {
@@ -1085,5 +1097,3 @@
                 text-align: left;
             }
         }
-    }
-}

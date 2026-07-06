@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Auto build and validation pipeline for Ludwica Simple History Lesson",
   "scripts": {
-    "build": "py -3.13 build_html_md.py && py -3.13 build_static_chunks.py",
+    "build": "python run_build.py",
     "lint": "markdownlint-cli2 \"course/**/*.md\" \"pages/**/*.md\"",
     "lhci": "lhci collect"
   },

@@ -1,7 +1,7 @@
 /**
  * Firestore Data Service
  * Ludwica 的簡單歷史課 — Firestore 資料讀取服務
- * 
+ *
  * 所有從 Firestore 讀取文章、分類、搜尋索引的函式。
  * 提供 fallback 到本地 /api/ JSON 的雙軌模式。
  */
@@ -63,7 +63,7 @@ export async function getArticlesCatalog() {
 
     // Fallback: 從本地 /api/articles.json 讀取
     try {
-        const res = await fetch('/api/articles.json');
+        const res = await fetch(`/api/articles.json?_t=${Date.now()}`);
         if (res.ok) {
             const data = await res.json();
             cache.catalog = data.articles;
@@ -103,7 +103,7 @@ export async function getCategories() {
 
     // Fallback
     try {
-        const res = await fetch('/api/articles.json');
+        const res = await fetch(`/api/articles.json?_t=${Date.now()}`);
         if (res.ok) {
             const data = await res.json();
             cache.categories = data.categories;
@@ -173,7 +173,7 @@ export async function getWorklog() {
 
     // Fallback: 從 articles.json 的 worklog 欄位
     try {
-        const res = await fetch('/api/articles.json');
+        const res = await fetch(`/api/articles.json?_t=${Date.now()}`);
         if (res.ok) {
             const data = await res.json();
             cache.worklog = data.worklog;

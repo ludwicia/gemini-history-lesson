@@ -229,6 +229,10 @@
         border-color: #d69e2e;
         box-shadow: 0 10px 20px rgba(214, 158, 46, 0.12);
     }
+    .category-container[data-category="pre-3rd-century-rome"] .article-card:hover {
+        border-color: #9c4221;
+        box-shadow: 0 10px 20px rgba(156, 66, 33, 0.12);
+    }
 
     /* Loading Spinner */
     .loading-spinner {
@@ -975,7 +979,7 @@
 
             const docsSection = document.createElement('div');
             docsSection.innerHTML = `
-                <div class="card-section-title" style="margin-top: 40px; margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; color: var(--primary-color);">歷史文件專區</div>
+                <div class="card-section-title">歷史文件專區</div>
                 <div class="article-grid">
                     ${docGridContent}
                 </div>
@@ -1015,8 +1019,13 @@
             if (!emptyMsg) {
                 emptyMsg = document.createElement('div');
                 emptyMsg.id = 'empty-tab-message';
-                emptyMsg.className = 'empty-tab-message';
-                emptyMsg.innerHTML = '📭 遠東專題規劃中，敬請期待！';
+                const tabNames = {
+                    'europe': '歐洲',
+                    'new-world': '新大陸',
+                    'far-east': '遠東'
+                };
+                const tabName = tabNames[tabId] || '該';
+                emptyMsg.innerHTML = `📭 ${tabName}專題規劃中，敬請期待！`;
                 const menuContainer = document.getElementById('articles-menu-container');
                 const titleNode = Array.from(menuContainer.childNodes).find(n => n.nodeType === 1 && n.innerText && n.innerText.includes('歷史文件專區'));
                 if (titleNode) {
