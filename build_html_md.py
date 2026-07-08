@@ -470,6 +470,11 @@ images_p36 = []
 # Page 37 Config
 file_p37 = r'course/咸豐皇帝遺詔.md'
 
+# Page 38 Config
+file_p38 = r'course/阿陶爾夫與哥德大遷徙：晚期羅馬帝國的地緣政治坍塌與蠻族同盟的體制化適應（第二卷：蠻族武力與羅馬秩序的合流）.md'
+map_p38 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/athaulf_placidia_wedding.png" alt="Athaulf and Galla Placidia Wedding" loading="lazy"><figcaption class="caption">阿陶爾夫與加拉·普拉西提阿的婚禮：西元414年，西哥德君主阿陶爾夫身著羅馬執政官托加禮服，在納博訥迎娶羅馬公主普拉西提阿，象徵哥德武力與羅馬法治秩序的政治合流。</figcaption></figure>\n'
+images_p38 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -584,6 +589,9 @@ html_body_p36 = process_markdown(file_p36, images_p36, "1.0", map_p36, page_id="
 print("Processing Page 37 (Xianfeng Decree Document)...")
 html_body_p37 = process_3col_document(file_p37, "1.0", page_id="page37", lang_orig="文言文", cols=2)
 
+print("Processing Page 38 (Visigothic Transition)...")
+html_body_p38 = process_markdown(file_p38, images_p38, "1.0", map_p38, page_id="page38")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -654,6 +662,7 @@ pages_data = {
     'page35': {'title': '東羅馬帝國的權力重組與宮廷政治', 'img': 'images/east_roman_court.png', 'ver': '1.0', 'doc': False},
     'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.0', 'doc': False},
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
+    'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -673,7 +682,7 @@ categories = [
         'title': '中世紀諸民族記',
         'key': 'medieval',
         'img': 'images/clovis_main.jpg',
-        'pages': ['page23', 'page26', 'page29', 'page34']
+        'pages': ['page23', 'page26', 'page29', 'page34', 'page38']
     },
     {
         'title': '教宗國記',
@@ -988,6 +997,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE34__', html_body_p34)
 final_html = final_html.replace('__HTML_BODY_PAGE35__', html_body_p35)
 final_html = final_html.replace('__HTML_BODY_PAGE36__', html_body_p36)
 final_html = final_html.replace('__HTML_BODY_PAGE37__', html_body_p37)
+final_html = final_html.replace('__HTML_BODY_PAGE38__', html_body_p38)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1029,6 +1039,7 @@ final_html = final_html.replace('__PAGE34_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE35_DATE__', get_file_last_update_date(file_p35))
 final_html = final_html.replace('__PAGE36_DATE__', get_file_last_update_date(file_p36))
 final_html = final_html.replace('__PAGE37_DATE__', get_file_last_update_date(file_p37))
+final_html = final_html.replace('__PAGE38_DATE__', get_file_last_update_date(file_p38))
 
 # Inject JavaScript for toggle function
 toggle_js = """
