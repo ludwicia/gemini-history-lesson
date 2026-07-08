@@ -528,7 +528,7 @@ print("Processing Page 18 (AD Calendar)...")
 html_body_p18 = process_markdown(file_p18, images_p18, "1.2", map_p18, page_id="page18")
 
 print("Processing Page 19 (Milan Edict & Licinius)...")
-html_body_p19 = process_markdown(file_p19, images_p19, "1.0", map_p19, page_id="page19")
+html_body_p19 = process_markdown(file_p19, images_p19, "1.1", map_p19, page_id="page19")
 
 print("Processing Page 20 (Milan Edict Document)...")
 html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20", lang_orig="英文/拉丁文")
@@ -632,7 +632,7 @@ pages_data = {
     'page16': {'title': '中世紀巡行王權的權力運作', 'img': 'images/reisekönig_travelling_kings.jpg', 'ver': '1.0', 'doc': False},
     'page17': {'title': '從皇帝稱號看羅馬政教關係演變', 'img': 'images/ambrose_and_theodosius.png', 'ver': '1.0', 'doc': False},
     'page18': {'title': '西元紀年的確立與演進', 'img': 'images/ad_calendar_main.png', 'ver': '1.1', 'doc': False},
-    'page19': {'title': '米蘭敕令時代與李錫尼覆滅', 'img': 'images/milan_edict_main.png', 'ver': '1.0', 'doc': False},
+    'page19': {'title': '米蘭敕令時代與李錫尼覆滅', 'img': 'images/milan_edict_main.png', 'ver': '1.1', 'doc': False},
     'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.1', 'doc': False},
     'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.3', 'doc': False},
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
