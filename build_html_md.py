@@ -734,10 +734,19 @@ categories = [
     }
 ]
 
+def get_doc_tab(page_id, data):
+    title = data.get('title', '')
+    if page_id in ['page02', 'page13'] or '美國' in title:
+        return 'new-world'
+    if page_id == 'page37' or '大清' in title or '咸豐' in title:
+        return 'far-east'
+    return 'europe'
+
 def make_card_html(page_id, data):
     if data['doc']:
+        tab = get_doc_tab(page_id, data)
         return f"""
-    <div class="article-card doc-card" onclick="location.hash='#{page_id}'">
+    <div class="article-card doc-card" onclick="location.hash='#{page_id}'" data-doc-tab="{tab}">
         <div class="card-content">
             <div class="card-title">{data['title']}</div>
             <div class="card-meta">內容版本：{data['ver']}</div>
@@ -797,7 +806,12 @@ for pid in doc_pages:
 doc_grid_content = "\n".join(doc_cards)
 docs_section = f"""
 <div class="card-section-title" style="margin-top: 40px; margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; color: var(--primary-color);">歷史文件專區</div>
-<div class="article-grid">
+<div class="catalog-tabs doc-tabs" style="margin-top: 10px; margin-bottom: 20px;">
+    <button class="tab-btn doc-tab-btn active" data-doc-tab="europe">歐洲</button>
+    <button class="tab-btn doc-tab-btn" data-doc-tab="new-world">新大陸</button>
+    <button class="tab-btn doc-tab-btn" data-doc-tab="far-east">遠東</button>
+</div>
+<div class="article-grid" data-doc-grid="true">
     {doc_grid_content}
 </div>
 """

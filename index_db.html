@@ -982,13 +982,32 @@
             });
 
             const docsSection = document.createElement('div');
+            docsSection.className = 'docs-section';
             docsSection.innerHTML = `
                 <div class="card-section-title">歷史文件專區</div>
-                <div class="article-grid">
+                <div class="catalog-tabs doc-tabs" style="margin-top: 10px; margin-bottom: 20px;">
+                    <button class="tab-btn doc-tab-btn active" data-doc-tab="europe">歐洲</button>
+                    <button class="tab-btn doc-tab-btn" data-doc-tab="new-world">新大陸</button>
+                    <button class="tab-btn doc-tab-btn" data-doc-tab="far-east">遠東</button>
+                </div>
+                <div class="article-grid" data-doc-grid="true">
                     ${docGridContent}
                 </div>
             `;
             container.appendChild(docsSection);
+
+            // Bind event listeners to doc tab buttons
+            docsSection.querySelectorAll('.doc-tab-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const tabId = e.currentTarget.getAttribute('data-doc-tab');
+                    switchDocTab(tabId);
+                });
+            });
+
+            // Default to active doc tab on load or keep previous
+            const activeDocTabBtn = docsSection.querySelector('.doc-tab-btn.active');
+            const activeDocTabId = activeDocTabBtn ? activeDocTabBtn.getAttribute('data-doc-tab') : 'europe';
+            switchDocTab(activeDocTabId);
         }
 
         // Apply tab filtering based on active tab button
@@ -997,8 +1016,79 @@
         switchTab(activeTabId);
     }
 
+    function getDocTab(art) {
+        if (art.category === 'us' || art.title.includes('美國') || art.id === 'page02' || art.id === 'page13') {
+            return 'new-world';
+        }
+        if (art.category === 'qing' || art.title.includes('大清') || art.title.includes('咸豐') || art.id === 'page37') {
+            return 'far-east';
+        }
+        return 'europe';
+    }
+
+    function switchDocTab(tabId) {
+        document.querySelectorAll('.doc-tab-btn').forEach(btn => {
+            if (btn.getAttribute('data-doc-tab') === tabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        let visibleCount = 0;
+        document.querySelectorAll('.article-grid[data-doc-grid] .article-card').forEach(card => {
+            const cardTab = card.getAttribute('data-doc-tab');
+            if (cardTab === tabId) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Handle empty doc tab state
+        let emptyMsg = document.getElementById('empty-doc-tab-message');
+        const grid = document.querySelector('.article-grid[data-doc-grid]');
+        if (visibleCount === 0) {
+            if (!emptyMsg) {
+                emptyMsg = document.createElement('div');
+                emptyMsg.id = 'empty-doc-tab-message';
+                emptyMsg.className = 'empty-tab-message';
+                emptyMsg.style.textAlign = 'center';
+                emptyMsg.style.color = '#a0aec0';
+                emptyMsg.style.padding = '20px';
+                emptyMsg.style.width = '100%';
+                emptyMsg.style.gridColumn = '1 / -1';
+
+                const tabNames = {
+                    'europe': '歐洲',
+                    'new-world': '新大陸',
+                    'far-east': '遠東'
+                };
+                const tabName = tabNames[tabId] || '該';
+                emptyMsg.innerHTML = `📭 ${tabName}文獻規劃中，敬請期待！`;
+                if (grid) {
+                    grid.appendChild(emptyMsg);
+                }
+            } else {
+                emptyMsg.style.display = 'block';
+                const tabNames = {
+                    'europe': '歐洲',
+                    'new-world': '新大陸',
+                    'far-east': '遠東'
+                };
+                const tabName = tabNames[tabId] || '該';
+                emptyMsg.innerHTML = `📭 ${tabName}文獻規劃中，敬請期待！`;
+            }
+        } else {
+            if (emptyMsg) {
+                emptyMsg.style.display = 'none';
+            }
+        }
+    }
+
     function switchTab(tabId) {
-        document.querySelectorAll('.tab-btn').forEach(btn => {
+        document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
             if (btn.getAttribute('data-tab') === tabId) {
                 btn.classList.add('active');
             } else {
@@ -1048,7 +1138,7 @@
     }
 
     // Bind event listeners to tab buttons
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+    document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const tabId = e.currentTarget.getAttribute('data-tab');
             switchTab(tabId);
@@ -1058,7 +1148,7 @@
     function makeCardHtml(art) {
         if (art.is_doc) {
             return `
-                <div class="article-card doc-card" onclick="location.hash='#${art.id}'">
+                <div class="article-card doc-card" onclick="location.hash='#${art.id}'" data-doc-tab="${getDocTab(art)}">
                     <div class="card-content">
                         <div class="card-title">${art.title}</div>
                         <div class="card-meta">內容版本：${art.ver}</div>

@@ -709,51 +709,56 @@
 
 
 <div class="card-section-title" style="margin-top: 40px; margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; color: var(--primary-color);">歷史文件專區</div>
-<div class="article-grid">
+<div class="catalog-tabs doc-tabs" style="margin-top: 10px; margin-bottom: 20px;">
+    <button class="tab-btn doc-tab-btn active" data-doc-tab="europe">歐洲</button>
+    <button class="tab-btn doc-tab-btn" data-doc-tab="new-world">新大陸</button>
+    <button class="tab-btn doc-tab-btn" data-doc-tab="far-east">遠東</button>
+</div>
+<div class="article-grid" data-doc-grid="true">
     
-    <div class="article-card doc-card" onclick="location.hash='#page04'">
+    <div class="article-card doc-card" onclick="location.hash='#page04'" data-doc-tab="europe">
         <div class="card-content">
             <div class="card-title">神聖羅馬帝國：金璽詔書</div>
             <div class="card-meta">內容版本：1.9</div>
         </div>
     </div>
 
-    <div class="article-card doc-card" onclick="location.hash='#page06'">
+    <div class="article-card doc-card" onclick="location.hash='#page06'" data-doc-tab="europe">
         <div class="card-content">
             <div class="card-title">修道院制度：聖本篤會規</div>
             <div class="card-meta">內容版本：2.0</div>
         </div>
     </div>
 
-    <div class="article-card doc-card" onclick="location.hash='#page08'">
+    <div class="article-card doc-card" onclick="location.hash='#page08'" data-doc-tab="europe">
         <div class="card-content">
             <div class="card-title">敘任權之爭：沃姆斯協約</div>
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
 
-    <div class="article-card doc-card" onclick="location.hash='#page20'">
+    <div class="article-card doc-card" onclick="location.hash='#page20'" data-doc-tab="europe">
         <div class="card-content">
             <div class="card-title">羅馬帝國：米蘭敕令</div>
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
 
-    <div class="article-card doc-card" onclick="location.hash='#page28'">
+    <div class="article-card doc-card" onclick="location.hash='#page28'" data-doc-tab="europe">
         <div class="card-content">
             <div class="card-title">羅馬帝國：薩洛尼卡敕令</div>
             <div class="card-meta">內容版本：1.2</div>
         </div>
     </div>
 
-    <div class="article-card doc-card" onclick="location.hash='#page32'">
+    <div class="article-card doc-card" onclick="location.hash='#page32'" data-doc-tab="europe">
         <div class="card-content">
             <div class="card-title">羅馬帝國：安東尼努斯敕令</div>
             <div class="card-meta">內容版本：1.0</div>
         </div>
     </div>
 
-    <div class="article-card doc-card" onclick="location.hash='#page37'">
+    <div class="article-card doc-card" onclick="location.hash='#page37'" data-doc-tab="far-east">
         <div class="card-content">
             <div class="card-title">大清帝國：咸豐皇帝遺詔</div>
             <div class="card-meta">內容版本：1.0</div>
@@ -13812,7 +13817,7 @@ Sicut enim Antoninus Pius cognominatus, ex quo etiam ad nos appellatio haec perv
 
     // Tab switching logic for static version
     function switchTab(tabId) {
-        document.querySelectorAll('.tab-btn').forEach(btn => {
+        document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
             if (btn.getAttribute('data-tab') === tabId) {
                 btn.classList.add('active');
             } else {
@@ -13856,16 +13861,84 @@ Sicut enim Antoninus Pius cognominatus, ex quo etiam ad nos appellatio haec perv
         }
     }
 
+    function switchDocTab(tabId) {
+        document.querySelectorAll('.doc-tab-btn').forEach(btn => {
+            if (btn.getAttribute('data-doc-tab') === tabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        let visibleCount = 0;
+        document.querySelectorAll('.article-grid[data-doc-grid] .article-card').forEach(card => {
+            const cardTab = card.getAttribute('data-doc-tab');
+            if (cardTab === tabId) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        let emptyMsg = document.getElementById('empty-doc-tab-message');
+        const grid = document.querySelector('.article-grid[data-doc-grid]');
+        if (visibleCount === 0) {
+            if (!emptyMsg) {
+                emptyMsg = document.createElement('div');
+                emptyMsg.id = 'empty-doc-tab-message';
+                emptyMsg.className = 'empty-tab-message';
+                emptyMsg.style.textAlign = 'center';
+                emptyMsg.style.color = '#a0aec0';
+                emptyMsg.style.padding = '20px';
+                emptyMsg.style.width = '100%';
+                emptyMsg.style.gridColumn = '1 / -1';
+
+                const tabNames = {
+                    'europe': '歐洲',
+                    'new-world': '新大陸',
+                    'far-east': '遠東'
+                };
+                const tabName = tabNames[tabId] || '該';
+                emptyMsg.innerHTML = `📭 ${tabName}文獻規劃中，敬請期待！`;
+                if (grid) {
+                    grid.appendChild(emptyMsg);
+                }
+            } else {
+                emptyMsg.style.display = 'block';
+                const tabNames = {
+                    'europe': '歐洲',
+                    'new-world': '新大陸',
+                    'far-east': '遠東'
+                };
+                const tabName = tabNames[tabId] || '該';
+                emptyMsg.innerHTML = `📭 ${tabName}文獻規劃中，敬請期待！`;
+            }
+        } else {
+            if (emptyMsg) {
+                emptyMsg.style.display = 'none';
+            }
+        }
+    }
+
     // Bind event listeners to tab buttons
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+    document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const tabId = e.currentTarget.getAttribute('data-tab');
             switchTab(tabId);
         });
     });
 
+    document.querySelectorAll('.doc-tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const tabId = e.currentTarget.getAttribute('data-doc-tab');
+            switchDocTab(tabId);
+        });
+    });
+
     // Default to europe on load
     switchTab('europe');
+    switchDocTab('europe');
 </script>
 
 <div id="toast" class="toast"></div>
