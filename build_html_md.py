@@ -500,7 +500,7 @@ print("Processing Page 7 (Ottonian System)...")
 html_body_p7 = process_markdown(file_p7, images_p7, "1.0", map_p7, page_id="page07")
 
 print("Processing Page 8 (Concordat of Worms)...")
-html_body_p8 = process_3col_document(file_p8, "1.0", page_id="page08")
+html_body_p8 = process_3col_document(file_p8, "1.1", page_id="page08")
 
 print("Processing Page 9 (Pippin Donation)...")
 html_body_p9 = process_markdown(file_p9, images_p9, "1.1", map_p9, page_id="page09")
@@ -650,7 +650,7 @@ pages_data = {
     'page27': {'title': '冷河戰役及其歷史學再闡釋', 'img': 'images/battle_of_frigidus.png', 'ver': '1.1', 'doc': False},
     'page04': {'title': '神聖羅馬帝國：金璽詔書', 'ver': '1.9', 'doc': True},
     'page06': {'title': '修道院制度：聖本篤會規', 'ver': '2.0', 'doc': True},
-    'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.0', 'doc': True},
+    'page08': {'title': '敘任權之爭：沃姆斯協約', 'ver': '1.1', 'doc': True},
     'page20': {'title': '羅馬帝國：米蘭敕令', 'ver': '1.0', 'doc': True},
     'page28': {'title': '羅馬帝國：薩洛尼卡敕令', 'ver': '1.2', 'doc': True},
     'page29': {'title': '阿德里安堡戰役', 'img': 'images/battle_of_adrianople.png', 'ver': '1.0', 'doc': False},
@@ -1086,11 +1086,18 @@ function toggleCategory(catId) {
 final_html = final_html.replace('</body>', toggle_js + '</body>')
 
 # Write to file
-print("Writing build output to index.html and index_static.html...")
-with open(r'index.html', 'w', encoding='utf-8') as f:
-    f.write(final_html)
+print("Writing build output to index_static.html...")
 with open(r'index_static.html', 'w', encoding='utf-8', newline='\n') as f:
     f.write(final_html)
+
+# Automatically synchronize index.html with the database-driven index_db.html
+print("Synchronizing index.html with index_db.html...")
+try:
+    import shutil
+    shutil.copy('index_db.html', 'index.html')
+    print("[OK] Synchronized index.html with index_db.html")
+except Exception as e:
+    print(f"[WARNING] Failed to sync index.html: {e}")
 
 # Generate sitemap.xml for SEO
 from datetime import date

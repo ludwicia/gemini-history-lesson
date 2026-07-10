@@ -77,7 +77,7 @@ def migrate_categories(db, catalog_data):
 
 
 def migrate_articles(db, catalog_data):
-    """上傳文章元資料 + 全文到 Firestore articles collection"""
+    """上傳文章元資料 (到 articles) + 全文 (到 article_contents)"""
     print("\n[INFO] 正在上傳文章...")
     articles = catalog_data.get('articles', [])
     success_count = 0
@@ -88,7 +88,7 @@ def migrate_articles(db, catalog_data):
         article_json_path = f"api/article/{page_id}.json"
 
         # 基本元資料
-        doc_data = {
+        meta_data = {
             'id': page_id,
             'title': art['title'],
             'ver': art.get('ver', '1.0'),
@@ -99,23 +99,29 @@ def migrate_articles(db, catalog_data):
         }
 
         # 讀取文章全文 HTML
+        content_html = ''
         if os.path.exists(article_json_path):
             try:
                 with open(article_json_path, 'r', encoding='utf-8') as f:
                     article_detail = json.load(f)
-                doc_data['content_html'] = article_detail.get('content_html', '')
+                content_html = article_detail.get('content_html', '')
             except Exception as e:
                 print(f"   [WARNING] 讀取 {article_json_path} 失敗: {e}")
-                doc_data['content_html'] = ''
         else:
             print(f"   [WARNING] 找不到 {article_json_path}")
-            doc_data['content_html'] = ''
 
-        # 上傳到 Firestore
+        # 上傳到 Firestore (拆分為兩個 Collections)
         try:
-            content_size = len(doc_data.get('content_html', ''))
-            db.collection('articles').document(page_id).set(doc_data)
-            print(f"   [OK] [{page_id}] {art['title']} ({content_size/1024:.1f} KB)")
+            # 1. 輕量元資料上傳到 articles
+            db.collection('articles').document(page_id).set(meta_data)
+
+            # 2. 全文內容上傳到 article_contents
+            content_data = meta_data.copy()
+            content_data['content_html'] = content_html
+            db.collection('article_contents').document(page_id).set(content_data)
+
+            content_size = len(content_html)
+            print(f"   [OK] [{page_id}] {art['title']} (元資料 + 全文 {content_size/1024:.1f} KB 上傳成功)")
             success_count += 1
         except Exception as e:
             print(f"   [ERROR] [{page_id}] 上傳失敗: {e}")

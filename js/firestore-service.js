@@ -123,7 +123,7 @@ export async function getArticleById(pageId) {
     if (cache.articles[pageId]) return cache.articles[pageId];
 
     try {
-        const docRef = doc(db, 'articles', pageId);
+        const docRef = doc(db, 'article_contents', pageId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
