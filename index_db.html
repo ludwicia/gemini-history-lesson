@@ -1159,7 +1159,7 @@
         } else {
             return `
                 <div class="article-card" onclick="location.hash='#${art.id}'">
-                    <div class="card-image" style="background-image: url('${art.img}');"></div>
+                    <div class="card-image" style="background-image: url('${art.img}'); background-position: ${art.bg_pos || 'center'};"></div>
                     <div class="card-content">
                         <div class="card-title">${art.title}</div>
                         <div class="card-meta">內容版本：${art.ver}</div>

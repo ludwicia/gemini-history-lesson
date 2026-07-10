@@ -118,6 +118,7 @@
       "last_updated": "2026-06-07",
       "category": "holland",
       "img": "images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -127,6 +128,7 @@
       "last_updated": "2026-07-07",
       "category": "us",
       "img": "images/img_10_960px-Cahokia_Monks_Mound.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -136,6 +138,7 @@
       "last_updated": "2026-07-07",
       "category": "us",
       "img": "images/us2_map.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -145,6 +148,7 @@
       "last_updated": "2026-07-06",
       "category": "church",
       "img": "images/hussite_wars_main.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -154,6 +158,7 @@
       "last_updated": "2026-07-03",
       "category": "church",
       "img": "images/catharism_main.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -163,6 +168,7 @@
       "last_updated": "2026-06-07",
       "category": "trivia",
       "img": "images/hirsau_main_wilhelm.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -172,6 +178,7 @@
       "last_updated": "2026-06-14",
       "category": "hre",
       "img": "images/ottonian_hre_map.svg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -181,6 +188,7 @@
       "last_updated": "2026-07-05",
       "category": "papal",
       "img": "images/pippin_donation_main.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -190,6 +198,7 @@
       "last_updated": "2026-06-30",
       "category": "frank",
       "img": "images/carolingian_main.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -199,6 +208,7 @@
       "last_updated": "2026-06-07",
       "category": "trivia",
       "img": "images/paper_main.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -208,6 +218,7 @@
       "last_updated": "2026-06-07",
       "category": "trivia",
       "img": "images/uk_constitution_main.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -217,6 +228,7 @@
       "last_updated": "2026-06-08",
       "category": "church",
       "img": "images/clergy_trent.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -226,6 +238,7 @@
       "last_updated": "2026-06-14",
       "category": "hre",
       "img": "images/reisekönig_travelling_kings.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -235,6 +248,7 @@
       "last_updated": "2026-07-10",
       "category": "church",
       "img": "images/ambrose_and_theodosius.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -244,6 +258,7 @@
       "last_updated": "2026-07-10",
       "category": "trivia",
       "img": "images/ad_calendar_main.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -253,6 +268,7 @@
       "last_updated": "2026-07-10",
       "category": "rome",
       "img": "images/milan_edict_main.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -262,6 +278,7 @@
       "last_updated": "2026-07-10",
       "category": "church",
       "img": "images/creed_main.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -271,6 +288,7 @@
       "last_updated": "2026-07-10",
       "category": "rome",
       "img": "images/odoacer_fall_rome.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -280,6 +298,7 @@
       "last_updated": "2026-07-10",
       "category": "medieval",
       "img": "images/clovis_main.jpg",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -289,6 +308,7 @@
       "last_updated": "2026-06-17",
       "category": "rome",
       "img": "images/roman_colonate_estate.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -298,6 +318,7 @@
       "last_updated": "2026-07-10",
       "category": "rome",
       "img": "images/adrianople_battle.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -307,6 +328,7 @@
       "last_updated": "2026-07-10",
       "category": "medieval",
       "img": "images/alaric_sack_rome.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -316,6 +338,7 @@
       "last_updated": "2026-06-28",
       "category": "rome",
       "img": "images/battle_of_frigidus.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -325,6 +348,7 @@
       "last_updated": "2026-07-04",
       "category": "",
       "img": "",
+      "bg_pos": "center",
       "is_doc": 1
     },
     {
@@ -334,6 +358,7 @@
       "last_updated": "2026-06-07",
       "category": "",
       "img": "",
+      "bg_pos": "center",
       "is_doc": 1
     },
     {
@@ -343,6 +368,7 @@
       "last_updated": "2026-07-10",
       "category": "",
       "img": "",
+      "bg_pos": "center",
       "is_doc": 1
     },
     {
@@ -352,6 +378,7 @@
       "last_updated": "2026-07-06",
       "category": "",
       "img": "",
+      "bg_pos": "center",
       "is_doc": 1
     },
     {
@@ -361,6 +388,7 @@
       "last_updated": "2026-07-10",
       "category": "",
       "img": "",
+      "bg_pos": "center",
       "is_doc": 1
     },
     {
@@ -370,6 +398,7 @@
       "last_updated": "2026-07-10",
       "category": "medieval",
       "img": "images/battle_of_adrianople.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -379,6 +408,7 @@
       "last_updated": "2026-07-10",
       "category": "rome",
       "img": "images/gainas_byzantine.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -388,6 +418,7 @@
       "last_updated": "2026-06-23",
       "category": "rome",
       "img": "images/caracalla_edict.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -397,6 +428,7 @@
       "last_updated": "2026-06-24",
       "category": "",
       "img": "",
+      "bg_pos": "center",
       "is_doc": 1
     },
     {
@@ -406,6 +438,7 @@
       "last_updated": "2026-06-26",
       "category": "pre-3rd-century-rome",
       "img": "images/roman_provincial_governance.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -415,6 +448,7 @@
       "last_updated": "2026-06-29",
       "category": "medieval",
       "img": "images/huns_arrival.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -424,6 +458,7 @@
       "last_updated": "2026-07-10",
       "category": "rome",
       "img": "images/east_roman_court.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -433,6 +468,7 @@
       "last_updated": "2026-07-07",
       "category": "qing",
       "img": "images/xinyou_coup.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -442,6 +478,7 @@
       "last_updated": "2026-07-07",
       "category": "",
       "img": "",
+      "bg_pos": "center",
       "is_doc": 1
     },
     {
@@ -451,6 +488,7 @@
       "last_updated": "2026-07-08",
       "category": "medieval",
       "img": "images/athaulf_placidia_wedding.png",
+      "bg_pos": "center",
       "is_doc": 0
     },
     {
@@ -460,6 +498,7 @@
       "last_updated": "2026-07-10",
       "category": "rome",
       "img": "images/stilicho_general.png",
+      "bg_pos": "center top",
       "is_doc": 0
     }
   ],

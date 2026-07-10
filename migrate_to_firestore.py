@@ -95,6 +95,7 @@ def migrate_articles(db, catalog_data):
             'last_updated': art.get('last_updated', ''),
             'category': art.get('category', ''),
             'img': art.get('img', ''),
+            'bg_pos': art.get('bg_pos', 'center'),
             'is_doc': art.get('is_doc', 0)
         }
 

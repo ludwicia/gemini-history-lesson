@@ -671,7 +671,7 @@ pages_data = {
     'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.0', 'doc': False},
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.0', 'doc': False},
-    'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False},
+    'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False, 'bg_pos': 'center top'},
 }
 
 categories = [
@@ -762,9 +762,10 @@ def make_card_html(page_id, data):
         </div>
     </div>"""
     else:
+        bg_pos = data.get('bg_pos', 'center')
         return f"""
     <div class="article-card" onclick="location.hash='#{page_id}'">
-        <div class="card-image" style="background-image: url('{data['img']}');"></div>
+        <div class="card-image" style="background-image: url('{data['img']}'); background-position: {bg_pos};"></div>
         <div class="card-content">
             <div class="card-title">{data['title']}</div>
             <div class="card-meta">內容版本：{data['ver']}</div>

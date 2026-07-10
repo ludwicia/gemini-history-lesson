@@ -43,6 +43,7 @@ def main():
             'last_updated': last_updated,
             'category': category_key,
             'img': data.get('img', ''),
+            'bg_pos': data.get('bg_pos', 'center'),
             'is_doc': 1 if data.get('doc', False) else 0
         })
         
