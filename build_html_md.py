@@ -595,7 +595,7 @@ print("Processing Page 37 (Xianfeng Decree Document)...")
 html_body_p37 = process_3col_document(file_p37, "1.0", page_id="page37", lang_orig="文言文", cols=2)
 
 print("Processing Page 38 (Visigothic Transition)...")
-html_body_p38 = process_markdown(file_p38, images_p38, "1.0", map_p38, page_id="page38")
+html_body_p38 = process_markdown(file_p38, images_p38, "1.1", map_p38, page_id="page38")
 
 print("Processing Page 39 (Stilicho)...")
 html_body_p39 = process_markdown(file_p39, images_p39, "1.0", map_p39, page_id="page39")
@@ -670,7 +670,7 @@ pages_data = {
     'page35': {'title': '東羅馬帝國的權力重組與宮廷政治', 'img': 'images/east_roman_court.png', 'ver': '1.0', 'doc': False},
     'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.0', 'doc': False},
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
-    'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.0', 'doc': False},
+    'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.1', 'doc': False},
     'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False, 'bg_pos': 'center top'},
 }
 
