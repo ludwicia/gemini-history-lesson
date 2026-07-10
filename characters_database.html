@@ -1,0 +1,3847 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歐洲歷史人物名錄 — Ludwica 的簡單歷史課</title>
+    <meta name="description" content="收錄《Ludwica 的簡單歷史課》歐洲分類文章中出現的所有歷史人物生卒年、全名、生前稱號與爵位官職。支援多維度即時過濾、排序與視圖切換。">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --primary-color: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.15);
+            --accent-color: #f43f5e;
+            --badge-roman: #3b82f6;
+            --badge-germanic: #10b981;
+            --badge-papal: #8b5cf6;
+            --badge-hre: #f59e0b;
+            --badge-hussite: #ef4444;
+            --badge-dutch: #06b6d4;
+            --badge-british: #ec4899;
+            --badge-others: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 60px;
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Banner */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, rgba(15,23,42,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .title-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Controls Panel */
+        .controls-panel {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 14px 16px 14px 44px;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            width: 18px;
+            height: 18px;
+            pointer-events: none;
+        }
+
+        .filter-selects {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-view-toggle, .sort-select {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 0 16px;
+            height: 52px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-view-toggle:hover, .sort-select:hover {
+            border-color: var(--primary-color);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .sort-select select {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            cursor: pointer;
+            outline: none;
+            padding-right: 10px;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: thin;
+        }
+
+        .tabs-container::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .tabs-container::-webkit-scrollbar-thumb {
+            background: var(--card-border);
+            border-radius: 2px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.2);
+            font-weight: 600;
+        }
+
+        /* Meta Info Panel */
+        .meta-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .count-badge {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Card Grid View */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .char-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .char-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--badge-others);
+            transition: width 0.2s ease;
+        }
+
+        .char-card[data-category="roman"]::before { background: var(--badge-roman); }
+        .char-card[data-category="germanic"]::before { background: var(--badge-germanic); }
+        .char-card[data-category="papal"]::before { background: var(--badge-papal); }
+        .char-card[data-category="hre"]::before { background: var(--badge-hre); }
+        .char-card[data-category="hussite"]::before { background: var(--badge-hussite); }
+        .char-card[data-category="dutch"]::before { background: var(--badge-dutch); }
+        .char-card[data-category="british"]::before { background: var(--badge-british); }
+
+        .char-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(56, 189, 248, 0.05);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .char-card:hover::before {
+            width: 6px;
+        }
+
+        .avatar-container {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--card-border);
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+        .avatar-container:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-color);
+        }
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: top center;
+        }
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .name-area {
+            flex: 1;
+            padding-right: 8px;
+            min-width: 0; /* Enable text ellipsis on flex child */
+        }
+
+        .char-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+            letter-spacing: -0.2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .char-english-name {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .category-badge {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: auto; /* Push badge to the right */
+        }
+
+        .badge-roman { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); }
+        .badge-germanic { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
+        .badge-papal { background: rgba(139, 92, 246, 0.12); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.2); }
+        .badge-hre { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+        .badge-hussite { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+        .badge-dutch { background: rgba(6, 182, 212, 0.12); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.2); }
+        .badge-british { background: rgba(236, 72, 153, 0.12); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.2); }
+        .badge-others { background: rgba(100, 116, 139, 0.12); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.2); }
+
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .info-row {
+            display: flex;
+            font-size: 0.9rem;
+            align-items: center;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+            width: 70px;
+            font-weight: 500;
+        }
+
+        .info-val {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .info-val.years {
+            font-family: 'Outfit', sans-serif;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .info-val.epithet {
+            color: #fb7185;
+            background: rgba(244, 63, 94, 0.08);
+            border: 1px solid rgba(244, 63, 94, 0.12);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        .info-val.epithet.none {
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .card-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 14px;
+        }
+
+        .sources-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .sources-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .source-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .source-link:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Table View */
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .table-avatar-container {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .table-avatar-container:hover {
+            transform: scale(1.08);
+            border-color: var(--primary-color);
+        }
+        .table-avatar-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: top center;
+        }
+        .table-avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: rgba(15, 23, 42, 0.6);
+            border-bottom: 2px solid var(--card-border);
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 16px 20px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px 20px;
+            vertical-align: middle;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .table-name {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .table-eng-name {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        /* Back to Main Site Floating Button */
+        .back-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: var(--bg-color);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .back-home:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6);
+        }
+
+        .back-home svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .search-row {
+                flex-direction: column;
+            }
+            .filter-selects {
+                width: 100%;
+            }
+            .btn-view-toggle, .sort-select {
+                flex: 1;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="title-badge">歐洲歷史人物資料庫</span>
+        <h1>歐洲歷史人物生卒年總表</h1>
+        <p class="subtitle">收錄自「歐洲」分類中各專題文章與歷史文件，包含人物全名、稱號、爵位及文獻出處。</p>
+    </header>
+
+    <!-- Controls Panel -->
+    <div class="controls-panel">
+        <div class="search-row">
+            <div class="search-box">
+                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z"></path>
+                </svg>
+                <input type="text" id="keywordSearch" placeholder="搜尋人名、稱號、爵位或官職 (如: 奧托, 皇帝, 沉默者)..." oninput="filterData()">
+            </div>
+            <div class="filter-selects">
+                <div class="sort-select">
+                    <select id="sortBy" onchange="filterData()">
+                        <option value="year-asc">(推薦) 按出生年 升序</option>
+                        <option value="year-desc">按出生年 降序</option>
+                        <option value="name-asc">按中文姓名 升序</option>
+                    </select>
+                </div>
+                <button class="btn-view-toggle" id="viewToggleBtn" onclick="toggleView()">
+                    <span id="viewIcon">📋</span>
+                    <span id="viewText">切換為 表格檢視</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="tabs-container" id="categoryTabs">
+            <!-- Will be generated dynamically -->
+        </div>
+    </div>
+
+    <!-- Meta Summary -->
+    <div class="meta-summary">
+        <div>
+            符合搜尋條件的人物：<span class="count-badge" id="visibleCount">0</span>
+        </div>
+        <div>
+            總數：<span class="count-badge" id="totalCount">0</span>
+        </div>
+    </div>
+
+    <!-- Main Results Containers -->
+    <div id="cardView" class="card-grid"></div>
+    <div id="tableView" class="table-container" style="display: none;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">歷史人物名稱</th>
+                    <th style="width: 18%;">生卒年份</th>
+                    <th style="width: 18%;">生前稱號</th>
+                    <th style="width: 20%;">爵位 / 主要官職</th>
+                    <th style="width: 19%;">出處文獻</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<a href="index.html" class="back-home" title="返回首頁">
+    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+</a>
+
+<script>
+    // Embedded JSON data
+    const rawCharacters = [
+    {
+        "chinese_name": "戴克里先",
+        "english_name": "Diocletian",
+        "birth_death": "244 - 311",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/戴克里先.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            },
+            {
+                "page_id": "page18",
+                "title": "西元紀年的確立與演進"
+            },
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            },
+            {
+                "page_id": "page24",
+                "title": "羅馬晚期改革與農奴制"
+            }
+        ],
+        "birth_year_num": 244,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "君士坦丁一世",
+        "english_name": "Constantine I",
+        "birth_death": "272 - 337",
+        "epithet": "大帝",
+        "noble_title": "羅馬皇帝",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            },
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            },
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            },
+            {
+                "page_id": "page20",
+                "title": "羅馬帝國：米蘭敕令"
+            },
+            {
+                "page_id": "page24",
+                "title": "羅馬晚期改革與農奴制"
+            }
+        ],
+        "birth_year_num": 272,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "李錫尼",
+        "english_name": "Licinius",
+        "birth_death": "約 263 - 325",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/李錫尼.jpg",
+        "sources": [
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            },
+            {
+                "page_id": "page20",
+                "title": "羅馬帝國：米蘭敕令"
+            }
+        ],
+        "birth_year_num": 263,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "馬克森提烏斯",
+        "english_name": "Maxentius",
+        "birth_death": "約 278 - 312",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/馬克森提烏斯.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            },
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            }
+        ],
+        "birth_year_num": 278,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "伽列里烏斯",
+        "english_name": "Galerius",
+        "birth_death": "約 260 - 311",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/伽列里烏斯.jpg",
+        "sources": [
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            }
+        ],
+        "birth_year_num": 260,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "馬克西米努斯·戴亞",
+        "english_name": "Maximinus Daza",
+        "birth_death": "約 270 - 313",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/馬克西米努斯·戴亞.jpg",
+        "sources": [
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            }
+        ],
+        "birth_year_num": 270,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "馬克西米安",
+        "english_name": "Maximian",
+        "birth_death": "約 250 - 310",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/馬克西米安.jpg",
+        "sources": [
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            }
+        ],
+        "birth_year_num": 250,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "君士坦提烏斯一世",
+        "english_name": "Constantius I Chlorus",
+        "birth_death": "約 250 - 306",
+        "epithet": "葉綠茂盛者 / 蒼白者",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/君士坦提烏斯一世.jpg",
+        "sources": [
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            }
+        ],
+        "birth_year_num": 250,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "尤利安",
+        "english_name": "Julian",
+        "birth_death": "331 - 363",
+        "epithet": "背教者",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/尤利安.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            }
+        ],
+        "birth_year_num": 331,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "瓦倫斯",
+        "english_name": "Valens",
+        "birth_death": "328 - 378",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/瓦倫斯.png",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            },
+            {
+                "page_id": "page25",
+                "title": "羅馬晚期軍制變遷與哥德人崛起"
+            },
+            {
+                "page_id": "page29",
+                "title": "阿德里安堡戰役"
+            }
+        ],
+        "birth_year_num": 328,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "格拉提安",
+        "english_name": "Gratian",
+        "birth_death": "359 - 383",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/格拉提安.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            },
+            {
+                "page_id": "page28",
+                "title": "羅馬帝國：薩洛尼卡敕令"
+            }
+        ],
+        "birth_year_num": 359,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "弗里蒂根",
+        "english_name": "Fritigern",
+        "birth_death": "d. 約 380",
+        "epithet": "無",
+        "noble_title": "德文吉哥德首領 / 哥德人領袖",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page25",
+                "title": "羅馬晚期軍制變遷與哥德人崛起"
+            },
+            {
+                "page_id": "page29",
+                "title": "阿德里安堡戰役"
+            }
+        ],
+        "birth_year_num": 380,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "阿拉里克一世",
+        "english_name": "Alaric I",
+        "birth_death": "約 370 - 410",
+        "epithet": "無",
+        "noble_title": "西哥德王",
+        "image_url": "images/characters/阿拉里克一世.jpg",
+        "sources": [
+            {
+                "page_id": "page26",
+                "title": "阿拉里克與哥德大遷徙"
+            }
+        ],
+        "birth_year_num": 370,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "狄奧多西一世",
+        "english_name": "Theodosius I",
+        "birth_death": "347 - 395",
+        "epithet": "大帝",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/狄奧多西一世.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            },
+            {
+                "page_id": "page27",
+                "title": "冷河戰役及其歷史學再闡釋"
+            },
+            {
+                "page_id": "page28",
+                "title": "羅馬帝國：薩洛尼卡敕令"
+            }
+        ],
+        "birth_year_num": 347,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "尤金尼烏斯",
+        "english_name": "Eugenius",
+        "birth_death": "d. 394",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝 (西部篡位者)",
+        "image_url": "images/characters/尤金尼烏斯.png",
+        "sources": [
+            {
+                "page_id": "page27",
+                "title": "冷河戰役及其歷史學再闡釋"
+            }
+        ],
+        "birth_year_num": 394,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "阿波加斯特",
+        "english_name": "Arbogast",
+        "birth_death": "d. 394",
+        "epithet": "無",
+        "noble_title": "羅馬陸軍總長",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page27",
+                "title": "冷河戰役及其歷史學再闡釋"
+            }
+        ],
+        "birth_year_num": 394,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "瓦倫提尼安二世",
+        "english_name": "Valentinian II",
+        "birth_death": "371 - 392",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/瓦倫提尼安二世.jpg",
+        "sources": [
+            {
+                "page_id": "page27",
+                "title": "冷河戰役及其歷史學再闡釋"
+            },
+            {
+                "page_id": "page28",
+                "title": "羅馬帝國：薩洛尼卡敕令"
+            }
+        ],
+        "birth_year_num": 371,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "斯提里科",
+        "english_name": "Stilicho",
+        "birth_death": "約 359 - 408",
+        "epithet": "無",
+        "noble_title": "羅馬陸軍總長 / 攝政",
+        "image_url": "images/characters/斯提里科.jpg",
+        "sources": [
+            {
+                "page_id": "page26",
+                "title": "阿拉里克與哥德大遷徙"
+            },
+            {
+                "page_id": "page27",
+                "title": "冷河戰役及其歷史學再闡釋"
+            },
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 359,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "阿爾卡迪烏斯",
+        "english_name": "Arcadius",
+        "birth_death": "約 377 - 408",
+        "epithet": "無",
+        "noble_title": "東羅馬皇帝",
+        "image_url": "images/characters/阿爾卡迪烏斯.jpg",
+        "sources": [
+            {
+                "page_id": "page30",
+                "title": "蓋納斯與早期拜占庭蠻族權力危機"
+            },
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 377,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "霍諾留",
+        "english_name": "Honorius",
+        "birth_death": "384 - 423",
+        "epithet": "無",
+        "noble_title": "西羅馬皇帝",
+        "image_url": "images/characters/霍諾留.jpg",
+        "sources": [
+            {
+                "page_id": "page26",
+                "title": "阿拉里克與哥德大遷徙"
+            },
+            {
+                "page_id": "page27",
+                "title": "冷河戰役及其歷史學再闡釋"
+            },
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 384,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "魯菲努斯",
+        "english_name": "Flavius Rufinus",
+        "birth_death": "約 335 - 395",
+        "epithet": "無",
+        "noble_title": "東羅馬近衛軍長官",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 335,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "奧林匹烏斯",
+        "english_name": "Olympius",
+        "birth_death": "d. 410",
+        "epithet": "無",
+        "noble_title": "西羅馬宮廷大臣",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page26",
+                "title": "阿拉里克與哥德大遷徙"
+            }
+        ],
+        "birth_year_num": 410,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "吉爾多",
+        "english_name": "Gildo",
+        "birth_death": "d. 398",
+        "epithet": "無",
+        "noble_title": "羅馬北非總督",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "",
+                "title": "東羅馬帝國的權力重組與宮廷政治：從迪奧西一世駕崩至迪奧多西二世登基前的內政演變、派系鬥爭與地緣戰略深度研究（395–408年）"
+            }
+        ],
+        "birth_year_num": 398,
+        "category": "dutch"
+    },
+    {
+        "chinese_name": "羅慕路斯·奧古斯都",
+        "english_name": "Romulus Augustulus",
+        "birth_death": "約 460 - 511之後",
+        "epithet": "無",
+        "noble_title": "西羅馬皇帝",
+        "image_url": "images/characters/羅慕路斯·奧古斯都.jpg",
+        "sources": [
+            {
+                "page_id": "page22",
+                "title": "羅馬秩序的終結與日耳曼王權的奠定"
+            },
+            {
+                "page_id": "page25",
+                "title": "羅馬晚期軍制變遷與哥德人崛起"
+            }
+        ],
+        "birth_year_num": 460,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "尼波斯",
+        "english_name": "Julius Nepos",
+        "birth_death": "約 430 - 480",
+        "epithet": "無",
+        "noble_title": "西羅馬皇帝",
+        "image_url": "images/characters/尼波斯.png",
+        "sources": [
+            {
+                "page_id": "page22",
+                "title": "羅馬秩序的終結與日耳曼王權的奠定"
+            }
+        ],
+        "birth_year_num": 430,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "芝諾",
+        "english_name": "Zeno",
+        "birth_death": "約 425 - 491",
+        "epithet": "無",
+        "noble_title": "東羅馬皇帝",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page22",
+                "title": "羅馬秩序的終結與日耳曼王權的奠定"
+            }
+        ],
+        "birth_year_num": 425,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "奧多亞賽",
+        "english_name": "Odoacer",
+        "birth_death": "約 433 - 493",
+        "epithet": "無",
+        "noble_title": "義大利國王 / 蠻族將領",
+        "image_url": "images/characters/奧多亞賽.png",
+        "sources": [
+            {
+                "page_id": "page22",
+                "title": "羅馬秩序的終結與日耳曼王權的奠定"
+            },
+            {
+                "page_id": "page25",
+                "title": "羅馬晚期軍制變遷與哥德人崛起"
+            }
+        ],
+        "birth_year_num": 433,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "狄奧多里克",
+        "english_name": "Theodoric the Great",
+        "birth_death": "454 - 526",
+        "epithet": "大帝",
+        "noble_title": "東哥德王 / 義大利國王",
+        "image_url": "images/characters/狄奧多里克.png",
+        "sources": [
+            {
+                "page_id": "page22",
+                "title": "羅馬秩序的終結與日耳曼王權的奠定"
+            }
+        ],
+        "birth_year_num": 454,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "利希摩爾",
+        "english_name": "Ricimer",
+        "birth_death": "約 405 - 472",
+        "epithet": "皇帝製造者",
+        "noble_title": "羅馬陸軍總長 / 攝政",
+        "image_url": "images/characters/利希摩爾.jpg",
+        "sources": [
+            {
+                "page_id": "page22",
+                "title": "羅馬秩序的終結與日耳曼王權的奠定"
+            },
+            {
+                "page_id": "page25",
+                "title": "羅馬晚期軍制變遷與哥德人崛起"
+            }
+        ],
+        "birth_year_num": 405,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "歐瑞斯特",
+        "english_name": "Orestes",
+        "birth_death": "d. 476",
+        "epithet": "無",
+        "noble_title": "羅馬陸軍總長",
+        "image_url": "images/characters/歐瑞斯特.jpg",
+        "sources": [
+            {
+                "page_id": "page22",
+                "title": "羅馬秩序的終結與日耳曼王權的奠定"
+            }
+        ],
+        "birth_year_num": 476,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "埃提烏斯",
+        "english_name": "Flavius Aetius",
+        "birth_death": "約 391 - 454",
+        "epithet": "最後的羅馬人",
+        "noble_title": "羅馬陸軍總長",
+        "image_url": "images/characters/埃提烏斯.jpg",
+        "sources": [
+            {
+                "page_id": "page34",
+                "title": "匈人的登場與晚期羅馬地緣政治"
+            }
+        ],
+        "birth_year_num": 391,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "阿提拉",
+        "english_name": "Attila",
+        "birth_death": "約 406 - 453",
+        "epithet": "上帝之鞭",
+        "noble_title": "匈人領袖 / 匈人帝國國王",
+        "image_url": "images/characters/阿提拉.jpg",
+        "sources": [
+            {
+                "page_id": "page34",
+                "title": "匈人的登場與晚期羅馬地緣政治"
+            }
+        ],
+        "birth_year_num": 406,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "烏爾丁",
+        "english_name": "Uldin",
+        "birth_death": "d. 412",
+        "epithet": "無",
+        "noble_title": "匈人首領",
+        "image_url": "images/characters/烏爾丁.jpg",
+        "sources": [
+            {
+                "page_id": "page30",
+                "title": "蓋納斯與早期拜占庭蠻族權力危機"
+            },
+            {
+                "page_id": "page34",
+                "title": "匈人的登場與晚期羅馬地緣政治"
+            }
+        ],
+        "birth_year_num": 412,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "巴拉米爾",
+        "english_name": "Balamber",
+        "birth_death": "活躍於 4 世紀晚期 (約 370 - 378)",
+        "epithet": "無",
+        "noble_title": "匈人首領",
+        "image_url": "images/characters/巴拉米爾.jpg",
+        "sources": [
+            {
+                "page_id": "page34",
+                "title": "匈人的登場與晚期羅馬地緣政治"
+            }
+        ],
+        "birth_year_num": 370,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "馬爾克揚",
+        "english_name": "Marcian",
+        "birth_death": "392 - 457",
+        "epithet": "無",
+        "noble_title": "東羅馬皇帝",
+        "image_url": "images/characters/馬爾克揚.png",
+        "sources": [
+            {
+                "page_id": "page34",
+                "title": "匈人的登場與晚期羅馬地緣政治"
+            },
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 392,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "埃烏多克西亞",
+        "english_name": "Aelia Eudoxia",
+        "birth_death": "d. 404",
+        "epithet": "無",
+        "noble_title": "東羅馬皇后",
+        "image_url": "images/characters/埃烏多克西亞.png",
+        "sources": [
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 404,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "尤特羅庇烏斯",
+        "english_name": "Eutropius",
+        "birth_death": "d. 399",
+        "epithet": "無",
+        "noble_title": "東羅馬大內侍 / 執政官",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page30",
+                "title": "蓋納斯與早期拜占庭蠻族權力危機"
+            },
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 399,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "蓋納斯",
+        "english_name": "Gainas",
+        "birth_death": "d. 400",
+        "epithet": "無",
+        "noble_title": "東羅馬陸軍元帥 / 蠻族將領",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page30",
+                "title": "蓋納斯與早期拜占庭蠻族權力危機"
+            },
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 400,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "約翰·金口",
+        "english_name": "John Chrysostom",
+        "birth_death": "約 347 - 407",
+        "epithet": "金口",
+        "noble_title": "君士坦丁堡大主教",
+        "image_url": "images/characters/約翰·金口.jpg",
+        "sources": [
+            {
+                "page_id": "page30",
+                "title": "蓋納斯與早期拜占庭蠻族權力危機"
+            },
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 347,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "元老院貴族奧里利安努斯",
+        "english_name": "Aurelianus",
+        "birth_death": "活躍於 4 世紀末至 5 世紀初 (約 393 - 416)",
+        "epithet": "無",
+        "noble_title": "東羅馬近衛軍長官 / 執政官",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 4,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "弗拉維塔",
+        "english_name": "Fravitta",
+        "birth_death": "d. 404",
+        "epithet": "無",
+        "noble_title": "東羅馬陸軍元帥 / 蠻族將領 / 執政官",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page30",
+                "title": "蓋納斯與早期拜占庭蠻族權力危機"
+            }
+        ],
+        "birth_year_num": 404,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "狄奧多西二世",
+        "english_name": "Theodosius II",
+        "birth_death": "401 - 450",
+        "epithet": "卡利格拉福斯 (書寫者)",
+        "noble_title": "東羅馬皇帝",
+        "image_url": "images/characters/狄奧多西二世.jpg",
+        "sources": [
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 401,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "普爾赫麗亞",
+        "english_name": "Pulcheria",
+        "birth_death": "399 - 453",
+        "epithet": "聖普爾赫麗亞",
+        "noble_title": "東羅馬女皇 / 攝政",
+        "image_url": "images/characters/普爾赫麗亞.png",
+        "sources": [
+            {
+                "page_id": "page35",
+                "title": "東羅馬帝國的權力重組與宮廷政治"
+            }
+        ],
+        "birth_year_num": 399,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "卡拉卡拉",
+        "english_name": "Caracalla",
+        "birth_death": "188 - 217",
+        "epithet": "卡拉卡拉 (兜帽斗篷)",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/卡拉卡拉.jpg",
+        "sources": [
+            {
+                "page_id": "page25",
+                "title": "羅馬晚期軍制變遷與哥德人崛起"
+            },
+            {
+                "page_id": "page31",
+                "title": "卡拉卡拉與《安東尼努斯敕令》"
+            },
+            {
+                "page_id": "page32",
+                "title": "羅馬帝國：安東尼努斯敕令"
+            }
+        ],
+        "birth_year_num": 188,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "塞普蒂米烏斯·塞維魯",
+        "english_name": "Septimius Severus",
+        "birth_death": "145 - 211",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": "images/characters/塞普蒂米烏斯·塞維魯.jpg",
+        "sources": [
+            {
+                "page_id": "page31",
+                "title": "卡拉卡拉與《安東尼努斯敕令》"
+            }
+        ],
+        "birth_year_num": 145,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "蓋塔",
+        "english_name": "Geta",
+        "birth_death": "189 - 211",
+        "epithet": "無",
+        "noble_title": "羅馬皇帝",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page31",
+                "title": "卡拉卡拉與《安東尼努斯敕令》"
+            }
+        ],
+        "birth_year_num": 189,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "尤利亞·多姆娜",
+        "english_name": "Julia Domna",
+        "birth_death": "約 160 - 217",
+        "epithet": "國母",
+        "noble_title": "羅馬皇后",
+        "image_url": "images/characters/尤利亞·多姆娜.jpg",
+        "sources": [
+            {
+                "page_id": "page31",
+                "title": "卡拉卡拉與《安東尼努斯敕令》"
+            }
+        ],
+        "birth_year_num": 160,
+        "category": "others"
+    },
+    {
+        "chinese_name": "帕比尼安",
+        "english_name": "Papinian",
+        "birth_death": "約 142 - 212",
+        "epithet": "法學之冠",
+        "noble_title": "羅馬近衛軍長官 / 法學家",
+        "image_url": "images/characters/帕比尼安.jpg",
+        "sources": [
+            {
+                "page_id": "page31",
+                "title": "卡拉卡拉與《安東尼努斯敕令》"
+            }
+        ],
+        "birth_year_num": 142,
+        "category": "others"
+    },
+    {
+        "chinese_name": "阿陶爾夫",
+        "english_name": "Ataulf",
+        "birth_death": "約 370 - 415",
+        "epithet": "無",
+        "noble_title": "西哥德王",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 370,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "加拉·普拉西提阿",
+        "english_name": "Galla Placidia",
+        "birth_death": "約 388 - 450",
+        "epithet": "無",
+        "noble_title": "西羅馬皇后 / 攝政 / 西哥德王后",
+        "image_url": "images/characters/加拉·普拉西提阿.png",
+        "sources": [
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 388,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "君士坦提烏斯三世",
+        "english_name": "Constantius III",
+        "birth_death": "d. 421",
+        "epithet": "無",
+        "noble_title": "西羅馬皇帝",
+        "image_url": "images/characters/君士坦提烏斯三世.jpg",
+        "sources": [
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 421,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "瓦倫提尼安三世",
+        "english_name": "Valentinian III",
+        "birth_death": "419 - 455",
+        "epithet": "無",
+        "noble_title": "西羅馬皇帝",
+        "image_url": "images/characters/瓦倫提尼安三世.jpg",
+        "sources": [
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 419,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "西格里克",
+        "english_name": "Sigeric",
+        "birth_death": "d. 415",
+        "epithet": "無",
+        "noble_title": "西哥德王",
+        "image_url": "images/characters/西格里克.jpg",
+        "sources": [
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 415,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "瓦利亞",
+        "english_name": "Wallia",
+        "birth_death": "d. 418",
+        "epithet": "無",
+        "noble_title": "西哥德王",
+        "image_url": "images/characters/瓦利亞.jpg",
+        "sources": [
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 418,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "克洛維一世",
+        "english_name": "Clovis I",
+        "birth_death": "約 466 - 511",
+        "epithet": "無",
+        "noble_title": "法蘭克國王",
+        "image_url": "images/characters/克洛維一世.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 466,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "希爾德里克一世",
+        "english_name": "Childeric I",
+        "birth_death": "約 437 - 481",
+        "epithet": "無",
+        "noble_title": "薩利安法蘭克人國王",
+        "image_url": "images/characters/希爾德里克一世.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 437,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "法拉蒙德",
+        "english_name": "Pharamond",
+        "birth_death": "傳說活躍於 5 世紀早期 (約 420 前後)",
+        "epithet": "傳說首領",
+        "noble_title": "法蘭克人國王",
+        "image_url": "images/characters/法拉蒙德.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": -420,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "尤里克",
+        "english_name": "Euric",
+        "birth_death": "約 440 - 484",
+        "epithet": "無",
+        "noble_title": "西哥德王",
+        "image_url": "images/characters/尤里克.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 440,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "貢多巴德",
+        "english_name": "Gundobad",
+        "birth_death": "約 452 - 516",
+        "epithet": "無",
+        "noble_title": "勃艮第國王 / 羅馬陸軍總長",
+        "image_url": "images/characters/貢多巴德.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 452,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "聖雷米吉烏斯",
+        "english_name": "Saint Remigius",
+        "birth_death": "約 437 - 533",
+        "epithet": "法蘭克人的使徒",
+        "noble_title": "蘭斯主教",
+        "image_url": "images/characters/聖雷米吉烏斯.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 437,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "聖克洛蒂爾德",
+        "english_name": "Saint Clotilde",
+        "birth_death": "約 474 - 545",
+        "epithet": "無",
+        "noble_title": "法蘭克王后 / 聖人",
+        "image_url": "images/characters/聖克洛蒂爾德.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 474,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "丕平三世",
+        "english_name": "Pepin the Short",
+        "birth_death": "714 - 768",
+        "epithet": "矮子",
+        "noble_title": "法蘭克國王 / 宮相",
+        "image_url": "images/characters/丕平三世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 714,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "司提反二世",
+        "english_name": "Pope Stephen II",
+        "birth_death": "d. 757",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/司提反二世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 757,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "司提反三世",
+        "english_name": "Pope Stephen III",
+        "birth_death": "約 720 - 772",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/司提反三世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 720,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "阿斯托爾夫",
+        "english_name": "Aistulf",
+        "birth_death": "d. 756",
+        "epithet": "無",
+        "noble_title": "倫巴底國王",
+        "image_url": "images/characters/阿斯托爾夫.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 756,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "查理曼",
+        "english_name": "Charlemagne",
+        "birth_death": "742 - 814",
+        "epithet": "查理大帝",
+        "noble_title": "法蘭克國王 / 羅馬人的皇帝",
+        "image_url": "images/characters/查理曼.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            },
+            {
+                "page_id": "page10",
+                "title": "卡洛林教育基建與知識復興"
+            }
+        ],
+        "birth_year_num": 742,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "卡洛曼一世",
+        "english_name": "Carloman I",
+        "birth_death": "751 - 771",
+        "epithet": "無",
+        "noble_title": "法蘭克國王",
+        "image_url": "images/characters/卡洛曼一世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            },
+            {
+                "page_id": "page10",
+                "title": "卡洛林教育基建與知識復興"
+            }
+        ],
+        "birth_year_num": 751,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "聖波尼法爵",
+        "english_name": "Saint Boniface",
+        "birth_death": "約 675 - 754",
+        "epithet": "德意志人的使徒",
+        "noble_title": "美因茨總主教 / 宣教士",
+        "image_url": "images/characters/聖波尼法爵.jpg",
+        "sources": [
+            {
+                "page_id": "page10",
+                "title": "卡洛林教育基建與知識復興"
+            },
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            }
+        ],
+        "birth_year_num": 675,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "阿爾琴",
+        "english_name": "Alcuin of York",
+        "birth_death": "約 735 - 804",
+        "epithet": "無",
+        "noble_title": "皇家學校校長 / 聖馬丁修道院院長",
+        "image_url": "images/characters/阿爾琴.jpg",
+        "sources": [
+            {
+                "page_id": "page10",
+                "title": "卡洛林教育基建與知識復興"
+            }
+        ],
+        "birth_year_num": 735,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "阿德里安一世",
+        "english_name": "Pope Adrian I",
+        "birth_death": "d. 795",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/阿德里安一世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 795,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "奧托一世",
+        "english_name": "Otto I the Great",
+        "birth_death": "912 - 973",
+        "epithet": "奧托大帝",
+        "noble_title": "神聖羅馬皇帝 / 德意志國王",
+        "image_url": "images/characters/奧托一世.jpg",
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            },
+            {
+                "page_id": "page16",
+                "title": "中世紀巡行王權的權力運作"
+            }
+        ],
+        "birth_year_num": 912,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "奧托二世",
+        "english_name": "Otto II",
+        "birth_death": "955 - 983",
+        "epithet": "紅色",
+        "noble_title": "神聖羅馬皇帝 / 德意志國王",
+        "image_url": "images/characters/奧托二世.jpg",
+        "sources": [
+            {
+                "page_id": "",
+                "title": "奧托-薩利安帝帝國教會體制"
+            }
+        ],
+        "birth_year_num": 955,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "奧托三世",
+        "english_name": "Otto III",
+        "birth_death": "980 - 1002",
+        "epithet": "世界之奇迹",
+        "noble_title": "神聖羅馬皇帝 / 德意志國王",
+        "image_url": "images/characters/奧托三世.jpg",
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            }
+        ],
+        "birth_year_num": 980,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "亨利二世",
+        "english_name": "Henry II",
+        "birth_death": "973 - 1024",
+        "epithet": "聖人",
+        "noble_title": "神聖羅馬皇帝 / 德意志國王",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            }
+        ],
+        "birth_year_num": 973,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "康拉德二世",
+        "english_name": "Conrad II",
+        "birth_death": "約 990 - 1039",
+        "epithet": "薩利安人",
+        "noble_title": "神聖羅馬皇帝 / 德意志國王",
+        "image_url": "images/characters/康拉德二世.jpg",
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            }
+        ],
+        "birth_year_num": 990,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "亨利三世 (神聖羅馬帝國)",
+        "english_name": "Henry III",
+        "birth_death": "1017 - 1056",
+        "epithet": "黑人 / 虔誠者",
+        "noble_title": "神聖羅馬皇帝 / 德意志國王",
+        "image_url": "images/characters/亨利三世_神聖羅馬帝國.jpg",
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            }
+        ],
+        "birth_year_num": 1017,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "亨利四世",
+        "english_name": "Henry IV",
+        "birth_death": "1050 - 1106",
+        "epithet": "無",
+        "noble_title": "神聖羅馬皇帝 / 德意志國王",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            }
+        ],
+        "birth_year_num": 1050,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "威廉",
+        "english_name": "William of Hirsau",
+        "birth_death": "約 1026 - 1091",
+        "epithet": "威廉大院長",
+        "noble_title": "希爾紹修道院院長",
+        "image_url": "images/characters/威廉.jpg",
+        "sources": [
+            {
+                "page_id": "page05",
+                "title": "希爾紹修道院"
+            }
+        ],
+        "birth_year_num": 1026,
+        "category": "others"
+    },
+    {
+        "chinese_name": "額我略七世",
+        "english_name": "Pope Gregory VII",
+        "birth_death": "約 1015 - 1085",
+        "epithet": "希爾德布蘭德",
+        "noble_title": "教宗",
+        "image_url": "images/characters/額我略七世.jpg",
+        "sources": [
+            {
+                "page_id": "page05",
+                "title": "希爾紹修道院"
+            },
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            },
+            {
+                "page_id": "page08",
+                "title": "敘任權之爭：沃姆斯協約"
+            }
+        ],
+        "birth_year_num": 1015,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "聖本篤",
+        "english_name": "Saint Benedict of Nursia",
+        "birth_death": "約 480 - 547",
+        "epithet": "西方修道制度的始祖",
+        "noble_title": "修道院長 / 聖人",
+        "image_url": "images/characters/聖本篤.jpg",
+        "sources": [
+            {
+                "page_id": "page05",
+                "title": "希爾紹修道院"
+            },
+            {
+                "page_id": "page06",
+                "title": "修道院制度：聖本篤會規"
+            },
+            {
+                "page_id": "page10",
+                "title": "卡洛林教育基建與知識復興"
+            }
+        ],
+        "birth_year_num": 480,
+        "category": "hre"
+    },
+    {
+        "chinese_name": "阿爾達貝格",
+        "english_name": "Adalbert of Hamburg",
+        "birth_death": "約 1000 - 1072",
+        "epithet": "無",
+        "noble_title": "漢堡-不來梅總主教",
+        "image_url": "images/characters/阿爾達貝格.jpg",
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            }
+        ],
+        "birth_year_num": 1000,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "額我略五世",
+        "english_name": "Pope Gregory V",
+        "birth_death": "約 972 - 999",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/額我略五世.jpg",
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            }
+        ],
+        "birth_year_num": 972,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "良九世",
+        "english_name": "Pope Leo IX",
+        "birth_death": "1002 - 1054",
+        "epithet": "聖人",
+        "noble_title": "教宗",
+        "image_url": "images/characters/良九世.jpg",
+        "sources": [
+            {
+                "page_id": "page07",
+                "title": "奧托-薩利安帝國教會體制"
+            }
+        ],
+        "birth_year_num": 1002,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "阿利亞多",
+        "english_name": "Saint Arialdo",
+        "birth_death": "約 1010 - 1066",
+        "epithet": "聖人",
+        "noble_title": "執事 / 帕塔里亞運動領袖",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            }
+        ],
+        "birth_year_num": 1010,
+        "category": "others"
+    },
+    {
+        "chinese_name": "西利修斯",
+        "english_name": "Pope Siricius",
+        "birth_death": "約 334 - 399",
+        "epithet": "聖人",
+        "noble_title": "教宗",
+        "image_url": "images/characters/西利修斯.png",
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            }
+        ],
+        "birth_year_num": 334,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "利奧一世",
+        "english_name": "Pope Leo I",
+        "birth_death": "約 390 - 461",
+        "epithet": "大帝",
+        "noble_title": "教宗",
+        "image_url": "images/characters/利奧一世.png",
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            }
+        ],
+        "birth_year_num": 390,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "查理四世",
+        "english_name": "Charles IV",
+        "birth_death": "1316 - 1378",
+        "epithet": "無",
+        "noble_title": "神聖羅馬皇帝 / 波希米亞國王",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page04",
+                "title": "神聖羅馬帝國：金璽詔書"
+            }
+        ],
+        "birth_year_num": 1316,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "揚·胡斯",
+        "english_name": "Jan Hus",
+        "birth_death": "約 1369 - 1415",
+        "epithet": "無",
+        "noble_title": "神學家 / 改革家",
+        "image_url": "images/characters/揚·胡斯.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1369,
+        "category": "hussite"
+    },
+    {
+        "chinese_name": "西吉斯蒙德",
+        "english_name": "Sigismund of Luxemburg",
+        "birth_death": "1368 - 1437",
+        "epithet": "無",
+        "noble_title": "神聖羅馬皇帝 / 匈牙利國王 / 波希米亞國王",
+        "image_url": "images/characters/西吉斯蒙德.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1368,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "瓦茨拉夫四世",
+        "english_name": "Wenceslaus IV",
+        "birth_death": "1361 - 1419",
+        "epithet": "懶惰者",
+        "noble_title": "波希米亞國王 / 德意志國王",
+        "image_url": "images/characters/瓦茨拉夫四世.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1361,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "揚·傑士卡",
+        "english_name": "Jan Žižka",
+        "birth_death": "約 1360 - 1424",
+        "epithet": "獨眼傑式卡",
+        "noble_title": "捷克將領 / 胡斯派軍事領袖",
+        "image_url": "images/characters/揚·傑士卡.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1360,
+        "category": "hussite"
+    },
+    {
+        "chinese_name": "普羅科普",
+        "english_name": "Prokop the Great",
+        "birth_death": "約 1380 - 1434",
+        "epithet": "大普羅科普",
+        "noble_title": "胡斯派軍事領袖 / 牧師",
+        "image_url": "images/characters/普羅科普.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1380,
+        "category": "hussite"
+    },
+    {
+        "chinese_name": "馬丁五世",
+        "english_name": "Pope Martin V",
+        "birth_death": "1369 - 1431",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/馬丁五世.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1369,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "雅克·福涅爾",
+        "english_name": "Jacques Fournier",
+        "birth_death": "約 1280 - 1342",
+        "epithet": "白教皇 (後登基為教宗本篤十二世)",
+        "noble_title": "教宗 / 帕米埃主教",
+        "image_url": "images/characters/雅克·福涅爾.jpg",
+        "sources": [
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1280,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "皮埃爾二世",
+        "english_name": "Peter II of Aragon",
+        "birth_death": "1178 - 1213",
+        "epithet": "天主教徒",
+        "noble_title": "亞拉岡國王",
+        "image_url": "images/characters/皮埃爾二世.jpg",
+        "sources": [
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1178,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "奧蘭治親王威廉一世",
+        "english_name": "William the Silent",
+        "birth_death": "1533 - 1584",
+        "epithet": "沉默者 / 荷蘭國父",
+        "noble_title": "奧蘭治親王 / 荷蘭省督",
+        "image_url": "images/characters/奧蘭治親王威廉一世.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1533,
+        "category": "dutch"
+    },
+    {
+        "chinese_name": "腓力二世",
+        "english_name": "Philip II of Spain",
+        "birth_death": "1527 - 1598",
+        "epithet": "謹慎者",
+        "noble_title": "西班牙國王",
+        "image_url": "images/characters/腓力二世.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1527,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "阿爾瓦公爵",
+        "english_name": "Duke of Alba",
+        "birth_death": "1507 - 1582",
+        "epithet": "鐵血公爵",
+        "noble_title": "阿爾瓦公爵 / 西班牙將領 / 尼德蘭總督",
+        "image_url": "images/characters/阿爾瓦公爵.png",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1507,
+        "category": "dutch"
+    },
+    {
+        "chinese_name": "莫里斯",
+        "english_name": "Maurice of Orange",
+        "birth_death": "1567 - 1625",
+        "epithet": "無",
+        "noble_title": "奧蘭治親王 / 荷蘭聯邦執政",
+        "image_url": "images/characters/莫里斯.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1567,
+        "category": "dutch"
+    },
+    {
+        "chinese_name": "巴內維爾德",
+        "english_name": "Johan van Oldenbarnevelt",
+        "birth_death": "1547 - 1619",
+        "epithet": "無",
+        "noble_title": "荷蘭大議長",
+        "image_url": "images/characters/巴內維爾德.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1547,
+        "category": "dutch"
+    },
+    {
+        "chinese_name": "約翰王",
+        "english_name": "King John",
+        "birth_death": "1166 - 1216",
+        "epithet": "無地王",
+        "noble_title": "英格蘭國王",
+        "image_url": "images/characters/約翰王.jpg",
+        "sources": [
+            {
+                "page_id": "page14",
+                "title": "英國的憲法"
+            }
+        ],
+        "birth_year_num": 1166,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "亨利三世 (英格蘭)",
+        "english_name": "Henry III",
+        "birth_death": "1207 - 1272",
+        "epithet": "溫徹斯特的亨利",
+        "noble_title": "英格蘭國王",
+        "image_url": "images/characters/亨利三世_英格蘭.jpg",
+        "sources": [
+            {
+                "page_id": "page14",
+                "title": "英國的憲法"
+            }
+        ],
+        "birth_year_num": 1207,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "愛德華一世",
+        "english_name": "Edward I",
+        "birth_death": "1239 - 1307",
+        "epithet": "長腿 / 蘇格蘭人之槌",
+        "noble_title": "英格蘭國王",
+        "image_url": "images/characters/愛德華一世.jpg",
+        "sources": [
+            {
+                "page_id": "page14",
+                "title": "英國的憲法"
+            }
+        ],
+        "birth_year_num": 1239,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "海因里希·根特·馮·圖萊邁爾",
+        "english_name": "Heinrich Günther von Thulemeyer",
+        "birth_death": "約 1642 - 1714",
+        "epithet": "無",
+        "noble_title": "法學家 / 博學者",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page04",
+                "title": "神聖羅馬帝國：金璽詔書"
+            }
+        ],
+        "birth_year_num": 1642,
+        "category": "others"
+    },
+    {
+        "chinese_name": "約翰·克里斯蒂安·呂尼希",
+        "english_name": "Johann Christian Lünig",
+        "birth_death": "1662 - 1740",
+        "epithet": "無",
+        "noble_title": "法學家 / 出版商",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page04",
+                "title": "神聖羅馬帝國：金璽詔書"
+            }
+        ],
+        "birth_year_num": 1662,
+        "category": "others"
+    },
+    {
+        "chinese_name": "教宗保祿一世",
+        "english_name": "Pope Paul I",
+        "birth_death": "700 - 767",
+        "epithet": "聖人",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗保祿一世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 700,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "大希律王",
+        "english_name": "Herod the Great",
+        "birth_death": "約 前73 - 前4",
+        "epithet": "大王",
+        "noble_title": "猶太國王",
+        "image_url": "images/characters/大希律王.jpg",
+        "sources": [
+            {
+                "page_id": "page33",
+                "title": "一世紀羅馬行省治權與社會"
+            }
+        ],
+        "birth_year_num": -73,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "阿薩納里克",
+        "english_name": "Athanaric",
+        "birth_death": "d. 381",
+        "epithet": "無",
+        "noble_title": "西哥德首領",
+        "image_url": "images/characters/阿薩納里克.jpg",
+        "sources": [
+            {
+                "page_id": "page25",
+                "title": "羅馬晚期軍制變遷與哥德人崛起"
+            }
+        ],
+        "birth_year_num": 381,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "教宗斐拉修二世",
+        "english_name": "Pope Pelagius II",
+        "birth_death": "520 - 590",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗斐拉修二世.jpg",
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            }
+        ],
+        "birth_year_num": 520,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "阿洛伊修斯·里利烏斯",
+        "english_name": "Aloysius Lilius",
+        "birth_death": "約 1510 - 1576",
+        "epithet": "無",
+        "noble_title": "醫生 / 天文學家 / 數學家",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page18",
+                "title": "西元紀年的確立與演進"
+            }
+        ],
+        "birth_year_num": 1510,
+        "category": "others"
+    },
+    {
+        "chinese_name": "克里斯托弗·克拉烏斯",
+        "english_name": "Christopher Clavius",
+        "birth_death": "1538 - 1612",
+        "epithet": "16世紀的歐幾里得",
+        "noble_title": "耶穌會天文學家 / 數學家",
+        "image_url": "images/characters/克里斯托弗·克拉烏斯.jpg",
+        "sources": [
+            {
+                "page_id": "page18",
+                "title": "西元紀年的確立與演進"
+            }
+        ],
+        "birth_year_num": 1538,
+        "category": "others"
+    },
+    {
+        "chinese_name": "小狄奧尼修斯",
+        "english_name": "Dionysius Exiguus",
+        "birth_death": "約 470 - 約 544",
+        "epithet": "矮小者",
+        "noble_title": "僧侶 / 學者",
+        "image_url": "images/characters/小狄奧尼修斯.jpg",
+        "sources": [
+            {
+                "page_id": "page18",
+                "title": "西元紀年的確立與演進"
+            }
+        ],
+        "birth_year_num": 470,
+        "category": "others"
+    },
+    {
+        "chinese_name": "亞歷山卓的西里爾",
+        "english_name": "Cyril of Alexandria",
+        "birth_death": "約 376 - 444",
+        "epithet": "教會之柱",
+        "noble_title": "亞歷山大港大主教 / 聖人",
+        "image_url": "images/characters/亞歷山卓的西里爾.jpg",
+        "sources": [
+            {
+                "page_id": "page18",
+                "title": "西元紀年的確立與演進"
+            }
+        ],
+        "birth_year_num": 376,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "教宗額我略十三世",
+        "english_name": "Pope Gregory XIII",
+        "birth_death": "1502 - 1585",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗額我略十三世.jpg",
+        "sources": [
+            {
+                "page_id": "page18",
+                "title": "西元紀年的確立與演進"
+            }
+        ],
+        "birth_year_num": 1502,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "盧皮奇努斯",
+        "english_name": "Lupicinus",
+        "birth_death": "活躍於 4 世紀晚期 (約 376 - 378)",
+        "epithet": "無",
+        "noble_title": "色雷斯伯爵 / 羅馬將領",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page29",
+                "title": "阿德里安堡戰役"
+            }
+        ],
+        "birth_year_num": 376,
+        "category": "others"
+    },
+    {
+        "chinese_name": "君士坦丁三世",
+        "english_name": "Constantine III",
+        "birth_death": "d. 411",
+        "epithet": "無",
+        "noble_title": "西羅馬皇帝 (篡位者)",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 411,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "西格薩爾",
+        "english_name": "Sigesar",
+        "birth_death": "活躍於 5 世紀早期 (約 409 - 415)",
+        "epithet": "無",
+        "noble_title": "西哥德亞利烏派主教",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page38",
+                "title": "阿陶爾夫與西哥德轉型"
+            }
+        ],
+        "birth_year_num": 409,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "巴庫里烏斯",
+        "english_name": "Bacurius the Iberian",
+        "birth_death": "d. 394",
+        "epithet": "無",
+        "noble_title": "羅馬將領 / 高加索伊比利亞王室成員",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page27",
+                "title": "冷河戰役及其歷史學再闡釋"
+            }
+        ],
+        "birth_year_num": 394,
+        "category": "others"
+    },
+    {
+        "chinese_name": "約安尼斯",
+        "english_name": "Ioannes",
+        "birth_death": "活躍於 5 世紀早期 (約 400 - 408)",
+        "epithet": "無",
+        "noble_title": "東羅馬朝廷權臣 / 官員",
+        "image_url": "images/characters/約安尼斯.png",
+        "sources": [
+            {
+                "page_id": "page30",
+                "title": "蓋納斯與早期拜占庭蠻族權力危機"
+            }
+        ],
+        "birth_year_num": 400,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "教宗嘉禮二世",
+        "english_name": "Pope Calixtus II",
+        "birth_death": "約 1065 - 1124",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗嘉禮二世.jpg",
+        "sources": [
+            {
+                "page_id": "page08",
+                "title": "敘任權之爭：沃姆斯協約"
+            }
+        ],
+        "birth_year_num": 1065,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "亨利五世",
+        "english_name": "Henry V",
+        "birth_death": "1086 - 1125",
+        "epithet": "無",
+        "noble_title": "神聖羅馬皇帝",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page08",
+                "title": "敘任權之爭：沃姆斯協約"
+            }
+        ],
+        "birth_year_num": 1086,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "揚·彼得斯佐恩·科恩",
+        "english_name": "Jan Pieterszoon Coen",
+        "birth_death": "1587 - 1629",
+        "epithet": "班達大屠殺者",
+        "noble_title": "荷屬東印度總督",
+        "image_url": "images/characters/揚·彼得斯佐恩·科恩.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1587,
+        "category": "dutch"
+    },
+    {
+        "chinese_name": "彼得·博特",
+        "english_name": "Pieter Both",
+        "birth_death": "1568 - 1615",
+        "epithet": "無",
+        "noble_title": "荷屬東印度總督",
+        "image_url": "images/characters/彼得·博特.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1568,
+        "category": "dutch"
+    },
+    {
+        "chinese_name": "杜爾的格列高利",
+        "english_name": "Gregory of Tours",
+        "birth_death": "約 538 - 594",
+        "epithet": "聖人",
+        "noble_title": "圖爾主教 / 歷史學家",
+        "image_url": "images/characters/杜爾的格列高利.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 538,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "教宗格列高利九世",
+        "english_name": "Pope Gregory IX",
+        "birth_death": "約 1145 - 1241",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗格列高利九世.jpg",
+        "sources": [
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1145,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "西門·德·蒙福爾",
+        "english_name": "Simon de Montfort",
+        "birth_death": "約 1175 - 1218",
+        "epithet": "萊斯特伯爵 / 蒙福爾領主",
+        "noble_title": "十字軍軍事統帥",
+        "image_url": "images/characters/西門·德·蒙福爾.jpg",
+        "sources": [
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1175,
+        "category": "others"
+    },
+    {
+        "chinese_name": "雷蒙六世",
+        "english_name": "Raymond VI of Toulouse",
+        "birth_death": "1156 - 1222",
+        "epithet": "無",
+        "noble_title": "土魯斯伯爵",
+        "image_url": "images/characters/雷蒙六世.jpg",
+        "sources": [
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1156,
+        "category": "others"
+    },
+    {
+        "chinese_name": "雷蒙七世",
+        "english_name": "Raymond VII of Toulouse",
+        "birth_death": "1197 - 1249",
+        "epithet": "無",
+        "noble_title": "土魯斯伯爵",
+        "image_url": "images/characters/雷蒙七世.gif",
+        "sources": [
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1197,
+        "category": "others"
+    },
+    {
+        "chinese_name": "阿諾德·阿馬爾里克",
+        "english_name": "Arnaud Amaury",
+        "birth_death": "d. 1225",
+        "epithet": "無",
+        "noble_title": "熙篤會會長 / 教宗副使 / 納博訥總主教",
+        "image_url": "images/characters/阿諾德·阿馬爾里克.jpg",
+        "sources": [
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1225,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "雷蒙·羅傑·特倫卡維爾",
+        "english_name": "Raymond Roger Trencavel",
+        "birth_death": "1185 - 1209",
+        "epithet": "無",
+        "noble_title": "貝濟耶與卡卡頌子爵",
+        "image_url": "images/characters/雷蒙·羅傑·特倫卡維爾.gif",
+        "sources": [
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1185,
+        "category": "others"
+    },
+    {
+        "chinese_name": "教宗英諾森三世",
+        "english_name": "Pope Innocent III",
+        "birth_death": "1161 - 1216",
+        "epithet": "無",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗英諾森三世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            },
+            {
+                "page_id": "page12",
+                "title": "宗教戰爭(二)：卡特里派"
+            }
+        ],
+        "birth_year_num": 1161,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "奧托四世",
+        "english_name": "Otto IV",
+        "birth_death": "1175 - 1218",
+        "epithet": "無",
+        "noble_title": "神聖羅馬皇帝",
+        "image_url": "images/characters/奧托四世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 1175,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "皮爾米紐斯",
+        "english_name": "Saint Pirminius",
+        "birth_death": "約 670 - 753",
+        "epithet": "聖人",
+        "noble_title": "傳教士 / 主教 / 修道院長",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page21",
+                "title": "使徒信經的歷史演變與神學建構"
+            }
+        ],
+        "birth_year_num": 670,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "阿奎萊亞的魯菲努斯",
+        "english_name": "Tyrannius Rufinus",
+        "birth_death": "約 345 - 411",
+        "epithet": "無",
+        "noble_title": "神學家 / 歷史學家 / 長老",
+        "image_url": "images/characters/阿奎萊亞的魯菲努斯.jpg",
+        "sources": [
+            {
+                "page_id": "page21",
+                "title": "使徒信經的歷史演變與神學建構"
+            }
+        ],
+        "birth_year_num": 345,
+        "category": "others"
+    },
+    {
+        "chinese_name": "尼西塔斯",
+        "english_name": "Saint Nicetas of Remesiana",
+        "birth_death": "約 335 - 414",
+        "epithet": "聖人",
+        "noble_title": "雷梅西亞納主教 / 神學家",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page21",
+                "title": "使徒信經的歷史演變與神學建構"
+            }
+        ],
+        "birth_year_num": 335,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "馬塞路",
+        "english_name": "Marcellus of Ancyra",
+        "birth_death": "約 285 - 374",
+        "epithet": "無",
+        "noble_title": "安基拉主教 / 神學家",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page21",
+                "title": "使徒信經的歷史演變與神學建構"
+            }
+        ],
+        "birth_year_num": 285,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "安波羅修",
+        "english_name": "Saint Ambrose",
+        "birth_death": "約 339 - 397",
+        "epithet": "聖人 / 教會聖師",
+        "noble_title": "米蘭主教",
+        "image_url": "images/characters/安波羅修.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            },
+            {
+                "page_id": "page28",
+                "title": "羅馬帝國：薩洛尼卡敕令"
+            }
+        ],
+        "birth_year_num": 339,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "亞他那修",
+        "english_name": "Saint Athanasius of Alexandria",
+        "birth_death": "約 296 - 373",
+        "epithet": "正統信仰之柱",
+        "noble_title": "亞歷山大港大主教 / 聖人",
+        "image_url": "images/characters/亞他那修.jpg",
+        "sources": [
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            }
+        ],
+        "birth_year_num": 296,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "亞利烏",
+        "english_name": "Arius",
+        "birth_death": "256 - 336",
+        "epithet": "亞利烏派創始者",
+        "noble_title": "長老 / 神學家",
+        "image_url": "images/characters/亞利烏.jpg",
+        "sources": [
+            {
+                "page_id": "page19",
+                "title": "米蘭敕令時代與李錫尼覆滅"
+            }
+        ],
+        "birth_year_num": 256,
+        "category": "others"
+    },
+    {
+        "chinese_name": "奧古斯丁",
+        "english_name": "Saint Augustinus of Hippo",
+        "birth_death": "354 - 430",
+        "epithet": "恩寵博士",
+        "noble_title": "希波主教 / 神學家 / 聖人",
+        "image_url": "images/characters/奧古斯丁.jpg",
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            },
+            {
+                "page_id": "page26",
+                "title": "阿拉里克與哥德大遷徙"
+            }
+        ],
+        "birth_year_num": 354,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "耶柔米",
+        "english_name": "Saint Jerome",
+        "birth_death": "約 347 - 420",
+        "epithet": "聖人 / 教會聖師",
+        "noble_title": "司鐸 / 神學家 / 聖經翻譯家",
+        "image_url": "images/characters/耶柔米.jpg",
+        "sources": [
+            {
+                "page_id": "page10",
+                "title": "卡洛林教育基建與知識復興"
+            }
+        ],
+        "birth_year_num": 347,
+        "category": "others"
+    },
+    {
+        "chinese_name": "波愛修斯",
+        "english_name": "Boethius",
+        "birth_death": "約 477 - 524",
+        "epithet": "無",
+        "noble_title": "羅馬執政官 / 哲學家",
+        "image_url": "images/characters/波愛修斯.jpeg",
+        "sources": [
+            {
+                "page_id": "page10",
+                "title": "卡洛林教育基建與知識復興"
+            }
+        ],
+        "birth_year_num": 477,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "教宗吉拉修一世",
+        "english_name": "Pope Gelasius I",
+        "birth_death": "d. 496",
+        "epithet": "聖人",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗吉拉修一世.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            }
+        ],
+        "birth_year_num": 496,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "阿納斯塔修斯一世",
+        "english_name": "Anastasius I Dicorus",
+        "birth_death": "約 431 - 518",
+        "epithet": "雙瞳者",
+        "noble_title": "東羅馬皇帝",
+        "image_url": "images/characters/阿納斯塔修斯一世.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            }
+        ],
+        "birth_year_num": 431,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "路易·波拿巴",
+        "english_name": "Louis Bonaparte",
+        "birth_death": "1778 - 1846",
+        "epithet": "無",
+        "noble_title": "荷蘭國王 / 拿破崙之弟",
+        "image_url": "images/characters/路易·波拿巴.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1778,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "荷蘭國王威廉三世",
+        "english_name": "William III of the Netherlands",
+        "birth_death": "1817 - 1890",
+        "epithet": "無",
+        "noble_title": "荷蘭國王 / 盧森堡大公",
+        "image_url": "images/characters/荷蘭國王威廉三世.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1817,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "荷蘭女王威廉明娜",
+        "english_name": "Wilhelmina of the Netherlands",
+        "birth_death": "1880 - 1962",
+        "epithet": "無",
+        "noble_title": "荷蘭女王",
+        "image_url": "images/characters/荷蘭女王威廉明娜.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1880,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "托爾貝克",
+        "english_name": "Johan Rudolf Thorbecke",
+        "birth_death": "1798 - 1872",
+        "epithet": "荷蘭憲法之父",
+        "noble_title": "荷蘭首相 / 法學家",
+        "image_url": "images/characters/托爾貝克.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1798,
+        "category": "dutch"
+    },
+    {
+        "chinese_name": "荷蘭國王威廉一世",
+        "english_name": "William I of the Netherlands",
+        "birth_death": "1772 - 1843",
+        "epithet": "無",
+        "noble_title": "荷蘭國王",
+        "image_url": "images/characters/荷蘭國王威廉一世.jpg",
+        "sources": [
+            {
+                "page_id": "page01",
+                "title": "荷蘭建國與地緣政經"
+            }
+        ],
+        "birth_year_num": 1772,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "華特·白芝浩",
+        "english_name": "Walter Bagehot",
+        "birth_death": "1826 - 1877",
+        "epithet": "無",
+        "noble_title": "憲法學家 / 編輯",
+        "image_url": "images/characters/華特·白芝浩.jpg",
+        "sources": [
+            {
+                "page_id": "page14",
+                "title": "英國的憲法"
+            }
+        ],
+        "birth_year_num": 1826,
+        "category": "others"
+    },
+    {
+        "chinese_name": "戴雪",
+        "english_name": "Albert Venn Dicey",
+        "birth_death": "1835 - 1922",
+        "epithet": "無",
+        "noble_title": "憲法學家 / 法學教授",
+        "image_url": "images/characters/戴雪.jpg",
+        "sources": [
+            {
+                "page_id": "page14",
+                "title": "英國的憲法"
+            }
+        ],
+        "birth_year_num": 1835,
+        "category": "others"
+    },
+    {
+        "chinese_name": "詹寧斯",
+        "english_name": "Sir Ivor Jennings",
+        "birth_death": "1903 - 1965",
+        "epithet": "無",
+        "noble_title": "憲法學家 / 教授",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page14",
+                "title": "英國的憲法"
+            }
+        ],
+        "birth_year_num": 1903,
+        "category": "others"
+    },
+    {
+        "chinese_name": "約翰·威克里夫",
+        "english_name": "John Wycliffe",
+        "birth_death": "約 1320 - 1384",
+        "epithet": "宗教改革的晨星",
+        "noble_title": "神學家 / 改革家",
+        "image_url": "images/characters/約翰·威克里夫.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1320,
+        "category": "others"
+    },
+    {
+        "chinese_name": "布拉格的傑路姆",
+        "english_name": "Jerome of Prague",
+        "birth_death": "約 1379 - 1416",
+        "epithet": "無",
+        "noble_title": "神學家 / 改革家",
+        "image_url": "images/characters/布拉格的傑路姆.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1379,
+        "category": "others"
+    },
+    {
+        "chinese_name": "波希米亞王后索菲亞",
+        "english_name": "Sofia of Bavaria",
+        "birth_death": "1376 - 1428",
+        "epithet": "無",
+        "noble_title": "波希米亞王后 / 攝政",
+        "image_url": "images/characters/波希米亞王后索菲亞.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1376,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "揚·熱利夫斯基",
+        "english_name": "Jan Želivský",
+        "birth_death": "約 1380 - 1422",
+        "epithet": "無",
+        "noble_title": "牧師 / 胡斯派激進領袖",
+        "image_url": "images/characters/揚·熱利夫斯基.jpg",
+        "sources": [
+            {
+                "page_id": "page03",
+                "title": "宗教戰爭(一)：胡斯戰爭"
+            }
+        ],
+        "birth_year_num": 1380,
+        "category": "hussite"
+    },
+    {
+        "chinese_name": "埃吉迪烏斯",
+        "english_name": "Aegidius",
+        "birth_death": "d. 464",
+        "epithet": "無",
+        "noble_title": "羅馬將領 / 蘇瓦松割據政權建立者",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 464,
+        "category": "others"
+    },
+    {
+        "chinese_name": "教宗匝加利亞",
+        "english_name": "Pope Zacharias",
+        "birth_death": "679 - 752",
+        "epithet": "聖人",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗匝加利亞.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 679,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "希爾德里克三世",
+        "english_name": "Childeric III",
+        "birth_death": "約 717 - 約 754",
+        "epithet": "幻影國王",
+        "noble_title": "墨洛溫王朝末代國王",
+        "image_url": "images/characters/希爾德里克三世.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 717,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "查理·馬特",
+        "english_name": "Charles Martel",
+        "birth_death": "約 688 - 741",
+        "epithet": "鐵錘查理",
+        "noble_title": "法蘭克宮相 / 實質統治者",
+        "image_url": "images/characters/查理·馬特.jpg",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 688,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "杜奧巴",
+        "english_name": "Dhuoda",
+        "birth_death": "約 800 - 約 843",
+        "epithet": "無",
+        "noble_title": "貴族女性 / 塞普提曼尼亞伯爵夫人",
+        "image_url": "images/characters/杜奧巴.jpg",
+        "sources": [
+            {
+                "page_id": "page10",
+                "title": "卡洛林教育基建與知識復興"
+            }
+        ],
+        "birth_year_num": 800,
+        "category": "others"
+    },
+    {
+        "chinese_name": "拉格納哈爾",
+        "english_name": "Ragnachar",
+        "birth_death": "d. 約 509",
+        "epithet": "無",
+        "noble_title": "康布雷國王 / 法蘭克小國王",
+        "image_url": "images/characters/拉格納哈爾.png",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 509,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "教宗達瑪穌一世",
+        "english_name": "Pope Damasus I",
+        "birth_death": "約 305 - 384",
+        "epithet": "聖人",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗達瑪穌一世.png",
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            },
+            {
+                "page_id": "page28",
+                "title": "羅馬帝國：薩洛尼卡敕令"
+            }
+        ],
+        "birth_year_num": 305,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "亞歷山大港主教彼得",
+        "english_name": "Peter II of Alexandria",
+        "birth_death": "d. 380",
+        "epithet": "具有使徒般聖潔的人",
+        "noble_title": "亞歷山大港主教",
+        "image_url": null,
+        "sources": [
+            {
+                "page_id": "page28",
+                "title": "羅馬帝國：薩洛尼卡敕令"
+            }
+        ],
+        "birth_year_num": 380,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "教宗英諾森一世",
+        "english_name": "Pope Innocent I",
+        "birth_death": "d. 417",
+        "epithet": "聖人",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗英諾森一世.png",
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            }
+        ],
+        "birth_year_num": 417,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "馬約里安",
+        "english_name": "Majorian",
+        "birth_death": "420 - 461",
+        "epithet": "無",
+        "noble_title": "西羅馬皇帝",
+        "image_url": "images/characters/馬約里安.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            },
+            {
+                "page_id": "page25",
+                "title": "羅馬晚期軍制變遷與哥德人崛起"
+            }
+        ],
+        "birth_year_num": 420,
+        "category": "roman"
+    },
+    {
+        "chinese_name": "教宗烏爾巴諾二世",
+        "english_name": "Pope Urban II",
+        "birth_death": "約 1035 - 1099",
+        "epithet": "聖人",
+        "noble_title": "教宗",
+        "image_url": "images/characters/教宗烏爾巴諾二世.png",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            },
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            }
+        ],
+        "birth_year_num": 1035,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "德意志共治國王康拉德",
+        "english_name": "Conrad II of Italy",
+        "birth_death": "1074 - 1101",
+        "epithet": "無",
+        "noble_title": "德意志共治國王 / 義大利國王",
+        "image_url": "images/characters/德意志共治國王康拉德.png",
+        "sources": [
+            {
+                "page_id": "page09",
+                "title": "丕平獻土與教宗國誕生"
+            }
+        ],
+        "birth_year_num": 1074,
+        "category": "germanic"
+    },
+    {
+        "chinese_name": "彼得·達米安",
+        "english_name": "Saint Peter Damian",
+        "birth_death": "約 1007 - 1072",
+        "epithet": "教會聖師",
+        "noble_title": "樞機主教 / 神學家 / 聖人",
+        "image_url": "images/characters/彼得·達米安.jpg",
+        "sources": [
+            {
+                "page_id": "page15",
+                "title": "聖職與婚娶"
+            },
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            }
+        ],
+        "birth_year_num": 1007,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "聖伯爾納鐸",
+        "english_name": "Saint Bernard of Clairvaux",
+        "birth_death": "1090 - 1153",
+        "epithet": "蜜舌聖師",
+        "noble_title": "修道院長 / 神學家 / 聖人",
+        "image_url": "images/characters/聖伯爾納鐸.jpg",
+        "sources": [
+            {
+                "page_id": "page17",
+                "title": "從皇帝稱號看羅馬政教關係演變"
+            }
+        ],
+        "birth_year_num": 1090,
+        "category": "hre"
+    },
+    {
+        "chinese_name": "美因茨總主教阿達爾貝特",
+        "english_name": "Adalbert I of Mainz",
+        "birth_death": "約 1070 - 1137",
+        "epithet": "無",
+        "noble_title": "美因茨總主教",
+        "image_url": "images/characters/美因茨總主教阿達爾貝特.jpg",
+        "sources": [
+            {
+                "page_id": "page08",
+                "title": "敘任權之爭：沃姆斯協約"
+            }
+        ],
+        "birth_year_num": 1070,
+        "category": "papal"
+    },
+    {
+        "chinese_name": "約翰內斯·古騰堡",
+        "english_name": "Johannes Gutenberg",
+        "birth_death": "約 1400 - 1468",
+        "epithet": "活字印刷術發明者",
+        "noble_title": "發明家 / 印刷商",
+        "image_url": "images/characters/約翰內斯·古騰堡.jpg",
+        "sources": [
+            {
+                "page_id": "page11",
+                "title": "歐洲造紙術的歷史演變"
+            }
+        ],
+        "birth_year_num": 1400,
+        "category": "others"
+    },
+    {
+        "chinese_name": "希爾佩里克一世",
+        "english_name": "Chilperic I",
+        "birth_death": "約 539 - 584",
+        "epithet": "當時的尼祿與希律",
+        "noble_title": "蘇瓦松國王 / 法蘭克國王",
+        "image_url": "images/characters/希爾佩里克一世.jpg",
+        "sources": [
+            {
+                "page_id": "page23",
+                "title": "蠻族崛起的政治重塑與克洛維霸權"
+            }
+        ],
+        "birth_year_num": 539,
+        "category": "germanic"
+    }
+];
+
+    const categoriesConfig = {
+    "all": "所有人物",
+    "roman": "🏛️ 羅馬與拜占庭",
+    "germanic": "⚔️ 日耳曼與蠻族王權",
+    "papal": "⛪ 教宗與神職人員",
+    "hre": "👑 神聖羅馬帝國",
+    "hussite": "🏹 胡斯與宗教改革",
+    "dutch": "⛵ 荷蘭與大航海",
+    "british": "📜 英國憲政與其他",
+    "others": "❓ 其他/不詳"
+};
+
+    let currentCategory = 'all';
+    let currentView = 'card'; // 'card' or 'table'
+
+    // Initialize Page
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById('totalCount').innerText = rawCharacters.length;
+        renderTabs();
+        filterData();
+    });
+
+    // Render Tabs
+    function renderTabs() {
+        const container = document.getElementById('categoryTabs');
+        let html = `<button class="tab-btn active" id="tab-all" onclick="selectCategory('all')">🌍 全部人物</button>`;
+        for (const [key, val] of Object.entries(categoriesConfig)) {
+            if (key === 'all') continue;
+            html += `<button class="tab-btn" id="tab-${key}" onclick="selectCategory('${key}')">${val}</button>`;
+        }
+        container.innerHTML = html;
+    }
+
+    // Select Category Tab
+    function selectCategory(catKey) {
+        currentCategory = catKey;
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(`tab-${catKey}`).classList.add('active');
+        filterData();
+    }
+
+    // Toggle between Card View and Table View
+    function toggleView() {
+        const cardView = document.getElementById('cardView');
+        const tableView = document.getElementById('tableView');
+        const viewText = document.getElementById('viewText');
+        const viewIcon = document.getElementById('viewIcon');
+
+        if (currentView === 'card') {
+            currentView = 'table';
+            cardView.style.display = 'none';
+            tableView.style.display = 'block';
+            viewText.innerText = '切換為 卡片檢視';
+            viewIcon.innerText = '🎴';
+        } else {
+            currentView = 'card';
+            cardView.style.display = 'grid';
+            tableView.style.display = 'none';
+            viewText.innerText = '切換為 表格檢視';
+            viewIcon.innerText = '📋';
+        }
+    }
+
+    // Filter, Sort and Render
+    function filterData() {
+        const keyword = document.getElementById('keywordSearch').value.toLowerCase().trim();
+        const sortBy = document.getElementById('sortBy').value;
+
+        // 1. Filter
+        let filtered = rawCharacters.filter(char => {
+            // Category check
+            if (currentCategory !== 'all' && char.category !== currentCategory) {
+                return false;
+            }
+            // Keyword check
+            if (keyword !== '') {
+                const nameMatch = char.chinese_name.toLowerCase().includes(keyword);
+                const engMatch = char.english_name.toLowerCase().includes(keyword);
+                const epithetMatch = char.epithet.toLowerCase().includes(keyword);
+                const titleMatch = char.noble_title.toLowerCase().includes(keyword);
+                const sourceMatch = char.sources.some(s => s.title.toLowerCase().includes(keyword));
+                return nameMatch || engMatch || epithetMatch || titleMatch || sourceMatch;
+            }
+            return true;
+        });
+
+        // 2. Sort
+        if (sortBy === 'year-asc') {
+            filtered.sort((a, b) => a.birth_year_num - b.birth_year_num);
+        } else if (sortBy === 'year-desc') {
+            filtered.sort((a, b) => b.birth_year_num - a.birth_year_num);
+        } else if (sortBy === 'name-asc') {
+            filtered.sort((a, b) => a.chinese_name.localeCompare(b.chinese_name, 'zh-Hant-TW'));
+        }
+
+        // Update counts
+        document.getElementById('visibleCount').innerText = filtered.length;
+
+        // 3. Render
+        renderCardView(filtered);
+        renderTableView(filtered);
+    }
+
+    // Render Cards
+    function renderCardView(data) {
+        const container = document.getElementById('cardView');
+        if (data.length === 0) {
+            container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-secondary);">🔍 沒有找到符合條件的人。</div>';
+            return;
+        }
+
+        let html = '';
+        data.forEach(char => {
+            const hasEpithet = char.epithet !== '無' && char.epithet !== '不詳' && char.epithet !== '';
+            const epithetClass = hasEpithet ? 'info-val epithet' : 'info-val epithet none';
+
+            // Build source buttons
+            let sourcesHtml = '';
+            char.sources.forEach(src => {
+                const link = src.page_id ? `index.html#${src.page_id}` : '#';
+                const target = src.page_id ? `target="_blank"` : '';
+                sourcesHtml += `<a href="${link}" ${target} class="source-link" title="閱讀專題：${src.title}">${src.title}</a>`;
+            });
+
+            html += `
+            <div class="char-card" data-category="${char.category}">
+                <div class="card-header">
+                    <div class="avatar-container" title="${char.image_url ? char.chinese_name : '無肖像/雕像存檔'}">
+                        ${char.image_url ? `<div class="avatar-img" style="background-image: url('${char.image_url}')"></div>` : `<div class="avatar-placeholder">無資料</div>`}
+                    </div>
+                    <div class="name-area">
+                        <div class="char-name" title="${char.chinese_name}">${char.chinese_name}</div>
+                        <div class="char-english-name" title="${char.english_name}">${char.english_name}</div>
+                    </div>
+                    <span class="category-badge badge-${char.category}">${categoriesConfig[char.category].split(' ')[1]}</span>
+                </div>
+                <div class="card-body">
+                    <div class="info-row">
+                        <span class="info-label">生卒年</span>
+                        <span class="info-val years">${char.birth_death}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">稱號</span>
+                        <span class="${epithetClass}">${char.epithet}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">爵位官職</span>
+                        <span class="info-val">${char.noble_title}</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="sources-title">出處文獻</div>
+                    <div class="sources-list">${sourcesHtml}</div>
+                </div>
+            </div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    // Render Table
+    function renderTableView(data) {
+        const container = document.getElementById('tableBody');
+        if (data.length === 0) {
+            container.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 40px; color: var(--text-secondary);">🔍 沒有找到符合條件的人。</td></tr>';
+            return;
+        }
+
+        let html = '';
+        data.forEach(char => {
+            const hasEpithet = char.epithet !== '無' && char.epithet !== '不詳' && char.epithet !== '';
+            const epithetHtml = hasEpithet ? `<span class="info-val epithet">${char.epithet}</span>` : `<span style="color: var(--text-secondary);">無</span>`;
+
+            // Build sources lists
+            let sourcesHtml = '';
+            char.sources.forEach((src, idx) => {
+                const link = src.page_id ? `index.html#${src.page_id}` : '#';
+                const target = src.page_id ? `target="_blank"` : '';
+                sourcesHtml += `${idx > 0 ? ', ' : ''}<a href="${link}" ${target} class="source-link" style="display:inline; background:none; border:none; padding:0; box-shadow:none;" title="閱讀專題：${src.title}">${src.title}</a>`;
+            });
+
+            html += `
+            <tr>
+                <td>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="table-avatar-container" title="${char.image_url ? char.chinese_name : '無肖像/雕像存檔'}">
+                            ${char.image_url ? `<div class="table-avatar-img" style="background-image: url('${char.image_url}')"></div>` : `<div class="table-avatar-placeholder">無</div>`}
+                        </div>
+                        <div style="min-width: 0;">
+                            <span class="table-name" style="display: block;">${char.chinese_name}</span>
+                            <span class="table-eng-name" style="display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px;">${char.english_name}</span>
+                        </div>
+                    </div>
+                </td>
+                <td><span class="info-val years">${char.birth_death}</span></td>
+                <td>${epithetHtml}</td>
+                <td><span style="font-weight: 500;">${char.noble_title}</span></td>
+                <td><div style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${sourcesHtml}</div></td>
+            </tr>`;
+        });
+        container.innerHTML = html;
+    }
+</script>
+</body>
+</html>

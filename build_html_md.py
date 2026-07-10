@@ -475,6 +475,11 @@ file_p38 = r'course/阿陶爾夫與哥德大遷徙：晚期羅馬帝國的地緣
 map_p38 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/athaulf_placidia_wedding.png" alt="Athaulf and Galla Placidia Wedding" loading="lazy"><figcaption class="caption">阿陶爾夫與加拉·普拉西提阿的婚禮：西元414年，西哥德君主阿陶爾夫身著羅馬執政官托加禮服，在納博訥迎娶羅馬公主普拉西提阿，象徵哥德武力與羅馬法治秩序的政治合流。</figcaption></figure>\n'
 images_p38 = []
 
+# Page 39 Config
+file_p39 = r'course/斯提里科的崛起、掌權與覆滅：從晚期羅馬的歸化政策、用人機制與軍隊蠻族化透視帝國瓦解之源起.md'
+map_p39 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/stilicho_general.png" alt="General Flavius Stilicho" loading="lazy"><figcaption class="caption">弗拉維烏斯·斯提里科的肖像插圖：半日耳曼裔的西羅馬帝國雙軍總長與攝政，身著晚期羅馬將領甲冑，其一生是晚期羅馬帝國防務外包與政治撕裂的縮影。</figcaption></figure>\n'
+images_p39 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -592,6 +597,9 @@ html_body_p37 = process_3col_document(file_p37, "1.0", page_id="page37", lang_or
 print("Processing Page 38 (Visigothic Transition)...")
 html_body_p38 = process_markdown(file_p38, images_p38, "1.0", map_p38, page_id="page38")
 
+print("Processing Page 39 (Stilicho)...")
+html_body_p39 = process_markdown(file_p39, images_p39, "1.0", map_p39, page_id="page39")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -663,6 +671,7 @@ pages_data = {
     'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.0', 'doc': False},
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.0', 'doc': False},
+    'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -676,7 +685,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page35']
+        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page35', 'page39']
     },
     {
         'title': '中世紀諸民族記',
@@ -1012,6 +1021,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE35__', html_body_p35)
 final_html = final_html.replace('__HTML_BODY_PAGE36__', html_body_p36)
 final_html = final_html.replace('__HTML_BODY_PAGE37__', html_body_p37)
 final_html = final_html.replace('__HTML_BODY_PAGE38__', html_body_p38)
+final_html = final_html.replace('__HTML_BODY_PAGE39__', html_body_p39)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1054,6 +1064,7 @@ final_html = final_html.replace('__PAGE35_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE36_DATE__', get_file_last_update_date(file_p36))
 final_html = final_html.replace('__PAGE37_DATE__', get_file_last_update_date(file_p37))
 final_html = final_html.replace('__PAGE38_DATE__', get_file_last_update_date(file_p38))
+final_html = final_html.replace('__PAGE39_DATE__', get_file_last_update_date(file_p39))
 
 # Inject JavaScript for toggle function
 toggle_js = """
