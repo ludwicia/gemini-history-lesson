@@ -480,6 +480,11 @@ file_p39 = r'course/斯提里科的崛起、掌權與覆滅：從晚期羅馬的
 map_p39 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/stilicho_general.png" alt="General Flavius Stilicho" loading="lazy"><figcaption class="caption">弗拉維烏斯·斯提里科的肖像插圖：半日耳曼裔的西羅馬帝國雙軍總長與攝政，身著晚期羅馬將領甲冑，其一生是晚期羅馬帝國防務外包與政治撕裂的縮影。</figcaption></figure>\n'
 images_p39 = []
 
+# Page 40 Config
+file_p40 = r'course/歐陸地緣裂變與整合的雙軸命脈：萊茵河－多瑙河連線的政治、經濟與歷史戰略研究.md'
+map_p40 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/rhine_danube_frontier.png" alt="Rhine Danube Frontier" loading="lazy"><figcaption class="caption">萊茵河－多瑙河羅馬帝國邊境：公元四世紀，羅馬人在帝國北部邊界修築了複雜的界牆系統，將萊茵河與多瑙河的天然防線封閉起來，以抵禦外來部落的入侵。</figcaption></figure>\n'
+images_p40 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -600,6 +605,9 @@ html_body_p38 = process_markdown(file_p38, images_p38, "1.2", map_p38, page_id="
 print("Processing Page 39 (Stilicho)...")
 html_body_p39 = process_markdown(file_p39, images_p39, "1.0", map_p39, page_id="page39")
 
+print("Processing Page 40 (Rhine Danube)...")
+html_body_p40 = process_markdown(file_p40, images_p40, "1.0", map_p40, page_id="page40")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -672,6 +680,7 @@ pages_data = {
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.2', 'doc': False},
     'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False, 'bg_pos': 'center top'},
+    'page40': {'title': '萊茵河－多瑙河地緣戰略', 'img': 'images/rhine_danube_frontier.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -721,7 +730,7 @@ categories = [
         'title': '歐洲小知識',
         'key': 'trivia',
         'img': 'images/paper_main.jpg',
-        'pages': ['page14', 'page11', 'page18', 'page05']
+        'pages': ['page14', 'page11', 'page18', 'page05', 'page40']
     },
     {
         'title': '美國的誕生',
@@ -1023,6 +1032,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE36__', html_body_p36)
 final_html = final_html.replace('__HTML_BODY_PAGE37__', html_body_p37)
 final_html = final_html.replace('__HTML_BODY_PAGE38__', html_body_p38)
 final_html = final_html.replace('__HTML_BODY_PAGE39__', html_body_p39)
+final_html = final_html.replace('__HTML_BODY_PAGE40__', html_body_p40)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1066,6 +1076,7 @@ final_html = final_html.replace('__PAGE36_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE37_DATE__', get_file_last_update_date(file_p37))
 final_html = final_html.replace('__PAGE38_DATE__', get_file_last_update_date(file_p38))
 final_html = final_html.replace('__PAGE39_DATE__', get_file_last_update_date(file_p39))
+final_html = final_html.replace('__PAGE40_DATE__', get_file_last_update_date(file_p40))
 
 # Inject JavaScript for toggle function
 toggle_js = """

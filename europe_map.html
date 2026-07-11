@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歐洲歷史互動地圖 | Ludwica 歷史課</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+    <style>
+        :root {
+            --primary-color: #2b6cb0;
+            --primary-light: #ebf8ff;
+            --primary-dark: #1a365d;
+            --accent-color: #dd6b20;
+            --bg-color: #0f172a;
+            --sidebar-bg: rgba(15, 23, 42, 0.85);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(226, 232, 240, 0.1);
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-vintage {
+            --primary-color: #8c6239;
+            --primary-light: #fdfaf2;
+            --primary-dark: #5c3e21;
+            --accent-color: #c0392b;
+            --bg-color: #f4efe2;
+            --sidebar-bg: rgba(244, 239, 226, 0.9);
+            --card-bg: rgba(255, 253, 247, 0.8);
+            --border-color: rgba(140, 98, 57, 0.15);
+            --text-color: #2c1d11;
+            --text-muted: #7f6a58;
+            --shadow: 0 8px 20px rgba(140, 98, 57, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Container Layout */
+        #map-viewport {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sidebar Container */
+        #control-panel {
+            width: 420px;
+            height: 100%;
+            background-color: var(--sidebar-bg);
+            backdrop-filter: blur(16px);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            box-shadow: var(--shadow);
+            transition: width 0.3s, transform 0.3s, background-color 0.3s;
+            overflow: hidden;
+        }
+
+        /* Header styles */
+        .panel-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+            padding: 6px 12px;
+            background-color: var(--primary-light);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-3px);
+            opacity: 0.9;
+        }
+
+        .theme-toggle-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: rgba(144, 163, 184, 0.1);
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 1.65rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Search & Filter Section */
+        .search-area {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            background: rgba(148, 163, 184, 0.08);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
+            background: rgba(148, 163, 184, 0.04);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Epoch/Category Filters */
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 4px;
+        }
+
+        .filter-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            padding: 6px 12px;
+            background: rgba(148, 163, 184, 0.08);
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            color: var(--text-color);
+            background: rgba(148, 163, 184, 0.15);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Place List Area */
+        .list-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 24px;
+        }
+
+        .list-header {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .place-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .place-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .place-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .place-item.active {
+            border-color: var(--primary-color);
+            background-color: rgba(43, 108, 176, 0.08);
+            box-shadow: 0 0 0 1px var(--primary-color);
+        }
+
+        .place-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .place-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .place-mentions {
+            font-size: 0.78rem;
+            font-weight: 700;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .place-foreign {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Detail Sidebar Panel (when a place is selected) */
+        .place-detail-panel {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            background: rgba(15, 23, 42, 0.2);
+            display: none;
+        }
+
+        .place-detail-panel.active {
+            display: block;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .detail-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .detail-coords {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-family: monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .detail-desc {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .detail-articles-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .detail-articles-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
+        .detail-article-link {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: rgba(148, 163, 184, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .detail-article-link:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Custom Leaflet styling */
+        .leaflet-popup-content-wrapper {
+            background-color: var(--sidebar-bg) !important;
+            backdrop-filter: blur(10px);
+            color: var(--text-color) !important;
+            border: 1px solid var(--border-color);
+            border-radius: 12px !important;
+            box-shadow: var(--shadow) !important;
+        }
+
+        .leaflet-popup-tip {
+            background-color: var(--sidebar-bg) !important;
+            border-left: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .popup-card {
+            padding: 6px;
+        }
+
+        .popup-title {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-color);
+        }
+
+        .popup-desc {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .popup-links-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .popup-link {
+            font-size: 0.8rem;
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            margin-bottom: 4px;
+            padding: 4px 6px;
+            background: rgba(148, 163, 184, 0.08);
+            border-radius: 4px;
+        }
+
+        .popup-link:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        /* Marker Styles */
+        .custom-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .marker-rome { background-color: #e74c3c; } /* Red for major capitals */
+        .marker-medieval { background-color: #2ecc71; } /* Green for medieval/hre */
+        .marker-modern { background-color: #3498db; } /* Blue for modern/holland */
+        .marker-geography { background-color: #f1c40f; } /* Yellow for rivers/oceans */
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column-reverse;
+            }
+
+            #control-panel {
+                width: 100%;
+                height: 50vh;
+            }
+
+            #map-viewport {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Control Panel -->
+    <div id="control-panel">
+
+        <!-- Header -->
+        <div class="panel-header">
+            <div class="logo-area">
+                <a href="index.html" class="back-link">
+                    <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+                    返回首頁
+                </a>
+                <button class="theme-toggle-btn" id="themeToggleBtn">
+                    <span id="theme-icon">🎨</span>
+                    切換復古風
+                </button>
+            </div>
+            <h1>歐洲歷史互動地圖</h1>
+            <div class="subtitle">穿越時空的歷史地理坐標查詢系統</div>
+        </div>
+
+        <!-- Search Area -->
+        <div class="search-area">
+            <div class="search-container">
+                <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <input type="text" class="search-input" id="search-input" placeholder="搜尋地名、外文名或簡介...">
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="rome">羅馬帝國</button>
+                <button class="filter-btn" data-filter="medieval">中世紀</button>
+                <button class="filter-btn" data-filter="modern">近世荷法</button>
+                <button class="filter-btn" data-filter="geography">山川海洋</button>
+            </div>
+        </div>
+
+        <!-- List Container -->
+        <div class="list-container">
+            <div class="list-header">
+                <span>歷史地名</span>
+                <span id="result-count">共 40 個</span>
+            </div>
+            <ul class="place-list" id="place-list">
+                <!-- Dynamically populated -->
+            </ul>
+        </div>
+
+        <!-- Detail Panel (Active only when item clicked) -->
+        <div class="place-detail-panel" id="place-detail-panel">
+            <div class="detail-title" id="detail-title">羅馬</div>
+            <div class="detail-coords" id="detail-coords">座標: 41.9028, 12.4964</div>
+            <div class="detail-desc" id="detail-desc">羅馬帝國的發源地與精神象徵...</div>
+            <div class="detail-articles-title">相關文章</div>
+            <ul class="detail-articles-list" id="detail-articles-list">
+                <!-- Dynamically populated -->
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Right Map Viewport -->
+    <div id="map-viewport"></div>
+
+    <!-- Leaflet.js JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Loaded Placenames Database -->
+    <script src="js/map_data.js"></script>
+
+    <script>
+        // Check if database is loaded
+        if (typeof HISTORICAL_PLACES === 'undefined') {
+            console.error("Failed to load map_data.js database.");
+            // Fallback mock data in case of missing file
+            window.HISTORICAL_PLACES = [];
+        }
+
+        // Initialize Map
+        const map = L.map('map-viewport', {
+            center: [45.0, 15.0], // Centered in Central Europe
+            zoom: 5,
+            minZoom: 3,
+            maxZoom: 10
+        });
+
+        // Tilesets Definition
+        const tilesets = {
+            dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }),
+            vintage: L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            })
+        };
+
+        // Default set to Dark Mode
+        let currentTheme = 'dark';
+        tilesets[currentTheme].addTo(map);
+
+        // Map Category Helper
+        function getCategory(p) {
+            const id = p.id;
+            // Roman cities
+            if (['rome', 'constantinople', 'milan', 'adrianople', 'thessalonica', 'carthage', 'alexandria', 'antioch', 'jerusalem', 'trier', 'york', 'ostia', 'thrace', 'illyricum'].includes(id)) {
+                return 'rome';
+            }
+            // Medieval & HRE
+            if (['ravenna', 'worms', 'hirsau', 'bohemia', 'soissons', 'tours', 'cologne', 'mainz', 'london', 'canterbury', 'ghent', 'bruges', 'benevento'].includes(id)) {
+                return 'medieval';
+            }
+            // Modern / Dutch
+            if (['amsterdam', 'rotterdam', 'thehague', 'utrecht', 'leiden', 'antwerp', 'paris'].includes(id)) {
+                return 'modern';
+            }
+            // Rivers & Seas
+            return 'geography';
+        }
+
+        // Map Category Colors
+        function getMarkerColor(category) {
+            switch(category) {
+                case 'rome': return '#e74c3c';      // Red
+                case 'medieval': return '#2ecc71';  // Green
+                case 'modern': return '#3498db';    // Blue
+                case 'geography': return '#f1c40f'; // Yellow
+                default: return '#95a5a6';
+            }
+        }
+
+        // Marker Icons creation using CSS DivIcon
+        function createMarkerIcon(category, char) {
+            const color = getMarkerColor(category);
+            return L.divIcon({
+                html: `<div class="custom-marker" style="background-color: ${color}">${char}</div>`,
+                className: 'div-marker-container',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+        }
+
+        // Keep track of markers mapped by place ID
+        const markersMap = {};
+        const markerGroup = L.featureGroup().addTo(map);
+
+        // Populating markers
+        function renderMarkers(filteredPlaces) {
+            // Clear current markers
+            markerGroup.clearLayers();
+            Object.keys(markersMap).forEach(key => delete markersMap[key]);
+
+            filteredPlaces.forEach(p => {
+                const category = getCategory(p);
+                const firstChar = p.name_zh.charAt(0);
+                const markerIcon = createMarkerIcon(category, firstChar);
+
+                // Construct Popup Content
+                let popupHtml = `
+                    <div class="popup-card">
+                        <div class="popup-title">${p.name_zh}</div>
+                        <div style="font-size: 0.78rem; font-style: italic; color: var(--text-muted); margin-bottom: 6px;">${p.name_en}</div>
+                        <div class="popup-desc">${p.desc}</div>
+                `;
+
+                if (p.articles && p.articles.length > 0) {
+                    popupHtml += `<div class="popup-links-title">出現在以下文章：</div>`;
+                    p.articles.forEach(art => {
+                        popupHtml += `<a href="index.html#${art.id}" target="_blank" class="popup-link">📖 ${art.title}</a>`;
+                    });
+                }
+
+                popupHtml += `</div>`;
+
+                // Draw polyline if it is a river
+                if (p.polyline) {
+                    const polyline = L.polyline(p.polyline, {
+                        color: currentTheme === 'dark' ? '#4299e1' : '#2b6cb0',
+                        weight: 6,
+                        opacity: 0.5,
+                        lineJoin: 'round'
+                    }).bindPopup(popupHtml).on('click', () => selectPlace(p.id, false));
+                    markerGroup.addLayer(polyline);
+                }
+
+                // Draw polygon if it is a mountain range
+                if (p.polygon) {
+                    const polygon = L.polygon(p.polygon, {
+                        color: currentTheme === 'dark' ? '#ed8936' : '#dd6b20',
+                        fillColor: currentTheme === 'dark' ? '#ed8936' : '#dd6b20',
+                        fillOpacity: 0.18,
+                        weight: 2,
+                        dashArray: '5, 5'
+                    }).bindPopup(popupHtml).on('click', () => selectPlace(p.id, false));
+                    markerGroup.addLayer(polygon);
+                }
+
+                const marker = L.marker(p.coords, { icon: markerIcon })
+                    .bindPopup(popupHtml)
+                    .on('click', () => selectPlace(p.id, false));
+
+                markerGroup.addLayer(marker);
+                markersMap[p.id] = marker;
+            });
+        }
+
+        // List and detail panel binding
+        const placeListEl = document.getElementById('place-list');
+        const searchInput = document.getElementById('search-input');
+        const resultCountEl = document.getElementById('result-count');
+        const detailPanel = document.getElementById('place-detail-panel');
+
+        let activePlaceId = null;
+        let currentFilter = 'all';
+
+        function renderList(filteredPlaces) {
+            placeListEl.innerHTML = '';
+            resultCountEl.innerText = `共 ${filteredPlaces.length} 個`;
+
+            if (filteredPlaces.length === 0) {
+                placeListEl.innerHTML = `<li style="text-align: center; color: var(--text-muted); padding: 20px; font-size: 0.9rem;">沒有找到相符的地名 🗺️</li>`;
+                return;
+            }
+
+            filteredPlaces.forEach(p => {
+                const li = document.createElement('li');
+                li.className = `place-item ${activePlaceId === p.id ? 'active' : ''}`;
+                li.id = `item-${p.id}`;
+                li.innerHTML = `
+                    <div class="place-title">
+                        <span class="place-name">${p.name_zh}</span>
+                        <span class="place-mentions">${p.articles ? p.articles.length : 0} 篇提及</span>
+                    </div>
+                    <div class="place-foreign">${p.name_en}</div>
+                `;
+                li.addEventListener('click', () => selectPlace(p.id, true));
+                placeListEl.appendChild(li);
+            });
+        }
+
+        // Selection Logic
+        function selectPlace(placeId, flyToMarker = true) {
+            // Remove active style from previous item
+            if (activePlaceId) {
+                const prevEl = document.getElementById(`item-${activePlaceId}`);
+                if (prevEl) prevEl.classList.remove('active');
+            }
+
+            activePlaceId = placeId;
+            const currentEl = document.getElementById(`item-${placeId}`);
+            if (currentEl) {
+                currentEl.classList.add('active');
+                currentEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            // Find place details
+            const p = HISTORICAL_PLACES.find(item => item.id === placeId);
+            if (!p) return;
+
+            // Update Detail Panel
+            document.getElementById('detail-title').innerText = p.name_zh;
+            document.getElementById('detail-coords').innerText = `座標: ${p.coords[0].toFixed(4)}, ${p.coords[1].toFixed(4)} | 外文名: ${p.name_en}`;
+            document.getElementById('detail-desc').innerText = p.desc;
+
+            const articlesListEl = document.getElementById('detail-articles-list');
+            articlesListEl.innerHTML = '';
+
+            if (p.articles && p.articles.length > 0) {
+                p.articles.forEach(art => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <a href="index.html#${art.id}" target="_blank" class="detail-article-link">
+                            <span>📖</span>
+                            <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${art.title}</span>
+                        </a>
+                    `;
+                    articlesListEl.appendChild(li);
+                });
+            } else {
+                articlesListEl.innerHTML = `<li style="font-size: 0.85rem; color: var(--text-muted); padding: 4px;">無相關文章連結</li>`;
+            }
+
+            detailPanel.classList.add('active');
+
+            // Map interaction
+            const marker = markersMap[placeId];
+            if (marker) {
+                if (flyToMarker) {
+                    map.flyTo(p.coords, 6, { animate: true, duration: 1.2 });
+                    setTimeout(() => {
+                        marker.openPopup();
+                    }, 1200);
+                } else {
+                    marker.openPopup();
+                }
+            }
+        }
+
+        // Filtering and Searching logic
+        function filterAndSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+
+            const filtered = HISTORICAL_PLACES.filter(p => {
+                const category = getCategory(p);
+                const matchesFilter = currentFilter === 'all' || category === currentFilter;
+
+                const matchesQuery = !query ||
+                    p.name_zh.toLowerCase().includes(query) ||
+                    p.name_en.toLowerCase().includes(query) ||
+                    p.desc.toLowerCase().includes(query) ||
+                    (p.articles && p.articles.some(art => art.title.toLowerCase().includes(query)));
+
+                return matchesFilter && matchesQuery;
+            });
+
+            // Sort by number of articles descending
+            filtered.sort((a, b) => (b.articles ? b.articles.length : 0) - (a.articles ? a.articles.length : 0));
+
+            renderMarkers(filtered);
+            renderList(filtered);
+
+            // Re-select active item if it is still in the filtered list
+            if (activePlaceId && filtered.some(p => p.id === activePlaceId)) {
+                selectPlace(activePlaceId, false);
+            } else {
+                detailPanel.classList.remove('active');
+                activePlaceId = null;
+            }
+        }
+
+        // Attach Event Listeners
+        searchInput.addEventListener('input', filterAndSearch);
+
+        // Filter Tabs Binding
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                e.target.classList.add('active');
+                currentFilter = e.target.getAttribute('data-filter');
+                filterAndSearch();
+            });
+        });
+
+        // Theme Toggle Button Logic
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('theme-icon');
+
+        themeToggleBtn.addEventListener('click', () => {
+            // Switch current theme
+            map.removeLayer(tilesets[currentTheme]);
+
+            if (currentTheme === 'dark') {
+                currentTheme = 'vintage';
+                document.body.classList.add('theme-vintage');
+                themeIcon.innerText = '🌃';
+                themeToggleBtn.innerHTML = '<span>🌃</span>切換黑金風';
+            } else {
+                currentTheme = 'dark';
+                document.body.classList.remove('theme-vintage');
+                themeIcon.innerText = '🎨';
+                themeToggleBtn.innerHTML = '<span>🎨</span>切換復古風';
+            }
+
+            tilesets[currentTheme].addTo(map);
+            filterAndSearch();
+        });
+
+        // Initial Page Render
+        window.addEventListener('DOMContentLoaded', () => {
+            // Sort by article count initially
+            HISTORICAL_PLACES.sort((a, b) => (b.articles ? b.articles.length : 0) - (a.articles ? a.articles.length : 0));
+            renderMarkers(HISTORICAL_PLACES);
+            renderList(HISTORICAL_PLACES);
+
+            // Adjust bounds to fit all markers initially
+            if (HISTORICAL_PLACES.length > 0) {
+                map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+            }
+        });
+    </script>
+</body>
+</html>
