@@ -472,7 +472,7 @@
         }
     </style>
 </head>
-<body>
+<body class="theme-vintage">
 
     <!-- Left Control Panel -->
     <div id="control-panel">
@@ -484,10 +484,6 @@
                     <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
                     返回首頁
                 </a>
-                <button class="theme-toggle-btn" id="themeToggleBtn">
-                    <span id="theme-icon">🎨</span>
-                    切換復古風
-                </button>
             </div>
             <h1>歐洲歷史互動地圖</h1>
             <div class="subtitle">穿越時空的歷史地理坐標查詢系統</div>
@@ -517,18 +513,6 @@
             </div>
             <ul class="place-list" id="place-list">
                 <!-- Dynamically populated -->
-            </ul>
-        </div>
-
-        <!-- Detail Panel (Active only when item clicked) -->
-        <div class="place-detail-panel" id="place-detail-panel">
-            <div class="detail-title" id="detail-title">羅馬</div>
-            <div class="detail-coords" id="detail-coords">座標: 41.9028, 12.4964</div>
-            <div class="detail-desc" id="detail-desc">羅馬帝國的發源地與精神象徵...</div>
-            <div class="detail-articles-title">相關文章</div>
-            <ul class="detail-articles-list" id="detail-articles-list">
-                <!-- Dynamically populated -->
-            </ul>
         </div>
 
     </div>
@@ -550,12 +534,15 @@
             window.HISTORICAL_PLACES = [];
         }
 
-        // Initialize Map
+        // Initialize Map with custom snap and delta for smooth, slow wheel zooming
         const map = L.map('map-viewport', {
             center: [45.0, 15.0], // Centered in Central Europe
             zoom: 5,
             minZoom: 3,
-            maxZoom: 10
+            maxZoom: 10,
+            zoomSnap: 0.25,
+            zoomDelta: 0.25,
+            wheelPxPerZoomLevel: 150
         });
 
         // Tilesets Definition
@@ -572,8 +559,8 @@
             })
         };
 
-        // Default set to Dark Mode
-        let currentTheme = 'dark';
+        // Default set to Vintage Mode
+        let currentTheme = 'vintage';
         tilesets[currentTheme].addTo(map);
 
         // Map Category Helper
@@ -635,16 +622,27 @@
                 // Construct Popup Content
                 let popupHtml = `
                     <div class="popup-card">
-                        <div class="popup-title">${p.name_zh}</div>
-                        <div style="font-size: 0.78rem; font-style: italic; color: var(--text-muted); margin-bottom: 6px;">${p.name_en}</div>
-                        <div class="popup-desc">${p.desc}</div>
+                        <div class="popup-title" style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 2px; color: var(--text-color);">${p.name_zh}</div>
+                        <div style="font-size: 0.8rem; font-style: italic; color: var(--text-muted); margin-bottom: 4px;">${p.name_en}</div>
+                        <div style="font-size: 0.78rem; font-family: monospace; color: var(--accent-color); margin-bottom: 8px; font-weight: 600;">座標: ${p.coords[0].toFixed(4)}, ${p.coords[1].toFixed(4)}</div>
+                        <div class="popup-desc" style="font-size: 0.88rem; line-height: 1.5; color: var(--text-color); margin-bottom: 8px;">${p.desc}</div>
                 `;
 
                 if (p.articles && p.articles.length > 0) {
-                    popupHtml += `<div class="popup-links-title">出現在以下文章：</div>`;
+                    popupHtml += `
+                        <details style="margin-top: 8px; border-top: 1px dashed var(--border-color); padding-top: 8px;">
+                            <summary style="cursor: pointer; font-size: 0.82rem; font-weight: 700; color: var(--primary-color); outline: none; user-select: none;">
+                                📖 相關文章 (${p.articles.length} 篇)
+                            </summary>
+                            <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; max-height: 120px; overflow-y: auto;">
+                    `;
                     p.articles.forEach(art => {
-                        popupHtml += `<a href="index.html#${art.id}" target="_blank" class="popup-link">📖 ${art.title}</a>`;
+                        popupHtml += `<a href="index.html#${art.id}" target="_blank" class="popup-link" style="margin-bottom: 0;">${art.title}</a>`;
                     });
+                    popupHtml += `
+                            </div>
+                        </details>
+                    `;
                 }
 
                 popupHtml += `</div>`;
@@ -681,11 +679,10 @@
             });
         }
 
-        // List and detail panel binding
+        // List binding
         const placeListEl = document.getElementById('place-list');
         const searchInput = document.getElementById('search-input');
         const resultCountEl = document.getElementById('result-count');
-        const detailPanel = document.getElementById('place-detail-panel');
 
         let activePlaceId = null;
         let currentFilter = 'all';
@@ -734,31 +731,6 @@
             const p = HISTORICAL_PLACES.find(item => item.id === placeId);
             if (!p) return;
 
-            // Update Detail Panel
-            document.getElementById('detail-title').innerText = p.name_zh;
-            document.getElementById('detail-coords').innerText = `座標: ${p.coords[0].toFixed(4)}, ${p.coords[1].toFixed(4)} | 外文名: ${p.name_en}`;
-            document.getElementById('detail-desc').innerText = p.desc;
-
-            const articlesListEl = document.getElementById('detail-articles-list');
-            articlesListEl.innerHTML = '';
-
-            if (p.articles && p.articles.length > 0) {
-                p.articles.forEach(art => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <a href="index.html#${art.id}" target="_blank" class="detail-article-link">
-                            <span>📖</span>
-                            <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${art.title}</span>
-                        </a>
-                    `;
-                    articlesListEl.appendChild(li);
-                });
-            } else {
-                articlesListEl.innerHTML = `<li style="font-size: 0.85rem; color: var(--text-muted); padding: 4px;">無相關文章連結</li>`;
-            }
-
-            detailPanel.classList.add('active');
-
             // Map interaction
             const marker = markersMap[placeId];
             if (marker) {
@@ -800,7 +772,6 @@
             if (activePlaceId && filtered.some(p => p.id === activePlaceId)) {
                 selectPlace(activePlaceId, false);
             } else {
-                detailPanel.classList.remove('active');
                 activePlaceId = null;
             }
         }
@@ -816,30 +787,6 @@
                 currentFilter = e.target.getAttribute('data-filter');
                 filterAndSearch();
             });
-        });
-
-        // Theme Toggle Button Logic
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('theme-icon');
-
-        themeToggleBtn.addEventListener('click', () => {
-            // Switch current theme
-            map.removeLayer(tilesets[currentTheme]);
-
-            if (currentTheme === 'dark') {
-                currentTheme = 'vintage';
-                document.body.classList.add('theme-vintage');
-                themeIcon.innerText = '🌃';
-                themeToggleBtn.innerHTML = '<span>🌃</span>切換黑金風';
-            } else {
-                currentTheme = 'dark';
-                document.body.classList.remove('theme-vintage');
-                themeIcon.innerText = '🎨';
-                themeToggleBtn.innerHTML = '<span>🎨</span>切換復古風';
-            }
-
-            tilesets[currentTheme].addTo(map);
-            filterAndSearch();
         });
 
         // Initial Page Render
