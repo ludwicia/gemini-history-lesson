@@ -485,6 +485,11 @@ file_p40 = r'course/歐陸地緣裂變與整合的雙軸命脈：萊茵河－多
 map_p40 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/rhine_danube_frontier.png" alt="Rhine Danube Frontier" loading="lazy"><figcaption class="caption">萊茵河－多瑙河羅馬帝國邊境：公元四世紀，羅馬人在帝國北部邊界修築了複雜的界牆系統，將萊茵河與多瑙河的天然防線封閉起來，以抵禦外來部落的入侵。</figcaption></figure>\n'
 images_p40 = []
 
+# Page 41 Config
+file_p41 = r'course/君士坦丁三世政權的興衰：五世紀初西羅馬帝國的邊疆危機、統治架構與軍事瓦解.md'
+map_p41 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/constantine_iii_usurper.png" alt="Constantine III Usurper" loading="lazy"><figcaption class="caption">不列顛篡位者君士坦丁三世與部隊：五世紀初，不列顛駐軍脫離拉文納朝廷割據建國，揮師渡海控制高盧，在亞爾建立短暫政權，這是西羅馬邊疆防務瓦解與割據困境的縮影。</figcaption></figure>\n'
+images_p41 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -608,6 +613,9 @@ html_body_p39 = process_markdown(file_p39, images_p39, "1.0", map_p39, page_id="
 print("Processing Page 40 (Rhine Danube)...")
 html_body_p40 = process_markdown(file_p40, images_p40, "1.0", map_p40, page_id="page40")
 
+print("Processing Page 41 (Constantine III)...")
+html_body_p41 = process_markdown(file_p41, images_p41, "1.0", map_p41, page_id="page41")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -681,6 +689,7 @@ pages_data = {
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.2', 'doc': False},
     'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False, 'bg_pos': 'center top'},
     'page40': {'title': '萊茵河－多瑙河地緣戰略', 'img': 'images/rhine_danube_frontier.png', 'ver': '1.0', 'doc': False},
+    'page41': {'title': '君士坦丁三世與五世紀初邊疆危機', 'img': 'images/constantine_iii_usurper.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -694,7 +703,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page35', 'page39']
+        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page35', 'page39', 'page41']
     },
     {
         'title': '中世紀諸民族記',
@@ -1033,6 +1042,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE37__', html_body_p37)
 final_html = final_html.replace('__HTML_BODY_PAGE38__', html_body_p38)
 final_html = final_html.replace('__HTML_BODY_PAGE39__', html_body_p39)
 final_html = final_html.replace('__HTML_BODY_PAGE40__', html_body_p40)
+final_html = final_html.replace('__HTML_BODY_PAGE41__', html_body_p41)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1077,6 +1087,7 @@ final_html = final_html.replace('__PAGE37_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE38_DATE__', get_file_last_update_date(file_p38))
 final_html = final_html.replace('__PAGE39_DATE__', get_file_last_update_date(file_p39))
 final_html = final_html.replace('__PAGE40_DATE__', get_file_last_update_date(file_p40))
+final_html = final_html.replace('__PAGE41_DATE__', get_file_last_update_date(file_p41))
 
 # Inject JavaScript for toggle function
 toggle_js = """
