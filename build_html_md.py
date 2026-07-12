@@ -435,9 +435,12 @@ map_p29 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><
 images_p29 = []
 
 # Page 30 Config
-file_p30 = r'course/蓋納斯：東羅馬的哥德野心家與早期拜占庭的蠻族權力危機.md'
-map_p30 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/gainas_byzantine.png" alt="Gainas Byzantine" loading="lazy"><figcaption class="caption">蓋納斯（Gainas）與拜占庭權力危機：早期東羅馬朝廷中，身披羅馬將領甲冑的哥特統帥蓋納斯與阿卡狄烏斯皇帝在殿前對峙，揭示出蠻族軍事干政與傳統官僚力量之間劍拔弩張的緊張張力。</figcaption></figure>\n'
-images_p30 = []
+file_p30 = r'course/東羅馬帝國的權力重組、宮廷政治與蠻族危機：從蓋納斯起事到安提米烏斯攝政的體制轉型研究（395–408年）.md'
+map_p30 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/east_roman_court.png" alt="East Roman Court" loading="lazy"><figcaption class="caption">東羅馬宮廷政治與蠻族危機：在君士坦丁堡的金色穹頂之下，文官技術官僚與外戚、宦官及蠻族將領在皇帝的平庸統治下展開了派系鬥爭與權力重組，奠定了拜占庭中世紀帝國生存基石。</figcaption></figure>\n'
+images_p30 = [
+    (r'(<h2.*?>四、.*?</h2>)', 'images/gainas_byzantine.png', '蓋納斯（Gainas）與拜占庭權力危機：早期東羅馬朝廷中，身披羅馬將領甲冑的哥特統帥蓋納斯與阿卡狄烏斯皇帝在殿前對峙，揭示出蠻族軍事干政與傳統官僚力量之間劍拔弩張的緊張張力。')
+]
+
 
 # Page 31 Config
 file_p31 = r'course/塞維魯王朝的權力、財政與法制變革：卡拉卡拉與《安東尼努斯敕令》的深度歷史研究.md'
@@ -457,10 +460,7 @@ file_p34 = r'course/匈人的登場：從阿德里安堡戰役到冷河戰役的
 map_p34 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/huns_arrival.png" alt="Huns Arrival" loading="lazy"><figcaption class="caption">匈人的登場：西元四世紀末，由東方草原呼嘯而至的匈人輕騎兵越過頓河，以致命的突襲擊碎了東哥特王國與阿蘭人的防線，開啟了歐洲蠻族大遷徙的序幕。</figcaption></figure>\n'
 images_p34 = []
 
-# Page 35 Config
-file_p35 = r'course/東羅馬帝國的權力重組與宮廷政治：從迪奧多西一世駕崩至迪奧多西二世登基前的內政演變、派系鬥爭與地緣戰略深度研究（395–408年）.md'
-map_p35 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/east_roman_court.png" alt="East Roman Court" loading="lazy"><figcaption class="caption">東羅馬宮廷政治：公元四、五世紀之交，在君士坦丁堡的金色穹頂之下，文官技術官僚與外戚、宦官在皇帝的平庸統治下展開了派系鬥爭與權力重組，奠定了拜占庭中世紀帝國生存基石。</figcaption></figure>\n'
-images_p35 = []
+
 
 # Page 36 Config
 file_p36 = r'course/晚清中樞權力變革與肅順之死：資歷、政務整肅與辛酉政變之歷史學解構.md'
@@ -595,8 +595,6 @@ html_body_p33 = process_markdown(file_p33, images_p33, "1.0", map_p33, page_id="
 print("Processing Page 34 (Huns Arrival)...")
 html_body_p34 = process_markdown(file_p34, images_p34, "1.0", map_p34, page_id="page34")
 
-print("Processing Page 35 (East Roman Court)...")
-html_body_p35 = process_markdown(file_p35, images_p35, "1.0", map_p35, page_id="page35")
 
 print("Processing Page 36 (Xinyou Coup)...")
 html_body_p36 = process_markdown(file_p36, images_p36, "1.0", map_p36, page_id="page36")
@@ -678,12 +676,11 @@ pages_data = {
     'page20': {'title': '羅馬帝國：米蘭敕令', 'ver': '1.0', 'doc': True},
     'page28': {'title': '羅馬帝國：薩洛尼卡敕令', 'ver': '1.2', 'doc': True},
     'page29': {'title': '阿德里安堡戰役', 'img': 'images/battle_of_adrianople.png', 'ver': '1.0', 'doc': False},
-    'page30': {'title': '蓋納斯與早期拜占庭蠻族權力危機', 'img': 'images/gainas_byzantine.png', 'ver': '1.0', 'doc': False},
+    'page30': {'title': '東羅馬權力重組與蠻族危機', 'img': 'images/east_roman_court.png', 'ver': '1.0', 'doc': False},
     'page31': {'title': '卡拉卡拉與《安東尼努斯敕令》', 'img': 'images/caracalla_edict.png', 'ver': '1.0', 'doc': False},
     'page32': {'title': '羅馬帝國：安東尼努斯敕令', 'ver': '1.0', 'doc': True},
     'page33': {'title': '一世紀羅馬行省治權與社會', 'img': 'images/roman_provincial_governance.png', 'ver': '1.0', 'doc': False},
     'page34': {'title': '匈人的登場與晚期羅馬地緣政治', 'img': 'images/huns_arrival.png', 'ver': '1.0', 'doc': False},
-    'page35': {'title': '東羅馬帝國的權力重組與宮廷政治', 'img': 'images/east_roman_court.png', 'ver': '1.0', 'doc': False},
     'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.0', 'doc': False},
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.2', 'doc': False},
@@ -703,7 +700,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page35', 'page39', 'page41']
+        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page39', 'page41']
     },
     {
         'title': '中世紀諸民族記',
@@ -1036,7 +1033,6 @@ final_html = final_html.replace('__HTML_BODY_PAGE31__', html_body_p31)
 final_html = final_html.replace('__HTML_BODY_PAGE32__', html_body_p32)
 final_html = final_html.replace('__HTML_BODY_PAGE33__', html_body_p33)
 final_html = final_html.replace('__HTML_BODY_PAGE34__', html_body_p34)
-final_html = final_html.replace('__HTML_BODY_PAGE35__', html_body_p35)
 final_html = final_html.replace('__HTML_BODY_PAGE36__', html_body_p36)
 final_html = final_html.replace('__HTML_BODY_PAGE37__', html_body_p37)
 final_html = final_html.replace('__HTML_BODY_PAGE38__', html_body_p38)
@@ -1081,7 +1077,6 @@ final_html = final_html.replace('__PAGE31_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE32_DATE__', get_file_last_update_date(file_p32))
 final_html = final_html.replace('__PAGE33_DATE__', get_file_last_update_date(file_p33))
 final_html = final_html.replace('__PAGE34_DATE__', get_file_last_update_date(file_p34))
-final_html = final_html.replace('__PAGE35_DATE__', get_file_last_update_date(file_p35))
 final_html = final_html.replace('__PAGE36_DATE__', get_file_last_update_date(file_p36))
 final_html = final_html.replace('__PAGE37_DATE__', get_file_last_update_date(file_p37))
 final_html = final_html.replace('__PAGE38_DATE__', get_file_last_update_date(file_p38))
