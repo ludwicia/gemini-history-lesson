@@ -619,7 +619,7 @@ html_body_p40 = process_markdown(file_p40, images_p40, "1.0", map_p40, page_id="
 print("Processing Page 41 (Constantine III)...")
 html_body_p41 = process_markdown(file_p41, images_p41, "1.0", map_p41, page_id="page41")
 
-print("Processing Page 42 (Iron Sword and the Toga)...")
+print("Processing Page 42 (Broadsword and Toga)...")
 html_body_p42_zh = process_markdown(file_p42, images_p42, "1.0", None, page_id="page42")
 html_body_p42_en = process_markdown(file_p42_en, images_p42, "1.0", None, page_id="page42_en")
 

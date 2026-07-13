@@ -1,4 +1,4 @@
-# Iron Sword and the Toga: Prologue
+# Broadsword and Toga: Prologue
 
 ![Three Ships Sailing South, Whispers of the Old God](images/gothic_three_ships_migration.png)
 
