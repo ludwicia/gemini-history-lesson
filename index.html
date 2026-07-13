@@ -953,12 +953,27 @@
             const catPages = articles.filter(art => art.category === cat.key);
 
             let gridContent = '';
-            if (catPages.length === 0) {
-                gridContent = `<div style="text-align: center; color: #a0aec0; padding: 20px; width: 100%; grid-column: 1 / -1;">📝 本專題文章撰寫中，敬請期待！</div>`;
+            if (cat.key === 'novel') {
+                // 歷史小說專屬的巢狀渲染：在分類內顯示書籍容器，並在容器內放章節卡片
+                gridContent = `
+                    <div class="novel-book-container" style="background-color: #ebf8ff; border: 1px solid #bee3f8; border-radius: 12px; padding: 20px; width: 100%; grid-column: 1 / -1; box-shadow: 0 4px 12px rgba(43,108,176,0.05); display: flex; flex-direction: column; gap: 15px;">
+                        <div class="novel-book-header" style="display: flex; align-items: center; gap: 15px; border-bottom: 2px solid #bee3f8; padding-bottom: 12px;">
+                            <img src="images/iron_sword_and_toga_cover.png" alt="鐵劍與托加" style="width: 50px; height: 70px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); border: 1px solid #90cdf4;">
+                            <span style="font-size: 1.3rem; font-weight: 700; color: #2b6cb0;">鐵劍與托加</span>
+                        </div>
+                        <div class="article-grid" style="margin-top: 5px;">
+                            ${catPages.map(art => makeCardHtml(art)).join('')}
+                        </div>
+                    </div>
+                `;
             } else {
-                catPages.forEach(art => {
-                    gridContent += makeCardHtml(art);
-                });
+                if (catPages.length === 0) {
+                    gridContent = `<div style="text-align: center; color: #a0aec0; padding: 20px; width: 100%; grid-column: 1 / -1;">📝 本專題文章撰寫中，敬請期待！</div>`;
+                } else {
+                    catPages.forEach(art => {
+                        gridContent += makeCardHtml(art);
+                    });
+                }
             }
 
             const catSection = document.createElement('div');
@@ -1161,6 +1176,17 @@
                     <div class="card-content">
                         <div class="card-title">${art.title}</div>
                         <div class="card-meta">內容版本：${art.ver}</div>
+                    </div>
+                </div>`;
+        } else if (art.category === 'novel') {
+            // 小說章節卡片：呈現溫暖咖啡色調，且精簡標題，去除書名首綴
+            const displayTitle = art.title.replace('《鐵劍與托加》：', '');
+            return `
+                <div class="article-card novel-card" onclick="location.hash='#${art.id}'" style="background-color: #faf3ee; border: 1px solid #f5cac3; box-shadow: 0 4px 10px rgba(245,202,195,0.15);">
+                    <div class="card-image" style="background-image: url('${art.img}'); background-position: ${art.bg_pos || 'center'}; border-bottom: 1px solid #f5cac3;"></div>
+                    <div class="card-content" style="background-color: #faf3ee;">
+                        <div class="card-title" style="color: #6d4c41; font-weight: 700;">${displayTitle}</div>
+                        <div class="card-meta" style="color: #bcaaa4;">內容版本：${art.ver}</div>
                     </div>
                 </div>`;
         } else {

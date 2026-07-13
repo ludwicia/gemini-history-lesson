@@ -490,6 +490,10 @@ file_p41 = r'course/君士坦丁三世政權的興衰：五世紀初西羅馬帝
 map_p41 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/constantine_iii_usurper.png" alt="Constantine III Usurper" loading="lazy"><figcaption class="caption">不列顛篡位者君士坦丁三世與部隊：五世紀初，不列顛駐軍脫離拉文納朝廷割據建國，揮師渡海控制高盧，在亞爾建立短暫政權，這是西羅馬邊疆防務瓦解與割據困境的縮影。</figcaption></figure>\n'
 images_p41 = []
 
+# Page 42 Config
+file_p42 = r'course/《鐵劍與托加》：序章.md'
+images_p42 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -614,6 +618,9 @@ html_body_p40 = process_markdown(file_p40, images_p40, "1.0", map_p40, page_id="
 print("Processing Page 41 (Constantine III)...")
 html_body_p41 = process_markdown(file_p41, images_p41, "1.0", map_p41, page_id="page41")
 
+print("Processing Page 42 (Iron Sword and the Toga)...")
+html_body_p42 = process_markdown(file_p42, images_p42, "1.0", None, page_id="page42")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -687,6 +694,7 @@ pages_data = {
     'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False, 'bg_pos': 'center top'},
     'page40': {'title': '萊茵河－多瑙河地緣戰略', 'img': 'images/rhine_danube_frontier.png', 'ver': '1.0', 'doc': False},
     'page41': {'title': '君士坦丁三世與五世紀初邊疆危機', 'img': 'images/constantine_iii_usurper.png', 'ver': '1.0', 'doc': False},
+    'page42': {'title': '《鐵劍與托加》：序章', 'img': 'images/iron_sword_and_toga_cover.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -755,6 +763,12 @@ categories = [
         'key': 'qing',
         'img': 'images/qing_empire.png',
         'pages': ['page36']
+    },
+    {
+        'title': '歷史小說',
+        'key': 'novel',
+        'img': 'images/iron_sword_and_toga_cover.png',
+        'pages': ['page42']
     }
 ]
 
@@ -1039,6 +1053,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE38__', html_body_p38)
 final_html = final_html.replace('__HTML_BODY_PAGE39__', html_body_p39)
 final_html = final_html.replace('__HTML_BODY_PAGE40__', html_body_p40)
 final_html = final_html.replace('__HTML_BODY_PAGE41__', html_body_p41)
+final_html = final_html.replace('__HTML_BODY_PAGE42__', html_body_p42)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1083,6 +1098,7 @@ final_html = final_html.replace('__PAGE38_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE39_DATE__', get_file_last_update_date(file_p39))
 final_html = final_html.replace('__PAGE40_DATE__', get_file_last_update_date(file_p40))
 final_html = final_html.replace('__PAGE41_DATE__', get_file_last_update_date(file_p41))
+final_html = final_html.replace('__PAGE42_DATE__', get_file_last_update_date(file_p42))
 
 # Inject JavaScript for toggle function
 toggle_js = """

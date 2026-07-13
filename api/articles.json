@@ -109,6 +109,14 @@
       "pages": [
         "page36"
       ]
+    },
+    {
+      "title": "歷史小說",
+      "key": "novel",
+      "img": "images/iron_sword_and_toga_cover.png",
+      "pages": [
+        "page42"
+      ]
     }
   ],
   "articles": [
@@ -509,6 +517,16 @@
       "last_updated": "2026-07-12",
       "category": "rome",
       "img": "images/constantine_iii_usurper.png",
+      "bg_pos": "center",
+      "is_doc": 0
+    },
+    {
+      "id": "page42",
+      "title": "《鐵劍與托加》：序章",
+      "ver": "1.0",
+      "last_updated": "2026-07-14",
+      "category": "novel",
+      "img": "images/iron_sword_and_toga_cover.png",
       "bg_pos": "center",
       "is_doc": 0
     }
