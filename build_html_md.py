@@ -694,7 +694,7 @@ pages_data = {
     'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False, 'bg_pos': 'center top'},
     'page40': {'title': '萊茵河－多瑙河地緣戰略', 'img': 'images/rhine_danube_frontier.png', 'ver': '1.0', 'doc': False},
     'page41': {'title': '君士坦丁三世與五世紀初邊疆危機', 'img': 'images/constantine_iii_usurper.png', 'ver': '1.0', 'doc': False},
-    'page42': {'title': '序章', 'img': 'images/iron_sword_and_toga_cover.png', 'ver': '1.0', 'doc': False},
+    'page42': {'title': '序章', 'img': 'images/gothic_three_ships_migration.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
