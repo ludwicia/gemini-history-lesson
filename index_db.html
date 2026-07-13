@@ -1494,6 +1494,36 @@
         setTimeout(resetZoom, 400);
         setTimeout(resetZoom, 1000);
     };
+
+    // Global Novel Language Switcher
+    window.switchNovelLang = function(lang) {
+        const zhSec = document.getElementById('novel-zh-section');
+        const enSec = document.getElementById('novel-en-section');
+        const btnZh = document.getElementById('btn-lang-zh');
+        const btnEn = document.getElementById('btn-lang-en');
+        
+        if (!zhSec || !enSec || !btnZh || !btnEn) return;
+        
+        if (lang === 'zh') {
+            zhSec.style.display = 'block';
+            enSec.style.display = 'none';
+            btnZh.style.backgroundColor = '#3182ce';
+            btnZh.style.color = 'white';
+            btnZh.style.borderColor = '#3182ce';
+            btnEn.style.backgroundColor = '#f7fafc';
+            btnEn.style.color = '#4a5568';
+            btnEn.style.borderColor = '#cbd5e0';
+        } else {
+            zhSec.style.display = 'none';
+            enSec.style.display = 'block';
+            btnEn.style.backgroundColor = '#3182ce';
+            btnEn.style.color = 'white';
+            btnEn.style.borderColor = '#3182ce';
+            btnZh.style.backgroundColor = '#f7fafc';
+            btnZh.style.color = '#4a5568';
+            btnZh.style.borderColor = '#cbd5e0';
+        }
+    };
 </script>
 <script defer src="https://events.vercount.one/js"></script>
 </body>
