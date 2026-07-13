@@ -1,4 +1,4 @@
-# 《鐵劍與托加》：序章 (English)
+# Iron Sword and the Toga: Prologue
 
 ![Three Ships Sailing South, Whispers of the Old God](images/gothic_three_ships_migration.png)
 
