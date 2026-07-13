@@ -492,6 +492,7 @@ images_p41 = []
 
 # Page 42 Config
 file_p42 = r'course/《鐵劍與托加》：序章.md'
+file_p42_en = r'course/《鐵劍與托加》：序章_en.md'
 images_p42 = []
 
 
@@ -619,7 +620,20 @@ print("Processing Page 41 (Constantine III)...")
 html_body_p41 = process_markdown(file_p41, images_p41, "1.0", map_p41, page_id="page41")
 
 print("Processing Page 42 (Iron Sword and the Toga)...")
-html_body_p42 = process_markdown(file_p42, images_p42, "1.0", None, page_id="page42")
+html_body_p42_zh = process_markdown(file_p42, images_p42, "1.0", None, page_id="page42")
+html_body_p42_en = process_markdown(file_p42_en, images_p42, "1.0", None, page_id="page42_en")
+
+html_body_p42 = f'''<div class="novel-lang-selector" style="display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 25px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; width: 100%;">
+  <button id="btn-lang-zh" onclick="switchNovelLang('zh')" style="background-color: #3182ce; color: white; border: 1px solid #3182ce; border-radius: 6px; padding: 6px 16px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(49,130,206,0.15);">中文</button>
+  <button id="btn-lang-en" onclick="switchNovelLang('en')" style="background-color: #f7fafc; color: #4a5568; border: 1px solid #cbd5e0; border-radius: 6px; padding: 6px 16px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">English</button>
+</div>
+
+<div id="novel-zh-section">
+{html_body_p42_zh}
+</div>
+<div id="novel-en-section" style="display: none;">
+{html_body_p42_en}
+</div>'''
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
