@@ -495,6 +495,11 @@ file_p42 = r'course/《鐵劍與托加》：序章.md'
 file_p42_en = r'course/《鐵劍與托加》：序章_en.md'
 images_p42 = []
 
+# Page 43 Config
+file_p43 = r'course/《鐵劍與托加》：第一章.md'
+file_p43_en = r'course/《鐵劍與托加》：第一章_en.md'
+images_p43 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -635,6 +640,22 @@ html_body_p42 = f'''<div class="novel-lang-selector" style="display: flex; justi
 {html_body_p42_en}
 </div>'''
 
+print("Processing Page 43 (Broadsword and Toga - Chapter 1)...")
+html_body_p43_zh = process_markdown(file_p43, images_p43, "1.0", None, page_id="page43")
+html_body_p43_en = process_markdown(file_p43_en, images_p43, "1.0", None, page_id="page43_en")
+
+html_body_p43 = f'''<div class="novel-lang-selector" style="display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 25px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; width: 100%;">
+  <button id="btn-lang-zh" onclick="switchNovelLang('zh')" style="background-color: #3182ce; color: white; border: 1px solid #3182ce; border-radius: 6px; padding: 6px 16px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(49,130,206,0.15);">中文</button>
+  <button id="btn-lang-en" onclick="switchNovelLang('en')" style="background-color: #f7fafc; color: #4a5568; border: 1px solid #cbd5e0; border-radius: 6px; padding: 6px 16px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">English</button>
+</div>
+
+<div id="novel-zh-section">
+{html_body_p43_zh}
+</div>
+<div id="novel-en-section" style="display: none;">
+{html_body_p43_en}
+</div>'''
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -709,6 +730,7 @@ pages_data = {
     'page40': {'title': '萊茵河－多瑙河地緣戰略', 'img': 'images/rhine_danube_frontier.png', 'ver': '1.0', 'doc': False},
     'page41': {'title': '君士坦丁三世與五世紀初邊疆危機', 'img': 'images/constantine_iii_usurper.png', 'ver': '1.0', 'doc': False},
     'page42': {'title': '序章 (Prologue)', 'img': 'images/gothic_three_ships_migration.png', 'ver': '1.0', 'doc': False},
+    'page43': {'title': '第一章：黑海落日，狂風中的火種', 'img': 'images/iron_sword_chapter1_invasion.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -782,7 +804,7 @@ categories = [
         'title': '鐵劍與托加 (Broadsword and Toga)',
         'key': 'novel',
         'img': 'images/iron_sword_and_toga_cover.png',
-        'pages': ['page42']
+        'pages': ['page42', 'page43']
     }
 ]
 
@@ -1068,6 +1090,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE39__', html_body_p39)
 final_html = final_html.replace('__HTML_BODY_PAGE40__', html_body_p40)
 final_html = final_html.replace('__HTML_BODY_PAGE41__', html_body_p41)
 final_html = final_html.replace('__HTML_BODY_PAGE42__', html_body_p42)
+final_html = final_html.replace('__HTML_BODY_PAGE43__', html_body_p43)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1113,6 +1136,7 @@ final_html = final_html.replace('__PAGE39_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE40_DATE__', get_file_last_update_date(file_p40))
 final_html = final_html.replace('__PAGE41_DATE__', get_file_last_update_date(file_p41))
 final_html = final_html.replace('__PAGE42_DATE__', get_file_last_update_date(file_p42))
+final_html = final_html.replace('__PAGE43_DATE__', get_file_last_update_date(file_p43))
 
 # Inject JavaScript for toggle function
 toggle_js = """
