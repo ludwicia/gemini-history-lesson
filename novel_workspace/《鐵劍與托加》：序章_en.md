@@ -4,9 +4,9 @@
 
 This is not the history written by Romans on parchment. The history of the Romans is woven of ink and lies—exquisite, yet as cold as the marble of the Ravenna marshes, every stroke designed to conceal their deep-rooted dread of the northern wilderness.
 
-This is a song carved upon bones and sung around campfires. It is the tale of those three oak ships, and how we lost the North in our desperate struggle to survive.
+This is a song carved upon bones and sung around campfires. It is the tale of those three oak ships, and how the Goths lost the North in their desperate struggle to survive.
 
-Long ago, long before the name of the Roman Empire was ever uttered, our ancestors dwelt in Scandza, a massive island at the northernmost edge of the world. It was a desolate realm cursed by ice, snow, and perpetual darkness. That year, a brutal winter descended earlier than ever before. In the dead of night, the glaciers groaned and cracked with deafening thunders, like the very bones of the earth freezing and snapping. Blizzards choked the forests, and the game perished in heaps upon the frozen snowdrifts, followed swiftly by our cattle.
+Long ago, long before the name of the Roman Empire was ever uttered, the ancestors of the Goths dwelt in Scandza, a massive island at the northernmost edge of the world. It was a desolate realm cursed by ice, snow, and perpetual darkness. That year, a brutal winter descended earlier than ever before. In the dead of night, the glaciers groaned and cracked with deafening thunders, like the very bones of the earth freezing and snapping. Blizzards choked the forests, and the game perished in heaps upon the frozen snowdrifts, followed swiftly by their cattle.
 
 Famine spread through the timber cabins like a plague. Mothers’ breasts dried and froze, unable to yield a single drop of milk; the cries of infants grew weaker day by day, until they fell silent, leaving only tiny, stiff corpses in the corners of the dark huts.
 
@@ -22,7 +22,7 @@ Berig knelt in the deep snow, slit his palm with a bronze dagger, and let his ho
 
 At that moment, a massive, ancient raven flapped its ragged wings, descending heavily through the blizzard to perch upon the horse skull atop the altar.
 
-It was an exceedingly strange bird. Its left eye was blind, leaving a dried, dark-red socket, but its right eye gleamed like polished obsidian, shining with ancient wisdom and the weight of ages. This one-eyed raven was the mortal guise of Gaut, the primordial ancestor god of our people.
+It was an exceedingly strange bird. Its left eye was blind, leaving a dried, dark-red socket, but its right eye gleamed like polished obsidian, shining with ancient wisdom and the weight of ages. This one-eyed raven was the mortal guise of Gaut, the primordial ancestor god of the Gothic people.
 
 The raven did not cry out. It merely stared at Berig with its deep right eye, then scraped three crude ship-like shapes in the snow with its claws, pointing toward the southern horizon.
 
