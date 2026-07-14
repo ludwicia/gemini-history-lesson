@@ -675,7 +675,7 @@ pages_data = {
     'page12': {'title': '宗教戰爭(二)：卡特里派', 'img': 'images/catharism_main.jpg', 'ver': '1.1', 'doc': False},
     'page05': {'title': '希爾紹修道院', 'img': 'images/hirsau_main_wilhelm.jpg', 'ver': '1.0', 'doc': False},
     'page07': {'title': '奧托-薩利安帝國教會體制', 'img': 'images/ottonian_hre_map.svg', 'ver': '1.0', 'doc': False},
-    'page09': {'title': '丕平獻土與教宗國誕生', 'img': 'images/pippin_donation_main.jpg', 'ver': '1.1', 'doc': False},
+    'page09': {'title': '丕平獻土與教宗國誕生', 'img': 'images/pippin_donation_main.jpg', 'ver': '1.2', 'doc': False},
     'page10': {'title': '卡洛林教育基建與知識復興', 'img': 'images/carolingian_main.jpg', 'ver': '1.0', 'doc': False},
     'page11': {'title': '歐洲造紙術的歷史演變', 'img': 'images/paper_main.jpg', 'ver': '1.0', 'doc': False},
     'page14': {'title': '英國的憲法', 'img': 'images/uk_constitution_main.png', 'ver': '1.0', 'doc': False},
