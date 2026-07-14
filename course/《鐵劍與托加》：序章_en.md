@@ -50,7 +50,7 @@ In this migration, the nation learned both cruelty and resilience. Elders who co
 
 At last, they stepped out of the final tree line. Spread before them was the boundless Scythian plain, shimmering under the Black Sea sun. The children of the three ships finally settled here, dividing into two great confederations—the Ostrogoths of the east and the Visigoths of the west.
 
-For over a century, they carved out their domain with iron swords and long spears along the Black Sea—slaying Roman emperors, sacking Greek cities, and forging a fearsome hegemony through relentless expansion and conquest. Until the autumn of the year 375.
+For over a century, they carved out their domain with iron swords and long spears along the Black Sea—sacking Greek cities, and forging a fearsome hegemony through relentless expansion and conquest. Until the autumn of the year 375.
 
 The waters of the Don River ran blood-red in the setting sun, like an open vein across the steppes.
 
