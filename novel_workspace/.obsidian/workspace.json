@@ -1,0 +1,195 @@
+{
+  "main": {
+    "id": "b6076ccc87e8ca80",
+    "type": "split",
+    "children": [
+      {
+        "id": "61507b35a7a2ce73",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2bab758c9b38cc93",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "gothic_three_ships_migration_raw.png"
+              },
+              "icon": "lucide-image",
+              "title": "gothic_three_ships_migration_raw"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "41327f1e56bbb76a",
+    "type": "split",
+    "children": [
+      {
+        "id": "d64372aff69a6506",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ad995ecccb9128a9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "檔案瀏覽器"
+            }
+          },
+          {
+            "id": "400ff68c6c15759f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜尋"
+            }
+          },
+          {
+            "id": "9ec2f22723af4517",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "書籤"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d5800dc6cf012875",
+    "type": "split",
+    "children": [
+      {
+        "id": "79b87ebf97bd3572",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a27c62f5f44c7f60",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "gothic_three_ships_migration_raw.png",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "gothic_three_ships_migration_raw 的反向連結"
+            }
+          },
+          {
+            "id": "a544d4210b5bfc9b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "gothic_three_ships_migration_raw.png",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "gothic_three_ships_migration_raw 的對外連結"
+            }
+          },
+          {
+            "id": "ca77d37f7d5a2240",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "標籤"
+            }
+          },
+          {
+            "id": "b878d249e2650472",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "所有屬性"
+            }
+          },
+          {
+            "id": "c11a85497bee903a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "gothic_three_ships_migration_raw.png",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "gothic_three_ships_migration_raw 的大綱"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:開啟快速切換": false,
+      "graph:查看關聯圖": false,
+      "canvas:建立新畫布": false,
+      "daily-notes:開啟今天的每日筆記": false,
+      "templates:插入模板": false,
+      "command-palette:開啟命令面板": false,
+      "bases:建立新的 base": false
+    }
+  },
+  "active": "ad995ecccb9128a9",
+  "lastOpenFiles": [
+    "chapter1_draft.md",
+    "《鐵劍與托加》：序章_en.md",
+    "gothic_three_ships_migration.png",
+    "gothic_three_ships_migration_raw.png",
+    "iron_sword_and_toga_cover_raw.png",
+    "prologue_draft.md",
+    "novel_outline_part1.md",
+    "iron_sword_and_toga_cover.png"
+  ]
+}

@@ -1185,17 +1185,44 @@ except Exception as e:
 # Generate sitemap.xml for SEO
 from datetime import date
 today = date.today().isoformat()
+base_site_url = "https://ludwica-history-lesson.pages.dev/"
 
-sitemap_content = f"""\
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ludwica-history-lesson.pages.dev/</loc>
+sitemap_urls = []
+
+# 首頁
+sitemap_urls.append(f"""  <url>
+    <loc>{base_site_url}</loc>
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-</urlset>"""
+  </url>""")
+
+# 獨立功能頁面
+standalone_pages = [
+    ("characters_database.html", 0.8),
+    ("europe_map.html", 0.8),
+    ("character_relationship.html", 0.7),
+    ("constitutio_antoniniana_bilingual.html", 0.7),
+]
+for page_file, priority in standalone_pages:
+    if os.path.exists(page_file):
+        sitemap_urls.append(f"""  <url>
+    <loc>{base_site_url}{page_file}</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>{priority}</priority>
+  </url>""")
+
+# SEO 文章頁面 (pages/)
+for pid in sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group())):
+    sitemap_urls.append(f"""  <url>
+    <loc>{base_site_url}pages/{pid}.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>""")
+
+sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_urls) + '\n</urlset>\n'
 
 with open(r'sitemap.xml', 'w', encoding='utf-8', newline='\n') as f:
     f.write(sitemap_content)
