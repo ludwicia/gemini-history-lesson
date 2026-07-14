@@ -22,7 +22,7 @@ Berig knelt in the deep snow, slit his palm with a bronze dagger, and let his ho
 
 At that moment, a massive, ancient raven flapped its ragged wings, descending heavily through the blizzard to perch upon the horse skull atop the altar.
 
-It was an exceedingly strange bird. Its left eye was blind, leaving a dried, dark-red socket, but its right eye gleamed like polished obsidian, shining with ancient wisdom and the weight of ages. This one-eyed raven was the mortal guise of Gaut, the primordial ancestor god of the Gothic people.
+It was an exceedingly strange bird. Its left eye was blind, leaving a dried, dark-red socket, but its right eye gleamed like polished obsidian, shining with ancient wisdom and the weight of ages. In mythology, the raven is the mortal guise of Gaut, the primordial ancestor god of the Gothic people.
 
 The raven did not cry out. It merely stared at Berig with its deep right eye, then scraped three crude ship-like shapes in the snow with its claws, pointing toward the southern horizon.
 
