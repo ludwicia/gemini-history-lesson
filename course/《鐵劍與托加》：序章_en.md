@@ -48,11 +48,9 @@ Through those long centuries, the one-eyed raven always flew ahead of the column
 
 In this migration, the nation learned both cruelty and resilience. Elders who could no longer walk went willingly into the dark woods to freeze, leaving their rations for the children; infants were born beside the wheels of oxcarts, growing up on dry bread mixed with dust. They held but a single belief: press onward, and live.
 
-At last, they stepped out of the final tree line. Spread before them was the boundless Scythian plain, shimmering under the sun by the Black Sea. Here was warmth; here was soil that brought forth wheat. The children of the three ships finally settled, prospering and dividing into two great confederations—the Ostrogoths of the east and the Visigoths of the west.
+At last, they stepped out of the final tree line. Spread before them was the boundless Scythian plain, shimmering under the Black Sea sun. The children of the three ships finally settled here, dividing into two great confederations—the Ostrogoths of the east and the Visigoths of the west.
 
-They believed they had reached the land of promise. They built villages, traded amber for Roman wine, and forgot the ice of the North, slowly drifting away from the old gods.
-
-Until the autumn of the year 375.
+For over a century, they carved out their domain with iron swords and long spears along the Black Sea—slaying Roman emperors, sacking Greek cities, and forging a fearsome hegemony through relentless expansion and conquest. Until the autumn of the year 375.
 
 The waters of the Don River ran blood-red in the setting sun, like an open vein across the steppes.
 
