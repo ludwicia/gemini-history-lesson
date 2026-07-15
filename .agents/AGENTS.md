@@ -83,3 +83,14 @@
 3. **術語與人名一致性 (Terminology Alignment)**：
    * 小說中的人物姓名、事件譯名、專有名詞（如 Arianism 譯為「阿里烏派」或「亞利烏派」、Fritigern 譯為「弗里蒂根」、Athanaric 譯為「阿薩納里克」）必須與 `course/` 歷史學術論文及 `characters_database.html` 保持高度一致，以防混淆。
    * 寫作時應隨時參考 [character_timeline_bridge.md](file:///c:/Users/USER/gemini%E7%9A%84%E7%B0%A1%E5%96%AE%E6%AD%B7%E5%8F%B2%E8%AA%B2/novel_workspace/character_timeline_bridge.md) 的對照表。
+
+---
+
+## 🔗 引用著作之學術超連結規範
+
+為了便於讀者與學生進行史料交叉查證，所有課程文章（`course/`）的引用著作列表（References）必須遵守以下規範：
+
+1. **超連結之有效性與可點擊性**：
+   * 嚴禁使用純文字（Plain Text）記錄學術文獻。所有新替換或修改的學術引用，必須使用 Markdown 超連結語法 `[文獻名稱與描述](URL)` 進行包裝。
+   * 超連結的指向必須是真實、有效且對大眾可點擊訪問的網頁，例如該圖書的 Google Books 頁面、Internet Archive 的數位圖書館存檔、知名學術出版社官網（如 Cambridge Core、Oxford Academic）或公認可靠的古籍電子版（如 CCEL、Tertullian Project 等）。
+   * 嚴禁包含失效連結、Placeholder 網址或虛構網址。
