@@ -11,12 +11,14 @@
             "id": "2bab758c9b38cc93",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "gothic_three_ships_migration_raw.png"
+                "file": "novel_outline_part1.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "gothic_three_ships_migration_raw"
+              "icon": "lucide-file",
+              "title": "novel_outline_part1"
             }
           }
         ]
@@ -92,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "gothic_three_ships_migration_raw.png",
+                "file": "novel_outline_part1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "gothic_three_ships_migration_raw 的反向連結"
+              "title": "novel_outline_part1 的反向連結"
             }
           },
           {
@@ -111,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "gothic_three_ships_migration_raw.png",
+                "file": "novel_outline_part1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "gothic_three_ships_migration_raw 的對外連結"
+              "title": "novel_outline_part1 的對外連結"
             }
           },
           {
@@ -154,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "gothic_three_ships_migration_raw.png",
+                "file": "novel_outline_part1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "gothic_three_ships_migration_raw 的大綱"
+              "title": "novel_outline_part1 的大綱"
             }
           }
         ]
@@ -181,15 +183,19 @@
       "bases:建立新的 base": false
     }
   },
-  "active": "ad995ecccb9128a9",
+  "active": "2bab758c9b38cc93",
   "lastOpenFiles": [
-    "chapter1_draft.md",
+    "chapter2_draft.md",
+    "《鐵劍與托加》：第一章.md",
+    "《鐵劍與托加》：第一章_en.md",
+    "iron_sword_and_toga_cover.png",
+    "《鐵劍與托加》：序章.md",
     "《鐵劍與托加》：序章_en.md",
     "gothic_three_ships_migration.png",
     "gothic_three_ships_migration_raw.png",
     "iron_sword_and_toga_cover_raw.png",
-    "prologue_draft.md",
     "novel_outline_part1.md",
-    "iron_sword_and_toga_cover.png"
+    "prologue_draft.md",
+    "chapter1_draft.md"
   ]
 }

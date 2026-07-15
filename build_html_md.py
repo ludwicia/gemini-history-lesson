@@ -723,7 +723,7 @@ pages_data = {
     'page32': {'title': '羅馬帝國：安東尼努斯敕令', 'ver': '1.0', 'doc': True},
     'page33': {'title': '一世紀羅馬行省治權與社會', 'img': 'images/roman_provincial_governance.png', 'ver': '1.0', 'doc': False},
     'page34': {'title': '匈人的登場與晚期羅馬地緣政治', 'img': 'images/huns_arrival.png', 'ver': '1.0', 'doc': False},
-    'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.0', 'doc': False},
+    'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.1', 'doc': False},
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.2', 'doc': False},
     'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False, 'bg_pos': 'center top'},
