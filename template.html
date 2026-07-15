@@ -86,7 +86,7 @@
     }
     </script>
     <link rel="stylesheet" href="style.css?v=4.7">
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
 </head>
 <body>
 
@@ -326,6 +326,10 @@
         <!-- 歷史小說：鐵劍與托加：第一章 -->
         <div id="course-page43" class="course-page" style="display: none;">
             __HTML_BODY_PAGE43__
+        </div>
+        <!-- 羅馬與波斯地緣政治關係 -->
+        <div id="course-page44" class="course-page" style="display: none;">
+            __HTML_BODY_PAGE44__
         </div>
     </main>
 
@@ -749,6 +753,15 @@
                 <b>👤 內容生成：</b>AI 深度研究<br>
                 <b>🛠️ 網頁工程：</b>Antigravity 協作
             </div>
+        `,
+        page44: `
+            <div style="font-size: 0.85rem; color: #4a5568; line-height: 1.6;">
+                <b>📚 當前章節：</b>羅馬與波斯薩珊王朝地緣關係<br>
+                <b>🏷️ 內容版本：</b>1.0<br>
+                <b>📅 更新日期：</b>__PAGE44_DATE__<br>
+                <b>👤 內容生成：</b>AI 深度研究<br>
+                <b>🛠️ 網頁工程：</b>Antigravity 協作
+            </div>
         `
     };
 
@@ -793,7 +806,8 @@
         'page38': { title: '阿陶爾夫與哥德大遷徙（第二卷：蠻族武力與羅馬秩序的合流） — Ludwica 的簡單歷史課', desc: '深入研究西哥德君主阿陶爾夫的政治抉擇，分析他從試圖抹去羅馬名號建立「哥德帝國（Gothia）」到轉為以哥德武力守護「羅馬法治秩序（Romania）」的思想轉變，以及他與羅馬公主加拉·普拉西提阿聯姻的地緣政治影響與歷史遺產。' },
         'page39': { title: '斯提里科的崛起、掌權與覆滅 — Ludwica 的簡單歷史課', desc: '深入剖析西羅馬帝國雙軍總長斯提里科的傳奇一生，從其半蠻族出身、軍事功勳（擊敗西哥德人、全殲拉達蓋蘇斯）、溫和宗教政策與焚毀《西比拉預言書》的動機，解構帕維亞兵變如何引發帝國瓦解的多米諾骨牌效應。' },
         'page40': { title: '萊茵河－多瑙河連線：歐陸地緣裂變與整合的雙軸命脈 — Ludwica 的簡單歷史課', desc: '深入探討歐洲兩大水系萊茵河與多瑙河的地理水文特徵，解析羅馬帝國的雙河界牆與邊境經濟圈、西元406年除夕萊茵河大越渡之西羅馬帝國連鎖效應，以及從中世紀查理曼運河到當代航道的地緣政治與工程演變。' },
-        'page41': { title: '君士坦丁三世政權的興衰：五世紀初西羅馬邊疆危機與軍事瓦解 — Ludwica 的簡單歷史課', desc: '深入解析五世紀初西羅馬帝國不列顛駐軍兵變，篡位者君士坦丁三世的崛起、高盧行政重建、西班牙遠征與「奧諾里亞奇」衛隊角色，以及將領叛亂與最後亞爾圍城戰之歷史啟示。' }
+        'page41': { title: '君士坦丁三世政權的興衰：五世紀初西羅馬邊疆危機與軍事瓦解 — Ludwica 的簡單歷史課', desc: '深入解析五世紀初西羅馬帝國不列顛駐軍兵變，篡位者君士坦丁三世的崛起、高盧行政重建、西班牙遠征與「奧諾里亞奇」衛隊角色，以及將領叛亂與最後亞爾圍城戰之歷史啟示。' },
+        'page44': { title: '羅馬與波斯薩珊王朝地緣關係 — Ludwica 的簡單歷史課', desc: '深入研究公元378年前後羅馬帝國與波斯薩珊王朝在亞美尼亞與美索不達米亞的地緣對峙，解析阿德里安堡戰役後的戰略格局重塑、阿奇利塞內和約瓜分亞美尼亞，以及共同防禦高加索防線的協作機制。' }
     };
 
     function updatePageSEO(pageId) {
@@ -1077,7 +1091,8 @@
         });
 
         if (count === 0) {
-            searchResults.innerHTML = '<div style="color:#e53e3e; text-align:center; margin-top:30px; font-size: 0.95rem;">找不到包含「' + e.target.value + '」的內容</div>';
+            const safeVal = e.target.value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            searchResults.innerHTML = '<div style="color:#e53e3e; text-align:center; margin-top:30px; font-size: 0.95rem;">找不到包含「' + safeVal + '」的內容</div>';
         } else if (count > 50) {
             const note = document.createElement('div');
             note.style = "color:#718096; text-align:center; margin-top:10px; font-size: 0.8rem;";
@@ -1444,9 +1459,9 @@
             });
 
             try {
-                window.mermaid.init(undefined, document.querySelectorAll('.relationship-section .mermaid'));
+                await window.mermaid.run({ nodes: document.querySelectorAll('.relationship-section .mermaid') });
             } catch (e) {
-                console.error("Mermaid init failed:", e);
+                console.error("Mermaid run failed:", e);
             }
         }
 

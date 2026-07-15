@@ -82,6 +82,7 @@ def migrate_articles(db, catalog_data):
     articles = catalog_data.get('articles', [])
     success_count = 0
     error_count = 0
+    skip_count = 0
 
     for art in articles:
         page_id = art['id']
@@ -113,6 +114,13 @@ def migrate_articles(db, catalog_data):
 
         # 上傳到 Firestore (拆分為兩個 Collections)
         try:
+            # 檢查版本號，跳過未變更的文章
+            existing = db.collection('articles').document(page_id).get()
+            if existing.exists and existing.to_dict().get('ver') == meta_data['ver']:
+                print(f"   [SKIP] [{page_id}] {art['title']} (版本 {meta_data['ver']} 未變更)")
+                skip_count += 1
+                continue
+
             # 1. 輕量元資料上傳到 articles
             db.collection('articles').document(page_id).set(meta_data)
 
@@ -128,7 +136,7 @@ def migrate_articles(db, catalog_data):
             print(f"   [ERROR] [{page_id}] 上傳失敗: {e}")
             error_count += 1
 
-    print(f"   [INFO] 成功: {success_count}, 失敗: {error_count}")
+    print(f"   [INFO] 成功: {success_count}, 跳過: {skip_count}, 失敗: {error_count}")
 
 
 def migrate_worklog(db, catalog_data):
@@ -182,9 +190,10 @@ def migrate_site_config(db):
     """上傳網站設定到 Firestore site_config collection"""
     print("\n[INFO] 正在上傳網站設定...")
 
+    from datetime import date
     config = {
-        'layout_version': '7.1',
-        'publish_date': '2026-07-11',
+        'layout_version': '7.2',
+        'publish_date': date.today().isoformat(),
         'site_name': 'Ludwica 的簡單歷史課',
         'site_url': 'https://ludwica-history-lesson.pages.dev/',
         'description': '深度歷史專題研究與報告'

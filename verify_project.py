@@ -2,27 +2,29 @@ import os
 import re
 import sys
 import filecmp
-
-# Add root dir to sys.path so we can import build_html_md
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-# Import build_html_md (which triggers page building and writes static file to index.html)
-import build_html_md
-
-# Immediately restore index.html from index_db.html source of truth
-with open('index_db.html', 'rb') as _f_src:
-    _db_content = _f_src.read()
-with open('index.html', 'wb') as _f_dst:
-    _f_dst.write(_db_content)
+import json
 
 def check_files_exist():
     print("Checking referenced markdown files...")
-    import build_html_md
+    if not os.path.exists('course_config.json'):
+        print("[ERROR] course_config.json is missing.")
+        return False
+    with open('course_config.json', 'r', encoding='utf-8') as f:
+        config = json.load(f)
+
     checked_count = 0
-    for name, val in vars(build_html_md).items():
-        if name.startswith('file_p') and isinstance(val, str):
-            if not os.path.exists(val):
-                print(f"[ERROR] File {val} referenced as {name} does not exist!")
+    articles = config.get("articles", {})
+    for pid, art in articles.items():
+        file_path = art.get("file_path")
+        if file_path:
+            if not os.path.exists(file_path):
+                print(f"[ERROR] File {file_path} referenced in {pid} does not exist!")
+                return False
+            checked_count += 1
+        file_path_en = art.get("file_path_en")
+        if file_path_en:
+            if not os.path.exists(file_path_en):
+                print(f"[ERROR] English file {file_path_en} referenced in {pid} does not exist!")
                 return False
             checked_count += 1
     print(f"[OK] All {checked_count} referenced markdown files exist.")
@@ -30,41 +32,57 @@ def check_files_exist():
 
 def check_images_exist():
     print("Checking referenced images...")
-    import build_html_md
+    if not os.path.exists('course_config.json'):
+        print("[ERROR] course_config.json is missing.")
+        return False
+    with open('course_config.json', 'r', encoding='utf-8') as f:
+        config = json.load(f)
 
-    # 1. Gather all images from config variables
     config_images = set()
-    for name, val in vars(build_html_md).items():
-        # check map_pXX strings
-        if name.startswith('map_p') and isinstance(val, str):
-            for img_match in re.findall(r'src=["\'](images/[^"\']+)["\']', val):
-                config_images.add(img_match)
-        # check images_pXX lists of tuples
-        if name.startswith('images_p') and isinstance(val, list):
-            for item in val:
-                if isinstance(item, tuple) and len(item) >= 2:
-                    img_path = item[1]
-                    if img_path.startswith('images/'):
-                        config_images.add(img_path)
+    articles = config.get("articles", {})
 
-    # 2. Gather images from markdown files themselves
+    # Gather all images from config
+    for pid, art in articles.items():
+        img_path = art.get("img")
+        if img_path and img_path.startswith("images/"):
+            config_images.add(img_path)
+
+        map_html = art.get("map_html")
+        if map_html:
+            for img_match in re.findall(r'src=["\'](images/[^"\']+)["\']', map_html):
+                config_images.add(img_match)
+
+        repls = art.get("image_replacements", [])
+        for item in repls:
+            u = item.get("url")
+            if u and u.startswith("images/"):
+                config_images.add(u)
+
+    # Gather category images
+    for cat in config.get("categories", []):
+        c_img = cat.get("img")
+        if c_img and c_img.startswith("images/"):
+            config_images.add(c_img)
+
+    # Gather images from markdown files
     md_images = set()
-    for name, val in vars(build_html_md).items():
-        if name.startswith('file_p') and isinstance(val, str) and os.path.exists(val):
-            with open(val, 'r', encoding='utf-8') as f:
-                content = f.read()
-            # Match standard md images: ![alt](path)
-            for img_match in re.findall(r'!\[.*?\]\((images/[^)]+)\)', content):
-                md_images.add(img_match)
-            # Match HTML img tags: <img src="path" ...>
-            for img_match in re.findall(r'<img\s+[^>]*src=["\'](images/[^"\']+)["\']', content):
-                md_images.add(img_match)
+    for pid, art in articles.items():
+        for path_key in ["file_path", "file_path_en"]:
+            file_path = art.get(path_key)
+            if file_path and os.path.exists(file_path):
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                # Match standard md images: ![alt](path)
+                for img_match in re.findall(r'!\[.*?\]\((images/[^)]+)\)', content):
+                    md_images.add(img_match)
+                # Match HTML img tags: <img src="path" ...>
+                for img_match in re.findall(r'<img\s+[^>]*src=["\'](images/[^"\']+)["\']', content):
+                    md_images.add(img_match)
 
     all_referenced_images = config_images.union(md_images)
     missing_images = []
 
     for img in all_referenced_images:
-        # Normalize path
         normalized_path = img.replace('/', os.sep)
         if not os.path.exists(normalized_path):
             missing_images.append(img)

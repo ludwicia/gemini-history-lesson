@@ -500,6 +500,11 @@ file_p43 = r'course/《鐵劍與托加》：第一章.md'
 file_p43_en = r'course/《鐵劍與托加》：第一章_en.md'
 images_p43 = []
 
+# Page 44 Config
+file_p44 = r'course/羅馬與波斯薩珊王朝於公元378年前後的地緣政治關係與阿德里安堡戰役後的近東戰略格局演變.md'
+map_p44 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/rome_persia_geopolitics.png" alt="Rome Persia Geopolitics" loading="lazy"><figcaption class="caption">羅馬與薩珊波斯地緣政治對峙：公元378年前後，兩大超級大國在美索不達米亞與亞美尼亞高地劍拔弩張，但在面對北方游牧風暴時，又不得不建立起共同防禦與成本分擔的地緣協作機制。</figcaption></figure>\n'
+images_p44 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -656,6 +661,9 @@ html_body_p43 = f'''<div class="novel-lang-selector" style="display: flex; justi
 {html_body_p43_en}
 </div>'''
 
+print("Processing Page 44 (Rome-Persia Geopolitics)...")
+html_body_p44 = process_markdown(file_p44, images_p44, "1.0", map_p44, page_id="page44")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -731,6 +739,7 @@ pages_data = {
     'page41': {'title': '君士坦丁三世與五世紀初邊疆危機', 'img': 'images/constantine_iii_usurper.png', 'ver': '1.0', 'doc': False},
     'page42': {'title': '序章 (Prologue)', 'img': 'images/gothic_three_ships_migration.png', 'ver': '1.0', 'doc': False},
     'page43': {'title': '第一章：黑海落日，狂風中的火種', 'img': 'images/iron_sword_chapter1_invasion.png', 'ver': '1.0', 'doc': False},
+    'page44': {'title': '羅馬與波斯地緣關係', 'img': 'images/rome_persia_geopolitics.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -750,7 +759,7 @@ categories = [
         'title': '中世紀諸民族記',
         'key': 'medieval',
         'img': 'images/clovis_main.jpg',
-        'pages': ['page23', 'page26', 'page29', 'page34', 'page38']
+        'pages': ['page23', 'page26', 'page29', 'page34', 'page38', 'page44']
     },
     {
         'title': '教宗國記',
@@ -1091,6 +1100,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE40__', html_body_p40)
 final_html = final_html.replace('__HTML_BODY_PAGE41__', html_body_p41)
 final_html = final_html.replace('__HTML_BODY_PAGE42__', html_body_p42)
 final_html = final_html.replace('__HTML_BODY_PAGE43__', html_body_p43)
+final_html = final_html.replace('__HTML_BODY_PAGE44__', html_body_p44)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1137,6 +1147,7 @@ final_html = final_html.replace('__PAGE40_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE41_DATE__', get_file_last_update_date(file_p41))
 final_html = final_html.replace('__PAGE42_DATE__', get_file_last_update_date(file_p42))
 final_html = final_html.replace('__PAGE43_DATE__', get_file_last_update_date(file_p43))
+final_html = final_html.replace('__PAGE44_DATE__', get_file_last_update_date(file_p44))
 
 # Inject JavaScript for toggle function
 toggle_js = """

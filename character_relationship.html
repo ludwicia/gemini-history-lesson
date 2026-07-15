@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Mermaid JS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
     <style>
         :root {
             --primary: #1e3a8a;
@@ -306,7 +306,7 @@
             rx: 12px;
             ry: 12px;
         }
-        
+
         .cluster-label text {
             font-size: 20px !important;
             font-weight: 700 !important;
@@ -328,12 +328,12 @@
             stroke: var(--text-muted) !important;
             stroke-width: 2px !important;
         }
-        
+
         .edgePath .markerPath {
             fill: var(--text-muted) !important;
             stroke: var(--text-muted) !important;
         }
-        
+
         .node .nodeLabel {
             font-family: 'Inter', 'Noto Sans TC', sans-serif !important;
             font-size: 14px !important;
@@ -642,21 +642,21 @@ graph TB
         viewport.addEventListener('wheel', (e) => {
             e.preventDefault();
             const oldScale = scale;
-            
+
             // Exponential scaling for natural scroll feel
             // Decreased speed coefficient for much finer control and slower zoom rate (adjusted to 0.0005)
             const zoomIntensity = 0.0005;
             const factor = Math.exp(-e.deltaY * zoomIntensity);
             scale = Math.min(Math.max(scale * factor, 0.15), 6.0); // Allow zoom up to 6x
-            
+
             // Zoom centered on the mouse cursor
             const rect = viewport.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
-            
+
             translateX = mouseX - (mouseX - translateX) * (scale / oldScale);
             translateY = mouseY - (mouseY - translateY) * (scale / oldScale);
-            
+
             updateTransform();
         }, { passive: false });
 
@@ -694,11 +694,11 @@ graph TB
                 isPanning = false;
                 initialTouchDist = getTouchDistance(e);
                 initialScale = scale;
-                
+
                 const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
                 const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
                 const rect = viewport.getBoundingClientRect();
-                
+
                 touchStartX = midX - rect.left;
                 touchStartY = midY - rect.top;
             }
@@ -714,13 +714,13 @@ graph TB
                 const dist = getTouchDistance(e);
                 const factor = dist / initialTouchDist;
                 const oldScale = scale;
-                
+
                 scale = Math.min(Math.max(initialScale * factor, 0.15), 6.0);
-                
+
                 // Zoom centered on midpoint of fingers
                 translateX = touchStartX - (touchStartX - translateX) * (scale / oldScale);
                 translateY = touchStartY - (touchStartY - translateY) * (scale / oldScale);
-                
+
                 updateTransform();
             }
         }, { passive: false });
@@ -739,14 +739,14 @@ graph TB
         function zoom(factor) {
             const oldScale = scale;
             scale = Math.min(Math.max(scale + factor, 0.15), 6.0);
-            
+
             const rect = viewport.getBoundingClientRect();
             const midX = rect.width / 2;
             const midY = rect.height / 2;
-            
+
             translateX = midX - (midX - translateX) * (scale / oldScale);
             translateY = midY - (midY - translateY) * (scale / oldScale);
-            
+
             updateTransform();
         }
 
@@ -765,27 +765,27 @@ graph TB
                         nativeHeight = parseFloat(parts[3]);
                     }
                 }
-                
+
                 // Ensure SVG takes full container bounds naturally
                 svg.removeAttribute('height');
                 svg.style.width = '100%';
                 svg.style.height = 'auto';
                 svg.style.maxWidth = 'none';
-                
+
                 const outerRect = viewport.getBoundingClientRect();
-                
+
                 // Fit SVG within outerRect with comfortable padding
                 const padding = 30;
                 const scaleX = (outerRect.width - padding) / nativeWidth;
                 const scaleY = (outerRect.height - padding) / nativeHeight;
                 scale = Math.min(scaleX, scaleY, 1.0); // Fit completely, don't upscale past 1x
                 if (scale < 0.25) scale = 0.25; // Floor at 0.25x for extreme mobile screens
-                
+
                 // Center alignment
                 translateX = (outerRect.width - nativeWidth * scale) / 2;
                 translateY = (outerRect.height - nativeHeight * scale) / 2;
                 if (translateY < 15) translateY = 15; // Retain small top margin
-                
+
                 updateTransform();
             } else {
                 scale = 1.0;

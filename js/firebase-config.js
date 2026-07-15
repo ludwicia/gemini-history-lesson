@@ -1,7 +1,7 @@
 /**
  * Firebase Configuration & Initialization
  * Ludwica 的簡單歷史課 — Firebase Firestore Integration
- * 
+ *
  * 初始化 Firebase App 和 Firestore 資料庫連線。
  * 使用 Firebase SDK v12 ESM CDN 模式。
  */
@@ -19,12 +19,13 @@ const firebaseConfig = {
     appId: "1:131084017287:web:6af26d60564fb30ba86222"
 };
 
-// 初始化 Firebase
-const app = initializeApp(firebaseConfig);
-
-// 初始化 Firestore
-const db = getFirestore(app);
-
-console.log('🔥 Firebase Firestore 已連線 — 專案: ludwica-history');
+// 初始化 Firebase（含錯誤處理）
+let db = null;
+try {
+    const app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+} catch (e) {
+    console.error('Firebase 初始化失敗:', e);
+}
 
 export { db };

@@ -15,6 +15,7 @@
 2. **防止全域滾動條干擾**：
    * 全域樣式表中的 `pre, code { overflow-x: auto; }` 會套用到圖表的 `<pre class="mermaid">` 標籤，導致縮放時出現微型滾動條。
    * 必須在圖表樣式中，為圖表容器內的 `pre` 和 `.mermaid` 元素強制覆寫樣式：
+
      ```css
      .diagram-container pre,
      .diagram-container .mermaid {
@@ -64,3 +65,21 @@
 | `index.html` | **主入口**（~68KB 動態版，從 Firestore 按需載入文章） |
 | `index_db.html` | 動態版原始檔（與 index.html 內容相同，修改時應修改此檔再複製） |
 | `index_static.html` | 靜態備份（~1.6MB，全部文章內嵌，僅作為 fallback） |
+
+---
+
+## ✍️ 小說子專案 (Novel Subproject) 與歷史研究雙軌協作守則
+
+本專案包含了一個文學改編子專案「《鐵劍與托加》歷史小說」，存放於 `novel_workspace/` 目錄下。所有協作 AI 在處理本專案時，必須嚴格遵守以下雙軌互動流程：
+
+1. **研究回溯義務 (Research Fallback)**：
+   * 當在 `novel_workspace/` 下撰寫或修改小說大綱、草稿（如 `chapter1_draft.md`、`《鐵劍與托加》：第一章.md`）時，AI **必須主動檢索** `course/` 目錄下的歷史研究論文（如 `course/阿德里安堡戰役.md`、`course/阿拉里克與哥德大遷徙...md`）或利用網路搜尋，確保小說中的歷史細節（如兵制、官制、地理環境、風俗）準確無誤。
+   * 如果發現某段情節所需的歷史事實尚未被研究或記錄，應提醒作者或主動在 `course/` 中建立相關歷史研究。
+
+2. **靈感雙向回饋機制 (Inspiration Loop)**：
+   * 當在 `course/` 中編輯、校對或新增歷史研究文章時，AI 應敏銳挖掘具備戲劇張力、衝突點或感人情節的冷門歷史知識。
+   * AI 應主動將這些發現作為小說創作靈感，記錄到 [character_timeline_bridge.md](file:///c:/Users/USER/gemini%E7%9A%84%E7%B0%A1%E5%96%AE%E6%AD%B7%E5%8F%B2%E8%AA%B2/novel_workspace/character_timeline_bridge.md) 的「靈感提取與文學化示例」或「未來的靈感待填補區」，並主動向作者提議如何融入對應的小說章節中。
+
+3. **術語與人名一致性 (Terminology Alignment)**：
+   * 小說中的人物姓名、事件譯名、專有名詞（如 Arianism 譯為「阿里烏派」或「亞利烏派」、Fritigern 譯為「弗里蒂根」、Athanaric 譯為「阿薩納里克」）必須與 `course/` 歷史學術論文及 `characters_database.html` 保持高度一致，以防混淆。
+   * 寫作時應隨時參考 [character_timeline_bridge.md](file:///c:/Users/USER/gemini%E7%9A%84%E7%B0%A1%E5%96%AE%E6%AD%B7%E5%8F%B2%E8%AA%B2/novel_workspace/character_timeline_bridge.md) 的對照表。

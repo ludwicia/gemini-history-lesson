@@ -17,6 +17,12 @@ import {
 } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js';
 
 // ============================================================
+// 常數
+// ============================================================
+const APP_VERSION = '7.2';
+const MAX_CACHED_ARTICLES = 10;
+
+// ============================================================
 // 快取層 — 避免重複讀取 Firestore
 // ============================================================
 const cache = {
@@ -25,56 +31,62 @@ const cache = {
     worklog: null,       // 更新日誌 HTML
     searchIndex: null,   // 搜尋索引
     articles: {},        // 單篇文章全文快取 (keyed by pageId)
-    siteConfig: null     // 網站設定
+    siteConfig: null,    // 網站設定
+    _pending: {}         // 進行中的請求 Promise（防止重複請求）
 };
+
+// LRU 文章存取順序追蹤
+const _articleAccessOrder = [];
 
 // ============================================================
 // 文章元資料（首頁用 — 不含 content_html）
 // ============================================================
 export async function getArticlesCatalog() {
     if (cache.catalog) return cache.catalog;
+    if (cache._pending.catalog) return cache._pending.catalog;
 
-    try {
-        // 嘗試從 Firestore 讀取
-        const articlesRef = collection(db, 'articles');
-        const snapshot = await getDocs(articlesRef);
+    cache._pending.catalog = (async () => {
+        try {
+            const articlesRef = collection(db, 'articles');
+            const snapshot = await getDocs(articlesRef);
 
-        if (!snapshot.empty) {
-            const articles = [];
-            snapshot.forEach((doc) => {
-                const data = doc.data();
-                articles.push({
-                    id: doc.id,
-                    title: data.title,
-                    ver: data.ver,
-                    last_updated: data.last_updated,
-                    category: data.category,
-                    img: data.img,
-                    is_doc: data.is_doc
+            if (!snapshot.empty) {
+                const articles = [];
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    articles.push({
+                        id: docSnap.id,
+                        title: data.title,
+                        ver: data.ver,
+                        last_updated: data.last_updated,
+                        category: data.category,
+                        img: data.img,
+                        is_doc: data.is_doc
+                    });
                 });
-            });
-            cache.catalog = articles;
-            console.log(`🔥 Firestore: 成功載入 ${articles.length} 篇文章元資料`);
-            return articles;
+                cache.catalog = articles;
+                return articles;
+            }
+        } catch (e) {
+            console.warn('⚠️ Firestore 讀取失敗，嘗試 fallback 到本地 API:', e.message);
         }
-    } catch (e) {
-        console.warn('⚠️ Firestore 讀取失敗，嘗試 fallback 到本地 API:', e.message);
-    }
 
-    // Fallback: 從本地 /api/articles.json 讀取
-    try {
-        const res = await fetch(`/api/articles.json?_t=${Date.now()}`);
-        if (res.ok) {
-            const data = await res.json();
-            cache.catalog = data.articles;
-            console.log('📁 Fallback: 從本地 API 載入文章元資料');
-            return data.articles;
+        // Fallback: 從本地 /api/articles.json 讀取
+        try {
+            const res = await fetch(`/api/articles.json?v=${APP_VERSION}`);
+            if (res.ok) {
+                const data = await res.json();
+                cache.catalog = data.articles;
+                return data.articles;
+            }
+        } catch (e) {
+            console.error('❌ 本地 API 也無法讀取:', e.message);
         }
-    } catch (e) {
-        console.error('❌ 本地 API 也無法讀取:', e.message);
-    }
 
-    return [];
+        return [];
+    })();
+
+    try { return await cache._pending.catalog; } finally { delete cache._pending.catalog; }
 }
 
 // ============================================================
@@ -82,74 +94,101 @@ export async function getArticlesCatalog() {
 // ============================================================
 export async function getCategories() {
     if (cache.categories) return cache.categories;
+    if (cache._pending.categories) return cache._pending.categories;
 
-    try {
-        const catRef = collection(db, 'categories');
-        const q = query(catRef, orderBy('order', 'asc'));
-        const snapshot = await getDocs(q);
+    cache._pending.categories = (async () => {
+        try {
+            const catRef = collection(db, 'categories');
+            const q = query(catRef, orderBy('order', 'asc'));
+            const snapshot = await getDocs(q);
 
-        if (!snapshot.empty) {
-            const categories = [];
-            snapshot.forEach((doc) => {
-                categories.push({ id: doc.id, ...doc.data() });
-            });
-            cache.categories = categories;
-            console.log(`🔥 Firestore: 成功載入 ${categories.length} 個分類`);
-            return categories;
+            if (!snapshot.empty) {
+                const categories = [];
+                snapshot.forEach((docSnap) => {
+                    categories.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                cache.categories = categories;
+                return categories;
+            }
+        } catch (e) {
+            console.warn('⚠️ Firestore 分類讀取失敗，嘗試 fallback:', e.message);
         }
-    } catch (e) {
-        console.warn('⚠️ Firestore 分類讀取失敗，嘗試 fallback:', e.message);
-    }
 
-    // Fallback
-    try {
-        const res = await fetch(`/api/articles.json?_t=${Date.now()}`);
-        if (res.ok) {
-            const data = await res.json();
-            cache.categories = data.categories;
-            return data.categories;
+        // Fallback
+        try {
+            const res = await fetch(`/api/articles.json?v=${APP_VERSION}`);
+            if (res.ok) {
+                const data = await res.json();
+                cache.categories = data.categories;
+                return data.categories;
+            }
+        } catch (e) {
+            console.error('❌ 分類 fallback 失敗:', e.message);
         }
-    } catch (e) {
-        console.error('❌ 分類 fallback 失敗:', e.message);
-    }
 
-    return [];
+        return [];
+    })();
+
+    try { return await cache._pending.categories; } finally { delete cache._pending.categories; }
 }
 
 // ============================================================
-// 單篇文章全文（按需載入）
+// 單篇文章全文（按需載入，LRU 快取上限 10 篇）
 // ============================================================
 export async function getArticleById(pageId) {
-    if (cache.articles[pageId]) return cache.articles[pageId];
-
-    try {
-        const docRef = doc(db, 'article_contents', pageId);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-            const article = { id: docSnap.id, ...docSnap.data() };
-            cache.articles[pageId] = article;
-            console.log(`🔥 Firestore: 成功載入文章 [${pageId}] — ${article.title}`);
-            return article;
-        }
-    } catch (e) {
-        console.warn(`⚠️ Firestore 文章 [${pageId}] 讀取失敗，嘗試 fallback:`, e.message);
+    // LRU: 更新存取順序
+    if (cache.articles[pageId]) {
+        const idx = _articleAccessOrder.indexOf(pageId);
+        if (idx > -1) _articleAccessOrder.splice(idx, 1);
+        _articleAccessOrder.push(pageId);
+        return cache.articles[pageId];
     }
+    if (cache._pending[`article_${pageId}`]) return cache._pending[`article_${pageId}`];
 
-    // Fallback
-    try {
-        const res = await fetch(`/api/article/${pageId}.json?_t=${Date.now()}`);
-        if (res.ok) {
-            const article = await res.json();
-            cache.articles[pageId] = article;
-            console.log(`📁 Fallback: 從本地 API 載入文章 [${pageId}]`);
-            return article;
+    cache._pending[`article_${pageId}`] = (async () => {
+        try {
+            const docRef = doc(db, 'article_contents', pageId);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const article = { id: docSnap.id, ...docSnap.data() };
+                _cacheArticle(pageId, article);
+                return article;
+            }
+        } catch (e) {
+            console.warn(`⚠️ Firestore 文章 [${pageId}] 讀取失敗，嘗試 fallback:`, e.message);
         }
-    } catch (e) {
-        console.error(`❌ 文章 [${pageId}] fallback 也失敗:`, e.message);
-    }
 
-    return null;
+        // Fallback
+        try {
+            const res = await fetch(`/api/article/${pageId}.json?v=${APP_VERSION}`);
+            if (res.ok) {
+                const article = await res.json();
+                _cacheArticle(pageId, article);
+                return article;
+            }
+        } catch (e) {
+            console.error(`❌ 文章 [${pageId}] fallback 也失敗:`, e.message);
+        }
+
+        return null;
+    })();
+
+    try { return await cache._pending[`article_${pageId}`]; } finally { delete cache._pending[`article_${pageId}`]; }
+}
+
+/** LRU 快取文章，超過上限時淘汰最舊的 */
+function _cacheArticle(pageId, article) {
+    cache.articles[pageId] = article;
+    const idx = _articleAccessOrder.indexOf(pageId);
+    if (idx > -1) _articleAccessOrder.splice(idx, 1);
+    _articleAccessOrder.push(pageId);
+
+    // 淘汰最舊的快取
+    while (_articleAccessOrder.length > MAX_CACHED_ARTICLES) {
+        const oldest = _articleAccessOrder.shift();
+        delete cache.articles[oldest];
+    }
 }
 
 // ============================================================
@@ -157,33 +196,37 @@ export async function getArticleById(pageId) {
 // ============================================================
 export async function getWorklog() {
     if (cache.worklog) return cache.worklog;
+    if (cache._pending.worklog) return cache._pending.worklog;
 
-    try {
-        const docRef = doc(db, 'worklog', 'current');
-        const docSnap = await getDoc(docRef);
+    cache._pending.worklog = (async () => {
+        try {
+            const docRef = doc(db, 'worklog', 'current');
+            const docSnap = await getDoc(docRef);
 
-        if (docSnap.exists()) {
-            cache.worklog = docSnap.data().html;
-            console.log('🔥 Firestore: 成功載入更新日誌');
-            return cache.worklog;
+            if (docSnap.exists()) {
+                cache.worklog = docSnap.data().html;
+                return cache.worklog;
+            }
+        } catch (e) {
+            console.warn('⚠️ Firestore 更新日誌讀取失敗:', e.message);
         }
-    } catch (e) {
-        console.warn('⚠️ Firestore 更新日誌讀取失敗:', e.message);
-    }
 
-    // Fallback: 從 articles.json 的 worklog 欄位
-    try {
-        const res = await fetch(`/api/articles.json?_t=${Date.now()}`);
-        if (res.ok) {
-            const data = await res.json();
-            cache.worklog = data.worklog;
-            return data.worklog;
+        // Fallback: 從 articles.json 的 worklog 欄位
+        try {
+            const res = await fetch(`/api/articles.json?v=${APP_VERSION}`);
+            if (res.ok) {
+                const data = await res.json();
+                cache.worklog = data.worklog;
+                return data.worklog;
+            }
+        } catch (e) {
+            console.error('❌ 更新日誌 fallback 失敗:', e.message);
         }
-    } catch (e) {
-        console.error('❌ 更新日誌 fallback 失敗:', e.message);
-    }
 
-    return '';
+        return '';
+    })();
+
+    try { return await cache._pending.worklog; } finally { delete cache._pending.worklog; }
 }
 
 // ============================================================
@@ -191,44 +234,47 @@ export async function getWorklog() {
 // ============================================================
 export async function getSearchIndex() {
     if (cache.searchIndex) return cache.searchIndex;
+    if (cache._pending.searchIndex) return cache._pending.searchIndex;
 
-    try {
-        const indexRef = collection(db, 'search_index');
-        const snapshot = await getDocs(indexRef);
+    cache._pending.searchIndex = (async () => {
+        try {
+            const indexRef = collection(db, 'search_index');
+            const snapshot = await getDocs(indexRef);
 
-        if (!snapshot.empty) {
-            const searchIndex = [];
-            snapshot.forEach((doc) => {
-                const data = doc.data();
-                // 每個 document 包含一個 pageId 和該頁的所有搜尋段落
-                if (data.blocks && Array.isArray(data.blocks)) {
-                    data.blocks.forEach(text => {
-                        searchIndex.push({ pageId: data.pageId, text });
-                    });
-                }
-            });
-            cache.searchIndex = searchIndex;
-            console.log(`🔥 Firestore: 成功載入搜尋索引 (${searchIndex.length} 段落)`);
-            return searchIndex;
+            if (!snapshot.empty) {
+                const searchIndex = [];
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    // 每個 document 包含一個 pageId 和該頁的所有搜尋段落
+                    if (data.blocks && Array.isArray(data.blocks)) {
+                        data.blocks.forEach(text => {
+                            searchIndex.push({ pageId: data.pageId, text });
+                        });
+                    }
+                });
+                cache.searchIndex = searchIndex;
+                return searchIndex;
+            }
+        } catch (e) {
+            console.warn('⚠️ Firestore 搜尋索引讀取失敗，嘗試 fallback:', e.message);
         }
-    } catch (e) {
-        console.warn('⚠️ Firestore 搜尋索引讀取失敗，嘗試 fallback:', e.message);
-    }
 
-    // Fallback
-    try {
-        const res = await fetch('/api/search_index.json?_t=' + Date.now());
-        if (res.ok) {
-            const searchIndex = await res.json();
-            cache.searchIndex = searchIndex;
-            console.log('📁 Fallback: 從本地 API 載入搜尋索引');
-            return searchIndex;
+        // Fallback
+        try {
+            const res = await fetch('/api/search_index.json?v=' + APP_VERSION);
+            if (res.ok) {
+                const searchIndex = await res.json();
+                cache.searchIndex = searchIndex;
+                return searchIndex;
+            }
+        } catch (e) {
+            console.error('❌ 搜尋索引 fallback 失敗:', e.message);
         }
-    } catch (e) {
-        console.error('❌ 搜尋索引 fallback 失敗:', e.message);
-    }
 
-    return [];
+        return [];
+    })();
+
+    try { return await cache._pending.searchIndex; } finally { delete cache._pending.searchIndex; }
 }
 
 // ============================================================
@@ -236,26 +282,30 @@ export async function getSearchIndex() {
 // ============================================================
 export async function getSiteConfig() {
     if (cache.siteConfig) return cache.siteConfig;
+    if (cache._pending.siteConfig) return cache._pending.siteConfig;
 
-    try {
-        const docRef = doc(db, 'site_config', 'metadata');
-        const docSnap = await getDoc(docRef);
+    cache._pending.siteConfig = (async () => {
+        try {
+            const docRef = doc(db, 'site_config', 'metadata');
+            const docSnap = await getDoc(docRef);
 
-        if (docSnap.exists()) {
-            cache.siteConfig = docSnap.data();
-            console.log('🔥 Firestore: 成功載入網站設定');
-            return cache.siteConfig;
+            if (docSnap.exists()) {
+                cache.siteConfig = docSnap.data();
+                return cache.siteConfig;
+            }
+        } catch (e) {
+            console.warn('⚠️ Firestore 網站設定讀取失敗:', e.message);
         }
-    } catch (e) {
-        console.warn('⚠️ Firestore 網站設定讀取失敗:', e.message);
-    }
 
-    // Default config
-    cache.siteConfig = {
-        layout_version: '6.0',
-        publish_date: new Date().toISOString().split('T')[0]
-    };
-    return cache.siteConfig;
+        // Default config
+        cache.siteConfig = {
+            layout_version: APP_VERSION,
+            publish_date: new Date().toISOString().split('T')[0]
+        };
+        return cache.siteConfig;
+    })();
+
+    try { return await cache._pending.siteConfig; } finally { delete cache._pending.siteConfig; }
 }
 
 // ============================================================
@@ -268,5 +318,6 @@ export function clearCache() {
     cache.searchIndex = null;
     cache.articles = {};
     cache.siteConfig = null;
-    console.log('🗑️ 快取已清除');
+    cache._pending = {};
+    _articleAccessOrder.length = 0;
 }
