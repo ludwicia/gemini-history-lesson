@@ -615,7 +615,7 @@
             // Temporary set class name
             courseViewport.className = 'course-page';
 
-            return loadAndShowArticle(pageId).then(() => {
+            return loadAndShowArticle(pageId, thisSequence).then(() => {
                 generateTOC(pageId);
                 initMobileCollapseForPage(pageId);
                 makeExplanationsCollapsible();
@@ -661,7 +661,7 @@
         }
     }
 
-    function loadAndShowArticle(pageId) {
+    function loadAndShowArticle(pageId, thisSequence) {
         const container = document.getElementById('article-content-container');
         if (!container) return Promise.resolve();
 
