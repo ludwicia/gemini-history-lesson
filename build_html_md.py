@@ -670,7 +670,7 @@ print("Processing Page 44 (Rome-Persia Geopolitics)...")
 html_body_p44 = process_markdown(file_p44, images_p44, "1.0", map_p44, page_id="page44")
 
 print("Processing Page 45 (Firmus Rebellion)...")
-html_body_p45 = process_markdown(file_p45, images_p45, "1.1", map_p45, page_id="page45")
+html_body_p45 = process_markdown(file_p45, images_p45, "1.3", map_p45, page_id="page45")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -748,7 +748,7 @@ pages_data = {
     'page42': {'title': '序章 (Prologue)', 'img': 'images/gothic_three_ships_migration.png', 'ver': '1.0', 'doc': False},
     'page43': {'title': '第一章：黑海落日，狂風中的火種', 'img': 'images/iron_sword_chapter1_invasion.png', 'ver': '1.0', 'doc': False},
     'page44': {'title': '羅馬與波斯地緣關係', 'img': 'images/rome_persia_geopolitics.png', 'ver': '1.0', 'doc': False},
-    'page45': {'title': '費爾穆斯叛亂與北非防務危機', 'img': 'images/firmus_rebellion.png', 'ver': '1.1', 'doc': False},
+    'page45': {'title': '費爾穆斯叛亂與北非防務危機', 'img': 'images/firmus_rebellion.png', 'ver': '1.3', 'doc': False},
 }
 
 categories = [
