@@ -505,6 +505,11 @@ file_p44 = r'course/羅馬與波斯薩珊王朝於公元378年前後的地緣政
 map_p44 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/rome_persia_geopolitics.png" alt="Rome Persia Geopolitics" loading="lazy"><figcaption class="caption">羅馬與薩珊波斯地緣政治對峙：公元378年前後，兩大超級大國在美索不達米亞與亞美尼亞高地劍拔弩張，但在面對北方游牧風暴時，又不得不建立起共同防禦與成本分擔的地緣協作機制。</figcaption></figure>\n'
 images_p44 = []
 
+# Page 45 Config
+file_p45 = r'course/四世紀晚期北非的羅馬帝國防務危機：西元372年費爾穆斯叛亂及其地緣政治與宗教多重影響深度研究報告.md'
+map_p45 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/firmus_rebellion.png" alt="Firmus Rebellion" loading="lazy"><figcaption class="caption">費爾穆斯叛亂：四世紀晚期，柏柏爾親王費爾穆斯在北非發動叛亂並僭越稱帝，這是帝國防線內爆與部族力量博弈的微觀縮影（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n'
+images_p45 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -569,7 +574,7 @@ print("Processing Page 20 (Milan Edict Document)...")
 html_body_p20 = process_3col_document(file_p20, "1.0", page_id="page20", lang_orig="英文/拉丁文")
 
 print("Processing Page 21 (Apostles' Creed)...")
-html_body_p21 = process_markdown(file_p21, images_p21, "1.1", map_p21, page_id="page21")
+html_body_p21 = process_markdown(file_p21, images_p21, "1.2", map_p21, page_id="page21")
 
 print("Processing Page 22 (Odoacer)...")
 html_body_p22 = process_markdown(file_p22, images_p22, "1.2", map_p22, page_id="page22")
@@ -664,6 +669,9 @@ html_body_p43 = f'''<div class="novel-lang-selector" style="display: flex; justi
 print("Processing Page 44 (Rome-Persia Geopolitics)...")
 html_body_p44 = process_markdown(file_p44, images_p44, "1.0", map_p44, page_id="page44")
 
+print("Processing Page 45 (Firmus Rebellion)...")
+html_body_p45 = process_markdown(file_p45, images_p45, "1.1", map_p45, page_id="page45")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -713,7 +721,7 @@ pages_data = {
     'page17': {'title': '從皇帝稱號看羅馬政教關係演變', 'img': 'images/ambrose_and_theodosius.png', 'ver': '1.0', 'doc': False},
     'page18': {'title': '西元紀年的確立與演進', 'img': 'images/ad_calendar_main.png', 'ver': '1.2', 'doc': False},
     'page19': {'title': '米蘭敕令時代與李錫尼覆滅', 'img': 'images/milan_edict_main.png', 'ver': '1.1', 'doc': False},
-    'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.1', 'doc': False},
+    'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.2', 'doc': False},
     'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.3', 'doc': False},
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
@@ -740,6 +748,7 @@ pages_data = {
     'page42': {'title': '序章 (Prologue)', 'img': 'images/gothic_three_ships_migration.png', 'ver': '1.0', 'doc': False},
     'page43': {'title': '第一章：黑海落日，狂風中的火種', 'img': 'images/iron_sword_chapter1_invasion.png', 'ver': '1.0', 'doc': False},
     'page44': {'title': '羅馬與波斯地緣關係', 'img': 'images/rome_persia_geopolitics.png', 'ver': '1.0', 'doc': False},
+    'page45': {'title': '費爾穆斯叛亂與北非防務危機', 'img': 'images/firmus_rebellion.png', 'ver': '1.1', 'doc': False},
 }
 
 categories = [
@@ -753,7 +762,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page39', 'page41']
+        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page39', 'page41', 'page45']
     },
     {
         'title': '中世紀諸民族記',
@@ -1101,6 +1110,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE41__', html_body_p41)
 final_html = final_html.replace('__HTML_BODY_PAGE42__', html_body_p42)
 final_html = final_html.replace('__HTML_BODY_PAGE43__', html_body_p43)
 final_html = final_html.replace('__HTML_BODY_PAGE44__', html_body_p44)
+final_html = final_html.replace('__HTML_BODY_PAGE45__', html_body_p45)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1148,6 +1158,7 @@ final_html = final_html.replace('__PAGE41_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE42_DATE__', get_file_last_update_date(file_p42))
 final_html = final_html.replace('__PAGE43_DATE__', get_file_last_update_date(file_p43))
 final_html = final_html.replace('__PAGE44_DATE__', get_file_last_update_date(file_p44))
+final_html = final_html.replace('__PAGE45_DATE__', get_file_last_update_date(file_p45))
 
 # Inject JavaScript for toggle function
 toggle_js = """

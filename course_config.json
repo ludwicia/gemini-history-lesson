@@ -28,7 +28,8 @@
         "page30",
         "page31",
         "page39",
-        "page41"
+        "page41",
+        "page45"
       ]
     },
     {
@@ -276,7 +277,7 @@
     "page03": {
       "title": "宗教戰爭(一)：胡斯戰爭",
       "file_path": "course/信仰衝突、軍事變革與波希米亞國家認同：胡斯戰爭的歷史脈絡、演進特徵與深遠影響研究報告.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/hussite_wars_main.png",
       "bg_pos": "center",
@@ -342,7 +343,7 @@
     "page05": {
       "title": "希爾紹修道院",
       "file_path": "course/希爾紹修道院研究報告：雙軌解析.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/hirsau_main_wilhelm.jpg",
       "bg_pos": "center",
@@ -400,7 +401,7 @@
     "page07": {
       "title": "奧托-薩利安帝國教會體制",
       "file_path": "course/奧托-薩利安帝國教會體制.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/ottonian_hre_map.svg",
       "bg_pos": "center",
@@ -461,7 +462,7 @@
     "page10": {
       "title": "卡洛林教育基建與知識復興",
       "file_path": "course/聖神統治與知識復興：卡洛林王朝教育基建、制度體系及其深遠歷史遺產之研究.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/carolingian_main.jpg",
       "bg_pos": "center",
@@ -494,7 +495,7 @@
     "page11": {
       "title": "歐洲造紙術的歷史演變",
       "file_path": "course/歐洲造紙術的歷史演變、技術革新與物質文明變革研究報告.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/paper_main.jpg",
       "bg_pos": "center",
@@ -522,7 +523,7 @@
     "page14": {
       "title": "英國的憲法",
       "file_path": "course/英國憲法的歷史演進、修訂機制與憲政奇異性：非法典化體制的理論與實踐研析.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/uk_constitution_main.png",
       "bg_pos": "center",
@@ -578,7 +579,7 @@
     "page16": {
       "title": "中世紀巡行王權的權力運作",
       "file_path": "course/中世紀巡行王權的權力運作、制度體系與社會實態：以奧圖一世九五五年巡行與戰事為核心之歷史學考察.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/reisekönig_travelling_kings.jpg",
       "bg_pos": "center",
@@ -616,7 +617,7 @@
     "page17": {
       "title": "從皇帝稱號看羅馬政教關係演變",
       "file_path": "course/從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/ambrose_and_theodosius.png",
       "bg_pos": "center",
@@ -735,7 +736,7 @@
     "page23": {
       "title": "蠻族崛起的政治重塑與克洛維霸權",
       "file_path": "course/蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/clovis_main.jpg",
       "bg_pos": "center",
@@ -747,7 +748,7 @@
     "page24": {
       "title": "羅馬晚期改革與農奴制",
       "file_path": "course/從戴克里先到君士坦丁：土地、稅制與兵役改革下的帝國控制與中世紀封建農奴的誕生.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/roman_colonate_estate.png",
       "bg_pos": "center",
@@ -765,7 +766,7 @@
     "page25": {
       "title": "羅馬晚期軍制變遷與哥德人崛起",
       "file_path": "course/帝國防線的內爆：從羅馬晚期改革、財政軍政演變與社會撕裂看哥德人之崛起.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/adrianople_battle.png",
       "bg_pos": "center",
@@ -849,7 +850,7 @@
     "page20": {
       "title": "羅馬帝國：米蘭敕令",
       "file_path": "course/米蘭敕令.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": true,
       "img": "",
       "bg_pos": "center",
@@ -881,7 +882,7 @@
     "page29": {
       "title": "阿德里安堡戰役",
       "file_path": "course/阿德里安堡戰役.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/battle_of_adrianople.png",
       "bg_pos": "center",
@@ -893,7 +894,7 @@
     "page30": {
       "title": "東羅馬權力重組與蠻族危機",
       "file_path": "course/東羅馬帝國的權力重組、宮廷政治與蠻族危機：從蓋納斯起事到安提米烏斯攝政的體制轉型研究（395–408年）.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/east_roman_court.png",
       "bg_pos": "center",
@@ -911,7 +912,7 @@
     "page31": {
       "title": "卡拉卡拉與《安東尼努斯敕令》",
       "file_path": "course/塞維魯王朝的權力、財政與法制變革：卡拉卡拉與《安東尼努斯敕令》的深度歷史研究.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/caracalla_edict.png",
       "bg_pos": "center",
@@ -923,7 +924,7 @@
     "page32": {
       "title": "羅馬帝國：安東尼努斯敕令",
       "file_path": "course/安東尼努斯敕令.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": true,
       "img": "",
       "bg_pos": "center",
@@ -939,7 +940,7 @@
     "page33": {
       "title": "一世紀羅馬行省治權與社會",
       "file_path": "course/帝國機器與行省治權：從聖經敘事與古典文獻印證一世紀羅馬地方統治體制.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/roman_provincial_governance.png",
       "bg_pos": "center",
@@ -975,7 +976,7 @@
     "page37": {
       "title": "大清帝國：咸豐皇帝遺詔",
       "file_path": "course/咸豐皇帝遺詔.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": true,
       "img": "",
       "bg_pos": "center",
@@ -1003,7 +1004,7 @@
     "page39": {
       "title": "斯提里科與晚期羅馬瓦解",
       "file_path": "course/斯提里科的崛起、掌權與覆滅：從晚期羅馬的歸化政策、用人機制與軍隊蠻族化透視帝國瓦解之源起.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/stilicho_general.png",
       "bg_pos": "center top",
@@ -1015,7 +1016,7 @@
     "page40": {
       "title": "萊茵河－多瑙河地緣戰略",
       "file_path": "course/歐陸地緣裂變與整合的雙軸命脈：萊茵河－多瑙河連線的政治、經濟與歷史戰略研究.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/rhine_danube_frontier.png",
       "bg_pos": "center",
@@ -1027,7 +1028,7 @@
     "page41": {
       "title": "君士坦丁三世與五世紀初邊疆危機",
       "file_path": "course/君士坦丁三世政權的興衰：五世紀初西羅馬帝國的邊疆危機、統治架構與軍事瓦解.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/constantine_iii_usurper.png",
       "bg_pos": "center",
@@ -1039,7 +1040,7 @@
     "page42": {
       "title": "序章 (Prologue)",
       "file_path": "course/《鐵劍與托加》：序章.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/gothic_three_ships_migration.png",
       "bg_pos": "center",
@@ -1053,7 +1054,7 @@
     "page43": {
       "title": "第一章：黑海落日，狂風中的火種",
       "file_path": "course/《鐵劍與托加》：第一章.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/iron_sword_chapter1_invasion.png",
       "bg_pos": "center",
@@ -1067,13 +1068,25 @@
     "page44": {
       "title": "羅馬與波斯地緣關係",
       "file_path": "course/羅馬與波斯薩珊王朝於公元378年前後的地緣政治關係與阿德里安堡戰役後的近東戰略格局演變.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/rome_persia_geopolitics.png",
       "bg_pos": "center",
       "seo_title": "羅馬與波斯薩珊王朝地緣關係 — Ludwica 的簡單歷史課",
       "seo_desc": "深入研究公元378年前後羅馬帝國與波斯薩珊王朝在亞美尼亞與美索不達米亞的地緣對峙，解析阿德里安堡戰役後的近東戰略格局重塑與防禦協作機制。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/rome_persia_geopolitics.png\" alt=\"Rome Persia Geopolitics\" loading=\"lazy\"><figcaption class=\"caption\">羅馬與薩珊波斯地緣政治對峙：公元378年前後，兩大超級大國在美索不達米亞與亞美尼亞高地劍拔弩張，但在面對北方游牧風暴時，又不得不建立起共同防禦與成本分擔的地緣協作機制。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page45": {
+      "title": "費爾穆斯叛亂與北非防務危機",
+      "file_path": "course/四世紀晚期北非的羅馬帝國防務危機：西元372年費爾穆斯叛亂及其地緣政治與宗教多重影響深度研究報告.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/firmus_rebellion.png",
+      "bg_pos": "center",
+      "seo_title": "費爾穆斯叛亂與北非防務危機 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究西元372年柏柏爾裔羅馬軍官之子費爾穆斯在北非發起的僭越叛亂，剖析地方系統性腐敗、老狄奧多西平叛經過、多納圖斯派的宗教交鋒，以及其對老狄奧多西之死、吉爾多之戰與北非淪陷的深遠影響。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/firmus_rebellion.png\" alt=\"Firmus Rebellion\" loading=\"lazy\"><figcaption class=\"caption\">費爾穆斯叛亂：四世紀晚期，柏柏爾親王費爾穆斯在北非發動叛亂並僭越稱帝，這是帝國防線內爆與部族力量博弈的微觀縮影（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
       "image_replacements": []
     }
   }
