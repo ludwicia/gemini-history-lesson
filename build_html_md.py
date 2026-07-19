@@ -1303,8 +1303,10 @@ standalone_pages = [
 ]
 for page_file, priority in standalone_pages:
     if os.path.exists(page_file):
+        # 同上：Cloudflare Pages 會把 .html 轉址掉，sitemap 直接列出正規網址，
+        # 避免整份 sitemap 的網址全部回報為「含轉址的網頁」。
         sitemap_urls.append(f"""  <url>
-    <loc>{base_site_url}{page_file}</loc>
+    <loc>{base_site_url}{page_file[:-5] if page_file.endswith('.html') else page_file}</loc>
     <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>{priority}</priority>
@@ -1313,7 +1315,7 @@ for page_file, priority in standalone_pages:
 # SEO 文章頁面 (pages/)
 for pid in sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group())):
     sitemap_urls.append(f"""  <url>
-    <loc>{base_site_url}pages/{pid}.html</loc>
+    <loc>{base_site_url}pages/{pid}</loc>
     <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1386,7 +1388,13 @@ def generate_static_article_pages():
         if not img_path:
             img_path = 'history_banner_bg.png'
         image_url = base_site_url + img_path
-        page_url = base_site_url + f"pages/{pid}.html"
+        # [2026-07-19] Cloudflare Pages 會自動將 /pages/pageXX.html 以 301 轉址到
+        # /pages/pageXX（去除副檔名），後者才是實際回應 200 的正規網址。
+        # canonical 與 og:url 若仍指向 .html，等同宣告「正規網址是一個會轉址的網址」，
+        # 與 Google 實際檢索到的網址互相矛盾，因此一律使用無副檔名的形式。
+        # 註：頁面之間的相對連結仍保留 .html，以維持本機直接開啟檔案時的可用性；
+        #     這些連結會經過一次 301，對索引無實質影響。
+        page_url = base_site_url + f"pages/{pid}"
 
         # 取出建置過程中已產生的完整文章 HTML（html_body_pXX）
         p_num = int(pid[4:])
