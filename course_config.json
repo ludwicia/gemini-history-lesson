@@ -244,7 +244,7 @@
       "img": "images/us2_map.jpg",
       "bg_pos": "center",
       "seo_title": "殖民地的建立、定居與大西洋世界的形塑 — Ludwica 的簡單歷史課",
-      "seo_desc": "探索1607至1754年英屬北美十三殖民地的區域性分化、勞動力體制向種族奴隸制的轉型、邊疆衝突與大西洋世界在重商主義、光榮革命、啟盟運動和大覺醒下的文化整合。",
+      "seo_desc": "探索1607至1754年英屬北美十三殖民地的區域性分化、勞動力體制向種族奴隸制的轉型、邊疆衝突與大西洋世界在重商主義、光榮革命、啟蒙運動和大覺醒下的文化整合。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/us2_map.jpg\" alt=\"Thirteen Colonies Map\" loading=\"lazy\"><figcaption class=\"caption\">北美十三殖民地政區與地理分布圖，展示了新英格蘭、中部及南方三大區域殖民地結構與地緣疆界。</figcaption></figure>\n",
       "image_replacements": [
         {
@@ -551,7 +551,7 @@
       "img": "images/clergy_trent.jpg",
       "bg_pos": "center",
       "seo_title": "聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課",
-      "seo_desc": "深入探討基督宗教神職人員生育、婚姻與財產繼展的歷史演變與政權博弈。",
+      "seo_desc": "深入探討基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/clergy_trent.jpg\" alt=\"The Council of Trent\" loading=\"lazy\"><figcaption class=\"caption\">1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》（The Council of Trent），現藏於羅馬聖母大公殿，象徵天主教會在宗教改革浪潮下對神職絕對獨身制與教義純潔性的確認與重申。</figcaption></figure>\n",
       "image_replacements": [
         {
@@ -871,7 +871,7 @@
       "img": "",
       "bg_pos": "center",
       "seo_title": "羅馬帝國：薩洛尼卡敕令 — Ludwica 的簡單歷史課",
-      "seo_desc": "Ludwica 的簡單歷史課：歷史專題研究與報告。",
+      "seo_desc": "公元380年由羅馬皇帝格拉提安、瓦倫丁尼安二世與狄奧多西一世聯合頒布的法令，將尼西亞基督教確立為羅馬帝國國教，包含拉丁文原文、中文翻譯三欄對照與名詞解析。",
       "map_html": null,
       "image_replacements": [],
       "doc_params": {
@@ -887,7 +887,7 @@
       "img": "images/battle_of_adrianople.png",
       "bg_pos": "center",
       "seo_title": "阿德里安堡戰役 — Ludwica 的簡單歷史課",
-      "seo_desc": "Ludwica 的簡單歷史課：歷史專題研究與報告。",
+      "seo_desc": "深入探討公元378年阿德里安堡戰役的宏觀地緣政治背景，包含匈人入侵引發的哥特人口遷徙危機、多瑙河安置事件、羅馬官員的行政腐敗與馬爾恰諾波利斯衝突、雙方戰略目標與作戰序列、兩軍遭遇與交戰經過，以及戰後公元382年同盟條約的地緣政治影響與西羅馬帝國的最終解體路徑。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/battle_of_adrianople.png\" alt=\"Battle of Adrianople\" loading=\"lazy\"><figcaption class=\"caption\">阿德里安堡戰役（西元378年）想像圖：哥特戰士與家眷依託環形相接的篷車陣進行防守，隨後大批哥特與阿蘭重騎兵如雷霆般突襲包抄，給予精疲力竭的羅馬軍團致命的一擊。</figcaption></figure>\n",
       "image_replacements": []
     },
@@ -917,7 +917,7 @@
       "img": "images/caracalla_edict.png",
       "bg_pos": "center",
       "seo_title": "卡拉卡拉與《安東尼努斯敕令》 — Ludwica 的簡單歷史課",
-      "seo_desc": "Ludwica 的簡單歷史課：歷史專題研究與報告。",
+      "seo_desc": "深入研究塞維魯王朝皇帝卡拉卡拉於西元212年頒布的《安東尼努斯敕令》（Constitutio Antoniniana）的歷史背景、吉森莎草紙40號文獻載體、投降者（dediticii）的法理爭議、稅制改革及遺產稅翻倍的財政實效、貨幣安東尼尼安努斯貶值與信用崩潰，以及輔助軍瓦解與羅馬人身份認同重塑的多維歷史效應。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/caracalla_edict.png\" alt=\"Caracalla Edict\" loading=\"lazy\"><figcaption class=\"caption\">卡拉卡拉與《安東尼努斯敕令》：西元212年，羅馬皇帝卡拉卡拉頒布敕令，授予帝國所有自由民羅馬公民身份，這不僅重塑了羅馬身份認同，也藉此擴大了遺產稅等公民稅收稅基。</figcaption></figure>\n",
       "image_replacements": []
     },
@@ -929,7 +929,7 @@
       "img": "",
       "bg_pos": "center",
       "seo_title": "羅馬帝國：安東尼努斯敕令 — Ludwica 的簡單歷史課",
-      "seo_desc": "Ludwica 的簡單歷史課：歷史專題研究與報告。",
+      "seo_desc": "公元212年羅馬皇帝卡拉卡拉頒布之《安東尼努斯敕令》英漢雙語平行文本，包含吉森莎草紙40號文獻內容、古羅馬法律與文學記載等文獻對照。",
       "map_html": null,
       "image_replacements": [],
       "doc_params": {
@@ -1073,7 +1073,7 @@
       "img": "images/rome_persia_geopolitics.png",
       "bg_pos": "center",
       "seo_title": "羅馬與波斯薩珊王朝地緣關係 — Ludwica 的簡單歷史課",
-      "seo_desc": "深入研究公元378年前後羅馬帝國與波斯薩珊王朝在亞美尼亞與美索不達米亞的地緣對峙，解析阿德里安堡戰役後的近東戰略格局重塑與防禦協作機制。",
+      "seo_desc": "深入研究公元378年前後羅馬帝國與波斯薩珊王朝在亞美尼亞與美索不達米亞的地緣對峙，解析阿德里安堡戰役後的戰略格局重塑、阿奇利塞內和約瓜分亞美尼亞，以及共同防禦高加索防線的協作機制。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/rome_persia_geopolitics.png\" alt=\"Rome Persia Geopolitics\" loading=\"lazy\"><figcaption class=\"caption\">羅馬與薩珊波斯地緣政治對峙：公元378年前後，兩大超級大國在美索不達米亞與亞美尼亞高地劍拔弩張，但在面對北方游牧風暴時，又不得不建立起共同防禦與成本分擔的地緣協作機制。</figcaption></figure>\n",
       "image_replacements": []
     },

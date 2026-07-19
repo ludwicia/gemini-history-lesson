@@ -97,18 +97,104 @@ def check_images_exist():
     return True
 
 def check_index_sync():
+    """
+    [2026-07-19 更新] index.html 不再與 index_db.html 完全相同。
+
+    build_html_md.py 會先把 index_db.html 複製為 index.html，再於
+    STATIC_ARTICLE_INDEX 標記之間注入「全站文章索引」的靜態連結
+    （首頁文章清單原本全由 JavaScript 從 Firestore 載入，初始 HTML
+    沒有任何指向文章的連結，導致搜尋引擎無法爬行到任何一篇文章）。
+
+    因此同步檢查改為：把 index.html 標記之間的注入內容清空後，
+    必須與 index_db.html 完全一致——確保除了注入區塊以外沒有其他分岔。
+    """
     print("Checking if index.html is synchronized with index_db.html...")
     if not os.path.exists('index.html') or not os.path.exists('index_db.html'):
         print("[ERROR] index.html or index_db.html is missing.")
         return False
 
-    if not filecmp.cmp('index.html', 'index_db.html', shallow=False):
-        print("[ERROR] index.html is OUT OF SYNC with index_db.html!")
-        print("   If you just rebuilt the site, please copy the dynamic version back to index.html:")
-        print("   cmd: copy index_db.html index.html")
+    with open('index.html', 'r', encoding='utf-8', newline='') as f:
+        index_html = f.read()
+    with open('index_db.html', 'r', encoding='utf-8', newline='') as f:
+        index_db_html = f.read()
+
+    start_marker = '<!-- STATIC_ARTICLE_INDEX_START -->'
+    end_marker = '<!-- STATIC_ARTICLE_INDEX_END -->'
+
+    if start_marker not in index_db_html or end_marker not in index_db_html:
+        print("[ERROR] STATIC_ARTICLE_INDEX markers are missing from index_db.html!")
+        print("   These markers are the anchor for injecting the crawlable article index.")
         return False
 
-    print("[OK] index.html is in sync with index_db.html.")
+    if start_marker not in index_html or end_marker not in index_html:
+        print("[ERROR] STATIC_ARTICLE_INDEX markers are missing from index.html!")
+        return False
+
+    pattern = re.escape(start_marker) + r'.*?' + re.escape(end_marker)
+    placeholder = start_marker + '\n    ' + end_marker
+
+    stripped_index = re.sub(pattern, placeholder, index_html, flags=re.DOTALL)
+    stripped_db = re.sub(pattern, placeholder, index_db_html, flags=re.DOTALL)
+
+    if stripped_index != stripped_db:
+        print("[ERROR] index.html is OUT OF SYNC with index_db.html (outside the injected index)!")
+        print("   Please rebuild the site so index.html is regenerated from index_db.html:")
+        print("   cmd: python build_html_md.py")
+        return False
+
+    link_count = len(re.findall(r'<li><a href="pages/page\d+\.html">', index_html))
+    if link_count == 0:
+        print("[ERROR] No static article links were injected into index.html!")
+        print("   Search engines will not be able to discover any article. Please rebuild.")
+        return False
+
+    print(f"[OK] index.html is in sync with index_db.html ({link_count} static article links injected).")
+    return True
+
+
+def check_static_article_pages():
+    """
+    [2026-07-19 新增] 確認 pages/ 底下是真正含正文的靜態文章頁。
+
+    這些頁面原為 window.location.replace 跳轉空殼，導致 44 篇文章在
+    搜尋引擎眼中塌縮成首頁同一個網址、整站無法被索引。此檢查避免日後
+    不慎回退。
+    """
+    print("Checking static article pages under 'pages/'...")
+    if not os.path.isdir('pages'):
+        print("[ERROR] 'pages/' directory is missing.")
+        return False
+
+    page_files = sorted(f for f in os.listdir('pages') if f.endswith('.html'))
+    if not page_files:
+        print("[ERROR] No page found under 'pages/'.")
+        return False
+
+    problems = []
+    for name in page_files:
+        path = os.path.join('pages', name)
+        with open(path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        if 'window.location.replace' in content:
+            problems.append(f"{name}: 仍是 JS 跳轉空殼頁")
+        if 'rel="canonical"' not in content:
+            problems.append(f"{name}: 缺少 canonical")
+        if 'src="images/' in content:
+            problems.append(f"{name}: 圖片路徑未修正為 ../images/")
+        # 粗估正文長度：移除標籤後的純文字
+        body_match = re.search(r'<article[^>]*>(.*?)</article>', content, re.DOTALL)
+        body_text = re.sub(r'<[^>]+>', '', body_match.group(1)) if body_match else ''
+        if len(body_text.strip()) < 500:
+            problems.append(f"{name}: 正文過短（{len(body_text.strip())} 字），可能未寫入內容")
+
+    if problems:
+        print(f"[ERROR] Found {len(problems)} problem(s) in static article pages:")
+        for p in problems[:20]:
+            print(f"   - {p}")
+        return False
+
+    print(f"[OK] All {len(page_files)} static article pages contain full content.")
     return True
 
 def main():
@@ -124,6 +210,10 @@ def main():
     print()
 
     if not check_index_sync():
+        success = False
+    print()
+
+    if not check_static_article_pages():
         success = False
     print()
 

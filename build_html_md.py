@@ -1,8 +1,10 @@
 import markdown
 import re
 import os
+import json
 import subprocess
 from datetime import datetime
+from functools import lru_cache
 
 # Helper to automatically format raw http/https links as markdown links
 def make_urls_clickable(text):
@@ -13,6 +15,11 @@ def make_urls_clickable(text):
     return re.sub(url_pattern, r'[\1](\1)', text)
 
 # Helper to get the last update date of a file from Git or filesystem
+# [2026-07-19 優化] 加上 lru_cache：本函式對每個 .md 檔會發出 3 次 git 子行程
+# （log / diff / diff --cached，實測合計約 0.7 秒），而同一個檔案在建置過程中
+# 會被查詢兩次（process_markdown 內一次、產生版權卡片日期時再一次），
+# 44 篇文章即浪費約 30 秒。單次建置期間檔案日期不會變動，故可安全快取。
+@lru_cache(maxsize=None)
 def get_file_last_update_date(file_path):
     try:
         res = subprocess.run(
@@ -1190,10 +1197,10 @@ function toggleCategory(catId) {
 """
 final_html = final_html.replace('</body>', toggle_js + '</body>')
 
-# Write to file
-print("Writing build output to index_static.html...")
-with open(r'index_static.html', 'w', encoding='utf-8', newline='\n') as f:
-    f.write(final_html)
+# [2026-07-19 移除] 原本此處會寫出 index_static.html。
+# 該檔案全專案無任何引用（不在 sitemap、不被 index_db.html 或任何 JS 載入），
+# 實際部署的 index.html 來自下方的 index_db.html 複製，故停止產出以免混淆。
+# 註：final_html 的組裝邏輯暫時保留，待模板單一化重構時再一併清理。
 
 # Automatically synchronize index.html with the database-driven index_db.html
 print("Synchronizing index.html with index_db.html...")
@@ -1203,6 +1210,74 @@ try:
     print("[OK] Synchronized index.html with index_db.html")
 except Exception as e:
     print(f"[WARNING] Failed to sync index.html: {e}")
+
+# [2026-07-19 新增] 於 index.html 注入靜態文章索引。
+# 首頁文章清單原本完全由 JavaScript 從 Firestore 載入，初始 HTML 中沒有任何指向文章的
+# 連結（實測可見文字僅約 390 字元、0 個 <h1>、0 個文章連結），搜尋引擎因此無從發現
+# 任何一篇文章。此處在 index_db.html 的標記之間注入依分類排列的完整文章連結，
+# 讓 Googlebot 不需執行 JavaScript 就能爬行到全部 44 篇靜態文章頁。
+print("Injecting static article index into index.html...")
+try:
+    with open('index.html', 'r', encoding='utf-8') as f:
+        _idx_html = f.read()
+
+    _start_marker = '<!-- STATIC_ARTICLE_INDEX_START -->'
+    _end_marker = '<!-- STATIC_ARTICLE_INDEX_END -->'
+
+    if _start_marker in _idx_html and _end_marker in _idx_html:
+        _blocks = []
+        for _cat in categories:
+            _links = []
+            for _pid in _cat['pages']:
+                if _pid in pages_data:
+                    _links.append(
+                        f'            <li><a href="pages/{_pid}.html">{pages_data[_pid]["title"]}</a></li>'
+                    )
+            if _links:
+                _blocks.append(
+                    f'        <div class="article-index-group">\n'
+                    f'            <h3>{_cat["title"]}</h3>\n'
+                    f'            <ul>\n' + '\n'.join(_links) + '\n            </ul>\n'
+                    f'        </div>'
+                )
+
+        # 三欄文獻頁（doc=True）不屬於任何分類，首頁是以獨立的「歷史文獻」區塊呈現，
+        # 這裡同樣補上，避免它們在靜態索引中缺席而無法被爬取。
+        _doc_links = []
+        for _pid in sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group())):
+            if pages_data[_pid].get('doc') and not any(_pid in _c['pages'] for _c in categories):
+                _doc_links.append(
+                    f'            <li><a href="pages/{_pid}.html">{pages_data[_pid]["title"]}</a></li>'
+                )
+        if _doc_links:
+            _blocks.append(
+                f'        <div class="article-index-group">\n'
+                f'            <h3>歷史文獻對照</h3>\n'
+                f'            <ul>\n' + '\n'.join(_doc_links) + '\n            </ul>\n'
+                f'        </div>'
+            )
+
+        _injected = _start_marker + '\n' + '\n'.join(_blocks) + '\n    ' + _end_marker
+        _idx_html = re.sub(
+            re.escape(_start_marker) + r'.*?' + re.escape(_end_marker),
+            lambda m: _injected,
+            _idx_html,
+            flags=re.DOTALL
+        )
+
+        with open('index.html', 'w', encoding='utf-8', newline='\n') as f:
+            f.write(_idx_html)
+
+        _link_count = _injected.count('<li><a href="pages/')
+        print(f"[OK] Injected {_link_count} static article links into index.html")
+
+        _missing_from_index = [p for p in pages_data if f'pages/{p}.html' not in _injected]
+        if _missing_from_index:
+            print(f"[WARNING] {len(_missing_from_index)} page(s) missing from the static article index: {', '.join(sorted(_missing_from_index))}")
+    else:
+        print("[WARNING] STATIC_ARTICLE_INDEX markers not found in index.html - skipped injection")
+except Exception as e:
+    print(f"[WARNING] Failed to inject static article index: {e}")
 
 # Generate sitemap.xml for SEO
 from datetime import date
@@ -1261,24 +1336,46 @@ with open(r'robots.txt', 'w', encoding='utf-8') as f:
     f.write(robots_content)
 print("Generated robots.txt")
 
-# Generate SEO Redirect HTML files for each page
-def generate_redirect_pages():
-    print("Generating SEO redirect HTML files in 'pages/' directory...")
+# [2026-07-19 重寫] 產生 pages/ 底下的靜態文章頁。
+# 原本這裡產生的是「只有 meta 標籤 + window.location.replace 跳轉」的空殼頁，
+# 導致 Google 將 44 篇文章全部視為跳轉到首頁的同一個網址，整站僅 1 個 URL 被檢索
+# 且因內容過少未被索引。現改為直接寫入建置過程已產生的完整文章 HTML
+# （html_body_pXX），使每篇文章成為可獨立索引、內容完整的靜態網頁。
+def generate_static_article_pages():
+    print("Generating static article pages in 'pages/' directory...")
     base_site_url = "https://ludwica-history-lesson.pages.dev/"
 
     # Create pages directory if it doesn't exist
     os.makedirs('pages', exist_ok=True)
 
-    # Load descriptions from template.html using regex
+    # [2026-07-19 變更] SEO 描述改由 course_config.json 讀取。
+    # 原本從 template.html 以正則撈取 pageSEO，但 template.html 與 index_db.html
+    # 的 pageSEO 已各自分岔（41 筆 vs 39 筆、其中 4 筆內容不一致），導致
+    # page42/43/45 線上只拿到通用備援文案。現統一以 course_config.json
+    # 的 seo_desc 為單一真實來源（44 篇完整）。
     descs = {}
     try:
-        with open('template.html', 'r', encoding='utf-8') as f:
-            t_content = f.read()
-        matches = re.findall(r"'(page\d+)':\s*\{\s*title:\s*'(.*?)',\s*desc:\s*'(.*?)'\s*\}", t_content)
-        for pid, title, desc in matches:
-            descs[pid] = desc
+        import json as _json
+        with open('course_config.json', 'r', encoding='utf-8') as f:
+            _cfg_articles = _json.load(f).get('articles', {})
+        for pid, meta in _cfg_articles.items():
+            desc = (meta.get('seo_desc') or '').strip()
+            if desc:
+                descs[pid] = desc
+        print(f"[OK] Loaded {len(descs)} SEO descriptions from course_config.json")
     except Exception as e:
         print(f"Error loading descriptions for redirects: {e}")
+
+    # 缺漏警示：避免日後新增文章時無聲退回通用文案
+    _missing = [pid for pid in pages_data if pid not in descs]
+    if _missing:
+        print(f"[WARNING] {len(_missing)} page(s) missing seo_desc in course_config.json: {', '.join(sorted(_missing))}")
+
+    # 依 pages_data 的順序建立「上一篇／下一篇」導覽，讓搜尋引擎能在文章之間爬行
+    ordered_pids = sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group()))
+
+    generated = 0
+    empty_body = []
 
     for pid, data in pages_data.items():
         title = data['title'] + " — Ludwica 的簡單歷史課"
@@ -1291,12 +1388,49 @@ def generate_redirect_pages():
         image_url = base_site_url + img_path
         page_url = base_site_url + f"pages/{pid}.html"
 
-        redirect_html = f"""<!DOCTYPE html>
+        # 取出建置過程中已產生的完整文章 HTML（html_body_pXX）
+        p_num = int(pid[4:])
+        body_html = globals().get(f"html_body_p{p_num}", "")
+        if not body_html:
+            empty_body.append(pid)
+
+        # 靜態頁位於 pages/ 子目錄，需把 images/ 等相對路徑往上退一層
+        body_html = body_html.replace('src="images/', 'src="../images/')
+        body_html = body_html.replace("src='images/", "src='../images/")
+        body_html = body_html.replace('href="images/', 'href="../images/')
+
+        # 上一篇／下一篇
+        idx = ordered_pids.index(pid)
+        nav_parts = []
+        if idx > 0:
+            prev_pid = ordered_pids[idx - 1]
+            nav_parts.append(f'<a href="{prev_pid}.html" rel="prev">← {pages_data[prev_pid]["title"]}</a>')
+        if idx < len(ordered_pids) - 1:
+            next_pid = ordered_pids[idx + 1]
+            nav_parts.append(f'<a href="{next_pid}.html" rel="next">{pages_data[next_pid]["title"]} →</a>')
+        prev_next_html = '<nav class="static-prevnext">' + ' | '.join(nav_parts) + '</nav>' if nav_parts else ''
+
+        # JSON-LD 結構化資料
+        json_ld = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": data['title'],
+            "description": desc,
+            "image": image_url,
+            "author": {"@type": "Person", "name": "Ludwica"},
+            "publisher": {"@type": "Organization", "name": "Ludwica 的簡單歷史課"},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
+            "inLanguage": "zh-TW"
+        }, ensure_ascii=False, indent=None)
+
+        article_html = f"""<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <meta name="description" content="{desc}">
+    <link rel="canonical" href="{page_url}">
 
     <!-- Open Graph Metadata -->
     <meta property="og:title" content="{title}">
@@ -1311,22 +1445,62 @@ def generate_redirect_pages():
     <meta name="twitter:description" content="{desc}">
     <meta name="twitter:image" content="{image_url}">
 
-    <script>
-        window.location.replace("../#" + "{pid}");
-    </script>
+    <link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">{json_ld}</script>
+    <style>
+        body {{ background: #f7fafc; margin: 0; }}
+        .static-wrap {{ max-width: 900px; margin: 0 auto; padding: 24px 20px 60px; }}
+        .static-topbar {{ padding: 14px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 28px; }}
+        .static-topbar a {{ color: #2b6cb0; text-decoration: none; font-weight: 600; }}
+        .static-article {{ background: #fff; padding: 32px 34px; border-radius: 12px;
+                           box-shadow: 0 4px 14px rgba(0,0,0,.04); line-height: 1.9; }}
+        .static-prevnext {{ margin-top: 34px; padding-top: 18px; border-top: 1px solid #e2e8f0;
+                            font-size: .95rem; }}
+        .static-prevnext a {{ color: #2b6cb0; text-decoration: none; }}
+        .static-footer {{ margin-top: 26px; font-size: .85rem; color: #718096; line-height: 1.8; }}
+        @media (max-width: 800px) {{ .static-article {{ padding: 20px 16px; }} }}
+    </style>
 </head>
 <body>
-    <h1>{title}</h1>
-    <p>{desc}</p>
-    <p>正在為您導向至網頁... 如果沒有自動跳轉，請點擊 <a href="../#{pid}">這裡</a>。</p>
+<div class="static-wrap">
+    <div class="static-topbar"><a href="../">← 回到 Ludwica 的簡單歷史課</a></div>
+    <article class="static-article">
+{body_html}
+{prev_next_html}
+    </article>
+    <div class="static-footer">
+        ⚠️ 本文由 AI 生成，可能包含事實性錯誤，請讀者自行查證。<br>
+        🖼️ 文中圖片來源：<a href="https://commons.wikimedia.org/" rel="noopener">Wikimedia Commons</a>。
+        📜 本文採用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant" rel="license noopener">CC BY-SA 4.0</a> 授權。
+    </div>
+</div>
+<script>
+    // 靜態頁的分享按鈕：以目前網址為分享目標（正文中的 share-bar 會呼叫此函式）
+    function shareTo(platform, pageId) {{
+        const shareUrl = window.location.href.split('#')[0];
+        const pageTitle = document.title;
+        if (platform === 'facebook') {{
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank', 'width=600,height=400');
+        }} else if (platform === 'line') {{
+            window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(shareUrl), '_blank');
+        }} else if (platform === 'twitter') {{
+            window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(shareUrl) + '&text=' + encodeURIComponent(pageTitle), '_blank', 'width=600,height=400');
+        }} else if (platform === 'copy') {{
+            navigator.clipboard.writeText(shareUrl);
+        }}
+    }}
+</script>
 </body>
 </html>
 """
         with open(os.path.join("pages", f"{pid}.html"), 'w', encoding='utf-8', newline='\n') as f:
-            f.write(redirect_html)
+            f.write(article_html)
+        generated += 1
 
-    print(f"Successfully generated {len(pages_data)} redirect HTML files under 'pages/'.")
+    if empty_body:
+        print(f"[WARNING] {len(empty_body)} page(s) produced an EMPTY article body: {', '.join(sorted(empty_body))}")
+    print(f"Successfully generated {generated} static article pages under 'pages/'.")
 
-generate_redirect_pages()
+generate_static_article_pages()
 
 print("Done! Site successfully built as dynamic 23-topic history portal with full SEO.")

@@ -6,3 +6,4 @@ history_lessons.db
 *-firebase-adminsdk-*.json
 serviceAccountKey.json
 node_modules/
+index_static.html

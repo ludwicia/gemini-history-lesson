@@ -96,7 +96,7 @@
       ]
     }
     </script>
-        <link rel="stylesheet" href="style.css?v=4.8">
+        <link rel="stylesheet" href="style.css?v=4.9">
     <style>
     /* New Category Section Styles */
     .category-section {
@@ -370,7 +370,7 @@
             <div class="footer-version-col">
                 <div class="version-card">
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--primary-color);">📝 版本與課堂宣告</div>
-                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：7.7 (發布《費爾穆斯叛亂與北非防務危機》，進行多納圖斯派與羅馬努斯官僚貪腐地緣政治深度研究，引進全新 AI 歷史插圖與學術引用清理)</div>
+                    <div style="font-weight: 500; margin-bottom: 6px;">版面設計：7.8 (SEO 結構修復：44 篇文章改為可獨立索引的靜態頁面，首頁新增全站文章索引，補上 canonical 與 Article 結構化資料)</div>
                     <div style="color: #718096; font-size: 0.75rem;">發布日期：2026-07-19</div>
                     <hr style="border: none; border-top: 1px dashed #cbd5e0; margin: 8px 0;">
                     <div id="dynamic-course-info" style="text-align: left; font-size: 0.8rem; line-height: 1.5;">
@@ -392,6 +392,19 @@
         </div>
     </aside>
 </div>
+
+<!--
+  全站文章索引（靜態）。
+  本站文章內容由 JavaScript 於執行階段從 Firestore 載入，初始 HTML 不含任何文章連結，
+  導致搜尋引擎無法從首頁爬行到任何一篇文章。此區塊在建置時由 build_html_md.py
+  以 course_config.json 為來源注入，提供搜尋引擎與使用者一份可直接點擊的完整文章清單。
+  下方標記請勿刪除，build 會以它為錨點覆寫內容。
+-->
+<footer class="site-article-index">
+    <h2>全站文章索引</h2>
+    <!-- STATIC_ARTICLE_INDEX_START -->
+    <!-- STATIC_ARTICLE_INDEX_END -->
+</footer>
 
 <!-- Floating Back to Home Button -->
 <a href="#home" class="floating-home-btn" id="floatingHomeBtn" style="display: none;">

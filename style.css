@@ -1096,3 +1096,59 @@
                 text-align: left;
             }
         }
+
+/* ============================================================
+   全站文章索引（靜態，供搜尋引擎爬行與使用者總覽）
+   由 build_html_md.py 於建置時注入 index.html
+   ============================================================ */
+.site-article-index {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 28px 24px 36px;
+    border-top: 1px solid #e2e8f0;
+    background: #fff;
+}
+.site-article-index > h2 {
+    font-size: 1.15rem;
+    color: #2d3748;
+    margin: 0 0 20px;
+    font-weight: 700;
+}
+.site-article-index .article-index-group {
+    display: inline-block;
+    vertical-align: top;
+    width: 31%;
+    min-width: 240px;
+    margin: 0 2% 22px 0;
+}
+.site-article-index .article-index-group h3 {
+    font-size: .95rem;
+    color: #2b6cb0;
+    margin: 0 0 8px;
+    font-weight: 600;
+}
+.site-article-index ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.site-article-index li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+.site-article-index a {
+    color: #4a5568;
+    text-decoration: none;
+    font-size: .9rem;
+}
+.site-article-index a:hover {
+    color: #2b6cb0;
+    text-decoration: underline;
+}
+@media (max-width: 1200px) {
+    .site-article-index .article-index-group { width: 47%; }
+}
+@media (max-width: 800px) {
+    .site-article-index { padding: 20px 16px 28px; }
+    .site-article-index .article-index-group { width: 100%; margin-right: 0; }
+}
