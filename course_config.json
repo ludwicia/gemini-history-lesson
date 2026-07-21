@@ -1,7 +1,7 @@
 {
   "site_config": {
-    "layout_version": "7.5",
-    "publish_date": "2026-07-15",
+    "layout_version": "7.9",
+    "publish_date": "2026-07-22",
     "site_name": "Ludwica 的簡單歷史課",
     "site_url": "https://ludwica-history-lesson.pages.dev/",
     "description": "涵蓋七大歷史專題的深度學術研究網站"
@@ -736,7 +736,7 @@
     "page23": {
       "title": "蠻族崛起的政治重塑與克洛維霸權",
       "file_path": "course/蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基.md",
-      "ver": "1.1",
+      "ver": "1.2",
       "doc": false,
       "img": "images/clovis_main.jpg",
       "bg_pos": "center",

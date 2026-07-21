@@ -587,7 +587,7 @@ print("Processing Page 22 (Odoacer)...")
 html_body_p22 = process_markdown(file_p22, images_p22, "1.2", map_p22, page_id="page22")
 
 print("Processing Page 23 (Clovis)...")
-html_body_p23 = process_markdown(file_p23, images_p23, "1.0", map_p23, page_id="page23")
+html_body_p23 = process_markdown(file_p23, images_p23, "1.2", map_p23, page_id="page23")
 
 print("Processing Page 24 (Roman Reforms & Colonate)...")
 html_body_p24 = process_markdown(file_p24, images_p24, "1.0", map_p24, page_id="page24")
@@ -730,7 +730,7 @@ pages_data = {
     'page19': {'title': '米蘭敕令時代與李錫尼覆滅', 'img': 'images/milan_edict_main.png', 'ver': '1.1', 'doc': False},
     'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.2', 'doc': False},
     'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.3', 'doc': False},
-    'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.0', 'doc': False},
+    'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.2', 'doc': False},
     'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
     'page26': {'title': '阿拉里克與哥德大遷徙', 'img': 'images/alaric_sack_rome.png', 'ver': '1.1', 'doc': False},

@@ -21,6 +21,16 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-07-22 (校對更新 | 蠻族崛起的政治重塑與克洛維霸權 1.2)
+- **審核、校對與史實修正**：
+  - **翻譯偏差與中英夾雜修正**：修正文中未翻譯的英文專有名詞與詞彙，包括將 `displaced` 改為「取代了」、`eponymous` 改為「同名」、`paleographical` 改為「古文字學上的」、`Late Roman` 改為「羅馬晚期」、`polemical` 改為「論戰性」、`Brevet Officers` 改為「受委任軍官」、`Adventus` 改為「Adventus 入城儀式」，並統一將 `萬達爾` 修正為通用的「汪達爾」。
+  - **上標與格式修復**：修復了因導入格式出錯導致引用編號漏掉上標標記的問題（如 `(Shillings)30` 修正為 `<sup>[30]</sup>`、`(Roman ruler)39` 修正為 `<sup>[39]</sup>` 等），並將 `第<sup>[59]</sup> 條` 修正為「第五十九條」。
+  - **學術引用連結規範化**：全面清理了非學術、虛構及 AI 幻覺引用來源。將 AI 幻覺域名 `gertitashkomd.com` 替換為 Britannica 等真實學術條目；將 `Grokipedia` 替換為真實的 Wikipedia 及 World History Encyclopedia 連結；將非正式的舞台格鬥網 `weaponsofchoice.com` 與架空歷史 fandom 連結替換為 Wikipedia 及正式學術研究連結，確保所有引用均為真實有效、可點擊的學術文獻。
+- **三軌編譯與雲端同步**：
+  - 更新 `build_html_md.py` 與 `course_config.json` 中的 `page23` 內容版本至 `1.2`。
+  - 將 `index_db.html` 的 `版面設計` 版本手動更新至 `7.9`，發布日期更新為 2026-07-22。
+  - 順利執行 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯，重新上傳 API Chunks 與 Firestore 資料庫，並同步更新 `index.html`。
+
 #### 2026-07-19 (發布新專題 | 費爾穆斯叛亂與北非防務危機 1.0)
 - **發布新專題文章**：正式發布《四世紀晚期北非的羅馬帝國防務危機：西元372年費爾穆斯叛亂及其地緣政治與宗教多重影響深度研究報告》（內容版本 1.0，page45），將其歸類於「三世紀危機後的羅馬帝國」分類目錄下。
 - **審核、校對與史實修正**：
