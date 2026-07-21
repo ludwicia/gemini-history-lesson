@@ -55,15 +55,32 @@ def main():
     else:
         print("\n[WARNING] No Firebase Service Account key found. Skipping Firestore sync.")
 
-    # 4. Synchronize index_db.html to index.html (cross-platform copy)
+    # 4. 驗證 index.html
+    #
+    # [2026-07-21 修正] 此處原本會再執行一次 shutil.copyfile("index_db.html", "index.html")。
+    # 但 build_html_md.py 早已完成「複製 index_db.html -> index.html」並在其後注入
+    # 「全站文章索引」的 44 個靜態連結（供搜尋引擎爬行，首頁初始 HTML 原本沒有任何
+    # 文章連結）。這裡再複製一次，會把剛注入好的索引整段覆蓋掉，且不會有任何錯誤訊息。
+    #
+    # 因此改為「驗證」而非「複製」：確認 build_html_md.py 的產出正確，若不正確則明確報錯。
     print(f"\n==========================================")
-    print(f"Copying index_db.html to index.html (cross-platform)")
+    print(f"Verifying index.html (article index injection)")
     print(f"==========================================")
     try:
-        shutil.copyfile("index_db.html", "index.html")
-        print("[OK] Successfully synchronized index_db.html -> index.html")
+        with open("index.html", "r", encoding="utf-8") as f:
+            index_html = f.read()
+        link_count = index_html.count('<li><a href="pages/page')
+        if link_count == 0:
+            print("[ERROR] index.html contains no static article links!")
+            print("        Search engines will not be able to discover any article.")
+            print("        Please re-run: python build_html_md.py")
+            sys.exit(1)
+        print(f"[OK] index.html verified ({link_count} static article links present)")
+    except FileNotFoundError:
+        print("[ERROR] index.html not found. Please run: python build_html_md.py")
+        sys.exit(1)
     except Exception as e:
-        print(f"[ERROR] Failed to copy file: {e}")
+        print(f"[ERROR] Failed to verify index.html: {e}")
         sys.exit(1)
 
     print("\n[SUCCESS] PIPELINE COMPLETED SUCCESSFULLY!")
