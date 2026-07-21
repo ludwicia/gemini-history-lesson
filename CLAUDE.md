@@ -15,10 +15,10 @@
 本專案採用**雙軌獨立版本號**以區分排版變更與文章修訂，修改時請嚴格遵守：
 1. **版面設計版本 (Layout & Design Version)**：
    * **升級時機**：變更 CSS 樣式、JavaScript 互動、網頁結構或底層轉換腳本邏輯時。
-   * **修改位置**：`build_html_md.py` 內 HTML 模板中的版權卡片（約第 496 行：`<div>版面設計：X.X</div>`）。
+   * **修改位置**：`index_db.html` 與 `template.html` 內版權卡片的「`版面設計：X.X`」（以文字搜尋定位，勿依賴行號）。兩檔皆需同步修改。
 2. **內容版本 (Content Version)**：
    * **升級時機**：修改歷史文章內容、史實勘誤、錯字修正或段落補充時。
-   * **修改位置**：`build_html_md.py` 中的 `version_badge` 變數（約第 39 行：`內容版本：X.X`）。
+   * **修改位置**：各文章傳入 `process_markdown()` / `process_3col_document()` 的版本參數（如 `"1.1"`），該值由 `version_badge`（`build_html_md.py` 約第 98 行）渲染為頁面上的「內容版本」徽章。同時同步更新 `course_config.json` 中對應文章的 `ver` 欄位。
 
 ## 📝 程式碼與編輯規範 (Development Guidelines)
 1. **編碼前先研究 (Think & Verify)**：
@@ -31,6 +31,7 @@
    * 修改 `build_html_md.py` 時，應使用精準修改工具，只調整必要代碼，保留原有的 Markdown 預處理邏輯（Word 單行換行修復機制）。
    * 若新增歷史圖片，應將圖片與圖說登錄於相關列表中，並確保圖片套用 `<figure class="image-left">` 浮動樣式以維持高質感文繞圖（Text Wrap）效果。
    * **本地圖片優先**：新增圖片時，應將原圖下載存放至 `images/` 資料夾中，並使用相對路徑載入（且務必加上 `loading="lazy"`）。嚴禁直接外部連結（Hotlinking）Wikimedia 或其他圖庫的高畫質原圖，以免使用者載入網頁時觸發 HTTP 429 請求過多限制導致破圖。
+   * **入庫前必須壓縮**（2026-07-21 新增）：任何圖片存入 `images/` 前，長邊縮至 **1600px 以內**、照片類存 **JPEG 品質 82**（`optimize` + `progressive`），單檔以 500 KB 為警戒線。詳細規格與 Pillow 範例見 `skills/03_add_images.md`。
 3. **極簡優先 (Simplicity First)**：
    * 堅持使用 Vanilla JavaScript 與 Vanilla CSS 進行開發，除非使用者要求，否則不引入外部繁重的框架或程式庫。
 4. **目標驅動 (Goal-Driven)**：
@@ -45,25 +46,34 @@
 ## 🔍 SEO 優化守則 (SEO Checklist for New Content)
 每次新增或修改歷史專題頁面時，**必須同步完成以下 SEO 項目**：
 
-1. **靜態 Meta Tags 同步更新**：
-   * 更新 `<title>` 標籤，確保涵蓋所有現存主題名稱。
-   * 更新 `<meta name="description">` 內容，納入新增主題的簡要描述。
-   * 更新 `<meta name="keywords">`，補充新主題相關的中文關鍵字。
-   * 同步更新 `og:title`、`og:description`、`twitter:title`、`twitter:description`。
+> **⚠️ 2026-07-21 架構更新**：本節與舊版差異甚大。SEO 描述的**唯一真實來源是
+> `course_config.json` 的 `seo_desc`**；靜態文章頁與 sitemap 由 `build_html_md.py`
+> 自動產生，勿再手動維護。歷史教訓：desc 曾同時寫在 `template.html` 與
+> `index_db.html` 的 `pageSEO` 而分岔，導致多篇文章線上只剩通用備援文案。
 
-2. **JSON-LD 結構化資料更新**：
-   * 在 `<head>` 中的 `CollectionPage` JSON-LD 區塊，於 `hasPart` 陣列中新增對應的 `Article` 條目（含 name 和 url）。
+1. **`course_config.json` 註冊（最重要，取代舊的 pageSEO desc 流程）**：
+   * 新增文章的 `seo_title`（格式：`[頁面主題] — Ludwica 的簡單歷史課`）與
+     `seo_desc`（50–160 字的精確內容摘要）。
+   * 靜態文章頁 `pages/pageXX.html` 的 meta description、og、twitter、canonical、
+     Article JSON-LD **全部由 build 從此處自動產生**。
 
-3. **動態 SEO (`pageSEO`) 更新**：
-   * 在 JavaScript 的 `pageSEO` 物件中，新增對應頁面的 `title` 和 `desc` 欄位。
-   * 確保 title 格式為：`[頁面主題] — Ludwica 的簡單歷史課`。
-   * 確保 desc 為 50-160 字的精確內容摘要。
+2. **靜態 Meta Tags 同步更新（首頁層級）**：
+   * 更新首頁 `<title>`、`<meta name="description">`、`<meta name="keywords">`，
+     以及 `og:*`、`twitter:*`，涵蓋新增主題。
 
-4. **搜尋索引 (`initGlobalSearchIndex`) 註冊**：
-   * 在 `initGlobalSearchIndex()` 函式中的 `pages` 陣列新增對應的 `{ id: 'pageXX', name: '頁面名稱' }` 條目。
+3. **JSON-LD 結構化資料更新**：
+   * 在首頁 `CollectionPage` JSON-LD 的 `hasPart` 陣列新增對應 `Article` 條目。
 
-5. **Sitemap 更新**：
-   * 在 `build_html_md.py` 底部的 `sitemap_content` 中，新增對應頁面的 `<url>` 條目（使用 hash 路由格式 `#pageXX`）。
+4. **JavaScript 註冊（`template.html` 與 `index_db.html` 兩處同步）**：
+   * `pageSEO` 物件：註冊 `title`（desc 以 course_config.json 為準，兩處如有出入以 config 為正）。
+   * `initGlobalSearchIndex()` 的 `pages` 陣列：新增 `{ id: 'pageXX', name: '頁面名稱' }`。
+   * `courseInfo` 物件：新增版本、生成來源與工程資訊。
 
-6. **`courseInfo` 元資料更新**：
-   * 在 JavaScript 的 `courseInfo` 物件中，新增對應頁面的版本、生成來源與工程資訊。
+5. **自動產生項目（勿手動維護，但必須驗證）**：
+   * `sitemap.xml`、`robots.txt`、`pages/pageXX.html` 靜態文章頁、首頁「全站文章索引」
+     均由 `python build_html_md.py` 自動產生。網址一律使用**無 .html 的正規形式**
+     （Cloudflare Pages 會將 .html 301 轉址）。
+   * build 後執行 `python verify_project.py`，四項檢查全數 `[OK]`；
+     build 輸出的任何 `[WARNING]`（seo_desc 缺漏、文章未入首頁索引、正文為空）都不可忽略。
+   * ⚠️ `run_build.py` 第 4 步為驗證非複製；嚴禁在 build 之後再手動
+     `copy index_db.html index.html`，否則會覆蓋掉已注入的全站文章索引。

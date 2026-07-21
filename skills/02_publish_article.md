@@ -14,28 +14,45 @@
    - 在 `worklog.md` 檔案最上方新增一筆更新紀錄（格式：`#### YYYY-MM-DD (標題)`），並條列更新重點（使用 `- ` 作為開頭）。
 
 3. **註冊與同步新文章 (若是全新文章，才需要執行此步驟)**
-   由於專案架構區分為「靜態編譯版 (template.html)」與「本機動態資料庫版 (index_db.html)」，必須在以下檔案精準插入新文章的設定：
 
-   **A. 修改 `build_html_md.py` (後台編譯邏輯)**
+   > **⚠️ 2026-07-21 架構更新**：SEO 描述（seo_desc）的**唯一真實來源是 `course_config.json`**。
+   > 嚴禁把新文章的 desc 只寫進 `template.html` 或 `index_db.html` 的 `pageSEO` 物件——
+   > 過去雙軌各寫一份導致兩邊分岔（41 筆 vs 39 筆、多篇線上只剩通用備援文案），
+   > 已於 2026-07-19 整併完畢，不可回退。
+
+   **A. 修改 `course_config.json`（SEO 與文章元資料的單一真實來源）**
+   - 在 `articles` 中新增 `pageXX` 條目，**必填 `seo_desc`**（50–160 字的內容摘要）與 `seo_title`。
+   - 若遺漏 `seo_desc`，`python build_html_md.py` 會印出
+     `[WARNING] ... missing seo_desc in course_config.json`，該頁的靜態文章頁
+     （`pages/pageXX.html`）將退回通用備援文案。看到此警示必須立即補上。
+
+   **B. 修改 `build_html_md.py` (後台編譯邏輯)**
    - **Python 變數區**：定義 `file_pXX`、`images_pXX` 與 `html_body_pXX`。
-   - **首頁網格卡片**：在 `article_cards_html` 組合邏輯中，新增一張這篇文章的首頁卡片（包含 `<div class="article-card" ...>` 與點擊跳轉事件）。
-   - **Python HTML 組裝區**：在腳本最尾端補上 `final_html = final_html.replace('__HTML_BODY_PAGEXX__', html_body_pXX)` 與 `__PAGEXX_DATE__` 的取代邏輯。
+   - **首頁網格卡片**：在 `article_cards_html` 組合邏輯中，新增一張這篇文章的首頁卡片。
+   - **Python HTML 組裝區**：補上 `__HTML_BODY_PAGEXX__` 與 `__PAGEXX_DATE__` 的取代邏輯。
    - **分類與歸類**：在 `categories` 列表對應的分類中加入 `'pageXX'`。
+     **此步驟同時決定首頁「全站文章索引」是否包含這篇文章**——若文章不屬於任何分類
+     （例如三欄文獻頁），build 會印出 `[WARNING] ... missing from the static article index`，
+     搜尋引擎將無法從首頁爬到該篇。三欄文獻頁（doc=True）會自動歸入「歷史文獻對照」區塊。
+   - 注意：`build_static_chunks.py` 以 `import build_html_md` 的副作用讀取上述
+     `pages_data`、`html_body_pXX`、`file_pXX` 變數來產生 `api/` JSON，變數命名必須完全一致。
 
-   **B. 修改 `template.html` (靜態版版面)**
-   - **內文 HTML 容器**：在 `<main>` 區塊內新增 `<div id="course-pageXX" class="course-page" style="display: none;">__HTML_BODY_PAGEXX__</div>`。
-   - **SEO JSON-LD**：在 `<script type="application/ld+json">` 的 `hasPart` 陣列中加入新文章網址。
-   - **JavaScript 左側資訊 (courseInfo)**：在 JS 內精準新增 `pageXX: { ... }` 包含更新日期、版本等 HTML 字串。
-   - **JavaScript 網頁 Meta (pageSEO)**：在 JS 內新增 `pageXX: { title: '...', desc: '...' }`。
-   - **JavaScript 搜尋索引 (searchIndex)**：在陣列中推入 `{ id: 'pageXX', name: '...' }`。
-   - **JavaScript 路由判定 (matchedPage)**：在 `handleHashRouting` 陣列中補上 `'pageXX'`。
-
-   **C. 修改 `index_db.html` (本機動態版版面)**
-   - 同步在 `index_db.html` 中進行與 `template.html` 相同的 **SEO JSON-LD**、**網頁 Meta (pageSEO)** 註冊，以確保雙軌版面同步。
+   **C. 修改 `template.html` 與 `index_db.html` (前端版面)**
+   - **內文 HTML 容器**（僅 template.html）：`<div id="course-pageXX" class="course-page" ...>`。
+   - **SEO JSON-LD**：`hasPart` 陣列加入新文章網址。
+   - **JavaScript 左側資訊 (courseInfo)**、**搜尋索引 (searchIndex)**、
+     **路由判定 (handleHashRouting)**：照現有格式各補一筆。
+   - `pageSEO` 物件中的 `title` 仍需註冊（供 SPA 切換頁面時更新分頁標題），
+     但 **desc 以 `course_config.json` 為準**，兩處如有出入以 config 為正。
 
 4. **重新編譯、資料切片與驗證**
-   - **執行靜態編譯**：`python build_html_md.py`，生成 `index.html`。
-   - **執行資料切片**：`python build_static_chunks.py`，將文章與索引切片生成為 `api/` 底下的 JSON 檔案。**（⚠️此步驟極為重要，否則本機伺服器將看不到新文章）**。
+   - **執行靜態編譯**：`python build_html_md.py`。此步驟會：
+     複製 `index_db.html` → `index.html` 並**注入「全站文章索引」**（44+ 個靜態連結，
+     這是搜尋引擎發現文章的主要途徑）；產出 `pages/pageXX.html` **完整正文靜態頁**
+     （含 canonical、Article JSON-LD，網址使用無 .html 的正規形式）；更新 sitemap.xml。
+   - **執行資料切片**：`python build_static_chunks.py`，生成 `api/` 底下的 JSON 檔案。**（⚠️此步驟極為重要，否則本機伺服器將看不到新文章）**。
+   - **執行完整驗證**：`python verify_project.py`，四項檢查全數 `[OK]` 才可進入部署。
+     特別注意 build 輸出中的任何 `[WARNING]`（seo_desc 缺漏、文章未入索引、正文為空）都不可忽略。
    - **排版健康度檢查 (本地查驗)**：在執行 Git 提交前，AI 必須在本地對生成的 `index.html` 進行排版抽查，特別是確認新加入的文章中：
      - 沒有未被渲染的 LaTeX 公式（無 `\text{` 或 `span_` 等控制碼）。
      - 表格有被正常解析為 HTML `<table>` 結構（而非一長串的 Markdown 單行純文字）。
@@ -46,6 +63,9 @@
 
 5. **推送上線 (部署)**
    - 執行命令：`git add .`（確保切片生成的 `api/` 底下 JSON 檔案也一起 staging）
-   - 執行命令：`git commit -m "feat/docs: update or add article [文章標題]"`
+   - 執行命令：`git commit -m "發布：[文章標題] (版面 X.X, 內容 X.X)"`
+     （commit 訊息格式依 CLAUDE.md 規範使用中文前綴「發布：」「修復：」「優化：」「校對：」，
+     並附上雙軌版本號；勿使用英文 `feat:`/`docs:` 前綴。）
    - 執行命令：`git push`
-   - 向使用者回報部署成功，請其至線上確認。
+   - 向使用者回報部署成功，請其至線上確認。部署由 Cloudflare Pages 自動觸發（約 1–2 分鐘）。
+     線上正規網址為無副檔名形式（如 `/pages/page09`），`.html` 會被 301 轉址，屬正常現象。
