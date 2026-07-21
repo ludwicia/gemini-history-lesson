@@ -1,6 +1,6 @@
 {
   "site_config": {
-    "layout_version": "7.9",
+    "layout_version": "8.0",
     "publish_date": "2026-07-22",
     "site_name": "Ludwica 的簡單歷史課",
     "site_url": "https://ludwica-history-lesson.pages.dev/",
@@ -42,7 +42,8 @@
         "page29",
         "page34",
         "page38",
-        "page44"
+        "page44",
+        "page46"
       ]
     },
     {
@@ -1085,8 +1086,20 @@
       "img": "images/firmus_rebellion.png",
       "bg_pos": "center",
       "seo_title": "費爾穆斯叛亂與北非防務危機 — Ludwica 的簡單歷史課",
-      "seo_desc": "深入研究西元372年柏柏爾裔羅馬軍官之子費爾穆斯在北非發起的僭越叛亂，剖析地方系統性腐敗、老狄奧多西平叛經過、多納圖斯派的宗教交鋒，以及其對老狄奧多西之死、吉爾多之戰與北非淪陷的深遠影響。",
+      "seo_desc": "深入研究西元372年柏柏爾裔羅馬軍官之子費爾穆斯在北非發起的僭越叛亂，剖析地方系統性腐敗、老狄奧多西平叛經過、多納圖斯派的宗教交鋒，以及其對老狄奧多西之死、吉爾do之戰與北非淪陷的深遠影響。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/firmus_rebellion.png\" alt=\"Firmus Rebellion\" loading=\"lazy\"><figcaption class=\"caption\">費爾穆斯叛亂：四世紀晚期，柏柏爾親王費爾穆斯在北非發動叛亂並僭越稱帝，這是帝國防線內爆與部族力量博弈的微觀縮影（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page46": {
+      "title": "阿薩納里克家族與特爾文吉哥德人的統治演變",
+      "file_path": "course/阿薩納里克家族與特爾文吉哥德人的統治演變：政治結構、三代反羅馬立場與權力崩解研究.md",
+      "ver": "1.0",
+      "doc": false,
+      "img": "images/visigoth_migration_map.png",
+      "bg_pos": "center",
+      "seo_title": "阿薩納里克家族與特爾文吉哥德人的統治演變 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討西元四世紀多瑙河邊疆特爾文吉哥德人的政治結構，剖析阿薩納里克家族連續三代（阿里亞里克、奧里克、阿薩納里克）的反羅馬立場與基督教迫害機制，以及在匈人入侵後如何面臨內部分裂與最終的權力崩解。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/visigoth_migration_map.png\" alt=\"Visigoth Migration Map\" loading=\"lazy\"><figcaption class=\"caption\">西哥德人遷徙：四世紀特爾文吉哥德人在匈人入侵的大變局下，被迫跨越邊界進入羅馬帝國，開拓了巴爾幹遷徙的先河。</figcaption></figure>\n",
       "image_replacements": []
     }
   }

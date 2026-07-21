@@ -517,6 +517,11 @@ file_p45 = r'course/四世紀晚期北非的羅馬帝國防務危機：西元372
 map_p45 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/firmus_rebellion.png" alt="Firmus Rebellion" loading="lazy"><figcaption class="caption">費爾穆斯叛亂：四世紀晚期，柏柏爾親王費爾穆斯在北非發動叛亂並僭越稱帝，這是帝國防線內爆與部族力量博弈的微觀縮影（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n'
 images_p45 = []
 
+# Page 46 Config
+file_p46 = r'course/阿薩納里克家族與特爾文吉哥德人的統治演變：政治結構、三代反羅馬立場與權力崩解研究.md'
+map_p46 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/visigoth_migration_map.png" alt="Visigoth Migration Map" loading="lazy"><figcaption class="caption">西哥德人遷徙：四世紀特爾文吉哥德人在匈人入侵的大變局下，被迫跨越邊界進入羅馬帝國，開拓了巴爾幹遷徙的先河。</figcaption></figure>\n'
+images_p46 = []
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -679,6 +684,9 @@ html_body_p44 = process_markdown(file_p44, images_p44, "1.0", map_p44, page_id="
 print("Processing Page 45 (Firmus Rebellion)...")
 html_body_p45 = process_markdown(file_p45, images_p45, "1.3", map_p45, page_id="page45")
 
+print("Processing Page 46 (Athanaric Goths)...")
+html_body_p46 = process_markdown(file_p46, images_p46, "1.0", map_p46, page_id="page46")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -756,6 +764,7 @@ pages_data = {
     'page43': {'title': '第一章：黑海落日，狂風中的火種', 'img': 'images/iron_sword_chapter1_invasion.png', 'ver': '1.0', 'doc': False},
     'page44': {'title': '羅馬與波斯地緣關係', 'img': 'images/rome_persia_geopolitics.png', 'ver': '1.0', 'doc': False},
     'page45': {'title': '費爾穆斯叛亂與北非防務危機', 'img': 'images/firmus_rebellion.png', 'ver': '1.3', 'doc': False},
+    'page46': {'title': '阿薩納里克家族與特爾文吉哥德人的統治演變', 'img': 'images/visigoth_migration_map.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -775,7 +784,7 @@ categories = [
         'title': '中世紀諸民族記',
         'key': 'medieval',
         'img': 'images/clovis_main.jpg',
-        'pages': ['page23', 'page26', 'page29', 'page34', 'page38', 'page44']
+        'pages': ['page23', 'page26', 'page29', 'page34', 'page38', 'page44', 'page46']
     },
     {
         'title': '教宗國記',
@@ -1118,6 +1127,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE42__', html_body_p42)
 final_html = final_html.replace('__HTML_BODY_PAGE43__', html_body_p43)
 final_html = final_html.replace('__HTML_BODY_PAGE44__', html_body_p44)
 final_html = final_html.replace('__HTML_BODY_PAGE45__', html_body_p45)
+final_html = final_html.replace('__HTML_BODY_PAGE46__', html_body_p46)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1166,6 +1176,7 @@ final_html = final_html.replace('__PAGE42_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE43_DATE__', get_file_last_update_date(file_p43))
 final_html = final_html.replace('__PAGE44_DATE__', get_file_last_update_date(file_p44))
 final_html = final_html.replace('__PAGE45_DATE__', get_file_last_update_date(file_p45))
+final_html = final_html.replace('__PAGE46_DATE__', get_file_last_update_date(file_p46))
 
 # Inject JavaScript for toggle function
 toggle_js = """
