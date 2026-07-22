@@ -638,7 +638,7 @@ print("Processing Page 38 (Visigothic Transition)...")
 html_body_p38 = process_markdown(file_p38, images_p38, "1.2", map_p38, page_id="page38")
 
 print("Processing Page 39 (Stilicho)...")
-html_body_p39 = process_markdown(file_p39, images_p39, "1.0", map_p39, page_id="page39")
+html_body_p39 = process_markdown(file_p39, images_p39, "1.1", map_p39, page_id="page39")
 
 print("Processing Page 40 (Rhine Danube)...")
 html_body_p40 = process_markdown(file_p40, images_p40, "1.0", map_p40, page_id="page40")
@@ -757,7 +757,7 @@ pages_data = {
     'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.1', 'doc': False},
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.2', 'doc': False},
-    'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.0', 'doc': False, 'bg_pos': 'center top'},
+    'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.1', 'doc': False, 'bg_pos': 'center top'},
     'page40': {'title': '萊茵河－多瑙河地緣戰略', 'img': 'images/rhine_danube_frontier.png', 'ver': '1.0', 'doc': False},
     'page41': {'title': '君士坦丁三世與五世紀初邊疆危機', 'img': 'images/constantine_iii_usurper.png', 'ver': '1.0', 'doc': False},
     'page42': {'title': '序章 (Prologue)', 'img': 'images/gothic_three_ships_migration.png', 'ver': '1.0', 'doc': False},

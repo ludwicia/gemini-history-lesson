@@ -1,0 +1,11 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "小說設定出生年": "number",
+    "史實出生年": "number",
+    "性格描述": "text",
+    "全名": "text"
+  }
+}

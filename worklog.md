@@ -21,6 +21,12 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-07-22 (專題修訂 | 斯提里科與晚期羅馬瓦解 1.1 | 版面 8.0)
+- **史實與用語審核**：修正「禁衛軍論壇官」為符合羅馬史學慣例的「近衛軍保民官」，清理英文嵌入詞彙與簡體字（如「徹底」、「神秘」）。
+- **Markdown 格式與流程圖修復**：修復三大比較表格標題列多餘的分隔線 `| | | |`，清除殘留幻覺標籤 `[cite: ...]` 並重構區塊引用流程圖。
+- **引用來源學術化升級**：將原本 Quora、Reddit、Fandom 等非學術來源全面替換為 Oxford Classical Dictionary、Cambridge Core、Britannica、LacusCurtius 等權威學術引用與乾淨 Markdown 連結。
+- **三軌編譯與雲端同步**：完成 `build_html_md.py` (靜態與 SEO)、`build_static_chunks.py` (JSON Chunks) 與 `migrate_to_firestore.py` (Firebase Firestore) 三軌同步及主入口更新 (`copy index_db.html index.html`)。
+
 #### 2026-07-22 (新文發布 | 哥德人與阿薩納里克家族 1.0 | 版面 8.0)
 - **新增專題文章**：發布全新文章《阿薩納里克家族與特爾文吉哥德人的統治演變：政治結構、三代反羅馬立場與權力崩解研究》並註冊為 `page46`，歸類在「中世紀諸民族記」分類下。
 - **學術引用規範與校對**：

@@ -566,19 +566,19 @@
         // Map Category Helper
         function getCategory(p) {
             const id = p.id;
-            // Roman cities
-            if (['rome', 'constantinople', 'milan', 'adrianople', 'thessalonica', 'carthage', 'alexandria', 'antioch', 'jerusalem', 'trier', 'york', 'ostia', 'thrace', 'illyricum', 'pannonia'].includes(id)) {
+            // Roman cities & Provinces
+            if (['rome', 'constantinople', 'milan', 'adrianople', 'thessalonica', 'carthage', 'alexandria', 'antioch', 'jerusalem', 'trier', 'york', 'ostia', 'thrace', 'illyricum', 'pannonia', 'gaul', 'britannia', 'armenia', 'verona', 'arles', 'pavia', 'mesopotamia', 'aquileia', 'narbonne'].includes(id)) {
                 return 'rome';
             }
             // Medieval & HRE
-            if (['ravenna', 'worms', 'hirsau', 'bohemia', 'soissons', 'tours', 'cologne', 'mainz', 'london', 'canterbury', 'ghent', 'bruges', 'benevento'].includes(id)) {
+            if (['ravenna', 'worms', 'hirsau', 'bohemia', 'soissons', 'tours', 'cologne', 'mainz', 'london', 'canterbury', 'ghent', 'bruges', 'benevento', 'aachen', 'toulouse', 'constance', 'augsburg', 'albi', 'prague', 'canossa', 'montsegur'].includes(id)) {
                 return 'medieval';
             }
             // Modern / Dutch
             if (['amsterdam', 'rotterdam', 'thehague', 'utrecht', 'leiden', 'antwerp', 'paris'].includes(id)) {
                 return 'modern';
             }
-            // Rivers & Seas
+            // Rivers & Seas & Mountains
             return 'geography';
         }
 
