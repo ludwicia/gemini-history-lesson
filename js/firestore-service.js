@@ -57,6 +57,8 @@ export async function getArticlesCatalog() {
                     articles.push({
                         id: docSnap.id,
                         title: data.title,
+                        seo_title: data.seo_title || `${data.title} — Ludwica 的簡單歷史課`,
+                        seo_desc: data.seo_desc || data.desc || data.title,
                         ver: data.ver,
                         last_updated: data.last_updated,
                         category: data.category,
@@ -237,6 +239,19 @@ export async function getSearchIndex() {
     if (cache._pending.searchIndex) return cache._pending.searchIndex;
 
     cache._pending.searchIndex = (async () => {
+        // 優先讀取本地 /api/search_index.json 快取（節省 Firestore 讀取量並加快搜尋速度）
+        try {
+            const res = await fetch('/api/search_index.json?v=' + APP_VERSION);
+            if (res.ok) {
+                const searchIndex = await res.json();
+                cache.searchIndex = searchIndex;
+                return searchIndex;
+            }
+        } catch (e) {
+            console.warn('⚠️ 本地搜尋索引讀取失敗，嘗試 Firestore 雲端讀取:', e.message);
+        }
+
+        // Fallback 到 Firestore 雲端
         try {
             const indexRef = collection(db, 'search_index');
             const snapshot = await getDocs(indexRef);
@@ -256,19 +271,7 @@ export async function getSearchIndex() {
                 return searchIndex;
             }
         } catch (e) {
-            console.warn('⚠️ Firestore 搜尋索引讀取失敗，嘗試 fallback:', e.message);
-        }
-
-        // Fallback
-        try {
-            const res = await fetch('/api/search_index.json?v=' + APP_VERSION);
-            if (res.ok) {
-                const searchIndex = await res.json();
-                cache.searchIndex = searchIndex;
-                return searchIndex;
-            }
-        } catch (e) {
-            console.error('❌ 搜尋索引 fallback 失敗:', e.message);
+            console.error('❌ Firestore 搜尋索引讀取失敗:', e.message);
         }
 
         return [];

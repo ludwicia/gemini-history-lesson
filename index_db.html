@@ -96,170 +96,7 @@
       ]
     }
     </script>
-        <link rel="stylesheet" href="style.css?v=4.9">
-    <style>
-    /* New Category Section Styles */
-    .category-section {
-        margin-bottom: 12px;
-        animation: fadeIn 0.6s ease;
-    }
-    .category-header-card {
-        display: flex;
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        height: 70px;
-        align-items: center;
-        width: 100%;
-    }
-    .category-header-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0,85,164,0.08);
-        border-color: rgba(0,85,164,0.2);
-    }
-    .category-header-image {
-        width: 100px;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        border-right: 1px solid #e2e8f0;
-    }
-    .category-header-content {
-        flex: 1;
-        padding: 0 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .category-header-title {
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        letter-spacing: 0.5px;
-    }
-    .category-header-icon {
-        font-size: 0.85rem;
-        color: #718096;
-        transition: color 0.2s ease;
-    }
-    .category-header-card:hover .category-header-icon {
-        color: var(--primary-color);
-    }
-    .category-container {
-        background: #edf2f7;  /* Soft gray container background as in mockup */
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 24px;
-        box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
-        margin-top: 10px;
-        margin-bottom: 20px;
-        transition: opacity 0.25s ease;
-    }
-    .category-header-card.open {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-bottom-color: transparent;
-        box-shadow: none;
-    }
-    .category-container.open {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        margin-top: 0;
-        border-top: none;
-    }
-
-    /* Layout adaptation for document cards in the grids */
-    .category-container .article-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 20px;
-    }
-    @media (max-width: 800px) {
-        .category-container .article-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 12px;
-        }
-    }
-    .category-container .article-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .category-container .article-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-        border-color: #cbd5e0;
-    }
-    .category-container .article-card.doc-card {
-        background: #fafafa;
-        border-left: 5px solid #AE1C28; /* document accent color */
-    }
-
-    /* Dynamic Hover Accent Color per Category Container */
-    .category-container[data-category="rome"] .article-card:hover {
-        border-color: #e53e3e;
-        box-shadow: 0 10px 20px rgba(229, 62, 62, 0.12);
-    }
-    .category-container[data-category="medieval"] .article-card:hover {
-        border-color: #319795;
-        box-shadow: 0 10px 20px rgba(49, 151, 149, 0.12);
-    }
-    .category-container[data-category="papal"] .article-card:hover {
-        border-color: #ecc94b;
-        box-shadow: 0 10px 20px rgba(236, 201, 75, 0.12);
-    }
-    .category-container[data-category="frank"] .article-card:hover {
-        border-color: #486581;
-        box-shadow: 0 10px 20px rgba(72, 101, 129, 0.12);
-    }
-    .category-container[data-category="hre"] .article-card:hover {
-        border-color: #e53e3e;
-        box-shadow: 0 10px 20px rgba(229, 62, 62, 0.12);
-    }
-    .category-container[data-category="church"] .article-card:hover {
-        border-color: #805ad5;
-        box-shadow: 0 10px 20px rgba(128, 90, 213, 0.12);
-    }
-    .category-container[data-category="trivia"] .article-card:hover {
-        border-color: #319795;
-        box-shadow: 0 10px 20px rgba(49, 151, 149, 0.12);
-    }
-    .category-container[data-category="us"] .article-card:hover {
-        border-color: #3182ce;
-        box-shadow: 0 10px 20px rgba(49, 130, 206, 0.12);
-    }
-    .category-container[data-category="holland"] .article-card:hover {
-        border-color: #dd6b20;
-        box-shadow: 0 10px 20px rgba(221, 107, 32, 0.12);
-    }
-    .category-container[data-category="qing"] .article-card:hover {
-        border-color: #d69e2e;
-        box-shadow: 0 10px 20px rgba(214, 158, 46, 0.12);
-    }
-    .category-container[data-category="pre-3rd-century-rome"] .article-card:hover {
-        border-color: #9c4221;
-        box-shadow: 0 10px 20px rgba(156, 66, 33, 0.12);
-    }
-
-    /* Loading Spinner */
-    .loading-spinner {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        border: 3px solid rgba(0, 0, 0, 0.1);
-        border-radius: 50%;
-        border-top-color: var(--primary-color);
-        animation: spin 1s ease-in-out infinite;
-        margin: 20px auto;
-    }
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-    </style>
+        <link rel="stylesheet" href="style.css?v=8.0">
     <!-- Mermaid.js: 動態懶載入，僅在含圖表的文章中才請求 -->
 </head>
 <body>
@@ -441,58 +278,26 @@
     }
 
     // 2. SEO Dynamic Meta Tags (per-page title & description)
-    const pageSEO = {
-        'page01': { title: '荷蘭建國史與東印度公司興衰 — Ludwica 的簡單歷史課', desc: '深入解析荷蘭從低地十七省到聯省共和國的建國歷程、東印度公司的全球貿易帝國、黃金時代的藝術巅峰與當代政經轉型。' },
-        'page02': { title: '前哥倫布時期美洲與三個世界的交會 — Ludwica 的簡單歷史課', desc: '探索1607年以前美洲原住民的文明成就、大航海時代的技術革命、哥圍布大交換，以及西班牙、法國、英國的早期殖民衝突。' },
-        'page13': { title: '殖民地的建立、定居與大西洋世界的形塑 — Ludwica 的簡單歷史課', desc: '探索1607至1754年英屬北美十三殖民地的區域性分化、勞動力體制向種族奴隸制的轉型、邊疆衝突與大西洋世界在重商主義、光榮革命、啟盟運動和大覺醒下的文化整合。' },
-        'page03': { title: '胡斯戰爭：信仰衝突與波希米亞國家認同 — Ludwica 的簡單歷史課', desc: '揚·胡斯的宗教改革先驅運動、波希米亞的宗教衝突與軍事變革、戰車壘戰術革新，以及對歐洲宗教格局的深遠影響。' },
-        'page04': { title: '金璽詔書：神聖羅馬帝國德中對照翻譯 — Ludwica 的簡單歷史課', desc: '1356年《金璽詔書》全文德文原文、中文翻譯與學術註解三欄對照，解析選帝侯制度與帝國憲政體制的基石文件。' },
-        'page05': { title: '希爾紹修道院研究報告 — Ludwica 的簡單歷史課', desc: '希爾紹修道院的千年歷史、威廉大院長的改革運動、希爾紹建築學派的羅馬式美學巔峰，以及九年戰爭後的廢墟重生。' },
-        'page06': { title: '聖本篤會規三欄解析 — Ludwica 的簡單歷史課', desc: '公元6世紀西方隱修制度基石《聖本篤會規》德文原文、中文翻譯與專業學術註釋三欄並列解析。' },
-        'page07': { title: '奧托-薩利安帝國教會體制 — Ludwica 的簡單歷史課', desc: '奧托王朝與薩利安王朝的帝國教會體制、政教合一的運作機制、巡迴朝廷制度，以及敘任權之爭的歷史根源。' },
-        'page08': { title: '沃姆斯協約 — Ludwica 的簡單歷史課', desc: '結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。' },
-        'page09': { title: '丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課', desc: '深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。' },
-        'page10': { title: '卡洛林王朝教育基建與知識復興 — Ludwica 的簡單歷史課', desc: '探討卡洛林王朝教育基建與宗教變革、手抄室與卡洛林小草體書寫革命、跨國學者網絡、基督教化七藝與課堂實踐，以及文明火種對後世中世紀大學的深遠影響。' },
-        'page11': { title: '歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課', desc: '研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。' },
-        'page12': { title: '中世紀卡特里派的興起、教義、十字軍聖戰與歷史餘音 — Ludwica 的簡單歷史課', desc: '深入研究中世紀南法阿爾比十字軍東征、卡特里派（阿爾比派）二元論神學與禁慾實踐、宗教裁判所的官僚化清洗，以及《富尼埃登記簿》與微觀歷史學《蒙塔尤》的思想異質性。' },
-        'page14': { title: '英國的憲法：非法典化體制的理論與實踐 — Ludwica 的簡單歷史課', desc: '深入研究英國不成文憲法的歷史演進（大憲章、光榮革命、權利法案）、修訂機制與彈性、尊嚴與效能雙重結構，以及2022年至2026年間的現代憲政轉型。' },
-        'page15': { title: '聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課', desc: '深入探討基督宗教神職人員生育、婚姻與財產繼展的歷史演變與政權博弈。' },
-        'page16': { title: '中世紀巡行王權的權力運作、制度體系與社會實態 — Ludwica 的簡單歷史課', desc: '深入研究十世紀神聖羅馬帝國皇帝奧圖一世在九五五年的巡行與戰事軌跡，解析巡行王權的協商式統治、動態禮儀展演、帝國教會體制與物資汲取物流機制。' },
-        'page17': { title: '從皇帝的稱號看歷史背景與政教關係的演變 — Ludwica 的簡單歷史課', desc: '從三世紀危機後的戴克里先確立君主制，到君士坦丁大帝開啟基督教的寬容時代，再到格拉提安與迪奧多西一世將尼西亞信仰確立為國教，解析皇帝稱號的演變如何折射出羅馬帝國晚期的政教關係與政治神學。' },
-        'page18': { title: '西元紀年的確立與演進 — Ludwica 的簡單歷史課', desc: '深入解析西元紀年（AD）的提出背景、關鍵歷史人物（狄奧尼修斯、尊者比德、查理曼大帝）、曆法改革、東西方教會的分裂以及全球標準化（ISO 8601）與缺失的西元零年問題。' },
-        'page19': { title: '米蘭敕令時代的羅馬政治與李錫尼覆滅 — Ludwica 的簡單歷史課', desc: '深入探討公元313年米蘭敕令頒布前後的羅馬帝國地緣政治，分析君士坦丁與李錫尼的權力博弈、宗教寬容政策的確立，以及李錫尼的最終覆滅。' },
-        'page20': { title: '米蘭敕令：羅馬帝國宗教寬容宣告 — Ludwica 的簡單歷史課', desc: '公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，包含英文與拉丁文雙版本之三欄對照與學術註解。' },
-        'page21': { title: '使徒信經的歷史演變與神學建構 — Ludwica 的簡單歷史課', desc: '深入研究使徒信經從新約雛形、古羅馬信經雙語見證，到皮爾米紐斯文本奠基，以及加洛林道德修正運動與禮儀標準化推廣的歷史演變。' },
-        'page22': { title: '羅馬秩序的終結與日耳曼王權的奠定 — Ludwica 的簡單歷史課', desc: '深入研究五世紀西羅馬帝國結構崩潰與奧多亞賽的崛起、邊疆外交重組（與東帝國、汪達爾、西哥德關係）、內政與客宿權稅收改革、亞利烏派政教關係與最終覆滅歷史。' },
-        'page23': { title: '蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基 — Ludwica 的簡單歷史課', desc: '深入研究法蘭克人從部落聯盟到王國奠基的歷史軌跡，探討民族生成（Ethnogenesis）理論、薩利安習慣法的編撰、墨洛溫王朝與羅馬教會的聯盟，以及克洛維一世的政治神學與蘇瓦松戰役等關鍵地緣政治事件。' },
-        'page24': { title: '羅馬晚期改革與農奴制 — Ludwica 的簡單歷史課', desc: '深入研究從戴克里先到君士坦丁大帝時期的羅馬晚期改革，包含人頭-土地稅雙軌制（Capitatio-Iugatio）的財政理性化設計與法律實踐，隸農莊園向中世紀封建莊園與農奴制的演進，以及世襲職業行會與兵役體系的歷史過渡。' },
-        'page25': { title: '羅馬晚期軍制變遷與哥德人崛起 — Ludwica 的簡單歷史課', desc: '深入探討羅馬晚期軍事防線的結構性調整，包含軍隊蠻族化與外包僱傭的財政與兵源背景，哥德人的亞利烏派基督教皈依，阿德里安堡戰役，以及382年同盟條約下國中之國的建立與西羅馬帝國的最終解體。' },
-        'page26': { title: '阿拉里克與哥德大遷徙 — Ludwica 的簡單歷史課', desc: '深入探討西哥德民族建構，阿拉里克的早期軍事生涯（冷河戰役、希臘遠征），伊利里庫姆軍區司令任期，西哥德全族大遷徙的後勤與生存策略，波倫提亞戰役與維羅納戰役，以及410年羅馬之劫的政治威懾、北非遠征計畫和布森托河的合葬傳奇。' },
-        'page27': { title: '冷河戰役及其歷史學再闡釋 — Ludwica 的簡單歷史課', desc: '深入探討羅馬晚期冷河戰役的地緣政治斷裂、西軍袋形合圍戰術、阿爾比提翁倒戈、極端氣象「波拉風」對遠程彈道的物理干預，以及哥德同盟軍流血稅的反噬效應、西部野戰軍主力消亡與406年萊茵河大入侵的深遠影響。' },
-        'page33': { title: '一世紀羅馬行省治權與社會 — Ludwica 的簡單歷史課', desc: '從聖經敘事與古典文獻印證西元一世紀羅馬帝國的地方統治體制，探討行省巡撫、稅收制度、行政機器，以及猶太地方的司法主權與高壓統治實態。' },
-        'page34': { title: '匈人的登場與晚期羅馬地緣政治 — Ludwica 的簡單歷史課', desc: '深入解析公元370年代匈人越過頓河對黑海北岸地緣秩序的重塑，探討古基因組學揭示的匈奴遺傳聯結，以及匈人在阿德里安堡戰役與冷河戰役中的戰略角色與地緣資產。' },
-        'page30': { title: '東羅馬帝國的權力重組、宮廷政治與蠻族危機 — Ludwica 的簡單歷史課', desc: '深入探討公元395至408年東羅馬帝國在阿卡狄烏斯統治下的權力重組、宮廷政治與蠻族危機，分析近衛軍長官魯菲努斯、大內侍尤特羅皮烏斯、蓋納斯兵變與專政、皇后尤多西亞與大主教金口約翰的權力抗衡，以及安提米烏斯的攝政與波斯王伊嗣俟一世地緣監護的歷史影響。' },
-        'page36': { title: '晚清中樞權力變革與肅順之死 — Ludwica 的簡單歷史課', desc: '深入研究咸豐朝後期肅順推行的鐵腕改革，剖析戊午科場案、戶部寶鈔案與削減八旗兵俸等吏治整肅措施，解構辛酉政變中顧命八大臣與兩宮太后、恭親王奕訢的法理與公文權力博弈，及洋務運動的起源。' },
-        'page37': { title: '大清帝國：咸豐皇帝遺詔 — Ludwica 的簡單歷史課', desc: '收錄清咸豐十一年（1861年）咸豐皇帝臨終遺詔之文言文與白話中文對照，深入剖析其政治背景、立儲爭議、顧命八大臣安排，以及為辛酉政變埋下之權力博弈伏筆。' },
-        'page38': { title: '阿陶爾夫與哥德大遷徙（第二卷：蠻族武力與羅馬秩序的合流） — Ludwica 的簡單歷史課', desc: '深入研究西哥德君主阿陶爾夫的政治抉擇，分析他從試圖抹去羅馬名號建立「哥德帝國（Gothia）」到轉為以哥德武力守護「羅馬法治秩序（Romania）」的思想轉變，以及他與羅馬公主加拉·普拉西提阿聯姻的地緣政治影響與歷史遺產。' },
-        'page39': { title: '斯提里科的崛起、掌權與覆滅 — Ludwica 的簡單歷史課', desc: '深入剖析西羅馬帝國雙軍總長斯提里科的傳奇一生，從其半蠻族出身、軍事功勳（擊敗西哥德人、全殲拉達蓋蘇斯）、溫和宗教政策與焚毀《西比拉預言書》的動機，解構帕維亞兵變如何引發帝國瓦解的多米諾骨牌效應。' },
-        'page40': { title: '萊茵河－多瑙河連線：歐陸地緣裂變與整合的雙軸命脈 — Ludwica 的簡單歷史課', desc: '深入探討歐洲兩大水系萊茵河與多瑙河的地理水文特徵，解析羅馬帝國的雙河界牆與邊境經濟圈、西元406年除夕萊茵河大越渡之西羅馬帝國連鎖效應，以及從中世紀查理曼運河到當代航道的地緣政治與工程演變。' },
-        'page41': { title: '君士坦丁三世政權的興衰：五世紀初西羅馬邊疆危機與軍事瓦解 — Ludwica 的簡單歷史課', desc: '深入解析五世紀初西羅馬帝國不列顛駐軍兵變，篡位者君士坦丁三世的崛起、高盧行政重建、西班牙遠征與「奧諾里亞奇」衛隊角色，以及將領叛亂與最後亞爾圍城戰之歷史啟示。' },
-        'page42': { title: '《鐵劍與托加》序章：三船南渡，舊神的呢喃 — Ludwica 的簡單歷史課', desc: '歷史小說《鐵劍與托加》序章。講述哥德人起源的神話傳說，古老國王貝里格帶領族人乘三船南渡薩爾馬提亞海洋，以及獨眼老渡鴉高茲在頓河畔預見紅色風暴與大遷徙諸神黃昏的詩意開端。' },
-        'page43': { title: '《鐵劍與托加》第一章：黑海落日，狂風中的火種 — Ludwica 的簡單歷史課', desc: '歷史小說《鐵劍與托加}第一章。講述西元375年匈人突然越過頓河入侵，東哥德老國王厄曼納里克在赫爾松焚城自盡，青年阿蘭將領薩烏爾與東哥德將領阿拉修斯、薩夫拉克護送幼王向西突圍逃難的悲壯序幕。' },
-        'page44': { title: '羅馬與波斯薩珊王朝地緣關係 — Ludwica 的簡單歷史課', desc: '深入研究公元378年前後羅馬帝國與波斯薩珊王朝在亞美尼亞與美索不達米亞的地緣對峙，解析阿德里安堡戰役後的戰略格局重塑、阿奇利塞內和約瓜分亞美尼亞，以及共同防禦高加索防線的協作機制。' }
-    };
-
     function updatePageSEO(pageId) {
-        const seo = pageSEO[pageId];
-        if (seo) {
-            document.title = seo.title;
+        if (pageId === 'home') {
+            const homeTitle = 'Ludwica 的簡單歷史課 — 荷蘭建國史、胡斯戰爭、金璽詔書、聖本篤會規等歷史專題研究';
+            const homeDesc = 'Ludwica 的簡單歷史課：包含荷蘭建國史、胡斯戰爭、神聖羅馬帝國金璽詔書中德對照、希爾紹修道院與聖本篤會規等深度歷史專題研究。';
+            document.title = homeTitle;
             const descMeta = document.querySelector('meta[name="description"]');
-            if (descMeta) descMeta.setAttribute('content', seo.desc);
+            if (descMeta) descMeta.setAttribute('content', homeDesc);
+            return;
+        }
+        const article = allArticlesList.find(a => a.id === pageId);
+        if (article) {
+            const titleStr = article.seo_title || `${article.title} — Ludwica 的簡單歷史課`;
+            const descStr = article.seo_desc || article.desc || article.title;
+            document.title = titleStr;
+            const descMeta = document.querySelector('meta[name="description"]');
+            if (descMeta) descMeta.setAttribute('content', descStr);
             const ogTitle = document.querySelector('meta[property="og:title"]');
-            if (ogTitle) ogTitle.setAttribute('content', seo.title);
+            if (ogTitle) ogTitle.setAttribute('content', titleStr);
             const ogDesc = document.querySelector('meta[property="og:description"]');
-            if (ogDesc) ogDesc.setAttribute('content', seo.desc);
+            if (ogDesc) ogDesc.setAttribute('content', descStr);
         }
     }
 
@@ -505,7 +310,8 @@
             baseUrl += '/';
         }
         const shareUrl = pageId === 'home' ? baseUrl : `${baseUrl}pages/${pageId}.html`;
-        const pageTitle = pageId === 'home' ? 'Ludwica 的簡單歷史課' : (pageSEO[pageId] ? pageSEO[pageId].title : document.title);
+        const article = allArticlesList.find(a => a.id === pageId);
+        const pageTitle = pageId === 'home' ? 'Ludwica 的簡單歷史課' : (article ? (article.seo_title || article.title) : document.title);
 
         if (platform === 'facebook') {
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank', 'width=600,height=400');

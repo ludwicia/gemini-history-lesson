@@ -186,13 +186,17 @@ def migrate_search_index(db):
     print(f"   [INFO] 共上傳 {len(grouped)} 個頁面的搜尋索引 (總計 {len(search_entries)} 段落)")
 
 
-def migrate_site_config(db):
+def migrate_site_config(db, catalog_data=None):
     """上傳網站設定到 Firestore site_config collection"""
     print("\n[INFO] 正在上傳網站設定...")
 
     from datetime import date
+    version = '8.0'
+    if catalog_data and 'site_config' in catalog_data:
+        version = catalog_data['site_config'].get('layout_version', '8.0')
+
     config = {
-        'layout_version': '7.2',
+        'layout_version': version,
         'publish_date': date.today().isoformat(),
         'site_name': 'Ludwica 的簡單歷史課',
         'site_url': 'https://ludwica-history-lesson.pages.dev/',
@@ -200,7 +204,7 @@ def migrate_site_config(db):
     }
 
     db.collection('site_config').document('metadata').set(config)
-    print(f"   [OK] 網站設定已上傳")
+    print(f"   [OK] 網站設定已上傳 (版本: {version})")
 
 
 def main():
@@ -232,7 +236,7 @@ def main():
     migrate_articles(db, catalog_data)
     migrate_worklog(db, catalog_data)
     migrate_search_index(db)
-    migrate_site_config(db)
+    migrate_site_config(db, catalog_data)
 
     print("\n" + "=" * 60)
     print("資料遷移完成！")

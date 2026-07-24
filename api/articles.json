@@ -127,6 +127,8 @@
     {
       "id": "page01",
       "title": "荷蘭建國與地緣政經",
+      "seo_title": "荷蘭建國與地緣政經 — Ludwica 的簡單歷史課",
+      "seo_desc": "荷蘭建國與地緣政經",
       "ver": "1.1",
       "last_updated": "2026-06-07",
       "category": "holland",
@@ -137,6 +139,8 @@
     {
       "id": "page02",
       "title": "美國的誕生(一)",
+      "seo_title": "美國的誕生(一) — Ludwica 的簡單歷史課",
+      "seo_desc": "美國的誕生(一)",
       "ver": "1.1",
       "last_updated": "2026-07-07",
       "category": "us",
@@ -147,6 +151,8 @@
     {
       "id": "page13",
       "title": "美國的誕生(二)",
+      "seo_title": "美國的誕生(二) — Ludwica 的簡單歷史課",
+      "seo_desc": "美國的誕生(二)",
       "ver": "1.1",
       "last_updated": "2026-07-07",
       "category": "us",
@@ -157,6 +163,8 @@
     {
       "id": "page03",
       "title": "宗教戰爭(一)：胡斯戰爭",
+      "seo_title": "宗教戰爭(一)：胡斯戰爭 — Ludwica 的簡單歷史課",
+      "seo_desc": "宗教戰爭(一)：胡斯戰爭",
       "ver": "1.0",
       "last_updated": "2026-07-12",
       "category": "church",
@@ -167,6 +175,8 @@
     {
       "id": "page12",
       "title": "宗教戰爭(二)：卡特里派",
+      "seo_title": "宗教戰爭(二)：卡特里派 — Ludwica 的簡單歷史課",
+      "seo_desc": "宗教戰爭(二)：卡特里派",
       "ver": "1.1",
       "last_updated": "2026-07-03",
       "category": "church",
@@ -177,6 +187,8 @@
     {
       "id": "page05",
       "title": "希爾紹修道院",
+      "seo_title": "希爾紹修道院 — Ludwica 的簡單歷史課",
+      "seo_desc": "希爾紹修道院",
       "ver": "1.0",
       "last_updated": "2026-06-07",
       "category": "trivia",
@@ -187,6 +199,8 @@
     {
       "id": "page07",
       "title": "奧托-薩利安帝國教會體制",
+      "seo_title": "奧托-薩利安帝國教會體制 — Ludwica 的簡單歷史課",
+      "seo_desc": "奧托-薩利安帝國教會體制",
       "ver": "1.0",
       "last_updated": "2026-06-14",
       "category": "hre",
@@ -197,6 +211,8 @@
     {
       "id": "page09",
       "title": "丕平獻土與教宗國誕生",
+      "seo_title": "丕平獻土與教宗國誕生 — Ludwica 的簡單歷史課",
+      "seo_desc": "丕平獻土與教宗國誕生",
       "ver": "1.2",
       "last_updated": "2026-07-14",
       "category": "papal",
@@ -207,6 +223,8 @@
     {
       "id": "page10",
       "title": "卡洛林教育基建與知識復興",
+      "seo_title": "卡洛林教育基建與知識復興 — Ludwica 的簡單歷史課",
+      "seo_desc": "卡洛林教育基建與知識復興",
       "ver": "1.0",
       "last_updated": "2026-06-30",
       "category": "frank",
@@ -217,6 +235,8 @@
     {
       "id": "page11",
       "title": "歐洲造紙術的歷史演變",
+      "seo_title": "歐洲造紙術的歷史演變 — Ludwica 的簡單歷史課",
+      "seo_desc": "歐洲造紙術的歷史演變",
       "ver": "1.0",
       "last_updated": "2026-06-07",
       "category": "trivia",
@@ -227,6 +247,8 @@
     {
       "id": "page14",
       "title": "英國的憲法",
+      "seo_title": "英國的憲法 — Ludwica 的簡單歷史課",
+      "seo_desc": "英國的憲法",
       "ver": "1.0",
       "last_updated": "2026-06-07",
       "category": "trivia",
@@ -237,6 +259,8 @@
     {
       "id": "page15",
       "title": "聖職與婚娶",
+      "seo_title": "聖職與婚娶 — Ludwica 的簡單歷史課",
+      "seo_desc": "聖職與婚娶",
       "ver": "1.2",
       "last_updated": "2026-06-08",
       "category": "church",
@@ -247,6 +271,8 @@
     {
       "id": "page16",
       "title": "中世紀巡行王權的權力運作",
+      "seo_title": "中世紀巡行王權的權力運作 — Ludwica 的簡單歷史課",
+      "seo_desc": "中世紀巡行王權的權力運作",
       "ver": "1.0",
       "last_updated": "2026-06-14",
       "category": "hre",
@@ -257,6 +283,8 @@
     {
       "id": "page17",
       "title": "從皇帝稱號看羅馬政教關係演變",
+      "seo_title": "從皇帝稱號看羅馬政教關係演變 — Ludwica 的簡單歷史課",
+      "seo_desc": "從皇帝稱號看羅馬政教關係演變",
       "ver": "1.0",
       "last_updated": "2026-07-10",
       "category": "church",
@@ -267,6 +295,8 @@
     {
       "id": "page18",
       "title": "西元紀年的確立與演進",
+      "seo_title": "西元紀年的確立與演進 — Ludwica 的簡單歷史課",
+      "seo_desc": "西元紀年的確立與演進",
       "ver": "1.2",
       "last_updated": "2026-07-23",
       "category": "trivia",
@@ -277,6 +307,8 @@
     {
       "id": "page19",
       "title": "米蘭敕令時代與李錫尼覆滅",
+      "seo_title": "米蘭敕令時代與李錫尼覆滅 — Ludwica 的簡單歷史課",
+      "seo_desc": "米蘭敕令時代與李錫尼覆滅",
       "ver": "1.1",
       "last_updated": "2026-07-10",
       "category": "rome",
@@ -287,6 +319,8 @@
     {
       "id": "page21",
       "title": "使徒信經的歷史演變與神學建構",
+      "seo_title": "使徒信經的歷史演變與神學建構 — Ludwica 的簡單歷史課",
+      "seo_desc": "使徒信經的歷史演變與神學建構",
       "ver": "1.2",
       "last_updated": "2026-07-19",
       "category": "church",
@@ -297,8 +331,10 @@
     {
       "id": "page22",
       "title": "羅馬秩序的終結與日耳曼王權的奠定",
-      "ver": "1.3",
-      "last_updated": "2026-07-10",
+      "seo_title": "羅馬秩序的終結與日耳曼王權的奠定 — Ludwica 的簡單歷史課",
+      "seo_desc": "羅馬秩序的終結與日耳曼王權的奠定",
+      "ver": "1.4",
+      "last_updated": "2026-07-24",
       "category": "rome",
       "img": "images/odoacer_fall_rome.jpg",
       "bg_pos": "center",
@@ -307,6 +343,8 @@
     {
       "id": "page23",
       "title": "蠻族崛起的政治重塑與克洛維霸權",
+      "seo_title": "蠻族崛起的政治重塑與克洛維霸權 — Ludwica 的簡單歷史課",
+      "seo_desc": "蠻族崛起的政治重塑與克洛維霸權",
       "ver": "1.2",
       "last_updated": "2026-07-22",
       "category": "medieval",
@@ -317,6 +355,8 @@
     {
       "id": "page24",
       "title": "羅馬晚期改革與農奴制",
+      "seo_title": "羅馬晚期改革與農奴制 — Ludwica 的簡單歷史課",
+      "seo_desc": "羅馬晚期改革與農奴制",
       "ver": "1.0",
       "last_updated": "2026-06-17",
       "category": "rome",
@@ -327,6 +367,8 @@
     {
       "id": "page25",
       "title": "羅馬晚期軍制變遷與哥德人崛起",
+      "seo_title": "羅馬晚期軍制變遷與哥德人崛起 — Ludwica 的簡單歷史課",
+      "seo_desc": "羅馬晚期軍制變遷與哥德人崛起",
       "ver": "1.0",
       "last_updated": "2026-07-10",
       "category": "rome",
@@ -337,6 +379,8 @@
     {
       "id": "page26",
       "title": "阿拉里克與哥德大遷徙",
+      "seo_title": "阿拉里克與哥德大遷徙 — Ludwica 的簡單歷史課",
+      "seo_desc": "阿拉里克與哥德大遷徙",
       "ver": "1.1",
       "last_updated": "2026-07-10",
       "category": "medieval",
@@ -347,6 +391,8 @@
     {
       "id": "page27",
       "title": "冷河戰役及其歷史學再闡釋",
+      "seo_title": "冷河戰役及其歷史學再闡釋 — Ludwica 的簡單歷史課",
+      "seo_desc": "冷河戰役及其歷史學再闡釋",
       "ver": "1.1",
       "last_updated": "2026-06-28",
       "category": "rome",
@@ -357,6 +403,8 @@
     {
       "id": "page04",
       "title": "神聖羅馬帝國：金璽詔書",
+      "seo_title": "神聖羅馬帝國：金璽詔書 — Ludwica 的簡單歷史課",
+      "seo_desc": "神聖羅馬帝國：金璽詔書",
       "ver": "1.9",
       "last_updated": "2026-07-04",
       "category": "",
@@ -367,6 +415,8 @@
     {
       "id": "page06",
       "title": "修道院制度：聖本篤會規",
+      "seo_title": "修道院制度：聖本篤會規 — Ludwica 的簡單歷史課",
+      "seo_desc": "修道院制度：聖本篤會規",
       "ver": "2.0",
       "last_updated": "2026-06-07",
       "category": "",
@@ -377,6 +427,8 @@
     {
       "id": "page08",
       "title": "敘任權之爭：沃姆斯協約",
+      "seo_title": "敘任權之爭：沃姆斯協約 — Ludwica 的簡單歷史課",
+      "seo_desc": "敘任權之爭：沃姆斯協約",
       "ver": "1.1",
       "last_updated": "2026-07-10",
       "category": "",
@@ -387,6 +439,8 @@
     {
       "id": "page20",
       "title": "羅馬帝國：米蘭敕令",
+      "seo_title": "羅馬帝國：米蘭敕令 — Ludwica 的簡單歷史課",
+      "seo_desc": "羅馬帝國：米蘭敕令",
       "ver": "1.0",
       "last_updated": "2026-07-06",
       "category": "",
@@ -397,6 +451,8 @@
     {
       "id": "page28",
       "title": "羅馬帝國：薩洛尼卡敕令",
+      "seo_title": "羅馬帝國：薩洛尼卡敕令 — Ludwica 的簡單歷史課",
+      "seo_desc": "羅馬帝國：薩洛尼卡敕令",
       "ver": "1.2",
       "last_updated": "2026-07-10",
       "category": "",
@@ -407,6 +463,8 @@
     {
       "id": "page29",
       "title": "阿德里安堡戰役",
+      "seo_title": "阿德里安堡戰役 — Ludwica 的簡單歷史課",
+      "seo_desc": "阿德里安堡戰役",
       "ver": "1.0",
       "last_updated": "2026-07-10",
       "category": "medieval",
@@ -417,6 +475,8 @@
     {
       "id": "page30",
       "title": "東羅馬權力重組與蠻族危機",
+      "seo_title": "東羅馬權力重組與蠻族危機 — Ludwica 的簡單歷史課",
+      "seo_desc": "東羅馬權力重組與蠻族危機",
       "ver": "1.0",
       "last_updated": "2026-07-12",
       "category": "rome",
@@ -427,6 +487,8 @@
     {
       "id": "page31",
       "title": "卡拉卡拉與《安東尼努斯敕令》",
+      "seo_title": "卡拉卡拉與《安東尼努斯敕令》 — Ludwica 的簡單歷史課",
+      "seo_desc": "卡拉卡拉與《安東尼努斯敕令》",
       "ver": "1.0",
       "last_updated": "2026-06-23",
       "category": "rome",
@@ -437,6 +499,8 @@
     {
       "id": "page32",
       "title": "羅馬帝國：安東尼努斯敕令",
+      "seo_title": "羅馬帝國：安東尼努斯敕令 — Ludwica 的簡單歷史課",
+      "seo_desc": "羅馬帝國：安東尼努斯敕令",
       "ver": "1.0",
       "last_updated": "2026-06-24",
       "category": "",
@@ -447,6 +511,8 @@
     {
       "id": "page33",
       "title": "一世紀羅馬行省治權與社會",
+      "seo_title": "一世紀羅馬行省治權與社會 — Ludwica 的簡單歷史課",
+      "seo_desc": "一世紀羅馬行省治權與社會",
       "ver": "1.0",
       "last_updated": "2026-06-26",
       "category": "pre-3rd-century-rome",
@@ -457,6 +523,8 @@
     {
       "id": "page34",
       "title": "匈人的登場與晚期羅馬地緣政治",
+      "seo_title": "匈人的登場與晚期羅馬地緣政治 — Ludwica 的簡單歷史課",
+      "seo_desc": "匈人的登場與晚期羅馬地緣政治",
       "ver": "1.3",
       "last_updated": "2026-07-16",
       "category": "medieval",
@@ -467,6 +535,8 @@
     {
       "id": "page36",
       "title": "晚清中樞權力變革與肅順之死",
+      "seo_title": "晚清中樞權力變革與肅順之死 — Ludwica 的簡單歷史課",
+      "seo_desc": "晚清中樞權力變革與肅順之死",
       "ver": "1.1",
       "last_updated": "2026-07-15",
       "category": "qing",
@@ -477,6 +547,8 @@
     {
       "id": "page37",
       "title": "大清帝國：咸豐皇帝遺詔",
+      "seo_title": "大清帝國：咸豐皇帝遺詔 — Ludwica 的簡單歷史課",
+      "seo_desc": "大清帝國：咸豐皇帝遺詔",
       "ver": "1.0",
       "last_updated": "2026-07-07",
       "category": "",
@@ -487,6 +559,8 @@
     {
       "id": "page38",
       "title": "阿陶爾夫與西哥德轉型",
+      "seo_title": "阿陶爾夫與西哥德轉型 — Ludwica 的簡單歷史課",
+      "seo_desc": "阿陶爾夫與西哥德轉型",
       "ver": "1.2",
       "last_updated": "2026-07-11",
       "category": "medieval",
@@ -497,8 +571,10 @@
     {
       "id": "page39",
       "title": "斯提里科與晚期羅馬瓦解",
+      "seo_title": "斯提里科與晚期羅馬瓦解 — Ludwica 的簡單歷史課",
+      "seo_desc": "斯提里科與晚期羅馬瓦解",
       "ver": "1.1",
-      "last_updated": "2026-07-22",
+      "last_updated": "2026-07-23",
       "category": "rome",
       "img": "images/stilicho_general.png",
       "bg_pos": "center top",
@@ -507,6 +583,8 @@
     {
       "id": "page40",
       "title": "萊茵河－多瑙河地緣戰略",
+      "seo_title": "萊茵河－多瑙河地緣戰略 — Ludwica 的簡單歷史課",
+      "seo_desc": "萊茵河－多瑙河地緣戰略",
       "ver": "1.0",
       "last_updated": "2026-07-11",
       "category": "trivia",
@@ -517,6 +595,8 @@
     {
       "id": "page41",
       "title": "君士坦丁三世與五世紀初邊疆危機",
+      "seo_title": "君士坦丁三世與五世紀初邊疆危機 — Ludwica 的簡單歷史課",
+      "seo_desc": "君士坦丁三世與五世紀初邊疆危機",
       "ver": "1.0",
       "last_updated": "2026-07-12",
       "category": "rome",
@@ -527,6 +607,8 @@
     {
       "id": "page42",
       "title": "序章 (Prologue)",
+      "seo_title": "序章 (Prologue) — Ludwica 的簡單歷史課",
+      "seo_desc": "序章 (Prologue)",
       "ver": "1.0",
       "last_updated": "2026-07-14",
       "category": "novel",
@@ -537,6 +619,8 @@
     {
       "id": "page43",
       "title": "第一章：黑海落日，狂風中的火種",
+      "seo_title": "第一章：黑海落日，狂風中的火種 — Ludwica 的簡單歷史課",
+      "seo_desc": "第一章：黑海落日，狂風中的火種",
       "ver": "1.0",
       "last_updated": "2026-07-14",
       "category": "novel",
@@ -547,6 +631,8 @@
     {
       "id": "page44",
       "title": "羅馬與波斯地緣關係",
+      "seo_title": "羅馬與波斯地緣關係 — Ludwica 的簡單歷史課",
+      "seo_desc": "羅馬與波斯地緣關係",
       "ver": "1.0",
       "last_updated": "2026-07-16",
       "category": "medieval",
@@ -557,6 +643,8 @@
     {
       "id": "page45",
       "title": "費爾穆斯叛亂與北非防務危機",
+      "seo_title": "費爾穆斯叛亂與北非防務危機 — Ludwica 的簡單歷史課",
+      "seo_desc": "費爾穆斯叛亂與北非防務危機",
       "ver": "1.3",
       "last_updated": "2026-07-19",
       "category": "rome",
@@ -567,6 +655,8 @@
     {
       "id": "page46",
       "title": "阿薩納里克家族與特爾文吉哥德人的統治演變",
+      "seo_title": "阿薩納里克家族與特爾文吉哥德人的統治演變 — Ludwica 的簡單歷史課",
+      "seo_desc": "阿薩納里克家族與特爾文吉哥德人的統治演變",
       "ver": "1.0",
       "last_updated": "2026-07-22",
       "category": "medieval",
