@@ -21,6 +21,17 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-07-26 (專題校對與學術升級 | 阿德里安堡戰役 1.1 | 版面 8.0)
+- **史實、時間軸與稱號修復**：精準釐清烏爾菲拉早期傳教（340年代）與弗里蒂根泰爾溫吉哥德人因政治談判集體皈依亞利烏派（370年代）的時間軸，消除內文前後矛盾；更正 4 世紀西羅馬皇帝格拉提安稱號為「尼西亞正統基督徒」；修訂軍事單位藍西亞里衛隊（Lanciarii）與馬蒂亞里衛隊（Mattiarii）為「高級宮廷野戰軍團（Legiones Palatinae）」；過濾口語流行語「擦槍走火」，替換為規範學術用語；修正簡體錯字「统」為「統」。
+- **引用來源學術化全面升級**：剔除 Grokipedia (AI 擷取網站)、Reddit、Quora、Kiddle 兒童網、跑團 RPG 網頁與小說家部落格等不可靠來源，全數替換為 Perseus (*Ammianus Marcellinus*)、Oxford Academic (*Peter Heather*)、Cambridge Core (*Noel Lenski*, *CAH*)、CCEL (*Socrates*, *Sozomen*) 與 University of Calgary (*Jordanes*) 等權威學術專著與原始文獻資料庫連結。
+- **三軌編譯與雲端同步**：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。
+
+
+#### 2026-07-25 (專題校對與學術升級 | 卡特里派與阿爾比十字軍 1.1 | 版面 8.0)
+- **史實、數據與用語審核**：校對並修訂「貝濟耶大屠殺」死傷人數，於內文與表格中補充說明「中世紀編年史宣稱兩萬至兩萬五千人喪生，現代史學家根據當時城鎮規模估算死者約在一萬人上下」；修正第四節錯別字（「晉延」修正為「晉升」）與譯詞/文字謬誤（誤將天主教/裁判所文獻寫為「天主行為」，修訂為「天主教會審判官」）；規範卡特里派教區繼承人職務拉丁文語法（補充單數職銜 *Filius Major* 與 *Filius Minor*）；全面清理標點號前殘留半形空格與多餘 Tab 縮排。
+- **引用來源學術化全面升級**：過濾 Fandom 網頁（`Templars Wiki`、`Military Wiki`）、兒童百科 `kids.kiddle.co` 以及臨時預覽 PDF 網址，全數替換為 Routledge (Malcolm Barber)、Cambridge University Press (Laurence W. Marvin)、Oxford University Press (Mark Gregory Pegg)、University of Michigan Press (Joseph R. Strayer)、Penguin Books (Emmanuel Le Roy Ladurie)、Internet Archive (Jean Duvernoy) 與 Encyclopædia Britannica 等頂尖國際學術專著與權威資料庫連結。
+- **三軌編譯與雲端同步**：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。
+
 #### 2026-07-23 (專題校對與學術升級 | 西元紀年的確立與演進 1.2 | 版面 8.0)
 - **史實與稱號修復**：將查理曼皇帝稱號由後世錯置的「神聖羅馬皇帝」修正為符合 9 世紀實態的「法蘭克國王兼羅馬人皇帝」，修正「奧林匹亞紀元」譯名，並補充「執政官紀年」羅馬官方實務與「大希律王死於西元前 4 年」之現代史學年代學共識（耶穌降生漂移 4-6 年）。
 - **語意通順與語法修復**：重構九世紀查理曼推廣曆法之重複贅述句型，清晰闡釋「缺失零年」導致算術減法多計 1 年的算術原理，修復表格 HTML `<sup>` 閉合標籤。

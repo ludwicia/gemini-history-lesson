@@ -133,10 +133,11 @@ def check_index_sync():
     pattern = re.escape(start_marker) + r'.*?' + re.escape(end_marker)
     placeholder = start_marker + '\n    ' + end_marker
 
-    stripped_index = re.sub(pattern, placeholder, index_html, flags=re.DOTALL)
-    stripped_db = re.sub(pattern, placeholder, index_db_html, flags=re.DOTALL)
+    stripped_index = re.sub(pattern, placeholder, index_html, flags=re.DOTALL).replace('\r\n', '\n')
+    stripped_db = re.sub(pattern, placeholder, index_db_html, flags=re.DOTALL).replace('\r\n', '\n')
 
     if stripped_index != stripped_db:
+
         print("[ERROR] index.html is OUT OF SYNC with index_db.html (outside the injected index)!")
         print("   Please rebuild the site so index.html is regenerated from index_db.html:")
         print("   cmd: python build_html_md.py")

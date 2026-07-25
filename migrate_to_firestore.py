@@ -76,7 +76,7 @@ def migrate_categories(db, catalog_data):
     print(f"   [INFO] 共上傳 {len(categories)} 個分類")
 
 
-def migrate_articles(db, catalog_data):
+def migrate_articles(db, catalog_data, force=False):
     """上傳文章元資料 (到 articles) + 全文 (到 article_contents)"""
     print("\n[INFO] 正在上傳文章...")
     articles = catalog_data.get('articles', [])
@@ -114,12 +114,15 @@ def migrate_articles(db, catalog_data):
 
         # 上傳到 Firestore (拆分為兩個 Collections)
         try:
-            # 檢查版本號，跳過未變更的文章
-            existing = db.collection('articles').document(page_id).get()
-            if existing.exists and existing.to_dict().get('ver') == meta_data['ver']:
-                print(f"   [SKIP] [{page_id}] {art['title']} (版本 {meta_data['ver']} 未變更)")
-                skip_count += 1
-                continue
+            # 檢查版本號與文章全文 document 是否皆存在
+            if not force:
+                existing_meta = db.collection('articles').document(page_id).get()
+                existing_content = db.collection('article_contents').document(page_id).get()
+                if existing_meta.exists and existing_content.exists:
+                    if existing_meta.to_dict().get('ver') == meta_data['ver']:
+                        print(f"   [SKIP] [{page_id}] {art['title']} (版本 {meta_data['ver']} 未變更)")
+                        skip_count += 1
+                        continue
 
             # 1. 輕量元資料上傳到 articles
             db.collection('articles').document(page_id).set(meta_data)
@@ -208,8 +211,9 @@ def migrate_site_config(db, catalog_data=None):
 
 
 def main():
+    force_sync = "--force" in sys.argv or "-f" in sys.argv
     print("=" * 60)
-    print("Ludwica 歷史課 — Firestore 資料遷移工具")
+    print(f"Ludwica 歷史課 — Firestore 資料遷移工具 {'[FORCE MODE]' if force_sync else ''}")
     print("=" * 60)
 
     # 確認 API 資料存在
@@ -233,7 +237,7 @@ def main():
 
     # 執行遷移
     migrate_categories(db, catalog_data)
-    migrate_articles(db, catalog_data)
+    migrate_articles(db, catalog_data, force=force_sync)
     migrate_worklog(db, catalog_data)
     migrate_search_index(db)
     migrate_site_config(db, catalog_data)
