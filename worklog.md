@@ -21,6 +21,13 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-07-26 (發布新專題 | 瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 1.0 | 版面 8.1)
+- **新增專題文章**：發布《瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究》（`page47`），歸類於「三世紀危機後的羅馬帝國」專題。
+- **史實審核與文案修復**：精準核對 378 年阿德里安堡戰役後的權力真空期、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與 382 年《哥德和約》；修訂專有名詞為特爾文吉哥德人（Tervingi）、阿薩納里克（Athanaric）與弗里蒂根（Fritigern）；去除多餘錯別字與生硬直譯。
+- **視覺與路由註冊**：生成高畫質《迪奧多西凱旋進入君士坦丁堡》歷史油畫 Banner（`images/theodosius_constantinople_entry.png`），完成 `course_config.json`、`build_html_md.py` 與 `index_db.html` 的路由與 JSON-LD 結構化資料註冊。
+- **三軌編譯與雲端同步**：順利執行 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫上傳，並同步主入口 `index.html`。
+
+
 #### 2026-07-26 (專題校對與學術升級 | 阿德里安堡戰役 1.1 | 版面 8.0)
 - **史實、時間軸與稱號修復**：精準釐清烏爾菲拉早期傳教（340年代）與弗里蒂根泰爾溫吉哥德人因政治談判集體皈依亞利烏派（370年代）的時間軸，消除內文前後矛盾；更正 4 世紀西羅馬皇帝格拉提安稱號為「尼西亞正統基督徒」；修訂軍事單位藍西亞里衛隊（Lanciarii）與馬蒂亞里衛隊（Mattiarii）為「高級宮廷野戰軍團（Legiones Palatinae）」；過濾口語流行語「擦槍走火」，替換為規範學術用語；修正簡體錯字「统」為「統」。
 - **引用來源學術化全面升級**：剔除 Grokipedia (AI 擷取網站)、Reddit、Quora、Kiddle 兒童網、跑團 RPG 網頁與小說家部落格等不可靠來源，全數替換為 Perseus (*Ammianus Marcellinus*)、Oxford Academic (*Peter Heather*)、Cambridge Core (*Noel Lenski*, *CAH*)、CCEL (*Socrates*, *Sozomen*) 與 University of Calgary (*Jordanes*) 等權威學術專著與原始文獻資料庫連結。

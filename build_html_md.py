@@ -522,6 +522,12 @@ file_p46 = r'course/阿薩納里克家族與特爾文吉哥德人的統治演變
 map_p46 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/visigoth_migration_map.png" alt="Visigoth Migration Map" loading="lazy"><figcaption class="caption">西哥德人遷徙：四世紀特爾文吉哥德人在匈人入侵的大變局下，被迫跨越邊界進入羅馬帝國，開拓了巴爾幹遷徙的先河。</figcaption></figure>\n'
 images_p46 = []
 
+# Page 47 Config
+file_p47 = r'course/瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究.md'
+map_p47 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/theodosius_constantinople_entry.png" alt="Theodosius Triumphal Entry" loading="lazy"><figcaption class="caption">西元380年迪奧多西一世凱旋進入首都君士坦丁堡示意圖：展現了東羅馬帝國在經歷阿德里安堡慘敗後，重塑皇權尊嚴與宗教秩序的關鍵歷史時刻（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n'
+images_p47 = []
+
+
 
 print("Processing Page 1 (Holland)...")
 html_body_p1 = process_markdown(file_p1, images_p1, "1.1", map_p1, page_id="page01")
@@ -687,6 +693,9 @@ html_body_p45 = process_markdown(file_p45, images_p45, "1.3", map_p45, page_id="
 print("Processing Page 46 (Athanaric Goths)...")
 html_body_p46 = process_markdown(file_p46, images_p46, "1.0", map_p46, page_id="page46")
 
+print("Processing Page 47 (Theodosius Constantinople Entry)...")
+html_body_p47 = process_markdown(file_p47, images_p47, "1.0", map_p47, page_id="page47")
+
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
 try:
@@ -765,6 +774,7 @@ pages_data = {
     'page44': {'title': '羅馬與波斯地緣關係', 'img': 'images/rome_persia_geopolitics.png', 'ver': '1.0', 'doc': False},
     'page45': {'title': '費爾穆斯叛亂與北非防務危機', 'img': 'images/firmus_rebellion.png', 'ver': '1.3', 'doc': False},
     'page46': {'title': '阿薩納里克家族與特爾文吉哥德人的統治演變', 'img': 'images/visigoth_migration_map.png', 'ver': '1.0', 'doc': False},
+    'page47': {'title': '瓦倫斯陣亡至迪奧多西接掌君士坦丁堡', 'img': 'images/theodosius_constantinople_entry.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -778,7 +788,7 @@ categories = [
         'title': '三世紀危機後的羅馬帝國',
         'key': 'rome',
         'img': 'images/milan_edict_main.png',
-        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page39', 'page41', 'page45']
+        'pages': ['page19', 'page22', 'page24', 'page25', 'page27', 'page30', 'page31', 'page39', 'page41', 'page45', 'page47']
     },
     {
         'title': '中世紀諸民族記',
@@ -1128,6 +1138,7 @@ final_html = final_html.replace('__HTML_BODY_PAGE43__', html_body_p43)
 final_html = final_html.replace('__HTML_BODY_PAGE44__', html_body_p44)
 final_html = final_html.replace('__HTML_BODY_PAGE45__', html_body_p45)
 final_html = final_html.replace('__HTML_BODY_PAGE46__', html_body_p46)
+final_html = final_html.replace('__HTML_BODY_PAGE47__', html_body_p47)
 final_html = final_html.replace('__WORKLOG_HTML__', worklog_html)
 final_html = final_html.replace('__ARTICLE_CARDS__', article_cards_html)
 
@@ -1177,6 +1188,7 @@ final_html = final_html.replace('__PAGE43_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE44_DATE__', get_file_last_update_date(file_p44))
 final_html = final_html.replace('__PAGE45_DATE__', get_file_last_update_date(file_p45))
 final_html = final_html.replace('__PAGE46_DATE__', get_file_last_update_date(file_p46))
+final_html = final_html.replace('__PAGE47_DATE__', get_file_last_update_date(file_p47))
 
 # Inject JavaScript for toggle function
 toggle_js = """

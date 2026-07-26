@@ -1,7 +1,7 @@
 {
   "site_config": {
-    "layout_version": "8.0",
-    "publish_date": "2026-07-22",
+    "layout_version": "8.1",
+    "publish_date": "2026-07-26",
     "site_name": "Ludwica 的簡單歷史課",
     "site_url": "https://ludwica-history-lesson.pages.dev/",
     "description": "涵蓋七大歷史專題的深度學術研究網站"
@@ -29,7 +29,8 @@
         "page31",
         "page39",
         "page41",
-        "page45"
+        "page45",
+        "page47"
       ]
     },
     {
@@ -1100,6 +1101,18 @@
       "seo_title": "阿薩納里克家族與特爾文吉哥德人的統治演變 — Ludwica 的簡單歷史課",
       "seo_desc": "深入探討西元四世紀多瑙河邊疆特爾文吉哥德人的政治結構，剖析阿薩納里克家族連續三代（阿里亞里克、奧里克、阿薩納里克）的反羅馬立場與基督教迫害機制，以及在匈人入侵後如何面臨內部分裂與最終的權力崩解。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/visigoth_migration_map.png\" alt=\"Visigoth Migration Map\" loading=\"lazy\"><figcaption class=\"caption\">西哥德人遷徙：四世紀特爾文吉哥德人在匈人入侵的大變局下，被迫跨越邊界進入羅馬帝國，開拓了巴爾幹遷徙的先河。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page47": {
+      "title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
+      "file_path": "course/瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究.md",
+      "ver": "1.0",
+      "doc": false,
+      "img": "images/theodosius_constantinople_entry.png",
+      "bg_pos": "center",
+      "seo_title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討西元378年阿德里安堡戰役後東羅馬帝國的權力真空、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與382年《哥德和約》的政治謀略。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/theodosius_constantinople_entry.png\" alt=\"Theodosius Triumphal Entry\" loading=\"lazy\"><figcaption class=\"caption\">西元380年迪奧多西一世凱旋進入首都君士坦丁堡示意圖：展現了東羅馬帝國在經歷阿德里安堡慘敗後，重塑皇權尊嚴與宗教秩序的關鍵歷史時刻（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
       "image_replacements": []
     }
   }
