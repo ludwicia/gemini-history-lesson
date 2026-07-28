@@ -21,6 +21,12 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-07-29 (發布新專題 | 羅馬帝國阿諾納制度 Annona 研究 1.0 | 版面 8.2)
+- **新增專題文章**：發布《羅馬帝國阿諾納制度（Annona）之深度行政、財政、軍事與地緣歷史研究》（`page48`），歸類於「歐洲小知識」專題。
+- **Google Doc 匯入轉碼與數據修復**：修復原 Google Doc 中的 base64 數學公式圖片與損壞的上標轉碼，還原蓋烏斯·格拉古《格拉古糧食法》低價購糧價格（6⅓ asses）與毎人每月 33 公斤（5 modii）小麥配給額、戴克里先賦稅改革 *Capitatio-Iugatio* 折算標準（特等麥田 20 摩畝、普通麥田 40–60 摩畝、葡萄園 5 摩畝折算為 1 Iugum）、年度預算詔令 *Indictio* 人頭與土地賦稅單位（Caput / Iugum），以及特斯塔喬山高度（35 公尺）與 Dressel 20 陶罐考古編號。
+- **高質感 AI 配圖生成**：繪製古典油畫風格封面配圖 `images/roman_annona_system.jpg`，展示地中海糧船於波爾圖斯港卸貨與羅馬官員配給公糧之歷史場景。
+- **三軌編譯與雲端同步**：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。
+
 #### 2026-07-28 (專題校對與學術升級 | 君士坦丁三世政權的興衰 1.1 | 版面 8.1)
 - **史實、時間軸與專有名詞修復**：精準釐清 401–402 年阿拉里克入侵與 405–406 年拉達蓋蘇斯入侵對西羅馬邊防兵力的連續抽離過程；刪除無古典史料記載之「饕餮之徒」網路錯譯，依據奧羅修斯《異教徒歷史七章》真實還原對其 *inconstantia*（反覆無常）的文獻記載；明確標示埃多比庫斯解圍軍兵力為現代史學估算；修正表格內缺失的上標角標語法。
 - **引用來源學術化全面升級**：全面剔除 Kids Kiddle 兒童百科、Quora、Reddit (r/aoe4)、《文明帝國 VI》遊戲百科、Numis Forums 錢幣論壇與個人用戶族譜網站等 10 餘處不可靠來源，全數替換為 Cambridge Core (*PLRE*, *Guy Halsall*)、Johns Hopkins University Press (*A.H.M. Jones*, *Michael Kulikowski*)、Routledge (*Pat Southern*)、Liverpool University Press (*Orosius*) 與 Oxford University Press (*Peter Heather*) 等頂級國際學術著作與資料庫；全面修復全文章 Markdown 超連結語法。

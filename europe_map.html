@@ -509,7 +509,7 @@
         <div class="list-container">
             <div class="list-header">
                 <span>歷史地名</span>
-                <span id="result-count">共 40 個</span>
+                <span id="result-count">共 88 個</span>
             </div>
             <ul class="place-list" id="place-list">
                 <!-- Dynamically populated -->
@@ -565,13 +565,14 @@
 
         // Map Category Helper
         function getCategory(p) {
+            if (p.category) return p.category;
             const id = p.id;
             // Roman cities & Provinces
-            if (['rome', 'constantinople', 'milan', 'adrianople', 'thessalonica', 'carthage', 'alexandria', 'antioch', 'jerusalem', 'trier', 'york', 'ostia', 'thrace', 'illyricum', 'pannonia', 'gaul', 'britannia', 'armenia', 'verona', 'arles', 'pavia', 'mesopotamia', 'aquileia', 'narbonne'].includes(id)) {
+            if (['rome', 'constantinople', 'milan', 'adrianople', 'thessalonica', 'carthage', 'alexandria', 'antioch', 'jerusalem', 'trier', 'york', 'ostia', 'thrace', 'illyricum', 'pannonia', 'gaul', 'britannia', 'armenia', 'verona', 'arles', 'pavia', 'mesopotamia', 'aquileia', 'narbonne', 'nicaea', 'sirmium', 'naissus', 'nicomedia', 'milvian_bridge', 'moesia', 'dacia', 'dalmatia', 'pollentia', 'strasbourg'].includes(id)) {
                 return 'rome';
             }
             // Medieval & HRE
-            if (['ravenna', 'worms', 'hirsau', 'bohemia', 'soissons', 'tours', 'cologne', 'mainz', 'london', 'canterbury', 'ghent', 'bruges', 'benevento', 'aachen', 'toulouse', 'constance', 'augsburg', 'albi', 'prague', 'canossa', 'montsegur'].includes(id)) {
+            if (['ravenna', 'worms', 'hirsau', 'bohemia', 'soissons', 'tours', 'cologne', 'mainz', 'london', 'canterbury', 'ghent', 'bruges', 'benevento', 'aachen', 'toulouse', 'constance', 'augsburg', 'albi', 'prague', 'canossa', 'montsegur', 'orleans', 'bordeaux', 'toledo', 'provence', 'nuremberg', 'frankfurt', 'brandenburg'].includes(id)) {
                 return 'medieval';
             }
             // Modern / Dutch
