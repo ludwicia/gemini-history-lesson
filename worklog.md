@@ -21,6 +21,11 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-07-28 (專題校對與學術升級 | 君士坦丁三世政權的興衰 1.1 | 版面 8.1)
+- **史實、時間軸與專有名詞修復**：精準釐清 401–402 年阿拉里克入侵與 405–406 年拉達蓋蘇斯入侵對西羅馬邊防兵力的連續抽離過程；刪除無古典史料記載之「饕餮之徒」網路錯譯，依據奧羅修斯《異教徒歷史七章》真實還原對其 *inconstantia*（反覆無常）的文獻記載；明確標示埃多比庫斯解圍軍兵力為現代史學估算；修正表格內缺失的上標角標語法。
+- **引用來源學術化全面升級**：全面剔除 Kids Kiddle 兒童百科、Quora、Reddit (r/aoe4)、《文明帝國 VI》遊戲百科、Numis Forums 錢幣論壇與個人用戶族譜網站等 10 餘處不可靠來源，全數替換為 Cambridge Core (*PLRE*, *Guy Halsall*)、Johns Hopkins University Press (*A.H.M. Jones*, *Michael Kulikowski*)、Routledge (*Pat Southern*)、Liverpool University Press (*Orosius*) 與 Oxford University Press (*Peter Heather*) 等頂級國際學術著作與資料庫；全面修復全文章 Markdown 超連結語法。
+- **三軌編譯與雲端同步**：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。
+
 #### 2026-07-26 (發布新專題 | 瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 1.0 | 版面 8.1)
 - **新增專題文章**：發布《瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究》（`page47`），歸類於「三世紀危機後的羅馬帝國」專題。
 - **史實審核與文案修復**：精準核對 378 年阿德里安堡戰役後的權力真空期、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與 382 年《哥德和約》；修訂專有名詞為特爾文吉哥德人（Tervingi）、阿薩納里克（Athanaric）與弗里蒂根（Fritigern）；去除多餘錯別字與生硬直譯。

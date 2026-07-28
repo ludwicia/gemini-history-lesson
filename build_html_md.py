@@ -650,7 +650,7 @@ print("Processing Page 40 (Rhine Danube)...")
 html_body_p40 = process_markdown(file_p40, images_p40, "1.0", map_p40, page_id="page40")
 
 print("Processing Page 41 (Constantine III)...")
-html_body_p41 = process_markdown(file_p41, images_p41, "1.0", map_p41, page_id="page41")
+html_body_p41 = process_markdown(file_p41, images_p41, "1.1", map_p41, page_id="page41")
 
 print("Processing Page 42 (Broadsword and Toga)...")
 html_body_p42_zh = process_markdown(file_p42, images_p42, "1.0", None, page_id="page42")
@@ -768,7 +768,7 @@ pages_data = {
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.2', 'doc': False},
     'page39': {'title': '斯提里科與晚期羅馬瓦解', 'img': 'images/stilicho_general.png', 'ver': '1.1', 'doc': False, 'bg_pos': 'center top'},
     'page40': {'title': '萊茵河－多瑙河地緣戰略', 'img': 'images/rhine_danube_frontier.png', 'ver': '1.0', 'doc': False},
-    'page41': {'title': '君士坦丁三世與五世紀初邊疆危機', 'img': 'images/constantine_iii_usurper.png', 'ver': '1.0', 'doc': False},
+    'page41': {'title': '君士坦丁三世與五世紀初邊疆危機', 'img': 'images/constantine_iii_usurper.png', 'ver': '1.1', 'doc': False},
     'page42': {'title': '序章 (Prologue)', 'img': 'images/gothic_three_ships_migration.png', 'ver': '1.0', 'doc': False},
     'page43': {'title': '第一章：黑海落日，狂風中的火種', 'img': 'images/iron_sword_chapter1_invasion.png', 'ver': '1.0', 'doc': False},
     'page44': {'title': '羅馬與波斯地緣關係', 'img': 'images/rome_persia_geopolitics.png', 'ver': '1.0', 'doc': False},
