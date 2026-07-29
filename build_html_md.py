@@ -756,7 +756,7 @@ pages_data = {
     'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.2', 'doc': False},
     'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.4', 'doc': False},
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.2', 'doc': False},
-    'page24': {'title': '帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
+    'page24': {'title': '帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究', 'img': 'images/roman_colonate_estate.png', 'ver': '1.1', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
     'page26': {'title': '阿拉里克與哥德大遷徙', 'img': 'images/alaric_sack_rome.png', 'ver': '1.1', 'doc': False},
     'page27': {'title': '冷河戰役及其歷史學再闡釋', 'img': 'images/battle_of_frigidus.png', 'ver': '1.1', 'doc': False},
