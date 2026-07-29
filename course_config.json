@@ -93,8 +93,7 @@
                 "page11",
                 "page18",
                 "page05",
-                "page40",
-                "page48"
+                "page40"
             ]
         },
         {
@@ -749,22 +748,16 @@
             "image_replacements": []
         },
         "page24": {
-            "title": "羅馬晚期改革與農奴制",
-            "file_path": "course/從戴克里先到君士坦丁：土地、稅制與兵役改革下的帝國控制與中世紀封建農奴的誕生.md",
+            "title": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究",
+            "file_path": "course/帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究.md",
             "ver": "1.1",
             "doc": false,
             "img": "images/roman_colonate_estate.png",
             "bg_pos": "center",
-            "seo_title": "羅馬晚期改革與農奴制 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究從戴克里先到君士坦丁大帝時期的羅馬晚期改革，包含人頭-土地稅雙軌制（Capitatio-Iugatio）的財政理性化設計與法律實踐，隸農莊園向中世紀封建莊園與農奴制的演進，以及世襲職業行會與兵役體系的歷史過渡。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/roman_colonate_estate.png\" alt=\"Late Roman Agricultural Estate\" loading=\"lazy\"><figcaption class=\"caption\">4世紀羅馬帝國晚期莊園（Villa Rustica）示意圖：在剛性稅制與勞動力匱乏下，依附於土地的隸農（Coloni）正在莊園主的地盤上進行耕作，預示著中世紀封建農奴制的萌芽。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>帝國晚期的多重危機與專制.*?</h2>)",
-                    "url": "images/p17_tetrarchs.jpg",
-                    "caption": "威尼斯聖馬可大教堂外牆著名的「四帝共治」雕像，以四位皇帝互相擁抱象徵帝國的團結與分工，是戴克里先創立四帝共治制度的具體政治宣傳。"
-                }
-            ]
+            "seo_title": "帝國糧秣、租稅枷鎖與農奴的誕生 — Ludwica 的簡單歷史課",
+            "seo_desc": "深度研究晚期羅馬帝國阿諾納（Annona）糧食後勤、人頭-土地稅雙軌制（Capitatio-Iugatio）與隸農土地附籍法制，解析從羅馬國家統制經濟向西歐中世紀封建農奴制的歷史轉型。",
+            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/roman_colonate_estate.png\" alt=\"Late Roman Agricultural Estate\" loading=\"lazy\"><figcaption class=\"caption\">4世紀羅馬帝國晚期莊園（Villa Rustica）與阿諾納後勤物流示意圖：在剛性稅制與勞動力匱乏下，依附於土地的隸農（Coloni）正在莊園主的地盤上進行耕作，預示著中世紀封建農奴制的萌芽。</figcaption></figure>\n",
+            "image_replacements": []
         },
         "page25": {
             "title": "羅馬晚期軍制變遷與哥德人崛起",
@@ -1114,18 +1107,6 @@
             "seo_title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 — Ludwica 的簡單歷史課",
             "seo_desc": "深入探討西元378年阿德里安堡戰役後東羅馬帝國的權力真空、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與382年《哥德和約》的政治謀略。",
             "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/theodosius_constantinople_entry.png\" alt=\"Theodosius Triumphal Entry\" loading=\"lazy\"><figcaption class=\"caption\">西元380年迪奧多西一世凱旋進入首都君士坦丁堡示意圖：展現了東羅馬帝國在經歷阿德里安堡慘敗後，重塑皇權尊嚴與宗教秩序的關鍵歷史時刻（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page48": {
-            "title": "羅馬帝國阿諾納制度（Annona）研究",
-            "file_path": "course/羅馬帝國阿諾納制度（Annona）之深度行政、財政、軍事與地緣歷史研究.md",
-            "ver": "1.0",
-            "doc": false,
-            "img": "images/roman_annona_system.jpg",
-            "bg_pos": "center",
-            "seo_title": "羅馬帝國阿諾納制度（Annona）之深度行政、財政、軍事與地緣歷史研究 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討古羅馬阿諾納（Annona）糧食供應體系：解析從共和國末期糧食法案、奧古斯都國家化到戴克里先人頭土地賦稅改革、軍事阿諾納物流、特斯塔喬山考古痕跡，以及汪達爾人攻陷北非切斷糧航導致西羅馬帝國體制性崩潰的深層地緣政治與經濟歷史。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/roman_annona_system.jpg\" alt=\"Roman Annona System\" loading=\"lazy\"><figcaption class=\"caption\">古羅馬阿諾納（Annona）糧食供應體系：展現了從海外屬省（埃及、北非）跨海運輸小麥與橄欖油至波爾圖斯港，並於首都羅馬城進行官辦分發的規模化物流與國家行政調控（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
             "image_replacements": []
         }
     }

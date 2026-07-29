@@ -86,8 +86,7 @@
         "page11",
         "page14",
         "page18",
-        "page40",
-        "page48"
+        "page40"
       ]
     },
     {
@@ -356,11 +355,11 @@
     },
     {
       "id": "page24",
-      "title": "羅馬晚期改革與農奴制",
-      "seo_title": "羅馬晚期改革與農奴制 — Ludwica 的簡單歷史課",
-      "seo_desc": "羅馬晚期改革與農奴制",
+      "title": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究",
+      "seo_title": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究 — Ludwica 的簡單歷史課",
+      "seo_desc": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究",
       "ver": "1.0",
-      "last_updated": "2026-06-17",
+      "last_updated": "2026-07-30",
       "category": "rome",
       "img": "images/roman_colonate_estate.png",
       "bg_pos": "center",
@@ -675,18 +674,6 @@
       "last_updated": "2026-07-26",
       "category": "rome",
       "img": "images/theodosius_constantinople_entry.png",
-      "bg_pos": "center",
-      "is_doc": 0
-    },
-    {
-      "id": "page48",
-      "title": "羅馬帝國阿諾納制度（Annona）研究",
-      "seo_title": "羅馬帝國阿諾納制度（Annona）研究 — Ludwica 的簡單歷史課",
-      "seo_desc": "羅馬帝國阿諾納制度（Annona）研究",
-      "ver": "1.0",
-      "last_updated": "2026-07-29",
-      "category": "trivia",
-      "img": "images/roman_annona_system.jpg",
       "bg_pos": "center",
       "is_doc": 0
     }

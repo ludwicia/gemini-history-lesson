@@ -412,7 +412,7 @@ map_p23 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><
 images_p23 = []
 
 # Page 24 (Roman Reforms & Colonate) Config
-file_p24 = r'course/從戴克里先到君士坦丁：土地、稅制與兵役改革下的帝國控制與中世紀封建農奴的誕生.md'
+file_p24 = r'course/帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究.md'
 map_p24 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/roman_colonate_estate.png" alt="Late Roman Agricultural Estate" loading="lazy"><figcaption class="caption">4世紀羅馬帝國晚期莊園（Villa Rustica）示意圖：在剛性稅制與勞動力匱乏下，依附於土地的隸農（Coloni）正在莊園主的地盤上進行耕作，預示著中世紀封建農奴制的萌芽。</figcaption></figure>\n'
 images_p24 = [
     (r'(<h2.*?>帝國晚期的多重危機與專制.*?</h2>)', 'images/p17_tetrarchs.jpg', '威尼斯聖馬可大教堂外牆著名的「四帝共治」雕像，以四位皇帝互相擁抱象徵帝國的團結與分工，是戴克里先創立四帝共治制度的具體政治宣傳。')
@@ -702,7 +702,7 @@ print("Processing Page 47 (Theodosius Constantinople Entry)...")
 html_body_p47 = process_markdown(file_p47, images_p47, "1.0", map_p47, page_id="page47")
 
 print("Processing Page 48 (Roman Annona System)...")
-html_body_p48 = process_markdown(file_p48, images_p48, "1.0", map_p48, page_id="page48")
+html_body_p48 = "" if not os.path.exists(file_p48) else process_markdown(file_p48, images_p48, "1.0", map_p48, page_id="page48")
 
 # Parse worklog.md for the latest 10 updates
 worklog_html = ""
@@ -756,7 +756,7 @@ pages_data = {
     'page21': {'title': '使徒信經的歷史演變與神學建構', 'img': 'images/creed_main.jpg', 'ver': '1.2', 'doc': False},
     'page22': {'title': '羅馬秩序的終結與日耳曼王權的奠定', 'img': 'images/odoacer_fall_rome.jpg', 'ver': '1.4', 'doc': False},
     'page23': {'title': '蠻族崛起的政治重塑與克洛維霸權', 'img': 'images/clovis_main.jpg', 'ver': '1.2', 'doc': False},
-    'page24': {'title': '羅馬晚期改革與農奴制', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
+    'page24': {'title': '帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究', 'img': 'images/roman_colonate_estate.png', 'ver': '1.0', 'doc': False},
     'page25': {'title': '羅馬晚期軍制變遷與哥德人崛起', 'img': 'images/adrianople_battle.png', 'ver': '1.0', 'doc': False},
     'page26': {'title': '阿拉里克與哥德大遷徙', 'img': 'images/alaric_sack_rome.png', 'ver': '1.1', 'doc': False},
     'page27': {'title': '冷河戰役及其歷史學再闡釋', 'img': 'images/battle_of_frigidus.png', 'ver': '1.1', 'doc': False},
@@ -783,7 +783,6 @@ pages_data = {
     'page45': {'title': '費爾穆斯叛亂與北非防務危機', 'img': 'images/firmus_rebellion.png', 'ver': '1.3', 'doc': False},
     'page46': {'title': '阿薩納里克家族與特爾文吉哥德人的統治演變', 'img': 'images/visigoth_migration_map.png', 'ver': '1.0', 'doc': False},
     'page47': {'title': '瓦倫斯陣亡至迪奧多西接掌君士坦丁堡', 'img': 'images/theodosius_constantinople_entry.png', 'ver': '1.0', 'doc': False},
-    'page48': {'title': '羅馬帝國阿諾納制度（Annona）研究', 'img': 'images/roman_annona_system.jpg', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -833,7 +832,7 @@ categories = [
         'title': '歐洲小知識',
         'key': 'trivia',
         'img': 'images/paper_main.jpg',
-        'pages': ['page14', 'page11', 'page18', 'page05', 'page40', 'page48']
+        'pages': ['page14', 'page11', 'page18', 'page05', 'page40']
     },
     {
         'title': '美國的誕生',
@@ -1199,7 +1198,7 @@ final_html = final_html.replace('__PAGE44_DATE__', get_file_last_update_date(fil
 final_html = final_html.replace('__PAGE45_DATE__', get_file_last_update_date(file_p45))
 final_html = final_html.replace('__PAGE46_DATE__', get_file_last_update_date(file_p46))
 final_html = final_html.replace('__PAGE47_DATE__', get_file_last_update_date(file_p47))
-final_html = final_html.replace('__PAGE48_DATE__', get_file_last_update_date(file_p48))
+final_html = final_html.replace('__PAGE48_DATE__', get_file_last_update_date(file_p48) if os.path.exists(file_p48) else '')
 
 # Inject JavaScript for toggle function
 toggle_js = """
