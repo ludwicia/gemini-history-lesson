@@ -636,7 +636,7 @@ print("Processing Page 33 (Roman Provincial Governance)...")
 html_body_p33 = process_markdown(file_p33, images_p33, "1.0", map_p33, page_id="page33")
 
 print("Processing Page 34 (Huns Arrival)...")
-html_body_p34 = process_markdown(file_p34, images_p34, "1.3", map_p34, page_id="page34")
+html_body_p34 = process_markdown(file_p34, images_p34, "1.4", map_p34, page_id="page34")
 
 
 print("Processing Page 36 (Xinyou Coup)...")
@@ -770,7 +770,7 @@ pages_data = {
     'page31': {'title': '卡拉卡拉與《安東尼努斯敕令》', 'img': 'images/caracalla_edict.png', 'ver': '1.0', 'doc': False},
     'page32': {'title': '羅馬帝國：安東尼努斯敕令', 'ver': '1.0', 'doc': True},
     'page33': {'title': '一世紀羅馬行省治權與社會', 'img': 'images/roman_provincial_governance.png', 'ver': '1.0', 'doc': False},
-    'page34': {'title': '匈人的登場與晚期羅馬地緣政治', 'img': 'images/huns_arrival.png', 'ver': '1.3', 'doc': False},
+    'page34': {'title': '匈人的登場與晚期羅馬地緣政治', 'img': 'images/huns_arrival.png', 'ver': '1.4', 'doc': False},
     'page36': {'title': '晚清中樞權力變革與肅順之死', 'img': 'images/xinyou_coup.png', 'ver': '1.1', 'doc': False},
     'page37': {'title': '大清帝國：咸豐皇帝遺詔', 'ver': '1.0', 'doc': True},
     'page38': {'title': '阿陶爾夫與西哥德轉型', 'img': 'images/athaulf_placidia_wedding.png', 'ver': '1.2', 'doc': False},
