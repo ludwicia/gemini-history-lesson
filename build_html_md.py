@@ -1231,241 +1231,254 @@ function toggleCategory(catId) {
 """
 final_html = final_html.replace('</body>', toggle_js + '</body>')
 
-# [2026-07-19 移除] 原本此處會寫出 index_static.html。
-# 該檔案全專案無任何引用（不在 sitemap、不被 index_db.html 或任何 JS 載入），
-# 實際部署的 index.html 來自下方的 index_db.html 複製，故停止產出以免混淆。
-# 註：final_html 的組裝邏輯暫時保留，待模板單一化重構時再一併清理。
 
-# Automatically synchronize index.html with the database-driven index_db.html
-print("Synchronizing index.html with index_db.html...")
-try:
-    import shutil
-    shutil.copy('index_db.html', 'index.html')
-    print("[OK] Synchronized index.html with index_db.html")
-except Exception as e:
-    print(f"[WARNING] Failed to sync index.html: {e}")
+# ============================================================================
+# [2026-07-21] 輸出段：寫出 index.html / sitemap.xml / robots.txt / pages/*.html
+#
+# 這一段原本直接寫在模組層級，而本檔案沒有 __main__ 保護，導致
+# `import build_html_md`（build_static_chunks.py 第 4 行、admin_server.py 第 13 行）
+# 會完整重跑一次建置並重複寫出所有檔案。run_build.py 因此每次發布都建置兩遍，
+# 啟動 admin_server.py 也會意外觸發一次全站建置。
+#
+# 現收進函式，僅在直接執行本腳本、或由 run_build.py 明確呼叫時才寫出檔案。
+# 被 import 時只計算文章資料（pages_data / html_body_pXX / file_pXX），不寫檔。
+# ============================================================================
+def write_site_outputs():
+    # [2026-07-19 移除] 原本此處會寫出 index_static.html。
+    # 該檔案全專案無任何引用（不在 sitemap、不被 index_db.html 或任何 JS 載入），
+    # 實際部署的 index.html 來自下方的 index_db.html 複製，故停止產出以免混淆。
+    # 註：final_html 的組裝邏輯暫時保留，待模板單一化重構時再一併清理。
 
-# [2026-07-19 新增] 於 index.html 注入靜態文章索引。
-# 首頁文章清單原本完全由 JavaScript 從 Firestore 載入，初始 HTML 中沒有任何指向文章的
-# 連結（實測可見文字僅約 390 字元、0 個 <h1>、0 個文章連結），搜尋引擎因此無從發現
-# 任何一篇文章。此處在 index_db.html 的標記之間注入依分類排列的完整文章連結，
-# 讓 Googlebot 不需執行 JavaScript 就能爬行到全部 44 篇靜態文章頁。
-print("Injecting static article index into index.html...")
-try:
-    with open('index.html', 'r', encoding='utf-8') as f:
-        _idx_html = f.read()
+    # Automatically synchronize index.html with the database-driven index_db.html
+    print("Synchronizing index.html with index_db.html...")
+    try:
+        import shutil
+        shutil.copy('index_db.html', 'index.html')
+        print("[OK] Synchronized index.html with index_db.html")
+    except Exception as e:
+        print(f"[WARNING] Failed to sync index.html: {e}")
 
-    _start_marker = '<!-- STATIC_ARTICLE_INDEX_START -->'
-    _end_marker = '<!-- STATIC_ARTICLE_INDEX_END -->'
+    # [2026-07-19 新增] 於 index.html 注入靜態文章索引。
+    # 首頁文章清單原本完全由 JavaScript 從 Firestore 載入，初始 HTML 中沒有任何指向文章的
+    # 連結（實測可見文字僅約 390 字元、0 個 <h1>、0 個文章連結），搜尋引擎因此無從發現
+    # 任何一篇文章。此處在 index_db.html 的標記之間注入依分類排列的完整文章連結，
+    # 讓 Googlebot 不需執行 JavaScript 就能爬行到全部 44 篇靜態文章頁。
+    print("Injecting static article index into index.html...")
+    try:
+        with open('index.html', 'r', encoding='utf-8') as f:
+            _idx_html = f.read()
 
-    if _start_marker in _idx_html and _end_marker in _idx_html:
-        _blocks = []
-        for _cat in categories:
-            _links = []
-            for _pid in _cat['pages']:
-                if _pid in pages_data:
-                    _links.append(
+        _start_marker = '<!-- STATIC_ARTICLE_INDEX_START -->'
+        _end_marker = '<!-- STATIC_ARTICLE_INDEX_END -->'
+
+        if _start_marker in _idx_html and _end_marker in _idx_html:
+            _blocks = []
+            for _cat in categories:
+                _links = []
+                for _pid in _cat['pages']:
+                    if _pid in pages_data:
+                        _links.append(
+                            f'            <li><a href="pages/{_pid}.html">{pages_data[_pid]["title"]}</a></li>'
+                        )
+                if _links:
+                    _blocks.append(
+                        f'        <div class="article-index-group">\n'
+                        f'            <h3>{_cat["title"]}</h3>\n'
+                        f'            <ul>\n' + '\n'.join(_links) + '\n            </ul>\n'
+                        f'        </div>'
+                    )
+
+            # 三欄文獻頁（doc=True）不屬於任何分類，首頁是以獨立的「歷史文獻」區塊呈現，
+            # 這裡同樣補上，避免它們在靜態索引中缺席而無法被爬取。
+            _doc_links = []
+            for _pid in sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group())):
+                if pages_data[_pid].get('doc') and not any(_pid in _c['pages'] for _c in categories):
+                    _doc_links.append(
                         f'            <li><a href="pages/{_pid}.html">{pages_data[_pid]["title"]}</a></li>'
                     )
-            if _links:
+            if _doc_links:
                 _blocks.append(
                     f'        <div class="article-index-group">\n'
-                    f'            <h3>{_cat["title"]}</h3>\n'
-                    f'            <ul>\n' + '\n'.join(_links) + '\n            </ul>\n'
+                    f'            <h3>歷史文獻對照</h3>\n'
+                    f'            <ul>\n' + '\n'.join(_doc_links) + '\n            </ul>\n'
                     f'        </div>'
                 )
 
-        # 三欄文獻頁（doc=True）不屬於任何分類，首頁是以獨立的「歷史文獻」區塊呈現，
-        # 這裡同樣補上，避免它們在靜態索引中缺席而無法被爬取。
-        _doc_links = []
-        for _pid in sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group())):
-            if pages_data[_pid].get('doc') and not any(_pid in _c['pages'] for _c in categories):
-                _doc_links.append(
-                    f'            <li><a href="pages/{_pid}.html">{pages_data[_pid]["title"]}</a></li>'
-                )
-        if _doc_links:
-            _blocks.append(
-                f'        <div class="article-index-group">\n'
-                f'            <h3>歷史文獻對照</h3>\n'
-                f'            <ul>\n' + '\n'.join(_doc_links) + '\n            </ul>\n'
-                f'        </div>'
+            _injected = _start_marker + '\n' + '\n'.join(_blocks) + '\n    ' + _end_marker
+            _idx_html = re.sub(
+                re.escape(_start_marker) + r'.*?' + re.escape(_end_marker),
+                lambda m: _injected,
+                _idx_html,
+                flags=re.DOTALL
             )
 
-        _injected = _start_marker + '\n' + '\n'.join(_blocks) + '\n    ' + _end_marker
-        _idx_html = re.sub(
-            re.escape(_start_marker) + r'.*?' + re.escape(_end_marker),
-            lambda m: _injected,
-            _idx_html,
-            flags=re.DOTALL
-        )
+            with open('index.html', 'w', encoding='utf-8', newline='\n') as f:
+                f.write(_idx_html)
 
-        with open('index.html', 'w', encoding='utf-8', newline='\n') as f:
-            f.write(_idx_html)
+            _link_count = _injected.count('<li><a href="pages/')
+            print(f"[OK] Injected {_link_count} static article links into index.html")
 
-        _link_count = _injected.count('<li><a href="pages/')
-        print(f"[OK] Injected {_link_count} static article links into index.html")
+            _missing_from_index = [p for p in pages_data if f'pages/{p}.html' not in _injected]
+            if _missing_from_index:
+                print(f"[WARNING] {len(_missing_from_index)} page(s) missing from the static article index: {', '.join(sorted(_missing_from_index))}")
+        else:
+            print("[WARNING] STATIC_ARTICLE_INDEX markers not found in index.html - skipped injection")
+    except Exception as e:
+        print(f"[WARNING] Failed to inject static article index: {e}")
 
-        _missing_from_index = [p for p in pages_data if f'pages/{p}.html' not in _injected]
-        if _missing_from_index:
-            print(f"[WARNING] {len(_missing_from_index)} page(s) missing from the static article index: {', '.join(sorted(_missing_from_index))}")
-    else:
-        print("[WARNING] STATIC_ARTICLE_INDEX markers not found in index.html - skipped injection")
-except Exception as e:
-    print(f"[WARNING] Failed to inject static article index: {e}")
+    # Generate sitemap.xml for SEO
+    from datetime import date
+    today = date.today().isoformat()
+    base_site_url = "https://ludwica-history-lesson.pages.dev/"
 
-# Generate sitemap.xml for SEO
-from datetime import date
-today = date.today().isoformat()
-base_site_url = "https://ludwica-history-lesson.pages.dev/"
+    sitemap_urls = []
 
-sitemap_urls = []
-
-# 首頁
-sitemap_urls.append(f"""  <url>
+    # 首頁
+    sitemap_urls.append(f"""  <url>
     <loc>{base_site_url}</loc>
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>""")
 
-# 獨立功能頁面
-standalone_pages = [
-    ("characters_database.html", 0.8),
-    ("europe_map.html", 0.8),
-    ("character_relationship.html", 0.7),
-    ("constitutio_antoniniana_bilingual.html", 0.7),
-]
-for page_file, priority in standalone_pages:
-    if os.path.exists(page_file):
-        # 同上：Cloudflare Pages 會把 .html 轉址掉，sitemap 直接列出正規網址，
-        # 避免整份 sitemap 的網址全部回報為「含轉址的網頁」。
-        sitemap_urls.append(f"""  <url>
+    # 獨立功能頁面
+    standalone_pages = [
+        ("characters_database.html", 0.8),
+        ("europe_map.html", 0.8),
+        ("character_relationship.html", 0.7),
+        ("constitutio_antoniniana_bilingual.html", 0.7),
+    ]
+    for page_file, priority in standalone_pages:
+        if os.path.exists(page_file):
+            # 同上：Cloudflare Pages 會把 .html 轉址掉，sitemap 直接列出正規網址，
+            # 避免整份 sitemap 的網址全部回報為「含轉址的網頁」。
+            sitemap_urls.append(f"""  <url>
     <loc>{base_site_url}{page_file[:-5] if page_file.endswith('.html') else page_file}</loc>
     <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>{priority}</priority>
   </url>""")
 
-# SEO 文章頁面 (pages/)
-for pid in sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group())):
-    sitemap_urls.append(f"""  <url>
+    # SEO 文章頁面 (pages/)
+    for pid in sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group())):
+        sitemap_urls.append(f"""  <url>
     <loc>{base_site_url}pages/{pid}</loc>
     <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>""")
 
-sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_urls) + '\n</urlset>\n'
+    sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_urls) + '\n</urlset>\n'
 
-with open(r'sitemap.xml', 'w', encoding='utf-8', newline='\n') as f:
-    f.write(sitemap_content)
-print("Generated sitemap.xml")
+    with open(r'sitemap.xml', 'w', encoding='utf-8', newline='\n') as f:
+        f.write(sitemap_content)
+    print("Generated sitemap.xml")
 
-# Generate robots.txt for SEO
-robots_content = """User-agent: *
+    # Generate robots.txt for SEO
+    robots_content = """User-agent: *
 Allow: /
 
 Sitemap: https://ludwica-history-lesson.pages.dev/sitemap.xml
 """
 
-with open(r'robots.txt', 'w', encoding='utf-8') as f:
-    f.write(robots_content)
-print("Generated robots.txt")
+    with open(r'robots.txt', 'w', encoding='utf-8') as f:
+        f.write(robots_content)
+    print("Generated robots.txt")
 
-# [2026-07-19 重寫] 產生 pages/ 底下的靜態文章頁。
-# 原本這裡產生的是「只有 meta 標籤 + window.location.replace 跳轉」的空殼頁，
-# 導致 Google 將 44 篇文章全部視為跳轉到首頁的同一個網址，整站僅 1 個 URL 被檢索
-# 且因內容過少未被索引。現改為直接寫入建置過程已產生的完整文章 HTML
-# （html_body_pXX），使每篇文章成為可獨立索引、內容完整的靜態網頁。
-def generate_static_article_pages():
-    print("Generating static article pages in 'pages/' directory...")
-    base_site_url = "https://ludwica-history-lesson.pages.dev/"
+    # [2026-07-19 重寫] 產生 pages/ 底下的靜態文章頁。
+    # 原本這裡產生的是「只有 meta 標籤 + window.location.replace 跳轉」的空殼頁，
+    # 導致 Google 將 44 篇文章全部視為跳轉到首頁的同一個網址，整站僅 1 個 URL 被檢索
+    # 且因內容過少未被索引。現改為直接寫入建置過程已產生的完整文章 HTML
+    # （html_body_pXX），使每篇文章成為可獨立索引、內容完整的靜態網頁。
+    def generate_static_article_pages():
+        print("Generating static article pages in 'pages/' directory...")
+        base_site_url = "https://ludwica-history-lesson.pages.dev/"
 
-    # Create pages directory if it doesn't exist
-    os.makedirs('pages', exist_ok=True)
+        # Create pages directory if it doesn't exist
+        os.makedirs('pages', exist_ok=True)
 
-    # [2026-07-19 變更] SEO 描述改由 course_config.json 讀取。
-    # 原本從 template.html 以正則撈取 pageSEO，但 template.html 與 index_db.html
-    # 的 pageSEO 已各自分岔（41 筆 vs 39 筆、其中 4 筆內容不一致），導致
-    # page42/43/45 線上只拿到通用備援文案。現統一以 course_config.json
-    # 的 seo_desc 為單一真實來源（44 篇完整）。
-    descs = {}
-    try:
-        import json as _json
-        with open('course_config.json', 'r', encoding='utf-8') as f:
-            _cfg_articles = _json.load(f).get('articles', {})
-        for pid, meta in _cfg_articles.items():
-            desc = (meta.get('seo_desc') or '').strip()
-            if desc:
-                descs[pid] = desc
-        print(f"[OK] Loaded {len(descs)} SEO descriptions from course_config.json")
-    except Exception as e:
-        print(f"Error loading descriptions for redirects: {e}")
+        # [2026-07-19 變更] SEO 描述改由 course_config.json 讀取。
+        # 原本從 template.html 以正則撈取 pageSEO，但 template.html 與 index_db.html
+        # 的 pageSEO 已各自分岔（41 筆 vs 39 筆、其中 4 筆內容不一致），導致
+        # page42/43/45 線上只拿到通用備援文案。現統一以 course_config.json
+        # 的 seo_desc 為單一真實來源（44 篇完整）。
+        descs = {}
+        try:
+            import json as _json
+            with open('course_config.json', 'r', encoding='utf-8') as f:
+                _cfg_articles = _json.load(f).get('articles', {})
+            for pid, meta in _cfg_articles.items():
+                desc = (meta.get('seo_desc') or '').strip()
+                if desc:
+                    descs[pid] = desc
+            print(f"[OK] Loaded {len(descs)} SEO descriptions from course_config.json")
+        except Exception as e:
+            print(f"Error loading descriptions for redirects: {e}")
 
-    # 缺漏警示：避免日後新增文章時無聲退回通用文案
-    _missing = [pid for pid in pages_data if pid not in descs]
-    if _missing:
-        print(f"[WARNING] {len(_missing)} page(s) missing seo_desc in course_config.json: {', '.join(sorted(_missing))}")
+        # 缺漏警示：避免日後新增文章時無聲退回通用文案
+        _missing = [pid for pid in pages_data if pid not in descs]
+        if _missing:
+            print(f"[WARNING] {len(_missing)} page(s) missing seo_desc in course_config.json: {', '.join(sorted(_missing))}")
 
-    # 依 pages_data 的順序建立「上一篇／下一篇」導覽，讓搜尋引擎能在文章之間爬行
-    ordered_pids = sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group()))
+        # 依 pages_data 的順序建立「上一篇／下一篇」導覽，讓搜尋引擎能在文章之間爬行
+        ordered_pids = sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group()))
 
-    generated = 0
-    empty_body = []
+        generated = 0
+        empty_body = []
 
-    for pid, data in pages_data.items():
-        title = data['title'] + " — Ludwica 的簡單歷史課"
-        desc = descs.get(pid, "Ludwica 的簡單歷史課：歷史專題研究與報告。")
+        for pid, data in pages_data.items():
+            title = data['title'] + " — Ludwica 的簡單歷史課"
+            desc = descs.get(pid, "Ludwica 的簡單歷史課：歷史專題研究與報告。")
 
-        # Determine image URL
-        img_path = data.get('img', 'history_banner_bg.png')
-        if not img_path:
-            img_path = 'history_banner_bg.png'
-        image_url = base_site_url + img_path
-        # [2026-07-19] Cloudflare Pages 會自動將 /pages/pageXX.html 以 301 轉址到
-        # /pages/pageXX（去除副檔名），後者才是實際回應 200 的正規網址。
-        # canonical 與 og:url 若仍指向 .html，等同宣告「正規網址是一個會轉址的網址」，
-        # 與 Google 實際檢索到的網址互相矛盾，因此一律使用無副檔名的形式。
-        # 註：頁面之間的相對連結仍保留 .html，以維持本機直接開啟檔案時的可用性；
-        #     這些連結會經過一次 301，對索引無實質影響。
-        page_url = base_site_url + f"pages/{pid}"
+            # Determine image URL
+            img_path = data.get('img', 'history_banner_bg.png')
+            if not img_path:
+                img_path = 'history_banner_bg.png'
+            image_url = base_site_url + img_path
+            # [2026-07-19] Cloudflare Pages 會自動將 /pages/pageXX.html 以 301 轉址到
+            # /pages/pageXX（去除副檔名），後者才是實際回應 200 的正規網址。
+            # canonical 與 og:url 若仍指向 .html，等同宣告「正規網址是一個會轉址的網址」，
+            # 與 Google 實際檢索到的網址互相矛盾，因此一律使用無副檔名的形式。
+            # 註：頁面之間的相對連結仍保留 .html，以維持本機直接開啟檔案時的可用性；
+            #     這些連結會經過一次 301，對索引無實質影響。
+            page_url = base_site_url + f"pages/{pid}"
 
-        # 取出建置過程中已產生的完整文章 HTML（html_body_pXX）
-        p_num = int(pid[4:])
-        body_html = globals().get(f"html_body_p{p_num}", "")
-        if not body_html:
-            empty_body.append(pid)
+            # 取出建置過程中已產生的完整文章 HTML（html_body_pXX）
+            p_num = int(pid[4:])
+            body_html = globals().get(f"html_body_p{p_num}", "")
+            if not body_html:
+                empty_body.append(pid)
 
-        # 靜態頁位於 pages/ 子目錄，需把 images/ 等相對路徑往上退一層
-        body_html = body_html.replace('src="images/', 'src="../images/')
-        body_html = body_html.replace("src='images/", "src='../images/")
-        body_html = body_html.replace('href="images/', 'href="../images/')
+            # 靜態頁位於 pages/ 子目錄，需把 images/ 等相對路徑往上退一層
+            body_html = body_html.replace('src="images/', 'src="../images/')
+            body_html = body_html.replace("src='images/", "src='../images/")
+            body_html = body_html.replace('href="images/', 'href="../images/')
 
-        # 上一篇／下一篇
-        idx = ordered_pids.index(pid)
-        nav_parts = []
-        if idx > 0:
-            prev_pid = ordered_pids[idx - 1]
-            nav_parts.append(f'<a href="{prev_pid}.html" rel="prev">← {pages_data[prev_pid]["title"]}</a>')
-        if idx < len(ordered_pids) - 1:
-            next_pid = ordered_pids[idx + 1]
-            nav_parts.append(f'<a href="{next_pid}.html" rel="next">{pages_data[next_pid]["title"]} →</a>')
-        prev_next_html = '<nav class="static-prevnext">' + ' | '.join(nav_parts) + '</nav>' if nav_parts else ''
+            # 上一篇／下一篇
+            idx = ordered_pids.index(pid)
+            nav_parts = []
+            if idx > 0:
+                prev_pid = ordered_pids[idx - 1]
+                nav_parts.append(f'<a href="{prev_pid}.html" rel="prev">← {pages_data[prev_pid]["title"]}</a>')
+            if idx < len(ordered_pids) - 1:
+                next_pid = ordered_pids[idx + 1]
+                nav_parts.append(f'<a href="{next_pid}.html" rel="next">{pages_data[next_pid]["title"]} →</a>')
+            prev_next_html = '<nav class="static-prevnext">' + ' | '.join(nav_parts) + '</nav>' if nav_parts else ''
 
-        # JSON-LD 結構化資料
-        json_ld = json.dumps({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": data['title'],
-            "description": desc,
-            "image": image_url,
-            "author": {"@type": "Person", "name": "Ludwica"},
-            "publisher": {"@type": "Organization", "name": "Ludwica 的簡單歷史課"},
-            "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
-            "inLanguage": "zh-TW"
-        }, ensure_ascii=False, indent=None)
+            # JSON-LD 結構化資料
+            json_ld = json.dumps({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": data['title'],
+                "description": desc,
+                "image": image_url,
+                "author": {"@type": "Person", "name": "Ludwica"},
+                "publisher": {"@type": "Organization", "name": "Ludwica 的簡單歷史課"},
+                "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
+                "inLanguage": "zh-TW"
+            }, ensure_ascii=False, indent=None)
 
-        article_html = f"""<!DOCTYPE html>
+            article_html = f"""<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -1535,14 +1548,19 @@ def generate_static_article_pages():
 </body>
 </html>
 """
-        with open(os.path.join("pages", f"{pid}.html"), 'w', encoding='utf-8', newline='\n') as f:
-            f.write(article_html)
-        generated += 1
+            with open(os.path.join("pages", f"{pid}.html"), 'w', encoding='utf-8', newline='\n') as f:
+                f.write(article_html)
+            generated += 1
 
-    if empty_body:
-        print(f"[WARNING] {len(empty_body)} page(s) produced an EMPTY article body: {', '.join(sorted(empty_body))}")
-    print(f"Successfully generated {generated} static article pages under 'pages/'.")
+        if empty_body:
+            print(f"[WARNING] {len(empty_body)} page(s) produced an EMPTY article body: {', '.join(sorted(empty_body))}")
+        print(f"Successfully generated {generated} static article pages under 'pages/'.")
 
-generate_static_article_pages()
+    generate_static_article_pages()
 
-print("Done! Site successfully built as dynamic 23-topic history portal with full SEO.")
+    print("Done! Site successfully built as dynamic 23-topic history portal with full SEO.")
+
+
+
+if __name__ == '__main__':
+    write_site_outputs()
