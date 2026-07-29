@@ -28,13 +28,30 @@
      }
      ```
 
-3. **三軌編譯同步義務**：
-   * 每次調整文章 HTML 結構、CSS 樣式或新增嵌入圖表後，**必須同時依序執行以下三條指令**：
-     * `python build_html_md.py` (重新生成靜態備份 `index_static.html` 及 SEO 頁面)
-     * `python build_static_chunks.py` (重新切片生成動態 API Chunks)
-     * `python migrate_to_firestore.py` (將所有資料上傳至 Firebase Firestore 雲端資料庫)
-   * 編譯完成後必須同步主入口：`copy index_db.html index.html`
-   * 嚴禁只執行單一編譯，以防止靜態備份、API Chunks 與 Firestore 雲端資料庫三者之間內容不一致。
+3. **編譯同步義務（2026-07-21 重大變更：單一指令）**：
+
+   每次調整文章 HTML 結構、CSS 樣式或新增嵌入圖表後，執行**單一指令**：
+
+   ```bash
+   python run_build.py
+   ```
+
+   它會在同一個行程內依序完成：建置 → `api/` JSON 切片 → Firestore 上傳（有金鑰時）
+   → index.html 文章索引驗證 → `verify_project.py` 完整驗證。任一環節失敗即中止。
+
+   * **🚫 嚴禁執行 `copy index_db.html index.html`**（舊守則的步驟，現已作廢且有害）。
+     `build_html_md.py` 會先把 `index_db.html` 複製為 `index.html`，**再於其中注入
+     「全站文章索引」的 47 個靜態文章連結**。那些連結是搜尋引擎發現文章的主要途徑
+     ——首頁其餘內容全由 JavaScript 從 Firestore 載入，初始 HTML 原本可見文字
+     僅約 390 字元、0 個 `<h1>`、0 個文章連結，Google Search Console 曾因此顯示
+     「已建立索引 0 頁」。事後再複製一次會把索引整段覆蓋，**且不會有任何錯誤訊息**。
+     若不慎執行了，重跑 `python run_build.py` 即可修復。
+
+   * **🚫 亦勿再分別執行**那三條指令。`build_static_chunks.py` 第 4 行是
+     `import build_html_md`，而 `build_html_md.py` 的輸出段雖已加上 `__main__` 保護，
+     分開執行仍會多跑一次完整建置；`run_build.py` 已在單一行程內處理妥當。
+
+   * `index_static.html` **已於 2026-07-19 刪除**（全專案無任何引用），勿再產出或引用。
 
 ---
 
@@ -52,8 +69,8 @@
 
 | Collection | 說明 |
 |---|---|
-| `articles` | 33 篇文章（含 `content_html` 全文、`title`、`ver`、`img` 等元資料） |
-| `categories` | 10 個分類（含 `title`、`key`、`pages[]` 頁面列表、`order` 排序） |
+| `articles` | 全部文章（含 `content_html` 全文、`title`、`ver`、`img` 等元資料）。數量以 `course_config.json` 的 `articles` 為準，2026-07-29 為 47 篇。 |
+| `categories` | 全部分類（含 `title`、`key`、`pages[]` 頁面列表、`order` 排序），2026-07-29 為 12 個。 |
 | `worklog` | 更新日誌 HTML（document ID: `current`） |
 | `search_index` | 全站搜尋索引，按頁面分組（每頁一個 document，含 `blocks[]` 文字段落陣列） |
 | `site_config` | 網站設定（document ID: `metadata`） |
@@ -62,9 +79,10 @@
 
 | 檔案 | 說明 |
 |---|---|
-| `index.html` | **主入口**（~68KB 動態版，從 Firestore 按需載入文章） |
-| `index_db.html` | 動態版原始檔（與 index.html 內容相同，修改時應修改此檔再複製） |
-| `index_static.html` | 靜態備份（~1.6MB，全部文章內嵌，僅作為 fallback） |
+| `index.html` | **主入口**（動態版，從 Firestore 按需載入文章）。由 build 從 `index_db.html` 複製後**再注入全站文章索引**而成，故**與 `index_db.html` 並不相同**（多出約 110 行靜態文章連結）。**只能由 `python run_build.py` 產生，嚴禁手動複製覆蓋。** |
+| `index_db.html` | 動態版原始檔。要修改版面請改此檔，然後重新 build（不要手動複製到 index.html）。其中的 `STATIC_ARTICLE_INDEX_START/END` 標記是索引注入的錨點，**請勿刪除**。 |
+| `pages/pageXX.html` | 含**完整正文**的靜態文章頁（非跳轉頁），由 build 自動產生，各自帶 canonical 與 Article JSON-LD。這是 Google 實際索引的對象。 |
+| `index_static.html` | **已於 2026-07-19 刪除**（全專案無引用，僅造成混淆）。勿再產出。 |
 
 ---
 

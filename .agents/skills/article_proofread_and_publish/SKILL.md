@@ -49,25 +49,43 @@ description: Handles the step-by-step workflow for importing, auditing, proofrea
      * 在 `pages_data` 中新增該頁面的標題、封面圖、版本與 doc 標記。
      * 在 `categories` 陣列中，將頁面 ID 新增至對應的分類下。
      * 在 HTML 生成替換部分，新增 `__HTML_BODY_PAGE[XX]__` 與 `__PAGE[XX]_DATE__` 的取代邏輯。
+   * **修改 `course_config.json`**（SEO 描述的唯一真實來源，2026-07-19 起）：
+     * 新增該頁面的 `seo_title` 與 `seo_desc`（50–160 字的精準內容摘要）。
+     * `pages/pageXX.html` 的 meta description、og、twitter、canonical 與 Article
+       JSON-LD **全部由 build 從此處自動產生**。若遺漏，build 會印出
+       `[WARNING] ... missing seo_desc`，該頁將退回通用備援文案。
    * **修改 `index_db.html`**（動態版 SPA 入口）：
-     * 在 `pageSEO` 物件中新增該頁面的自訂標題與 50-160 字的精準 SEO 描述。
+     * 在 `pageSEO` 物件中新增該頁面的 `title`（**desc 以 `course_config.json` 為準**，
+       勿只寫在此處——雙軌各寫一份曾導致兩邊分岔、多篇文章線上只剩通用文案）。
      * 在 `<head>` 的 JSON-LD 結構化資料 `hasPart` 陣列中新增對應的 `Article` 項目。
 
 4. **更新日誌與版本宣告**：
    * 在 `index_db.html` 中，將 `版面設計` 版本號手動遞增（如 4.7 升級至 4.8），並更新發布日期。
    * 在專案根目錄的 `worklog.md` 頂部插入今日的發布日誌，詳細說明發布的文章、修正的史實、新增的插圖與路由調整。
 
-5. **三軌編譯、Firestore 上傳與 Git 部署**：
-   * 在本機依序執行以下三條編譯指令：
+5. **編譯、Firestore 上傳與 Git 部署**：
+
+   > **⚠️ 2026-07-21 重大變更：改為單一指令，且嚴禁再手動複製 index.html**
+
+   * 在本機執行**單一指令**完成全部編譯與驗證：
      ```bash
-     python build_html_md.py           # 重新生成靜態備份 index_static.html 及 SEO 頁面
-     python build_static_chunks.py     # 重新切片生成 api/ JSON Chunks
-     python migrate_to_firestore.py    # 將所有資料上傳至 Firebase Firestore
+     python run_build.py
      ```
-   * 編譯及上傳無誤後，同步更新主入口：
-     ```bash
-     copy index_db.html index.html     # 將動態版同步至主入口
-     ```
+     它會依序完成：建置（單次）→ `api/` JSON 切片 → Firestore 上傳（有金鑰時）
+     → index.html 文章索引驗證 → `verify_project.py` 完整驗證。任一環節失敗即中止。
+
+   * **嚴禁執行 `copy index_db.html index.html`**（舊版守則要求的步驟，現已作廢）。
+     原因：`build_html_md.py` 會先把 `index_db.html` 複製為 `index.html`，
+     **再於其中注入「全站文章索引」的 47 個靜態文章連結**。這些連結是搜尋引擎
+     發現文章的主要途徑（首頁其餘內容全由 JavaScript 從 Firestore 載入，
+     初始 HTML 原本可見文字僅約 390 字元、0 個文章連結，導致整站無法被索引）。
+     事後再複製一次會把注入的索引整段覆蓋掉，且**不會有任何錯誤訊息**。
+     若不慎執行了，重跑 `python run_build.py` 即可修復。
+
+   * **亦不需要**再分別執行 `build_html_md.py`、`build_static_chunks.py`、
+     `migrate_to_firestore.py`。`build_static_chunks.py` 內含 `import build_html_md`，
+     單獨執行會使整份建置重跑一次（`run_build.py` 已在單一行程內處理妥當）。
+
    * 最後執行 Git 命令部署上線：
      ```bash
      git add .
@@ -80,8 +98,14 @@ description: Handles the step-by-step workflow for importing, auditing, proofrea
 
 ## 重要注意事項
 
-* **主入口為 `index.html`**（由 `index_db.html` 複製而來的動態 Firestore 版本，約 68KB），它從 Firebase Firestore 按需載入文章。
-* **靜態備份 `index_static.html`**（約 1.6MB，全部文章內嵌）僅作為 fallback 保留，不作為主要入口。
+* **主入口為 `index.html`**：由 `build_html_md.py` 從 `index_db.html` 複製後**再注入全站文章索引**而成。
+  因此 `index.html` 與 `index_db.html` **並不相同**（多出約 110 行的靜態文章連結），
+  只能由 build 產生，不可手動複製覆蓋。要修改版面請改 `index_db.html` 再重新 build。
+* **`index_static.html` 已於 2026-07-19 刪除**：該檔全專案無任何引用（不在 sitemap、
+  不被任何 JS 載入），僅造成混淆。勿再產出或引用它。
+* **`pages/pageXX.html` 是含完整正文的靜態文章頁**（非跳轉頁），由 build 自動產生，
+  含各自的 canonical 與 Article JSON-LD。canonical 一律使用無 `.html` 的正規網址
+  （Cloudflare Pages 會將 `.html` 301 轉址）。
 * **Firebase 配置**位於 `js/firebase-config.js`，Firestore 讀取服務位於 `js/firestore-service.js`。
 * **Service Account 金鑰**（`ludwica-history-firebase-adminsdk-*.json`）已在 `.gitignore` 中排除，嚴禁提交至 Git。
 * **圖片**仍然存放在本地 `images/` 目錄，由 Cloudflare Pages 靜態託管，不上傳至 Firebase Storage。
