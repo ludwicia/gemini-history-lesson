@@ -3,7 +3,11 @@
 本專案是「Gemini 的簡單歷史課」自動化網頁生成專案。為確保每次網頁設計更新、文章修訂都符合專案架構並維持優雅排版，請遵循以下 AI 協作守則。
 
 ## 🛠️ 專案基礎指令 (Commands)
-* **網頁生成**：`python build_html_md.py` (每次修改 Markdown 或 Python 腳本後，必須在本機執行此指令以覆寫 `index.html` 並檢查排版)
+* **完整發布流程（首選，2026-07-21 起）**：`python run_build.py`
+  一次完成「建置 → 資料切片 → Firestore 同步 → 索引驗證 → 完整驗證」，任一環節失敗即中止。
+  **勿再分別執行 `build_html_md.py` + `build_static_chunks.py` + `verify_project.py`**，
+  那樣會重複建置（歷史問題：`build_static_chunks.py` 的 `import build_html_md` 會觸發整份重跑）。
+* **僅重建網頁**：`python build_html_md.py` (只改排版、想快速看結果時使用)
 * **部署上線**：
   ```bash
   git add .

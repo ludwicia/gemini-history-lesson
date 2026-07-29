@@ -46,6 +46,18 @@
      但 **desc 以 `course_config.json` 為準**，兩處如有出入以 config 為正。
 
 4. **重新編譯、資料切片與驗證**
+
+   > **✅ 2026-07-21 起：一個指令即可完成本步驟全部工作**
+   > ```
+   > python run_build.py
+   > ```
+   > 它依序執行：建置（單次）→ 資料切片 → Firestore 同步（有金鑰時）→
+   > index.html 索引驗證 → `verify_project.py` 完整驗證。任一環節失敗即中止。
+   > **不需要**再分別執行 `build_html_md.py`、`build_static_chunks.py`、
+   > `verify_project.py`——那樣會重複建置、也多耗時間。
+   >
+   > 以下為各步驟的說明，供除錯時參考。
+
    - **執行靜態編譯**：`python build_html_md.py`。此步驟會：
      複製 `index_db.html` → `index.html` 並**注入「全站文章索引」**（44+ 個靜態連結，
      這是搜尋引擎發現文章的主要途徑）；產出 `pages/pageXX.html` **完整正文靜態頁**
