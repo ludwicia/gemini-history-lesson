@@ -567,7 +567,7 @@ print("Processing Page 10 (Carolingian Education)...")
 html_body_p10 = process_markdown(file_p10, images_p10, "1.0", map_p10, page_id="page10")
 
 print("Processing Page 11 (European Papermaking)...")
-html_body_p11 = process_markdown(file_p11, images_p11, "1.0", map_p11, page_id="page11")
+html_body_p11 = process_markdown(file_p11, images_p11, "1.1", map_p11, page_id="page11")
 
 print("Processing Page 12 (Cathar Crusade)...")
 html_body_p12 = process_markdown(file_p12, images_p12, "1.1", map_p12, page_id="page12")
@@ -746,7 +746,7 @@ pages_data = {
     'page07': {'title': '奧托-薩利安帝國教會體制', 'img': 'images/ottonian_hre_map.svg', 'ver': '1.0', 'doc': False},
     'page09': {'title': '丕平獻土與教宗國誕生', 'img': 'images/pippin_donation_main.jpg', 'ver': '1.2', 'doc': False},
     'page10': {'title': '卡洛林教育基建與知識復興', 'img': 'images/carolingian_main.jpg', 'ver': '1.0', 'doc': False},
-    'page11': {'title': '歐洲造紙術的歷史演變', 'img': 'images/paper_main.jpg', 'ver': '1.0', 'doc': False},
+    'page11': {'title': '歐洲造紙術的歷史演變', 'img': 'images/paper_main.jpg', 'ver': '1.1', 'doc': False},
     'page14': {'title': '英國的憲法', 'img': 'images/uk_constitution_main.png', 'ver': '1.0', 'doc': False},
     'page15': {'title': '聖職與婚娶', 'img': 'images/clergy_trent.jpg', 'ver': '1.2', 'doc': False},
     'page16': {'title': '中世紀巡行王權的權力運作', 'img': 'images/reisekönig_travelling_kings.jpg', 'ver': '1.0', 'doc': False},
