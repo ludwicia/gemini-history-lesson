@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ludwica 的簡單歷史課 — 後台管理中心</title>
+    <meta name="description" content="Ludwica 的簡單歷史課 — 後台管理中心">
+    <link rel="canonical" href="https://ludwica-history-lesson.pages.dev/admin.html">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -524,7 +526,7 @@
                     <span class="empty-state-title">請選擇一篇文章開始編寫</span>
                     <p style="font-size: 0.85rem; max-width: 320px; text-align: center;">從左側列表點擊任何課堂或歷史文件專題，即可在此編輯其原始 Markdown 文字。</p>
                 </div>
-                
+
                 <div class="editor-body-wrapper" id="editorWrapper" style="display: none;">
                     <div class="editor-header">
                         <div>
@@ -541,7 +543,7 @@
                             <button class="btn btn-primary" onclick="saveArticle()">💾 儲存修改並自動編譯</button>
                         </div>
                     </div>
-                    
+
                     <!-- Formatting Toolbar -->
                     <div class="editor-toolbar">
                         <button class="toolbar-btn" onclick="insertMarkdown('bold')"><b>B</b> 粗體</button>
@@ -554,7 +556,7 @@
                         <button class="toolbar-btn" onclick="insertMarkdown('table')">📊 表格</button>
                         <button class="toolbar-btn" onclick="insertMarkdown('alert')">📢 提示框</button>
                     </div>
-                    
+
                     <!-- Editor Workspace (Textarea + Iframe Preview) -->
                     <div class="editor-workspace mode-edit" id="editorWorkspace">
                         <textarea class="text-editor" id="editorTextarea" placeholder="在此處編輯文章的 Markdown 語法..." oninput="onEditorInput()"></textarea>
@@ -592,16 +594,16 @@
                 listContainer.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding-top: 40px; font-size: 0.85rem;">找不到相關文章</div>';
                 return;
             }
-            
+
             listContainer.innerHTML = '';
             list.forEach(art => {
                 const item = document.createElement('div');
                 item.className = 'article-item';
                 if (art.id === activeArticleId) item.classList.add('active');
-                
+
                 // Truncate path for beauty
                 const simplePath = art.filePath.replace(/^course\\|^course\//, '');
-                
+
                 item.innerHTML = `
                     <span class="article-item-title">${art.title}</span>
                     <span class="article-item-meta">${simplePath}</span>
@@ -614,8 +616,8 @@
         // Filter sidebar list
         function filterArticles() {
             const query = document.getElementById('articleSearch').value.toLowerCase().trim();
-            const filtered = articlesList.filter(art => 
-                art.title.toLowerCase().includes(query) || 
+            const filtered = articlesList.filter(art =>
+                art.title.toLowerCase().includes(query) ||
                 art.filePath.toLowerCase().includes(query)
             );
             renderArticleList(filtered);
@@ -624,7 +626,7 @@
         // Select article and load markdown
         function selectArticle(id) {
             activeArticleId = id;
-            
+
             // Highlight selected in list
             document.querySelectorAll('.article-item').forEach((item, index) => {
                 const art = articlesList[index];
@@ -658,11 +660,11 @@
         // Save article to disk
         function saveArticle() {
             if (!activeArticleId) return;
-            
+
             const markdown = document.getElementById('editorTextarea').value;
-            
+
             showToast("正在儲存並重新編譯...", "info");
-            
+
             fetch('/api/article', {
                 method: 'POST',
                 headers: {
@@ -774,9 +776,9 @@
             const end = textarea.selectionEnd;
             const text = textarea.value;
             const selectedText = text.substring(start, end);
-            
+
             let template = '';
-            
+
             switch (type) {
                 case 'bold':
                     template = `**${selectedText || '粗體文字'}**`;
@@ -806,7 +808,7 @@
                     template = `\n> [!NOTE]\n> ${selectedText || '這是一個提示框訊息。'}\n`;
                     break;
             }
-            
+
             textarea.value = text.substring(0, start) + template + text.substring(end);
             textarea.focus();
             textarea.setSelectionRange(start + template.length, start + template.length);
@@ -819,12 +821,12 @@
 
         function setEditorMode(mode) {
             currentEditorMode = mode;
-            
+
             // Toggle active classes on buttons
             document.getElementById('btnModeEdit').classList.remove('active');
             document.getElementById('btnModeSplit').classList.remove('active');
             document.getElementById('btnModePreview').classList.remove('active');
-            
+
             if (mode === 'edit') {
                 document.getElementById('btnModeEdit').classList.add('active');
             } else if (mode === 'split') {
@@ -832,11 +834,11 @@
             } else if (mode === 'preview') {
                 document.getElementById('btnModePreview').classList.add('active');
             }
-            
+
             // Update workspace class
             const workspace = document.getElementById('editorWorkspace');
             workspace.className = 'editor-workspace mode-' + mode;
-            
+
             // Force update preview immediately if not in pure edit mode
             if (mode === 'split' || mode === 'preview') {
                 updatePreview();
@@ -852,10 +854,10 @@
 
         function updatePreview() {
             if (!activeArticleId) return;
-            
+
             const markdown = document.getElementById('editorTextarea').value;
             const iframe = document.getElementById('editorPreview');
-            
+
             fetch('/api/preview', {
                 method: 'POST',
                 headers: {
@@ -915,14 +917,14 @@
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
-            
+
             let icon = "📢";
             if (type === "success") icon = "✓";
             if (type === "error") icon = "⚠️";
-            
+
             toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
             container.appendChild(toast);
-            
+
             setTimeout(() => {
                 toast.style.animation = "none";
                 toast.style.transition = "opacity 0.5s, transform 0.5s";

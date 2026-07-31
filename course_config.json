@@ -1,1113 +1,1120 @@
 {
-    "site_config": {
-        "layout_version": "8.1",
-        "publish_date": "2026-07-26",
-        "site_name": "Ludwica 的簡單歷史課",
-        "site_url": "https://ludwica-history-lesson.pages.dev/",
-        "description": "涵蓋七大歷史專題的深度學術研究網站"
+  "site_config": {
+    "layout_version": "8.1",
+    "publish_date": "2026-07-26",
+    "site_name": "Ludwica 的簡單歷史課",
+    "site_url": "https://ludwica-history-lesson.pages.dev/",
+    "description": "涵蓋七大歷史專題的深度學術研究網站"
+  },
+  "categories": [
+    {
+      "title": "三世紀之前的羅馬社會",
+      "key": "pre-3rd-century-rome",
+      "img": "images/roman_provincial_governance.png",
+      "pages": [
+        "page33",
+        "page32"
+      ]
     },
-    "categories": [
-        {
-            "title": "三世紀之前的羅馬社會",
-            "key": "pre-3rd-century-rome",
-            "img": "images/roman_provincial_governance.png",
-            "pages": [
-                "page33"
-            ]
-        },
-        {
-            "title": "三世紀危機後的羅馬帝國",
-            "key": "rome",
-            "img": "images/milan_edict_main.png",
-            "pages": [
-                "page19",
-                "page22",
-                "page24",
-                "page25",
-                "page27",
-                "page30",
-                "page31",
-                "page39",
-                "page41",
-                "page45",
-                "page47"
-            ]
-        },
-        {
-            "title": "中世紀諸民族記",
-            "key": "medieval",
-            "img": "images/clovis_main.jpg",
-            "pages": [
-                "page23",
-                "page26",
-                "page29",
-                "page34",
-                "page38",
-                "page44",
-                "page46"
-            ]
-        },
-        {
-            "title": "教宗國記",
-            "key": "papal",
-            "img": "images/pippin_donation_main.jpg",
-            "pages": [
-                "page09"
-            ]
-        },
-        {
-            "title": "法蘭克王國記",
-            "key": "frank",
-            "img": "images/carolingian_main.jpg",
-            "pages": [
-                "page10"
-            ]
-        },
-        {
-            "title": "神聖羅馬帝國記",
-            "key": "hre",
-            "img": "images/reisekönig_travelling_kings.jpg",
-            "pages": [
-                "page07",
-                "page16"
-            ]
-        },
-        {
-            "title": "基督教與王權",
-            "key": "church",
-            "img": "images/creed_main.jpg",
-            "pages": [
-                "page17",
-                "page21",
-                "page15",
-                "page03",
-                "page12"
-            ]
-        },
-        {
-            "title": "歐洲小知識",
-            "key": "trivia",
-            "img": "images/paper_main.jpg",
-            "pages": [
-                "page14",
-                "page11",
-                "page18",
-                "page05",
-                "page40"
-            ]
-        },
-        {
-            "title": "美國的誕生",
-            "key": "us",
-            "img": "images/us2_map.jpg",
-            "pages": [
-                "page02",
-                "page13"
-            ]
-        },
-        {
-            "title": "荷蘭的誕生與資本主義",
-            "key": "holland",
-            "img": "images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg",
-            "pages": [
-                "page01"
-            ]
-        },
-        {
-            "title": "風雨飄搖的大清帝國",
-            "key": "qing",
-            "img": "images/qing_empire.png",
-            "pages": [
-                "page36"
-            ]
-        },
-        {
-            "title": "鐵劍與托加 (Broadsword and Toga)",
-            "key": "novel",
-            "img": "images/iron_sword_and_toga_cover.png",
-            "pages": [
-                "page42",
-                "page43"
-            ]
-        }
-    ],
-    "articles": {
-        "page01": {
-            "title": "荷蘭建國與地緣政經",
-            "file_path": "course/帝國海洋、金融先驅與當代政治僵局：荷蘭建國史、東印度公司興衰與當代地緣政經轉型研究報告.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg",
-            "bg_pos": "center",
-            "seo_title": "荷蘭建國史與東印度公司興衰 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入解析荷蘭從低地十七省到聯省共和國的建國歷程、東印度公司的全球貿易帝國、黃金時代的藝術巅峰與當代政經轉型。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg\" alt=\"1658 Map\" loading=\"lazy\"><figcaption class=\"caption\">1658年聯省共和國地圖，清晰可見當時的須德海與低地國錯綜複雜的水路地貌</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>1\\..*?</h2>)",
-                    "url": "images/img_00_Map_of_Seventeen_Provinces_of_Low_German.jpg",
-                    "caption": "十六世紀的低地十七省地圖，描繪了當時受哈布斯堡王朝統治的疆域"
-                },
-                {
-                    "pattern": "(<h2.*?>2\\..*?</h2>)",
-                    "url": "images/img_16_960px-Flag_of_the_Dutch_East_India_Company.svg.png",
-                    "caption": "荷蘭東印度公司（VOC）旗幟，象徵金融革命與全球貿易擴張"
-                },
-                {
-                    "pattern": "(<h2.*?>3\\..*?</h2>)",
-                    "url": "images/img_14_960px-Fort_Zeelandia__Anping_District__T.jpg",
-                    "caption": "荷蘭統治台灣時期的熱蘭遮城 (Fort Zeelandia)"
-                },
-                {
-                    "pattern": "(<h2.*?>4\\..*?</h2>)",
-                    "url": "images/img_15_960px-La_ronda_de_noche__por_Rembrandt_v.jpg",
-                    "caption": "林布蘭名作《夜巡》，荷蘭黃金時代藝術巔峰"
-                },
-                {
-                    "pattern": "(<h2.*?>5\\..*?</h2>)",
-                    "url": "images/img_03_960px-Joannes_van_Deutecum_-_Leo_Belgicu.jpg",
-                    "caption": "低地國家的獅子地圖 (Leo Belgicus)，象徵早期與神聖羅馬帝國的地緣淵源"
-                },
-                {
-                    "pattern": "(<h2.*?>6\\..*?</h2>)",
-                    "url": "images/img_08_960px-Sint_Eustatius_from_ISS.jpg",
-                    "caption": "聖尤斯特歇斯島，美國獨立戰爭期間最重要的軍火走私樞紐"
-                },
-                {
-                    "pattern": "(<h2.*?>7\\..*?</h2>)",
-                    "url": "images/img_07_960px-Johan_Heinrich_Neuman_-_Johan_Rudo.jpg",
-                    "caption": "約翰·魯道夫·托爾貝克（1848年憲法起草者，荷蘭民主奠基人）"
-                },
-                {
-                    "pattern": "(<h2.*?>8\\..*?</h2>)",
-                    "url": "images/img_05_960px-Bundesarchiv_Bild_146-2005-0003__R.jpg",
-                    "caption": "1940年遭德軍殘酷轟炸摧毀的鹿特丹"
-                },
-                {
-                    "pattern": "(<h2.*?>9\\..*?</h2>)",
-                    "url": "images/img_09_960px-Friedenspalast_Den_Haag__100MP_.jpg",
-                    "caption": "位於海牙的和平宮，象徵當代荷蘭作為全球國際司法之都"
-                },
-                {
-                    "pattern": "(<h2.*?>10\\..*?</h2>)",
-                    "url": "images/img_01_960px-Den_Haag_Binnenhof_02.jpg",
-                    "caption": "荷蘭國會大廈 (Binnenhof)，象徵高度協商與妥協的政治文化"
-                }
-            ]
-        },
-        "page02": {
-            "title": "美國的誕生(一)",
-            "file_path": "course/第一階段：三個世界的交會與前哥倫布時期的美洲（1607年以前）.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/img_10_960px-Cahokia_Monks_Mound.jpg",
-            "bg_pos": "center",
-            "seo_title": "前哥倫布時期美洲與三個世界的交會 — Ludwica 的簡單歷史課",
-            "seo_desc": "探索1607年以前美洲原住民的文明成就、大航海時代的技術革命、哥圍布大交換，以及西班牙、法國、英國的早期殖民衝突。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/img_10_960px-Cahokia_Monks_Mound.jpg\" alt=\"Cahokia Mounds\" loading=\"lazy\"><figcaption class=\"caption\">卡霍基亞莫恩克斯土丘（Monks Mound）遠眺，前哥倫布時期繁榮的密西西比河流域社會核心遺跡</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>一、.*?</h2>)",
-                    "url": "images/img_04_Cliff_Palace_-_Mesa_Verde_National_Park.jpg",
-                    "caption": "梅薩維德國家公園的懸崖宮殿，展現普韋布洛人高超的石造建築技術"
-                },
-                {
-                    "pattern": "(<h2.*?>二、.*?</h2>)",
-                    "url": "images/img_06_Caravela_Redonda.jpg",
-                    "caption": "大航海時代的葡萄牙輕快帆船（Caravel），支撐起遠洋探索的技術革命"
-                },
-                {
-                    "pattern": "(<h2.*?>三、.*?</h2>)",
-                    "url": "images/img_02_Landing_of_Columbus.jpg",
-                    "caption": "哥倫布登陸美洲想像圖，開啟了改變全球生態與人類社會結構的哥倫布大交換"
-                },
-                {
-                    "pattern": "(<h3.*?>2\\..*?</h3>)",
-                    "url": "images/img_17_960px-Castillo_de_San_Marcos_Fort_Panorama.jpg",
-                    "caption": "位於佛羅里達的聖馬科斯城堡，北美洲最古老的歐洲磚石要塞，象徵西班牙的早期霸權"
-                },
-                {
-                    "pattern": "(<h3.*?>3\\..*?</h3>)",
-                    "url": "images/img_11_John_White_-_La_Virginea_Pars__map_of_th.jpg",
-                    "caption": "約翰·懷特約於1585年繪製的北美海岸地圖《La Virginea Pars》，記錄了早期對北美地理的探索與拓荒"
-                },
-                {
-                    "pattern": "(<h3.*?>4\\..*?</h3>)",
-                    "url": "images/img_13_960px-Elizabeth_I__Armada_Portrait_.jpg",
-                    "caption": "伊麗莎白一世著名的「無敵艦隊畫像」（Armada Portrait），象徵擊敗西班牙霸權的地緣政治重大轉折點"
-                }
-            ]
-        },
-        "page13": {
-            "title": "美國的誕生(二)",
-            "file_path": "course/第二階段：殖民地的建立、定居與大西洋世界的形塑（1607年－1754年）.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/us2_map.jpg",
-            "bg_pos": "center",
-            "seo_title": "殖民地的建立、定居與大西洋世界的形塑 — Ludwica 的簡單歷史課",
-            "seo_desc": "探索1607至1754年英屬北美十三殖民地的區域性分化、勞動力體制向種族奴隸制的轉型、邊疆衝突與大西洋世界在重商主義、光榮革命、啟蒙運動和大覺醒下的文化整合。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/us2_map.jpg\" alt=\"Thirteen Colonies Map\" loading=\"lazy\"><figcaption class=\"caption\">北美十三殖民地政區與地理分布圖，展示了新英格蘭、中部及南方三大區域殖民地結構與地緣疆界。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>一、.*?</h2>)",
-                    "url": "images/us2_mayflower.jpg",
-                    "caption": "威廉·哈爾薩爾 1882 年名作《普利茅斯港的五月花號》（Mayflower in Plymouth Harbor），描繪清教徒乘坐五月花號抵達新大陸的歷史性場景。"
-                },
-                {
-                    "pattern": "(<h3.*?>2\\.\\s*中部殖民地.*?</h3>)",
-                    "url": "images/us2_penn_treaty.jpg",
-                    "caption": "班傑明·韋斯特名作《賓與印地安人的條約》（Penn's Treaty with the Indians），描繪貴格會領袖威廉·賓在沙卡馬克森與德拉瓦原住民簽訂土地交易條約的和平場景。"
-                },
-                {
-                    "pattern": "(<h3.*?>1\\.\\s*1676年「培根叛亂」.*?</h3>)",
-                    "url": "images/us2_bacons_rebellion.jpg",
-                    "caption": "插畫家霍華德·派爾（Howard Pyle）所繪《詹姆斯鎮的焚毀》，生動描繪了 1676 年培根叛亂中叛軍縱火燒毀弗吉尼亞首府詹姆斯鎮的慘烈場面。"
-                },
-                {
-                    "pattern": "(<h3.*?>1\\.\\s*新英格蘭地區的.*?</h3>)",
-                    "url": "images/us2_king_philip.jpg",
-                    "caption": "保羅·里維爾於 1772 年創作的經典銅版畫《蒙特霍普 sachem 菲利普王》，象徵殖民地時期對萬帕諾亞格盟主麥達康（Metacom）的經典想像刻畫。"
-                },
-                {
-                    "pattern": "(<h3.*?>3\\.\\s*法屬路易斯安那的建立與「密西西比泡沫」.*?</h3>)",
-                    "url": "images/us2_john_law.jpg",
-                    "caption": "阿列克謝·西蒙·貝爾繪製的《約翰·勞肖像》，他是蘇格蘭金融家與密西西比泡沫的策劃者，其金融泡沫對法屬路易斯安那的命運產生了深遠震盪。"
-                }
-            ]
-        },
-        "page03": {
-            "title": "宗教戰爭(一)：胡斯戰爭",
-            "file_path": "course/信仰衝突、軍事變革與波希米亞國家認同：胡斯戰爭的歷史脈絡、演進特徵與深遠影響研究報告.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/hussite_wars_main.png",
-            "bg_pos": "center",
-            "seo_title": "胡斯戰爭：信仰衝突與波希米亞國家認同 — Ludwica 的簡單歷史課",
-            "seo_desc": "揚·胡斯的宗教改革先驅運動、波希米亞的宗教衝突與軍事變革、戰車壘戰術革新，以及對歐洲宗教格局的深遠影響。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/hussite_wars_main.png\" alt=\"Hussite Wars\" loading=\"lazy\"><figcaption class=\"caption\">捷克歷史藝術家 Luděk Marold 著名巨作《利帕尼戰役全景圖》（Maroldovo panorama bitvy u Lipan），生動重現了這場終結激進派的史詩決戰</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>一、.*?</h2>)",
-                    "url": "images/jan_hus_preaching.png",
-                    "caption": "1563年布拉格印製的《胡斯講道集》（Postilla）中極具歷史意義的木刻版畫，記錄了揚·胡斯向波希米亞平民大眾宣教的經典場景"
-                },
-                {
-                    "pattern": "(<\\/p>\\s*<p>1414年，神聖羅馬帝國國王西吉斯蒙德)",
-                    "url": "images/jan_hus_execution.jpg",
-                    "caption": "歷史文獻插圖：上方描繪揚·胡斯在康斯坦茨被戴上寫有「異端首領」主教冠押赴火刑，下方描繪信徒用手推車收集其骨灰撒入萊茵河以防遺骨成為聖物，出自著名的《康斯坦茨公會議編年史》（Chronik des Konstanzer Konzils）"
-                },
-                {
-                    "pattern": "(<h2.*?>三、.*?</h2>)",
-                    "url": "images/hussite_crusade_battle.png",
-                    "caption": "源自15世紀末捷克國寶級手稿《耶拿法典》（Jena Codex）的著名插圖，展現高舉聖杯紅旗前仆後繼、行軍禦敵的胡斯派戰士們"
-                },
-                {
-                    "pattern": "(<h2.*?>四、.*?</h2>)",
-                    "url": "images/hussite_wagenburg.png",
-                    "caption": "歷史文獻中記載的經典「戰車壘」（Wagenburg）野戰工事與早期火炮協同防禦防線的精細還原圖"
-                }
-            ]
-        },
-        "page12": {
-            "title": "宗教戰爭(二)：卡特里派",
-            "file_path": "course/靈魂的物質禁錮與中世紀權力整肅：卡特里派的興起、神學教義、十字軍聖戰與歷史餘音.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/catharism_main.jpg",
-            "bg_pos": "center",
-            "seo_title": "中世紀卡特里派的興起、教義、十字軍聖戰與歷史餘音 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究中世紀南法阿爾比十字軍東征、卡特里派（阿爾比派）二元論神學與禁慾實踐、宗教裁判所的官僚化清洗，以及《富尼埃登記簿》與微觀歷史學《蒙塔尤》的思想異質性。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/catharism_main.jpg\" alt=\"Montsegur Castle\" loading=\"lazy\"><figcaption class=\"caption\">今日聳立於南法陡峭岩峰上的蒙塞居爾城堡（Château de Montségur）廢墟，曾是卡特里派最後的軍事與精神堡壘，見證了1244年悲壯的圍城戰與大火刑。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>二、.*?</h2>)",
-                    "url": "images/catharism_creed.png",
-                    "caption": "代表朗格多克文化與卡特里派信仰空間的「奧克十字」（Occitan Cross）標誌，象徵南方反抗北法集權與教權威脅的文化精神"
-                },
-                {
-                    "pattern": "(<h2.*?>四、.*?</h2>)",
-                    "url": "images/catharism_perfecti.jpg",
-                    "caption": "西班牙畫家 Pedro Berruguete 於15世紀末所繪名作《聖多明尼克與阿爾比派》（St Dominic and the Albigenses），描繪正統與異端書籍被投入火中檢驗真偽的傳奇場景"
-                },
-                {
-                    "pattern": "(<h2.*?>五、.*?</h2>)",
-                    "url": "images/catharism_crusade.jpg",
-                    "caption": "15世紀手稿《Boucicaut大師工坊》插圖，描繪阿爾比十字軍東征期間卡特里派信徒被驅逐出城的悲慘場景"
-                },
-                {
-                    "pattern": "(<h2.*?>六、.*?</h2>)",
-                    "url": "images/catharism_inquisition.jpg",
-                    "caption": "14世紀道明會士 Bernard Gui 所著《異端裁判所實踐指南》（Practica officii inquisitionis heretice pravitatis）手稿插圖，象徵宗教裁判所官僚化、秘密化的司法清洗"
-                }
-            ]
-        },
-        "page05": {
-            "title": "希爾紹修道院",
-            "file_path": "course/希爾紹修道院研究報告：雙軌解析.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/hirsau_main_wilhelm.jpg",
-            "bg_pos": "center",
-            "seo_title": "希爾紹修道院研究報告 — Ludwica 的簡單歷史課",
-            "seo_desc": "希爾紹修道院的千年歷史、威廉大院長的改革運動、希爾紹建築學派的羅馬式美學巔峰，以及九年戰爭後的廢墟重生。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/hirsau_main_wilhelm.jpg\" alt=\"Wilhelm von Hirsau\" loading=\"lazy\"><figcaption class=\"caption\">威廉大院長肖像，十一世紀下半葉領導希爾紹修道院走向改革黃金時代的靈魂人物</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h3.*?>十一世紀前夕的教會亂象與世俗糾葛</h3>)",
-                    "url": "images/hirsau_st_aurelius.jpg",
-                    "caption": "聖奧雷利烏斯教堂外觀，見證了十世紀中葉由教宗良九世指示、卡爾夫伯爵阿達爾貝特主導的第二次重建歷史"
-                },
-                {
-                    "pattern": "(<h3.*?>爭取絕對獨立與教宗的豁免特權</h3>)",
-                    "url": "images/hirsau_interior_historical.jpg",
-                    "caption": "聖奧雷利烏斯教堂歷史剖面圖，描繪了在敘任權之爭爆發前夕，希爾紹修道院所呈現的經典早期羅馬式空間佈局"
-                },
-                {
-                    "pattern": "(<h3.*?>九年戰爭與梅拉克將軍的焦土政策</h3>)",
-                    "url": "images/hirsau_ruins_overview.jpg",
-                    "caption": "今日希爾紹修道院（聖彼得與保羅修道院）宏偉的廢墟全景，1692年九年戰爭中遭法國將軍梅拉克的焦土政策付之一炬"
-                },
-                {
-                    "pattern": "(<h3.*?>報告二：文化、建築與藝術的深遠遺產</h3>)",
-                    "url": "images/hirsau_bausubstanz_map.jpg",
-                    "caption": "希爾紹修道院大教堂建築年代與地基結構分佈圖，完美體現了威廉大院長將幾何比例與宇宙秩序無縫轉化為石造空間的卓越才華"
-                },
-                {
-                    "pattern": "(<h2.*?>第二章：「希爾紹建築學派」的羅馬式巔峰</h2>)",
-                    "url": "images/hirsau_cubic_capitals.jpg",
-                    "caption": "聖奧雷利烏斯教堂內的羅馬式骰子柱頭，其上帶有希爾紹建築學派極具代表性的「希爾紹鼻」角狀突起特徵"
-                },
-                {
-                    "pattern": "(<h3.*?>神學隱喻與核心特徵</h3>)",
-                    "url": "images/hirsau_interior_gesims.jpg",
-                    "caption": "聖奧雷利烏斯教堂内牆的羅馬式石雕橫飾帶（Gesims），呈現出精確的幾何對稱與極簡紋飾，完美契合克呂尼改革倡導的禁慾美學"
-                },
-                {
-                    "pattern": "(<h3.*?>建築學派的廣泛傳播與後期演變</h3>)",
-                    "url": "images/hirsau_kreuzgang.jpg",
-                    "caption": "聖彼得與保羅修道院的雙層迴廊（Kreuzgang），其結構佈局緊密圍繞中殿，反映了修道院空間為數百名修士的日常靈修與盛大禮拜儀式所做的精密規劃"
-                },
-                {
-                    "pattern": "(<h2.*?>第三章：文藝復興狩獵小屋的興建：權力的世俗化展示</h2>)",
-                    "url": "images/hirsau_hunting_lodge.jpg",
-                    "caption": "文藝復興式狩獵小屋與門塔廢墟，由符騰堡公爵在16世紀末建造，展現了世俗新教權力對前天主教修道院教產的接管與主權宣示"
-                },
-                {
-                    "pattern": "(<h3.*?>宗教空間的修復與現代藝術</h3>)",
-                    "url": "images/hirsau_modern_madonna.jpg",
-                    "caption": "修復後的聖奧雷利烏斯教堂內部，將古老的木雕聖母像與現代空間元素並置，展現了戰後廢墟中宗教空間與現代藝術完美交融的重生魅力"
-                }
-            ]
-        },
-        "page07": {
-            "title": "奧托-薩利安帝國教會體制",
-            "file_path": "course/奧托-薩利安帝國教會體制.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/ottonian_hre_map.svg",
-            "bg_pos": "center",
-            "seo_title": "奧托-薩利安帝國教會體制 — Ludwica 的簡單歷史課",
-            "seo_desc": "奧托王朝與薩利安王朝的帝國教會體制、政教合一的運作機制、巡迴朝廷制度，以及敘任權之爭的歷史根源。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/ottonian_hre_map.svg\" alt=\"Ottonian HRE Map\" loading=\"lazy\"><figcaption class=\"caption\">西元1000年左右奧托-薩利安王朝時期的神聖羅馬帝國地圖，呈現德意志各部落公爵領與主教區錯綜複雜的疆域分佈</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>關鍵歷史人物與王權的神聖化重塑</h2>)",
-                    "url": "images/ottonian_otto1.jpg",
-                    "caption": "德國馬格德堡著名雕塑《馬格德堡騎馬人》（Magdeburger Reiter），生動展現了神聖羅馬帝國皇帝奧托一世的威嚴之姿"
-                },
-                {
-                    "pattern": "(<p>在奧托一世的統治後期，其胞弟科隆大主教布魯諾)",
-                    "url": "images/ottonian_bruno.jpg",
-                    "caption": "科隆聖潘塔萊翁修道院大教堂外的布魯諾大主教雕像，他將教會改革、宮廷教堂人才培養與國家行政體系進行了深度的歷史性融合"
-                },
-                {
-                    "pattern": "(<h3.*?>巡迴朝廷與空間動態治理</h3>)",
-                    "url": "images/ottonian_goslar.jpg",
-                    "caption": "宏偉的戈斯拉爾帝國皇室行宮（Kaiserpfalz Goslar），由皇帝亨利三世建造，是薩利安王朝巡迴朝廷與政治中樞的核心後勤與行政基地之一"
-                },
-                {
-                    "pattern": "(<h2.*?>內部矛盾：政教合一的內耗與改革運動的興起</h2>)",
-                    "url": "images/ottonian_canossa.jpg",
-                    "caption": "德國歷史畫家 Eduard Schwoiser 經典油畫巨作《亨利前進卡諾莎》（Heinrich vor Canossa），生動再現了皇帝亨利四世向教宗格列高利七世低頭乞求赦免的史詩場景"
-                }
-            ]
-        },
-        "page09": {
-            "title": "丕平獻土與教宗國誕生",
-            "file_path": "course/丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響.md",
-            "ver": "1.2",
-            "doc": false,
-            "img": "images/pippin_donation_main.jpg",
-            "bg_pos": "center",
-            "seo_title": "丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/pippin_donation_main.jpg\" alt=\"Pippin Coronation Main\" loading=\"lazy\"><figcaption class=\"caption\">法國畫家 François Dubois 於1837年所繪的名作《教宗斯德望二世在聖但尼修道院為丕平加冕》，現藏於凡爾賽宮。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>三、.*?</h2>)",
-                    "url": "images/pippin_donation_map.png",
-                    "caption": "西元750年代倫巴底擴張前夕的義大利半島地緣版圖。丕平獻土徹底打破了拜占庭、倫巴底與羅馬聖座之間的三方平衡。"
-                },
-                {
-                    "pattern": "(<h2.*?>五、.*?</h2>)",
-                    "url": "images/pippin_ricci_fresco.jpg",
-                    "caption": "梵蒂岡祕密檔案館壁畫：描繪法蘭克聖但尼修道院院長富拉德代表國王丕平，實地向教宗斯德望二世呈交收復的22座城市鑰匙與獻土詔書。"
-                },
-                {
-                    "pattern": "(<h2.*?>四、.*?</h2>)",
-                    "url": "images/donation_of_constantine.jpg",
-                    "caption": "梵蒂岡拉斐爾畫室著名濕壁畫《君士坦丁的贈禮》（Donation of Constantine），描繪君士坦丁大帝將世俗統治權讓渡給教宗西爾維斯特一世。"
-                }
-            ]
-        },
-        "page10": {
-            "title": "卡洛林教育基建與知識復興",
-            "file_path": "course/聖神統治與知識復興：卡洛林王朝教育基建、制度體系及其深遠歷史遺產之研究.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/carolingian_main.jpg",
-            "bg_pos": "center",
-            "seo_title": "卡洛林王朝教育基建與知識復興 — Ludwica 的簡單歷史課",
-            "seo_desc": "探討卡洛林王朝教育基建與宗教變革、手抄室與卡洛林小草體書寫革命、跨國學者網絡、基督教化七藝與課堂實踐，以及文明火種對後世中世紀大學的深遠影響。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/carolingian_main.jpg\" alt=\"Carolingian Minuscule\" loading=\"lazy\"><figcaption class=\"caption\">八世紀末《達古爾夫詩篇》（Dagulf Psalter）之手抄頁面，以優美典雅的卡洛林小寫體金字書寫，展現了早期帝國書寫標準化的極致美學。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>一、.*?</h2>)",
-                    "url": "images/carolingian_alcuin.jpg",
-                    "caption": "Jean-Victor Schnetz 1830年名作《查理曼與阿爾琴》，描繪校長阿爾琴向查理曼大帝及其高級廷臣展示由修士手抄之聖經文獻，象徵神聖王權與知識基建之交匯。"
-                },
-                {
-                    "pattern": "(<h2.*?>二、.*?</h2>)",
-                    "url": "images/carolingian_stgall.jpg",
-                    "caption": "公元九世紀初著名的《聖加侖修道院理想平面圖》（St. Galler Klosterplan）局部，圖中明確規劃了專屬的圖書館（Library）與手抄室（Scriptorium）空間，展現出高度系統化的學術基建思維。"
-                },
-                {
-                    "pattern": "(<h2.*?>三、.*?</h2>)",
-                    "url": "images/carolingian_lorsch.jpg",
-                    "caption": "著名的卡洛林晚期傑作——洛爾施修道院門樓（Königshalle），是極少數完整存世的卡洛林帝國時期地標建築，展現了早期文藝復興的建築工程美學與古典柱頭裝飾。"
-                },
-                {
-                    "pattern": "(<h2.*?>四、.*?</h2>)",
-                    "url": "images/carolingian_majesty.jpg",
-                    "caption": "現藏於維多利亞與阿爾伯特博物館的十一世紀早期《洛爾施福音書》（Lorsch Gospels）象牙浮雕封面，描繪「基督登基在天」（Christ in Majesty），象徵宗教神權與卡洛林神學宇宙秩序的高度統一。"
-                }
-            ]
-        },
-        "page11": {
-            "title": "歐洲造紙術的歷史演變",
-            "file_path": "course/歐洲造紙術的歷史演變、技術革新與物質文明變革研究報告.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/paper_main.jpg",
-            "bg_pos": "center",
-            "seo_title": "歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課",
-            "seo_desc": "研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/paper_main.jpg\" alt=\"Jost Amman Papermaker\" loading=\"lazy\"><figcaption class=\"caption\">德意志著名藝術家 Jost Amman 於1568年繪製的經典木刻版畫《撈紙工》（Der Papiermacher），生動再現了前工業化時期歐洲水力造紙坊抄紙與壓榨水分的勞動場景。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>二、.*?</h2>)",
-                    "url": "images/paper_hollander.jpg",
-                    "caption": "保存於造紙歷史博物館中的經典「荷蘭式打漿機」（Hollander Beater），其藉由旋轉金屬刀片進行碎布纖維的原纖化處理，徹底革新了沿用數百年的槌擊製漿工藝。"
-                },
-                {
-                    "pattern": "(<h2.*?>四、.*?</h2>)",
-                    "url": "images/paper_press.jpg",
-                    "caption": "近代早期典型的木製手搖印刷機與造紙槽協同車間，造紙與印刷兩大技術的物質相遇，徹底打破了中古教權對知識產權與書籍生產的絕對壟斷。"
-                },
-                {
-                    "pattern": "(<h3.*?>2\\..*?</h3>)",
-                    "url": "images/paper_gutenberg.jpg",
-                    "caption": "紐約公共圖書館珍藏的1455年《古騰堡聖經》（Gutenberg Bible）雙欄手繪頁面，採用了歐洲本土製造的高規格破布手抄紙，為印刷資本主義的擴張提供了最為關鍵的物質載體。"
-                }
-            ]
-        },
-        "page14": {
-            "title": "英國的憲法",
-            "file_path": "course/英國憲法的歷史演進、修訂機制與憲政奇異性：非法典化體制的理論與實踐研析.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/uk_constitution_main.png",
-            "bg_pos": "center",
-            "seo_title": "英國的憲法：非法典化體制的理論與實踐 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究英國不成文憲法的歷史演進（大憲章、光榮革命、權利法案）、修訂機制與彈性、尊嚴與效能雙重結構，以及2022年至2026年間的現代憲政轉型。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/uk_constitution_main.png\" alt=\"British Constitution\" loading=\"lazy\"><figcaption class=\"caption\">英國憲政主題經典圖畫，展現大憲章羊皮紙、皇家王冠與遠景的西敏寺國會大廈，象徵君主、法律與議會的權力交織。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>歷史起源與漸進式沿革：從封建契約到議會至上</h2>)",
-                    "url": "images/uk_constitution_magna_carta.png",
-                    "caption": "西元1215年約翰王在倫德米德草地上被迫於貴族面前簽署《大憲章》的歷史想像圖。"
-                },
-                {
-                    "pattern": "(<h2.*?>英國憲法的奇特之處：政治憲政主義與雙重結構的張力</h2>)",
-                    "url": "images/uk_constitution_glorious_revolution.png",
-                    "caption": "西元1689年國會向威廉三世與瑪麗二世呈遞《權利法案》以確立國會主權的歷史繪畫。"
-                }
-            ]
-        },
-        "page15": {
-            "title": "聖職與婚娶",
-            "file_path": "course/聖職與婚娶：基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈.md",
-            "ver": "1.2",
-            "doc": false,
-            "img": "images/clergy_trent.jpg",
-            "bg_pos": "center",
-            "seo_title": "聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/clergy_trent.jpg\" alt=\"The Council of Trent\" loading=\"lazy\"><figcaption class=\"caption\">1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》（The Council of Trent），現藏於羅馬聖母大公殿，象徵天主教會在宗教改革浪潮下對神職絕對獨身制與教義純潔性的確認與重申。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>禁慾主義的先驅背景與早期教會的多元共存</h2>)",
-                    "url": "images/clergy_marriage_main.png",
-                    "caption": "AI 歷史模擬示意圖：早期基督教會中與妻子及家人共同生活的已婚司鐸家庭，象徵三世紀前神職人員擁有婚姻與生育生活的多元接納常態（本圖為 AI 繪製示意）。"
-                },
-                {
-                    "pattern": "(<h2.*?>地方公會議的制度化律令與東西方分裂的先聲</h2>)",
-                    "url": "images/clergy_family_medieval.png",
-                    "caption": "AI 歷史模擬示意圖：中世紀前期與地方莊園及土地繼承網絡緊密結合的已婚神職家庭，此類普遍存在的司鐸世襲化現象，在後期引發了天主教會極大的財產流失與教權危機（本圖為 AI 繪製示意）。"
-                },
-                {
-                    "pattern": "(<h2.*?>中世紀封建危機下的格列哥里改革與權力重塑</h2>)",
-                    "url": "images/clergy_canossa.jpg",
-                    "caption": "愛德華·施沃瑟1862年名作《亨利四世在卡諾莎》（Heinrich vor Canossa），描繪了公元1077年神聖羅馬帝國皇帝亨利四世在風雪中向教宗格列哥里七世悔罪的場景，象徵格列哥里改革中教權壓倒世俗王權的關鍵歷史時刻。"
-                },
-                {
-                    "pattern": "(<h2.*?>宗教改革的政治經濟學反叛與天主教會的反擊</h2>)",
-                    "url": "images/clergy_luther_bora.jpg",
-                    "caption": "路卡斯·克拉納赫1526年創作的《馬丁·路德與卡塔琳娜·馮·博拉雙聯畫》，現藏於瑞典國立博物館，生動描繪了這對倡導並實踐牧師婚姻的新教先驅夫婦，象徵宗教改革對修道院守貞誓言與世俗家庭價值的重構。"
-                }
-            ]
-        },
-        "page16": {
-            "title": "中世紀巡行王權的權力運作",
-            "file_path": "course/中世紀巡行王權的權力運作、制度體系與社會實態：以奧圖一世九五五年巡行與戰事為核心之歷史學考察.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/reisekönig_travelling_kings.jpg",
-            "bg_pos": "center",
-            "seo_title": "中世紀巡行王權的權力運作、制度體系與社會實態 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究十世紀神聖羅馬帝國皇帝奧圖一世在九五五年的巡行與戰事軌跡，解析巡行王權的協商式統治、動態禮儀展演、帝國教會體制與物資汲取物流機制。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/reisekönig_travelling_kings.jpg\" alt=\"Travelling Kings\" loading=\"lazy\"><figcaption class=\"caption\">出自《法拉克薩手抄本》（Velaslav's Bible）的「旅行中的國王」手稿插圖，生動呈現了中世紀早中期君主與其宮廷在不同莊園行宮間物理性持續移動的「巡行王權」歷史情境。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>巡行王權的特別之處、政治意義與統治功能</h2>)",
-                    "url": "images/ottonian_goslar.jpg",
-                    "caption": "宏偉的戈斯拉爾帝國皇室行宮（Kaiserpfalz Goslar），巡行朝廷在薩克森地區的權力象徵與核心行政基地。"
-                },
-                {
-                    "pattern": "(<h3.*?>協商式統治與個人化政治紐帶</h3>)",
-                    "url": "images/otto_quedlinburg_hoftag.jpg",
-                    "caption": "莫里茲·馮·施溫德所繪《奧圖一世於昆德林堡慶祝五旬節，973年》，生動描繪了君主與世俗、教會貴族齊聚召開帝國大會（Hoftag）的協商共識政治場景。"
-                },
-                {
-                    "pattern": "(<h3.*?>帝國教會體制與 monastic secularization 的張力</h3>)",
-                    "url": "images/ottonian_bruno.jpg",
-                    "caption": "科隆大主教布魯諾雕像，他作為奧圖一世之弟，將宮廷教堂人才培養與國家行政體系深度結合，成為帝國教會體制的奠基人。"
-                },
-                {
-                    "pattern": "(<h2.*?>奧圖一世九五五年巡行軌跡：歷史重建與戰略轉折</h2>)",
-                    "url": "images/michael_echter_ungarnschlacht.jpg",
-                    "caption": "麥可·埃希特繪製的歷史名畫《雷希菲爾德戰役》（Lechfeldschlacht），描繪了955年奧圖一世率領德意志聯軍衝鋒，決定性大敗馬扎爾人騎兵的史詩決戰。"
-                },
-                {
-                    "pattern": "(<h3.*?>農業剩餘與高度組織化的實物汲取</h3>)",
-                    "url": "images/mainzer_hoffest_assembly.jpg",
-                    "caption": "出自《薩克森世界編年史》手稿插圖，描繪了帝國大會期間為皇帝宮廷及各路貴族大軍提供飲食和物資的汲取網絡。"
-                }
-            ]
-        },
-        "page17": {
-            "title": "從皇帝稱號看羅馬政教關係演變",
-            "file_path": "course/從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/ambrose_and_theodosius.png",
-            "bg_pos": "center",
-            "seo_title": "從皇帝的稱號看歷史背景與政教關係的演變 — Ludwica 的簡單歷史課",
-            "seo_desc": "從三世紀危機後的戴克里先確立君主制，到君士坦丁大帝開啟基督教的寬容時代，再到格拉提安與迪奧多西一世將尼西亞信仰確立為國教，解析皇帝稱號的演變如何折射出羅馬帝國晚期的政教關係與政治神學。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/ambrose_and_theodosius.png\" alt=\"Ambrose and Theodosius\" loading=\"lazy\"><figcaption class=\"caption\">聖安波羅修在米蘭大教堂前阻擋皇帝迪奧多西一世的歷史想像圖，象徵世俗權力必須臣服於上帝的屬靈裁判，是政教關係史上的關鍵分水嶺。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>戴克里先與君主制的創立：從「第一公民」到「君主與神」</h2>)",
-                    "url": "images/p17_tetrarchs.jpg",
-                    "caption": "威尼斯聖馬可大教堂牆角的「四帝共治」雕像（約公元300年），以四位皇帝互相擁抱象徵帝國的團結與分工，是戴克里先創立四帝共治制度的具體政治宣傳。"
-                },
-                {
-                    "pattern": "(<h2.*?>君士坦丁大帝的雙重神聖：大祭司與「外部事務主教」</h2>)",
-                    "url": "images/p17_constantine_head.jpg",
-                    "caption": "羅馬卡比托利歐博物館收藏 of 君士坦丁大帝青銅巨像頭部（約公元4世紀），其巨大的雙眼凝視著遠方，展現出晚期羅馬帝國君主超越凡人、神聖不可侵犯的專制權威。"
-                },
-                {
-                    "pattern": "(<h2.*?>格拉提安的信仰抉擇：拒絕「大祭司」與「榮譽祭司」的轉向</h2>)",
-                    "url": "images/p17_curia_julia.jpg",
-                    "caption": "位於羅馬廣場的庫里亞·朱利亞（羅馬元老院議事堂），格拉提安皇帝曾下令將其中的「勝利女神祭壇」拆除，徹底引發了傳統多神教精英與基督教主教的政論博弈。"
-                }
-            ]
-        },
-        "page18": {
-            "title": "西元紀年的確立與演進",
-            "file_path": "course/西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構.md",
-            "ver": "1.2",
-            "doc": false,
-            "img": "images/ad_calendar_main.png",
-            "bg_pos": "center",
-            "seo_title": "西元紀年的確立與演進 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入解析西元紀年（AD）的提出背景、關鍵歷史人物（狄奧尼修斯、尊者比德、查理曼大帝）、曆法改革、東西方教會的分裂以及全球標準化（ISO 8601）與缺失的西元零年問題。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/ad_calendar_main.png\" alt=\"AD Calendar Main\" loading=\"lazy\"><figcaption class=\"caption\">象徵時間流逝與曆法更迭的古典沙漏與天文鐘，折射出人類在時間測量上從神聖天啟走向世俗理性的演進歷程。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>二、 關鍵歷史人物與行政推手：從修道院計算到國家法典</h2>)",
-                    "url": "images/carolingian_alcuin.jpg",
-                    "caption": "查理曼大帝的宮廷學者阿爾琴，他建議查理曼在行政詔書中強制實施西元紀年。"
-                },
-                {
-                    "pattern": "(<h2.*?>四、 東西方教會的分裂與對齊阻力：曆法體系的分歧與物理時差</h2>)",
-                    "url": "images/clergy_trent.jpg",
-                    "caption": "1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》，象徵教會對時間體系的重構與絕對掌控。"
-                }
-            ]
-        },
-        "page19": {
-            "title": "米蘭敕令時代與李錫尼覆滅",
-            "file_path": "course/帝國重塑、信仰博弈與權力終局：《米蘭敕令》時代的羅馬政治、君士坦丁宗教策略與李錫尼覆滅研究.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/milan_edict_main.png",
-            "bg_pos": "center",
-            "seo_title": "米蘭敕令時代的羅馬政治與李錫尼覆滅 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討公元313年米蘭敕令頒布前後的羅馬帝國地緣政治，分析君士坦丁與李錫尼的權力博弈、宗教寬容政策的確立，以及李錫尼的最終覆滅。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/milan_edict_main.png\" alt=\"Milan Edict Main\" loading=\"lazy\"><figcaption class=\"caption\">君士坦丁與李錫尼於公元313年在米蘭會晤並達成協定，正式確立宗教寬容與信仰自由政策（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h3.*?>四帝共治制的權力結構與撕裂</h3>)",
-                    "url": "images/p17_tetrarchs.jpg",
-                    "caption": "威尼斯聖馬可大教堂外牆著名的「四帝共治」雕像（約公元300年），象徵戴克里先時期帝國的權力分工與秩序重塑。"
-                },
-                {
-                    "pattern": "(<h3.*?>塞巴斯蒂四十烈士：軍事整肅與信仰抗爭的微觀縮影</h3>)",
-                    "url": "images/forty_martyrs_sebaste.png",
-                    "caption": "公元320年冬，塞巴斯蒂四十烈士因拒絕向異教神祇獻祭而被強令站在冰封的湖面上受凍折磨，成為東部帝國著名的殉道史詩（本圖為 AI 模擬歷史繪畫）。"
-                },
-                {
-                    "pattern": "(<h3.*?>第二次內戰與李錫尼的末路（324–325年）</h3>)",
-                    "url": "images/battle_adrianople.png",
-                    "caption": "公元324年決戰中，君士坦丁的軍隊高舉繪有凱樂符號（Chi-Rho）的帝國軍旗與李錫尼的軍隊激烈交戰，標誌著內戰的最高潮與帝國政教體制的轉型（本圖為 AI 模擬歷史繪畫）。"
-                }
-            ]
-        },
-        "page21": {
-            "title": "使徒信經的歷史演變與神學建構",
-            "file_path": "course/使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/creed_main.jpg",
-            "bg_pos": "center",
-            "seo_title": "使徒信經的歷史演變與神學建構 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究使徒信經從新約雛形、古羅馬信經雙語見證，到皮爾米紐斯文本奠基，以及加洛林道德修正運動與禮儀標準化推廣的歷史演變。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/creed_main.jpg\" alt=\"Apostles Creed\" loading=\"lazy\"><figcaption class=\"caption\">1493年出版的《牧人曆》（Compost et calendrier des bergers）插圖細節，描繪使徒們與各自創作的信經宣告條款，是中世紀傳統聖傳故事的經典圖解。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h3.*?>早期羅馬洗禮儀式與答問式信經的實踐</h3>)",
-                    "url": "images/creed_baptism.jpg",
-                    "caption": "義大利拉溫納著名的阿利烏派洗禮堂（Arian Baptistery）穹頂馬賽克（五世紀末），中心描繪了施洗約翰在約旦河為基督施行洗禮的場景，是早期答問式洗禮信經實踐的藝術寫照。"
-                },
-                {
-                    "pattern": "(<h3.*?>聖皮爾米紐斯與《備忘錄選集》的文本奠基</h3>)",
-                    "url": "images/creed_pirminius.jpg",
-                    "caption": "作於十世紀的《霍恩巴赫聖事書》（Hornbacher Sakramentar）插圖，描繪修道院院長阿達爾貝特向修道院創立者聖皮爾米紐斯呈交抄寫的聖經文獻，象徵修道院手抄室對大公信經文本標準化的奠基性貢獻。"
-                },
-                {
-                    "pattern": "(<h3.*?>加洛林王朝的帝國 correctio 運動與禮儀標準化</h3>)",
-                    "url": "images/carolingian_alcuin.jpg",
-                    "caption": "法國歷史畫家 Jean-Victor Schnetz 名作《查理曼與阿爾琴》，描繪學者阿爾琴向查理曼大帝展示修訂後的拉丁文手抄文獻，是加洛林道德修正運動與禮儀一統化歷史的生動描繪。"
-                }
-            ]
-        },
-        "page22": {
-            "title": "羅馬秩序的終結與日耳曼王權的奠定",
-            "file_path": "course/羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅.md",
-            "ver": "1.3",
-            "doc": false,
-            "img": "images/odoacer_fall_rome.jpg",
-            "bg_pos": "center",
-            "seo_title": "羅馬秩序的終結與日耳曼王權的奠定 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究五世紀西羅馬帝國結構崩潰與奧多亞賽的崛起、邊疆外交重組（與東帝國、汪達爾、西哥德關係）、內政與客宿權稅收改革、亞利烏派政教關係與最終覆滅歷史。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/odoacer_fall_rome.jpg\" alt=\"Odoacer Fall of Rome\" loading=\"lazy\"><figcaption class=\"caption\">Bernhard Mörlins 於 19 世紀所繪的歷史插圖，描繪西羅馬帝國最後的皇帝羅慕路斯·奧古斯都向日耳曼將領奧多亞賽讓渡皇冠的經典場景。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page23": {
-            "title": "蠻族崛起的政治重塑與克洛維霸權",
-            "file_path": "course/蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基.md",
-            "ver": "1.2",
-            "doc": false,
-            "img": "images/clovis_main.jpg",
-            "bg_pos": "center",
-            "seo_title": "蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究法蘭克人從部落聯盟到王國奠基的歷史軌跡，探討民族生成（Ethnogenesis）理論、薩利安習慣法的編撰、墨洛溫王朝與羅馬教會的聯盟，以及克洛維一世的政治神學與蘇瓦松戰役等關鍵地緣政治事件。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/clovis_main.jpg\" alt=\"Clovis I\" loading=\"lazy\"><figcaption class=\"caption\">François-Louis Dejuinne 於 19 世紀所繪的法蘭克國王克洛維一世（Clovis I）畫像，現藏於凡爾賽宮，象徵墨洛溫王權的奠基。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page24": {
-            "title": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究",
-            "file_path": "course/帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/roman_colonate_estate.png",
-            "bg_pos": "center",
-            "seo_title": "帝國糧秣、租稅枷鎖與農奴的誕生 — Ludwica 的簡單歷史課",
-            "seo_desc": "深度研究晚期羅馬帝國阿諾納（Annona）糧食後勤、人頭-土地稅雙軌制（Capitatio-Iugatio）與隸農土地附籍法制，解析從羅馬國家統制經濟向西歐中世紀封建農奴制的歷史轉型。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/roman_colonate_estate.png\" alt=\"Late Roman Agricultural Estate\" loading=\"lazy\"><figcaption class=\"caption\">4世紀羅馬帝國晚期莊園（Villa Rustica）與阿諾納後勤物流示意圖：在剛性稅制與勞動力匱乏下，依附於土地的隸農（Coloni）正在莊園主的地盤上進行耕作，預示著中世紀封建農奴制的萌芽。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page25": {
-            "title": "羅馬晚期軍制變遷與哥德人崛起",
-            "file_path": "course/帝國防線的內爆：從羅馬晚期改革、財政軍政演變與社會撕裂看哥德人之崛起.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/adrianople_battle.png",
-            "bg_pos": "center",
-            "seo_title": "羅馬晚期軍制變遷與哥德人崛起 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討羅馬晚期軍事防線的結構性調整，包含軍隊蠻族化與外包僱傭的財政與兵源背景，哥德人的亞利烏派基督教皈依，阿德里安堡戰役，以及382年同盟條約下國中之國的建立與西羅馬帝國的最終解體。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/adrianople_battle.png\" alt=\"Battle of Adrianople\" loading=\"lazy\"><figcaption class=\"caption\">西元378年阿德里安堡戰役示意圖：哥德人重騎兵發動猛烈衝鋒，徹底撕裂了羅馬帝國主力野戰軍的步兵防線，此戰被視為羅馬軍事史上最慘烈的敗仗之一。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page26": {
-            "title": "阿拉里克與哥德大遷徙",
-            "file_path": "course/阿拉里克與哥德大遷徙：晚期羅馬帝國的地緣政治坍塌與蠻族同盟的體制化適應（第一卷：永恆之城的終局）.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/alaric_sack_rome.png",
-            "bg_pos": "center",
-            "seo_title": "阿拉里克與哥德大遷徙 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討西哥德民族建構，阿拉里克的早期軍事生涯（冷河戰役、希臘遠征），伊利里庫姆軍區司令任期，西哥德全族大遷徙的後勤與生存策略，波倫提亞戰役與維羅納戰役，以及410年羅馬之劫的政治威懾、北非遠征計畫和布森托河的合葬傳奇。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/alaric_sack_rome.png\" alt=\"Sack of Rome by Alaric\" loading=\"lazy\"><figcaption class=\"caption\">西元410年西哥德人洗劫羅馬示意圖：蠻族國王阿拉里克率軍攻破羅馬城，開啟了西羅馬帝國政治與軍事體系不可逆轉的瓦解進程。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page27": {
-            "title": "冷河戰役及其歷史學再闡釋",
-            "file_path": "course/羅馬帝國晚期的地緣政治斷裂與軍事赤字：冷河戰役及其歷史學再闡釋.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/battle_of_frigidus.png",
-            "bg_pos": "center",
-            "seo_title": "冷河戰役及其歷史學再闡釋 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討羅馬晚期冷河戰役的地緣政治斷裂、西軍袋形合圍戰術、阿爾比提翁倒戈、極端氣象「波拉風」對遠程彈道的物理干預，以及哥德同盟軍流血稅的反噬效應、西部野戰軍主力消亡與406年萊茵河大入侵的深遠影響。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/battle_of_frigidus.png\" alt=\"Battle of the Frigidus\" loading=\"lazy\"><figcaption class=\"caption\">冷河戰役（西元394年）想像圖：在極端的「波拉風」暴風肆虐下，東部皇帝狄奧多西一世的軍隊發動反攻，狂風將西軍的箭矢吹回其自身陣中，徹底扭轉了戰局。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page04": {
-            "title": "神聖羅馬帝國：金璽詔書",
-            "file_path": "course/4.金璽詔書.md",
-            "ver": "1.9",
-            "doc": true,
-            "img": "",
-            "bg_pos": "center",
-            "seo_title": "金璽詔書：神聖羅馬帝國德中對照翻譯 — Ludwica 的簡單歷史課",
-            "seo_desc": "1356年《金璽詔書》全文德文原文、中文翻譯與學術註解三欄對照，解析選帝侯制度與帝國憲政體制的基石文件。",
-            "map_html": null,
-            "image_replacements": [],
-            "doc_params": {
-                "lang_orig": "德文",
-                "cols": 3
-            }
-        },
-        "page06": {
-            "title": "修道院制度：聖本篤會規",
-            "file_path": "course/5.聖本篤會規.md",
-            "ver": "2.0",
-            "doc": true,
-            "img": "",
-            "bg_pos": "center",
-            "seo_title": "聖本篤會規三欄解析 — Ludwica 的簡單歷史課",
-            "seo_desc": "公元6世紀西方隱修制度基石《聖本篤會規》德文原文、中文翻譯與專業學術註釋三欄並列解析。",
-            "map_html": null,
-            "image_replacements": [],
-            "doc_params": {
-                "lang_orig": "德文",
-                "cols": 3
-            }
-        },
-        "page08": {
-            "title": "敘任權之爭：沃姆斯協約",
-            "file_path": "course/沃姆斯協約.md",
-            "ver": "1.1",
-            "doc": true,
-            "img": "",
-            "bg_pos": "center",
-            "seo_title": "沃姆斯協約 — Ludwica 的簡單歷史課",
-            "seo_desc": "結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。",
-            "map_html": null,
-            "image_replacements": [],
-            "doc_params": {
-                "lang_orig": "德文",
-                "cols": 3
-            }
-        },
-        "page20": {
-            "title": "羅馬帝國：米蘭敕令",
-            "file_path": "course/米蘭敕令.md",
-            "ver": "1.1",
-            "doc": true,
-            "img": "",
-            "bg_pos": "center",
-            "seo_title": "米蘭敕令：羅馬帝國宗教寬容宣告 — Ludwica 的簡單歷史課",
-            "seo_desc": "公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，包含英文與拉丁文雙版本之三欄對照與學術註解。",
-            "map_html": null,
-            "image_replacements": [],
-            "doc_params": {
-                "lang_orig": "英文/拉丁文",
-                "cols": 3
-            }
-        },
-        "page28": {
-            "title": "羅馬帝國：薩洛尼卡敕令",
-            "file_path": "course/薩洛尼卡敕令.md",
-            "ver": "1.2",
-            "doc": true,
-            "img": "",
-            "bg_pos": "center",
-            "seo_title": "羅馬帝國：薩洛尼卡敕令 — Ludwica 的簡單歷史課",
-            "seo_desc": "公元380年由羅馬皇帝格拉提安、瓦倫丁尼安二世與狄奧多西一世聯合頒布的法令，將尼西亞基督教確立為羅馬帝國國教，包含拉丁文原文、中文翻譯三欄對照與名詞解析。",
-            "map_html": null,
-            "image_replacements": [],
-            "doc_params": {
-                "lang_orig": "拉丁文",
-                "cols": 3
-            }
-        },
-        "page29": {
-            "title": "阿德里安堡戰役",
-            "file_path": "course/阿德里安堡戰役.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/battle_of_adrianople.png",
-            "bg_pos": "center",
-            "seo_title": "阿德里安堡戰役 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討公元378年阿德里安堡戰役的宏觀地緣政治背景，包含匈人入侵引發的哥特人口遷徙危機、多瑙河安置事件、羅馬官員的行政腐敗與馬爾恰諾波利斯衝突、雙方戰略目標與作戰序列、兩軍遭遇與交戰經過，以及戰後公元382年同盟條約的地緣政治影響與西羅馬帝國的最終解體路徑。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/battle_of_adrianople.png\" alt=\"Battle of Adrianople\" loading=\"lazy\"><figcaption class=\"caption\">阿德里安堡戰役（西元378年）想像圖：哥特戰士與家眷依託環形相接的篷車陣進行防守，隨後大批哥特與阿蘭重騎兵如雷霆般突襲包抄，給予精疲力竭的羅馬軍團致命的一擊。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page30": {
-            "title": "東羅馬權力重組與蠻族危機",
-            "file_path": "course/東羅馬帝國的權力重組、宮廷政治與蠻族危機：從蓋納斯起事到安提米烏斯攝政的體制轉型研究（395–408年）.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/east_roman_court.png",
-            "bg_pos": "center",
-            "seo_title": "東羅馬帝國的權力重組、宮廷政治與蠻族危機 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討公元395至408年東羅馬帝國在阿卡狄烏斯統治下的權力重組、宮廷政治與蠻族危機，分析近衛軍長官魯菲努斯、大內侍尤特羅皮烏斯、蓋納斯兵變與專政、皇后尤多西亞與大主教金口約翰的權力抗衡，以及安提米烏斯的攝政與波斯王伊嗣俟一世地緣監護的歷史影響。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/east_roman_court.png\" alt=\"East Roman Court\" loading=\"lazy\"><figcaption class=\"caption\">東羅馬宮廷政治與蠻族危機：在君士坦丁堡的金色穹頂之下，文官技術官僚與外戚、宦官及蠻族將領在皇帝的平庸統治下展開了派系鬥爭與權力重組，奠定了拜占庭中世紀帝國生存基石。</figcaption></figure>\n",
-            "image_replacements": [
-                {
-                    "pattern": "(<h2.*?>四、.*?</h2>)",
-                    "url": "images/gainas_byzantine.png",
-                    "caption": "蓋納斯（Gainas）與拜占庭權力危機：早期東羅馬朝廷中，身披羅馬將領甲冑的哥特統帥蓋納斯與阿卡狄烏斯皇帝在殿前對峙，揭示出蠻族軍事干政與傳統官僚力量之間劍拔弩張的緊張張力。"
-                }
-            ]
-        },
-        "page31": {
-            "title": "卡拉卡拉與《安東尼努斯敕令》",
-            "file_path": "course/塞維魯王朝的權力、財政與法制變革：卡拉卡拉與《安東尼努斯敕令》的深度歷史研究.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/caracalla_edict.png",
-            "bg_pos": "center",
-            "seo_title": "卡拉卡拉與《安東尼努斯敕令》 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究塞維魯王朝皇帝卡拉卡拉於西元212年頒布的《安東尼努斯敕令》（Constitutio Antoniniana）的歷史背景、吉森莎草紙40號文獻載體、投降者（dediticii）的法理爭議、稅制改革及遺產稅翻倍的財政實效、貨幣安東尼尼安努斯貶值與信用崩潰，以及輔助軍瓦解與羅馬人身份認同重塑的多維歷史效應。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/caracalla_edict.png\" alt=\"Caracalla Edict\" loading=\"lazy\"><figcaption class=\"caption\">卡拉卡拉與《安東尼努斯敕令》：西元212年，羅馬皇帝卡拉卡拉頒布敕令，授予帝國所有自由民羅馬公民身份，這不僅重塑了羅馬身份認同，也藉此擴大了遺產稅等公民稅收稅基。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page32": {
-            "title": "羅馬帝國：安東尼努斯敕令",
-            "file_path": "course/安東尼努斯敕令.md",
-            "ver": "1.1",
-            "doc": true,
-            "img": "",
-            "bg_pos": "center",
-            "seo_title": "羅馬帝國：安東尼努斯敕令 — Ludwica 的簡單歷史課",
-            "seo_desc": "公元212年羅馬皇帝卡拉卡拉頒布之《安東尼努斯敕令》英漢雙語平行文本，包含吉森莎草紙40號文獻內容、古羅馬法律與文學記載等文獻對照。",
-            "map_html": null,
-            "image_replacements": [],
-            "doc_params": {
-                "lang_orig": "英文/拉丁文",
-                "cols": 2
-            }
-        },
-        "page33": {
-            "title": "一世紀羅馬行省治權與社會",
-            "file_path": "course/帝國機器與行省治權：從聖經敘事與古典文獻印證一世紀羅馬地方統治體制.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/roman_provincial_governance.png",
-            "bg_pos": "center",
-            "seo_title": "一世紀羅馬行省治權與社會 — Ludwica 的簡單歷史課",
-            "seo_desc": "從聖經敘事與古典文獻印證西元一世紀羅馬帝國的地方統治體制，探討行省巡撫、稅收制度、行政機器，以及猶太地方的司法主權與高壓統治實態。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/roman_provincial_governance.png\" alt=\"Roman Provincial Governance\" loading=\"lazy\"><figcaption class=\"caption\">羅馬行省治權與社會：西元一世紀，身處東方行省的羅馬巡撫彼拉多於總督官邸（Praetorium）審理案件，身旁羅馬百夫長與士兵林立，展現出羅馬帝國在猶太地方的高壓統治與司法主權。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page34": {
-            "title": "匈人的登場與晚期羅馬地緣政治",
-            "file_path": "course/匈人的登場：從阿德里安堡戰役到冷河戰役的深層地緣政治與戰略研究.md",
-            "ver": "1.3",
-            "doc": false,
-            "img": "images/huns_arrival.png",
-            "bg_pos": "center",
-            "seo_title": "匈人的登場與晚期羅馬地緣政治 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入解析公元370年代匈人越過頓河對黑海北岸地緣秩序的重塑，探討古基因組學揭示的匈奴遺傳聯結，以及匈人在阿德里安堡戰役與冷河戰役中的戰略角色與地緣資產。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/huns_arrival.png\" alt=\"Huns Arrival\" loading=\"lazy\"><figcaption class=\"caption\">匈人的登場：西元四世紀末，由東方草原呼嘯而至的匈人輕騎兵越過頓河，以致命的突襲擊碎了東哥特王國與阿蘭人的防線，開啟了歐洲蠻族大遷徙的序幕。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page36": {
-            "title": "晚清中樞權力變革與肅順之死",
-            "file_path": "course/晚清中樞權力變革與肅順之死：資歷、政務整肅與辛酉政變之歷史學解構.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/xinyou_coup.png",
-            "bg_pos": "center",
-            "seo_title": "晚清中樞權力變革與肅順之死 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究咸豐朝後期肅順推行的鐵腕改革，剖析戊午科場案、戶部寶鈔案與削減八旗兵俸等吏治整肅措施，解構辛酉政變中顧命八大臣與兩宮太后、恭親王奕訢的法理與公文權力博弈，及洋務運動的起源。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/xinyou_coup.png\" alt=\"Xinyou Coup\" loading=\"lazy\"><figcaption class=\"caption\">辛酉政變與大清權力重組：1861年，咸豐皇帝駕崩於熱河，慈禧太后聯手恭親王奕訢在北京發動政變，清算了顧命八大臣集團，肅順被斬於菜市口，開啟了兩宮垂簾與同治中興的歷史新頁。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page37": {
-            "title": "大清帝國：咸豐皇帝遺詔",
-            "file_path": "course/咸豐皇帝遺詔.md",
-            "ver": "1.1",
-            "doc": true,
-            "img": "",
-            "bg_pos": "center",
-            "seo_title": "大清帝國：咸豐皇帝遺詔 — Ludwica 的簡單歷史課",
-            "seo_desc": "收錄清咸豐十一年（1861年）咸豐皇帝臨終遺詔之文言文與白話中文對照，深入剖析其政治背景、立儲爭議、顧命八大臣安排，以及為辛酉政變埋下之權力博弈伏筆。",
-            "map_html": null,
-            "image_replacements": [],
-            "doc_params": {
-                "lang_orig": "文言文",
-                "cols": 2
-            }
-        },
-        "page38": {
-            "title": "阿陶爾夫與西哥德轉型",
-            "file_path": "course/阿陶爾夫與哥德大遷徙：晚期羅馬帝國的地緣政治坍塌與蠻族同盟的體制化適應（第二卷：蠻族武力與羅馬秩序的合流）.md",
-            "ver": "1.2",
-            "doc": false,
-            "img": "images/athaulf_placidia_wedding.png",
-            "bg_pos": "center",
-            "seo_title": "阿陶爾夫與哥德大遷徙（第二卷：蠻族武力與羅馬秩序的合流） — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究西哥德君主阿陶爾夫的政治抉擇，分析他從試圖抹去羅馬名號建立「哥德帝國（Gothia）」到轉為以哥德武力守護「羅馬法治秩序（Romania）」的思想轉變，以及他與羅馬公主加拉·普拉西提阿聯姻的地緣政治影響與歷史遺產。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/athaulf_placidia_wedding.png\" alt=\"Athaulf and Galla Placidia Wedding\" loading=\"lazy\"><figcaption class=\"caption\">阿陶爾夫與加拉·普拉西提阿的婚禮：西元414年，西哥德君主阿陶爾夫身著羅馬執政官托加禮服，在納博訥迎娶羅馬公主普拉西提阿，象徵哥德武力與羅馬法治秩序的政治合流。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page39": {
-            "title": "斯提里科與晚期羅馬瓦解",
-            "file_path": "course/斯提里科的崛起、掌權與覆滅：從晚期羅馬的歸化政策、用人機制與軍隊蠻族化透視帝國瓦解之源起.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/stilicho_general.png",
-            "bg_pos": "center top",
-            "seo_title": "斯提里科的崛起、掌權與覆滅 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入剖析西羅馬帝國雙軍總長斯提里科的傳奇一生，從其半蠻族出身、軍事功勳（擊敗西哥德人、全殲拉達蓋蘇斯）、溫和宗教政策與焚毀《西比拉預言書》的動機，解構帕維亞兵變如何引發帝國瓦解的多米諾骨牌效應。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/stilicho_general.png\" alt=\"General Flavius Stilicho\" loading=\"lazy\"><figcaption class=\"caption\">弗拉維烏斯·斯提里科的肖像插圖：半日耳曼裔的西羅馬帝國雙軍總長與攝政，身著晚期羅馬將領甲冑，其一生是晚期羅馬帝國防務外包與政治撕裂的縮影。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page40": {
-            "title": "萊茵河－多瑙河地緣戰略",
-            "file_path": "course/歐陸地緣裂變與整合的雙軸命脈：萊茵河－多瑙河連線的政治、經濟與歷史戰略研究.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/rhine_danube_frontier.png",
-            "bg_pos": "center",
-            "seo_title": "萊茵河－多瑙河連線：歐陸地緣裂變與整合的雙軸命脈 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討歐洲兩大水系萊茵河與多瑙河的地理水文特徵，解析羅馬帝國的雙河界牆與邊境經濟圈、西元406年除夕萊茵河大越渡之西羅馬帝國連鎖效應，以及從中世紀查理曼運河到當代航道的地緣政治與工程演變。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/rhine_danube_frontier.png\" alt=\"Rhine Danube Frontier\" loading=\"lazy\"><figcaption class=\"caption\">萊茵河－多瑙河羅馬帝國邊境：公元四世紀，羅馬人在帝國北部邊界修築了複雜的界牆系統，將萊茵河與多瑙河的天然防線封閉起來，以抵禦外來部落的入侵。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page41": {
-            "title": "君士坦丁三世與五世紀初邊疆危機",
-            "file_path": "course/君士坦丁三世政權的興衰：五世紀初西羅馬帝國的邊疆危機、統治架構與軍事瓦解.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/constantine_iii_usurper.png",
-            "bg_pos": "center",
-            "seo_title": "君士坦丁三世政權的興衰：五世紀初西羅馬邊疆危機與軍事瓦解 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入解析五世紀初西羅馬帝國不列顛駐軍兵變，篡位者君士坦丁三世的崛起、高盧行政重建、西班牙遠征與「奧諾里亞奇」衛隊角色，以及將領叛亂與最後亞爾圍城戰之歷史啟示。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/constantine_iii_usurper.png\" alt=\"Constantine III Usurper\" loading=\"lazy\"><figcaption class=\"caption\">不列顛篡位者君士坦丁三世與部隊：五世紀初，不列顛駐軍脫離拉文納朝廷割據建國，揮師渡海控制高盧，在亞爾建立短暫政權，這是西羅馬邊疆防務瓦解與割據困境的縮影。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page42": {
-            "title": "序章 (Prologue)",
-            "file_path": "course/《鐵劍與托加》：序章.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/gothic_three_ships_migration.png",
-            "bg_pos": "center",
-            "seo_title": "《鐵劍與托加》序章：三船南渡，舊神的呢喃 — Ludwica 的簡單歷史課",
-            "seo_desc": "歷史小說《鐵劍與托加》序章。講述哥德人起源的神話傳說，古老國王貝里格帶領族人乘三船南渡薩爾馬提亞海洋，以及獨眼老渡鴉高茲在頓河畔預見紅色風暴與大遷徙諸神黃昏的詩意開端。",
-            "map_html": null,
-            "image_replacements": [],
-            "file_path_en": "course/《鐵劍與托加》：序章_en.md",
-            "bilingual": true
-        },
-        "page43": {
-            "title": "第一章：黑海落日，狂風中的火種",
-            "file_path": "course/《鐵劍與托加》：第一章.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/iron_sword_chapter1_invasion.png",
-            "bg_pos": "center",
-            "seo_title": "《鐵劍與托加》第一章：黑海落日，狂風中的火種 — Ludwica 的簡單歷史課",
-            "seo_desc": "歷史小說《鐵劍與托加》第一章。講述西元375年匈人突然越過頓河入侵，東哥德老國王厄曼納里克在赫爾松焚城自盡，青年阿蘭將領薩烏爾與東哥德將領阿拉修斯、薩夫拉克護送幼王向西突圍逃難的悲壯序幕。",
-            "map_html": null,
-            "image_replacements": [],
-            "file_path_en": "course/《鐵劍與托加》：第一章_en.md",
-            "bilingual": true
-        },
-        "page44": {
-            "title": "羅馬與波斯地緣關係",
-            "file_path": "course/羅馬與波斯薩珊王朝於公元378年前後的地緣政治關係與阿德里安堡戰役後的近東戰略格局演變.md",
-            "ver": "1.1",
-            "doc": false,
-            "img": "images/rome_persia_geopolitics.png",
-            "bg_pos": "center",
-            "seo_title": "羅馬與波斯薩珊王朝地緣關係 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究公元378年前後羅馬帝國與波斯薩珊王朝在亞美尼亞與美索不達米亞的地緣對峙，解析阿德里安堡戰役後的戰略格局重塑、阿奇利塞內和約瓜分亞美尼亞，以及共同防禦高加索防線的協作機制。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/rome_persia_geopolitics.png\" alt=\"Rome Persia Geopolitics\" loading=\"lazy\"><figcaption class=\"caption\">羅馬與薩珊波斯地緣政治對峙：公元378年前後，兩大超級大國在美索不達米亞與亞美尼亞高地劍拔弩張，但在面對北方游牧風暴時，又不得不建立起共同防禦與成本分擔的地緣協作機制。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page45": {
-            "title": "費爾穆斯叛亂與北非防務危機",
-            "file_path": "course/四世紀晚期北非的羅馬帝國防務危機：西元372年費爾穆斯叛亂及其地緣政治與宗教多重影響深度研究報告.md",
-            "ver": "1.3",
-            "doc": false,
-            "img": "images/firmus_rebellion.png",
-            "bg_pos": "center",
-            "seo_title": "費爾穆斯叛亂與北非防務危機 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入研究西元372年柏柏爾裔羅馬軍官之子費爾穆斯在北非發起的僭越叛亂，剖析地方系統性腐敗、老狄奧多西平叛經過、多納圖斯派的宗教交鋒，以及其對老狄奧多西之死、吉爾do之戰與北非淪陷的深遠影響。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/firmus_rebellion.png\" alt=\"Firmus Rebellion\" loading=\"lazy\"><figcaption class=\"caption\">費爾穆斯叛亂：四世紀晚期，柏柏爾親王費爾穆斯在北非發動叛亂並僭越稱帝，這是帝國防線內爆與部族力量博弈的微觀縮影（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page46": {
-            "title": "阿薩納里克家族與特爾文吉哥德人的統治演變",
-            "file_path": "course/阿薩納里克家族與特爾文吉哥德人的統治演變：政治結構、三代反羅馬立場與權力崩解研究.md",
-            "ver": "1.0",
-            "doc": false,
-            "img": "images/visigoth_migration_map.png",
-            "bg_pos": "center",
-            "seo_title": "阿薩納里克家族與特爾文吉哥德人的統治演變 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討西元四世紀多瑙河邊疆特爾文吉哥德人的政治結構，剖析阿薩納里克家族連續三代（阿里亞里克、奧里克、阿薩納里克）的反羅馬立場與基督教迫害機制，以及在匈人入侵後如何面臨內部分裂與最終的權力崩解。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/visigoth_migration_map.png\" alt=\"Visigoth Migration Map\" loading=\"lazy\"><figcaption class=\"caption\">西哥德人遷徙：四世紀特爾文吉哥德人在匈人入侵的大變局下，被迫跨越邊界進入羅馬帝國，開拓了巴爾幹遷徙的先河。</figcaption></figure>\n",
-            "image_replacements": []
-        },
-        "page47": {
-            "title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
-            "file_path": "course/瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究.md",
-            "ver": "1.0",
-            "doc": false,
-            "img": "images/theodosius_constantinople_entry.png",
-            "bg_pos": "center",
-            "seo_title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 — Ludwica 的簡單歷史課",
-            "seo_desc": "深入探討西元378年阿德里安堡戰役後東羅馬帝國的權力真空、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與382年《哥德和約》的政治謀略。",
-            "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/theodosius_constantinople_entry.png\" alt=\"Theodosius Triumphal Entry\" loading=\"lazy\"><figcaption class=\"caption\">西元380年迪奧多西一世凱旋進入首都君士坦丁堡示意圖：展現了東羅馬帝國在經歷阿德里安堡慘敗後，重塑皇權尊嚴與宗教秩序的關鍵歷史時刻（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
-            "image_replacements": []
-        }
+    {
+      "title": "三世紀危機後的羅馬帝國",
+      "key": "rome",
+      "img": "images/milan_edict_main.png",
+      "pages": [
+        "page19",
+        "page22",
+        "page24",
+        "page25",
+        "page27",
+        "page30",
+        "page31",
+        "page39",
+        "page41",
+        "page45",
+        "page47",
+        "page20",
+        "page28"
+      ]
+    },
+    {
+      "title": "中世紀諸民族記",
+      "key": "medieval",
+      "img": "images/clovis_main.jpg",
+      "pages": [
+        "page23",
+        "page26",
+        "page29",
+        "page34",
+        "page38",
+        "page44",
+        "page46"
+      ]
+    },
+    {
+      "title": "教宗國記",
+      "key": "papal",
+      "img": "images/pippin_donation_main.jpg",
+      "pages": [
+        "page09"
+      ]
+    },
+    {
+      "title": "法蘭克王國記",
+      "key": "frank",
+      "img": "images/carolingian_main.jpg",
+      "pages": [
+        "page10"
+      ]
+    },
+    {
+      "title": "神聖羅馬帝國記",
+      "key": "hre",
+      "img": "images/reisekönig_travelling_kings.jpg",
+      "pages": [
+        "page07",
+        "page16",
+        "page04",
+        "page08"
+      ]
+    },
+    {
+      "title": "基督教與王權",
+      "key": "church",
+      "img": "images/creed_main.jpg",
+      "pages": [
+        "page17",
+        "page21",
+        "page15",
+        "page03",
+        "page12",
+        "page06"
+      ]
+    },
+    {
+      "title": "歐洲小知識",
+      "key": "trivia",
+      "img": "images/paper_main.jpg",
+      "pages": [
+        "page14",
+        "page11",
+        "page18",
+        "page05",
+        "page40"
+      ]
+    },
+    {
+      "title": "美國的誕生",
+      "key": "us",
+      "img": "images/us2_map.jpg",
+      "pages": [
+        "page02",
+        "page13"
+      ]
+    },
+    {
+      "title": "荷蘭的誕生與資本主義",
+      "key": "holland",
+      "img": "images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg",
+      "pages": [
+        "page01"
+      ]
+    },
+    {
+      "title": "風雨飄搖的大清帝國",
+      "key": "qing",
+      "img": "images/qing_empire.png",
+      "pages": [
+        "page36",
+        "page37"
+      ]
+    },
+    {
+      "title": "鐵劍與托加 (Broadsword and Toga)",
+      "key": "novel",
+      "img": "images/iron_sword_and_toga_cover.png",
+      "pages": [
+        "page42",
+        "page43"
+      ]
     }
+  ],
+  "articles": {
+    "page01": {
+      "title": "荷蘭建國與地緣政經",
+      "file_path": "course/帝國海洋、金融先驅與當代政治僵局：荷蘭建國史、東印度公司興衰與當代地緣政經轉型研究報告.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg",
+      "bg_pos": "center",
+      "seo_title": "荷蘭建國史與東印度公司興衰 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入解析荷蘭從低地十七省到聯省共和國的建國歷程、東印度公司的全球貿易帝國、黃金時代的藝術巅峰與當代政經轉型。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/img_12_960px-Seven_United_Netherlands_Janssonius_1658.jpg\" alt=\"1658 Map\" loading=\"lazy\"><figcaption class=\"caption\">1658年聯省共和國地圖，清晰可見當時的須德海與低地國錯綜複雜的水路地貌</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>1\\..*?</h2>)",
+          "url": "images/img_00_Map_of_Seventeen_Provinces_of_Low_German.jpg",
+          "caption": "十六世紀的低地十七省地圖，描繪了當時受哈布斯堡王朝統治的疆域"
+        },
+        {
+          "pattern": "(<h2.*?>2\\..*?</h2>)",
+          "url": "images/img_16_960px-Flag_of_the_Dutch_East_India_Company.svg.png",
+          "caption": "荷蘭東印度公司（VOC）旗幟，象徵金融革命與全球貿易擴張"
+        },
+        {
+          "pattern": "(<h2.*?>3\\..*?</h2>)",
+          "url": "images/img_14_960px-Fort_Zeelandia__Anping_District__T.jpg",
+          "caption": "荷蘭統治台灣時期的熱蘭遮城 (Fort Zeelandia)"
+        },
+        {
+          "pattern": "(<h2.*?>4\\..*?</h2>)",
+          "url": "images/img_15_960px-La_ronda_de_noche__por_Rembrandt_v.jpg",
+          "caption": "林布蘭名作《夜巡》，荷蘭黃金時代藝術巔峰"
+        },
+        {
+          "pattern": "(<h2.*?>5\\..*?</h2>)",
+          "url": "images/img_03_960px-Joannes_van_Deutecum_-_Leo_Belgicu.jpg",
+          "caption": "低地國家的獅子地圖 (Leo Belgicus)，象徵早期與神聖羅馬帝國的地緣淵源"
+        },
+        {
+          "pattern": "(<h2.*?>6\\..*?</h2>)",
+          "url": "images/img_08_960px-Sint_Eustatius_from_ISS.jpg",
+          "caption": "聖尤斯特歇斯島，美國獨立戰爭期間最重要的軍火走私樞紐"
+        },
+        {
+          "pattern": "(<h2.*?>7\\..*?</h2>)",
+          "url": "images/img_07_960px-Johan_Heinrich_Neuman_-_Johan_Rudo.jpg",
+          "caption": "約翰·魯道夫·托爾貝克（1848年憲法起草者，荷蘭民主奠基人）"
+        },
+        {
+          "pattern": "(<h2.*?>8\\..*?</h2>)",
+          "url": "images/img_05_960px-Bundesarchiv_Bild_146-2005-0003__R.jpg",
+          "caption": "1940年遭德軍殘酷轟炸摧毀的鹿特丹"
+        },
+        {
+          "pattern": "(<h2.*?>9\\..*?</h2>)",
+          "url": "images/img_09_960px-Friedenspalast_Den_Haag__100MP_.jpg",
+          "caption": "位於海牙的和平宮，象徵當代荷蘭作為全球國際司法之都"
+        },
+        {
+          "pattern": "(<h2.*?>10\\..*?</h2>)",
+          "url": "images/img_01_960px-Den_Haag_Binnenhof_02.jpg",
+          "caption": "荷蘭國會大廈 (Binnenhof)，象徵高度協商與妥協的政治文化"
+        }
+      ]
+    },
+    "page02": {
+      "title": "美國的誕生(一)",
+      "file_path": "course/第一階段：三個世界的交會與前哥倫布時期的美洲（1607年以前）.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/img_10_960px-Cahokia_Monks_Mound.jpg",
+      "bg_pos": "center",
+      "seo_title": "前哥倫布時期美洲與三個世界的交會 — Ludwica 的簡單歷史課",
+      "seo_desc": "探索1607年以前美洲原住民的文明成就、大航海時代的技術革命、哥圍布大交換，以及西班牙、法國、英國的早期殖民衝突。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/img_10_960px-Cahokia_Monks_Mound.jpg\" alt=\"Cahokia Mounds\" loading=\"lazy\"><figcaption class=\"caption\">卡霍基亞莫恩克斯土丘（Monks Mound）遠眺，前哥倫布時期繁榮的密西西比河流域社會核心遺跡</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>一、.*?</h2>)",
+          "url": "images/img_04_Cliff_Palace_-_Mesa_Verde_National_Park.jpg",
+          "caption": "梅薩維德國家公園的懸崖宮殿，展現普韋布洛人高超的石造建築技術"
+        },
+        {
+          "pattern": "(<h2.*?>二、.*?</h2>)",
+          "url": "images/img_06_Caravela_Redonda.jpg",
+          "caption": "大航海時代的葡萄牙輕快帆船（Caravel），支撐起遠洋探索的技術革命"
+        },
+        {
+          "pattern": "(<h2.*?>三、.*?</h2>)",
+          "url": "images/img_02_Landing_of_Columbus.jpg",
+          "caption": "哥倫布登陸美洲想像圖，開啟了改變全球生態與人類社會結構的哥倫布大交換"
+        },
+        {
+          "pattern": "(<h3.*?>2\\..*?</h3>)",
+          "url": "images/img_17_960px-Castillo_de_San_Marcos_Fort_Panorama.jpg",
+          "caption": "位於佛羅里達的聖馬科斯城堡，北美洲最古老的歐洲磚石要塞，象徵西班牙的早期霸權"
+        },
+        {
+          "pattern": "(<h3.*?>3\\..*?</h3>)",
+          "url": "images/img_11_John_White_-_La_Virginea_Pars__map_of_th.jpg",
+          "caption": "約翰·懷特約於1585年繪製的北美海岸地圖《La Virginea Pars》，記錄了早期對北美地理的探索與拓荒"
+        },
+        {
+          "pattern": "(<h3.*?>4\\..*?</h3>)",
+          "url": "images/img_13_960px-Elizabeth_I__Armada_Portrait_.jpg",
+          "caption": "伊麗莎白一世著名的「無敵艦隊畫像」（Armada Portrait），象徵擊敗西班牙霸權的地緣政治重大轉折點"
+        }
+      ]
+    },
+    "page13": {
+      "title": "美國的誕生(二)",
+      "file_path": "course/第二階段：殖民地的建立、定居與大西洋世界的形塑（1607年－1754年）.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/us2_map.jpg",
+      "bg_pos": "center",
+      "seo_title": "殖民地的建立、定居與大西洋世界的形塑 — Ludwica 的簡單歷史課",
+      "seo_desc": "探索1607至1754年英屬北美十三殖民地的區域性分化、勞動力體制向種族奴隸制的轉型、邊疆衝突與大西洋世界在重商主義、光榮革命、啟蒙運動和大覺醒下的文化整合。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/us2_map.jpg\" alt=\"Thirteen Colonies Map\" loading=\"lazy\"><figcaption class=\"caption\">北美十三殖民地政區與地理分布圖，展示了新英格蘭、中部及南方三大區域殖民地結構與地緣疆界。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>一、.*?</h2>)",
+          "url": "images/us2_mayflower.jpg",
+          "caption": "威廉·哈爾薩爾 1882 年名作《普利茅斯港的五月花號》（Mayflower in Plymouth Harbor），描繪清教徒乘坐五月花號抵達新大陸的歷史性場景。"
+        },
+        {
+          "pattern": "(<h3.*?>2\\.\\s*中部殖民地.*?</h3>)",
+          "url": "images/us2_penn_treaty.jpg",
+          "caption": "班傑明·韋斯特名作《賓與印地安人的條約》（Penn's Treaty with the Indians），描繪貴格會領袖威廉·賓在沙卡馬克森與德拉瓦原住民簽訂土地交易條約的和平場景。"
+        },
+        {
+          "pattern": "(<h3.*?>1\\.\\s*1676年「培根叛亂」.*?</h3>)",
+          "url": "images/us2_bacons_rebellion.jpg",
+          "caption": "插畫家霍華德·派爾（Howard Pyle）所繪《詹姆斯鎮的焚毀》，生動描繪了 1676 年培根叛亂中叛軍縱火燒毀弗吉尼亞首府詹姆斯鎮的慘烈場面。"
+        },
+        {
+          "pattern": "(<h3.*?>1\\.\\s*新英格蘭地區的.*?</h3>)",
+          "url": "images/us2_king_philip.jpg",
+          "caption": "保羅·里維爾於 1772 年創作的經典銅版畫《蒙特霍普 sachem 菲利普王》，象徵殖民地時期對萬帕諾亞格盟主麥達康（Metacom）的經典想像刻畫。"
+        },
+        {
+          "pattern": "(<h3.*?>3\\.\\s*法屬路易斯安那的建立與「密西西比泡沫」.*?</h3>)",
+          "url": "images/us2_john_law.jpg",
+          "caption": "阿列克謝·西蒙·貝爾繪製的《約翰·勞肖像》，他是蘇格蘭金融家與密西西比泡沫的策劃者，其金融泡沫對法屬路易斯安那的命運產生了深遠震盪。"
+        }
+      ]
+    },
+    "page03": {
+      "title": "宗教戰爭(一)：胡斯戰爭",
+      "file_path": "course/信仰衝突、軍事變革與波希米亞國家認同：胡斯戰爭的歷史脈絡、演進特徵與深遠影響研究報告.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/hussite_wars_main.png",
+      "bg_pos": "center",
+      "seo_title": "胡斯戰爭：信仰衝突與波希米亞國家認同 — Ludwica 的簡單歷史課",
+      "seo_desc": "揚·胡斯的宗教改革先驅運動、波希米亞的宗教衝突與軍事變革、戰車壘戰術革新，以及對歐洲宗教格局的深遠影響。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/hussite_wars_main.png\" alt=\"Hussite Wars\" loading=\"lazy\"><figcaption class=\"caption\">捷克歷史藝術家 Luděk Marold 著名巨作《利帕尼戰役全景圖》（Maroldovo panorama bitvy u Lipan），生動重現了這場終結激進派的史詩決戰</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>一、.*?</h2>)",
+          "url": "images/jan_hus_preaching.png",
+          "caption": "1563年布拉格印製的《胡斯講道集》（Postilla）中極具歷史意義的木刻版畫，記錄了揚·胡斯向波希米亞平民大眾宣教的經典場景"
+        },
+        {
+          "pattern": "(<\\/p>\\s*<p>1414年，神聖羅馬帝國國王西吉斯蒙德)",
+          "url": "images/jan_hus_execution.jpg",
+          "caption": "歷史文獻插圖：上方描繪揚·胡斯在康斯坦茨被戴上寫有「異端首領」主教冠押赴火刑，下方描繪信徒用手推車收集其骨灰撒入萊茵河以防遺骨成為聖物，出自著名的《康斯坦茨公會議編年史》（Chronik des Konstanzer Konzils）"
+        },
+        {
+          "pattern": "(<h2.*?>三、.*?</h2>)",
+          "url": "images/hussite_crusade_battle.png",
+          "caption": "源自15世紀末捷克國寶級手稿《耶拿法典》（Jena Codex）的著名插圖，展現高舉聖杯紅旗前仆後繼、行軍禦敵的胡斯派戰士們"
+        },
+        {
+          "pattern": "(<h2.*?>四、.*?</h2>)",
+          "url": "images/hussite_wagenburg.png",
+          "caption": "歷史文獻中記載的經典「戰車壘」（Wagenburg）野戰工事與早期火炮協同防禦防線的精細還原圖"
+        }
+      ]
+    },
+    "page12": {
+      "title": "宗教戰爭(二)：卡特里派",
+      "file_path": "course/靈魂的物質禁錮與中世紀權力整肅：卡特里派的興起、神學教義、十字軍聖戰與歷史餘音.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/catharism_main.jpg",
+      "bg_pos": "center",
+      "seo_title": "中世紀卡特里派的興起、教義、十字軍聖戰與歷史餘音 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究中世紀南法阿爾比十字軍東征、卡特里派（阿爾比派）二元論神學與禁慾實踐、宗教裁判所的官僚化清洗，以及《富尼埃登記簿》與微觀歷史學《蒙塔尤》的思想異質性。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/catharism_main.jpg\" alt=\"Montsegur Castle\" loading=\"lazy\"><figcaption class=\"caption\">今日聳立於南法陡峭岩峰上的蒙塞居爾城堡（Château de Montségur）廢墟，曾是卡特里派最後的軍事與精神堡壘，見證了1244年悲壯的圍城戰與大火刑。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>二、.*?</h2>)",
+          "url": "images/catharism_creed.png",
+          "caption": "代表朗格多克文化與卡特里派信仰空間的「奧克十字」（Occitan Cross）標誌，象徵南方反抗北法集權與教權威脅的文化精神"
+        },
+        {
+          "pattern": "(<h2.*?>四、.*?</h2>)",
+          "url": "images/catharism_perfecti.jpg",
+          "caption": "西班牙畫家 Pedro Berruguete 於15世紀末所繪名作《聖多明尼克與阿爾比派》（St Dominic and the Albigenses），描繪正統與異端書籍被投入火中檢驗真偽的傳奇場景"
+        },
+        {
+          "pattern": "(<h2.*?>五、.*?</h2>)",
+          "url": "images/catharism_crusade.jpg",
+          "caption": "15世紀手稿《Boucicaut大師工坊》插圖，描繪阿爾比十字軍東征期間卡特里派信徒被驅逐出城的悲慘場景"
+        },
+        {
+          "pattern": "(<h2.*?>六、.*?</h2>)",
+          "url": "images/catharism_inquisition.jpg",
+          "caption": "14世紀道明會士 Bernard Gui 所著《異端裁判所實踐指南》（Practica officii inquisitionis heretice pravitatis）手稿插圖，象徵宗教裁判所官僚化、秘密化的司法清洗"
+        }
+      ]
+    },
+    "page05": {
+      "title": "希爾紹修道院",
+      "file_path": "course/希爾紹修道院研究報告：雙軌解析.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/hirsau_main_wilhelm.jpg",
+      "bg_pos": "center",
+      "seo_title": "希爾紹修道院研究報告 — Ludwica 的簡單歷史課",
+      "seo_desc": "希爾紹修道院的千年歷史、威廉大院長的改革運動、希爾紹建築學派的羅馬式美學巔峰，以及九年戰爭後的廢墟重生。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/hirsau_main_wilhelm.jpg\" alt=\"Wilhelm von Hirsau\" loading=\"lazy\"><figcaption class=\"caption\">威廉大院長肖像，十一世紀下半葉領導希爾紹修道院走向改革黃金時代的靈魂人物</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h3.*?>十一世紀前夕的教會亂象與世俗糾葛</h3>)",
+          "url": "images/hirsau_st_aurelius.jpg",
+          "caption": "聖奧雷利烏斯教堂外觀，見證了十世紀中葉由教宗良九世指示、卡爾夫伯爵阿達爾貝特主導的第二次重建歷史"
+        },
+        {
+          "pattern": "(<h3.*?>爭取絕對獨立與教宗的豁免特權</h3>)",
+          "url": "images/hirsau_interior_historical.jpg",
+          "caption": "聖奧雷利烏斯教堂歷史剖面圖，描繪了在敘任權之爭爆發前夕，希爾紹修道院所呈現的經典早期羅馬式空間佈局"
+        },
+        {
+          "pattern": "(<h3.*?>九年戰爭與梅拉克將軍的焦土政策</h3>)",
+          "url": "images/hirsau_ruins_overview.jpg",
+          "caption": "今日希爾紹修道院（聖彼得與保羅修道院）宏偉的廢墟全景，1692年九年戰爭中遭法國將軍梅拉克的焦土政策付之一炬"
+        },
+        {
+          "pattern": "(<h3.*?>報告二：文化、建築與藝術的深遠遺產</h3>)",
+          "url": "images/hirsau_bausubstanz_map.jpg",
+          "caption": "希爾紹修道院大教堂建築年代與地基結構分佈圖，完美體現了威廉大院長將幾何比例與宇宙秩序無縫轉化為石造空間的卓越才華"
+        },
+        {
+          "pattern": "(<h2.*?>第二章：「希爾紹建築學派」的羅馬式巔峰</h2>)",
+          "url": "images/hirsau_cubic_capitals.jpg",
+          "caption": "聖奧雷利烏斯教堂內的羅馬式骰子柱頭，其上帶有希爾紹建築學派極具代表性的「希爾紹鼻」角狀突起特徵"
+        },
+        {
+          "pattern": "(<h3.*?>神學隱喻與核心特徵</h3>)",
+          "url": "images/hirsau_interior_gesims.jpg",
+          "caption": "聖奧雷利烏斯教堂内牆的羅馬式石雕橫飾帶（Gesims），呈現出精確的幾何對稱與極簡紋飾，完美契合克呂尼改革倡導的禁慾美學"
+        },
+        {
+          "pattern": "(<h3.*?>建築學派的廣泛傳播與後期演變</h3>)",
+          "url": "images/hirsau_kreuzgang.jpg",
+          "caption": "聖彼得與保羅修道院的雙層迴廊（Kreuzgang），其結構佈局緊密圍繞中殿，反映了修道院空間為數百名修士的日常靈修與盛大禮拜儀式所做的精密規劃"
+        },
+        {
+          "pattern": "(<h2.*?>第三章：文藝復興狩獵小屋的興建：權力的世俗化展示</h2>)",
+          "url": "images/hirsau_hunting_lodge.jpg",
+          "caption": "文藝復興式狩獵小屋與門塔廢墟，由符騰堡公爵在16世紀末建造，展現了世俗新教權力對前天主教修道院教產的接管與主權宣示"
+        },
+        {
+          "pattern": "(<h3.*?>宗教空間的修復與現代藝術</h3>)",
+          "url": "images/hirsau_modern_madonna.jpg",
+          "caption": "修復後的聖奧雷利烏斯教堂內部，將古老的木雕聖母像與現代空間元素並置，展現了戰後廢墟中宗教空間與現代藝術完美交融的重生魅力"
+        }
+      ]
+    },
+    "page07": {
+      "title": "奧托-薩利安帝國教會體制",
+      "file_path": "course/奧托-薩利安帝國教會體制.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/ottonian_hre_map.svg",
+      "bg_pos": "center",
+      "seo_title": "奧托-薩利安帝國教會體制 — Ludwica 的簡單歷史課",
+      "seo_desc": "奧托王朝與薩利安王朝的帝國教會體制、政教合一的運作機制、巡迴朝廷制度，以及敘任權之爭的歷史根源。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/ottonian_hre_map.svg\" alt=\"Ottonian HRE Map\" loading=\"lazy\"><figcaption class=\"caption\">西元1000年左右奧托-薩利安王朝時期的神聖羅馬帝國地圖，呈現德意志各部落公爵領與主教區錯綜複雜的疆域分佈</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>關鍵歷史人物與王權的神聖化重塑</h2>)",
+          "url": "images/ottonian_otto1.jpg",
+          "caption": "德國馬格德堡著名雕塑《馬格德堡騎馬人》（Magdeburger Reiter），生動展現了神聖羅馬帝國皇帝奧托一世的威嚴之姿"
+        },
+        {
+          "pattern": "(<p>在奧托一世的統治後期，其胞弟科隆大主教布魯諾)",
+          "url": "images/ottonian_bruno.jpg",
+          "caption": "科隆聖潘塔萊翁修道院大教堂外的布魯諾大主教雕像，他將教會改革、宮廷教堂人才培養與國家行政體系進行了深度的歷史性融合"
+        },
+        {
+          "pattern": "(<h3.*?>巡迴朝廷與空間動態治理</h3>)",
+          "url": "images/ottonian_goslar.jpg",
+          "caption": "宏偉的戈斯拉爾帝國皇室行宮（Kaiserpfalz Goslar），由皇帝亨利三世建造，是薩利安王朝巡迴朝廷與政治中樞的核心後勤與行政基地之一"
+        },
+        {
+          "pattern": "(<h2.*?>內部矛盾：政教合一的內耗與改革運動的興起</h2>)",
+          "url": "images/ottonian_canossa.jpg",
+          "caption": "德國歷史畫家 Eduard Schwoiser 經典油畫巨作《亨利前進卡諾莎》（Heinrich vor Canossa），生動再現了皇帝亨利四世向教宗格列高利七世低頭乞求赦免的史詩場景"
+        }
+      ]
+    },
+    "page09": {
+      "title": "丕平獻土與教宗國誕生",
+      "file_path": "course/丕平獻土的地緣政治體系研究：背景、權力機制、法理偽造與深遠歷史影響.md",
+      "ver": "1.2",
+      "doc": false,
+      "img": "images/pippin_donation_main.jpg",
+      "bg_pos": "center",
+      "seo_title": "丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/pippin_donation_main.jpg\" alt=\"Pippin Coronation Main\" loading=\"lazy\"><figcaption class=\"caption\">法國畫家 François Dubois 於1837年所繪的名作《教宗斯德望二世在聖但尼修道院為丕平加冕》，現藏於凡爾賽宮。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>三、.*?</h2>)",
+          "url": "images/pippin_donation_map.png",
+          "caption": "西元750年代倫巴底擴張前夕的義大利半島地緣版圖。丕平獻土徹底打破了拜占庭、倫巴底與羅馬聖座之間的三方平衡。"
+        },
+        {
+          "pattern": "(<h2.*?>五、.*?</h2>)",
+          "url": "images/pippin_ricci_fresco.jpg",
+          "caption": "梵蒂岡祕密檔案館壁畫：描繪法蘭克聖但尼修道院院長富拉德代表國王丕平，實地向教宗斯德望二世呈交收復的22座城市鑰匙與獻土詔書。"
+        },
+        {
+          "pattern": "(<h2.*?>四、.*?</h2>)",
+          "url": "images/donation_of_constantine.jpg",
+          "caption": "梵蒂岡拉斐爾畫室著名濕壁畫《君士坦丁的贈禮》（Donation of Constantine），描繪君士坦丁大帝將世俗統治權讓渡給教宗西爾維斯特一世。"
+        }
+      ]
+    },
+    "page10": {
+      "title": "卡洛林教育基建與知識復興",
+      "file_path": "course/聖神統治與知識復興：卡洛林王朝教育基建、制度體系及其深遠歷史遺產之研究.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/carolingian_main.jpg",
+      "bg_pos": "center",
+      "seo_title": "卡洛林王朝教育基建與知識復興 — Ludwica 的簡單歷史課",
+      "seo_desc": "探討卡洛林王朝教育基建與宗教變革、手抄室與卡洛林小草體書寫革命、跨國學者網絡、基督教化七藝與課堂實踐，以及文明火種對後世中世紀大學的深遠影響。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/carolingian_main.jpg\" alt=\"Carolingian Minuscule\" loading=\"lazy\"><figcaption class=\"caption\">八世紀末《達古爾夫詩篇》（Dagulf Psalter）之手抄頁面，以優美典雅的卡洛林小寫體金字書寫，展現了早期帝國書寫標準化的極致美學。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>一、.*?</h2>)",
+          "url": "images/carolingian_alcuin.jpg",
+          "caption": "Jean-Victor Schnetz 1830年名作《查理曼與阿爾琴》，描繪校長阿爾琴向查理曼大帝及其高級廷臣展示由修士手抄之聖經文獻，象徵神聖王權與知識基建之交匯。"
+        },
+        {
+          "pattern": "(<h2.*?>二、.*?</h2>)",
+          "url": "images/carolingian_stgall.jpg",
+          "caption": "公元九世紀初著名的《聖加侖修道院理想平面圖》（St. Galler Klosterplan）局部，圖中明確規劃了專屬的圖書館（Library）與手抄室（Scriptorium）空間，展現出高度系統化的學術基建思維。"
+        },
+        {
+          "pattern": "(<h2.*?>三、.*?</h2>)",
+          "url": "images/carolingian_lorsch.jpg",
+          "caption": "著名的卡洛林晚期傑作——洛爾施修道院門樓（Königshalle），是極少數完整存世的卡洛林帝國時期地標建築，展現了早期文藝復興的建築工程美學與古典柱頭裝飾。"
+        },
+        {
+          "pattern": "(<h2.*?>四、.*?</h2>)",
+          "url": "images/carolingian_majesty.jpg",
+          "caption": "現藏於維多利亞與阿爾伯特博物館的十一世紀早期《洛爾施福音書》（Lorsch Gospels）象牙浮雕封面，描繪「基督登基在天」（Christ in Majesty），象徵宗教神權與卡洛林神學宇宙秩序的高度統一。"
+        }
+      ]
+    },
+    "page11": {
+      "title": "歐洲造紙術的歷史演變",
+      "file_path": "course/歐洲造紙術的歷史演變、技術革新與物質文明變革研究報告.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/paper_main.jpg",
+      "bg_pos": "center",
+      "seo_title": "歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課",
+      "seo_desc": "研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/paper_main.jpg\" alt=\"Jost Amman Papermaker\" loading=\"lazy\"><figcaption class=\"caption\">德意志著名藝術家 Jost Amman 於1568年繪製的經典木刻版畫《撈紙工》（Der Papiermacher），生動再現了前工業化時期歐洲水力造紙坊抄紙與壓榨水分的勞動場景。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>二、.*?</h2>)",
+          "url": "images/paper_hollander.jpg",
+          "caption": "保存於造紙歷史博物館中的經典「荷蘭式打漿機」（Hollander Beater），其藉由旋轉金屬刀片進行碎布纖維的原纖化處理，徹底革新了沿用數百年的槌擊製漿工藝。"
+        },
+        {
+          "pattern": "(<h2.*?>四、.*?</h2>)",
+          "url": "images/paper_press.jpg",
+          "caption": "近代早期典型的木製手搖印刷機與造紙槽協同車間，造紙與印刷兩大技術的物質相遇，徹底打破了中古教權對知識產權與書籍生產的絕對壟斷。"
+        },
+        {
+          "pattern": "(<h3.*?>2\\..*?</h3>)",
+          "url": "images/paper_gutenberg.jpg",
+          "caption": "紐約公共圖書館珍藏的1455年《古騰堡聖經》（Gutenberg Bible）雙欄手繪頁面，採用了歐洲本土製造的高規格破布手抄紙，為印刷資本主義的擴張提供了最為關鍵的物質載體。"
+        }
+      ]
+    },
+    "page14": {
+      "title": "英國的憲法",
+      "file_path": "course/英國憲法的歷史演進、修訂機制與憲政奇異性：非法典化體制的理論與實踐研析.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/uk_constitution_main.png",
+      "bg_pos": "center",
+      "seo_title": "英國的憲法：非法典化體制的理論與實踐 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究英國不成文憲法的歷史演進（大憲章、光榮革命、權利法案）、修訂機制與彈性、尊嚴與效能雙重結構，以及2022年至2026年間的現代憲政轉型。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/uk_constitution_main.png\" alt=\"British Constitution\" loading=\"lazy\"><figcaption class=\"caption\">英國憲政主題經典圖畫，展現大憲章羊皮紙、皇家王冠與遠景的西敏寺國會大廈，象徵君主、法律與議會的權力交織。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>歷史起源與漸進式沿革：從封建契約到議會至上</h2>)",
+          "url": "images/uk_constitution_magna_carta.png",
+          "caption": "西元1215年約翰王在倫德米德草地上被迫於貴族面前簽署《大憲章》的歷史想像圖。"
+        },
+        {
+          "pattern": "(<h2.*?>英國憲法的奇特之處：政治憲政主義與雙重結構的張力</h2>)",
+          "url": "images/uk_constitution_glorious_revolution.png",
+          "caption": "西元1689年國會向威廉三世與瑪麗二世呈遞《權利法案》以確立國會主權的歷史繪畫。"
+        }
+      ]
+    },
+    "page15": {
+      "title": "聖職與婚娶",
+      "file_path": "course/聖職與婚娶：基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈.md",
+      "ver": "1.2",
+      "doc": false,
+      "img": "images/clergy_trent.jpg",
+      "bg_pos": "center",
+      "seo_title": "聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/clergy_trent.jpg\" alt=\"The Council of Trent\" loading=\"lazy\"><figcaption class=\"caption\">1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》（The Council of Trent），現藏於羅馬聖母大公殿，象徵天主教會在宗教改革浪潮下對神職絕對獨身制與教義純潔性的確認與重申。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>禁慾主義的先驅背景與早期教會的多元共存</h2>)",
+          "url": "images/clergy_marriage_main.png",
+          "caption": "AI 歷史模擬示意圖：早期基督教會中與妻子及家人共同生活的已婚司鐸家庭，象徵三世紀前神職人員擁有婚姻與生育生活的多元接納常態（本圖為 AI 繪製示意）。"
+        },
+        {
+          "pattern": "(<h2.*?>地方公會議的制度化律令與東西方分裂的先聲</h2>)",
+          "url": "images/clergy_family_medieval.png",
+          "caption": "AI 歷史模擬示意圖：中世紀前期與地方莊園及土地繼承網絡緊密結合的已婚神職家庭，此類普遍存在的司鐸世襲化現象，在後期引發了天主教會極大的財產流失與教權危機（本圖為 AI 繪製示意）。"
+        },
+        {
+          "pattern": "(<h2.*?>中世紀封建危機下的格列哥里改革與權力重塑</h2>)",
+          "url": "images/clergy_canossa.jpg",
+          "caption": "愛德華·施沃瑟1862年名作《亨利四世在卡諾莎》（Heinrich vor Canossa），描繪了公元1077年神聖羅馬帝國皇帝亨利四世在風雪中向教宗格列哥里七世悔罪的場景，象徵格列哥里改革中教權壓倒世俗王權的關鍵歷史時刻。"
+        },
+        {
+          "pattern": "(<h2.*?>宗教改革的政治經濟學反叛與天主教會的反擊</h2>)",
+          "url": "images/clergy_luther_bora.jpg",
+          "caption": "路卡斯·克拉納赫1526年創作的《馬丁·路德與卡塔琳娜·馮·博拉雙聯畫》，現藏於瑞典國立博物館，生動描繪了這對倡導並實踐牧師婚姻的新教先驅夫婦，象徵宗教改革對修道院守貞誓言與世俗家庭價值的重構。"
+        }
+      ]
+    },
+    "page16": {
+      "title": "中世紀巡行王權的權力運作",
+      "file_path": "course/中世紀巡行王權的權力運作、制度體系與社會實態：以奧圖一世九五五年巡行與戰事為核心之歷史學考察.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/reisekönig_travelling_kings.jpg",
+      "bg_pos": "center",
+      "seo_title": "中世紀巡行王權的權力運作、制度體系與社會實態 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究十世紀神聖羅馬帝國皇帝奧圖一世在九五五年的巡行與戰事軌跡，解析巡行王權的協商式統治、動態禮儀展演、帝國教會體制與物資汲取物流機制。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/reisekönig_travelling_kings.jpg\" alt=\"Travelling Kings\" loading=\"lazy\"><figcaption class=\"caption\">出自《法拉克薩手抄本》（Velaslav's Bible）的「旅行中的國王」手稿插圖，生動呈現了中世紀早中期君主與其宮廷在不同莊園行宮間物理性持續移動的「巡行王權」歷史情境。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>巡行王權的特別之處、政治意義與統治功能</h2>)",
+          "url": "images/ottonian_goslar.jpg",
+          "caption": "宏偉的戈斯拉爾帝國皇室行宮（Kaiserpfalz Goslar），巡行朝廷在薩克森地區的權力象徵與核心行政基地。"
+        },
+        {
+          "pattern": "(<h3.*?>協商式統治與個人化政治紐帶</h3>)",
+          "url": "images/otto_quedlinburg_hoftag.jpg",
+          "caption": "莫里茲·馮·施溫德所繪《奧圖一世於昆德林堡慶祝五旬節，973年》，生動描繪了君主與世俗、教會貴族齊聚召開帝國大會（Hoftag）的協商共識政治場景。"
+        },
+        {
+          "pattern": "(<h3.*?>帝國教會體制與 monastic secularization 的張力</h3>)",
+          "url": "images/ottonian_bruno.jpg",
+          "caption": "科隆大主教布魯諾雕像，他作為奧圖一世之弟，將宮廷教堂人才培養與國家行政體系深度結合，成為帝國教會體制的奠基人。"
+        },
+        {
+          "pattern": "(<h2.*?>奧圖一世九五五年巡行軌跡：歷史重建與戰略轉折</h2>)",
+          "url": "images/michael_echter_ungarnschlacht.jpg",
+          "caption": "麥可·埃希特繪製的歷史名畫《雷希菲爾德戰役》（Lechfeldschlacht），描繪了955年奧圖一世率領德意志聯軍衝鋒，決定性大敗馬扎爾人騎兵的史詩決戰。"
+        },
+        {
+          "pattern": "(<h3.*?>農業剩餘與高度組織化的實物汲取</h3>)",
+          "url": "images/mainzer_hoffest_assembly.jpg",
+          "caption": "出自《薩克森世界編年史》手稿插圖，描繪了帝國大會期間為皇帝宮廷及各路貴族大軍提供飲食和物資的汲取網絡。"
+        }
+      ]
+    },
+    "page17": {
+      "title": "從皇帝稱號看羅馬政教關係演變",
+      "file_path": "course/從戴克里先、君士坦丁到迪奧多西：從皇帝的稱號看歷史背景與政教關係的演變.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/ambrose_and_theodosius.png",
+      "bg_pos": "center",
+      "seo_title": "從皇帝的稱號看歷史背景與政教關係的演變 — Ludwica 的簡單歷史課",
+      "seo_desc": "從三世紀危機後的戴克里先確立君主制，到君士坦丁大帝開啟基督教的寬容時代，再到格拉提安與迪奧多西一世將尼西亞信仰確立為國教，解析皇帝稱號的演變如何折射出羅馬帝國晚期的政教關係與政治神學。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/ambrose_and_theodosius.png\" alt=\"Ambrose and Theodosius\" loading=\"lazy\"><figcaption class=\"caption\">聖安波羅修在米蘭大教堂前阻擋皇帝迪奧多西一世的歷史想像圖，象徵世俗權力必須臣服於上帝的屬靈裁判，是政教關係史上的關鍵分水嶺。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>戴克里先與君主制的創立：從「第一公民」到「君主與神」</h2>)",
+          "url": "images/p17_tetrarchs.jpg",
+          "caption": "威尼斯聖馬可大教堂牆角的「四帝共治」雕像（約公元300年），以四位皇帝互相擁抱象徵帝國的團結與分工，是戴克里先創立四帝共治制度的具體政治宣傳。"
+        },
+        {
+          "pattern": "(<h2.*?>君士坦丁大帝的雙重神聖：大祭司與「外部事務主教」</h2>)",
+          "url": "images/p17_constantine_head.jpg",
+          "caption": "羅馬卡比托利歐博物館收藏 of 君士坦丁大帝青銅巨像頭部（約公元4世紀），其巨大的雙眼凝視著遠方，展現出晚期羅馬帝國君主超越凡人、神聖不可侵犯的專制權威。"
+        },
+        {
+          "pattern": "(<h2.*?>格拉提安的信仰抉擇：拒絕「大祭司」與「榮譽祭司」的轉向</h2>)",
+          "url": "images/p17_curia_julia.jpg",
+          "caption": "位於羅馬廣場的庫里亞·朱利亞（羅馬元老院議事堂），格拉提安皇帝曾下令將其中的「勝利女神祭壇」拆除，徹底引發了傳統多神教精英與基督教主教的政論博弈。"
+        }
+      ]
+    },
+    "page18": {
+      "title": "西元紀年的確立與演進",
+      "file_path": "course/西元紀年的確立與演進：從歷史考證、政治妥協到全球數位化時間標準的建構.md",
+      "ver": "1.2",
+      "doc": false,
+      "img": "images/ad_calendar_main.png",
+      "bg_pos": "center",
+      "seo_title": "西元紀年的確立與演進 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入解析西元紀年（AD）的提出背景、關鍵歷史人物（狄奧尼修斯、尊者比德、查理曼大帝）、曆法改革、東西方教會的分裂以及全球標準化（ISO 8601）與缺失的西元零年問題。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/ad_calendar_main.png\" alt=\"AD Calendar Main\" loading=\"lazy\"><figcaption class=\"caption\">象徵時間流逝與曆法更迭的古典沙漏與天文鐘，折射出人類在時間測量上從神聖天啟走向世俗理性的演進歷程。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>二、 關鍵歷史人物與行政推手：從修道院計算到國家法典</h2>)",
+          "url": "images/carolingian_alcuin.jpg",
+          "caption": "查理曼大帝的宮廷學者阿爾琴，他建議查理曼在行政詔書中強制實施西元紀年。"
+        },
+        {
+          "pattern": "(<h2.*?>四、 東西方教會的分裂與對齊阻力：曆法體系的分歧與物理時差</h2>)",
+          "url": "images/clergy_trent.jpg",
+          "caption": "1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》，象徵教會對時間體系的重構與絕對掌控。"
+        }
+      ]
+    },
+    "page19": {
+      "title": "米蘭敕令時代與李錫尼覆滅",
+      "file_path": "course/帝國重塑、信仰博弈與權力終局：《米蘭敕令》時代的羅馬政治、君士坦丁宗教策略與李錫尼覆滅研究.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/milan_edict_main.png",
+      "bg_pos": "center",
+      "seo_title": "米蘭敕令時代的羅馬政治與李錫尼覆滅 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討公元313年米蘭敕令頒布前後的羅馬帝國地緣政治，分析君士坦丁與李錫尼的權力博弈、宗教寬容政策的確立，以及李錫尼的最終覆滅。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/milan_edict_main.png\" alt=\"Milan Edict Main\" loading=\"lazy\"><figcaption class=\"caption\">君士坦丁與李錫尼於公元313年在米蘭會晤並達成協定，正式確立宗教寬容與信仰自由政策（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h3.*?>四帝共治制的權力結構與撕裂</h3>)",
+          "url": "images/p17_tetrarchs.jpg",
+          "caption": "威尼斯聖馬可大教堂外牆著名的「四帝共治」雕像（約公元300年），象徵戴克里先時期帝國的權力分工與秩序重塑。"
+        },
+        {
+          "pattern": "(<h3.*?>塞巴斯蒂四十烈士：軍事整肅與信仰抗爭的微觀縮影</h3>)",
+          "url": "images/forty_martyrs_sebaste.png",
+          "caption": "公元320年冬，塞巴斯蒂四十烈士因拒絕向異教神祇獻祭而被強令站在冰封的湖面上受凍折磨，成為東部帝國著名的殉道史詩（本圖為 AI 模擬歷史繪畫）。"
+        },
+        {
+          "pattern": "(<h3.*?>第二次內戰與李錫尼的末路（324–325年）</h3>)",
+          "url": "images/battle_adrianople.png",
+          "caption": "公元324年決戰中，君士坦丁的軍隊高舉繪有凱樂符號（Chi-Rho）的帝國軍旗與李錫尼的軍隊激烈交戰，標誌著內戰的最高潮與帝國政教體制的轉型（本圖為 AI 模擬歷史繪畫）。"
+        }
+      ]
+    },
+    "page21": {
+      "title": "使徒信經的歷史演變與神學建構",
+      "file_path": "course/使徒信經的歷史演變與神學建構：從早期羅馬洗禮宣誓到西方大公信仰奠基的學術研究報告.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/creed_main.jpg",
+      "bg_pos": "center",
+      "seo_title": "使徒信經的歷史演變與神學建構 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究使徒信經從新約雛形、古羅馬信經雙語見證，到皮爾米紐斯文本奠基，以及加洛林道德修正運動與禮儀標準化推廣的歷史演變。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/creed_main.jpg\" alt=\"Apostles Creed\" loading=\"lazy\"><figcaption class=\"caption\">1493年出版的《牧人曆》（Compost et calendrier des bergers）插圖細節，描繪使徒們與各自創作的信經宣告條款，是中世紀傳統聖傳故事的經典圖解。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h3.*?>早期羅馬洗禮儀式與答問式信經的實踐</h3>)",
+          "url": "images/creed_baptism.jpg",
+          "caption": "義大利拉溫納著名的阿利烏派洗禮堂（Arian Baptistery）穹頂馬賽克（五世紀末），中心描繪了施洗約翰在約旦河為基督施行洗禮的場景，是早期答問式洗禮信經實踐的藝術寫照。"
+        },
+        {
+          "pattern": "(<h3.*?>聖皮爾米紐斯與《備忘錄選集》的文本奠基</h3>)",
+          "url": "images/creed_pirminius.jpg",
+          "caption": "作於十世紀的《霍恩巴赫聖事書》（Hornbacher Sakramentar）插圖，描繪修道院院長阿達爾貝特向修道院創立者聖皮爾米紐斯呈交抄寫的聖經文獻，象徵修道院手抄室對大公信經文本標準化的奠基性貢獻。"
+        },
+        {
+          "pattern": "(<h3.*?>加洛林王朝的帝國 correctio 運動與禮儀標準化</h3>)",
+          "url": "images/carolingian_alcuin.jpg",
+          "caption": "法國歷史畫家 Jean-Victor Schnetz 名作《查理曼與阿爾琴》，描繪學者阿爾琴向查理曼大帝展示修訂後的拉丁文手抄文獻，是加洛林道德修正運動與禮儀一統化歷史的生動描繪。"
+        }
+      ]
+    },
+    "page22": {
+      "title": "羅馬秩序的終結與日耳曼王權的奠定",
+      "file_path": "course/羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅.md",
+      "ver": "1.3",
+      "doc": false,
+      "img": "images/odoacer_fall_rome.jpg",
+      "bg_pos": "center",
+      "seo_title": "羅馬秩序的終結與日耳曼王權的奠定 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究五世紀西羅馬帝國結構崩潰與奧多亞賽的崛起、邊疆外交重組（與東帝國、汪達爾、西哥德關係）、內政與客宿權稅收改革、亞利烏派政教關係與最終覆滅歷史。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/odoacer_fall_rome.jpg\" alt=\"Odoacer Fall of Rome\" loading=\"lazy\"><figcaption class=\"caption\">Bernhard Mörlins 於 19 世紀所繪的歷史插圖，描繪西羅馬帝國最後的皇帝羅慕路斯·奧古斯都向日耳曼將領奧多亞賽讓渡皇冠的經典場景。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page23": {
+      "title": "蠻族崛起的政治重塑與克洛維霸權",
+      "file_path": "course/蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基.md",
+      "ver": "1.2",
+      "doc": false,
+      "img": "images/clovis_main.jpg",
+      "bg_pos": "center",
+      "seo_title": "蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究法蘭克人從部落聯盟到王國奠基的歷史軌跡，探討民族生成（Ethnogenesis）理論、薩利安習慣法的編撰、墨洛溫王朝與羅馬教會的聯盟，以及克洛維一世的政治神學與蘇瓦松戰役等關鍵地緣政治事件。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/clovis_main.jpg\" alt=\"Clovis I\" loading=\"lazy\"><figcaption class=\"caption\">François-Louis Dejuinne 於 19 世紀所繪的法蘭克國王克洛維一世（Clovis I）畫像，現藏於凡爾賽宮，象徵墨洛溫王權的奠基。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page24": {
+      "title": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究",
+      "file_path": "course/帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/roman_colonate_estate.png",
+      "bg_pos": "center",
+      "seo_title": "帝國糧秣、租稅枷鎖與農奴的誕生 — Ludwica 的簡單歷史課",
+      "seo_desc": "深度研究晚期羅馬帝國阿諾納（Annona）糧食後勤、人頭-土地稅雙軌制（Capitatio-Iugatio）與隸農土地附籍法制，解析從羅馬國家統制經濟向西歐中世紀封建農奴制的歷史轉型。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/roman_colonate_estate.png\" alt=\"Late Roman Agricultural Estate\" loading=\"lazy\"><figcaption class=\"caption\">4世紀羅馬帝國晚期莊園（Villa Rustica）與阿諾納後勤物流示意圖：在剛性稅制與勞動力匱乏下，依附於土地的隸農（Coloni）正在莊園主的地盤上進行耕作，預示著中世紀封建農奴制的萌芽。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page25": {
+      "title": "羅馬晚期軍制變遷與哥德人崛起",
+      "file_path": "course/帝國防線的內爆：從羅馬晚期改革、財政軍政演變與社會撕裂看哥德人之崛起.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/adrianople_battle.png",
+      "bg_pos": "center",
+      "seo_title": "羅馬晚期軍制變遷與哥德人崛起 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討羅馬晚期軍事防線的結構性調整，包含軍隊蠻族化與外包僱傭的財政與兵源背景，哥德人的亞利烏派基督教皈依，阿德里安堡戰役，以及382年同盟條約下國中之國的建立與西羅馬帝國的最終解體。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/adrianople_battle.png\" alt=\"Battle of Adrianople\" loading=\"lazy\"><figcaption class=\"caption\">西元378年阿德里安堡戰役示意圖：哥德人重騎兵發動猛烈衝鋒，徹底撕裂了羅馬帝國主力野戰軍的步兵防線，此戰被視為羅馬軍事史上最慘烈的敗仗之一。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page26": {
+      "title": "阿拉里克與哥德大遷徙",
+      "file_path": "course/阿拉里克與哥德大遷徙：晚期羅馬帝國的地緣政治坍塌與蠻族同盟的體制化適應（第一卷：永恆之城的終局）.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/alaric_sack_rome.png",
+      "bg_pos": "center",
+      "seo_title": "阿拉里克與哥德大遷徙 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討西哥德民族建構，阿拉里克的早期軍事生涯（冷河戰役、希臘遠征），伊利里庫姆軍區司令任期，西哥德全族大遷徙的後勤與生存策略，波倫提亞戰役與維羅納戰役，以及410年羅馬之劫的政治威懾、北非遠征計畫和布森托河的合葬傳奇。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/alaric_sack_rome.png\" alt=\"Sack of Rome by Alaric\" loading=\"lazy\"><figcaption class=\"caption\">西元410年西哥德人洗劫羅馬示意圖：蠻族國王阿拉里克率軍攻破羅馬城，開啟了西羅馬帝國政治與軍事體系不可逆轉的瓦解進程。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page27": {
+      "title": "冷河戰役及其歷史學再闡釋",
+      "file_path": "course/羅馬帝國晚期的地緣政治斷裂與軍事赤字：冷河戰役及其歷史學再闡釋.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/battle_of_frigidus.png",
+      "bg_pos": "center",
+      "seo_title": "冷河戰役及其歷史學再闡釋 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討羅馬晚期冷河戰役的地緣政治斷裂、西軍袋形合圍戰術、阿爾比提翁倒戈、極端氣象「波拉風」對遠程彈道的物理干預，以及哥德同盟軍流血稅的反噬效應、西部野戰軍主力消亡與406年萊茵河大入侵的深遠影響。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/battle_of_frigidus.png\" alt=\"Battle of the Frigidus\" loading=\"lazy\"><figcaption class=\"caption\">冷河戰役（西元394年）想像圖：在極端的「波拉風」暴風肆虐下，東部皇帝狄奧多西一世的軍隊發動反攻，狂風將西軍的箭矢吹回其自身陣中，徹底扭轉了戰局。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page04": {
+      "title": "神聖羅馬帝國：金璽詔書",
+      "file_path": "course/4.金璽詔書.md",
+      "ver": "1.9",
+      "doc": true,
+      "img": "",
+      "bg_pos": "center",
+      "seo_title": "金璽詔書：神聖羅馬帝國德中對照翻譯 — Ludwica 的簡單歷史課",
+      "seo_desc": "1356年《金璽詔書》全文德文原文、中文翻譯與學術註解三欄對照，解析選帝侯制度與帝國憲政體制的基石文件。",
+      "map_html": null,
+      "image_replacements": [],
+      "doc_params": {
+        "lang_orig": "德文",
+        "cols": 3
+      }
+    },
+    "page06": {
+      "title": "修道院制度：聖本篤會規",
+      "file_path": "course/5.聖本篤會規.md",
+      "ver": "2.0",
+      "doc": true,
+      "img": "",
+      "bg_pos": "center",
+      "seo_title": "聖本篤會規三欄解析 — Ludwica 的簡單歷史課",
+      "seo_desc": "公元6世紀西方隱修制度基石《聖本篤會規》德文原文、中文翻譯與專業學術註釋三欄並列解析。",
+      "map_html": null,
+      "image_replacements": [],
+      "doc_params": {
+        "lang_orig": "德文",
+        "cols": 3
+      }
+    },
+    "page08": {
+      "title": "敘任權之爭：沃姆斯協約",
+      "file_path": "course/沃姆斯協約.md",
+      "ver": "1.1",
+      "doc": true,
+      "img": "",
+      "bg_pos": "center",
+      "seo_title": "沃姆斯協約 — Ludwica 的簡單歷史課",
+      "seo_desc": "結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。",
+      "map_html": null,
+      "image_replacements": [],
+      "doc_params": {
+        "lang_orig": "德文",
+        "cols": 3
+      }
+    },
+    "page20": {
+      "title": "羅馬帝國：米蘭敕令",
+      "file_path": "course/米蘭敕令.md",
+      "ver": "1.1",
+      "doc": true,
+      "img": "",
+      "bg_pos": "center",
+      "seo_title": "米蘭敕令：羅馬帝國宗教寬容宣告 — Ludwica 的簡單歷史課",
+      "seo_desc": "公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，包含英文與拉丁文雙版本之三欄對照與學術註解。",
+      "map_html": null,
+      "image_replacements": [],
+      "doc_params": {
+        "lang_orig": "英文/拉丁文",
+        "cols": 3
+      }
+    },
+    "page28": {
+      "title": "羅馬帝國：薩洛尼卡敕令",
+      "file_path": "course/薩洛尼卡敕令.md",
+      "ver": "1.2",
+      "doc": true,
+      "img": "",
+      "bg_pos": "center",
+      "seo_title": "羅馬帝國：薩洛尼卡敕令 — Ludwica 的簡單歷史課",
+      "seo_desc": "公元380年由羅馬皇帝格拉提安、瓦倫丁尼安二世與狄奧多西一世聯合頒布的法令，將尼西亞基督教確立為羅馬帝國國教，包含拉丁文原文、中文翻譯三欄對照與名詞解析。",
+      "map_html": null,
+      "image_replacements": [],
+      "doc_params": {
+        "lang_orig": "拉丁文",
+        "cols": 3
+      }
+    },
+    "page29": {
+      "title": "阿德里安堡戰役",
+      "file_path": "course/阿德里安堡戰役.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/battle_of_adrianople.png",
+      "bg_pos": "center",
+      "seo_title": "阿德里安堡戰役 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討公元378年阿德里安堡戰役的宏觀地緣政治背景，包含匈人入侵引發的哥特人口遷徙危機、多瑙河安置事件、羅馬官員的行政腐敗與馬爾恰諾波利斯衝突、雙方戰略目標與作戰序列、兩軍遭遇與交戰經過，以及戰後公元382年同盟條約的地緣政治影響與西羅馬帝國的最終解體路徑。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/battle_of_adrianople.png\" alt=\"Battle of Adrianople\" loading=\"lazy\"><figcaption class=\"caption\">阿德里安堡戰役（西元378年）想像圖：哥特戰士與家眷依託環形相接的篷車陣進行防守，隨後大批哥特與阿蘭重騎兵如雷霆般突襲包抄，給予精疲力竭的羅馬軍團致命的一擊。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page30": {
+      "title": "東羅馬權力重組與蠻族危機",
+      "file_path": "course/東羅馬帝國的權力重組、宮廷政治與蠻族危機：從蓋納斯起事到安提米烏斯攝政的體制轉型研究（395–408年）.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/east_roman_court.png",
+      "bg_pos": "center",
+      "seo_title": "東羅馬帝國的權力重組、宮廷政治與蠻族危機 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討公元395至408年東羅馬帝國在阿卡狄烏斯統治下的權力重組、宮廷政治與蠻族危機，分析近衛軍長官魯菲努斯、大內侍尤特羅皮烏斯、蓋納斯兵變與專政、皇后尤多西亞與大主教金口約翰的權力抗衡，以及安提米烏斯的攝政與波斯王伊嗣俟一世地緣監護的歷史影響。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/east_roman_court.png\" alt=\"East Roman Court\" loading=\"lazy\"><figcaption class=\"caption\">東羅馬宮廷政治與蠻族危機：在君士坦丁堡的金色穹頂之下，文官技術官僚與外戚、宦官及蠻族將領在皇帝的平庸統治下展開了派系鬥爭與權力重組，奠定了拜占庭中世紀帝國生存基石。</figcaption></figure>\n",
+      "image_replacements": [
+        {
+          "pattern": "(<h2.*?>四、.*?</h2>)",
+          "url": "images/gainas_byzantine.png",
+          "caption": "蓋納斯（Gainas）與拜占庭權力危機：早期東羅馬朝廷中，身披羅馬將領甲冑的哥特統帥蓋納斯與阿卡狄烏斯皇帝在殿前對峙，揭示出蠻族軍事干政與傳統官僚力量之間劍拔弩張的緊張張力。"
+        }
+      ]
+    },
+    "page31": {
+      "title": "卡拉卡拉與《安東尼努斯敕令》",
+      "file_path": "course/塞維魯王朝的權力、財政與法制變革：卡拉卡拉與《安東尼努斯敕令》的深度歷史研究.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/caracalla_edict.png",
+      "bg_pos": "center",
+      "seo_title": "卡拉卡拉與《安東尼努斯敕令》 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究塞維魯王朝皇帝卡拉卡拉於西元212年頒布的《安東尼努斯敕令》（Constitutio Antoniniana）的歷史背景、吉森莎草紙40號文獻載體、投降者（dediticii）的法理爭議、稅制改革及遺產稅翻倍的財政實效、貨幣安東尼尼安努斯貶值與信用崩潰，以及輔助軍瓦解與羅馬人身份認同重塑的多維歷史效應。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/caracalla_edict.png\" alt=\"Caracalla Edict\" loading=\"lazy\"><figcaption class=\"caption\">卡拉卡拉與《安東尼努斯敕令》：西元212年，羅馬皇帝卡拉卡拉頒布敕令，授予帝國所有自由民羅馬公民身份，這不僅重塑了羅馬身份認同，也藉此擴大了遺產稅等公民稅收稅基。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page32": {
+      "title": "羅馬帝國：安東尼努斯敕令",
+      "file_path": "course/安東尼努斯敕令.md",
+      "ver": "1.1",
+      "doc": true,
+      "img": "",
+      "bg_pos": "center",
+      "seo_title": "羅馬帝國：安東尼努斯敕令 — Ludwica 的簡單歷史課",
+      "seo_desc": "公元212年羅馬皇帝卡拉卡拉頒布之《安東尼努斯敕令》英漢雙語平行文本，包含吉森莎草紙40號文獻內容、古羅馬法律與文學記載等文獻對照。",
+      "map_html": null,
+      "image_replacements": [],
+      "doc_params": {
+        "lang_orig": "英文/拉丁文",
+        "cols": 2
+      }
+    },
+    "page33": {
+      "title": "一世紀羅馬行省治權與社會",
+      "file_path": "course/帝國機器與行省治權：從聖經敘事與古典文獻印證一世紀羅馬地方統治體制.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/roman_provincial_governance.png",
+      "bg_pos": "center",
+      "seo_title": "一世紀羅馬行省治權與社會 — Ludwica 的簡單歷史課",
+      "seo_desc": "從聖經敘事與古典文獻印證西元一世紀羅馬帝國的地方統治體制，探討行省巡撫、稅收制度、行政機器，以及猶太地方的司法主權與高壓統治實態。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/roman_provincial_governance.png\" alt=\"Roman Provincial Governance\" loading=\"lazy\"><figcaption class=\"caption\">羅馬行省治權與社會：西元一世紀，身處東方行省的羅馬巡撫彼拉多於總督官邸（Praetorium）審理案件，身旁羅馬百夫長與士兵林立，展現出羅馬帝國在猶太地方的高壓統治與司法主權。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page34": {
+      "title": "匈人的登場與晚期羅馬地緣政治",
+      "file_path": "course/匈人的登場：從阿德里安堡戰役到冷河戰役的深層地緣政治與戰略研究.md",
+      "ver": "1.3",
+      "doc": false,
+      "img": "images/huns_arrival.png",
+      "bg_pos": "center",
+      "seo_title": "匈人的登場與晚期羅馬地緣政治 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入解析公元370年代匈人越過頓河對黑海北岸地緣秩序的重塑，探討古基因組學揭示的匈奴遺傳聯結，以及匈人在阿德里安堡戰役與冷河戰役中的戰略角色與地緣資產。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/huns_arrival.png\" alt=\"Huns Arrival\" loading=\"lazy\"><figcaption class=\"caption\">匈人的登場：西元四世紀末，由東方草原呼嘯而至的匈人輕騎兵越過頓河，以致命的突襲擊碎了東哥特王國與阿蘭人的防線，開啟了歐洲蠻族大遷徙的序幕。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page36": {
+      "title": "晚清中樞權力變革與肅順之死",
+      "file_path": "course/晚清中樞權力變革與肅順之死：資歷、政務整肅與辛酉政變之歷史學解構.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/xinyou_coup.png",
+      "bg_pos": "center",
+      "seo_title": "晚清中樞權力變革與肅順之死 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究咸豐朝後期肅順推行的鐵腕改革，剖析戊午科場案、戶部寶鈔案與削減八旗兵俸等吏治整肅措施，解構辛酉政變中顧命八大臣與兩宮太后、恭親王奕訢的法理與公文權力博弈，及洋務運動的起源。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/xinyou_coup.png\" alt=\"Xinyou Coup\" loading=\"lazy\"><figcaption class=\"caption\">辛酉政變與大清權力重組：1861年，咸豐皇帝駕崩於熱河，慈禧太后聯手恭親王奕訢在北京發動政變，清算了顧命八大臣集團，肅順被斬於菜市口，開啟了兩宮垂簾與同治中興的歷史新頁。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page37": {
+      "title": "大清帝國：咸豐皇帝遺詔",
+      "file_path": "course/咸豐皇帝遺詔.md",
+      "ver": "1.1",
+      "doc": true,
+      "img": "",
+      "bg_pos": "center",
+      "seo_title": "大清帝國：咸豐皇帝遺詔 — Ludwica 的簡單歷史課",
+      "seo_desc": "收錄清咸豐十一年（1861年）咸豐皇帝臨終遺詔之文言文與白話中文對照，深入剖析其政治背景、立儲爭議、顧命八大臣安排，以及為辛酉政變埋下之權力博弈伏筆。",
+      "map_html": null,
+      "image_replacements": [],
+      "doc_params": {
+        "lang_orig": "文言文",
+        "cols": 2
+      }
+    },
+    "page38": {
+      "title": "阿陶爾夫與西哥德轉型",
+      "file_path": "course/阿陶爾夫與哥德大遷徙：晚期羅馬帝國的地緣政治坍塌與蠻族同盟的體制化適應（第二卷：蠻族武力與羅馬秩序的合流）.md",
+      "ver": "1.2",
+      "doc": false,
+      "img": "images/athaulf_placidia_wedding.png",
+      "bg_pos": "center",
+      "seo_title": "阿陶爾夫與哥德大遷徙（第二卷：蠻族武力與羅馬秩序的合流） — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究西哥德君主阿陶爾夫的政治抉擇，分析他從試圖抹去羅馬名號建立「哥德帝國（Gothia）」到轉為以哥德武力守護「羅馬法治秩序（Romania）」的思想轉變，以及他與羅馬公主加拉·普拉西提阿聯姻的地緣政治影響與歷史遺產。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/athaulf_placidia_wedding.png\" alt=\"Athaulf and Galla Placidia Wedding\" loading=\"lazy\"><figcaption class=\"caption\">阿陶爾夫與加拉·普拉西提阿的婚禮：西元414年，西哥德君主阿陶爾夫身著羅馬執政官托加禮服，在納博訥迎娶羅馬公主普拉西提阿，象徵哥德武力與羅馬法治秩序的政治合流。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page39": {
+      "title": "斯提里科與晚期羅馬瓦解",
+      "file_path": "course/斯提里科的崛起、掌權與覆滅：從晚期羅馬的歸化政策、用人機制與軍隊蠻族化透視帝國瓦解之源起.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/stilicho_general.png",
+      "bg_pos": "center top",
+      "seo_title": "斯提里科的崛起、掌權與覆滅 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入剖析西羅馬帝國雙軍總長斯提里科的傳奇一生，從其半蠻族出身、軍事功勳（擊敗西哥德人、全殲拉達蓋蘇斯）、溫和宗教政策與焚毀《西比拉預言書》的動機，解構帕維亞兵變如何引發帝國瓦解的多米諾骨牌效應。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/stilicho_general.png\" alt=\"General Flavius Stilicho\" loading=\"lazy\"><figcaption class=\"caption\">弗拉維烏斯·斯提里科的肖像插圖：半日耳曼裔的西羅馬帝國雙軍總長與攝政，身著晚期羅馬將領甲冑，其一生是晚期羅馬帝國防務外包與政治撕裂的縮影。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page40": {
+      "title": "萊茵河－多瑙河地緣戰略",
+      "file_path": "course/歐陸地緣裂變與整合的雙軸命脈：萊茵河－多瑙河連線的政治、經濟與歷史戰略研究.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/rhine_danube_frontier.png",
+      "bg_pos": "center",
+      "seo_title": "萊茵河－多瑙河連線：歐陸地緣裂變與整合的雙軸命脈 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討歐洲兩大水系萊茵河與多瑙河的地理水文特徵，解析羅馬帝國的雙河界牆與邊境經濟圈、西元406年除夕萊茵河大越渡之西羅馬帝國連鎖效應，以及從中世紀查理曼運河到當代航道的地緣政治與工程演變。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/rhine_danube_frontier.png\" alt=\"Rhine Danube Frontier\" loading=\"lazy\"><figcaption class=\"caption\">萊茵河－多瑙河羅馬帝國邊境：公元四世紀，羅馬人在帝國北部邊界修築了複雜的界牆系統，將萊茵河與多瑙河的天然防線封閉起來，以抵禦外來部落的入侵。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page41": {
+      "title": "君士坦丁三世與五世紀初邊疆危機",
+      "file_path": "course/君士坦丁三世政權的興衰：五世紀初西羅馬帝國的邊疆危機、統治架構與軍事瓦解.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/constantine_iii_usurper.png",
+      "bg_pos": "center",
+      "seo_title": "君士坦丁三世政權的興衰：五世紀初西羅馬邊疆危機與軍事瓦解 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入解析五世紀初西羅馬帝國不列顛駐軍兵變，篡位者君士坦丁三世的崛起、高盧行政重建、西班牙遠征與「奧諾里亞奇」衛隊角色，以及將領叛亂與最後亞爾圍城戰之歷史啟示。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/constantine_iii_usurper.png\" alt=\"Constantine III Usurper\" loading=\"lazy\"><figcaption class=\"caption\">不列顛篡位者君士坦丁三世與部隊：五世紀初，不列顛駐軍脫離拉文納朝廷割據建國，揮師渡海控制高盧，在亞爾建立短暫政權，這是西羅馬邊疆防務瓦解與割據困境的縮影。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page42": {
+      "title": "序章 (Prologue)",
+      "file_path": "course/《鐵劍與托加》：序章.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/gothic_three_ships_migration.png",
+      "bg_pos": "center",
+      "seo_title": "《鐵劍與托加》序章：三船南渡，舊神的呢喃 — Ludwica 的簡單歷史課",
+      "seo_desc": "歷史小說《鐵劍與托加》序章。講述哥德人起源的神話傳說，古老國王貝里格帶領族人乘三船南渡薩爾馬提亞海洋，以及獨眼老渡鴉高茲在頓河畔預見紅色風暴與大遷徙諸神黃昏的詩意開端。",
+      "map_html": null,
+      "image_replacements": [],
+      "file_path_en": "course/《鐵劍與托加》：序章_en.md",
+      "bilingual": true
+    },
+    "page43": {
+      "title": "第一章：黑海落日，狂風中的火種",
+      "file_path": "course/《鐵劍與托加》：第一章.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/iron_sword_chapter1_invasion.png",
+      "bg_pos": "center",
+      "seo_title": "《鐵劍與托加》第一章：黑海落日，狂風中的火種 — Ludwica 的簡單歷史課",
+      "seo_desc": "歷史小說《鐵劍與托加》第一章。講述西元375年匈人突然越過頓河入侵，東哥德老國王厄曼納里克在赫爾松焚城自盡，青年阿蘭將領薩烏爾與東哥德將領阿拉修斯、薩夫拉克護送幼王向西突圍逃難的悲壯序幕。",
+      "map_html": null,
+      "image_replacements": [],
+      "file_path_en": "course/《鐵劍與托加》：第一章_en.md",
+      "bilingual": true
+    },
+    "page44": {
+      "title": "羅馬與波斯地緣關係",
+      "file_path": "course/羅馬與波斯薩珊王朝於公元378年前後的地緣政治關係與阿德里安堡戰役後的近東戰略格局演變.md",
+      "ver": "1.1",
+      "doc": false,
+      "img": "images/rome_persia_geopolitics.png",
+      "bg_pos": "center",
+      "seo_title": "羅馬與波斯薩珊王朝地緣關係 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究公元378年前後羅馬帝國與波斯薩珊王朝在亞美尼亞與美索不達米亞的地緣對峙，解析阿德里安堡戰役後的戰略格局重塑、阿奇利塞內和約瓜分亞美尼亞，以及共同防禦高加索防線的協作機制。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/rome_persia_geopolitics.png\" alt=\"Rome Persia Geopolitics\" loading=\"lazy\"><figcaption class=\"caption\">羅馬與薩珊波斯地緣政治對峙：公元378年前後，兩大超級大國在美索不達米亞與亞美尼亞高地劍拔弩張，但在面對北方游牧風暴時，又不得不建立起共同防禦與成本分擔的地緣協作機制。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page45": {
+      "title": "費爾穆斯叛亂與北非防務危機",
+      "file_path": "course/四世紀晚期北非的羅馬帝國防務危機：西元372年費爾穆斯叛亂及其地緣政治與宗教多重影響深度研究報告.md",
+      "ver": "1.3",
+      "doc": false,
+      "img": "images/firmus_rebellion.png",
+      "bg_pos": "center",
+      "seo_title": "費爾穆斯叛亂與北非防務危機 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究西元372年柏柏爾裔羅馬軍官之子費爾穆斯在北非發起的僭越叛亂，剖析地方系統性腐敗、老狄奧多西平叛經過、多納圖斯派的宗教交鋒，以及其對老狄奧多西之死、吉爾do之戰與北非淪陷的深遠影響。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/firmus_rebellion.png\" alt=\"Firmus Rebellion\" loading=\"lazy\"><figcaption class=\"caption\">費爾穆斯叛亂：四世紀晚期，柏柏爾親王費爾穆斯在北非發動叛亂並僭越稱帝，這是帝國防線內爆與部族力量博弈的微觀縮影（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page46": {
+      "title": "阿薩納里克家族與特爾文吉哥德人的統治演變",
+      "file_path": "course/阿薩納里克家族與特爾文吉哥德人的統治演變：政治結構、三代反羅馬立場與權力崩解研究.md",
+      "ver": "1.0",
+      "doc": false,
+      "img": "images/visigoth_migration_map.png",
+      "bg_pos": "center",
+      "seo_title": "阿薩納里克家族與特爾文吉哥德人的統治演變 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討西元四世紀多瑙河邊疆特爾文吉哥德人的政治結構，剖析阿薩納里克家族連續三代（阿里亞里克、奧里克、阿薩納里克）的反羅馬立場與基督教迫害機制，以及在匈人入侵後如何面臨內部分裂與最終的權力崩解。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/visigoth_migration_map.png\" alt=\"Visigoth Migration Map\" loading=\"lazy\"><figcaption class=\"caption\">西哥德人遷徙：四世紀特爾文吉哥德人在匈人入侵的大變局下，被迫跨越邊界進入羅馬帝國，開拓了巴爾幹遷徙的先河。</figcaption></figure>\n",
+      "image_replacements": []
+    },
+    "page47": {
+      "title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
+      "file_path": "course/瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究.md",
+      "ver": "1.0",
+      "doc": false,
+      "img": "images/theodosius_constantinople_entry.png",
+      "bg_pos": "center",
+      "seo_title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討西元378年阿德里安堡戰役後東羅馬帝國的權力真空、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與382年《哥德和約》的政治謀略。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/theodosius_constantinople_entry.png\" alt=\"Theodosius Triumphal Entry\" loading=\"lazy\"><figcaption class=\"caption\">西元380年迪奧多西一世凱旋進入首都君士坦丁堡示意圖：展現了東羅馬帝國在經歷阿德里安堡慘敗後，重塑皇權尊嚴與宗教秩序的關鍵歷史時刻（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
+      "image_replacements": []
+    }
+  }
 }
