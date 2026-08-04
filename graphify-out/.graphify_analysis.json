@@ -1,0 +1,221 @@
+{
+  "communities": {
+    "0": [
+      "migrate_to_firestore",
+      "migrate_to_firestore_find_service_account_key",
+      "migrate_to_firestore_init_firestore",
+      "migrate_to_firestore_main",
+      "migrate_to_firestore_migrate_articles",
+      "migrate_to_firestore_migrate_categories",
+      "migrate_to_firestore_migrate_search_index",
+      "migrate_to_firestore_migrate_site_config",
+      "migrate_to_firestore_migrate_worklog",
+      "migrate_to_firestore_rationale_1",
+      "migrate_to_firestore_rationale_146",
+      "migrate_to_firestore_rationale_160",
+      "migrate_to_firestore_rationale_193",
+      "migrate_to_firestore_rationale_30",
+      "migrate_to_firestore_rationale_45",
+      "migrate_to_firestore_rationale_60",
+      "migrate_to_firestore_rationale_80"
+    ],
+    "1": [
+      "js_firebase_config",
+      "js_firebase_config_firebaseconfig",
+      "js_firestore_service",
+      "js_firestore_service_articleaccessorder",
+      "js_firestore_service_cache",
+      "js_firestore_service_cachearticle",
+      "js_firestore_service_clearcache",
+      "js_firestore_service_getarticlebyid",
+      "js_firestore_service_getarticlescatalog",
+      "js_firestore_service_getcategories",
+      "js_firestore_service_getsearchindex",
+      "js_firestore_service_getsiteconfig",
+      "js_firestore_service_getworklog"
+    ],
+    "2": [
+      "lhci_cli",
+      "markdownlint_cli2",
+      "package",
+      "package_description",
+      "package_devdependencies",
+      "package_devdependencies_lhci_cli",
+      "package_devdependencies_markdownlint_cli2",
+      "package_name",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_lhci",
+      "package_scripts_lint",
+      "package_version"
+    ],
+    "3": [
+      "api/articles.json",
+      "build_html_md.py",
+      "build_static_chunks.py",
+      "course_config.json",
+      "index.html",
+      "index_db.html",
+      "js/firebase-config.js",
+      "js/firestore-service.js",
+      "migrate_to_firestore.py",
+      "run_build.py",
+      "template.html",
+      "verify_project.py"
+    ],
+    "4": [
+      "build_html_md",
+      "build_html_md_get_doc_tab",
+      "build_html_md_get_file_last_update_date",
+      "build_html_md_get_share_bar_html",
+      "build_html_md_make_card_html",
+      "build_html_md_make_urls_clickable",
+      "build_html_md_process_3col_document",
+      "build_html_md_process_markdown",
+      "build_html_md_write_site_outputs",
+      "build_static_chunks",
+      "build_static_chunks_clean_html_tags",
+      "build_static_chunks_main"
+    ],
+    "5": [
+      "course_import_gdoc",
+      "course_import_gdoc_clean_filename",
+      "course_import_gdoc_clean_google_redirects",
+      "course_import_gdoc_ensure_markdownify",
+      "course_import_gdoc_extract_doc_id",
+      "course_import_gdoc_fetch_gdoc_html",
+      "course_import_gdoc_format_citations",
+      "course_import_gdoc_format_reference_links",
+      "course_import_gdoc_main",
+      "course_import_gdoc_make_urls_clickable",
+      "course_import_gdoc_rationale_94"
+    ],
+    "6": [
+      "verify_project",
+      "verify_project_check_files_exist",
+      "verify_project_check_images_exist",
+      "verify_project_check_index_sync",
+      "verify_project_check_static_article_pages",
+      "verify_project_main",
+      "verify_project_rationale_100",
+      "verify_project_rationale_157"
+    ],
+    "7": [
+      "admin_server",
+      "admin_server_adminrequesthandler",
+      "admin_server_adminrequesthandler_do_get",
+      "admin_server_adminrequesthandler_do_post",
+      "admin_server_adminrequesthandler_log_message",
+      "admin_server_main",
+      "admin_server_stop_main_server"
+    ],
+    "8": [
+      "run_build",
+      "run_build_find_service_account_key",
+      "run_build_main",
+      "run_build_run_script"
+    ],
+    "9": [
+      "run_fact_check_with_search",
+      "run_fact_check_with_search_is_candidate",
+      "run_fact_check_with_search_search_duckduckgo",
+      "run_fact_check_with_search_split_sentences"
+    ],
+    "10": [
+      "server",
+      "server_main",
+      "server_statichandler",
+      "server_statichandler_do_get"
+    ],
+    "11": [
+      "run_fact_check",
+      "run_fact_check_is_candidate",
+      "run_fact_check_split_sentences"
+    ],
+    "12": [
+      "update_characters_database",
+      "update_characters_database_find_char",
+      "update_characters_database_get_pid_num"
+    ],
+    "13": [
+      "js_map_data",
+      "js_map_data_historical_places"
+    ]
+  },
+  "cohesion": {
+    "0": 0.16911764705882354,
+    "1": 0.16666666666666666,
+    "2": 0.15384615384615385,
+    "3": 0.16666666666666666,
+    "4": 0.2878787878787879,
+    "5": 0.32727272727272727,
+    "6": 0.39285714285714285,
+    "7": 0.3333333333333333,
+    "8": 0.8333333333333334,
+    "9": 0.5,
+    "10": 0.5,
+    "11": 0.6666666666666666,
+    "12": 0.6666666666666666,
+    "13": 1.0
+  },
+  "gods": [
+    {
+      "id": "course_import_gdoc_main",
+      "label": "main()",
+      "degree": 9
+    },
+    {
+      "id": "migrate_to_firestore_main",
+      "label": "main()",
+      "degree": 7
+    },
+    {
+      "id": "verify_project_main",
+      "label": "main()",
+      "degree": 5
+    },
+    {
+      "id": "admin_server_adminrequesthandler",
+      "label": "AdminRequestHandler",
+      "degree": 4
+    },
+    {
+      "id": "build_html_md_process_markdown",
+      "label": "process_markdown()",
+      "degree": 4
+    },
+    {
+      "id": "build_html_md_process_3col_document",
+      "label": "process_3col_document()",
+      "degree": 4
+    },
+    {
+      "id": "migrate_to_firestore_init_firestore",
+      "label": "init_firestore()",
+      "degree": 4
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 4
+    },
+    {
+      "id": "build_html_md_make_urls_clickable",
+      "label": "make_urls_clickable()",
+      "degree": 3
+    },
+    {
+      "id": "build_html_md_get_file_last_update_date",
+      "label": "get_file_last_update_date()",
+      "degree": 3
+    }
+  ],
+  "surprises": [],
+  "questions": [
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `firebaseConfig`, `cache`, `_articleAccessOrder` to the rest of the system?",
+      "why": "12 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

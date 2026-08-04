@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "js_firestore_service_getarticlescatalog",
+      "label": "getArticlesCatalog",
+      "file_type": "code",
+      "source_file": "js/firestore-service.js",
+      "source_location": "L44",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_firestore_service_getcategories",
+      "label": "getCategories",
+      "file_type": "code",
+      "source_file": "js/firestore-service.js",
+      "source_location": "L97",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_firestore_service_getarticlebyid",
+      "label": "getArticleById",
+      "file_type": "code",
+      "source_file": "js/firestore-service.js",
+      "source_location": "L140",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_firestore_service_getworklog",
+      "label": "getWorklog",
+      "file_type": "code",
+      "source_file": "js/firestore-service.js",
+      "source_location": "L199",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_firestore_service_getsearchindex",
+      "label": "getSearchIndex",
+      "file_type": "code",
+      "source_file": "js/firestore-service.js",
+      "source_location": "L237",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_firestore_service_getsiteconfig",
+      "label": "getSiteConfig",
+      "file_type": "code",
+      "source_file": "js/firestore-service.js",
+      "source_location": "L286",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_firestore_service_clearcache",
+      "label": "clearCache",
+      "file_type": "code",
+      "source_file": "js/firestore-service.js",
+      "source_location": "L317",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
