@@ -136,6 +136,14 @@
         "page42",
         "page43"
       ]
+    },
+    {
+      "title": "漢朝社會研究",
+      "key": "han",
+      "img": "images/han_dynasty_slavery_society.png",
+      "pages": [
+        "page48"
+      ]
     }
   ],
   "articles": {
@@ -781,7 +789,7 @@
     "page47": {
       "title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
       "file_path": "course/瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究.md",
-      "ver": "1.1",
+      "ver": "1.0",
       "doc": false,
       "img": "images/theodosius_constantinople_entry.png",
       "bg_pos": "center",
@@ -1116,17 +1124,9 @@
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/visigoth_migration_map.png\" alt=\"Visigoth Migration Map\" loading=\"lazy\"><figcaption class=\"caption\">西哥德人遷徙：四世紀特爾文吉哥德人在匈人入侵的大變局下，被迫跨越邊界進入羅馬帝國，開拓了巴爾幹遷徙的先河。</figcaption></figure>\n",
       "image_replacements": []
     },
-    "page47": {
-      "title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
-      "file_path": "course/瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究.md",
-      "ver": "1.0",
-      "doc": false,
-      "img": "images/theodosius_constantinople_entry.png",
-      "bg_pos": "center",
-      "seo_title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 — Ludwica 的簡單歷史課",
-      "seo_desc": "深入探討西元378年阿德里安堡戰役後東羅馬帝國的權力真空、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與382年《哥德和約》的政治謀略。",
-      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/theodosius_constantinople_entry.png\" alt=\"Theodosius Triumphal Entry\" loading=\"lazy\"><figcaption class=\"caption\">西元380年迪奧多西一世凱旋進入首都君士坦丁堡示意圖：展現了東羅馬帝國在經歷阿德里安堡慘敗後，重塑皇權尊嚴與宗教秩序的關鍵歷史時刻（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
-      "image_replacements": []
+    "page48": {
+      "seo_title": "漢代奴隸制度之歷史與法制考論：定義、社會性質、產生途徑、身份權義、閹人關係、朝廷管制與制度演變 | 簡單歷史課",
+      "seo_desc": "本篇學術文章深入考論漢代奴隸制度，從睡虎地與張家山漢簡等出土簡牘結合傳世文獻，系統解析奴婢的法律與社會定義、學術界對漢代非奴隸社會之共識、奴隸產生途徑與官私分類、身分權利義務限制、閹人（宦官）與奴婢之關係、朝廷重稅抑奴策略及兩漢四百年間奴隸制的演變軌跡。"
     }
   }
 }

@@ -528,8 +528,8 @@ map_p47 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><
 images_p47 = []
 
 # Page 48 Config
-file_p48 = r'course/羅馬帝國阿諾納制度（Annona）之深度行政、財政、軍事與地緣歷史研究.md'
-map_p48 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/roman_annona_system.jpg" alt="Roman Annona System" loading="lazy"><figcaption class="caption">古羅馬阿諾納（Annona）糧食供應體系：展現了從海外屬省（埃及、北非）跨海運輸小麥與橄欖油至波爾圖斯港，並於首都羅馬城進行官辦分發的規模化物流與國家行政調控（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n'
+file_p48 = r'course/漢代奴隸制度之歷史與法制考論：定義、社會性質、產生途徑、身份權義、閹人關係、朝廷管制與制度演變.md'
+map_p48 = '<figure class="image-left" style="width: 38%; margin-bottom: 20px;"><img src="images/han_dynasty_slavery_society.png" alt="Han Dynasty Social Structure" loading="lazy"><figcaption class="caption">漢代社會結構與莊園經濟：展現了漢代官民、莊園主人、編戶農民與依附奴婢的階層關係與日常勞役實態（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n'
 images_p48 = []
 
 
@@ -783,6 +783,7 @@ pages_data = {
     'page45': {'title': '費爾穆斯叛亂與北非防務危機', 'img': 'images/firmus_rebellion.png', 'ver': '1.3', 'doc': False},
     'page46': {'title': '阿薩納里克家族與特爾文吉哥德人的統治演變', 'img': 'images/visigoth_migration_map.png', 'ver': '1.0', 'doc': False},
     'page47': {'title': '瓦倫斯陣亡至迪奧多西接掌君士坦丁堡', 'img': 'images/theodosius_constantinople_entry.png', 'ver': '1.0', 'doc': False},
+    'page48': {'title': '漢代奴隸制度之歷史與法制考論', 'img': 'images/han_dynasty_slavery_society.png', 'ver': '1.0', 'doc': False},
 }
 
 categories = [
@@ -853,6 +854,12 @@ categories = [
         'pages': ['page36']
     },
     {
+        'title': '漢朝社會研究',
+        'key': 'han',
+        'img': 'images/han_dynasty_slavery_society.png',
+        'pages': ['page48']
+    },
+    {
         'title': '鐵劍與托加 (Broadsword and Toga)',
         'key': 'novel',
         'img': 'images/iron_sword_and_toga_cover.png',
@@ -864,7 +871,7 @@ def get_doc_tab(page_id, data):
     title = data.get('title', '')
     if page_id in ['page02', 'page13'] or '美國' in title:
         return 'new-world'
-    if page_id == 'page37' or '大清' in title or '咸豐' in title:
+    if page_id in ['page37', 'page48'] or '大清' in title or '咸豐' in title or '漢' in title:
         return 'far-east'
     return 'europe'
 
@@ -892,7 +899,8 @@ def make_card_html(page_id, data):
 cards_html_list = []
 tab_mapping = {
     'us': 'new-world',
-    'qing': 'far-east'
+    'qing': 'far-east',
+    'han': 'far-east'
 }
 for cat in categories:
     cat_cards = []
