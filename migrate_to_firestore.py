@@ -92,6 +92,8 @@ def migrate_articles(db, catalog_data, force=False):
         meta_data = {
             'id': page_id,
             'title': art['title'],
+            'seo_title': art.get('seo_title', f"{art['title']} — Ludwica 的簡單歷史課"),
+            'seo_desc': art.get('seo_desc', art['title']),
             'ver': art.get('ver', '1.0'),
             'last_updated': art.get('last_updated', ''),
             'category': art.get('category', ''),

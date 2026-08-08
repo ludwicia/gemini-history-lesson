@@ -21,6 +21,12 @@
 
 ### 🔄 近期詳細更新日誌
 
+#### 2026-08-08 (全站外觀、資料庫與單一真實來源架構優化 | 版面 8.3)
+- **Firestore 雲端 SEO 傳輸漏洞修復**：修正 `migrate_to_firestore.py`，補齊 `seo_title` 與 `seo_desc` 上傳欄位，還原線上 SPA 版本的全站 50–160 字高質量 SEO 描述。
+- **單一真實來源 (Single Source of Truth) 架構重構**：重構 `build_html_md.py` 為動態載入 `course_config.json`，徹底消除舊版硬編碼 `pages_data` 導致的 21 處文章內容版本號分岔；補齊 `course_config.json` 中 `page48` 的完整 JSON 詮釋資料結構。
+- **版面版本號同步與快取機制更新**：統一全站 `index_db.html`、`firestore-service.js`（`APP_VERSION = '8.3'`）、`course_config.json` 與 `template.html` 之版面宣告版本為 **8.3**。
+- **廢棄程式碼清理與建置效能提升**：移除 `build_html_md.py` 中對廢棄 `template.html` (87.7 KB) 的重複讀取與 `portal_template` 運算，節省建置記憶體與 CPU 負載。
+
 #### 2026-08-05 (發布新專題 | 漢代奴隸制度之歷史與法制考論 1.0 | 版面 8.3)
 - **新增專題文章與分類**：於「遠東」頁面新增「漢朝社會研究」分類，並發布《漢代奴隸制度之歷史與法制考論：定義、社會性質、產生途徑、身份權義、閹人關係、朝廷管制與制度演變》（page48）。
 - **史實考據與古籍校正**：依據《漢書·食貨志》校正高祖詔文「令民得賣子就食蜀漢」，依《漢官儀》校定「擇年八歲以上潔白者曰宦人」，修正內文打字偏差「豪奢消費中」。

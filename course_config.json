@@ -1,6 +1,6 @@
 {
   "site_config": {
-    "layout_version": "8.1",
+    "layout_version": "8.3",
     "publish_date": "2026-07-26",
     "site_name": "Ludwica 的簡單歷史課",
     "site_url": "https://ludwica-history-lesson.pages.dev/",
@@ -1125,8 +1125,16 @@
       "image_replacements": []
     },
     "page48": {
+      "title": "漢代奴隸制度之歷史與法制考論",
+      "file_path": "course/漢代奴隸制度之歷史與法制考論：定義、社會性質、產生途徑、身份權義、閹人關係、朝廷管制與制度演變.md",
+      "ver": "1.0",
+      "doc": false,
+      "img": "images/han_dynasty_slavery_society.png",
+      "bg_pos": "center",
       "seo_title": "漢代奴隸制度之歷史與法制考論：定義、社會性質、產生途徑、身份權義、閹人關係、朝廷管制與制度演變 | 簡單歷史課",
-      "seo_desc": "本篇學術文章深入考論漢代奴隸制度，從睡虎地與張家山漢簡等出土簡牘結合傳世文獻，系統解析奴婢的法律與社會定義、學術界對漢代非奴隸社會之共識、奴隸產生途徑與官私分類、身分權利義務限制、閹人（宦官）與奴婢之關係、朝廷重稅抑奴策略及兩漢四百年間奴隸制的演變軌跡。"
+      "seo_desc": "本篇學術文章深入考論漢代奴隸制度，從睡虎地與張家山漢簡等出土簡牘結合傳世文獻，系統解析奴婢的法律與社會定義、學術界對漢代非奴隸社會之共識、奴隸產生途徑與官私分類、身分權利義務限制、閹人（宦官）與奴婢之關係、朝廷重稅抑奴策略及兩漢四百年間奴隸制的演變軌跡。",
+      "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/han_dynasty_slavery_society.png\" alt=\"Han Dynasty Social Structure\" loading=\"lazy\"><figcaption class=\"caption\">漢代社會結構與莊園經濟：展現了漢代官民、莊園主人、編戶農民與依附奴婢的階層關係與日常勞役實態（本圖為 AI 模擬歷史繪畫）。</figcaption></figure>\n",
+      "image_replacements": []
     }
   }
 }

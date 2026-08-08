@@ -5,6 +5,7 @@
       "key": "pre-3rd-century-rome",
       "img": "images/roman_provincial_governance.png",
       "pages": [
+        "page32",
         "page33"
       ]
     },
@@ -17,13 +18,15 @@
         "page22",
         "page24",
         "page25",
+        "page47",
         "page27",
+        "page20",
+        "page28",
         "page30",
         "page31",
         "page39",
         "page41",
-        "page45",
-        "page47"
+        "page45"
       ]
     },
     {
@@ -62,7 +65,9 @@
       "img": "images/reisekönig_travelling_kings.jpg",
       "pages": [
         "page07",
-        "page16"
+        "page16",
+        "page04",
+        "page08"
       ]
     },
     {
@@ -74,7 +79,8 @@
         "page12",
         "page15",
         "page17",
-        "page21"
+        "page21",
+        "page06"
       ]
     },
     {
@@ -111,15 +117,8 @@
       "key": "qing",
       "img": "images/qing_empire.png",
       "pages": [
-        "page36"
-      ]
-    },
-    {
-      "title": "漢朝社會研究",
-      "key": "han",
-      "img": "images/han_dynasty_slavery_society.png",
-      "pages": [
-        "page48"
+        "page36",
+        "page37"
       ]
     },
     {
@@ -130,14 +129,22 @@
         "page42",
         "page43"
       ]
+    },
+    {
+      "title": "漢朝社會研究",
+      "key": "han",
+      "img": "images/han_dynasty_slavery_society.png",
+      "pages": [
+        "page48"
+      ]
     }
   ],
   "articles": [
     {
       "id": "page01",
       "title": "荷蘭建國與地緣政經",
-      "seo_title": "荷蘭建國與地緣政經 — Ludwica 的簡單歷史課",
-      "seo_desc": "荷蘭建國與地緣政經",
+      "seo_title": "荷蘭建國史與東印度公司興衰 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入解析荷蘭從低地十七省到聯省共和國的建國歷程、東印度公司的全球貿易帝國、黃金時代的藝術巅峰與當代政經轉型。",
       "ver": "1.1",
       "last_updated": "2026-06-07",
       "category": "holland",
@@ -148,8 +155,8 @@
     {
       "id": "page02",
       "title": "美國的誕生(一)",
-      "seo_title": "美國的誕生(一) — Ludwica 的簡單歷史課",
-      "seo_desc": "美國的誕生(一)",
+      "seo_title": "前哥倫布時期美洲與三個世界的交會 — Ludwica 的簡單歷史課",
+      "seo_desc": "探索1607年以前美洲原住民的文明成就、大航海時代的技術革命、哥圍布大交換，以及西班牙、法國、英國的早期殖民衝突。",
       "ver": "1.1",
       "last_updated": "2026-07-07",
       "category": "us",
@@ -160,8 +167,8 @@
     {
       "id": "page13",
       "title": "美國的誕生(二)",
-      "seo_title": "美國的誕生(二) — Ludwica 的簡單歷史課",
-      "seo_desc": "美國的誕生(二)",
+      "seo_title": "殖民地的建立、定居與大西洋世界的形塑 — Ludwica 的簡單歷史課",
+      "seo_desc": "探索1607至1754年英屬北美十三殖民地的區域性分化、勞動力體制向種族奴隸制的轉型、邊疆衝突與大西洋世界在重商主義、光榮革命、啟蒙運動和大覺醒下的文化整合。",
       "ver": "1.1",
       "last_updated": "2026-07-07",
       "category": "us",
@@ -172,9 +179,9 @@
     {
       "id": "page03",
       "title": "宗教戰爭(一)：胡斯戰爭",
-      "seo_title": "宗教戰爭(一)：胡斯戰爭 — Ludwica 的簡單歷史課",
-      "seo_desc": "宗教戰爭(一)：胡斯戰爭",
-      "ver": "1.0",
+      "seo_title": "胡斯戰爭：信仰衝突與波希米亞國家認同 — Ludwica 的簡單歷史課",
+      "seo_desc": "揚·胡斯的宗教改革先驅運動、波希米亞的宗教衝突與軍事變革、戰車壘戰術革新，以及對歐洲宗教格局的深遠影響。",
+      "ver": "1.1",
       "last_updated": "2026-07-12",
       "category": "church",
       "img": "images/hussite_wars_main.png",
@@ -184,8 +191,8 @@
     {
       "id": "page12",
       "title": "宗教戰爭(二)：卡特里派",
-      "seo_title": "宗教戰爭(二)：卡特里派 — Ludwica 的簡單歷史課",
-      "seo_desc": "宗教戰爭(二)：卡特里派",
+      "seo_title": "中世紀卡特里派的興起、教義、十字軍聖戰與歷史餘音 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究中世紀南法阿爾比十字軍東征、卡特里派（阿爾比派）二元論神學與禁慾實踐、宗教裁判所的官僚化清洗，以及《富尼埃登記簿》與微觀歷史學《蒙塔尤》的思想異質性。",
       "ver": "1.1",
       "last_updated": "2026-07-26",
       "category": "church",
@@ -196,9 +203,9 @@
     {
       "id": "page05",
       "title": "希爾紹修道院",
-      "seo_title": "希爾紹修道院 — Ludwica 的簡單歷史課",
-      "seo_desc": "希爾紹修道院",
-      "ver": "1.0",
+      "seo_title": "希爾紹修道院研究報告 — Ludwica 的簡單歷史課",
+      "seo_desc": "希爾紹修道院的千年歷史、威廉大院長的改革運動、希爾紹建築學派的羅馬式美學巔峰，以及九年戰爭後的廢墟重生。",
+      "ver": "1.1",
       "last_updated": "2026-06-07",
       "category": "trivia",
       "img": "images/hirsau_main_wilhelm.jpg",
@@ -209,8 +216,8 @@
       "id": "page07",
       "title": "奧托-薩利安帝國教會體制",
       "seo_title": "奧托-薩利安帝國教會體制 — Ludwica 的簡單歷史課",
-      "seo_desc": "奧托-薩利安帝國教會體制",
-      "ver": "1.0",
+      "seo_desc": "奧托王朝與薩利安王朝的帝國教會體制、政教合一的運作機制、巡迴朝廷制度，以及敘任權之爭的歷史根源。",
+      "ver": "1.1",
       "last_updated": "2026-06-14",
       "category": "hre",
       "img": "images/ottonian_hre_map.svg",
@@ -220,8 +227,8 @@
     {
       "id": "page09",
       "title": "丕平獻土與教宗國誕生",
-      "seo_title": "丕平獻土與教宗國誕生 — Ludwica 的簡單歷史課",
-      "seo_desc": "丕平獻土與教宗國誕生",
+      "seo_title": "丕平獻土的地緣政治體系研究 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究西元八世紀中葉丕平獻土的地緣政治背景、卡洛林與教廷的權力交換機制、《君士坦丁贈禮》的法理偽造陰謀，以及對中世紀西歐政教關係的深遠歷史影響。",
       "ver": "1.2",
       "last_updated": "2026-07-14",
       "category": "papal",
@@ -232,9 +239,9 @@
     {
       "id": "page10",
       "title": "卡洛林教育基建與知識復興",
-      "seo_title": "卡洛林教育基建與知識復興 — Ludwica 的簡單歷史課",
-      "seo_desc": "卡洛林教育基建與知識復興",
-      "ver": "1.0",
+      "seo_title": "卡洛林王朝教育基建與知識復興 — Ludwica 的簡單歷史課",
+      "seo_desc": "探討卡洛林王朝教育基建與宗教變革、手抄室與卡洛林小草體書寫革命、跨國學者網絡、基督教化七藝與課堂實踐，以及文明火種對後世中世紀大學的深遠影響。",
+      "ver": "1.1",
       "last_updated": "2026-06-30",
       "category": "frank",
       "img": "images/carolingian_main.jpg",
@@ -244,8 +251,8 @@
     {
       "id": "page11",
       "title": "歐洲造紙術的歷史演變",
-      "seo_title": "歐洲造紙術的歷史演變 — Ludwica 的簡單歷史課",
-      "seo_desc": "歐洲造紙術的歷史演變",
+      "seo_title": "歐洲造紙術的歷史演變與技術革新 — Ludwica 的簡單歷史課",
+      "seo_desc": "研究歐洲造紙術的地中海傳播、法布里亞諾技術革命、荷蘭式打漿機與長網造紙機機械化，以及紙張作為物質中介對近代官僚體制、宗教改革與古騰堡印刷術的歷史重塑。",
       "ver": "1.1",
       "last_updated": "2026-07-30",
       "category": "trivia",
@@ -256,9 +263,9 @@
     {
       "id": "page14",
       "title": "英國的憲法",
-      "seo_title": "英國的憲法 — Ludwica 的簡單歷史課",
-      "seo_desc": "英國的憲法",
-      "ver": "1.0",
+      "seo_title": "英國的憲法：非法典化體制的理論與實踐 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究英國不成文憲法的歷史演進（大憲章、光榮革命、權利法案）、修訂機制與彈性、尊嚴與效能雙重結構，以及2022年至2026年間的現代憲政轉型。",
+      "ver": "1.1",
       "last_updated": "2026-06-07",
       "category": "trivia",
       "img": "images/uk_constitution_main.png",
@@ -268,8 +275,8 @@
     {
       "id": "page15",
       "title": "聖職與婚娶",
-      "seo_title": "聖職與婚娶 — Ludwica 的簡單歷史課",
-      "seo_desc": "聖職與婚娶",
+      "seo_title": "聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈。",
       "ver": "1.2",
       "last_updated": "2026-06-08",
       "category": "church",
@@ -280,9 +287,9 @@
     {
       "id": "page16",
       "title": "中世紀巡行王權的權力運作",
-      "seo_title": "中世紀巡行王權的權力運作 — Ludwica 的簡單歷史課",
-      "seo_desc": "中世紀巡行王權的權力運作",
-      "ver": "1.0",
+      "seo_title": "中世紀巡行王權的權力運作、制度體系與社會實態 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究十世紀神聖羅馬帝國皇帝奧圖一世在九五五年的巡行與戰事軌跡，解析巡行王權的協商式統治、動態禮儀展演、帝國教會體制與物資汲取物流機制。",
+      "ver": "1.1",
       "last_updated": "2026-06-14",
       "category": "hre",
       "img": "images/reisekönig_travelling_kings.jpg",
@@ -292,9 +299,9 @@
     {
       "id": "page17",
       "title": "從皇帝稱號看羅馬政教關係演變",
-      "seo_title": "從皇帝稱號看羅馬政教關係演變 — Ludwica 的簡單歷史課",
-      "seo_desc": "從皇帝稱號看羅馬政教關係演變",
-      "ver": "1.0",
+      "seo_title": "從皇帝的稱號看歷史背景與政教關係的演變 — Ludwica 的簡單歷史課",
+      "seo_desc": "從三世紀危機後的戴克里先確立君主制，到君士坦丁大帝開啟基督教的寬容時代，再到格拉提安與迪奧多西一世將尼西亞信仰確立為國教，解析皇帝稱號的演變如何折射出羅馬帝國晚期的政教關係與政治神學。",
+      "ver": "1.1",
       "last_updated": "2026-07-10",
       "category": "church",
       "img": "images/ambrose_and_theodosius.png",
@@ -305,7 +312,7 @@
       "id": "page18",
       "title": "西元紀年的確立與演進",
       "seo_title": "西元紀年的確立與演進 — Ludwica 的簡單歷史課",
-      "seo_desc": "西元紀年的確立與演進",
+      "seo_desc": "深入解析西元紀年（AD）的提出背景、關鍵歷史人物（狄奧尼修斯、尊者比德、查理曼大帝）、曆法改革、東西方教會的分裂以及全球標準化（ISO 8601）與缺失的西元零年問題。",
       "ver": "1.2",
       "last_updated": "2026-07-28",
       "category": "trivia",
@@ -316,8 +323,8 @@
     {
       "id": "page19",
       "title": "米蘭敕令時代與李錫尼覆滅",
-      "seo_title": "米蘭敕令時代與李錫尼覆滅 — Ludwica 的簡單歷史課",
-      "seo_desc": "米蘭敕令時代與李錫尼覆滅",
+      "seo_title": "米蘭敕令時代的羅馬政治與李錫尼覆滅 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討公元313年米蘭敕令頒布前後的羅馬帝國地緣政治，分析君士坦丁與李錫尼的權力博弈、宗教寬容政策的確立，以及李錫尼的最終覆滅。",
       "ver": "1.1",
       "last_updated": "2026-07-10",
       "category": "rome",
@@ -329,9 +336,9 @@
       "id": "page21",
       "title": "使徒信經的歷史演變與神學建構",
       "seo_title": "使徒信經的歷史演變與神學建構 — Ludwica 的簡單歷史課",
-      "seo_desc": "使徒信經的歷史演變與神學建構",
-      "ver": "1.2",
-      "last_updated": "2026-07-19",
+      "seo_desc": "深入研究使徒信經從新約雛形、古羅馬信經雙語見證，到皮爾米紐斯文本奠基，以及加洛林道德修正運動與禮儀標準化推廣的歷史演變。",
+      "ver": "1.1",
+      "last_updated": "2026-08-08",
       "category": "church",
       "img": "images/creed_main.jpg",
       "bg_pos": "center",
@@ -341,8 +348,8 @@
       "id": "page22",
       "title": "羅馬秩序的終結與日耳曼王權的奠定",
       "seo_title": "羅馬秩序的終結與日耳曼王權的奠定 — Ludwica 的簡單歷史課",
-      "seo_desc": "羅馬秩序的終結與日耳曼王權的奠定",
-      "ver": "1.4",
+      "seo_desc": "深入研究五世紀西羅馬帝國結構崩潰與奧多亞賽的崛起、邊疆外交重組（與東帝國、汪達爾、西哥德關係）、內政與客宿權稅收改革、亞利烏派政教關係與最終覆滅歷史。",
+      "ver": "1.3",
       "last_updated": "2026-07-24",
       "category": "rome",
       "img": "images/odoacer_fall_rome.jpg",
@@ -352,8 +359,8 @@
     {
       "id": "page23",
       "title": "蠻族崛起的政治重塑與克洛維霸權",
-      "seo_title": "蠻族崛起的政治重塑與克洛維霸權 — Ludwica 的簡單歷史課",
-      "seo_desc": "蠻族崛起的政治重塑與克洛維霸權",
+      "seo_title": "蠻族崛起的政治重塑：法蘭克人的民族生成、羅馬遺產與克洛維一世的霸權奠基 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究法蘭克人從部落聯盟到王國奠基的歷史軌跡，探討民族生成（Ethnogenesis）理論、薩利安習慣法的編撰、墨洛溫王朝與羅馬教會的聯盟，以及克洛維一世的政治神學與蘇瓦松戰役等關鍵地緣政治事件。",
       "ver": "1.2",
       "last_updated": "2026-07-22",
       "category": "medieval",
@@ -364,8 +371,8 @@
     {
       "id": "page24",
       "title": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究",
-      "seo_title": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究 — Ludwica 的簡單歷史課",
-      "seo_desc": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究",
+      "seo_title": "帝國糧秣、租稅枷鎖與農奴的誕生 — Ludwica 的簡單歷史課",
+      "seo_desc": "深度研究晚期羅馬帝國阿諾納（Annona）糧食後勤、人頭-土地稅雙軌制（Capitatio-Iugatio）與隸農土地附籍法制，解析從羅馬國家統制經濟向西歐中世紀封建農奴制的歷史轉型。",
       "ver": "1.1",
       "last_updated": "2026-07-30",
       "category": "rome",
@@ -377,8 +384,8 @@
       "id": "page25",
       "title": "羅馬晚期軍制變遷與哥德人崛起",
       "seo_title": "羅馬晚期軍制變遷與哥德人崛起 — Ludwica 的簡單歷史課",
-      "seo_desc": "羅馬晚期軍制變遷與哥德人崛起",
-      "ver": "1.0",
+      "seo_desc": "深入探討羅馬晚期軍事防線的結構性調整，包含軍隊蠻族化與外包僱傭的財政與兵源背景，哥德人的亞利烏派基督教皈依，阿德里安堡戰役，以及382年同盟條約下國中之國的建立與西羅馬帝國的最終解體。",
+      "ver": "1.1",
       "last_updated": "2026-07-10",
       "category": "rome",
       "img": "images/adrianople_battle.png",
@@ -386,10 +393,22 @@
       "is_doc": 0
     },
     {
+      "id": "page47",
+      "title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
+      "seo_title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討西元378年阿德里安堡戰役後東羅馬帝國的權力真空、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與382年《哥德和約》的政治謀略。",
+      "ver": "1.0",
+      "last_updated": "2026-08-05",
+      "category": "rome",
+      "img": "images/theodosius_constantinople_entry.png",
+      "bg_pos": "center",
+      "is_doc": 0
+    },
+    {
       "id": "page26",
       "title": "阿拉里克與哥德大遷徙",
       "seo_title": "阿拉里克與哥德大遷徙 — Ludwica 的簡單歷史課",
-      "seo_desc": "阿拉里克與哥德大遷徙",
+      "seo_desc": "深入探討西哥德民族建構，阿拉里克的早期軍事生涯（冷河戰役、希臘遠征），伊利里庫姆軍區司令任期，西哥德全族大遷徙的後勤與生存策略，波倫提亞戰役與維羅納戰役，以及410年羅馬之劫的政治威懾、北非遠征計畫和布森托河的合葬傳奇。",
       "ver": "1.1",
       "last_updated": "2026-07-10",
       "category": "medieval",
@@ -401,7 +420,7 @@
       "id": "page27",
       "title": "冷河戰役及其歷史學再闡釋",
       "seo_title": "冷河戰役及其歷史學再闡釋 — Ludwica 的簡單歷史課",
-      "seo_desc": "冷河戰役及其歷史學再闡釋",
+      "seo_desc": "深入探討羅馬晚期冷河戰役的地緣政治斷裂、西軍袋形合圍戰術、阿爾比提翁倒戈、極端氣象「波拉風」對遠程彈道的物理干預，以及哥德同盟軍流血稅的反噬效應、西部野戰軍主力消亡與406年萊茵河大入侵的深遠影響。",
       "ver": "1.1",
       "last_updated": "2026-06-28",
       "category": "rome",
@@ -412,11 +431,11 @@
     {
       "id": "page04",
       "title": "神聖羅馬帝國：金璽詔書",
-      "seo_title": "神聖羅馬帝國：金璽詔書 — Ludwica 的簡單歷史課",
-      "seo_desc": "神聖羅馬帝國：金璽詔書",
+      "seo_title": "金璽詔書：神聖羅馬帝國德中對照翻譯 — Ludwica 的簡單歷史課",
+      "seo_desc": "1356年《金璽詔書》全文德文原文、中文翻譯與學術註解三欄對照，解析選帝侯制度與帝國憲政體制的基石文件。",
       "ver": "1.9",
       "last_updated": "2026-07-04",
-      "category": "",
+      "category": "hre",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -424,11 +443,11 @@
     {
       "id": "page06",
       "title": "修道院制度：聖本篤會規",
-      "seo_title": "修道院制度：聖本篤會規 — Ludwica 的簡單歷史課",
-      "seo_desc": "修道院制度：聖本篤會規",
+      "seo_title": "聖本篤會規三欄解析 — Ludwica 的簡單歷史課",
+      "seo_desc": "公元6世紀西方隱修制度基石《聖本篤會規》德文原文、中文翻譯與專業學術註釋三欄並列解析。",
       "ver": "2.0",
       "last_updated": "2026-06-07",
-      "category": "",
+      "category": "church",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -436,11 +455,11 @@
     {
       "id": "page08",
       "title": "敘任權之爭：沃姆斯協約",
-      "seo_title": "敘任權之爭：沃姆斯協約 — Ludwica 的簡單歷史課",
-      "seo_desc": "敘任權之爭：沃姆斯協約",
+      "seo_title": "沃姆斯協約 — Ludwica 的簡單歷史課",
+      "seo_desc": "結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。",
       "ver": "1.1",
       "last_updated": "2026-07-10",
-      "category": "",
+      "category": "hre",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -448,11 +467,11 @@
     {
       "id": "page20",
       "title": "羅馬帝國：米蘭敕令",
-      "seo_title": "羅馬帝國：米蘭敕令 — Ludwica 的簡單歷史課",
-      "seo_desc": "羅馬帝國：米蘭敕令",
-      "ver": "1.0",
+      "seo_title": "米蘭敕令：羅馬帝國宗教寬容宣告 — Ludwica 的簡單歷史課",
+      "seo_desc": "公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，包含英文與拉丁文雙版本之三欄對照與學術註解。",
+      "ver": "1.1",
       "last_updated": "2026-07-06",
-      "category": "",
+      "category": "rome",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -461,10 +480,10 @@
       "id": "page28",
       "title": "羅馬帝國：薩洛尼卡敕令",
       "seo_title": "羅馬帝國：薩洛尼卡敕令 — Ludwica 的簡單歷史課",
-      "seo_desc": "羅馬帝國：薩洛尼卡敕令",
+      "seo_desc": "公元380年由羅馬皇帝格拉提安、瓦倫丁尼安二世與狄奧多西一世聯合頒布的法令，將尼西亞基督教確立為羅馬帝國國教，包含拉丁文原文、中文翻譯三欄對照與名詞解析。",
       "ver": "1.2",
       "last_updated": "2026-07-10",
-      "category": "",
+      "category": "rome",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -473,8 +492,8 @@
       "id": "page29",
       "title": "阿德里安堡戰役",
       "seo_title": "阿德里安堡戰役 — Ludwica 的簡單歷史課",
-      "seo_desc": "阿德里安堡戰役",
-      "ver": "1.0",
+      "seo_desc": "深入探討公元378年阿德里安堡戰役的宏觀地緣政治背景，包含匈人入侵引發的哥特人口遷徙危機、多瑙河安置事件、羅馬官員的行政腐敗與馬爾恰諾波利斯衝突、雙方戰略目標與作戰序列、兩軍遭遇與交戰經過，以及戰後公元382年同盟條約的地緣政治影響與西羅馬帝國的最終解體路徑。",
+      "ver": "1.1",
       "last_updated": "2026-07-26",
       "category": "medieval",
       "img": "images/battle_of_adrianople.png",
@@ -484,9 +503,9 @@
     {
       "id": "page30",
       "title": "東羅馬權力重組與蠻族危機",
-      "seo_title": "東羅馬權力重組與蠻族危機 — Ludwica 的簡單歷史課",
-      "seo_desc": "東羅馬權力重組與蠻族危機",
-      "ver": "1.0",
+      "seo_title": "東羅馬帝國的權力重組、宮廷政治與蠻族危機 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討公元395至408年東羅馬帝國在阿卡狄烏斯統治下的權力重組、宮廷政治與蠻族危機，分析近衛軍長官魯菲努斯、大內侍尤特羅皮烏斯、蓋納斯兵變與專政、皇后尤多西亞與大主教金口約翰的權力抗衡，以及安提米烏斯的攝政與波斯王伊嗣俟一世地緣監護的歷史影響。",
+      "ver": "1.1",
       "last_updated": "2026-08-04",
       "category": "rome",
       "img": "images/east_roman_court.png",
@@ -497,8 +516,8 @@
       "id": "page31",
       "title": "卡拉卡拉與《安東尼努斯敕令》",
       "seo_title": "卡拉卡拉與《安東尼努斯敕令》 — Ludwica 的簡單歷史課",
-      "seo_desc": "卡拉卡拉與《安東尼努斯敕令》",
-      "ver": "1.0",
+      "seo_desc": "深入研究塞維魯王朝皇帝卡拉卡拉於西元212年頒布的《安東尼努斯敕令》（Constitutio Antoniniana）的歷史背景、吉森莎草紙40號文獻載體、投降者（dediticii）的法理爭議、稅制改革及遺產稅翻倍的財政實效、貨幣安東尼尼安努斯貶值與信用崩潰，以及輔助軍瓦解與羅馬人身份認同重塑的多維歷史效應。",
+      "ver": "1.1",
       "last_updated": "2026-06-23",
       "category": "rome",
       "img": "images/caracalla_edict.png",
@@ -509,10 +528,10 @@
       "id": "page32",
       "title": "羅馬帝國：安東尼努斯敕令",
       "seo_title": "羅馬帝國：安東尼努斯敕令 — Ludwica 的簡單歷史課",
-      "seo_desc": "羅馬帝國：安東尼努斯敕令",
-      "ver": "1.0",
+      "seo_desc": "公元212年羅馬皇帝卡拉卡拉頒布之《安東尼努斯敕令》英漢雙語平行文本，包含吉森莎草紙40號文獻內容、古羅馬法律與文學記載等文獻對照。",
+      "ver": "1.1",
       "last_updated": "2026-06-24",
-      "category": "",
+      "category": "pre-3rd-century-rome",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -521,8 +540,8 @@
       "id": "page33",
       "title": "一世紀羅馬行省治權與社會",
       "seo_title": "一世紀羅馬行省治權與社會 — Ludwica 的簡單歷史課",
-      "seo_desc": "一世紀羅馬行省治權與社會",
-      "ver": "1.0",
+      "seo_desc": "從聖經敘事與古典文獻印證西元一世紀羅馬帝國的地方統治體制，探討行省巡撫、稅收制度、行政機器，以及猶太地方的司法主權與高壓統治實態。",
+      "ver": "1.1",
       "last_updated": "2026-06-26",
       "category": "pre-3rd-century-rome",
       "img": "images/roman_provincial_governance.png",
@@ -533,8 +552,8 @@
       "id": "page34",
       "title": "匈人的登場與晚期羅馬地緣政治",
       "seo_title": "匈人的登場與晚期羅馬地緣政治 — Ludwica 的簡單歷史課",
-      "seo_desc": "匈人的登場與晚期羅馬地緣政治",
-      "ver": "1.4",
+      "seo_desc": "深入解析公元370年代匈人越過頓河對黑海北岸地緣秩序的重塑，探討古基因組學揭示的匈奴遺傳聯結，以及匈人在阿德里安堡戰役與冷河戰役中的戰略角色與地緣資產。",
+      "ver": "1.3",
       "last_updated": "2026-07-29",
       "category": "medieval",
       "img": "images/huns_arrival.png",
@@ -545,7 +564,7 @@
       "id": "page36",
       "title": "晚清中樞權力變革與肅順之死",
       "seo_title": "晚清中樞權力變革與肅順之死 — Ludwica 的簡單歷史課",
-      "seo_desc": "晚清中樞權力變革與肅順之死",
+      "seo_desc": "深入研究咸豐朝後期肅順推行的鐵腕改革，剖析戊午科場案、戶部寶鈔案與削減八旗兵俸等吏治整肅措施，解構辛酉政變中顧命八大臣與兩宮太后、恭親王奕訢的法理與公文權力博弈，及洋務運動的起源。",
       "ver": "1.1",
       "last_updated": "2026-07-15",
       "category": "qing",
@@ -557,10 +576,10 @@
       "id": "page37",
       "title": "大清帝國：咸豐皇帝遺詔",
       "seo_title": "大清帝國：咸豐皇帝遺詔 — Ludwica 的簡單歷史課",
-      "seo_desc": "大清帝國：咸豐皇帝遺詔",
-      "ver": "1.0",
+      "seo_desc": "收錄清咸豐十一年（1861年）咸豐皇帝臨終遺詔之文言文與白話中文對照，深入剖析其政治背景、立儲爭議、顧命八大臣安排，以及為辛酉政變埋下之權力博弈伏筆。",
+      "ver": "1.1",
       "last_updated": "2026-07-07",
-      "category": "",
+      "category": "qing",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -568,8 +587,8 @@
     {
       "id": "page38",
       "title": "阿陶爾夫與西哥德轉型",
-      "seo_title": "阿陶爾夫與西哥德轉型 — Ludwica 的簡單歷史課",
-      "seo_desc": "阿陶爾夫與西哥德轉型",
+      "seo_title": "阿陶爾夫與哥德大遷徙（第二卷：蠻族武力與羅馬秩序的合流） — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究西哥德君主阿陶爾夫的政治抉擇，分析他從試圖抹去羅馬名號建立「哥德帝國（Gothia）」到轉為以哥德武力守護「羅馬法治秩序（Romania）」的思想轉變，以及他與羅馬公主加拉·普拉西提阿聯姻的地緣政治影響與歷史遺產。",
       "ver": "1.2",
       "last_updated": "2026-07-11",
       "category": "medieval",
@@ -580,8 +599,8 @@
     {
       "id": "page39",
       "title": "斯提里科與晚期羅馬瓦解",
-      "seo_title": "斯提里科與晚期羅馬瓦解 — Ludwica 的簡單歷史課",
-      "seo_desc": "斯提里科與晚期羅馬瓦解",
+      "seo_title": "斯提里科的崛起、掌權與覆滅 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入剖析西羅馬帝國雙軍總長斯提里科的傳奇一生，從其半蠻族出身、軍事功勳（擊敗西哥德人、全殲拉達蓋蘇斯）、溫和宗教政策與焚毀《西比拉預言書》的動機，解構帕維亞兵變如何引發帝國瓦解的多米諾骨牌效應。",
       "ver": "1.1",
       "last_updated": "2026-07-23",
       "category": "rome",
@@ -592,9 +611,9 @@
     {
       "id": "page40",
       "title": "萊茵河－多瑙河地緣戰略",
-      "seo_title": "萊茵河－多瑙河地緣戰略 — Ludwica 的簡單歷史課",
-      "seo_desc": "萊茵河－多瑙河地緣戰略",
-      "ver": "1.0",
+      "seo_title": "萊茵河－多瑙河連線：歐陸地緣裂變與整合的雙軸命脈 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入探討歐洲兩大水系萊茵河與多瑙河的地理水文特徵，解析羅馬帝國的雙河界牆與邊境經濟圈、西元406年除夕萊茵河大越渡之西羅馬帝國連鎖效應，以及從中世紀查理曼運河到當代航道的地緣政治與工程演變。",
+      "ver": "1.1",
       "last_updated": "2026-07-11",
       "category": "trivia",
       "img": "images/rhine_danube_frontier.png",
@@ -604,8 +623,8 @@
     {
       "id": "page41",
       "title": "君士坦丁三世與五世紀初邊疆危機",
-      "seo_title": "君士坦丁三世與五世紀初邊疆危機 — Ludwica 的簡單歷史課",
-      "seo_desc": "君士坦丁三世與五世紀初邊疆危機",
+      "seo_title": "君士坦丁三世政權的興衰：五世紀初西羅馬邊疆危機與軍事瓦解 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入解析五世紀初西羅馬帝國不列顛駐軍兵變，篡位者君士坦丁三世的崛起、高盧行政重建、西班牙遠征與「奧諾里亞奇」衛隊角色，以及將領叛亂與最後亞爾圍城戰之歷史啟示。",
       "ver": "1.1",
       "last_updated": "2026-07-28",
       "category": "rome",
@@ -616,9 +635,9 @@
     {
       "id": "page42",
       "title": "序章 (Prologue)",
-      "seo_title": "序章 (Prologue) — Ludwica 的簡單歷史課",
-      "seo_desc": "序章 (Prologue)",
-      "ver": "1.0",
+      "seo_title": "《鐵劍與托加》序章：三船南渡，舊神的呢喃 — Ludwica 的簡單歷史課",
+      "seo_desc": "歷史小說《鐵劍與托加》序章。講述哥德人起源的神話傳說，古老國王貝里格帶領族人乘三船南渡薩爾馬提亞海洋，以及獨眼老渡鴉高茲在頓河畔預見紅色風暴與大遷徙諸神黃昏的詩意開端。",
+      "ver": "1.1",
       "last_updated": "2026-07-14",
       "category": "novel",
       "img": "images/gothic_three_ships_migration.png",
@@ -628,9 +647,9 @@
     {
       "id": "page43",
       "title": "第一章：黑海落日，狂風中的火種",
-      "seo_title": "第一章：黑海落日，狂風中的火種 — Ludwica 的簡單歷史課",
-      "seo_desc": "第一章：黑海落日，狂風中的火種",
-      "ver": "1.0",
+      "seo_title": "《鐵劍與托加》第一章：黑海落日，狂風中的火種 — Ludwica 的簡單歷史課",
+      "seo_desc": "歷史小說《鐵劍與托加》第一章。講述西元375年匈人突然越過頓河入侵，東哥德老國王厄曼納里克在赫爾松焚城自盡，青年阿蘭將領薩烏爾與東哥德將領阿拉修斯、薩夫拉克護送幼王向西突圍逃難的悲壯序幕。",
+      "ver": "1.1",
       "last_updated": "2026-07-14",
       "category": "novel",
       "img": "images/iron_sword_chapter1_invasion.png",
@@ -640,9 +659,9 @@
     {
       "id": "page44",
       "title": "羅馬與波斯地緣關係",
-      "seo_title": "羅馬與波斯地緣關係 — Ludwica 的簡單歷史課",
-      "seo_desc": "羅馬與波斯地緣關係",
-      "ver": "1.0",
+      "seo_title": "羅馬與波斯薩珊王朝地緣關係 — Ludwica 的簡單歷史課",
+      "seo_desc": "深入研究公元378年前後羅馬帝國與波斯薩珊王朝在亞美尼亞與美索不達米亞的地緣對峙，解析阿德里安堡戰役後的戰略格局重塑、阿奇利塞內和約瓜分亞美尼亞，以及共同防禦高加索防線的協作機制。",
+      "ver": "1.1",
       "last_updated": "2026-07-16",
       "category": "medieval",
       "img": "images/rome_persia_geopolitics.png",
@@ -653,7 +672,7 @@
       "id": "page45",
       "title": "費爾穆斯叛亂與北非防務危機",
       "seo_title": "費爾穆斯叛亂與北非防務危機 — Ludwica 的簡單歷史課",
-      "seo_desc": "費爾穆斯叛亂與北非防務危機",
+      "seo_desc": "深入研究西元372年柏柏爾裔羅馬軍官之子費爾穆斯在北非發起的僭越叛亂，剖析地方系統性腐敗、老狄奧多西平叛經過、多納圖斯派的宗教交鋒，以及其對老狄奧多西之死、吉爾do之戰與北非淪陷的深遠影響。",
       "ver": "1.3",
       "last_updated": "2026-07-19",
       "category": "rome",
@@ -665,7 +684,7 @@
       "id": "page46",
       "title": "阿薩納里克家族與特爾文吉哥德人的統治演變",
       "seo_title": "阿薩納里克家族與特爾文吉哥德人的統治演變 — Ludwica 的簡單歷史課",
-      "seo_desc": "阿薩納里克家族與特爾文吉哥德人的統治演變",
+      "seo_desc": "深入探討西元四世紀多瑙河邊疆特爾文吉哥德人的政治結構，剖析阿薩納里克家族連續三代（阿里亞里克、奧里克、阿薩納里克）的反羅馬立場與基督教迫害機制，以及在匈人入侵後如何面臨內部分裂與最終的權力崩解。",
       "ver": "1.0",
       "last_updated": "2026-07-22",
       "category": "medieval",
@@ -674,29 +693,17 @@
       "is_doc": 0
     },
     {
-      "id": "page47",
-      "title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
-      "seo_title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 — Ludwica 的簡單歷史課",
-      "seo_desc": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
-      "ver": "1.0",
-      "last_updated": "2026-08-05",
-      "category": "rome",
-      "img": "images/theodosius_constantinople_entry.png",
-      "bg_pos": "center",
-      "is_doc": 0
-    },
-    {
       "id": "page48",
       "title": "漢代奴隸制度之歷史與法制考論",
-      "seo_title": "漢代奴隸制度之歷史與法制考論 — Ludwica 的簡單歷史課",
-      "seo_desc": "漢代奴隸制度之歷史與法制考論",
+      "seo_title": "漢代奴隸制度之歷史與法制考論：定義、社會性質、產生途徑、身份權義、閹人關係、朝廷管制與制度演變 | 簡單歷史課",
+      "seo_desc": "本篇學術文章深入考論漢代奴隸制度，從睡虎地與張家山漢簡等出土簡牘結合傳世文獻，系統解析奴婢的法律與社會定義、學術界對漢代非奴隸社會之共識、奴隸產生途徑與官私分類、身分權利義務限制、閹人（宦官）與奴婢之關係、朝廷重稅抑奴策略及兩漢四百年間奴隸制的演變軌跡。",
       "ver": "1.0",
-      "last_updated": "2026-08-05",
+      "last_updated": "2026-08-09",
       "category": "han",
       "img": "images/han_dynasty_slavery_society.png",
       "bg_pos": "center",
       "is_doc": 0
     }
   ],
-  "worklog": "<div class=\"update-entry\"><div class=\"update-date\">2026-08-05 (發布新專題 | 漢代奴隸制度之歷史與法制考論 1.0 | 版面 8.3)</div><ul class=\"update-list\"><li><strong>新增專題文章與分類</strong>：於「遠東」頁面新增「漢朝社會研究」分類，並發布《漢代奴隸制度之歷史與法制考論：定義、社會性質、產生途徑、身份權義、閹人關係、朝廷管制與制度演變》（page48）。</li><li><strong>史實考據與古籍校正</strong>：依據《漢書·食貨志》校正高祖詔文「令民得賣子就食蜀漢」，依《漢官儀》校定「擇年八歲以上潔白者曰宦人」，修正內文打字偏差「豪奢消費中」。</li><li><strong>視覺配圖與路由註冊</strong>：生成高畫質《漢代社會結構與莊園經濟》歷史油畫 Banner（images/han_dynasty_slavery_society.png），完成 course_config.json、\build_html_md.py 與 index_db.html 的路由、SEO 描述與 Article JSON-LD 結構化資料註冊。</li><li><strong>一鍵建置與 Firestore 雲端同步</strong>：執行 python run_build.py 完成全站靜態建置、JSON 切片生成、Firestore 雲端資料庫上傳、文章索引注入與完整專案驗證。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-08-04 (文章史實審核與校對發布 | 瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 1.1)</div><ul class=\"update-list\"><li><strong>史實與人物角色修正</strong>：精確澄清佩特羅尼烏斯（Petronius）的歷史職銜（*Patricius*）與卒年（378年前已卒），正名西元 378 年阿德里安堡戰役後多米尼卡皇后（Albia Dominica）獨立代理行政、開啟國庫與聘用阿拉伯騎兵擊退哥德圍城之過渡統治地位。</li><li><strong>前後文時間線與語意重構</strong>：梳理西元 386 年普羅莫圖斯（Promotus）多瑙河戰事（Ripa Gothica 之戰）與 382 年《哥德和約》的時間軸劃分，消除邏輯與先後順序語焉不詳之處。</li><li><strong>用語與拉丁文規範</strong>：替換不當現代航太詞彙「深空草原」為「黑海北岸歐亞草原」；修正《塞薩洛尼卡敕令》拉丁文名稱首字拼寫為 `*Cunctos populos*`。</li><li><strong>學術引用全面升級</strong>：將非學術與個人網絡引用（Grokipedia, Fandom Wiki, BlogSpot）全數升級為符合學術規範之古典文獻與學術專著超連結（包含 Perseus, Cambridge, Oxford, CCEL, Tertullian Project 等）。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-30 (專題校對與發布 | 歐洲造紙術的歷史演變 1.1)</div><ul class=\"update-list\"><li><strong>史實與人物關係重構</strong>：重構西西里島早期造紙史實，精確更正西西里伯爵羅傑一世於 1101 年過世後，由其第三任妻子兼西西里攝政女伯爵阿德拉西亞（Adelasia del Vasto）於 1102 年與 1109 年頒布歐洲最古老紙質契據與雙語詔令；澄清 1879 年卡爾·達爾（Carl F. Dahl）發明的 Kraft 強韌製漿法時間線；修正古騰堡聖經（Gutenberg Bible）首印本材質誤譯「牛皮紙」為「昂貴的犢皮紙（Vellum）」。</li><li><strong>語意、用語與排版修復</strong>：清理內文未翻譯英文連詞（`and`）與贅字（`（運，Quintals）`、`微量地`），刪除標點前無效空格，並調整 Markdown 列表縮排規格符合規範。</li><li><strong>版本宣告與雲端同步</strong>：將《歐洲造紙術的歷史演變》內容版本提升至 1.1，更新 `index_db.html` 版面日誌與 `worklog.md`，執行 `python run_build.py` 完成 Firestore 雲端資料庫上傳與全站驗證。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-29 (專題校對與發布 | 匈人的登場與晚期羅馬地緣政治 1.4)</div><ul class=\"update-list\"><li><strong>史實與用語校對</strong>：校對《匈人的登場：從阿德里安堡戰役到冷河戰役的深層地緣政治與戰略研究》（`page34`），精確修復北匈奴瓦解至匈人現身巴爾幹之文獻空窗年代（修正為 200 餘年），移除內文誤植之中英文混用（`of` 介詞），並將哥德-阿蘭將領 Alatheus 全文譯名統一為「阿拉提烏斯」。</li><li><strong>學術引用與來源校對</strong>：稽核 48 項學術文獻連結，修復參考文獻條目 28 標題中誤將西元 378 年（378 AD）寫為 378BC 之年代誤植。</li><li><strong>三軌編譯與雲端同步</strong>：執行 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 完成 Firestore 雲端資料庫與靜態備份頁面同步，更新主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-29 (發布新專題 | 羅馬帝國阿諾納制度 Annona 研究 1.0 | 版面 8.2)</div><ul class=\"update-list\"><li><strong>新增專題文章</strong>：發布《羅馬帝國阿諾納制度（Annona）之深度行政、財政、軍事與地緣歷史研究》（`page48`），歸類於「歐洲小知識」專題。</li><li><strong>Google Doc 匯入轉碼與數據修復</strong>：修復原 Google Doc 中的 base64 數學公式圖片與損壞的上標轉碼，還原蓋烏斯·格拉古《格拉古糧食法》低價購糧價格（6⅓ asses）與毎人每月 33 公斤（5 modii）小麥配給額、戴克里先賦稅改革 *Capitatio-Iugatio* 折算標準（特等麥田 20 摩畝、普通麥田 40–60 摩畝、葡萄園 5 摩畝折算為 1 Iugum）、年度預算詔令 *Indictio* 人頭與土地賦稅單位（Caput / Iugum），以及特斯塔喬山高度（35 公尺）與 Dressel 20 陶罐考古編號。</li><li><strong>高質感 AI 配圖生成</strong>：繪製古典油畫風格封面配圖 `images/roman_annona_system.jpg`，展示地中海糧船於波爾圖斯港卸貨與羅馬官員配給公糧之歷史場景。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-28 (專題校對與學術升級 | 君士坦丁三世政權的興衰 1.1 | 版面 8.1)</div><ul class=\"update-list\"><li><strong>史實、時間軸與專有名詞修復</strong>：精準釐清 401–402 年阿拉里克入侵與 405–406 年拉達蓋蘇斯入侵對西羅馬邊防兵力的連續抽離過程；刪除無古典史料記載之「饕餮之徒」網路錯譯，依據奧羅修斯《異教徒歷史七章》真實還原對其 *inconstantia*（反覆無常）的文獻記載；明確標示埃多比庫斯解圍軍兵力為現代史學估算；修正表格內缺失的上標角標語法。</li><li><strong>引用來源學術化全面升級</strong>：全面剔除 Kids Kiddle 兒童百科、Quora、Reddit (r/aoe4)、《文明帝國 VI》遊戲百科、Numis Forums 錢幣論壇與個人用戶族譜網站等 10 餘處不可靠來源，全數替換為 Cambridge Core (*PLRE*, *Guy Halsall*)、Johns Hopkins University Press (*A.H.M. Jones*, *Michael Kulikowski*)、Routledge (*Pat Southern*)、Liverpool University Press (*Orosius*) 與 Oxford University Press (*Peter Heather*) 等頂級國際學術著作與資料庫；全面修復全文章 Markdown 超連結語法。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-26 (發布新專題 | 瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 1.0 | 版面 8.1)</div><ul class=\"update-list\"><li><strong>新增專題文章</strong>：發布《瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究》（`page47`），歸類於「三世紀危機後的羅馬帝國」專題。</li><li><strong>史實審核與文案修復</strong>：精準核對 378 年阿德里安堡戰役後的權力真空期、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與 382 年《哥德和約》；修訂專有名詞為特爾文吉哥德人（Tervingi）、阿薩納里克（Athanaric）與弗里蒂根（Fritigern）；去除多餘錯別字與生硬直譯。</li><li><strong>視覺與路由註冊</strong>：生成高畫質《迪奧多西凱旋進入君士坦丁堡》歷史油畫 Banner（`images/theodosius_constantinople_entry.png`），完成 `course_config.json`、`build_html_md.py` 與 `index_db.html` 的路由與 JSON-LD 結構化資料註冊。</li><li><strong>三軌編譯與雲端同步</strong>：順利執行 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫上傳，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-26 (專題校對與學術升級 | 阿德里安堡戰役 1.1 | 版面 8.0)</div><ul class=\"update-list\"><li><strong>史實、時間軸與稱號修復</strong>：精準釐清烏爾菲拉早期傳教（340年代）與弗里蒂根泰爾溫吉哥德人因政治談判集體皈依亞利烏派（370年代）的時間軸，消除內文前後矛盾；更正 4 世紀西羅馬皇帝格拉提安稱號為「尼西亞正統基督徒」；修訂軍事單位藍西亞里衛隊（Lanciarii）與馬蒂亞里衛隊（Mattiarii）為「高級宮廷野戰軍團（Legiones Palatinae）」；過濾口語流行語「擦槍走火」，替換為規範學術用語；修正簡體錯字「统」為「統」。</li><li><strong>引用來源學術化全面升級</strong>：剔除 Grokipedia (AI 擷取網站)、Reddit、Quora、Kiddle 兒童網、跑團 RPG 網頁與小說家部落格等不可靠來源，全數替換為 Perseus (*Ammianus Marcellinus*)、Oxford Academic (*Peter Heather*)、Cambridge Core (*Noel Lenski*, *CAH*)、CCEL (*Socrates*, *Sozomen*) 與 University of Calgary (*Jordanes*) 等權威學術專著與原始文獻資料庫連結。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-25 (專題校對與學術升級 | 卡特里派與阿爾比十字軍 1.1 | 版面 8.0)</div><ul class=\"update-list\"><li><strong>史實、數據與用語審核</strong>：校對並修訂「貝濟耶大屠殺」死傷人數，於內文與表格中補充說明「中世紀編年史宣稱兩萬至兩萬五千人喪生，現代史學家根據當時城鎮規模估算死者約在一萬人上下」；修正第四節錯別字（「晉延」修正為「晉升」）與譯詞/文字謬誤（誤將天主教/裁判所文獻寫為「天主行為」，修訂為「天主教會審判官」）；規範卡特里派教區繼承人職務拉丁文語法（補充單數職銜 *Filius Major* 與 *Filius Minor*）；全面清理標點號前殘留半形空格與多餘 Tab 縮排。</li><li><strong>引用來源學術化全面升級</strong>：過濾 Fandom 網頁（`Templars Wiki`、`Military Wiki`）、兒童百科 `kids.kiddle.co` 以及臨時預覽 PDF 網址，全數替換為 Routledge (Malcolm Barber)、Cambridge University Press (Laurence W. Marvin)、Oxford University Press (Mark Gregory Pegg)、University of Michigan Press (Joseph R. Strayer)、Penguin Books (Emmanuel Le Roy Ladurie)、Internet Archive (Jean Duvernoy) 與 Encyclopædia Britannica 等頂尖國際學術專著與權威資料庫連結。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-23 (專題校對與學術升級 | 西元紀年的確立與演進 1.2 | 版面 8.0)</div><ul class=\"update-list\"><li><strong>史實與稱號修復</strong>：將查理曼皇帝稱號由後世錯置的「神聖羅馬皇帝」修正為符合 9 世紀實態的「法蘭克國王兼羅馬人皇帝」，修正「奧林匹亞紀元」譯名，並補充「執政官紀年」羅馬官方實務與「大希律王死於西元前 4 年」之現代史學年代學共識（耶穌降生漂移 4-6 年）。</li><li><strong>語意通順與語法修復</strong>：重構九世紀查理曼推廣曆法之重複贅述句型，清晰闡釋「缺失零年」導致算術減法多計 1 年的算術原理，修復表格 HTML `<sup>` 閉合標籤。</li><li><strong>引用來源學術化全面升級</strong>：過濾 Scribd 用戶上傳檔、地方小報投書、個人部落格與重複維基百科條目，替換為 Oxford University Press、Cambridge Core、Brepols、CCEL、ISO 等國際權威學術著作與數位資料庫連結。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並更新主入口 `index.html`。</li></ul></div>"
+  "worklog": "<div class=\"update-entry\"><div class=\"update-date\">2026-08-08 (全站外觀、資料庫與單一真實來源架構優化 | 版面 8.3)</div><ul class=\"update-list\"><li><strong>Firestore 雲端 SEO 傳輸漏洞修復</strong>：修正 `migrate_to_firestore.py`，補齊 `seo_title` 與 `seo_desc` 上傳欄位，還原線上 SPA 版本的全站 50–160 字高質量 SEO 描述。</li><li><strong>單一真實來源 (Single Source of Truth) 架構重構</strong>：重構 `build_html_md.py` 為動態載入 `course_config.json`，徹底消除舊版硬編碼 `pages_data` 導致的 21 處文章內容版本號分岔；補齊 `course_config.json` 中 `page48` 的完整 JSON 詮釋資料結構。</li><li><strong>版面版本號同步與快取機制更新</strong>：統一全站 `index_db.html`、`firestore-service.js`（`APP_VERSION = '8.3'`）、`course_config.json` 與 `template.html` 之版面宣告版本為 <strong>8.3</strong>。</li><li><strong>廢棄程式碼清理與建置效能提升</strong>：移除 `build_html_md.py` 中對廢棄 `template.html` (87.7 KB) 的重複讀取與 `portal_template` 運算，節省建置記憶體與 CPU 負載。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-08-05 (發布新專題 | 漢代奴隸制度之歷史與法制考論 1.0 | 版面 8.3)</div><ul class=\"update-list\"><li><strong>新增專題文章與分類</strong>：於「遠東」頁面新增「漢朝社會研究」分類，並發布《漢代奴隸制度之歷史與法制考論：定義、社會性質、產生途徑、身份權義、閹人關係、朝廷管制與制度演變》（page48）。</li><li><strong>史實考據與古籍校正</strong>：依據《漢書·食貨志》校正高祖詔文「令民得賣子就食蜀漢」，依《漢官儀》校定「擇年八歲以上潔白者曰宦人」，修正內文打字偏差「豪奢消費中」。</li><li><strong>視覺配圖與路由註冊</strong>：生成高畫質《漢代社會結構與莊園經濟》歷史油畫 Banner（images/han_dynasty_slavery_society.png），完成 course_config.json、\build_html_md.py 與 index_db.html 的路由、SEO 描述與 Article JSON-LD 結構化資料註冊。</li><li><strong>一鍵建置與 Firestore 雲端同步</strong>：執行 python run_build.py 完成全站靜態建置、JSON 切片生成、Firestore 雲端資料庫上傳、文章索引注入與完整專案驗證。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-08-04 (文章史實審核與校對發布 | 瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 1.1)</div><ul class=\"update-list\"><li><strong>史實與人物角色修正</strong>：精確澄清佩特羅尼烏斯（Petronius）的歷史職銜（*Patricius*）與卒年（378年前已卒），正名西元 378 年阿德里安堡戰役後多米尼卡皇后（Albia Dominica）獨立代理行政、開啟國庫與聘用阿拉伯騎兵擊退哥德圍城之過渡統治地位。</li><li><strong>前後文時間線與語意重構</strong>：梳理西元 386 年普羅莫圖斯（Promotus）多瑙河戰事（Ripa Gothica 之戰）與 382 年《哥德和約》的時間軸劃分，消除邏輯與先後順序語焉不詳之處。</li><li><strong>用語與拉丁文規範</strong>：替換不當現代航太詞彙「深空草原」為「黑海北岸歐亞草原」；修正《塞薩洛尼卡敕令》拉丁文名稱首字拼寫為 `*Cunctos populos*`。</li><li><strong>學術引用全面升級</strong>：將非學術與個人網絡引用（Grokipedia, Fandom Wiki, BlogSpot）全數升級為符合學術規範之古典文獻與學術專著超連結（包含 Perseus, Cambridge, Oxford, CCEL, Tertullian Project 等）。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-30 (專題校對與發布 | 歐洲造紙術的歷史演變 1.1)</div><ul class=\"update-list\"><li><strong>史實與人物關係重構</strong>：重構西西里島早期造紙史實，精確更正西西里伯爵羅傑一世於 1101 年過世後，由其第三任妻子兼西西里攝政女伯爵阿德拉西亞（Adelasia del Vasto）於 1102 年與 1109 年頒布歐洲最古老紙質契據與雙語詔令；澄清 1879 年卡爾·達爾（Carl F. Dahl）發明的 Kraft 強韌製漿法時間線；修正古騰堡聖經（Gutenberg Bible）首印本材質誤譯「牛皮紙」為「昂貴的犢皮紙（Vellum）」。</li><li><strong>語意、用語與排版修復</strong>：清理內文未翻譯英文連詞（`and`）與贅字（`（運，Quintals）`、`微量地`），刪除標點前無效空格，並調整 Markdown 列表縮排規格符合規範。</li><li><strong>版本宣告與雲端同步</strong>：將《歐洲造紙術的歷史演變》內容版本提升至 1.1，更新 `index_db.html` 版面日誌與 `worklog.md`，執行 `python run_build.py` 完成 Firestore 雲端資料庫上傳與全站驗證。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-29 (專題校對與發布 | 匈人的登場與晚期羅馬地緣政治 1.4)</div><ul class=\"update-list\"><li><strong>史實與用語校對</strong>：校對《匈人的登場：從阿德里安堡戰役到冷河戰役的深層地緣政治與戰略研究》（`page34`），精確修復北匈奴瓦解至匈人現身巴爾幹之文獻空窗年代（修正為 200 餘年），移除內文誤植之中英文混用（`of` 介詞），並將哥德-阿蘭將領 Alatheus 全文譯名統一為「阿拉提烏斯」。</li><li><strong>學術引用與來源校對</strong>：稽核 48 項學術文獻連結，修復參考文獻條目 28 標題中誤將西元 378 年（378 AD）寫為 378BC 之年代誤植。</li><li><strong>三軌編譯與雲端同步</strong>：執行 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 完成 Firestore 雲端資料庫與靜態備份頁面同步，更新主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-29 (發布新專題 | 羅馬帝國阿諾納制度 Annona 研究 1.0 | 版面 8.2)</div><ul class=\"update-list\"><li><strong>新增專題文章</strong>：發布《羅馬帝國阿諾納制度（Annona）之深度行政、財政、軍事與地緣歷史研究》（`page48`），歸類於「歐洲小知識」專題。</li><li><strong>Google Doc 匯入轉碼與數據修復</strong>：修復原 Google Doc 中的 base64 數學公式圖片與損壞的上標轉碼，還原蓋烏斯·格拉古《格拉古糧食法》低價購糧價格（6⅓ asses）與毎人每月 33 公斤（5 modii）小麥配給額、戴克里先賦稅改革 *Capitatio-Iugatio* 折算標準（特等麥田 20 摩畝、普通麥田 40–60 摩畝、葡萄園 5 摩畝折算為 1 Iugum）、年度預算詔令 *Indictio* 人頭與土地賦稅單位（Caput / Iugum），以及特斯塔喬山高度（35 公尺）與 Dressel 20 陶罐考古編號。</li><li><strong>高質感 AI 配圖生成</strong>：繪製古典油畫風格封面配圖 `images/roman_annona_system.jpg`，展示地中海糧船於波爾圖斯港卸貨與羅馬官員配給公糧之歷史場景。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-28 (專題校對與學術升級 | 君士坦丁三世政權的興衰 1.1 | 版面 8.1)</div><ul class=\"update-list\"><li><strong>史實、時間軸與專有名詞修復</strong>：精準釐清 401–402 年阿拉里克入侵與 405–406 年拉達蓋蘇斯入侵對西羅馬邊防兵力的連續抽離過程；刪除無古典史料記載之「饕餮之徒」網路錯譯，依據奧羅修斯《異教徒歷史七章》真實還原對其 *inconstantia*（反覆無常）的文獻記載；明確標示埃多比庫斯解圍軍兵力為現代史學估算；修正表格內缺失的上標角標語法。</li><li><strong>引用來源學術化全面升級</strong>：全面剔除 Kids Kiddle 兒童百科、Quora、Reddit (r/aoe4)、《文明帝國 VI》遊戲百科、Numis Forums 錢幣論壇與個人用戶族譜網站等 10 餘處不可靠來源，全數替換為 Cambridge Core (*PLRE*, *Guy Halsall*)、Johns Hopkins University Press (*A.H.M. Jones*, *Michael Kulikowski*)、Routledge (*Pat Southern*)、Liverpool University Press (*Orosius*) 與 Oxford University Press (*Peter Heather*) 等頂級國際學術著作與資料庫；全面修復全文章 Markdown 超連結語法。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-26 (發布新專題 | 瓦倫斯陣亡至迪奧多西接掌君士坦丁堡 1.0 | 版面 8.1)</div><ul class=\"update-list\"><li><strong>新增專題文章</strong>：發布《瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究》（`page47`），歸類於「三世紀危機後的羅馬帝國」專題。</li><li><strong>史實審核與文案修復</strong>：精準核對 378 年阿德里安堡戰役後的權力真空期、阿爾比亞·多米尼卡皇后的過渡統治、斯爾米烏姆推戴與迪奧多西一世的崛起、哥德戰線分化、《塞薩洛尼卡敕令》與 382 年《哥德和約》；修訂專有名詞為特爾文吉哥德人（Tervingi）、阿薩納里克（Athanaric）與弗里蒂根（Fritigern）；去除多餘錯別字與生硬直譯。</li><li><strong>視覺與路由註冊</strong>：生成高畫質《迪奧多西凱旋進入君士坦丁堡》歷史油畫 Banner（`images/theodosius_constantinople_entry.png`），完成 `course_config.json`、`build_html_md.py` 與 `index_db.html` 的路由與 JSON-LD 結構化資料註冊。</li><li><strong>三軌編譯與雲端同步</strong>：順利執行 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫上傳，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-26 (專題校對與學術升級 | 阿德里安堡戰役 1.1 | 版面 8.0)</div><ul class=\"update-list\"><li><strong>史實、時間軸與稱號修復</strong>：精準釐清烏爾菲拉早期傳教（340年代）與弗里蒂根泰爾溫吉哥德人因政治談判集體皈依亞利烏派（370年代）的時間軸，消除內文前後矛盾；更正 4 世紀西羅馬皇帝格拉提安稱號為「尼西亞正統基督徒」；修訂軍事單位藍西亞里衛隊（Lanciarii）與馬蒂亞里衛隊（Mattiarii）為「高級宮廷野戰軍團（Legiones Palatinae）」；過濾口語流行語「擦槍走火」，替換為規範學術用語；修正簡體錯字「统」為「統」。</li><li><strong>引用來源學術化全面升級</strong>：剔除 Grokipedia (AI 擷取網站)、Reddit、Quora、Kiddle 兒童網、跑團 RPG 網頁與小說家部落格等不可靠來源，全數替換為 Perseus (*Ammianus Marcellinus*)、Oxford Academic (*Peter Heather*)、Cambridge Core (*Noel Lenski*, *CAH*)、CCEL (*Socrates*, *Sozomen*) 與 University of Calgary (*Jordanes*) 等權威學術專著與原始文獻資料庫連結。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。</li></ul></div><div class=\"update-entry\"><div class=\"update-date\">2026-07-25 (專題校對與學術升級 | 卡特里派與阿爾比十字軍 1.1 | 版面 8.0)</div><ul class=\"update-list\"><li><strong>史實、數據與用語審核</strong>：校對並修訂「貝濟耶大屠殺」死傷人數，於內文與表格中補充說明「中世紀編年史宣稱兩萬至兩萬五千人喪生，現代史學家根據當時城鎮規模估算死者約在一萬人上下」；修正第四節錯別字（「晉延」修正為「晉升」）與譯詞/文字謬誤（誤將天主教/裁判所文獻寫為「天主行為」，修訂為「天主教會審判官」）；規範卡特里派教區繼承人職務拉丁文語法（補充單數職銜 *Filius Major* 與 *Filius Minor*）；全面清理標點號前殘留半形空格與多餘 Tab 縮排。</li><li><strong>引用來源學術化全面升級</strong>：過濾 Fandom 網頁（`Templars Wiki`、`Military Wiki`）、兒童百科 `kids.kiddle.co` 以及臨時預覽 PDF 網址，全數替換為 Routledge (Malcolm Barber)、Cambridge University Press (Laurence W. Marvin)、Oxford University Press (Mark Gregory Pegg)、University of Michigan Press (Joseph R. Strayer)、Penguin Books (Emmanuel Le Roy Ladurie)、Internet Archive (Jean Duvernoy) 與 Encyclopædia Britannica 等頂尖國際學術專著與權威資料庫連結。</li><li><strong>三軌編譯與雲端同步</strong>：完成 `build_html_md.py`、`build_static_chunks.py` 與 `migrate_to_firestore.py` 三軌編譯與 Firestore 雲端資料庫同步，並同步主入口 `index.html`。</li></ul></div>"
 }
