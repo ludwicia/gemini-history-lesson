@@ -4079,5 +4079,364 @@ const HISTORICAL_PLACES = [
     "desc": "查理曼帝國的政治與文化中心（Palatine Capital），建造有著名的阿亨大教堂與宮廷學堂，中世紀歷代神聖羅馬帝國國王的加冕聖地。",
     "articles": [],
     "category": "medieval"
+  },
+  {
+    "id": "emona",
+    "name_zh": "埃莫納",
+    "name_en": "Emona / Ljubljana",
+    "coords": [
+      46.0569,
+      14.5058
+    ],
+    "desc": "羅馬帝國潘諾尼亞/伊利里庫姆行省要塞（今斯洛維尼亞首都盧比安納），位於阿爾卑斯山東麓戰略通道。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page19",
+        "title": "米蘭敕令時代與李錫尼覆滅"
+      }
+    ]
+  },
+  {
+    "id": "noricum",
+    "name_zh": "諾里庫姆",
+    "name_en": "Noricum",
+    "coords": [
+      47.2,
+      14.2
+    ],
+    "desc": "羅馬帝國阿爾卑斯山東北行省（今奧地利大部），產優質鐵礦，為帝國多瑙河防線樞紐。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page22",
+        "title": "羅馬秩序的終結與日耳曼王權的奠定"
+      }
+    ]
+  },
+  {
+    "id": "armorica",
+    "name_zh": "阿莫里卡",
+    "name_en": "Armorica / Brittany",
+    "coords": [
+      48.2,
+      -3.0
+    ],
+    "desc": "古高盧西北部沿海地區（今法國布列塔尼），5世紀羅馬治權瓦解後成為地方割據與蠻族遷徙區。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page41",
+        "title": "君士坦丁三世與五世紀初邊疆危機"
+      }
+    ]
+  },
+  {
+    "id": "sitifis",
+    "name_zh": "塞提菲斯",
+    "name_en": "Sitifis / Sétif",
+    "coords": [
+      36.19,
+      5.41
+    ],
+    "desc": "羅馬北非阿非利加/努米底亞行省內陸重鎮（今阿爾及利亞塞提夫），費爾穆斯叛亂之戰略要地。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page45",
+        "title": "費爾穆斯叛亂與北非防務危機"
+      }
+    ]
+  },
+  {
+    "id": "edessa",
+    "name_zh": "埃德薩",
+    "name_en": "Edessa / Şanlıurfa",
+    "coords": [
+      37.1674,
+      38.7955
+    ],
+    "desc": "羅馬帝國近東前線重鎮（奧斯若恩王國首府），羅馬與波斯薩珊王朝對峙之防衛樞紐。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page44",
+        "title": "羅馬與波斯地緣關係"
+      }
+    ]
+  },
+  {
+    "id": "ctesiphon",
+    "name_zh": "泰西封",
+    "name_en": "Ctesiphon",
+    "coords": [
+      33.0936,
+      44.5808
+    ],
+    "desc": "帕提亞與波斯薩珊王朝首都，美索不達米亞核心政治中樞與羅波戰爭戰略目標。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page34",
+        "title": "匈人的登場與晚期羅馬地緣政治"
+      },
+      {
+        "id": "page39",
+        "title": "斯提里科與晚期羅馬瓦解"
+      },
+      {
+        "id": "page44",
+        "title": "羅馬與波斯地緣關係"
+      }
+    ]
+  },
+  {
+    "id": "amida",
+    "name_zh": "阿米達",
+    "name_en": "Amida / Diyarbakır",
+    "coords": [
+      37.915,
+      40.23
+    ],
+    "desc": "羅馬帝國底格里斯河上游邊境要塞（今土耳其迪亞巴克爾），沙普爾二世圍城戰之地標。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page44",
+        "title": "羅馬與波斯地緣關係"
+      }
+    ]
+  },
+  {
+    "id": "athens",
+    "name_zh": "雅典",
+    "name_en": "Athens / Athenae",
+    "coords": [
+      37.9838,
+      23.7275
+    ],
+    "desc": "古希臘文化與哲學發源地，羅馬帝國阿卡雅行省文化重鎮與古典學術中心。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page15",
+        "title": "聖職與婚娶"
+      },
+      {
+        "id": "page26",
+        "title": "阿拉里克與哥德大遷徙"
+      }
+    ]
+  },
+  {
+    "id": "cyprus",
+    "name_zh": "塞浦路斯",
+    "name_en": "Cyprus",
+    "coords": [
+      35.1264,
+      33.4299
+    ],
+    "desc": "地中海第三大島，羅馬帝國行省與中世紀十字軍東征防衛前哨。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page33",
+        "title": "一世紀羅馬行省治權與社會"
+      }
+    ]
+  },
+  {
+    "id": "pella",
+    "name_zh": "佩拉",
+    "name_en": "Pella",
+    "coords": [
+      40.7606,
+      22.5256
+    ],
+    "desc": "馬其頓王國古都，亞歷山大大帝誕生地，羅馬馬其頓行省歷史重鎮。",
+    "category": "rome",
+    "articles": [
+      {
+        "id": "page10",
+        "title": "卡洛林教育基建與知識復興"
+      }
+    ]
+  },
+  {
+    "id": "avignon",
+    "name_zh": "阿維尼翁",
+    "name_en": "Avignon",
+    "coords": [
+      43.9493,
+      4.8055
+    ],
+    "desc": "南法隆河畔古城，阿爾比十字軍東征攻防重鎮，14世紀教宗巴比倫之囚座頭所在地。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page12",
+        "title": "宗教戰爭(二)：卡特里派"
+      }
+    ]
+  },
+  {
+    "id": "pesaro",
+    "name_zh": "佩薩羅",
+    "name_en": "Pesaro",
+    "coords": [
+      43.9125,
+      12.9154
+    ],
+    "desc": "義大利亞得里亞海沿岸城市，丕平獻土中讓渡給羅馬教廷的亞得里亞海濱22城之一。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page09",
+        "title": "丕平獻土與教宗國誕生"
+      }
+    ]
+  },
+  {
+    "id": "narni",
+    "name_zh": "納爾尼",
+    "name_en": "Narni",
+    "coords": [
+      42.518,
+      12.516
+    ],
+    "desc": "義大利翁布里亞古城，扼守弗拉米尼亞大道，丕平獻土收復並移交教廷的城市之一。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page09",
+        "title": "丕平獻土與教宗國誕生"
+      }
+    ]
+  },
+  {
+    "id": "ceccano",
+    "name_zh": "切卡諾",
+    "name_en": "Ceccano",
+    "coords": [
+      41.569,
+      13.332
+    ],
+    "desc": "義大利拉齊奧古城，位於羅馬東南方，中世紀教宗國南部防禦屏障。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page09",
+        "title": "丕平獻土與教宗國誕生"
+      }
+    ]
+  },
+  {
+    "id": "st_gallen",
+    "name_zh": "聖加侖",
+    "name_en": "St. Gallen",
+    "coords": [
+      47.4245,
+      9.3767
+    ],
+    "desc": "瑞士東北部修道院重鎮，以其九世紀《理想修道院平面圖》與極盛之手抄室文化聞名。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page10",
+        "title": "卡洛林教育基建與知識復興"
+      }
+    ]
+  },
+  {
+    "id": "lorsch",
+    "name_zh": "洛爾施",
+    "name_en": "Lorsch",
+    "coords": [
+      49.654,
+      8.567
+    ],
+    "desc": "德意志黑森地區卡洛林帝國修道院，存有著名的洛爾施門樓（Königshalle）與手抄本遺產。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page10",
+        "title": "卡洛林教育基建與知識復興"
+      }
+    ]
+  },
+  {
+    "id": "fabriano",
+    "name_zh": "法布里亞諾",
+    "name_en": "Fabriano",
+    "coords": [
+      43.336,
+      12.905
+    ],
+    "desc": "義大利馬爾凱大區造紙業聖地，13世紀發明動物膠施膠與水力槌擊技術，引領歐洲造紙革命。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page11",
+        "title": "歐洲造紙術的歷史演變"
+      }
+    ]
+  },
+  {
+    "id": "burgundy",
+    "name_zh": "勃艮第",
+    "name_en": "Burgundy / Bourgogne",
+    "coords": [
+      47.0,
+      4.8
+    ],
+    "desc": "西歐歷史重要公國與王國，介於法蘭西與神聖羅馬帝國之間，中世紀文化與宮廷經濟中心。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page04",
+        "title": "神聖羅馬帝國：金璽詔書"
+      },
+      {
+        "id": "page07",
+        "title": "奧托-薩利安帝國教會體制"
+      },
+      {
+        "id": "page08",
+        "title": "敘任權之爭：沃姆斯協約"
+      },
+      {
+        "id": "page23",
+        "title": "蠻族崛起的政治重塑與克洛維霸權"
+      },
+      {
+        "id": "page24",
+        "title": "帝國糧秣、租稅枷鎖與農奴的誕生：晚期羅馬阿諾納制度、土地附籍與西歐封建化轉型研究"
+      },
+      {
+        "id": "page40",
+        "title": "萊茵河－多瑙河地緣戰略"
+      }
+    ]
+  },
+  {
+    "id": "bamberg",
+    "name_zh": "班貝格",
+    "name_en": "Bamberg",
+    "coords": [
+      49.8988,
+      10.9028
+    ],
+    "desc": "德意志巴伐利亞帝國主教區，皇帝亨利二世建立之主教座堂城市與法理重鎮。",
+    "category": "medieval",
+    "articles": [
+      {
+        "id": "page04",
+        "title": "神聖羅馬帝國：金璽詔書"
+      },
+      {
+        "id": "page08",
+        "title": "敘任權之爭：沃姆斯協約"
+      }
+    ]
   }
 ];
