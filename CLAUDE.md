@@ -3,12 +3,14 @@
 本專案是「Gemini 的簡單歷史課」自動化網頁生成專案。為確保每次網頁設計更新、文章修訂都符合專案架構並維持優雅排版，請遵循以下 AI 協作守則。
 
 ## 🛠️ 專案基礎指令 (Commands)
+
 * **完整發布流程（首選，2026-07-21 起）**：`python run_build.py`
   一次完成「建置 → 資料切片 → Firestore 同步 → 索引驗證 → 完整驗證」，任一環節失敗即中止。
   **勿再分別執行 `build_html_md.py` + `build_static_chunks.py` + `verify_project.py`**，
   那樣會重複建置（歷史問題：`build_static_chunks.py` 的 `import build_html_md` 會觸發整份重跑）。
 * **僅重建網頁**：`python build_html_md.py` (只改排版、想快速看結果時使用)
 * **部署上線**：
+
   ```bash
   git add .
   git commit -m "發布或優化：[填寫具體變更]"
@@ -16,15 +18,18 @@
   ```
 
 ## 🎨 雙軌獨立版本號規範 (Versioning Rules)
+
 本專案採用**雙軌獨立版本號**以區分排版變更與文章修訂，修改時請嚴格遵守：
+
 1. **版面設計版本 (Layout & Design Version)**：
    * **升級時機**：變更 CSS 樣式、JavaScript 互動、網頁結構或底層轉換腳本邏輯時。
-   * **修改位置**：`index_db.html` 與 `template.html` 內版權卡片的「`版面設計：X.X`」（以文字搜尋定位，勿依賴行號）。兩檔皆需同步修改。
+   * **修改位置**：`index_db.html` 內版權卡片的「`版面設計：X.X`」（以文字搜尋定位，勿依賴行號）。
 2. **內容版本 (Content Version)**：
    * **升級時機**：修改歷史文章內容、史實勘誤、錯字修正或段落補充時。
    * **修改位置**：各文章傳入 `process_markdown()` / `process_3col_document()` 的版本參數（如 `"1.1"`），該值由 `version_badge`（`build_html_md.py` 約第 98 行）渲染為頁面上的「內容版本」徽章。同時同步更新 `course_config.json` 中對應文章的 `ver` 欄位。
 
 ## 📝 程式碼與編輯規範 (Development Guidelines)
+
 1. **編碼前先研究 (Think & Verify)**：
    * 專案內的歷史長文（.md 檔）內容較大，在讀取或修改內文時，必須精確讀取對應的段落，切勿自行胡亂假設史實，亦不可擅自截斷內容。
    * 調整視覺設計時，必須保持**響應式佈局**的完整性：
@@ -48,6 +53,7 @@
    * 範例指令：`python import_gdoc.py "https://docs.google.com/document/d/[DOC_ID]/edit"`（建議使用 Windows 系統上的全域 Python 3.13 執行，以確保套件完整性）。
 
 ## 🔍 SEO 優化守則 (SEO Checklist for New Content)
+
 每次新增或修改歷史專題頁面時，**必須同步完成以下 SEO 項目**：
 
 > **⚠️ 2026-07-21 架構更新**：本節與舊版差異甚大。SEO 描述的**唯一真實來源是
@@ -68,10 +74,9 @@
 3. **JSON-LD 結構化資料更新**：
    * 在首頁 `CollectionPage` JSON-LD 的 `hasPart` 陣列新增對應 `Article` 條目。
 
-4. **JavaScript 註冊（`template.html` 與 `index_db.html` 兩處同步）**：
-   * `pageSEO` 物件：註冊 `title`（desc 以 course_config.json 為準，兩處如有出入以 config 為正）。
-   * `initGlobalSearchIndex()` 的 `pages` 陣列：新增 `{ id: 'pageXX', name: '頁面名稱' }`。
-   * `courseInfo` 物件：新增版本、生成來源與工程資訊。
+4. **JavaScript 與資料庫同步（`course_config.json` 驅動）**：
+   * `course_config.json` 為單一真實來源，全站文章、分類、版本與 SEO 均由此檔統籌。
+   * 每次更新後執行 `python run_build.py` 自動同步 `index.html`、`api/` 切片與 Firestore 雲端資料庫。
 
 5. **自動產生項目（勿手動維護，但必須驗證）**：
    * `sitemap.xml`、`robots.txt`、`pages/pageXX.html` 靜態文章頁、首頁「全站文章索引」

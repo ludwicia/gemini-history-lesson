@@ -69,8 +69,9 @@
 
 | Collection | 說明 |
 |---|---|
-| `articles` | 全部文章（含 `content_html` 全文、`title`、`ver`、`img` 等元資料）。數量以 `course_config.json` 的 `articles` 為準，2026-07-29 為 47 篇。 |
-| `categories` | 全部分類（含 `title`、`key`、`pages[]` 頁面列表、`order` 排序），2026-07-29 為 12 個。 |
+| `articles` | 文章輕量元資料（`id`, `title`, `seo_title`, `seo_desc`, `ver`, `img`, `category`, `is_doc` 等，首頁導覽用），共 47 篇。 |
+| `article_contents` | 文章完整 HTML 內容（含 `content_html` 全文與元資料，內頁按需載入），共 47 篇。 |
+| `categories` | 全部分類（含 `title`、`key`、`img`、`pages[]` 頁面列表、`order` 排序），共 13 個。 |
 | `worklog` | 更新日誌 HTML（document ID: `current`） |
 | `search_index` | 全站搜尋索引，按頁面分組（每頁一個 document，含 `blocks[]` 文字段落陣列） |
 | `site_config` | 網站設定（document ID: `metadata`） |

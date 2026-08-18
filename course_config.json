@@ -423,7 +423,7 @@
       "img": "images/ottonian_hre_map.svg",
       "bg_pos": "center",
       "seo_title": "奧托-薩利安帝國教會體制 — Ludwica 的簡單歷史課",
-      "seo_desc": "奧托王朝與薩利安王朝的帝國教會體制、政教合一的運作機制、巡迴朝廷制度，以及敘任權之爭的歷史根源。",
+      "seo_desc": "深度探討中世紀神聖羅馬帝國奧托王朝與薩利安王朝之「帝國教會體制」（Reichskirchensystem），分析皇室與主教封建政教共生、采邑任命權與主教授職衝突之歷史根源。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/ottonian_hre_map.svg\" alt=\"Ottonian HRE Map\" loading=\"lazy\"><figcaption class=\"caption\">西元1000年左右奧托-薩利安王朝時期的神聖羅馬帝國地圖，呈現德意志各部落公爵領與主教區錯綜複雜的疆域分佈</figcaption></figure>\n",
       "image_replacements": [
         {
@@ -568,7 +568,7 @@
       "img": "images/clergy_trent.jpg",
       "bg_pos": "center",
       "seo_title": "聖職與婚娶：歷史演變與政權博弈 — Ludwica 的簡單歷史課",
-      "seo_desc": "深入探討基督宗教神職人員生育、婚姻與財產繼承的歷史演變與政權博弈。",
+      "seo_desc": "全面研究中世紀天主教會神職人員獨身制度與教士婚姻的歷史演變：從早期大公會議、額我略改革（Gregorian Reform）到特倫多大公會議之教規確立與神學爭議。",
       "map_html": "<figure class=\"image-left\" style=\"width: 38%; margin-bottom: 20px;\"><img src=\"images/clergy_trent.jpg\" alt=\"The Council of Trent\" loading=\"lazy\"><figcaption class=\"caption\">1588年帕斯卡爾·卡蒂繪製的著名壁畫《特倫托公會議》（The Council of Trent），現藏於羅馬聖母大公殿，象徵天主教會在宗教改革浪潮下對神職絕對獨身制與教義純潔性的確認與重申。</figcaption></figure>\n",
       "image_replacements": [
         {
@@ -741,7 +741,7 @@
     "page22": {
       "title": "羅馬秩序的終結與日耳曼王權的奠定",
       "file_path": "course/羅馬秩序的終結與日耳曼王權的奠定：奧多亞賽的崛起、統治策略與政權覆滅.md",
-      "ver": "1.3",
+      "ver": "1.4",
       "doc": false,
       "img": "images/odoacer_fall_rome.jpg",
       "bg_pos": "center",
@@ -789,7 +789,7 @@
     "page47": {
       "title": "瓦倫斯陣亡至迪奧多西接掌君士坦丁堡",
       "file_path": "course/瓦倫斯陣亡至迪奧多西接掌君士坦丁堡：東羅馬權力轉移、哥德戰線演變與政治謀略研究.md",
-      "ver": "1.0",
+      "ver": "1.1",
       "doc": false,
       "img": "images/theodosius_constantinople_entry.png",
       "bg_pos": "center",
@@ -801,7 +801,7 @@
     "page26": {
       "title": "阿拉里克與哥德大遷徙",
       "file_path": "course/阿拉里克與哥德大遷徙：晚期羅馬帝國的地緣政治坍塌與蠻族同盟的體制化適應（第一卷：永恆之城的終局）.md",
-      "ver": "1.1",
+      "ver": "1.3",
       "doc": false,
       "img": "images/alaric_sack_rome.png",
       "bg_pos": "center",
@@ -846,7 +846,7 @@
       "img": "",
       "bg_pos": "center",
       "seo_title": "聖本篤會規三欄解析 — Ludwica 的簡單歷史課",
-      "seo_desc": "公元6世紀西方隱修制度基石《聖本篤會規》德文原文、中文翻譯與專業學術註釋三欄並列解析。",
+      "seo_desc": "深入解析天主教本篤會修道傳統核心經典《聖本篤會規》（Rule of Saint Benedict），提供拉丁文原文、權威德英譯本與繁體中文三欄對照及詳細章節法理解析。",
       "map_html": null,
       "image_replacements": [],
       "doc_params": {
@@ -862,7 +862,7 @@
       "img": "",
       "bg_pos": "center",
       "seo_title": "沃姆斯協約 — Ludwica 的簡單歷史課",
-      "seo_desc": "結束敘任權之爭的歷史性協約，區分神權與世俗權力，奠定中古世紀政教關係新局。",
+      "seo_desc": "西元1122年教宗嘉禮二世與神聖羅馬皇帝亨利五世締結之《沃姆斯協約》（Concordat of Worms）原文與繁體中文平行對照翻譯，解析主教敘任權之妥協機制。",
       "map_html": null,
       "image_replacements": [],
       "doc_params": {
