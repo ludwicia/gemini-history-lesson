@@ -33,10 +33,11 @@ def main():
         last_updated = build_html_md.get_file_last_update_date(file_path) if file_path else ""
 
         category_key = ""
-        for cat in categories:
-            if pid in cat['pages']:
-                category_key = cat['key']
-                break
+        if not data.get('doc', False):
+            for cat in categories:
+                if pid in cat['pages']:
+                    category_key = cat['key']
+                    break
 
         articles_list.append({
             'id': pid,
@@ -53,7 +54,7 @@ def main():
 
     # Map pages inside categories dynamically
     for cat in categories:
-        cat['pages'] = [art['id'] for art in articles_list if art['category'] == cat['key']]
+        cat['pages'] = [art['id'] for art in articles_list if art['category'] == cat['key'] and not art['is_doc']]
 
     catalog_json = {
         'categories': categories,
@@ -75,10 +76,11 @@ def main():
         last_updated = build_html_md.get_file_last_update_date(file_path) if file_path else ""
 
         category_key = ""
-        for cat in categories:
-            if pid in cat['pages']:
-                category_key = cat['key']
-                break
+        if not data.get('doc', False):
+            for cat in categories:
+                if pid in cat['pages']:
+                    category_key = cat['key']
+                    break
 
         article_detail = {
             'id': pid,

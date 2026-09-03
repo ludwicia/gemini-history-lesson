@@ -354,7 +354,7 @@ def write_site_outputs():
             for _cat in categories:
                 _links = []
                 for _pid in _cat['pages']:
-                    if _pid in pages_data:
+                    if _pid in pages_data and not pages_data[_pid].get('doc'):
                         _links.append(
                             f'            <li><a href="pages/{_pid}.html">{pages_data[_pid]["title"]}</a></li>'
                         )
@@ -366,11 +366,11 @@ def write_site_outputs():
                         f'        </div>'
                     )
 
-            # 三欄文獻頁（doc=True）不屬於任何分類，首頁是以獨立的「歷史文獻」區塊呈現，
-            # 這裡同樣補上，避免它們在靜態索引中缺席而無法被爬取。
+            # 三欄文獻頁（doc=True）不屬於任何專題分類，首頁是以獨立的「歷史文獻對照」區塊呈現，
+            # 這裡集中彙整，確保在靜態索引中擁有專屬區塊並可被爬取。
             _doc_links = []
             for _pid in sorted(pages_data.keys(), key=lambda x: int(re.search(r'\d+', x).group())):
-                if pages_data[_pid].get('doc') and not any(_pid in _c['pages'] for _c in categories):
+                if pages_data[_pid].get('doc'):
                     _doc_links.append(
                         f'            <li><a href="pages/{_pid}.html">{pages_data[_pid]["title"]}</a></li>'
                     )

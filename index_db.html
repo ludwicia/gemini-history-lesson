@@ -999,7 +999,7 @@
         };
 
         categories.forEach(cat => {
-            const catPages = articles.filter(art => art.category === cat.key);
+            const catPages = articles.filter(art => art.category === cat.key && !art.is_doc);
 
             let gridContent = '';
             if (catPages.length === 0) {

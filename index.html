@@ -454,7 +454,6 @@
             <h3>三世紀之前的羅馬社會</h3>
             <ul>
             <li><a href="pages/page33.html">一世紀羅馬行省治權與社會</a></li>
-            <li><a href="pages/page32.html">羅馬帝國：安東尼努斯敕令</a></li>
             </ul>
         </div>
         <div class="article-index-group">
@@ -471,8 +470,6 @@
             <li><a href="pages/page41.html">君士坦丁三世與五世紀初邊疆危機</a></li>
             <li><a href="pages/page45.html">費爾穆斯叛亂與北非防務危機</a></li>
             <li><a href="pages/page47.html">瓦倫斯陣亡至迪奧多西接掌君士坦丁堡</a></li>
-            <li><a href="pages/page20.html">羅馬帝國：米蘭敕令</a></li>
-            <li><a href="pages/page28.html">羅馬帝國：薩洛尼卡敕令</a></li>
             </ul>
         </div>
         <div class="article-index-group">
@@ -504,8 +501,6 @@
             <ul>
             <li><a href="pages/page07.html">奧托-薩利安帝國教會體制</a></li>
             <li><a href="pages/page16.html">中世紀巡行王權的權力運作</a></li>
-            <li><a href="pages/page04.html">神聖羅馬帝國：金璽詔書</a></li>
-            <li><a href="pages/page08.html">敘任權之爭：沃姆斯協約</a></li>
             </ul>
         </div>
         <div class="article-index-group">
@@ -516,7 +511,6 @@
             <li><a href="pages/page15.html">聖職與婚娶</a></li>
             <li><a href="pages/page03.html">宗教戰爭(一)：胡斯戰爭</a></li>
             <li><a href="pages/page12.html">宗教戰爭(二)：卡特里派</a></li>
-            <li><a href="pages/page06.html">修道院制度：聖本篤會規</a></li>
             </ul>
         </div>
         <div class="article-index-group">
@@ -546,7 +540,6 @@
             <h3>風雨飄搖的大清帝國</h3>
             <ul>
             <li><a href="pages/page36.html">晚清中樞權力變革與肅順之死</a></li>
-            <li><a href="pages/page37.html">大清帝國：咸豐皇帝遺詔</a></li>
             </ul>
         </div>
         <div class="article-index-group">
@@ -560,6 +553,18 @@
             <h3>漢朝社會研究</h3>
             <ul>
             <li><a href="pages/page48.html">漢代奴隸制度之歷史與法制考論</a></li>
+            </ul>
+        </div>
+        <div class="article-index-group">
+            <h3>歷史文獻對照</h3>
+            <ul>
+            <li><a href="pages/page04.html">神聖羅馬帝國：金璽詔書</a></li>
+            <li><a href="pages/page06.html">修道院制度：聖本篤會規</a></li>
+            <li><a href="pages/page08.html">敘任權之爭：沃姆斯協約</a></li>
+            <li><a href="pages/page20.html">羅馬帝國：米蘭敕令</a></li>
+            <li><a href="pages/page28.html">羅馬帝國：薩洛尼卡敕令</a></li>
+            <li><a href="pages/page32.html">羅馬帝國：安東尼努斯敕令</a></li>
+            <li><a href="pages/page37.html">大清帝國：咸豐皇帝遺詔</a></li>
             </ul>
         </div>
     <!-- STATIC_ARTICLE_INDEX_END -->
@@ -1111,7 +1116,7 @@
         };
 
         categories.forEach(cat => {
-            const catPages = articles.filter(art => art.category === cat.key);
+            const catPages = articles.filter(art => art.category === cat.key && !art.is_doc);
 
             let gridContent = '';
             if (catPages.length === 0) {

@@ -5,7 +5,6 @@
       "key": "pre-3rd-century-rome",
       "img": "images/roman_provincial_governance.png",
       "pages": [
-        "page32",
         "page33"
       ]
     },
@@ -20,8 +19,6 @@
         "page25",
         "page47",
         "page27",
-        "page20",
-        "page28",
         "page30",
         "page31",
         "page39",
@@ -65,9 +62,7 @@
       "img": "images/reisekönig_travelling_kings.jpg",
       "pages": [
         "page07",
-        "page16",
-        "page04",
-        "page08"
+        "page16"
       ]
     },
     {
@@ -79,8 +74,7 @@
         "page12",
         "page15",
         "page17",
-        "page21",
-        "page06"
+        "page21"
       ]
     },
     {
@@ -117,8 +111,7 @@
       "key": "qing",
       "img": "images/qing_empire.png",
       "pages": [
-        "page36",
-        "page37"
+        "page36"
       ]
     },
     {
@@ -435,7 +428,7 @@
       "seo_desc": "1356年《金璽詔書》全文德文原文、中文翻譯與學術註解三欄對照，解析選帝侯制度與帝國憲政體制的基石文件。",
       "ver": "1.9",
       "last_updated": "2026-07-04",
-      "category": "hre",
+      "category": "",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -447,7 +440,7 @@
       "seo_desc": "深入解析天主教本篤會修道傳統核心經典《聖本篤會規》（Rule of Saint Benedict），提供拉丁文原文、權威德英譯本與繁體中文三欄對照及詳細章節法理解析。",
       "ver": "2.0",
       "last_updated": "2026-06-07",
-      "category": "church",
+      "category": "",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -459,7 +452,7 @@
       "seo_desc": "西元1122年教宗嘉禮二世與神聖羅馬皇帝亨利五世締結之《沃姆斯協約》（Concordat of Worms）原文與繁體中文平行對照翻譯，解析主教敘任權之妥協機制。",
       "ver": "1.1",
       "last_updated": "2026-07-10",
-      "category": "hre",
+      "category": "",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -471,7 +464,7 @@
       "seo_desc": "公元313年由皇帝君士坦丁一世與李錫尼在米蘭共同頒布的法令，宣告羅馬帝國宗教寬容，包含英文與拉丁文雙版本之三欄對照與學術註解。",
       "ver": "1.1",
       "last_updated": "2026-07-06",
-      "category": "rome",
+      "category": "",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -483,7 +476,7 @@
       "seo_desc": "公元380年由羅馬皇帝格拉提安、瓦倫丁尼安二世與狄奧多西一世聯合頒布的法令，將尼西亞基督教確立為羅馬帝國國教，包含拉丁文原文、中文翻譯三欄對照與名詞解析。",
       "ver": "1.2",
       "last_updated": "2026-07-10",
-      "category": "rome",
+      "category": "",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -531,7 +524,7 @@
       "seo_desc": "公元212年羅馬皇帝卡拉卡拉頒布之《安東尼努斯敕令》英漢雙語平行文本，包含吉森莎草紙40號文獻內容、古羅馬法律與文學記載等文獻對照。",
       "ver": "1.1",
       "last_updated": "2026-06-24",
-      "category": "pre-3rd-century-rome",
+      "category": "",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
@@ -579,7 +572,7 @@
       "seo_desc": "收錄清咸豐十一年（1861年）咸豐皇帝臨終遺詔之文言文與白話中文對照，深入剖析其政治背景、立儲爭議、顧命八大臣安排，以及為辛酉政變埋下之權力博弈伏筆。",
       "ver": "1.1",
       "last_updated": "2026-07-07",
-      "category": "qing",
+      "category": "",
       "img": "",
       "bg_pos": "center",
       "is_doc": 1
