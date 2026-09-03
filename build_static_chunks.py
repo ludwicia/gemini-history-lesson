@@ -22,12 +22,14 @@ def main():
     categories = build_html_md.categories
     pages_data = build_html_md.pages_data
 
+    articles_html = getattr(build_html_md, 'articles_html', {})
+
     # 2. Compile articles catalog metadata (without content_html)
     articles_list = []
     for pid, data in pages_data.items():
         p_num = pid[4:] # e.g. "01" from "page01"
         file_var_name = f"file_p{int(p_num)}"
-        file_path = getattr(build_html_md, file_var_name, None)
+        file_path = data.get('file_path') or getattr(build_html_md, file_var_name, None)
         last_updated = build_html_md.get_file_last_update_date(file_path) if file_path else ""
 
         category_key = ""
@@ -66,11 +68,10 @@ def main():
     # 3. Compile individual articles detail page JSON chunks
     for pid, data in pages_data.items():
         p_num = pid[4:]
-        body_var_name = f"html_body_p{int(p_num)}"
-        body_html = getattr(build_html_md, body_var_name, "")
-
         file_var_name = f"file_p{int(p_num)}"
-        file_path = getattr(build_html_md, file_var_name, None)
+        body_var_name = f"html_body_p{int(p_num)}"
+        body_html = articles_html.get(pid) or getattr(build_html_md, body_var_name, "")
+        file_path = data.get('file_path') or getattr(build_html_md, file_var_name, None)
         last_updated = build_html_md.get_file_last_update_date(file_path) if file_path else ""
 
         category_key = ""
@@ -102,7 +103,7 @@ def main():
     for pid, data in pages_data.items():
         p_num = pid[4:]
         body_var_name = f"html_body_p{int(p_num)}"
-        body_html = getattr(build_html_md, body_var_name, "")
+        body_html = articles_html.get(pid) or getattr(build_html_md, body_var_name, "")
 
         # Match elements p, h2, h3, li, td
         matches = re.findall(r'<(p|h2|h3|li|td)(?:\s+[^>]*)?>(.*?)</\1>', body_html, re.DOTALL | re.IGNORECASE)

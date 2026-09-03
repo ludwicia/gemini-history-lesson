@@ -42,35 +42,28 @@ description: Handles the step-by-step workflow for importing, auditing, proofrea
    * 使用 `generate_image` 工具繪製一張符合該歷史主題、具備 premium 質感的油畫風格或歷史插圖。
    * 將生成出的圖片複製或移動至 `images/` 目錄，命名為適當的英文名稱，並於前台載入時使用相對路徑與 `loading="lazy"` 屬性。
 
-3. **註冊網頁路由與元數據**：
-   * **修改 `build_html_md.py`**：
-     * 定義新頁面的 `file_pXX`、`map_pXX`（Banner 及圖說）與 `images_pXX` 變數。
-     * 新增其 `process_markdown` 調用，設定內容版本為 `1.0`。
-     * 在 `pages_data` 中新增該頁面的標題、封面圖、版本與 doc 標記。
-     * 在 `categories` 陣列中，將頁面 ID 新增至對應的分類下。
-     * 在 HTML 生成替換部分，新增 `__HTML_BODY_PAGE[XX]__` 與 `__PAGE[XX]_DATE__` 的取代邏輯。
-   * **修改 `course_config.json`**（SEO 描述的唯一真實來源，2026-07-19 起）：
-     * 新增該頁面的 `seo_title` 與 `seo_desc`（50–160 字的精準內容摘要）。
-     * `pages/pageXX.html` 的 meta description、og、twitter、canonical 與 Article
-       JSON-LD **全部由 build 從此處自動產生**。若遺漏，build 會印出
-       `[WARNING] ... missing seo_desc`，該頁將退回通用備援文案。
-   * **修改 `index_db.html`**（動態版 SPA 入口）：
-     * 在 `pageSEO` 物件中新增該頁面的 `title`（**desc 以 `course_config.json` 為準**，
-       勿只寫在此處——雙軌各寫一份曾導致兩邊分岔、多篇文章線上只剩通用文案）。
-     * 在 `<head>` 的 JSON-LD 結構化資料 `hasPart` 陣列中新增對應的 `Article` 項目。
+3. **註冊網頁路由與元數據（唯一設定檔：course_config.json）**：
+   * **修改 `course_config.json`**（全站唯一真實來源，2026-09 全面動態化）：
+     * 在 `articles` 新增 `pageXX` 條目，設定 `title`, `file_path`, `ver: "1.0"`, `img`, `seo_title`, `seo_desc`（50–160 字內容摘要）, `map_html`, `image_replacements`。
+     * 在 `categories` 找到對應分類，將 `"pageXX"` 加入其 `"pages"` 陣列中。
+     * `pages/pageXX.html` 的正文、meta description、og、twitter、canonical、Article JSON-LD 以及首頁索引 **全部由 build 從此處自動產生**。
+   * **🚫 嚴禁修改 `build_html_md.py`**（底層已動態化，無需定義變數）。
+   * **🚫 無需修改 `index_db.html` 或尋找 `template.html`**（SPA 路由與結構全自動動態載入）。
 
 4. **更新日誌與版本宣告**：
-   * 在 `index_db.html` 中，將 `版面設計` 版本號手動遞增（如 4.7 升級至 4.8），並更新發布日期。
-   * 在專案根目錄的 `worklog.md` 頂部插入今日的發布日誌，詳細說明發布的文章、修正的史實、新增的插圖與路由調整。
+   * 在專案根目錄的 `worklog.md` 頂部插入今日的發布日誌（格式：`#### YYYY-MM-DD (標題)`），條列更新重點（使用 "-" 開頭）。
+   * *注意：單純發布文章或修訂內容時，僅需維護文章自身的內容版本（`ver: "1.0"`），不需要遞增 `index_db.html` 的「版面設計」版本號（版面版本僅在修改全站 CSS/JS 結構時才升級）。*
 
 5. **編譯、Firestore 上傳與 Git 部署**：
 
    > **⚠️ 2026-07-21 重大變更：改為單一指令，且嚴禁再手動複製 index.html**
 
    * 在本機執行**單一指令**完成全部編譯與驗證：
+
      ```bash
      python run_build.py
      ```
+
      它會依序完成：建置（單次）→ `api/` JSON 切片 → Firestore 上傳（有金鑰時）
      → index.html 文章索引驗證 → `verify_project.py` 完整驗證。任一環節失敗即中止。
 
@@ -87,12 +80,14 @@ description: Handles the step-by-step workflow for importing, auditing, proofrea
      單獨執行會使整份建置重跑一次（`run_build.py` 已在單一行程內處理妥當）。
 
    * 最後執行 Git 命令部署上線：
+
      ```bash
      git add .
      git commit -m "發布：新增[專題名稱]專題 (版面 X.X, 內容 1.0)"
      git push
      ```
-   * 部署完畢後向使用者報告網站已成功更新。
+
+     部署完畢後向使用者報告網站已成功更新。
 
 ---
 

@@ -7,3 +7,6 @@ history_lessons.db
 serviceAccountKey.json
 node_modules/
 index_static.html
+ludwica/
+*.base
+*.canvas

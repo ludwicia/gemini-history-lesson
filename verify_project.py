@@ -94,6 +94,21 @@ def check_images_exist():
         return False
 
     print(f"[OK] All {len(all_referenced_images)} referenced images exist in filesystem.")
+
+    # Check for oversized images (>800KB)
+    MAX_IMAGE_SIZE_KB = 800
+    oversized = []
+    for img in all_referenced_images:
+        normalized_path = img.replace('/', os.sep)
+        if os.path.exists(normalized_path):
+            size_kb = os.path.getsize(normalized_path) / 1024
+            if size_kb > MAX_IMAGE_SIZE_KB:
+                oversized.append((img, size_kb))
+    if oversized:
+        print(f"[INFO] {len(oversized)} image(s) exceed {MAX_IMAGE_SIZE_KB} KB (consider optimizing to <500 KB):")
+        for img, size_kb in oversized:
+            print(f"   - {img} ({size_kb:.1f} KB)")
+
     return True
 
 def check_index_sync():

@@ -2,3 +2,6 @@ markdown
 beautifulsoup4
 pangu
 pre-commit
+firebase-admin
+requests
+markdownify

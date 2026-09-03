@@ -39,6 +39,32 @@ const cache = {
 const _articleAccessOrder = [];
 
 // ============================================================
+// 靜態目錄預載入（Cloudflare CDN 優先，單一請求取得全站目錄、分類與日誌）
+// ============================================================
+async function _ensureStaticCatalog() {
+    if (cache.catalog && cache.categories && cache.worklog) return true;
+    if (cache._pending.staticCatalog) return cache._pending.staticCatalog;
+
+    cache._pending.staticCatalog = (async () => {
+        try {
+            const res = await fetch(`/api/articles.json?v=${APP_VERSION}`);
+            if (res.ok) {
+                const data = await res.json();
+                if (data.articles && !cache.catalog) cache.catalog = data.articles;
+                if (data.categories && !cache.categories) cache.categories = data.categories;
+                if (data.worklog && !cache.worklog) cache.worklog = data.worklog;
+                return true;
+            }
+        } catch (e) {
+            console.warn('⚠️ CDN 靜態目錄載入失敗，將自適應切換為 Firestore 雲端讀取:', e.message);
+        }
+        return false;
+    })();
+
+    try { return await cache._pending.staticCatalog; } finally { delete cache._pending.staticCatalog; }
+}
+
+// ============================================================
 // 文章元資料（首頁用 — 不含 content_html）
 // ============================================================
 export async function getArticlesCatalog() {
@@ -46,6 +72,11 @@ export async function getArticlesCatalog() {
     if (cache._pending.catalog) return cache._pending.catalog;
 
     cache._pending.catalog = (async () => {
+        // 1. 優先從 CDN 靜態 API 載入（免 Firestore 讀取額度、低延遲）
+        await _ensureStaticCatalog();
+        if (cache.catalog) return cache.catalog;
+
+        // 2. Fallback: 從 Firestore 讀取
         try {
             const articlesRef = collection(db, 'articles');
             const snapshot = await getDocs(articlesRef);
@@ -70,19 +101,7 @@ export async function getArticlesCatalog() {
                 return articles;
             }
         } catch (e) {
-            console.warn('⚠️ Firestore 讀取失敗，嘗試 fallback 到本地 API:', e.message);
-        }
-
-        // Fallback: 從本地 /api/articles.json 讀取
-        try {
-            const res = await fetch(`/api/articles.json?v=${APP_VERSION}`);
-            if (res.ok) {
-                const data = await res.json();
-                cache.catalog = data.articles;
-                return data.articles;
-            }
-        } catch (e) {
-            console.error('❌ 本地 API 也無法讀取:', e.message);
+            console.warn('⚠️ Firestore 讀取失敗，且本地 API 亦不可用:', e.message);
         }
 
         return [];
@@ -99,6 +118,11 @@ export async function getCategories() {
     if (cache._pending.categories) return cache._pending.categories;
 
     cache._pending.categories = (async () => {
+        // 1. 優先從 CDN 靜態 API 載入
+        await _ensureStaticCatalog();
+        if (cache.categories) return cache.categories;
+
+        // 2. Fallback: 從 Firestore 讀取
         try {
             const catRef = collection(db, 'categories');
             const q = query(catRef, orderBy('order', 'asc'));
@@ -113,19 +137,7 @@ export async function getCategories() {
                 return categories;
             }
         } catch (e) {
-            console.warn('⚠️ Firestore 分類讀取失敗，嘗試 fallback:', e.message);
-        }
-
-        // Fallback
-        try {
-            const res = await fetch(`/api/articles.json?v=${APP_VERSION}`);
-            if (res.ok) {
-                const data = await res.json();
-                cache.categories = data.categories;
-                return data.categories;
-            }
-        } catch (e) {
-            console.error('❌ 分類 fallback 失敗:', e.message);
+            console.warn('⚠️ Firestore 分類讀取失敗，且本地 API 亦不可用:', e.message);
         }
 
         return [];
@@ -201,6 +213,11 @@ export async function getWorklog() {
     if (cache._pending.worklog) return cache._pending.worklog;
 
     cache._pending.worklog = (async () => {
+        // 1. 優先從 CDN 靜態 API 載入
+        await _ensureStaticCatalog();
+        if (cache.worklog) return cache.worklog;
+
+        // 2. Fallback: 從 Firestore 讀取
         try {
             const docRef = doc(db, 'worklog', 'current');
             const docSnap = await getDoc(docRef);
@@ -210,19 +227,7 @@ export async function getWorklog() {
                 return cache.worklog;
             }
         } catch (e) {
-            console.warn('⚠️ Firestore 更新日誌讀取失敗:', e.message);
-        }
-
-        // Fallback: 從 articles.json 的 worklog 欄位
-        try {
-            const res = await fetch(`/api/articles.json?v=${APP_VERSION}`);
-            if (res.ok) {
-                const data = await res.json();
-                cache.worklog = data.worklog;
-                return data.worklog;
-            }
-        } catch (e) {
-            console.error('❌ 更新日誌 fallback 失敗:', e.message);
+            console.warn('⚠️ Firestore 更新日誌讀取失敗，且本地 API 亦不可用:', e.message);
         }
 
         return '';

@@ -9,11 +9,16 @@ import sys
 import atexit
 import importlib
 
-# Main database pipeline imports
-import build_html_md
-
 PORT = 8001
 main_server_process = None
+
+def get_course_articles():
+    try:
+        with open('course_config.json', 'r', encoding='utf-8') as f:
+            return json.load(f).get('articles', {})
+    except Exception as e:
+        print(f"Error loading course_config.json: {e}")
+        return {}
 
 def stop_main_server():
     global main_server_process
@@ -62,18 +67,18 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # 3. API: GET /api/articles (Get list of article metadata & files)
         if parsed_url.path == '/api/articles':
+            articles_cfg = get_course_articles()
             articles = []
-            for pid, data in build_html_md.pages_data.items():
-                file_var_name = f"file_p{int(pid[4:])}"
-                file_path = getattr(build_html_md, file_var_name, None)
+            for pid, data in articles_cfg.items():
+                file_path = data.get('file_path')
                 articles.append({
                     'id': pid,
-                    'title': data['title'],
+                    'title': data.get('title', pid),
                     'filePath': file_path
                 })
 
             # Sort articles by page number key
-            articles.sort(key=lambda x: int(x['id'][4:]))
+            articles.sort(key=lambda x: int(re.search(r'\d+', x['id']).group()) if re.search(r'\d+', x['id']) else 0)
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
@@ -87,15 +92,15 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
             params = urllib.parse.parse_qs(parsed_url.query)
             pid = params.get('id', [''])[0].strip()
 
-            if not pid or pid not in build_html_md.pages_data:
+            articles_cfg = get_course_articles()
+            if not pid or pid not in articles_cfg:
                 self.send_response(400)
                 self.send_header('Content-type', 'application/json; charset=utf-8')
                 self.end_headers()
                 self.wfile.write(json.dumps({'error': 'Invalid article ID'}).encode('utf-8'))
                 return
 
-            file_var_name = f"file_p{int(pid[4:])}"
-            file_path = getattr(build_html_md, file_var_name, None)
+            file_path = articles_cfg[pid].get('file_path')
 
             if not file_path or not os.path.exists(file_path):
                 self.send_response(404)
@@ -113,7 +118,7 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             response_data = {
                 'id': pid,
-                'title': build_html_md.pages_data[pid]['title'],
+                'title': articles_cfg[pid].get('title', pid),
                 'filePath': file_path,
                 'markdown': markdown_content
             }
@@ -221,15 +226,15 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
             pid = data.get('id')
             markdown_content = data.get('markdown')
 
-            if not pid or pid not in build_html_md.pages_data:
+            articles_cfg = get_course_articles()
+            if not pid or pid not in articles_cfg:
                 self.send_response(400)
                 self.send_header('Content-type', 'application/json; charset=utf-8')
                 self.end_headers()
                 self.wfile.write(json.dumps({'error': 'Invalid article ID'}).encode('utf-8'))
                 return
 
-            file_var_name = f"file_p{int(pid[4:])}"
-            file_path = getattr(build_html_md, file_var_name, None)
+            file_path = articles_cfg[pid].get('file_path')
 
             if not file_path:
                 self.send_response(404)
