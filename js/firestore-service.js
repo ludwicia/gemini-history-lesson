@@ -94,6 +94,7 @@ export async function getArticlesCatalog() {
                         last_updated: data.last_updated,
                         category: data.category,
                         img: data.img,
+                        bg_pos: data.bg_pos || 'center',
                         is_doc: data.is_doc
                     });
                 });
@@ -160,6 +161,19 @@ export async function getArticleById(pageId) {
     if (cache._pending[`article_${pageId}`]) return cache._pending[`article_${pageId}`];
 
     cache._pending[`article_${pageId}`] = (async () => {
+        // 1. 優先從 CDN 靜態 API 載入（免 Firestore 讀取額度、邊緣快取極速秒開）
+        try {
+            const res = await fetch(`/api/article/${pageId}.json?v=${APP_VERSION}`);
+            if (res.ok) {
+                const article = await res.json();
+                _cacheArticle(pageId, article);
+                return article;
+            }
+        } catch (e) {
+            console.warn(`⚠️ CDN 靜態文章 [${pageId}] 載入失敗，自適應切換為 Firestore:`, e.message);
+        }
+
+        // 2. Fallback: 從 Firestore 雲端讀取
         try {
             const docRef = doc(db, 'article_contents', pageId);
             const docSnap = await getDoc(docRef);
@@ -170,19 +184,7 @@ export async function getArticleById(pageId) {
                 return article;
             }
         } catch (e) {
-            console.warn(`⚠️ Firestore 文章 [${pageId}] 讀取失敗，嘗試 fallback:`, e.message);
-        }
-
-        // Fallback
-        try {
-            const res = await fetch(`/api/article/${pageId}.json?v=${APP_VERSION}`);
-            if (res.ok) {
-                const article = await res.json();
-                _cacheArticle(pageId, article);
-                return article;
-            }
-        } catch (e) {
-            console.error(`❌ 文章 [${pageId}] fallback 也失敗:`, e.message);
+            console.error(`❌ Firestore 文章 [${pageId}] 讀取也失敗:`, e.message);
         }
 
         return null;

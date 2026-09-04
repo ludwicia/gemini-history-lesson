@@ -15,6 +15,7 @@ import os
 import sys
 import json
 import glob
+import hashlib
 
 # 嘗試匯入 firebase-admin
 try:
@@ -114,15 +115,21 @@ def migrate_articles(db, catalog_data, force=False):
         else:
             print(f"   [WARNING] 找不到 {article_json_path}")
 
+        content_hash = hashlib.md5(content_html.encode('utf-8')).hexdigest() if content_html else ''
+        meta_data['content_hash'] = content_hash
+
         # 上傳到 Firestore (拆分為兩個 Collections)
         try:
-            # 檢查版本號與文章全文 document 是否皆存在
+            # 檢查版本號與文章全文 Hash 是否皆未變更
             if not force:
                 existing_meta = db.collection('articles').document(page_id).get()
                 existing_content = db.collection('article_contents').document(page_id).get()
                 if existing_meta.exists and existing_content.exists:
-                    if existing_meta.to_dict().get('ver') == meta_data['ver']:
-                        print(f"   [SKIP] [{page_id}] {art['title']} (版本 {meta_data['ver']} 未變更)")
+                    remote_meta = existing_meta.to_dict()
+                    remote_hash = remote_meta.get('content_hash', '')
+                    # 只有在遠端版本相同且內容 Hash 存在且相同時才跳過
+                    if remote_meta.get('ver') == meta_data['ver'] and remote_hash and remote_hash == content_hash:
+                        print(f"   [SKIP] [{page_id}] {art['title']} (版本 {meta_data['ver']} 與內容皆未變更)")
                         skip_count += 1
                         continue
 
@@ -196,16 +203,22 @@ def migrate_site_config(db, catalog_data=None):
     print("\n[INFO] 正在上傳網站設定...")
 
     from datetime import date
-    version = '8.0'
-    if catalog_data and 'site_config' in catalog_data:
-        version = catalog_data['site_config'].get('layout_version', '8.0')
+    version = '8.3'
+    site_cfg = {}
+    if os.path.exists("course_config.json"):
+        try:
+            with open("course_config.json", 'r', encoding='utf-8') as f:
+                site_cfg = json.load(f).get('site_config', {})
+                version = site_cfg.get('layout_version', '8.3')
+        except Exception as e:
+            print(f"   [WARNING] 讀取 course_config.json 失敗: {e}")
 
     config = {
         'layout_version': version,
-        'publish_date': date.today().isoformat(),
-        'site_name': 'Ludwica 的簡單歷史課',
-        'site_url': 'https://ludwica-history-lesson.pages.dev/',
-        'description': '深度歷史專題研究與報告'
+        'publish_date': site_cfg.get('publish_date', date.today().isoformat()),
+        'site_name': site_cfg.get('title', 'Ludwica 的簡單歷史課'),
+        'site_url': site_cfg.get('site_url', 'https://ludwica-history-lesson.pages.dev/'),
+        'description': site_cfg.get('description', '深度歷史專題研究與報告')
     }
 
     db.collection('site_config').document('metadata').set(config)

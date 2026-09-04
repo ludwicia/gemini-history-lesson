@@ -1010,21 +1010,18 @@
                 });
             }
 
-            // If this is the novel category, insert the "歷史小說" section title before it
-            if (cat.key === 'novel') {
-                const secTitle = document.createElement('div');
-                secTitle.className = 'card-section-title';
-                secTitle.style.marginTop = '40px';
-                secTitle.style.marginBottom = '20px';
-                secTitle.textContent = '歷史小說 (Historical Fiction)';
-                container.appendChild(secTitle);
-            }
-
             const catSection = document.createElement('div');
             catSection.className = 'category-section';
             const tab = tabMapping[cat.key] || 'europe';
             catSection.setAttribute('data-tab', tab);
+
+            // If this is the novel category, insert the "歷史小說" section title inside it
+            const novelTitleHtml = cat.key === 'novel'
+                ? `<div class="card-section-title" style="margin-top: 40px; margin-bottom: 20px;">歷史小說 (Historical Fiction)</div>`
+                : '';
+
             catSection.innerHTML = `
+                ${novelTitleHtml}
                 <div class="category-header-card" onclick="toggleCategory('${cat.key}')">
                     <div class="category-header-image" style="background-image: url('${cat.img}');"></div>
                     <div class="category-header-content">
@@ -1085,10 +1082,10 @@
     }
 
     function getDocTab(art) {
-        if (art.category === 'us' || art.title.includes('美國') || art.id === 'page02' || art.id === 'page13') {
+        if (art.category === 'us' || (art.title && art.title.includes('美國'))) {
             return 'new-world';
         }
-        if (art.category === 'qing' || art.title.includes('大清') || art.title.includes('咸豐') || art.id === 'page37') {
+        if (art.category === 'qing' || art.category === 'han' || (art.title && (art.title.includes('大清') || art.title.includes('咸豐') || art.title.includes('漢代') || art.title.includes('大漢')))) {
             return 'far-east';
         }
         return 'europe';
@@ -1174,6 +1171,9 @@
                 sec.style.display = 'none';
             }
         });
+
+        // 同步切換文獻專區分頁
+        switchDocTab(tabId);
 
         // Handle empty tab state
         let emptyMsg = document.getElementById('empty-tab-message');
